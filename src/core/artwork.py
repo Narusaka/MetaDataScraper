@@ -53,11 +53,8 @@ class ArtworkDownloader:
                 time.sleep(1)  # Wait before retry
         return False
 
-    def download_all_images(self, media_type: str, tmdb_id: int, output_dir: str, verbose: bool = False) -> Dict[str, List[str]]:
+    def download_all_images(self, media_type: str, tmdb_id: int, output_dir: str, verbose: bool = False, extra_images: bool = False) -> Dict[str, List[str]]:
         """Download all available images for a media item with robust error handling and Emby standard naming."""
-        images_dir = os.path.join(output_dir, "images")
-        os.makedirs(images_dir, exist_ok=True)
-
         # Get images from TMDB with retry logic
         images_url = f"https://api.themoviedb.org/3/{media_type}/{tmdb_id}/images"
         params = {"api_key": self.tmdb_api_key}
@@ -83,137 +80,174 @@ class ArtworkDownloader:
 
         downloaded_images = {}
 
-        # Download all posters
-        if images_data and 'posters' in images_data:
-            downloaded_images['poster'] = []
-            posters = images_data['posters']
-            if verbose:
-                print(f"   下载 {len(posters)} 张海报")
+        # Download required images (poster, fanart, logo) - always download these
+        # Copy first poster to parent directory as main poster (Emby standard)
+        if images_data and 'posters' in images_data and images_data['posters']:
+            poster = images_data['posters'][0]  # First poster
+            if poster.get('file_path'):
+                file_path = poster['file_path']
+                if not file_path.startswith('/'):
+                    file_path = '/' + file_path
+                url = self.base_image_url + file_path
+                main_poster_path = os.path.join(output_dir, "poster.jpg")
+                if self.download_image(main_poster_path, url):
+                    downloaded_images['poster'] = ["poster.jpg"]
+                    if verbose:
+                        print(f"   ✓ 设置主海报 (poster.jpg)")
+                else:
+                    downloaded_images['poster'] = []
+            else:
+                downloaded_images['poster'] = []
 
-            for i, poster in enumerate(posters):
-                if poster.get('file_path'):
-                    file_path = poster['file_path']
-                    if not file_path.startswith('/'):
-                        file_path = '/' + file_path
-                    url = self.base_image_url + file_path
-                    filename = f"poster{i+1}.jpg"
-                    filepath = os.path.join(images_dir, filename)
-                    try:
-                        if self.download_image(filepath, url):
-                            downloaded_images['poster'].append(filename)
-                            # Copy first poster to parent directory as main poster (Emby standard)
-                            if i == 0:
-                                parent_dir = os.path.dirname(images_dir)
-                                main_poster_path = os.path.join(parent_dir, "poster.jpg")
-                                try:
-                                    import shutil
-                                    shutil.copy2(filepath, main_poster_path)
-                                    if verbose:
-                                        print(f"   ✓ 设置主海报 (poster.jpg)")
-                                except Exception as e:
-                                    if verbose:
-                                        print(f"   ✗ 复制主海报失败: {e}")
-                    except Exception as e:
-                        if verbose:
-                            print(f"     ✗ 海报 {i+1} 下载失败: {e}")
-                        continue
-
-        # Download all backdrops/fanart
-        if images_data and 'backdrops' in images_data:
-            downloaded_images['fanart'] = []
-            downloaded_images['backdrop'] = []
-            backdrops = images_data['backdrops']
-            if verbose:
-                print(f"   下载 {len(backdrops)} 张背景图")
-
-            for i, backdrop in enumerate(backdrops):
-                if backdrop.get('file_path'):
-                    file_path = backdrop['file_path']
-                    if not file_path.startswith('/'):
-                        file_path = '/' + file_path
-                    url = self.base_image_url + file_path
-
-                    backdrop_filename = f"backdrop{i+1}.jpg"
-                    fanart_filename = f"fanart{i+1}.jpg"
-
-                    backdrop_filepath = os.path.join(images_dir, backdrop_filename)
-                    fanart_filepath = os.path.join(images_dir, fanart_filename)
-
-                    try:
-                        if self.download_image(backdrop_filepath, url):
-                            downloaded_images['backdrop'].append(backdrop_filename)
-                            # Copy the same file for fanart
+        # Copy first fanart/backdrop to parent directory as main fanart (Emby standard)
+        if images_data and 'backdrops' in images_data and images_data['backdrops']:
+            backdrop = images_data['backdrops'][0]  # First backdrop
+            if backdrop.get('file_path'):
+                file_path = backdrop['file_path']
+                if not file_path.startswith('/'):
+                    file_path = '/' + file_path
+                url = self.base_image_url + file_path
+                main_fanart_path = os.path.join(output_dir, "fanart.jpg")
+                banner_path = os.path.join(output_dir, "banner.jpg") if media_type == "tv" else None
+                if self.download_image(main_fanart_path, url):
+                    downloaded_images['fanart'] = ["fanart.jpg"]
+                    # Also create banner.jpg for TV shows (use same image)
+                    if banner_path and media_type == "tv":
+                        try:
                             import shutil
-                            shutil.copy2(backdrop_filepath, fanart_filepath)
-                            downloaded_images['fanart'].append(fanart_filename)
+                            shutil.copy2(main_fanart_path, banner_path)
+                        except:
+                            pass
+                    if verbose:
+                        if media_type == "tv":
+                            print(f"   ✓ 设置主背景图 (fanart.jpg + banner.jpg)")
+                        else:
+                            print(f"   ✓ 设置主背景图 (fanart.jpg)")
+                else:
+                    downloaded_images['fanart'] = []
+            else:
+                downloaded_images['fanart'] = []
 
-                            # Copy first fanart to parent directory as main fanart (Emby standard)
-                            if i == 0:
-                                parent_dir = os.path.dirname(images_dir)
-                                main_fanart_path = os.path.join(parent_dir, "fanart.jpg")
-                                # Also create banner.jpg for TV shows (use same image)
-                                banner_path = os.path.join(parent_dir, "banner.jpg") if media_type == "tv" else None
-                                try:
-                                    shutil.copy2(fanart_filepath, main_fanart_path)
-                                    if banner_path and media_type == "tv":
-                                        shutil.copy2(fanart_filepath, banner_path)
-                                    if verbose:
-                                        if media_type == "tv":
-                                            print(f"   ✓ 设置主背景图 (fanart.jpg + banner.jpg)")
-                                        else:
-                                            print(f"   ✓ 设置主背景图 (fanart.jpg)")
-                                except Exception as e:
-                                    if verbose:
-                                        print(f"   ✗ 复制主背景图失败: {e}")
-                    except Exception as e:
-                        if verbose:
-                            print(f"     ✗ 背景图 {i+1} 下载失败: {e}")
-                        continue
-
-        # Download all logos
-        if images_data and 'logos' in images_data:
-            downloaded_images['logo'] = []
-            logos = images_data['logos']
-            if verbose:
-                print(f"   下载 {len(logos)} 张标志")
-
-            for i, logo in enumerate(logos):
-                if logo.get('file_path'):
-                    file_path = logo['file_path']
-                    if not file_path.startswith('/'):
-                        file_path = '/' + file_path
-                    url = self.base_image_url + file_path
-                    filename = f"logo{i+1}.png"
-                    filepath = os.path.join(images_dir, filename)
+        # Copy first logo to parent directory (Emby standard naming)
+        if images_data and 'logos' in images_data and images_data['logos']:
+            logo = images_data['logos'][0]  # First logo
+            if logo.get('file_path'):
+                file_path = logo['file_path']
+                if not file_path.startswith('/'):
+                    file_path = '/' + file_path
+                url = self.base_image_url + file_path
+                clearlogo_path = os.path.join(output_dir, "clearlogo.png")
+                clearart_path = os.path.join(output_dir, "clearart.png")
+                if self.download_image(clearlogo_path, url):
+                    downloaded_images['logo'] = ["clearlogo.png"]
                     try:
-                        if self.download_image(filepath, url):
-                            downloaded_images['logo'].append(filename)
+                        import shutil
+                        shutil.copy2(clearlogo_path, clearart_path)
+                    except:
+                        pass
+                    if verbose:
+                        print(f"   ✓ 设置主标志 (clearlogo.png + clearart.png)")
+                else:
+                    downloaded_images['logo'] = []
+            else:
+                downloaded_images['logo'] = []
 
-                            # Copy first logo to parent directory (Emby standard naming)
-                            if i == 0:
-                                parent_dir = os.path.dirname(images_dir)
-                                # Emby standard: clearlogo.png for transparent logo
-                                clearlogo_path = os.path.join(parent_dir, "clearlogo.png")
-                                # Also create clearart.png (same image)
-                                clearart_path = os.path.join(parent_dir, "clearart.png")
-                                try:
-                                    import shutil
-                                    shutil.copy2(filepath, clearlogo_path)
-                                    shutil.copy2(filepath, clearart_path)
-                                    if verbose:
-                                        print(f"   ✓ 设置主标志 (clearlogo.png + clearart.png)")
-                                except Exception as e:
-                                    if verbose:
-                                        print(f"   ✗ 复制主标志失败: {e}")
-                    except Exception as e:
-                        if verbose:
-                            print(f"     ✗ 标志 {i+1} 下载失败: {e}")
+        # Download additional images only if extra_images is True
+        if extra_images:
+            images_dir = os.path.join(output_dir, "Extra")
+            os.makedirs(images_dir, exist_ok=True)
+
+            # Download all posters to Extra folder
+            if images_data and 'posters' in images_data:
+                downloaded_images['poster_extra'] = []
+                posters = images_data['posters']
+                if verbose and len(posters) > 1:
+                    print(f"   下载额外 {len(posters)-1} 张海报")
+
+                for i, poster in enumerate(posters):
+                    if i == 0:  # Skip first poster (already downloaded)
                         continue
+                    if poster.get('file_path'):
+                        file_path = poster['file_path']
+                        if not file_path.startswith('/'):
+                            file_path = '/' + file_path
+                        url = self.base_image_url + file_path
+                        filename = f"poster.jpg"
+                        filepath = os.path.join(images_dir, filename)
+                        try:
+                            if self.download_image(filepath, url):
+                                downloaded_images['poster_extra'].append(filename)
+                        except Exception as e:
+                            if verbose:
+                                print(f"     ✗ 额外海报 {i+1} 下载失败: {e}")
+                            continue
 
-        # Create stills subdirectory for TV shows
-        if media_type == 'tv':
+            # Download all backdrops/fanart to Extra folder
+            if images_data and 'backdrops' in images_data:
+                downloaded_images['fanart_extra'] = []
+                downloaded_images['backdrop_extra'] = []
+                backdrops = images_data['backdrops']
+                if verbose and len(backdrops) > 1:
+                    print(f"   下载额外 {len(backdrops)-1} 张背景图")
+
+                for i, backdrop in enumerate(backdrops):
+                    if i == 0:  # Skip first backdrop (already downloaded)
+                        continue
+                    if backdrop.get('file_path'):
+                        file_path = backdrop['file_path']
+                        if not file_path.startswith('/'):
+                            file_path = '/' + file_path
+                        url = self.base_image_url + file_path
+
+                        backdrop_filename = f"backdrop.jpg"
+                        fanart_filename = f"fanart.jpg"
+
+                        backdrop_filepath = os.path.join(images_dir, backdrop_filename)
+                        fanart_filepath = os.path.join(images_dir, fanart_filename)
+
+                        try:
+                            if self.download_image(backdrop_filepath, url):
+                                downloaded_images['backdrop_extra'].append(backdrop_filename)
+                                # Copy the same file for fanart
+                                import shutil
+                                shutil.copy2(backdrop_filepath, fanart_filepath)
+                                downloaded_images['fanart_extra'].append(fanart_filename)
+                        except Exception as e:
+                            if verbose:
+                                print(f"     ✗ 额外背景图 {i+1} 下载失败: {e}")
+                            continue
+
+            # Download all logos to Extra folder
+            if images_data and 'logos' in images_data:
+                downloaded_images['logo_extra'] = []
+                logos = images_data['logos']
+                if verbose and len(logos) > 1:
+                    print(f"   下载额外 {len(logos)-1} 张标志")
+
+                for i, logo in enumerate(logos):
+                    if i == 0:  # Skip first logo (already downloaded)
+                        continue
+                    if logo.get('file_path'):
+                        file_path = logo['file_path']
+                        if not file_path.startswith('/'):
+                            file_path = '/' + file_path
+                        url = self.base_image_url + file_path
+                        filename = f"logo.png"
+                        filepath = os.path.join(images_dir, filename)
+                        try:
+                            if self.download_image(filepath, url):
+                                downloaded_images['logo_extra'].append(filename)
+                        except Exception as e:
+                            if verbose:
+                                print(f"     ✗ 额外标志 {i+1} 下载失败: {e}")
+                            continue
+
+        # Create stills subdirectory for TV shows (only if extra_images is True)
+        if media_type == 'tv' and extra_images:
             downloaded_images['stills'] = []
-            stills_dir = os.path.join(images_dir, "stills")
+            extra_dir = os.path.join(output_dir, "Extra")
+            os.makedirs(extra_dir, exist_ok=True)
+            stills_dir = os.path.join(extra_dir, "stills")
             os.makedirs(stills_dir, exist_ok=True)
 
             # Get episode stills for the first season
@@ -234,7 +268,7 @@ class ArtworkDownloader:
                         filepath = os.path.join(stills_dir, filename)
                         try:
                             if self.download_image(filepath, url):
-                                episode_stills.append(f"stills/{filename}")
+                                episode_stills.append(f"Extra/stills/{filename}")
                         except Exception as e:
                             if verbose:
                                 print(f"     ✗ 剧集截图 {filename} 下载失败: {e}")
@@ -248,12 +282,8 @@ class ArtworkDownloader:
                 if verbose:
                     print(f"   ✗ 获取剧集截图失败: {e}")
 
-        # Download actor images (Emby standard: actors in root ./actors/ directory)
+        # Download actor images - directly in root directory (not in actors folder)
         downloaded_images['actors'] = []
-        # For both TV and movies, put actors in root actors directory (Emby recommended)
-        # This avoids duplication across seasons and follows Emby best practices
-        actors_dir = os.path.join(output_dir, "actors")
-        os.makedirs(actors_dir, exist_ok=True)
 
         # Get credits data to find actor profile paths
         try:
@@ -263,24 +293,23 @@ class ArtworkDownloader:
             credits_data = response.json()
 
             actor_images = []
-            for actor in credits_data.get('cast', []):  # Download all available actor images
+            for actor in credits_data.get('cast', [])[:10]:  # Limit to first 10 actors
                 if actor.get('profile_path'):
                     profile_path = actor['profile_path']
                     if not profile_path.startswith('/'):
                         profile_path = '/' + profile_path
 
                     url = self.base_image_url + profile_path
-                    # Emby standard: use underscores for actor names
+                    # Use clean actor names directly in root directory
                     actor_name = actor.get('name', 'unknown')
                     actor_name_clean = "".join(c for c in actor_name if c.isalnum() or c in ' _-').strip()
-                    actor_name_clean = actor_name_clean.replace(' ', '_')  # Emby standard: underscores
+                    actor_name_clean = actor_name_clean.replace(' ', '_')
                     filename = f"{actor_name_clean}.jpg"
-                    filepath = os.path.join(actors_dir, filename)
+                    filepath = os.path.join(output_dir, filename)
 
                     try:
                         if self.download_image(filepath, url):
-                            # Both TV and movies use root ./actors/ directory (Emby standard)
-                            actor_images.append(f"./actors/{filename}")
+                            actor_images.append(filename)
                     except Exception as e:
                         if verbose:
                             print(f"     ✗ 演员头像 {filename} 下载失败: {e}")
@@ -288,7 +317,7 @@ class ArtworkDownloader:
 
             downloaded_images['actors'] = actor_images
             if verbose and actor_images:
-                print(f"   ✓ 下载了 {len(actor_images)} 张演员头像")
+                print(f"   ✓ 下载了{len(actor_images)}张演员头像到根目录")
 
         except requests.RequestException as e:
             if verbose:

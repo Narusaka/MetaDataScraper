@@ -54,32 +54,15 @@ class NfoRenderer:
                     NfoRenderer._create_element(actor_elem, "originalname", actor["originalname"])
 
                 # Add actor thumb with proper path based on media type
-                # Based on Emby community discussions, actor thumbs should use relative paths
+                # Actor thumbs are now directly in root directory as filenames
                 if actor.get("thumb"):
-                    thumb_path = actor["thumb"]
-                    
-                    # Clean up the path for Emby compatibility
-                    if thumb_path.startswith("./Season 01/actors/"):
-                        # Convert to relative path from episode location to root actors
-                        thumb_path = thumb_path.replace("./Season 01/actors/", "../actors/")
-                    elif thumb_path.startswith("./actors/"):
-                        # For TV episodes, need to go up one level to reach actors directory
-                        if media_type == "tv":
-                            thumb_path = thumb_path.replace("./actors/", "../actors/")
-                        # For movies, keep as is
-                    elif thumb_path.startswith("images/actors/"):
-                        # Convert from images/actors/ to relative path
-                        if media_type == "tv":
-                            thumb_path = thumb_path.replace("images/actors/", "../actors/")
-                        else:
-                            thumb_path = thumb_path.replace("images/actors/", "actors/")
-                    elif not "/" in thumb_path:
-                        # Assume it's just a filename, add appropriate path
-                        if media_type == "tv":
-                            thumb_path = f"../actors/{thumb_path}"
-                        else:
-                            thumb_path = f"actors/{thumb_path}"
-                    
+                    thumb_path = actor["thumb"]  # Now just filename like "Saya_Aizawa.jpg"
+
+                    # For TV episodes in Season directories, go up one level to reach root
+                    if media_type == "tv":
+                        thumb_path = f"../{thumb_path}"
+                    # For movies in root directory, use filename directly
+
                     NfoRenderer._create_element(actor_elem, "thumb", thumb_path)
 
     @staticmethod

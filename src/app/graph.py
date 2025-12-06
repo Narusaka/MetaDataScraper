@@ -18,11 +18,12 @@ from ..core.logger import MetadataLogger
 
 
 class MediaMetadataGraph:
-    def __init__(self, config: Dict[str, Any], quiet_google: bool = False, skip_images: bool = False, preferred_language: str = "zh-CN", verbose: bool = False, quiet: bool = False, inplace: bool = False):
+    def __init__(self, config: Dict[str, Any], quiet_google: bool = False, skip_images: bool = False, preferred_language: str = "zh-CN", verbose: bool = False, quiet: bool = False, inplace: bool = False, extra_images: bool = False):
         self.config = config
         self.skip_images = skip_images
         self.preferred_language = preferred_language
         self.inplace = inplace  # New parameter for in-place mode
+        self.extra_images = extra_images  # Whether to create Extra folder for additional images
 
         # Initialize logger
         self.logger = MetadataLogger(
@@ -543,6 +544,7 @@ class MediaMetadataGraph:
         normalized = state.normalized
         input_data = state.input
         artwork_plan = state.artwork.get("plan", {})
+        extra_images = input_data.get("extra_images", False)
 
         media_type = normalized.get("media_type", "movie")
         tmdb_id = normalized.get("tmdb_id")
@@ -558,7 +560,7 @@ class MediaMetadataGraph:
 
         # Download all images
         if media_type and tmdb_id:
-            downloaded_images = self.artwork.download_all_images(media_type, tmdb_id, media_dir, self._should_print(input_data, "verbose"))
+            downloaded_images = self.artwork.download_all_images(media_type, tmdb_id, media_dir, self._should_print(input_data, "verbose"), extra_images)
 
             # Count downloaded images
             total_images = sum(len(images) for images in downloaded_images.values() if isinstance(images, list))
@@ -644,8 +646,7 @@ class MediaMetadataGraph:
         # Create media directory
         media_dir = FileSystemManager.create_media_directory(output_dir, title, year, media_type, inplace=state.inplace)
 
-        # Create images directory
-        images_dir = FileSystemManager.create_images_directory(media_dir)
+        # Note: No longer create images directory as per new requirements
 
         # Write NFO file
         xml_content = nfo_data.get("xml", "")
@@ -658,7 +659,6 @@ class MediaMetadataGraph:
 
         files_created = {
             "nfo_file": nfo_path,
-            "images_dir": images_dir,
             "media_dir": media_dir
         }
 

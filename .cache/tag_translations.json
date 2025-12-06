@@ -16,7 +16,7 @@
   },
   "2f4473b9580d3d40078e7cd80c5c6265": {
     "original": "ecchi",
-    "translation": "害羞",
+    "translation": "色气",
     "timestamp": 1764934748.883522
   },
   "387e6278d8e06083d813358762e0ac63": {
@@ -101,7 +101,7 @@
   },
   "1d0a88e071e43e8cc71e94f50d1c0384": {
     "original": "sexual humor",
-    "translation": "性幽默",
+    "translation": "成人幽默",
     "timestamp": 1764946931.068962
   },
   "6d049de2dd463cb43fbedaeda0c7a684": {
@@ -117,11 +117,6 @@
   "69cdee51df9ef04e62c6ad4ccc51e175": {
     "original": "outland",
     "translation": "异域",
-    "timestamp": 1764946931.068962
-  },
-  "b8c628e2300875dfeed00c8888714d4b": {
-    "original": "romantic",
-    "translation": "浪漫",
     "timestamp": 1764946931.068962
   },
   "e30e2ba61feac26c79d86cf4609eeb0f": {
@@ -144,11 +139,6 @@
     "translation": "公开性行为",
     "timestamp": 1764947338.441604
   },
-  "547fca08151167ff474cf759927cec94": {
-    "original": "softcore",
-    "translation": "软色情",
-    "timestamp": 1764947338.441604
-  },
   "c9bc6218b3aaaad93c18c5d5e1d73535": {
     "original": "adult animation",
     "translation": "成人动画",
@@ -156,7 +146,7 @@
   },
   "8563220b48f3d48766f3f75fbe337aec": {
     "original": "voyeurism",
-    "translation": "窥视癖",
+    "translation": "偷窥与暴露",
     "timestamp": 1764947338.441604
   },
   "cfc6d1f7ddb8ed39446dce8cf08bc6d1": {
@@ -166,7 +156,7 @@
   },
   "c2fc2f64438b1eb36b7e244bdb7bd535": {
     "original": "hentai",
-    "translation": "腐女",
+    "translation": "成人动画",
     "timestamp": 1764947338.441604
   },
   "f418e52fb06b2586047b115d12ee8717": {
@@ -176,7 +166,7 @@
   },
   "13717d35c07c02654be590b7aad8b647": {
     "original": "footjob",
-    "translation": "脚交",
+    "translation": "足交",
     "timestamp": 1764947338.441604
   },
   "67cdf1f23d07b3742c6d6e8792166490": {
@@ -237,11 +227,6 @@
   "6d6ea3c66479e5b2fe850819e09cb273": {
     "original": "joyful",
     "translation": "快乐",
-    "timestamp": 1764947491.877271
-  },
-  "e25acf0d400b2b640b93f5304b207cef": {
-    "original": "big breasts",
-    "translation": "大胸脯",
     "timestamp": 1764947491.877271
   },
   "303e029e7c45270cd9b6e6cab4cd78f2": {
@@ -321,22 +306,12 @@
   },
   "b6f5000fbc2e1057538e988b0ac9b168": {
     "original": "schoolgirl",
-    "translation": "校花",
+    "translation": "JK",
     "timestamp": 1764947646.923668
   },
   "683bb0bc3b4009343f9e904ecb758874": {
     "original": "love triangle",
     "translation": "三角恋",
-    "timestamp": 1764947677.084704
-  },
-  "b4a5937b1db469c1a8053e4a60145c7f": {
-    "original": "forbidden love",
-    "translation": "禁忌之恋",
-    "timestamp": 1764947677.084704
-  },
-  "fec593ebd03a4fc127375c7691ff486b": {
-    "original": "stepbrother",
-    "translation": "堂兄妹",
     "timestamp": 1764947677.084704
   },
   "8d788385431273d11e8b43bb78f3aa41": {
@@ -364,16 +339,6 @@
     "translation": "青少年性意识",
     "timestamp": 1764947677.084704
   },
-  "2cdb5fbd3e1027ca55a15271a96b014e": {
-    "original": "stepsister",
-    "translation": "表姐妹",
-    "timestamp": 1764947677.084704
-  },
-  "b093d322676258477d2d0cb0dfafc743": {
-    "original": "stepsiblings",
-    "translation": "表兄弟姐妹",
-    "timestamp": 1764947677.084704
-  },
   "c34c8b2c24e2aa2e45d62f1e15967bd2": {
     "original": "virginity",
     "translation": "处女情结",
@@ -391,7 +356,7 @@
   },
   "14fcb4b11d26db778a77cbdd4360aecf": {
     "original": "cohabitation",
-    "translation": "同居",
+    "translation": "恋爱关系",
     "timestamp": 1764947677.084704
   },
   "3e83b7e2cad4e1c3a978fff44fa6ae20": {
@@ -402,11 +367,6 @@
   "bccf29c39c3c0d5278fbe326443dadcc": {
     "original": "romantic drama",
     "translation": "浪漫剧",
-    "timestamp": 1764947677.084704
-  },
-  "981fa3c41d1c57992b2b67c89141fb0b": {
-    "original": "step-sibling romance",
-    "translation": "表亲恋情",
     "timestamp": 1764947677.084704
   },
   "7518ba9adcb5134a14609ed1c7b5efdc": {
@@ -426,12 +386,12 @@
   },
   "ca97f68cf88e0d3b9c652c05c7619575": {
     "original": "trap",
-    "translation": "陷阱",
+    "translation": "伪娘",
     "timestamp": 1764947733.183611
   },
   "c6b15380a8dd05168687b6e5236cf4cc": {
     "original": "cross dressing",
-    "translation": "穿女装",
+    "translation": "伪娘",
     "timestamp": 1764947733.183611
   },
   "888aab3369c86617f2119a923000c99a": {
@@ -489,19 +449,9 @@
     "translation": "强奸",
     "timestamp": 1764948363.856657
   },
-  "3c88b51b66c95449d21f55eb9425deff": {
-    "original": "orgy",
-    "translation": "狂欢",
-    "timestamp": 1764948363.856657
-  },
   "2f3a4fccca6406e35bcf33e92dd93135": {
     "original": "magic",
     "translation": "魔法",
-    "timestamp": 1764948363.856657
-  },
-  "a43e0a21938ce0cea345a62a0b4ef304": {
-    "original": "rape of a male",
-    "translation": "男性被强奸",
     "timestamp": 1764948363.856657
   },
   "aafb6955ddd4f789b34253175b4746e4": {
@@ -566,7 +516,7 @@
   },
   "18463e0cf198506c9443c6c6c5c92ad6": {
     "original": "childhood friends",
-    "translation": "童年好友",
+    "translation": "青梅竹马",
     "timestamp": 1764948575.214027
   },
   "85eb107ec23396f0b6e3b5c881fa8062": {
@@ -589,19 +539,9 @@
     "translation": "大正时期",
     "timestamp": 1764948650.824645
   },
-  "09b2bb1a3724a4f39dccc67c650ec8a2": {
-    "original": "high school girl",
-    "translation": "高中女生",
-    "timestamp": 1764952907.662706
-  },
   "f7c35a9cfd54951862e895bbebef145f": {
     "original": "creampie",
-    "translation": "阴茎勃起",
-    "timestamp": 1764953542.830838
-  },
-  "04dd88bd528bdf635f17a091f8999889": {
-    "original": "schoolgirl uniform",
-    "translation": "校服女学生",
+    "translation": "中出",
     "timestamp": 1764953542.830838
   },
   "c68763c0c7204310ef465cfd4d034441": {
@@ -621,7 +561,7 @@
   },
   "ac8e0c9833cf4e961cdb6bd42b8a19eb": {
     "original": "ntr",
-    "translation": "非恋人",
+    "translation": "NTR",
     "timestamp": 1764953988.235419
   },
   "b81dd45e6a3e12c5f231f00cb988f858": {
@@ -634,16 +574,6 @@
     "translation": "高中生",
     "timestamp": 1764954484.394355
   },
-  "0701aa317da5a004fbf6111545678a6c": {
-    "original": "nurse",
-    "translation": "护士",
-    "timestamp": 1764954627.093786
-  },
-  "47f66c469fd43fd02bce971ace163f24": {
-    "original": "exhibitionism",
-    "translation": "炫耀癖",
-    "timestamp": 1764955940.980365
-  },
   "d83e9f42571417cd588aee529d440e98": {
     "original": "コミック原作",
     "translation": "漫画原作",
@@ -653,5 +583,130 @@
     "original": "痴女・淫乱",
     "translation": "痴女·淫乱",
     "timestamp": 1764956047.573082
+  },
+  "dace600fd354de3948450dca0c0a38d4": {
+    "original": "housewives",
+    "translation": "人妻",
+    "timestamp": 1765023745.305699
+  },
+  "c6178eeda65e696abefee486c9639ec5": {
+    "original": "blackmail",
+    "translation": "勒索",
+    "timestamp": 1765023786.728078
+  },
+  "cee8289955b8c477b605b86c2fa861da": {
+    "original": "incest",
+    "translation": "乱伦",
+    "timestamp": 1765023786.728078
+  },
+  "2047a58fb1c23f36d9b74d689bcc495b": {
+    "original": "bdsm",
+    "translation": "支配与服从",
+    "timestamp": 1765023786.728078
+  },
+  "19795ed28e8f8d5117f47fdb6c1c0f49": {
+    "original": "impregnation",
+    "translation": "怀孕",
+    "timestamp": 1765023786.728078
+  },
+  "46ae7abb16cb95fc64fa45ffafac4f7b": {
+    "original": "high school",
+    "translation": "高中",
+    "timestamp": 1765023829.489305
+  },
+  "21c3a46e069cdaac3ea89bd54449edaf": {
+    "original": "tragedy",
+    "translation": "悲剧",
+    "timestamp": 1765023829.489305
+  },
+  "31f233dc10f25c039098078e3479eda6": {
+    "original": "coming of age",
+    "translation": "成长",
+    "timestamp": 1765023829.489305
+  },
+  "9275efa86a9ca523106d0238bbf8c0b2": {
+    "original": "twins",
+    "translation": "双胞胎",
+    "timestamp": 1765023829.489305
+  },
+  "8bf4e6addd72a9c4c4714708d2941528": {
+    "original": "monster",
+    "translation": "怪物",
+    "timestamp": 1765023868.050636
+  },
+  "215207dff5e2c3eb82cd02232b1cb9fe": {
+    "original": "glasses",
+    "translation": "眼镜",
+    "timestamp": 1765023868.050636
+  },
+  "ad0e9d5ed077db5266ff315985114a4f": {
+    "original": "handjob",
+    "translation": "手交",
+    "timestamp": 1765023868.050636
+  },
+  "d4d99d04b39f18e4a057c0589598808d": {
+    "original": "swimsuit",
+    "translation": "比基尼",
+    "timestamp": 1765023868.050636
+  },
+  "369d3da536d00ff27fb73d92f29725a0": {
+    "original": "x-ray",
+    "translation": "X光",
+    "timestamp": 1765023868.050636
+  },
+  "7a1c07ff60f9c07ffe8da34ecbf4edc2": {
+    "original": "fantasy",
+    "translation": "幻想",
+    "timestamp": 1765023868.050636
+  },
+  "e72f4545eb68c96c754f91fc01573517": {
+    "original": "office",
+    "translation": "办公室",
+    "timestamp": 1765023921.833449
+  },
+  "3f14135bbb6124f07651f1f02f0e99a4": {
+    "original": "hypnosis",
+    "translation": "催眠",
+    "timestamp": 1765024023.205089
+  },
+  "0118bea4e5a475b3ac0aade2b17ecb5f": {
+    "original": "brainwashing",
+    "translation": "洗脑",
+    "timestamp": 1765024023.205089
+  },
+  "e5a36bb60cd8dd223e9cec6c0ce9194c": {
+    "original": "mesmerization",
+    "translation": "迷醉",
+    "timestamp": 1765024023.205089
+  },
+  "7caa701b2bd5a182b80c72b9bdf88e2d": {
+    "original": "direct",
+    "translation": "直接",
+    "timestamp": 1765024023.205089
+  },
+  "a489ffed938ef1b9e86889bc413501ee": {
+    "original": "uniform",
+    "translation": "制服",
+    "timestamp": 1765024244.008309
+  },
+  "daffd55e1b8020c7a60a7b6e36afb775": {
+    "original": "sister",
+    "translation": "姐妹",
+    "timestamp": 1765024244.008309
+  },
+  "3221031e8ed5a17ec9a57271de7fadfe": {
+    "original": "masturbation",
+    "translation": "自慰",
+    "timestamp": 1765024244.008309
+  },
+  "fcfd9f4c146b22905eaeb8796f7a00bf": {
+    "original": "lactation",
+    "translation": "喷乳",
+    "timestamp": 1765024244.008309
+  },
+  "648513eb3465901d6a18a76299d3dd15": {
+    "original": "girlfriend",
+    "translation": "女友",
+    "timestamp": 1765024314.01594
   }
 }

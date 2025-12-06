@@ -24,73 +24,82 @@
   <country>JP</country>
   <studio>Tear Studio</studio>
   <studio>Tear Studio</studio>
-  <credits>高林佑树</credits>
   <credits>Soborou</credits>
   <credits>Yuri Fujimaru</credits>
-  <director>Toshikatsu Tokoro</director>
-  <director>所俊克</director>
+  <credits>高林佑树</credits>
   <director>中田诚</director>
+  <director>所俊克</director>
+  <director>Toshikatsu Tokoro</director>
   <actor>
     <name>Sumire Uesaka</name>
     <role>Kana Kojima (voice)</role>
+    <type>Actor</type>
     <originalname>上坂すみれ</originalname>
-    <thumb>images/actors/Sumire Uesaka.jpg</thumb>
+    <thumb>../Sumire_Uesaka.jpg</thumb>
   </actor>
   <actor>
     <name>Kazutomi Yamamoto</name>
     <role>Takashi Takahashi (voice)</role>
+    <type>Actor</type>
     <originalname>山本和臣</originalname>
-    <thumb>images/actors/Kazutomi Yamamoto.jpg</thumb>
+    <thumb>../Kazutomi_Yamamoto.jpg</thumb>
   </actor>
   <actor>
     <name>Yuko Goto</name>
     <role>Mayu Matsukaze (voice)</role>
+    <type>Actor</type>
     <originalname>後藤邑子</originalname>
-    <thumb>images/actors/Yuko Goto.jpg</thumb>
+    <thumb>../Yuko_Goto.jpg</thumb>
   </actor>
   <actor>
     <name>Ryota Suzuki</name>
     <role>Ichirō Satō (voice)</role>
+    <type>Actor</type>
     <originalname>鈴木崚汰</originalname>
-    <thumb>images/actors/Ryota Suzuki.jpg</thumb>
+    <thumb>../Ryota_Suzuki.jpg</thumb>
   </actor>
   <actor>
     <name>Shizuka Ishigami</name>
     <role>Hikari Hazakura (voice)</role>
+    <type>Actor</type>
     <originalname>石上静香</originalname>
-    <thumb>images/actors/Shizuka Ishigami.jpg</thumb>
+    <thumb>../Shizuka_Ishigami.jpg</thumb>
   </actor>
   <actor>
     <name>Nozomi Yamamoto</name>
     <role>Chizuru Tachibana (voice)</role>
+    <type>Actor</type>
     <originalname>山本希望</originalname>
-    <thumb>images/actors/Nozomi Yamamoto.jpg</thumb>
+    <thumb>../Nozomi_Yamamoto.jpg</thumb>
   </actor>
   <actor>
     <name>Yusuke Kobayashi</name>
     <role>Kō Tanaka (voice)</role>
+    <type>Actor</type>
     <originalname>小林裕介</originalname>
-    <thumb>images/actors/Yusuke Kobayashi.jpg</thumb>
+    <thumb>../Yusuke_Kobayashi.jpg</thumb>
   </actor>
   <actor>
     <name>Toshiki Masuda</name>
     <role>Rin Suzuki (voice)</role>
+    <type>Actor</type>
     <originalname>増田俊樹</originalname>
-    <thumb>images/actors/Toshiki Masuda.jpg</thumb>
+    <thumb>../Toshiki_Masuda.jpg</thumb>
   </actor>
   <actor>
     <name>Yuka Otsubo</name>
     <role>Saya Matsukaze (Voice)</role>
+    <type>Actor</type>
     <originalname>大坪由佳</originalname>
-    <thumb>images/actors/Yuka Otsubo.jpg</thumb>
+    <thumb>../Yuka_Otsubo.jpg</thumb>
   </actor>
   <lockedfields>Name</lockedfields>
-  <tag>school</tag>
-  <tag>based on manga</tag>
-  <tag>teacher student relationship</tag>
-  <tag>seinen</tag>
-  <tag>ecchi</tag>
-  <tag>anime</tag>
+  <tag>学校</tag>
+  <tag>改编自漫画</tag>
+  <tag>师生关系</tag>
+  <tag>青壮年</tag>
+  <tag>害羞</tag>
+  <tag>动画</tag>
   <thumb>为什么老师会在这里 - S01E07 - Mission 淫possible/亲爱购物-thumb.jpg</thumb>
   <fanart>为什么老师会在这里 - S01E07 - Mission 淫possible/亲爱购物-fanart.jpg</fanart>
 </episodedetails>

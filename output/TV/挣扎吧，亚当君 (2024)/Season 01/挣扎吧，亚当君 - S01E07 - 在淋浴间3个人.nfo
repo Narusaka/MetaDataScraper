@@ -18,41 +18,47 @@
   <studio>WWWave</studio>
   <credits>Tatsutaro Murai</credits>
   <credits>黑崎英代</credits>
-  <director>黑津口成惠</director>
   <director>神原敏昭</director>
+  <director>黑津口成惠</director>
   <actor>
     <name>Hana Kuga</name>
     <role>Akari Himeno (voice)</role>
+    <type>Actor</type>
     <originalname>空賀花</originalname>
-    <thumb>images/actors/Hana Kuga.jpg</thumb>
+    <thumb>../Hana_Kuga.jpg</thumb>
   </actor>
   <actor>
     <name>Shizuka Itoh</name>
     <role>Kaede Shiina (voice)</role>
+    <type>Actor</type>
     <originalname>伊藤静</originalname>
-    <thumb>images/actors/Shizuka Itoh.jpg</thumb>
+    <thumb>../Shizuka_Itoh.jpg</thumb>
   </actor>
   <actor>
     <name>Mari Kirimura</name>
     <role>Aki Kokonoe (voice)</role>
+    <type>Actor</type>
     <originalname>桐村まり</originalname>
-    <thumb>images/actors/Mari Kirimura.jpg</thumb>
+    <thumb>../Mari_Kirimura.jpg</thumb>
   </actor>
   <actor>
     <name>Kaho Shibuya</name>
     <role>Yui Kurumizawa (voice)</role>
+    <type>Actor</type>
     <originalname>澁谷果歩</originalname>
-    <thumb>images/actors/Kaho Shibuya.jpg</thumb>
+    <thumb>../Kaho_Shibuya.jpg</thumb>
   </actor>
   <actor>
     <name>Shinnosuke Tachibana</name>
     <role>Kumazawa (voice)</role>
+    <type>Actor</type>
     <originalname>立花慎之介</originalname>
-    <thumb>images/actors/Shinnosuke Tachibana.jpg</thumb>
+    <thumb>../Shinnosuke_Tachibana.jpg</thumb>
   </actor>
   <actor>
     <name>Harumichi Shito</name>
     <role>Itsuki Sonomiya</role>
+    <type>Actor</type>
     <originalname>志藤春道</originalname>
   </actor>
   <lockedfields>Name</lockedfields>
@@ -61,6 +67,6 @@
   <tag>改编自漫画</tag>
   <tag>害羞</tag>
   <tag>动画</tag>
-  <thumb>挣扎吧，亚当君 - S01E07 - 在淋浴间3个人-poster.jpg</thumb>
+  <thumb>挣扎吧，亚当君 - S01E07 - 在淋浴间3个人-thumb.jpg</thumb>
   <fanart>挣扎吧，亚当君 - S01E07 - 在淋浴间3个人-fanart.jpg</fanart>
 </episodedetails>

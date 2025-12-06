@@ -182,7 +182,7 @@ class DirectMapper:
             if original_name and original_name != name_en and original_name != name_zh:
                 actor_info["originalname"] = original_name
 
-            # Add profile path for actor image (Emby standard: root ./actors/ directory)
+            # Add profile path for actor image (directly in root directory)
             profile_path = actor.get('profile_path', '')
             if profile_path:
                 # Convert TMDB path to local path (match artwork.py naming convention)
@@ -190,8 +190,8 @@ class DirectMapper:
                 actor_name_clean = actor_name_clean.replace(' ', '_')  # Use underscores like artwork.py
                 if not actor_name_clean:
                     actor_name_clean = "unknown"
-                # Use ./actors/ path for Emby standard structure
-                actor_info["thumb"] = f"./actors/{actor_name_clean}.jpg"
+                # Use direct filename (actor images in root directory)
+                actor_info["thumb"] = f"{actor_name_clean}.jpg"
 
             formatted_cast.append(actor_info)
         return formatted_cast

@@ -144,6 +144,11 @@ def main():
         dest="translate_tags",
         help="Disable tag translation"
     )
+    parser.add_argument(
+        "--extra-images",
+        action="store_true",
+        help="Create Extra folder to store additional images (posters, logos, backdrops, fanart). Default: disabled"
+    )
 
     args = parser.parse_args()
 
@@ -167,7 +172,8 @@ def main():
             quiet_google=has_direct_id,
             preferred_language=args.lang,
             verbose=args.verbose,
-            quiet=args.quiet
+            quiet=args.quiet,
+            extra_images=args.extra_images
         )
         workflow = graph_builder.create_graph()
         app = workflow.compile()
@@ -182,7 +188,8 @@ def main():
             "aid_search": args.aid_search,
             "language": args.lang,
             "translate": args.translate,
-            "translate_tags": args.translate_tags
+            "translate_tags": args.translate_tags,
+            "extra_images": args.extra_images
         }
 
         if args.tmdb_id:

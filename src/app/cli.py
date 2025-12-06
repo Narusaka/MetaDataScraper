@@ -85,8 +85,7 @@ def main():
     parser.add_argument(
         "--type", "-t",
         choices=["movie", "tv"],
-        default="movie",
-        help="Media type (default: movie)"
+        help="Force media type (default: auto - TV first, then Movie if no TV results)"
     )
     parser.add_argument(
         "--tmdb-id",
@@ -179,8 +178,11 @@ def main():
         app = workflow.compile()
 
         # Prepare input
+        media_type = args.type or "tv"
+        media_type_forced = bool(args.type)
         input_data = {
-            "media_type": args.type,
+            "media_type": media_type,
+            "media_type_forced": media_type_forced,
             "query": args.query,
             "output_dir": args.output,
             "verbose": args.verbose,
@@ -212,7 +214,8 @@ def main():
 
         # Run workflow
         if args.verbose:
-            print(f"Processing {args.type}: {args.query}")
+            type_display = media_type.upper() if media_type_forced else "AUTO (TV→MOVIE)"
+            print(f"Processing {type_display}: {args.query}")
             print(f"Output directory: {args.output}")
 
         result = app.invoke(initial_state)

@@ -157,7 +157,8 @@ class MediaMetadataGraph:
     def search_node(self, state: GraphState) -> Dict[str, Any]:
         """Search for media items."""
         input_data = state.input
-        media_type = input_data.get("media_type", "movie")
+        media_type_forced = input_data.get("media_type_forced", False)
+        media_type = input_data.get("media_type", "tv")  # Default to tv for auto-fallback
         query = input_data.get("query", "")
         tmdb_id = input_data.get("tmdb_id")
         omdb_id = input_data.get("omdb_id")
@@ -166,13 +167,53 @@ class MediaMetadataGraph:
             self.logger.log_search({}, skip_search=True)
             return {"search": {"results": [], "skip_search": True}}
 
-        if media_type == "movie":
-            results = self.tmdb.search_movie(query)
-        else:
-            results = self.tmdb.search_tv(query)
+        search_results = None
+        performed_search_type = None
 
-        self.logger.log_search(results)
-        return {"search": {"results": results.get("results", [])}}
+        # If not forced to a specific type, try TV first then Movie
+        if not media_type_forced:
+            # Try TV first
+            if self._should_print(input_data):
+                print("🔍 检查TV结果...")
+            tv_results = self.tmdb.search_tv(query)
+            if tv_results and tv_results.get("results"):
+                search_results = tv_results.get("results", [])
+                performed_search_type = "tv"
+                if self._should_print(input_data):
+                    print(f"   ✅ 找到 {len(search_results)} 个TV结果")
+            else:
+                # Try Movie as fallback
+                if self._should_print(input_data):
+                    print("   ⚠️ TV无结果，尝试Movie...")
+                movie_results = self.tmdb.search_movie(query)
+                if movie_results and movie_results.get("results"):
+                    search_results = movie_results.get("results", [])
+                    performed_search_type = "movie"
+                    if self._should_print(input_data):
+                        print(f"   ✅ 找到 {len(search_results)} 个Movie结果")
+                else:
+                    search_results = []
+                    performed_search_type = ""
+                    if self._should_print(input_data):
+                        print("   ❌ 两者均无结果")
+        else:
+            # Forced to specific type
+            if media_type == "movie":
+                if self._should_print(input_data):
+                    print("🔍 搜索Movie...")
+                results = self.tmdb.search_movie(query)
+                performed_search_type = "movie"
+            else:
+                if self._should_print(input_data):
+                    print("🔍 搜索TV...")
+                results = self.tmdb.search_tv(query)
+                performed_search_type = "tv"
+            search_results = results.get("results", [])
+
+        # Log search results
+        self.logger.log_search({"results": search_results, "performed_search_type": performed_search_type})
+
+        return {"search": {"results": search_results, "performed_search_type": performed_search_type}}
 
     def select_candidate_node(self, state: GraphState) -> Dict[str, Any]:
         """Select the best candidate from search results."""
@@ -185,7 +226,7 @@ class MediaMetadataGraph:
             # Use TMDB ID or OMDB ID directly from input
             tmdb_id = input_data.get("tmdb_id")
             omdb_id = input_data.get("omdb_id")
-            media_type = input_data.get("media_type", "movie")
+            media_type = input_data.get("media_type", "tv")  # Default to tv for consistency
 
             if tmdb_id:
                 # Create a mock candidate object with TMDB ID
@@ -267,7 +308,14 @@ class MediaMetadataGraph:
         if not tmdb_id:
             raise Exception("No TMDB ID available")
 
-        media_type = selected.get("media_type", "movie")
+        # Determine media type - override with forced type if specified
+        media_type = input_data.get("media_type", "tv")
+        if input_data.get("media_type_forced", False):
+            # media_type already set from input
+            pass
+        else:
+            # Use auto-detected type from search results
+            media_type = selected.get("media_type", media_type)
 
         # Fetch main data
         if media_type == "movie":

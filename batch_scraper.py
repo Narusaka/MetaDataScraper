@@ -33,7 +33,7 @@ from src.app.state import GraphState
 class BatchMediaScraper:
     """Batch scraper for organizing and metadata generation."""
 
-    def __init__(self, config_path: Optional[str] = None, copy_files: bool = False, inplace_rename: bool = False, output_dir: Optional[str] = None, multi_mode: bool = False, tmdb_id: Optional[int] = None, use_local_nfo: bool = False, extra_images: bool = False):
+    def __init__(self, config_path: Optional[str] = None, copy_files: bool = False, inplace_rename: bool = False, output_dir: Optional[str] = None, multi_mode: bool = False, tmdb_id: Optional[int] = None, use_local_nfo: bool = False, extra_images: bool = False, media_type: str = "tv"):
         """Initialize the batch scraper.
 
         Args:
@@ -54,6 +54,7 @@ class BatchMediaScraper:
         self.tmdb_id = tmdb_id
         self.use_local_nfo = use_local_nfo
         self.extra_images = extra_images
+        self.media_type = media_type
         self.graph_builder = MediaMetadataGraph(self.config, extra_images=extra_images)
         self.workflow = self.graph_builder.create_graph()
         self.app = self.workflow.compile()
@@ -500,9 +501,10 @@ class BatchMediaScraper:
         return results
 
     def _generate_show_metadata(self, show_name: str, output_base: str, tmdb_id: Optional[int] = None) -> Dict:
-        """Generate complete metadata and folder structure for a TV show."""
+        """Generate complete metadata and folder structure for media."""
         input_data = {
-            "media_type": "tv",
+            "media_type": self.media_type,
+            "media_type_forced": self.media_type != "tv",  # If not default tv, force it
             "query": show_name,
             "output_dir": output_base,
             "verbose": False,
@@ -1063,7 +1065,7 @@ class BatchMediaScraper:
 
         # Use the show directory itself as output directory for in-place mode
         input_data = {
-            "media_type": "tv",
+            "media_type": self.media_type,
             "query": search_query,
             "output_dir": str(show_path),  # Use show directory as output directly
             "verbose": True,  # Enable verbose output for better debugging
@@ -1628,7 +1630,8 @@ class BatchMediaScraper:
                         multi_mode=False,
                         tmdb_id=tmdb_id,  # Pass the TMDB ID
                         use_local_nfo=True,  # Keep NFO usage enabled
-                        extra_images=self.extra_images
+                        extra_images=self.extra_images,
+                        media_type=self.media_type  # Pass the media type
                     )
                     result = temp_scraper.process_organized_show_inplace(subdir_path, tmdb_id)
                     if result:
@@ -1779,6 +1782,8 @@ Note: Default behavior is in-place renaming (move and rename in place).
                        help="TMDB ID for direct lookup (only works with --inplace mode)")
     parser.add_argument("--use-local-nfo", action="store_true",
                        help="Extract TMDB ID from tvshow.nfo file if no --tmdb-id provided")
+    parser.add_argument("--type", choices=["movie", "tv"],
+                       help="Force media type (default: auto fallback TV->Movie)")
     parser.add_argument("--extra-images", action="store_true",
                        help="Create Extra folder to store additional images (posters, logos, backdrops, fanart). Default: disabled")
 
@@ -1815,7 +1820,7 @@ Note: Default behavior is in-place renaming (move and rename in place).
         multi_mode = False
 
     try:
-        scraper = BatchMediaScraper(args.config, copy_files, inplace_rename, output_dir, multi_mode, args.tmdb_id, args.use_local_nfo, args.extra_images)
+        scraper = BatchMediaScraper(args.config, copy_files, inplace_rename, output_dir, multi_mode, args.tmdb_id, args.use_local_nfo, args.extra_images, args.type or "tv")
         scraper.run(args.input_dir, output_dir)
     except Exception as e:
         print(f"Error: {e}", file=sys.stderr)

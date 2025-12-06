@@ -1,9 +1,0 @@
-2025-12-05 21:01:30,105 - MetadataAgent - INFO - Input parameters parsed
-2025-12-05 21:01:30,105 - MetadataAgent - DEBUG - Input data: {
-  "media_type": "tv",
-  "query": "Season 01",
-  "output_dir": "/Volumes/video/Link/Animation/TV/Show Time! ~唱歌的大姐姐也想做~ (2021)/Season 01",
-  "verbose": false,
-  "quiet": true,
-  "aid_search": true
-}

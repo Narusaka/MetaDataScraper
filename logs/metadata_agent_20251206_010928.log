@@ -1,0 +1,749 @@
+2025-12-06 01:09:28,198 - MetadataAgent - INFO - Input parameters parsed
+2025-12-06 01:09:28,198 - MetadataAgent - DEBUG - Input data: {
+  "media_type": "tv",
+  "query": "",
+  "output_dir": "/Volumes/video/Animation/The Animation/Dearest Blue (Unknown Year)",
+  "verbose": false,
+  "quiet": true,
+  "aid_search": true,
+  "tmdb_id": 249108
+}
+2025-12-06 01:09:28,198 - MetadataAgent - INFO - Search completed: 0 results
+2025-12-06 01:09:28,198 - MetadataAgent - DEBUG - Search results: {}
+2025-12-06 01:09:32,050 - MetadataAgent - INFO - Data fetching completed
+2025-12-06 01:09:32,051 - MetadataAgent - DEBUG - Main data: {
+  "adult": true,
+  "backdrop_path": "/jAxCBUMG9Q2Cov49wMD9mkV525U.jpg",
+  "created_by": [],
+  "episode_run_time": [],
+  "first_air_date": "2024-04-26",
+  "genres": [
+    {
+      "id": 16,
+      "name": "动画"
+    }
+  ],
+  "homepage": "http://www.poro.cc/product_list/product_dearestblue.html",
+  "id": 249108,
+  "in_production": true,
+  "languages": [
+    "ja"
+  ],
+  "last_air_date": "2025-10-31",
+  "last_episode_to_air": {
+    "id": 6409263,
+    "name": "被玩弄的偶像",
+    "overview": "为了维系和真守的关系，乃亚不得不听从社长的摆布，委身伺奉。在真守面前，她悉心照料、尽显贤惠，可背地里，她的偶像活动却成了被各种金主玩弄的慰藉品……然而，面对这样的境遇，乃亚终于鼓起勇气，决绝地抗拒反击。\n\n“辞职又如何！我再也不想做这种事了！”\n\n乃亚的这番挣扎与抗争，都只为了……当她得知真守的目光依旧追随着理央时，瞬间陷入绝望。除了成为顶级偶像来复仇，别无选择。社长的这番话，让乃亚的瞳孔中，迸发出阴冷的光芒……",
+    "vote_average": 0.0,
+    "vote_count": 0,
+    "air_date": "2025-10-31",
+    "episode_number": 4,
+    "episode_type": "standard",
+    "production_code": "ACPDP1106",
+    "runtime": null,
+    "season_number": 1,
+    "show_id": 249108,
+    "still_path": null
+  },
+  "name": "Dearest Blue",
+  "next_episode_to_air": null,
+  "networks": [],
+  "number_of_episodes": 4,
+  "number_of_seasons": 1,
+  "origin_country": [
+    "JP"
+  ],
+  "original_language": "ja",
+  "original_name": "Dearest Blue",
+  "overview": "女主理央是一个偶像，有一个青梅竹马，但是经常进行偶像活动的她最终还是被NTR了。",
+  "popularity": 0.0,
+  "poster_path": "/mnO7HUaM8KvSEguE7rdQ344BfYZ.jpg",
+  "production_companies": [
+    {
+      "id": 54438,
+      "logo_path": null,
+      "name": "PoRO",
+      "origin_country": "JP"
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "JP",
+      "name": "Japan"
+    }
+  ],
+  "seasons": [
+    {
+      "air_date": "2024-04-26",
+      "episode_count": 4,
+      "id": 383819,
+      "name": "第 1 季",
+      "overview": "",
+      "poster_path": "/4CzoGwYEwFCDYYIxtrQaSEOuX7D.jpg",
+      "season_number": 1,
+      "vote_average": 7.6
+    }
+  ],
+  "spoken_languages": [
+    {
+      "english_name": "Japanese",
+      "iso_639_1": "ja",
+      "name": "日本語"
+    }
+  ],
+  "status": "Returning Series",
+  "tagline": "",
+  "type": "Scripted",
+  "vote_average": 8.5,
+  "vote_count": 2
+}
+2025-12-06 01:09:32,051 - MetadataAgent - DEBUG - Credits data: {
+  "cast": [],
+  "crew": [
+    {
+      "adult": true,
+      "gender": 0,
+      "id": 2974755,
+      "known_for_department": "Production",
+      "name": "Tenteke Ten",
+      "original_name": "天手毛天",
+      "popularity": 28.178,
+      "profile_path": null,
+      "credit_id": "65f4585aa698cf0163f6803c",
+      "department": "Production",
+      "job": "Producer"
+    },
+    {
+      "adult": true,
+      "gender": 1,
+      "id": 2791840,
+      "known_for_department": "Visual Effects",
+      "name": "Hikaru Kinohara",
+      "original_name": "Hikaru Kinohara",
+      "popularity": 48.703,
+      "profile_path": null,
+      "credit_id": "65f458673852020163e2641d",
+      "department": "Visual Effects",
+      "job": "Character Designer"
+    },
+    {
+      "adult": true,
+      "gender": 0,
+      "id": 3039132,
+      "known_for_department": "Directing",
+      "name": "Noji",
+      "original_name": "のぢ",
+      "popularity": 1.4,
+      "profile_path": null,
+      "credit_id": "68f2291a0032c707414d1fd1",
+      "department": "Directing",
+      "job": "Director"
+    },
+    {
+      "adult": true,
+      "gender": 0,
+      "id": 3039132,
+      "known_for_department": "Directing",
+      "name": "Noji",
+      "original_name": "のぢ",
+      "popularity": 1.4,
+      "profile_path": null,
+      "credit_id": "68f229681941833dc90e48bb",
+      "department": "Writing",
+      "job": "Storyboard"
+    }
+  ],
+  "id": 249108
+}
+2025-12-06 01:09:32,051 - MetadataAgent - DEBUG - Keywords data: {
+  "id": 249108,
+  "results": [
+    {
+      "name": "rape",
+      "id": 570
+    },
+    {
+      "name": "hentai",
+      "id": 198385
+    },
+    {
+      "name": "ntr",
+      "id": 221948
+    },
+    {
+      "name": "big tits",
+      "id": 230416
+    }
+  ]
+}
+2025-12-06 01:09:32,051 - MetadataAgent - DEBUG - Episodes data: [
+  {
+    "air_date": "2024-04-26",
+    "crew": [],
+    "episode_number": 1,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "偶像",
+    "overview": "理央与真守是青梅竹马\n\n两人虽心照不宣却始终暧昧不清的关系，正将他们一步步推向绝望深渊...\n\n因偶然参加选美比赛而涉足偶像圈的理央\n\n知晓她已成为\"Sacrifice\"祭品的真守——这个腹黑掌权者的消遣游戏\n\n为了守护理央，真守以打工者和参赛者的身份参与其中，却始终无法向她坦白真正的处境\n\n即便承受着她困惑与猜疑的目光，他仍执着于\"守护她\"这唯一信念而努力\n\n然而...\n\n眼前突兀展开的残酷现实...\n\n被迫目睹不愿相信画面的真守\n\n拼命呼救的理央赤裸着身躯，向他伸出求救的手\n\n那双手...最终未能被真守握住...",
+    "id": 5212818,
+    "production_code": "ACPDP-1099",
+    "runtime": 23,
+    "season_number": 1,
+    "still_path": "/qNnvtshRQj2GyqHj6jjcIJ1r4EU.jpg",
+    "vote_average": 6.7,
+    "vote_count": 3
+  },
+  {
+    "air_date": "2024-08-30",
+    "crew": [],
+    "episode_number": 2,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "被调教的偶像",
+    "overview": "真守，为什么啊...\n\n真守只是怔怔凝视着秋津川与理央纠缠不休的暧昧关系\n\n拼命伸出求救之手的理央，最终未能被他握住...\n\n面对这荒诞的现实，理央彻底崩溃，任人摆布\n\n在与秋津川共同进行偶像活动的同时，她的身体逐渐被一步步“开发”\n\n渐渐地，言行举止都被雕琢成了社长钟意的模样……\n\n当真守终于蓄力待发前来营救的瞬间——\n\n“您、您怎么了呢，主人……”\n\n面对曾经绝对不可能从青梅竹马口中听到的谄媚语气，真守惊愕不已……",
+    "id": 5401935,
+    "production_code": "ACPDP-1100",
+    "runtime": 26,
+    "season_number": 1,
+    "still_path": "/roI2fY7vlHyE3TNLajLJhPE4hqr.jpg",
+    "vote_average": 8.0,
+    "vote_count": 2
+  },
+  {
+    "air_date": "2025-04-25",
+    "crew": [],
+    "episode_number": 3,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "依恋的偶像",
+    "overview": "“真守君，你第一次来这种地方吧？”\n\n乃亚露出开心的笑容\n\n“因为真守君在看着我，所以没关系！”\n\n认真又倔强的乃亚\n\n“真守君，能教我学○吗？”\n\n害羞凝视的乃亚\n\n虽不知缘由，但见真守失意消沉，乃亚默默献身陪伴。无法眼睁睁看着他沮丧，她开始主动而大胆地靠近...\n\n真守逐渐被乃亚的执着所打动\n\n两人独处的学○会上，面对乃亚的决心和湿润的眼神，真守的勃起愈发强烈……\n\n暗恋已久的少女此刻欢喜至极，心都要飞上天了……\n\n但这一切不过是个陷阱！\n\n“我花钱可不是为了让你做这种事的！”\n\n揭露两人关系的新闻即将曝光。被逼入绝境的乃亚...早已无计可施......",
+    "id": 5949422,
+    "production_code": "",
+    "runtime": null,
+    "season_number": 1,
+    "still_path": "/6dJME8WHvqb7YI0QZEOCKmtgL2E.jpg",
+    "vote_average": 8.0,
+    "vote_count": 1
+  },
+  {
+    "air_date": "2025-10-31",
+    "crew": [],
+    "episode_number": 4,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "被玩弄的偶像",
+    "overview": "为了维系和真守的关系，乃亚不得不听从社长的摆布，委身伺奉。在真守面前，她悉心照料、尽显贤惠，可背地里，她的偶像活动却成了被各种金主玩弄的慰藉品……然而，面对这样的境遇，乃亚终于鼓起勇气，决绝地抗拒反击。\n\n“辞职又如何！我再也不想做这种事了！”\n\n乃亚的这番挣扎与抗争，都只为了……当她得知真守的目光依旧追随着理央时，瞬间陷入绝望。除了成为顶级偶像来复仇，别无选择。社长的这番话，让乃亚的瞳孔中，迸发出阴冷的光芒……",
+    "id": 6409263,
+    "production_code": "ACPDP1106",
+    "runtime": null,
+    "season_number": 1,
+    "still_path": null,
+    "vote_average": 0.0,
+    "vote_count": 0
+  }
+]
+2025-12-06 01:09:32,052 - MetadataAgent - DEBUG - Seasons data: [
+  {
+    "_id": "65f45774293835018729a5ac",
+    "air_date": "2024-04-26",
+    "episodes": [
+      {
+        "air_date": "2024-04-26",
+        "episode_number": 1,
+        "episode_type": "standard",
+        "id": 5212818,
+        "name": "偶像",
+        "overview": "理央与真守是青梅竹马\n\n两人虽心照不宣却始终暧昧不清的关系，正将他们一步步推向绝望深渊...\n\n因偶然参加选美比赛而涉足偶像圈的理央\n\n知晓她已成为\"Sacrifice\"祭品的真守——这个腹黑掌权者的消遣游戏\n\n为了守护理央，真守以打工者和参赛者的身份参与其中，却始终无法向她坦白真正的处境\n\n即便承受着她困惑与猜疑的目光，他仍执着于\"守护她\"这唯一信念而努力\n\n然而...\n\n眼前突兀展开的残酷现实...\n\n被迫目睹不愿相信画面的真守\n\n拼命呼救的理央赤裸着身躯，向他伸出求救的手\n\n那双手...最终未能被真守握住...",
+        "production_code": "ACPDP-1099",
+        "runtime": 23,
+        "season_number": 1,
+        "show_id": 249108,
+        "still_path": "/qNnvtshRQj2GyqHj6jjcIJ1r4EU.jpg",
+        "vote_average": 6.7,
+        "vote_count": 3,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2024-08-30",
+        "episode_number": 2,
+        "episode_type": "standard",
+        "id": 5401935,
+        "name": "被调教的偶像",
+        "overview": "真守，为什么啊...\n\n真守只是怔怔凝视着秋津川与理央纠缠不休的暧昧关系\n\n拼命伸出求救之手的理央，最终未能被他握住...\n\n面对这荒诞的现实，理央彻底崩溃，任人摆布\n\n在与秋津川共同进行偶像活动的同时，她的身体逐渐被一步步“开发”\n\n渐渐地，言行举止都被雕琢成了社长钟意的模样……\n\n当真守终于蓄力待发前来营救的瞬间——\n\n“您、您怎么了呢，主人……”\n\n面对曾经绝对不可能从青梅竹马口中听到的谄媚语气，真守惊愕不已……",
+        "production_code": "ACPDP-1100",
+        "runtime": 26,
+        "season_number": 1,
+        "show_id": 249108,
+        "still_path": "/roI2fY7vlHyE3TNLajLJhPE4hqr.jpg",
+        "vote_average": 8.0,
+        "vote_count": 2,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2025-04-25",
+        "episode_number": 3,
+        "episode_type": "standard",
+        "id": 5949422,
+        "name": "依恋的偶像",
+        "overview": "“真守君，你第一次来这种地方吧？”\n\n乃亚露出开心的笑容\n\n“因为真守君在看着我，所以没关系！”\n\n认真又倔强的乃亚\n\n“真守君，能教我学○吗？”\n\n害羞凝视的乃亚\n\n虽不知缘由，但见真守失意消沉，乃亚默默献身陪伴。无法眼睁睁看着他沮丧，她开始主动而大胆地靠近...\n\n真守逐渐被乃亚的执着所打动\n\n两人独处的学○会上，面对乃亚的决心和湿润的眼神，真守的勃起愈发强烈……\n\n暗恋已久的少女此刻欢喜至极，心都要飞上天了……\n\n但这一切不过是个陷阱！\n\n“我花钱可不是为了让你做这种事的！”\n\n揭露两人关系的新闻即将曝光。被逼入绝境的乃亚...早已无计可施......",
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "show_id": 249108,
+        "still_path": "/6dJME8WHvqb7YI0QZEOCKmtgL2E.jpg",
+        "vote_average": 8.0,
+        "vote_count": 1,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2025-10-31",
+        "episode_number": 4,
+        "episode_type": "standard",
+        "id": 6409263,
+        "name": "被玩弄的偶像",
+        "overview": "为了维系和真守的关系，乃亚不得不听从社长的摆布，委身伺奉。在真守面前，她悉心照料、尽显贤惠，可背地里，她的偶像活动却成了被各种金主玩弄的慰藉品……然而，面对这样的境遇，乃亚终于鼓起勇气，决绝地抗拒反击。\n\n“辞职又如何！我再也不想做这种事了！”\n\n乃亚的这番挣扎与抗争，都只为了……当她得知真守的目光依旧追随着理央时，瞬间陷入绝望。除了成为顶级偶像来复仇，别无选择。社长的这番话，让乃亚的瞳孔中，迸发出阴冷的光芒……",
+        "production_code": "ACPDP1106",
+        "runtime": null,
+        "season_number": 1,
+        "show_id": 249108,
+        "still_path": null,
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [],
+        "guest_stars": []
+      }
+    ],
+    "name": "第 1 季",
+    "networks": [],
+    "overview": "",
+    "id": 383819,
+    "poster_path": "/4CzoGwYEwFCDYYIxtrQaSEOuX7D.jpg",
+    "season_number": 1,
+    "vote_average": 7.6
+  }
+]
+2025-12-06 01:09:32,057 - MetadataAgent - INFO - Data normalization completed
+2025-12-06 01:09:32,057 - MetadataAgent - DEBUG - Normalized data: {
+  "media_type": "tv",
+  "tmdb_id": 249108,
+  "title": "Dearest Blue",
+  "original_title": "Dearest Blue",
+  "year": 2024,
+  "plot": "女主理央是一个偶像，有一个青梅竹马，但是经常进行偶像活动的她最终还是被NTR了。",
+  "tagline": "",
+  "runtime": null,
+  "release_date": "2024-04-26",
+  "rating": 8.5,
+  "rating_count": 2,
+  "genres": [
+    "动画"
+  ],
+  "countries": [
+    "JP"
+  ],
+  "languages": [
+    "ja"
+  ],
+  "studios": [
+    "PoRO"
+  ],
+  "networks": [],
+  "network": "",
+  "status": "Returning Series",
+  "homepage": "http://www.poro.cc/product_list/product_dearestblue.html",
+  "cast": [],
+  "directors": [
+    "Noji"
+  ],
+  "writers": [
+    "Noji"
+  ],
+  "images": {},
+  "seasons": [
+    {
+      "air_date": "2024-04-26",
+      "episode_count": 4,
+      "id": 383819,
+      "name": "第 1 季",
+      "overview": "",
+      "poster_path": "/4CzoGwYEwFCDYYIxtrQaSEOuX7D.jpg",
+      "season_number": 1,
+      "vote_average": 7.6
+    }
+  ],
+  "episodes": [
+    {
+      "air_date": "2024-04-26",
+      "crew": [],
+      "episode_number": 1,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "偶像",
+      "overview": "理央与真守是青梅竹马\n\n两人虽心照不宣却始终暧昧不清的关系，正将他们一步步推向绝望深渊...\n\n因偶然参加选美比赛而涉足偶像圈的理央\n\n知晓她已成为\"Sacrifice\"祭品的真守——这个腹黑掌权者的消遣游戏\n\n为了守护理央，真守以打工者和参赛者的身份参与其中，却始终无法向她坦白真正的处境\n\n即便承受着她困惑与猜疑的目光，他仍执着于\"守护她\"这唯一信念而努力\n\n然而...\n\n眼前突兀展开的残酷现实...\n\n被迫目睹不愿相信画面的真守\n\n拼命呼救的理央赤裸着身躯，向他伸出求救的手\n\n那双手...最终未能被真守握住...",
+      "id": 5212818,
+      "production_code": "ACPDP-1099",
+      "runtime": 23,
+      "season_number": 1,
+      "still_path": "/qNnvtshRQj2GyqHj6jjcIJ1r4EU.jpg",
+      "vote_average": 6.7,
+      "vote_count": 3
+    },
+    {
+      "air_date": "2024-08-30",
+      "crew": [],
+      "episode_number": 2,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "被调教的偶像",
+      "overview": "真守，为什么啊...\n\n真守只是怔怔凝视着秋津川与理央纠缠不休的暧昧关系\n\n拼命伸出求救之手的理央，最终未能被他握住...\n\n面对这荒诞的现实，理央彻底崩溃，任人摆布\n\n在与秋津川共同进行偶像活动的同时，她的身体逐渐被一步步“开发”\n\n渐渐地，言行举止都被雕琢成了社长钟意的模样……\n\n当真守终于蓄力待发前来营救的瞬间——\n\n“您、您怎么了呢，主人……”\n\n面对曾经绝对不可能从青梅竹马口中听到的谄媚语气，真守惊愕不已……",
+      "id": 5401935,
+      "production_code": "ACPDP-1100",
+      "runtime": 26,
+      "season_number": 1,
+      "still_path": "/roI2fY7vlHyE3TNLajLJhPE4hqr.jpg",
+      "vote_average": 8.0,
+      "vote_count": 2
+    },
+    {
+      "air_date": "2025-04-25",
+      "crew": [],
+      "episode_number": 3,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "依恋的偶像",
+      "overview": "“真守君，你第一次来这种地方吧？”\n\n乃亚露出开心的笑容\n\n“因为真守君在看着我，所以没关系！”\n\n认真又倔强的乃亚\n\n“真守君，能教我学○吗？”\n\n害羞凝视的乃亚\n\n虽不知缘由，但见真守失意消沉，乃亚默默献身陪伴。无法眼睁睁看着他沮丧，她开始主动而大胆地靠近...\n\n真守逐渐被乃亚的执着所打动\n\n两人独处的学○会上，面对乃亚的决心和湿润的眼神，真守的勃起愈发强烈……\n\n暗恋已久的少女此刻欢喜至极，心都要飞上天了……\n\n但这一切不过是个陷阱！\n\n“我花钱可不是为了让你做这种事的！”\n\n揭露两人关系的新闻即将曝光。被逼入绝境的乃亚...早已无计可施......",
+      "id": 5949422,
+      "production_code": "",
+      "runtime": null,
+      "season_number": 1,
+      "still_path": "/6dJME8WHvqb7YI0QZEOCKmtgL2E.jpg",
+      "vote_average": 8.0,
+      "vote_count": 1
+    },
+    {
+      "air_date": "2025-10-31",
+      "crew": [],
+      "episode_number": 4,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "被玩弄的偶像",
+      "overview": "为了维系和真守的关系，乃亚不得不听从社长的摆布，委身伺奉。在真守面前，她悉心照料、尽显贤惠，可背地里，她的偶像活动却成了被各种金主玩弄的慰藉品……然而，面对这样的境遇，乃亚终于鼓起勇气，决绝地抗拒反击。\n\n“辞职又如何！我再也不想做这种事了！”\n\n乃亚的这番挣扎与抗争，都只为了……当她得知真守的目光依旧追随着理央时，瞬间陷入绝望。除了成为顶级偶像来复仇，别无选择。社长的这番话，让乃亚的瞳孔中，迸发出阴冷的光芒……",
+      "id": 6409263,
+      "production_code": "ACPDP1106",
+      "runtime": null,
+      "season_number": 1,
+      "still_path": null,
+      "vote_average": 0.0,
+      "vote_count": 0
+    }
+  ],
+  "plot_zh": "女主理央是一个偶像，有一个青梅竹马，但是经常进行偶像活动的她最终还是被NTR了。",
+  "keywords_en": [
+    "rape",
+    "hentai",
+    "ntr",
+    "big tits"
+  ],
+  "keywords": [
+    "rape",
+    "hentai",
+    "ntr",
+    "big tits"
+  ],
+  "keywords_zh": [
+    "强奸",
+    "腐女",
+    "非恋人",
+    "大胸"
+  ]
+}
+2025-12-06 01:09:32,060 - MetadataAgent - INFO - Translation processing completed
+2025-12-06 01:09:32,061 - MetadataAgent - DEBUG - Translated data: {
+  "media_type": "tv",
+  "tmdb_id": 249108,
+  "title": "Dearest Blue",
+  "original_title": "Dearest Blue",
+  "year": 2024,
+  "plot": "女主理央是一个偶像，有一个青梅竹马，但是经常进行偶像活动的她最终还是被NTR了。",
+  "tagline": "",
+  "runtime": null,
+  "release_date": "2024-04-26",
+  "rating": 8.5,
+  "rating_count": 2,
+  "genres": [
+    "动画"
+  ],
+  "countries": [
+    "JP"
+  ],
+  "languages": [
+    "ja"
+  ],
+  "studios": [
+    "PoRO"
+  ],
+  "networks": [],
+  "network": "",
+  "status": "Returning Series",
+  "homepage": "http://www.poro.cc/product_list/product_dearestblue.html",
+  "cast": [],
+  "directors": [
+    "Noji"
+  ],
+  "writers": [
+    "Noji"
+  ],
+  "images": {},
+  "seasons": [
+    {
+      "air_date": "2024-04-26",
+      "episode_count": 4,
+      "id": 383819,
+      "name": "第 1 季",
+      "overview": "",
+      "poster_path": "/4CzoGwYEwFCDYYIxtrQaSEOuX7D.jpg",
+      "season_number": 1,
+      "vote_average": 7.6
+    }
+  ],
+  "episodes": [
+    {
+      "air_date": "2024-04-26",
+      "crew": [],
+      "episode_number": 1,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "偶像",
+      "overview": "理央与真守是青梅竹马\n\n两人虽心照不宣却始终暧昧不清的关系，正将他们一步步推向绝望深渊...\n\n因偶然参加选美比赛而涉足偶像圈的理央\n\n知晓她已成为\"Sacrifice\"祭品的真守——这个腹黑掌权者的消遣游戏\n\n为了守护理央，真守以打工者和参赛者的身份参与其中，却始终无法向她坦白真正的处境\n\n即便承受着她困惑与猜疑的目光，他仍执着于\"守护她\"这唯一信念而努力\n\n然而...\n\n眼前突兀展开的残酷现实...\n\n被迫目睹不愿相信画面的真守\n\n拼命呼救的理央赤裸着身躯，向他伸出求救的手\n\n那双手...最终未能被真守握住...",
+      "id": 5212818,
+      "production_code": "ACPDP-1099",
+      "runtime": 23,
+      "season_number": 1,
+      "still_path": "/qNnvtshRQj2GyqHj6jjcIJ1r4EU.jpg",
+      "vote_average": 6.7,
+      "vote_count": 3
+    },
+    {
+      "air_date": "2024-08-30",
+      "crew": [],
+      "episode_number": 2,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "被调教的偶像",
+      "overview": "真守，为什么啊...\n\n真守只是怔怔凝视着秋津川与理央纠缠不休的暧昧关系\n\n拼命伸出求救之手的理央，最终未能被他握住...\n\n面对这荒诞的现实，理央彻底崩溃，任人摆布\n\n在与秋津川共同进行偶像活动的同时，她的身体逐渐被一步步“开发”\n\n渐渐地，言行举止都被雕琢成了社长钟意的模样……\n\n当真守终于蓄力待发前来营救的瞬间——\n\n“您、您怎么了呢，主人……”\n\n面对曾经绝对不可能从青梅竹马口中听到的谄媚语气，真守惊愕不已……",
+      "id": 5401935,
+      "production_code": "ACPDP-1100",
+      "runtime": 26,
+      "season_number": 1,
+      "still_path": "/roI2fY7vlHyE3TNLajLJhPE4hqr.jpg",
+      "vote_average": 8.0,
+      "vote_count": 2
+    },
+    {
+      "air_date": "2025-04-25",
+      "crew": [],
+      "episode_number": 3,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "依恋的偶像",
+      "overview": "“真守君，你第一次来这种地方吧？”\n\n乃亚露出开心的笑容\n\n“因为真守君在看着我，所以没关系！”\n\n认真又倔强的乃亚\n\n“真守君，能教我学○吗？”\n\n害羞凝视的乃亚\n\n虽不知缘由，但见真守失意消沉，乃亚默默献身陪伴。无法眼睁睁看着他沮丧，她开始主动而大胆地靠近...\n\n真守逐渐被乃亚的执着所打动\n\n两人独处的学○会上，面对乃亚的决心和湿润的眼神，真守的勃起愈发强烈……\n\n暗恋已久的少女此刻欢喜至极，心都要飞上天了……\n\n但这一切不过是个陷阱！\n\n“我花钱可不是为了让你做这种事的！”\n\n揭露两人关系的新闻即将曝光。被逼入绝境的乃亚...早已无计可施......",
+      "id": 5949422,
+      "production_code": "",
+      "runtime": null,
+      "season_number": 1,
+      "still_path": "/6dJME8WHvqb7YI0QZEOCKmtgL2E.jpg",
+      "vote_average": 8.0,
+      "vote_count": 1
+    },
+    {
+      "air_date": "2025-10-31",
+      "crew": [],
+      "episode_number": 4,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "被玩弄的偶像",
+      "overview": "为了维系和真守的关系，乃亚不得不听从社长的摆布，委身伺奉。在真守面前，她悉心照料、尽显贤惠，可背地里，她的偶像活动却成了被各种金主玩弄的慰藉品……然而，面对这样的境遇，乃亚终于鼓起勇气，决绝地抗拒反击。\n\n“辞职又如何！我再也不想做这种事了！”\n\n乃亚的这番挣扎与抗争，都只为了……当她得知真守的目光依旧追随着理央时，瞬间陷入绝望。除了成为顶级偶像来复仇，别无选择。社长的这番话，让乃亚的瞳孔中，迸发出阴冷的光芒……",
+      "id": 6409263,
+      "production_code": "ACPDP1106",
+      "runtime": null,
+      "season_number": 1,
+      "still_path": null,
+      "vote_average": 0.0,
+      "vote_count": 0
+    }
+  ],
+  "plot_zh": "女主理央是一个偶像，有一个青梅竹马，但是经常进行偶像活动的她最终还是被NTR了。",
+  "keywords_en": [
+    "rape",
+    "hentai",
+    "ntr",
+    "big tits"
+  ],
+  "keywords": [
+    "rape",
+    "hentai",
+    "ntr",
+    "big tits"
+  ],
+  "keywords_zh": [
+    "强奸",
+    "腐女",
+    "非恋人",
+    "大胸"
+  ]
+}
+2025-12-06 01:09:32,062 - MetadataAgent - DEBUG - Translated episodes: [
+  {
+    "air_date": "2024-04-26",
+    "crew": [],
+    "episode_number": 1,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "偶像",
+    "overview": "理央与真守是青梅竹马\n\n两人虽心照不宣却始终暧昧不清的关系，正将他们一步步推向绝望深渊...\n\n因偶然参加选美比赛而涉足偶像圈的理央\n\n知晓她已成为\"Sacrifice\"祭品的真守——这个腹黑掌权者的消遣游戏\n\n为了守护理央，真守以打工者和参赛者的身份参与其中，却始终无法向她坦白真正的处境\n\n即便承受着她困惑与猜疑的目光，他仍执着于\"守护她\"这唯一信念而努力\n\n然而...\n\n眼前突兀展开的残酷现实...\n\n被迫目睹不愿相信画面的真守\n\n拼命呼救的理央赤裸着身躯，向他伸出求救的手\n\n那双手...最终未能被真守握住...",
+    "id": 5212818,
+    "production_code": "ACPDP-1099",
+    "runtime": 23,
+    "season_number": 1,
+    "still_path": "/qNnvtshRQj2GyqHj6jjcIJ1r4EU.jpg",
+    "vote_average": 6.7,
+    "vote_count": 3
+  },
+  {
+    "air_date": "2024-08-30",
+    "crew": [],
+    "episode_number": 2,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "被调教的偶像",
+    "overview": "真守，为什么啊...\n\n真守只是怔怔凝视着秋津川与理央纠缠不休的暧昧关系\n\n拼命伸出求救之手的理央，最终未能被他握住...\n\n面对这荒诞的现实，理央彻底崩溃，任人摆布\n\n在与秋津川共同进行偶像活动的同时，她的身体逐渐被一步步“开发”\n\n渐渐地，言行举止都被雕琢成了社长钟意的模样……\n\n当真守终于蓄力待发前来营救的瞬间——\n\n“您、您怎么了呢，主人……”\n\n面对曾经绝对不可能从青梅竹马口中听到的谄媚语气，真守惊愕不已……",
+    "id": 5401935,
+    "production_code": "ACPDP-1100",
+    "runtime": 26,
+    "season_number": 1,
+    "still_path": "/roI2fY7vlHyE3TNLajLJhPE4hqr.jpg",
+    "vote_average": 8.0,
+    "vote_count": 2
+  },
+  {
+    "air_date": "2025-04-25",
+    "crew": [],
+    "episode_number": 3,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "依恋的偶像",
+    "overview": "“真守君，你第一次来这种地方吧？”\n\n乃亚露出开心的笑容\n\n“因为真守君在看着我，所以没关系！”\n\n认真又倔强的乃亚\n\n“真守君，能教我学○吗？”\n\n害羞凝视的乃亚\n\n虽不知缘由，但见真守失意消沉，乃亚默默献身陪伴。无法眼睁睁看着他沮丧，她开始主动而大胆地靠近...\n\n真守逐渐被乃亚的执着所打动\n\n两人独处的学○会上，面对乃亚的决心和湿润的眼神，真守的勃起愈发强烈……\n\n暗恋已久的少女此刻欢喜至极，心都要飞上天了……\n\n但这一切不过是个陷阱！\n\n“我花钱可不是为了让你做这种事的！”\n\n揭露两人关系的新闻即将曝光。被逼入绝境的乃亚...早已无计可施......",
+    "id": 5949422,
+    "production_code": "",
+    "runtime": null,
+    "season_number": 1,
+    "still_path": "/6dJME8WHvqb7YI0QZEOCKmtgL2E.jpg",
+    "vote_average": 8.0,
+    "vote_count": 1
+  },
+  {
+    "air_date": "2025-10-31",
+    "crew": [],
+    "episode_number": 4,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "被玩弄的偶像",
+    "overview": "为了维系和真守的关系，乃亚不得不听从社长的摆布，委身伺奉。在真守面前，她悉心照料、尽显贤惠，可背地里，她的偶像活动却成了被各种金主玩弄的慰藉品……然而，面对这样的境遇，乃亚终于鼓起勇气，决绝地抗拒反击。\n\n“辞职又如何！我再也不想做这种事了！”\n\n乃亚的这番挣扎与抗争，都只为了……当她得知真守的目光依旧追随着理央时，瞬间陷入绝望。除了成为顶级偶像来复仇，别无选择。社长的这番话，让乃亚的瞳孔中，迸发出阴冷的光芒……",
+    "id": 6409263,
+    "production_code": "ACPDP1106",
+    "runtime": null,
+    "season_number": 1,
+    "still_path": null,
+    "vote_average": 0.0,
+    "vote_count": 0
+  }
+]
+2025-12-06 01:09:47,397 - MetadataAgent - INFO - NFO generation completed
+2025-12-06 01:09:47,398 - MetadataAgent - DEBUG - NFO data: {
+  "title": "Dearest Blue",
+  "originaltitle": "Dearest Blue",
+  "year": 2024,
+  "premiered": "2024-04-26",
+  "plot": "女主理央是一个偶像，有一个青梅竹马，但是经常进行偶像活动的她最终还是被NTR了。",
+  "tagline": "",
+  "runtime": null,
+  "rating": 8.5,
+  "votes": 2,
+  "genre": [
+    "动画"
+  ],
+  "country": [
+    "JP"
+  ],
+  "studio": [
+    "PoRO"
+  ],
+  "credits": [
+    "Noji"
+  ],
+  "director": [
+    "Noji"
+  ],
+  "actor": [],
+  "thumb": "poster.jpg",
+  "fanart": "fanart.jpg",
+  "tags": [
+    "强奸",
+    "腐女",
+    "非恋人",
+    "大胸"
+  ],
+  "network": "",
+  "networks": [],
+  "status": "Returning Series",
+  "homepage": "http://www.poro.cc/product_list/product_dearestblue.html",
+  "tmdb_id": 249108,
+  "validated": true
+}
+2025-12-06 01:09:47,398 - MetadataAgent - DEBUG - NFO XML content:
+<?xml version="1.0" ?>
+<tvshow>
+  <title>Dearest Blue</title>
+  <originaltitle>Dearest Blue</originaltitle>
+  <year>2024</year>
+  <premiered>2024-04-26</premiered>
+  <plot><![CDATA[女主理央是一个偶像，有一个青梅竹马，但是经常进行偶像活动的她最终还是被NTR了。]]></plot>
+  <rating>8.5</rating>
+  <votes>2</votes>
+  <tmdbid>249108</tmdbid>
+  <genre>动画</genre>
+  <country>JP</country>
+  <studio>PoRO</studio>
+  <credits>Noji</credits>
+  <director>Noji</director>
+  <status>Returning Series</status>
+  <homepage>http://www.poro.cc/product_list/product_dearestblue.html</homepage>
+  <uniqueid type="tmdb" default="true">249108</uniqueid>
+  <thumb>images/poster/poster.jpg</thumb>
+  <fanart>images/fanart/fanart.jpg</fanart>
+  <tag>强奸</tag>
+  <tag>腐女</tag>
+  <tag>非恋人</tag>
+  <tag>大胸</tag>
+</tvshow>
+
+2025-12-06 01:09:51,693 - MetadataAgent - INFO - Output generation completed
+2025-12-06 01:09:51,694 - MetadataAgent - DEBUG - Output data: {
+  "status": "completed",
+  "files": {
+    "nfo_file": "/Volumes/video/Animation/The Animation/Dearest Blue (Unknown Year)/tvshow.nfo",
+    "images_dir": "/Volumes/video/Animation/The Animation/Dearest Blue (Unknown Year)/images",
+    "media_dir": "/Volumes/video/Animation/The Animation/Dearest Blue (Unknown Year)",
+    "season_1_episode_1": "/Volumes/video/Animation/The Animation/Dearest Blue (Unknown Year)/Season 01/Dearest Blue - S01E01 - 偶像.nfo",
+    "season_1_episode_2": "/Volumes/video/Animation/The Animation/Dearest Blue (Unknown Year)/Season 01/Dearest Blue - S01E02 - 被调教的偶像.nfo",
+    "season_1_episode_3": "/Volumes/video/Animation/The Animation/Dearest Blue (Unknown Year)/Season 01/Dearest Blue - S01E03 - 依恋的偶像.nfo",
+    "season_1_episode_4": "/Volumes/video/Animation/The Animation/Dearest Blue (Unknown Year)/Season 01/Dearest Blue - S01E04 - 被玩弄的偶像.nfo"
+  }
+}
+2025-12-06 01:09:51,695 - MetadataAgent - INFO - === PROCESSING SUMMARY ===
+2025-12-06 01:09:51,695 - MetadataAgent - INFO - Log file: logs/metadata_agent_20251206_010928.log
+2025-12-06 01:09:51,695 - MetadataAgent - INFO - Processing completed successfully
+2025-12-06 01:09:51,697 - MetadataAgent - INFO - Processing summary saved to: logs/processing_summary_20251206_010951.json

@@ -1,0 +1,16 @@
+2025-12-05 23:13:43,381 - MetadataAgent - INFO - Input parameters parsed
+2025-12-05 23:13:43,381 - MetadataAgent - DEBUG - Input data: {
+  "media_type": "tv",
+  "query": "Show Time! 唱歌的大姐姐也想做 2",
+  "output_dir": "/Volumes/video/Animation/The Animation/Show Time! 唱歌的大姐姐也想做 2",
+  "verbose": false,
+  "quiet": true,
+  "aid_search": true
+}
+2025-12-05 23:13:44,176 - MetadataAgent - INFO - Search completed: 0 results
+2025-12-05 23:13:44,176 - MetadataAgent - DEBUG - Search results: {
+  "page": 1,
+  "results": [],
+  "total_pages": 1,
+  "total_results": 0
+}

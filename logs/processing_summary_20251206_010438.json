@@ -1,0 +1,726 @@
+{
+  "start_time": "2025-12-06T01:04:20.700786",
+  "input": {
+    "media_type": "tv",
+    "query": "",
+    "output_dir": "/Volumes/video/Animation/The Animation/学生妹淫乱的时期 (Unknown Year)",
+    "verbose": false,
+    "quiet": true,
+    "aid_search": true,
+    "tmdb_id": 246186
+  },
+  "search": {
+    "results": {},
+    "skip_search": true
+  },
+  "fetch": {
+    "main": {
+      "adult": true,
+      "backdrop_path": "/s82U3DHjlUg2hQi32SASePce55j.jpg",
+      "created_by": [
+        {
+          "id": 4532050,
+          "credit_id": "65c9df9854a0980184047587",
+          "name": "和泉",
+          "original_name": "CYCLONE",
+          "gender": 0,
+          "profile_path": null
+        }
+      ],
+      "episode_run_time": [
+        16
+      ],
+      "first_air_date": "2024-04-26",
+      "genres": [
+        {
+          "id": 16,
+          "name": "动画"
+        }
+      ],
+      "homepage": "https://www.lune-soft.jp/news/26873",
+      "id": 246186,
+      "in_production": true,
+      "languages": [
+        "ja"
+      ],
+      "last_air_date": "2024-04-26",
+      "last_episode_to_air": {
+        "id": 5139616,
+        "name": "第 2 集",
+        "overview": "香织在社团活动中表现奇怪，正也也注意到了这个问题……香织一如往常来到亚美家中被亮强奸，并接受了亚美「把男朋友一起叫来学习会」的强硬提案。由谎言编织而成的学习会，正也被亚美口交、更衣室里香织被亮强奸到高潮前夕。还未高潮身体燥热的香织向正也提出交合的请求……",
+        "vote_average": 8.333,
+        "vote_count": 3,
+        "air_date": "2024-04-26",
+        "episode_number": 2,
+        "episode_type": "standard",
+        "production_code": "GLOD-0351",
+        "runtime": 15,
+        "season_number": 1,
+        "show_id": 246186,
+        "still_path": "/fDb1TdCIW91NXWPqoXBoenoEBUV.jpg"
+      },
+      "name": "放荡之顷",
+      "next_episode_to_air": null,
+      "networks": [],
+      "number_of_episodes": 2,
+      "number_of_seasons": 1,
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "みだれうち",
+      "overview": "网球部的王牌选手香織，去看望很久没有来网球部练习的后辈亜美，得知了亜美不来练习的真相。自从上次看望后辈亜美后，香織在网球部的练习和比赛中表现得有些异样，她的男朋友正也和闺蜜也注意到了她的异常，想去一问究竟。",
+      "popularity": 0.0,
+      "poster_path": "/ogwcoiJmfIyla0rn5BVyl2iRGoE.jpg",
+      "production_companies": [
+        {
+          "id": 96058,
+          "logo_path": null,
+          "name": "T-REX",
+          "origin_country": "JP"
+        },
+        {
+          "id": 153406,
+          "logo_path": "/6XaoW530ZzUCsrTkN1ucEWfqTp.png",
+          "name": "Lune Pictures",
+          "origin_country": "JP"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "JP",
+          "name": "Japan"
+        }
+      ],
+      "seasons": [
+        {
+          "air_date": "2024-04-26",
+          "episode_count": 2,
+          "id": 378688,
+          "name": "第 1 季",
+          "overview": "网球少女心系社团同学却踏入魔窟",
+          "poster_path": "/gbfHB1Kbml2VoKzPnfRZW5bVqzH.jpg",
+          "season_number": 1,
+          "vote_average": 7.7
+        }
+      ],
+      "spoken_languages": [
+        {
+          "english_name": "Japanese",
+          "iso_639_1": "ja",
+          "name": "日本語"
+        }
+      ],
+      "status": "Returning Series",
+      "tagline": "",
+      "type": "Miniseries",
+      "vote_average": 8.667,
+      "vote_count": 6
+    },
+    "credits": {
+      "cast": [
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 3033359,
+          "known_for_department": "Acting",
+          "name": "Yua Miyuki",
+          "original_name": "深雪ゆあ",
+          "popularity": 2.429,
+          "profile_path": "/lf2rwWlYh2pZiMZtQUe3So4qMhP.jpg",
+          "character": "Kaori Kitamura (voice)",
+          "credit_id": "662fb0a91f0275012414d74f",
+          "order": 0
+        },
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 3031026,
+          "known_for_department": "Acting",
+          "name": "Shiu Kase",
+          "original_name": "鹿瀬紫卯",
+          "popularity": 0.6,
+          "profile_path": null,
+          "character": "Ami Sasaki (voice)",
+          "credit_id": "662fb13ce33f83012b2232f7",
+          "order": 1
+        },
+        {
+          "adult": true,
+          "gender": 0,
+          "id": 3031030,
+          "known_for_department": "Acting",
+          "name": "Itsuki Okamoto",
+          "original_name": "岡本樹",
+          "popularity": 0.98,
+          "profile_path": null,
+          "character": "Ryou (voice) / Komon (voice)",
+          "credit_id": "662fb3b5d96c3c012599108a",
+          "order": 2
+        },
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 2477471,
+          "known_for_department": "Acting",
+          "name": "Yuuri Akeshima",
+          "original_name": "明島ゆうり",
+          "popularity": 2.787,
+          "profile_path": "/5MdwnJbp3HbqYCw2sk9P6zg2seq.jpg",
+          "character": "Hayakawa (voice)",
+          "credit_id": "67ae16532375bfc5f6d0e18c",
+          "order": 3
+        }
+      ],
+      "crew": [
+        {
+          "adult": true,
+          "gender": 2,
+          "id": 2984359,
+          "known_for_department": "Writing",
+          "name": "Megane Sagari",
+          "original_name": "サガリ 眼鏡",
+          "popularity": 0.6,
+          "profile_path": null,
+          "credit_id": "688dd1c43159fee6dfde62f4",
+          "department": "Writing",
+          "job": "Storyboard"
+        },
+        {
+          "adult": true,
+          "gender": 2,
+          "id": 1778739,
+          "known_for_department": "Directing",
+          "name": "Ken Raika",
+          "original_name": "雷火剣",
+          "popularity": 194.882,
+          "profile_path": null,
+          "credit_id": "688dd1cf42df351c5eb7eae7",
+          "department": "Directing",
+          "job": "Director"
+        },
+        {
+          "adult": true,
+          "gender": 0,
+          "id": 2984357,
+          "known_for_department": "Writing",
+          "name": "Tokku03",
+          "original_name": "特区03",
+          "popularity": 21.693,
+          "profile_path": null,
+          "credit_id": "688dd1d835fab36f6611d57f",
+          "department": "Crew",
+          "job": "Script"
+        },
+        {
+          "adult": true,
+          "gender": 0,
+          "id": 3958882,
+          "known_for_department": "Visual Effects",
+          "name": "鈴木貴人",
+          "original_name": "鈴木貴人",
+          "popularity": 0.0,
+          "profile_path": null,
+          "credit_id": "688dd1e561ecb3e4d6a45f31",
+          "department": "Visual Effects",
+          "job": "Character Designer"
+        }
+      ],
+      "id": 246186
+    },
+    "keywords": {
+      "id": 246186,
+      "results": [
+        {
+          "name": "rape",
+          "id": 570
+        },
+        {
+          "name": "hentai",
+          "id": 198385
+        },
+        {
+          "name": "ntr",
+          "id": 221948
+        },
+        {
+          "name": "big tits",
+          "id": 230416
+        }
+      ]
+    },
+    "seasons": [
+      {
+        "_id": "65c9df0f54a0980163025d41",
+        "air_date": "2024-04-26",
+        "episodes": [
+          {
+            "air_date": "2024-04-26",
+            "episode_number": 1,
+            "episode_type": "standard",
+            "id": 5139615,
+            "name": "第 1 集",
+            "overview": "网球部的王牌香织，原本只是去找学妹，为了看看她最近为什么没有参加社团活动…离开屋外担心着自己的男友，香织被带到了学妹亚美的房间里，在这里她目击到的是…嘴里吞吐着男性器的亚美。在亚美的炮友・亮的袭击下，香织失去了处女，即使向正也呼救，那呼救声也仅是消散在空气中…肉体被亚美所用的催情剂变得无比敏感，香织在从未知晓过的快感之中逐渐堕落…",
+            "production_code": "GLOD-0349",
+            "runtime": 15,
+            "season_number": 1,
+            "show_id": 246186,
+            "still_path": "/2W9UrqkV6GpfoNSJJk62dQ0bnsy.jpg",
+            "vote_average": 7.0,
+            "vote_count": 3,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2024-04-26",
+            "episode_number": 2,
+            "episode_type": "standard",
+            "id": 5139616,
+            "name": "第 2 集",
+            "overview": "香织在社团活动中表现奇怪，正也也注意到了这个问题……香织一如往常来到亚美家中被亮强奸，并接受了亚美「把男朋友一起叫来学习会」的强硬提案。由谎言编织而成的学习会，正也被亚美口交、更衣室里香织被亮强奸到高潮前夕。还未高潮身体燥热的香织向正也提出交合的请求……",
+            "production_code": "GLOD-0351",
+            "runtime": 15,
+            "season_number": 1,
+            "show_id": 246186,
+            "still_path": "/fDb1TdCIW91NXWPqoXBoenoEBUV.jpg",
+            "vote_average": 8.333,
+            "vote_count": 3,
+            "crew": [],
+            "guest_stars": []
+          }
+        ],
+        "name": "第 1 季",
+        "networks": [],
+        "overview": "网球少女心系社团同学却踏入魔窟",
+        "id": 378688,
+        "poster_path": "/gbfHB1Kbml2VoKzPnfRZW5bVqzH.jpg",
+        "season_number": 1,
+        "vote_average": 7.7
+      }
+    ],
+    "episodes": [
+      {
+        "air_date": "2024-04-26",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 1 集",
+        "overview": "网球部的王牌香织，原本只是去找学妹，为了看看她最近为什么没有参加社团活动…离开屋外担心着自己的男友，香织被带到了学妹亚美的房间里，在这里她目击到的是…嘴里吞吐着男性器的亚美。在亚美的炮友・亮的袭击下，香织失去了处女，即使向正也呼救，那呼救声也仅是消散在空气中…肉体被亚美所用的催情剂变得无比敏感，香织在从未知晓过的快感之中逐渐堕落…",
+        "id": 5139615,
+        "production_code": "GLOD-0349",
+        "runtime": 15,
+        "season_number": 1,
+        "still_path": "/2W9UrqkV6GpfoNSJJk62dQ0bnsy.jpg",
+        "vote_average": 7.0,
+        "vote_count": 3
+      },
+      {
+        "air_date": "2024-04-26",
+        "crew": [],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 2 集",
+        "overview": "香织在社团活动中表现奇怪，正也也注意到了这个问题……香织一如往常来到亚美家中被亮强奸，并接受了亚美「把男朋友一起叫来学习会」的强硬提案。由谎言编织而成的学习会，正也被亚美口交、更衣室里香织被亮强奸到高潮前夕。还未高潮身体燥热的香织向正也提出交合的请求……",
+        "id": 5139616,
+        "production_code": "GLOD-0351",
+        "runtime": 15,
+        "season_number": 1,
+        "still_path": "/fDb1TdCIW91NXWPqoXBoenoEBUV.jpg",
+        "vote_average": 8.333,
+        "vote_count": 3
+      }
+    ]
+  },
+  "translate": {
+    "translated": {
+      "media_type": "tv",
+      "tmdb_id": 246186,
+      "title": "放荡之顷",
+      "original_title": "みだれうち",
+      "year": 2024,
+      "plot": "网球部的王牌选手香織，去看望很久没有来网球部练习的后辈亜美，得知了亜美不来练习的真相。自从上次看望后辈亜美后，香織在网球部的练习和比赛中表现得有些异样，她的男朋友正也和闺蜜也注意到了她的异常，想去一问究竟。",
+      "tagline": "",
+      "runtime": 16,
+      "release_date": "2024-04-26",
+      "rating": 8.667,
+      "rating_count": 6,
+      "genres": [
+        "动画"
+      ],
+      "countries": [
+        "JP"
+      ],
+      "languages": [
+        "ja"
+      ],
+      "studios": [
+        "T-REX",
+        "Lune Pictures"
+      ],
+      "networks": [],
+      "network": "",
+      "status": "Returning Series",
+      "homepage": "https://www.lune-soft.jp/news/26873",
+      "cast": [
+        {
+          "name_en": "Yua Miyuki",
+          "name_zh": null,
+          "role": "Kaori Kitamura (voice)",
+          "original_name": "深雪ゆあ",
+          "profile_path": "/lf2rwWlYh2pZiMZtQUe3So4qMhP.jpg",
+          "popularity": 2.429
+        },
+        {
+          "name_en": "Shiu Kase",
+          "name_zh": null,
+          "role": "Ami Sasaki (voice)",
+          "original_name": "鹿瀬紫卯",
+          "profile_path": null,
+          "popularity": 0.6
+        },
+        {
+          "name_en": "Itsuki Okamoto",
+          "name_zh": null,
+          "role": "Ryou (voice) / Komon (voice)",
+          "original_name": "岡本樹",
+          "profile_path": null,
+          "popularity": 0.98
+        },
+        {
+          "name_en": "Yuuri Akeshima",
+          "name_zh": null,
+          "role": "Hayakawa (voice)",
+          "original_name": "明島ゆうり",
+          "profile_path": "/5MdwnJbp3HbqYCw2sk9P6zg2seq.jpg",
+          "popularity": 2.787
+        }
+      ],
+      "directors": [
+        "Ken Raika"
+      ],
+      "writers": [
+        "Megane Sagari"
+      ],
+      "images": {},
+      "seasons": [
+        {
+          "air_date": "2024-04-26",
+          "episode_count": 2,
+          "id": 378688,
+          "name": "第 1 季",
+          "overview": "网球少女心系社团同学却踏入魔窟",
+          "poster_path": "/gbfHB1Kbml2VoKzPnfRZW5bVqzH.jpg",
+          "season_number": 1,
+          "vote_average": 7.7
+        }
+      ],
+      "episodes": [
+        {
+          "air_date": "2024-04-26",
+          "crew": [],
+          "episode_number": 1,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "第 1 集",
+          "overview": "网球部的王牌香织，原本只是去找学妹，为了看看她最近为什么没有参加社团活动…离开屋外担心着自己的男友，香织被带到了学妹亚美的房间里，在这里她目击到的是…嘴里吞吐着男性器的亚美。在亚美的炮友・亮的袭击下，香织失去了处女，即使向正也呼救，那呼救声也仅是消散在空气中…肉体被亚美所用的催情剂变得无比敏感，香织在从未知晓过的快感之中逐渐堕落…",
+          "id": 5139615,
+          "production_code": "GLOD-0349",
+          "runtime": 15,
+          "season_number": 1,
+          "still_path": "/2W9UrqkV6GpfoNSJJk62dQ0bnsy.jpg",
+          "vote_average": 7.0,
+          "vote_count": 3
+        },
+        {
+          "air_date": "2024-04-26",
+          "crew": [],
+          "episode_number": 2,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "第 2 集",
+          "overview": "香织在社团活动中表现奇怪，正也也注意到了这个问题……香织一如往常来到亚美家中被亮强奸，并接受了亚美「把男朋友一起叫来学习会」的强硬提案。由谎言编织而成的学习会，正也被亚美口交、更衣室里香织被亮强奸到高潮前夕。还未高潮身体燥热的香织向正也提出交合的请求……",
+          "id": 5139616,
+          "production_code": "GLOD-0351",
+          "runtime": 15,
+          "season_number": 1,
+          "still_path": "/fDb1TdCIW91NXWPqoXBoenoEBUV.jpg",
+          "vote_average": 8.333,
+          "vote_count": 3
+        }
+      ],
+      "title_zh": "放荡之顷",
+      "plot_zh": "网球部的王牌选手香織，去看望很久没有来网球部练习的后辈亜美，得知了亜美不来练习的真相。自从上次看望后辈亜美后，香織在网球部的练习和比赛中表现得有些异样，她的男朋友正也和闺蜜也注意到了她的异常，想去一问究竟。",
+      "keywords_en": [
+        "rape",
+        "hentai",
+        "ntr",
+        "big tits"
+      ],
+      "keywords": [
+        "rape",
+        "hentai",
+        "ntr",
+        "big tits"
+      ],
+      "keywords_zh": [
+        "强奸",
+        "腐女",
+        "非恋人",
+        "大胸"
+      ]
+    },
+    "episodes": [
+      {
+        "air_date": "2024-04-26",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 1 集",
+        "overview": "网球部的王牌香织，原本只是去找学妹，为了看看她最近为什么没有参加社团活动…离开屋外担心着自己的男友，香织被带到了学妹亚美的房间里，在这里她目击到的是…嘴里吞吐着男性器的亚美。在亚美的炮友・亮的袭击下，香织失去了处女，即使向正也呼救，那呼救声也仅是消散在空气中…肉体被亚美所用的催情剂变得无比敏感，香织在从未知晓过的快感之中逐渐堕落…",
+        "id": 5139615,
+        "production_code": "GLOD-0349",
+        "runtime": 15,
+        "season_number": 1,
+        "still_path": "/2W9UrqkV6GpfoNSJJk62dQ0bnsy.jpg",
+        "vote_average": 7.0,
+        "vote_count": 3
+      },
+      {
+        "air_date": "2024-04-26",
+        "crew": [],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 2 集",
+        "overview": "香织在社团活动中表现奇怪，正也也注意到了这个问题……香织一如往常来到亚美家中被亮强奸，并接受了亚美「把男朋友一起叫来学习会」的强硬提案。由谎言编织而成的学习会，正也被亚美口交、更衣室里香织被亮强奸到高潮前夕。还未高潮身体燥热的香织向正也提出交合的请求……",
+        "id": 5139616,
+        "production_code": "GLOD-0351",
+        "runtime": 15,
+        "season_number": 1,
+        "still_path": "/fDb1TdCIW91NXWPqoXBoenoEBUV.jpg",
+        "vote_average": 8.333,
+        "vote_count": 3
+      }
+    ]
+  },
+  "normalize": {
+    "media_type": "tv",
+    "tmdb_id": 246186,
+    "title": "放荡之顷",
+    "original_title": "みだれうち",
+    "year": 2024,
+    "plot": "网球部的王牌选手香織，去看望很久没有来网球部练习的后辈亜美，得知了亜美不来练习的真相。自从上次看望后辈亜美后，香織在网球部的练习和比赛中表现得有些异样，她的男朋友正也和闺蜜也注意到了她的异常，想去一问究竟。",
+    "tagline": "",
+    "runtime": 16,
+    "release_date": "2024-04-26",
+    "rating": 8.667,
+    "rating_count": 6,
+    "genres": [
+      "动画"
+    ],
+    "countries": [
+      "JP"
+    ],
+    "languages": [
+      "ja"
+    ],
+    "studios": [
+      "T-REX",
+      "Lune Pictures"
+    ],
+    "networks": [],
+    "network": "",
+    "status": "Returning Series",
+    "homepage": "https://www.lune-soft.jp/news/26873",
+    "cast": [
+      {
+        "name_en": "Yua Miyuki",
+        "name_zh": null,
+        "role": "Kaori Kitamura (voice)",
+        "original_name": "深雪ゆあ",
+        "profile_path": "/lf2rwWlYh2pZiMZtQUe3So4qMhP.jpg",
+        "popularity": 2.429
+      },
+      {
+        "name_en": "Shiu Kase",
+        "name_zh": null,
+        "role": "Ami Sasaki (voice)",
+        "original_name": "鹿瀬紫卯",
+        "profile_path": null,
+        "popularity": 0.6
+      },
+      {
+        "name_en": "Itsuki Okamoto",
+        "name_zh": null,
+        "role": "Ryou (voice) / Komon (voice)",
+        "original_name": "岡本樹",
+        "profile_path": null,
+        "popularity": 0.98
+      },
+      {
+        "name_en": "Yuuri Akeshima",
+        "name_zh": null,
+        "role": "Hayakawa (voice)",
+        "original_name": "明島ゆうり",
+        "profile_path": "/5MdwnJbp3HbqYCw2sk9P6zg2seq.jpg",
+        "popularity": 2.787
+      }
+    ],
+    "directors": [
+      "Ken Raika"
+    ],
+    "writers": [
+      "Megane Sagari"
+    ],
+    "images": {},
+    "seasons": [
+      {
+        "air_date": "2024-04-26",
+        "episode_count": 2,
+        "id": 378688,
+        "name": "第 1 季",
+        "overview": "网球少女心系社团同学却踏入魔窟",
+        "poster_path": "/gbfHB1Kbml2VoKzPnfRZW5bVqzH.jpg",
+        "season_number": 1,
+        "vote_average": 7.7
+      }
+    ],
+    "episodes": [
+      {
+        "air_date": "2024-04-26",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 1 集",
+        "overview": "网球部的王牌香织，原本只是去找学妹，为了看看她最近为什么没有参加社团活动…离开屋外担心着自己的男友，香织被带到了学妹亚美的房间里，在这里她目击到的是…嘴里吞吐着男性器的亚美。在亚美的炮友・亮的袭击下，香织失去了处女，即使向正也呼救，那呼救声也仅是消散在空气中…肉体被亚美所用的催情剂变得无比敏感，香织在从未知晓过的快感之中逐渐堕落…",
+        "id": 5139615,
+        "production_code": "GLOD-0349",
+        "runtime": 15,
+        "season_number": 1,
+        "still_path": "/2W9UrqkV6GpfoNSJJk62dQ0bnsy.jpg",
+        "vote_average": 7.0,
+        "vote_count": 3
+      },
+      {
+        "air_date": "2024-04-26",
+        "crew": [],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 2 集",
+        "overview": "香织在社团活动中表现奇怪，正也也注意到了这个问题……香织一如往常来到亚美家中被亮强奸，并接受了亚美「把男朋友一起叫来学习会」的强硬提案。由谎言编织而成的学习会，正也被亚美口交、更衣室里香织被亮强奸到高潮前夕。还未高潮身体燥热的香织向正也提出交合的请求……",
+        "id": 5139616,
+        "production_code": "GLOD-0351",
+        "runtime": 15,
+        "season_number": 1,
+        "still_path": "/fDb1TdCIW91NXWPqoXBoenoEBUV.jpg",
+        "vote_average": 8.333,
+        "vote_count": 3
+      }
+    ],
+    "title_zh": "放荡之顷",
+    "plot_zh": "网球部的王牌选手香織，去看望很久没有来网球部练习的后辈亜美，得知了亜美不来练习的真相。自从上次看望后辈亜美后，香織在网球部的练习和比赛中表现得有些异样，她的男朋友正也和闺蜜也注意到了她的异常，想去一问究竟。",
+    "keywords_en": [
+      "rape",
+      "hentai",
+      "ntr",
+      "big tits"
+    ],
+    "keywords": [
+      "rape",
+      "hentai",
+      "ntr",
+      "big tits"
+    ],
+    "keywords_zh": [
+      "强奸",
+      "腐女",
+      "非恋人",
+      "大胸"
+    ]
+  },
+  "nfo": {
+    "data": {
+      "title": "放荡之顷",
+      "originaltitle": "みだれうち",
+      "year": 2024,
+      "premiered": "2024-04-26",
+      "plot": "网球部的王牌选手香織，去看望很久没有来网球部练习的后辈亜美，得知了亜美不来练习的真相。自从上次看望后辈亜美后，香織在网球部的练习和比赛中表现得有些异样，她的男朋友正也和闺蜜也注意到了她的异常，想去一问究竟。",
+      "tagline": "",
+      "runtime": 16,
+      "rating": 8.667,
+      "votes": 6,
+      "genre": [
+        "动画"
+      ],
+      "country": [
+        "JP"
+      ],
+      "studio": [
+        "T-REX",
+        "Lune Pictures"
+      ],
+      "credits": [
+        "Megane Sagari"
+      ],
+      "director": [
+        "Ken Raika"
+      ],
+      "actor": [
+        {
+          "name": "Yua Miyuki",
+          "role": "Kaori Kitamura (voice)",
+          "originalname": "深雪ゆあ",
+          "thumb": "images/actors/Yua Miyuki.jpg"
+        },
+        {
+          "name": "Shiu Kase",
+          "role": "Ami Sasaki (voice)",
+          "originalname": "鹿瀬紫卯"
+        },
+        {
+          "name": "Itsuki Okamoto",
+          "role": "Ryou (voice) / Komon (voice)",
+          "originalname": "岡本樹"
+        },
+        {
+          "name": "Yuuri Akeshima",
+          "role": "Hayakawa (voice)",
+          "originalname": "明島ゆうり",
+          "thumb": "images/actors/Yuuri Akeshima.jpg"
+        }
+      ],
+      "thumb": "poster.jpg",
+      "fanart": "fanart.jpg",
+      "tags": [
+        "强奸",
+        "腐女",
+        "非恋人",
+        "大胸"
+      ],
+      "network": "",
+      "networks": [],
+      "status": "Returning Series",
+      "homepage": "https://www.lune-soft.jp/news/26873",
+      "tmdb_id": 246186,
+      "validated": true
+    },
+    "xml": "<?xml version=\"1.0\" ?>\n<tvshow>\n  <title>放荡之顷</title>\n  <originaltitle>みだれうち</originaltitle>\n  <year>2024</year>\n  <premiered>2024-04-26</premiered>\n  <plot><![CDATA[网球部的王牌选手香織，去看望很久没有来网球部练习的后辈亜美，得知了亜美不来练习的真相。自从上次看望后辈亜美后，香織在网球部的练习和比赛中表现得有些异样，她的男朋友正也和闺蜜也注意到了她的异常，想去一问究竟。]]></plot>\n  <runtime>16</runtime>\n  <rating>8.667</rating>\n  <votes>6</votes>\n  <tmdbid>246186</tmdbid>\n  <genre>动画</genre>\n  <country>JP</country>\n  <studio>T-REX</studio>\n  <studio>Lune Pictures</studio>\n  <credits>Megane Sagari</credits>\n  <director>Ken Raika</director>\n  <actor>\n    <name>Yua Miyuki</name>\n    <role>Kaori Kitamura (voice)</role>\n    <originalname>深雪ゆあ</originalname>\n    <thumb>images/actors/Yua Miyuki.jpg</thumb>\n  </actor>\n  <actor>\n    <name>Shiu Kase</name>\n    <role>Ami Sasaki (voice)</role>\n    <originalname>鹿瀬紫卯</originalname>\n  </actor>\n  <actor>\n    <name>Itsuki Okamoto</name>\n    <role>Ryou (voice) / Komon (voice)</role>\n    <originalname>岡本樹</originalname>\n  </actor>\n  <actor>\n    <name>Yuuri Akeshima</name>\n    <role>Hayakawa (voice)</role>\n    <originalname>明島ゆうり</originalname>\n    <thumb>images/actors/Yuuri Akeshima.jpg</thumb>\n  </actor>\n  <status>Returning Series</status>\n  <homepage>https://www.lune-soft.jp/news/26873</homepage>\n  <uniqueid type=\"tmdb\" default=\"true\">246186</uniqueid>\n  <thumb>images/poster/poster.jpg</thumb>\n  <fanart>images/fanart/fanart.jpg</fanart>\n  <tag>强奸</tag>\n  <tag>腐女</tag>\n  <tag>非恋人</tag>\n  <tag>大胸</tag>\n</tvshow>\n"
+  },
+  "output": {
+    "status": "completed",
+    "files": {
+      "nfo_file": "/Volumes/video/Animation/The Animation/学生妹淫乱的时期 (Unknown Year)/tvshow.nfo",
+      "images_dir": "/Volumes/video/Animation/The Animation/学生妹淫乱的时期 (Unknown Year)/images",
+      "media_dir": "/Volumes/video/Animation/The Animation/学生妹淫乱的时期 (Unknown Year)",
+      "season_1_episode_1": "/Volumes/video/Animation/The Animation/学生妹淫乱的时期 (Unknown Year)/Season 01/放荡之顷 - S01E01 - 第 1 集.nfo",
+      "season_1_episode_2": "/Volumes/video/Animation/The Animation/学生妹淫乱的时期 (Unknown Year)/Season 01/放荡之顷 - S01E02 - 第 2 集.nfo"
+    }
+  },
+  "errors": [],
+  "end_time": "2025-12-06T01:04:38.715539"
+}

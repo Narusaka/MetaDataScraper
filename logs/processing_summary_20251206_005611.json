@@ -1,0 +1,673 @@
+{
+  "start_time": "2025-12-06T00:55:52.200679",
+  "input": {
+    "media_type": "tv",
+    "query": "",
+    "output_dir": "/Volumes/video/Animation/The Animation/雌吹 (Unknown Year)",
+    "verbose": false,
+    "quiet": true,
+    "aid_search": true,
+    "tmdb_id": 244575
+  },
+  "search": {
+    "results": {},
+    "skip_search": true
+  },
+  "fetch": {
+    "main": {
+      "adult": true,
+      "backdrop_path": "/3gvqhSEqRZG5zztUwJSGSgFx9IR.jpg",
+      "created_by": [
+        {
+          "id": 4500956,
+          "credit_id": "65b3601e9ba86a01622fbc7b",
+          "name": "Eightman",
+          "original_name": "Eightman",
+          "gender": 0,
+          "profile_path": null
+        }
+      ],
+      "episode_run_time": [],
+      "first_air_date": "2024-04-26",
+      "genres": [
+        {
+          "id": 16,
+          "name": "动画"
+        }
+      ],
+      "homepage": "https://www.pinkpineapple.co.jp/detail.php?did=2459&cid=4",
+      "id": 244575,
+      "in_production": true,
+      "languages": [
+        "ja"
+      ],
+      "last_air_date": "2024-05-31",
+      "last_episode_to_air": {
+        "id": 5101078,
+        "name": "第 2 集",
+        "overview": "在粉丝面前被下药并被坏人强奸后，“Love chan”决定停止直播，并认真考虑不再做主播。然而，第一个观看她的视频的人“Kaito”在情感上支持她继续上网。由于“凯托”的鼓励和勃起，“爱禅”和他做爱。",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "air_date": "2024-05-31",
+        "episode_number": 2,
+        "episode_type": "standard",
+        "production_code": "JDXA57758",
+        "runtime": 20,
+        "season_number": 1,
+        "show_id": 244575,
+        "still_path": "/9ceCS4CdDe79jRf8IJ7hJXmJluS.jpg"
+      },
+      "name": "雌吹",
+      "next_episode_to_air": null,
+      "networks": [],
+      "number_of_episodes": 2,
+      "number_of_seasons": 1,
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "雌吹 THE ANIMATION",
+      "overview": "女主作为一个游戏主播，长期以来人气都不高，朋友建议她直播游戏的时候露个脸，结果露脸之后果然人气暴涨，还有粉丝邀请主播线下聚会唱K。",
+      "popularity": 0.0,
+      "poster_path": "/hnYSZ9ipneJKG482KuvKBQbNufi.jpg",
+      "production_companies": [
+        {
+          "id": 80856,
+          "logo_path": "/7tFA0heb8o0hj9IsPehE3zuOHfw.png",
+          "name": "Pink Pineapple",
+          "origin_country": "JP"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "JP",
+          "name": "Japan"
+        }
+      ],
+      "seasons": [
+        {
+          "air_date": "2024-04-26",
+          "episode_count": 2,
+          "id": 375931,
+          "name": "第 1 季",
+          "overview": "",
+          "poster_path": "/hnYSZ9ipneJKG482KuvKBQbNufi.jpg",
+          "season_number": 1,
+          "vote_average": 0.0
+        }
+      ],
+      "spoken_languages": [
+        {
+          "english_name": "Japanese",
+          "iso_639_1": "ja",
+          "name": "日本語"
+        }
+      ],
+      "status": "Returning Series",
+      "tagline": "",
+      "type": "Miniseries",
+      "vote_average": 1.0,
+      "vote_count": 1
+    },
+    "credits": {
+      "cast": [
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 3054913,
+          "known_for_department": "Acting",
+          "name": "Mizuki Yamaguchi",
+          "original_name": "山口瑞",
+          "popularity": 1.45,
+          "profile_path": "/7MXQYEgGD429gpVlzyPUWo1V218.jpg",
+          "character": "Mii-chan (voice)",
+          "credit_id": "67aa380bd16dc7677339ebe6",
+          "order": 0
+        },
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 2073410,
+          "known_for_department": "Acting",
+          "name": "Ryouko Tezuka",
+          "original_name": "手塚りょうこ",
+          "popularity": 7.115,
+          "profile_path": "/mtqOThJJPMeqtejtxTF7KotNH9T.jpg",
+          "character": "Ai (voice)",
+          "credit_id": "67bce9bf0a3b05c495a47910",
+          "order": 1
+        },
+        {
+          "adult": true,
+          "gender": 2,
+          "id": 2920591,
+          "known_for_department": "Acting",
+          "name": "Hiroshi Watanabe",
+          "original_name": "渡辺紘",
+          "popularity": 0.185,
+          "profile_path": "/4DdXrVRosioqQklJDLy39eGsq9B.jpg",
+          "character": "Otoko (voice)",
+          "credit_id": "67bcea6552d870585899a71a",
+          "order": 2
+        },
+        {
+          "adult": true,
+          "gender": 2,
+          "id": 4818595,
+          "known_for_department": "Acting",
+          "name": "Aika Yuku",
+          "original_name": "愛雅宿",
+          "popularity": 0.0,
+          "profile_path": "/39gg53Nzk4F8BiccTHvEi1Gvf7X.jpg",
+          "character": "Kaito/ Fan C (voice)",
+          "credit_id": "67bdf1e77617568fc65ea56a",
+          "order": 3
+        },
+        {
+          "adult": true,
+          "gender": 2,
+          "id": 4214887,
+          "known_for_department": "Acting",
+          "name": "Uzuki Inari",
+          "original_name": "いなりうづき",
+          "popularity": 0.0,
+          "profile_path": null,
+          "character": "Keisatsukan (voice)",
+          "credit_id": "67be984f39cb7820d0efa500",
+          "order": 4
+        }
+      ],
+      "crew": [
+        {
+          "adult": true,
+          "gender": 2,
+          "id": 1458400,
+          "known_for_department": "Directing",
+          "name": "Hideta Oota",
+          "original_name": "太多秀太",
+          "popularity": 23.763,
+          "profile_path": null,
+          "credit_id": "65b39ba89ba86a00e42fbd98",
+          "department": "Directing",
+          "job": "Director"
+        }
+      ],
+      "id": 244575
+    },
+    "keywords": {
+      "id": 244575,
+      "results": [
+        {
+          "name": "hentai",
+          "id": 198385
+        }
+      ]
+    },
+    "seasons": [
+      {
+        "_id": "65b35f985e14e501830c2ba4",
+        "air_date": "2024-04-26",
+        "episodes": [
+          {
+            "air_date": "2024-04-26",
+            "episode_number": 1,
+            "episode_type": "standard",
+            "id": 5101072,
+            "name": "第 1 集",
+            "overview": "《Love chan》是一名游戏玩家和流媒体主播，其收视率正面临下滑。根据朋友的建议，她决定展示自己的一些身体来吸引更多的观众，从而大大增加了浏览量和粉丝。尽管她的朋友警告她潜在的危险，“Love chan”还是继续在卡拉OK中与她的粉丝见面，庆祝她的成功。在约会期间，“Love chan”在粉丝面前被一个坏人下药，并被带到一家爱情酒店做爱。",
+            "production_code": "JDXA57756",
+            "runtime": 20,
+            "season_number": 1,
+            "show_id": 244575,
+            "still_path": "/20HpB6huW2txQ5574VOA1TrAzga.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2024-05-31",
+            "episode_number": 2,
+            "episode_type": "standard",
+            "id": 5101078,
+            "name": "第 2 集",
+            "overview": "在粉丝面前被下药并被坏人强奸后，“Love chan”决定停止直播，并认真考虑不再做主播。然而，第一个观看她的视频的人“Kaito”在情感上支持她继续上网。由于“凯托”的鼓励和勃起，“爱禅”和他做爱。",
+            "production_code": "JDXA57758",
+            "runtime": 20,
+            "season_number": 1,
+            "show_id": 244575,
+            "still_path": "/9ceCS4CdDe79jRf8IJ7hJXmJluS.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          }
+        ],
+        "name": "第 1 季",
+        "networks": [],
+        "overview": "",
+        "id": 375931,
+        "poster_path": "/hnYSZ9ipneJKG482KuvKBQbNufi.jpg",
+        "season_number": 1,
+        "vote_average": 0.0
+      }
+    ],
+    "episodes": [
+      {
+        "air_date": "2024-04-26",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 1 集",
+        "overview": "《Love chan》是一名游戏玩家和流媒体主播，其收视率正面临下滑。根据朋友的建议，她决定展示自己的一些身体来吸引更多的观众，从而大大增加了浏览量和粉丝。尽管她的朋友警告她潜在的危险，“Love chan”还是继续在卡拉OK中与她的粉丝见面，庆祝她的成功。在约会期间，“Love chan”在粉丝面前被一个坏人下药，并被带到一家爱情酒店做爱。",
+        "id": 5101072,
+        "production_code": "JDXA57756",
+        "runtime": 20,
+        "season_number": 1,
+        "still_path": "/20HpB6huW2txQ5574VOA1TrAzga.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2024-05-31",
+        "crew": [],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 2 集",
+        "overview": "在粉丝面前被下药并被坏人强奸后，“Love chan”决定停止直播，并认真考虑不再做主播。然而，第一个观看她的视频的人“Kaito”在情感上支持她继续上网。由于“凯托”的鼓励和勃起，“爱禅”和他做爱。",
+        "id": 5101078,
+        "production_code": "JDXA57758",
+        "runtime": 20,
+        "season_number": 1,
+        "still_path": "/9ceCS4CdDe79jRf8IJ7hJXmJluS.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      }
+    ]
+  },
+  "translate": {
+    "translated": {
+      "media_type": "tv",
+      "tmdb_id": 244575,
+      "title": "雌吹",
+      "original_title": "雌吹 THE ANIMATION",
+      "year": 2024,
+      "plot": "女主作为一个游戏主播，长期以来人气都不高，朋友建议她直播游戏的时候露个脸，结果露脸之后果然人气暴涨，还有粉丝邀请主播线下聚会唱K。",
+      "tagline": "",
+      "runtime": null,
+      "release_date": "2024-04-26",
+      "rating": 1.0,
+      "rating_count": 1,
+      "genres": [
+        "动画"
+      ],
+      "countries": [
+        "JP"
+      ],
+      "languages": [
+        "ja"
+      ],
+      "studios": [
+        "Pink Pineapple"
+      ],
+      "networks": [],
+      "network": "",
+      "status": "Returning Series",
+      "homepage": "https://www.pinkpineapple.co.jp/detail.php?did=2459&cid=4",
+      "cast": [
+        {
+          "name_en": "Mizuki Yamaguchi",
+          "name_zh": null,
+          "role": "Mii-chan (voice)",
+          "original_name": "山口瑞",
+          "profile_path": "/7MXQYEgGD429gpVlzyPUWo1V218.jpg",
+          "popularity": 1.45
+        },
+        {
+          "name_en": "Ryouko Tezuka",
+          "name_zh": null,
+          "role": "Ai (voice)",
+          "original_name": "手塚りょうこ",
+          "profile_path": "/mtqOThJJPMeqtejtxTF7KotNH9T.jpg",
+          "popularity": 7.115
+        },
+        {
+          "name_en": "Hiroshi Watanabe",
+          "name_zh": null,
+          "role": "Otoko (voice)",
+          "original_name": "渡辺紘",
+          "profile_path": "/4DdXrVRosioqQklJDLy39eGsq9B.jpg",
+          "popularity": 0.185
+        },
+        {
+          "name_en": "Aika Yuku",
+          "name_zh": null,
+          "role": "Kaito/ Fan C (voice)",
+          "original_name": "愛雅宿",
+          "profile_path": "/39gg53Nzk4F8BiccTHvEi1Gvf7X.jpg",
+          "popularity": 0.0
+        },
+        {
+          "name_en": "Uzuki Inari",
+          "name_zh": null,
+          "role": "Keisatsukan (voice)",
+          "original_name": "いなりうづき",
+          "profile_path": null,
+          "popularity": 0.0
+        }
+      ],
+      "directors": [
+        "Hideta Oota"
+      ],
+      "writers": [],
+      "images": {},
+      "seasons": [
+        {
+          "air_date": "2024-04-26",
+          "episode_count": 2,
+          "id": 375931,
+          "name": "第 1 季",
+          "overview": "",
+          "poster_path": "/hnYSZ9ipneJKG482KuvKBQbNufi.jpg",
+          "season_number": 1,
+          "vote_average": 0.0
+        }
+      ],
+      "episodes": [
+        {
+          "air_date": "2024-04-26",
+          "crew": [],
+          "episode_number": 1,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "第 1 集",
+          "overview": "《Love chan》是一名游戏玩家和流媒体主播，其收视率正面临下滑。根据朋友的建议，她决定展示自己的一些身体来吸引更多的观众，从而大大增加了浏览量和粉丝。尽管她的朋友警告她潜在的危险，“Love chan”还是继续在卡拉OK中与她的粉丝见面，庆祝她的成功。在约会期间，“Love chan”在粉丝面前被一个坏人下药，并被带到一家爱情酒店做爱。",
+          "id": 5101072,
+          "production_code": "JDXA57756",
+          "runtime": 20,
+          "season_number": 1,
+          "still_path": "/20HpB6huW2txQ5574VOA1TrAzga.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2024-05-31",
+          "crew": [],
+          "episode_number": 2,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "第 2 集",
+          "overview": "在粉丝面前被下药并被坏人强奸后，“Love chan”决定停止直播，并认真考虑不再做主播。然而，第一个观看她的视频的人“Kaito”在情感上支持她继续上网。由于“凯托”的鼓励和勃起，“爱禅”和他做爱。",
+          "id": 5101078,
+          "production_code": "JDXA57758",
+          "runtime": 20,
+          "season_number": 1,
+          "still_path": "/9ceCS4CdDe79jRf8IJ7hJXmJluS.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        }
+      ],
+      "title_zh": "雌吹",
+      "plot_zh": "女主作为一个游戏主播，长期以来人气都不高，朋友建议她直播游戏的时候露个脸，结果露脸之后果然人气暴涨，还有粉丝邀请主播线下聚会唱K。",
+      "keywords_en": [
+        "hentai"
+      ],
+      "keywords": [
+        "hentai"
+      ],
+      "keywords_zh": [
+        "腐女"
+      ]
+    },
+    "episodes": [
+      {
+        "air_date": "2024-04-26",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 1 集",
+        "overview": "《Love chan》是一名游戏玩家和流媒体主播，其收视率正面临下滑。根据朋友的建议，她决定展示自己的一些身体来吸引更多的观众，从而大大增加了浏览量和粉丝。尽管她的朋友警告她潜在的危险，“Love chan”还是继续在卡拉OK中与她的粉丝见面，庆祝她的成功。在约会期间，“Love chan”在粉丝面前被一个坏人下药，并被带到一家爱情酒店做爱。",
+        "id": 5101072,
+        "production_code": "JDXA57756",
+        "runtime": 20,
+        "season_number": 1,
+        "still_path": "/20HpB6huW2txQ5574VOA1TrAzga.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2024-05-31",
+        "crew": [],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 2 集",
+        "overview": "在粉丝面前被下药并被坏人强奸后，“Love chan”决定停止直播，并认真考虑不再做主播。然而，第一个观看她的视频的人“Kaito”在情感上支持她继续上网。由于“凯托”的鼓励和勃起，“爱禅”和他做爱。",
+        "id": 5101078,
+        "production_code": "JDXA57758",
+        "runtime": 20,
+        "season_number": 1,
+        "still_path": "/9ceCS4CdDe79jRf8IJ7hJXmJluS.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      }
+    ]
+  },
+  "normalize": {
+    "media_type": "tv",
+    "tmdb_id": 244575,
+    "title": "雌吹",
+    "original_title": "雌吹 THE ANIMATION",
+    "year": 2024,
+    "plot": "女主作为一个游戏主播，长期以来人气都不高，朋友建议她直播游戏的时候露个脸，结果露脸之后果然人气暴涨，还有粉丝邀请主播线下聚会唱K。",
+    "tagline": "",
+    "runtime": null,
+    "release_date": "2024-04-26",
+    "rating": 1.0,
+    "rating_count": 1,
+    "genres": [
+      "动画"
+    ],
+    "countries": [
+      "JP"
+    ],
+    "languages": [
+      "ja"
+    ],
+    "studios": [
+      "Pink Pineapple"
+    ],
+    "networks": [],
+    "network": "",
+    "status": "Returning Series",
+    "homepage": "https://www.pinkpineapple.co.jp/detail.php?did=2459&cid=4",
+    "cast": [
+      {
+        "name_en": "Mizuki Yamaguchi",
+        "name_zh": null,
+        "role": "Mii-chan (voice)",
+        "original_name": "山口瑞",
+        "profile_path": "/7MXQYEgGD429gpVlzyPUWo1V218.jpg",
+        "popularity": 1.45
+      },
+      {
+        "name_en": "Ryouko Tezuka",
+        "name_zh": null,
+        "role": "Ai (voice)",
+        "original_name": "手塚りょうこ",
+        "profile_path": "/mtqOThJJPMeqtejtxTF7KotNH9T.jpg",
+        "popularity": 7.115
+      },
+      {
+        "name_en": "Hiroshi Watanabe",
+        "name_zh": null,
+        "role": "Otoko (voice)",
+        "original_name": "渡辺紘",
+        "profile_path": "/4DdXrVRosioqQklJDLy39eGsq9B.jpg",
+        "popularity": 0.185
+      },
+      {
+        "name_en": "Aika Yuku",
+        "name_zh": null,
+        "role": "Kaito/ Fan C (voice)",
+        "original_name": "愛雅宿",
+        "profile_path": "/39gg53Nzk4F8BiccTHvEi1Gvf7X.jpg",
+        "popularity": 0.0
+      },
+      {
+        "name_en": "Uzuki Inari",
+        "name_zh": null,
+        "role": "Keisatsukan (voice)",
+        "original_name": "いなりうづき",
+        "profile_path": null,
+        "popularity": 0.0
+      }
+    ],
+    "directors": [
+      "Hideta Oota"
+    ],
+    "writers": [],
+    "images": {},
+    "seasons": [
+      {
+        "air_date": "2024-04-26",
+        "episode_count": 2,
+        "id": 375931,
+        "name": "第 1 季",
+        "overview": "",
+        "poster_path": "/hnYSZ9ipneJKG482KuvKBQbNufi.jpg",
+        "season_number": 1,
+        "vote_average": 0.0
+      }
+    ],
+    "episodes": [
+      {
+        "air_date": "2024-04-26",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 1 集",
+        "overview": "《Love chan》是一名游戏玩家和流媒体主播，其收视率正面临下滑。根据朋友的建议，她决定展示自己的一些身体来吸引更多的观众，从而大大增加了浏览量和粉丝。尽管她的朋友警告她潜在的危险，“Love chan”还是继续在卡拉OK中与她的粉丝见面，庆祝她的成功。在约会期间，“Love chan”在粉丝面前被一个坏人下药，并被带到一家爱情酒店做爱。",
+        "id": 5101072,
+        "production_code": "JDXA57756",
+        "runtime": 20,
+        "season_number": 1,
+        "still_path": "/20HpB6huW2txQ5574VOA1TrAzga.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2024-05-31",
+        "crew": [],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 2 集",
+        "overview": "在粉丝面前被下药并被坏人强奸后，“Love chan”决定停止直播，并认真考虑不再做主播。然而，第一个观看她的视频的人“Kaito”在情感上支持她继续上网。由于“凯托”的鼓励和勃起，“爱禅”和他做爱。",
+        "id": 5101078,
+        "production_code": "JDXA57758",
+        "runtime": 20,
+        "season_number": 1,
+        "still_path": "/9ceCS4CdDe79jRf8IJ7hJXmJluS.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      }
+    ],
+    "title_zh": "雌吹",
+    "plot_zh": "女主作为一个游戏主播，长期以来人气都不高，朋友建议她直播游戏的时候露个脸，结果露脸之后果然人气暴涨，还有粉丝邀请主播线下聚会唱K。",
+    "keywords_en": [
+      "hentai"
+    ],
+    "keywords": [
+      "hentai"
+    ],
+    "keywords_zh": [
+      "腐女"
+    ]
+  },
+  "nfo": {
+    "data": {
+      "title": "雌吹",
+      "originaltitle": "雌吹 THE ANIMATION",
+      "year": 2024,
+      "premiered": "2024-04-26",
+      "plot": "女主作为一个游戏主播，长期以来人气都不高，朋友建议她直播游戏的时候露个脸，结果露脸之后果然人气暴涨，还有粉丝邀请主播线下聚会唱K。",
+      "tagline": "",
+      "runtime": null,
+      "rating": 1.0,
+      "votes": 1,
+      "genre": [
+        "动画"
+      ],
+      "country": [
+        "JP"
+      ],
+      "studio": [
+        "Pink Pineapple"
+      ],
+      "credits": [],
+      "director": [
+        "Hideta Oota"
+      ],
+      "actor": [
+        {
+          "name": "Mizuki Yamaguchi",
+          "role": "Mii-chan (voice)",
+          "originalname": "山口瑞",
+          "thumb": "images/actors/Mizuki Yamaguchi.jpg"
+        },
+        {
+          "name": "Ryouko Tezuka",
+          "role": "Ai (voice)",
+          "originalname": "手塚りょうこ",
+          "thumb": "images/actors/Ryouko Tezuka.jpg"
+        },
+        {
+          "name": "Hiroshi Watanabe",
+          "role": "Otoko (voice)",
+          "originalname": "渡辺紘",
+          "thumb": "images/actors/Hiroshi Watanabe.jpg"
+        },
+        {
+          "name": "Aika Yuku",
+          "role": "Kaito/ Fan C (voice)",
+          "originalname": "愛雅宿",
+          "thumb": "images/actors/Aika Yuku.jpg"
+        },
+        {
+          "name": "Uzuki Inari",
+          "role": "Keisatsukan (voice)",
+          "originalname": "いなりうづき"
+        }
+      ],
+      "thumb": "poster.jpg",
+      "fanart": "fanart.jpg",
+      "tags": [
+        "腐女"
+      ],
+      "network": "",
+      "networks": [],
+      "status": "Returning Series",
+      "homepage": "https://www.pinkpineapple.co.jp/detail.php?did=2459&cid=4",
+      "tmdb_id": 244575,
+      "validated": true
+    },
+    "xml": "<?xml version=\"1.0\" ?>\n<tvshow>\n  <title>雌吹</title>\n  <originaltitle>雌吹 THE ANIMATION</originaltitle>\n  <year>2024</year>\n  <premiered>2024-04-26</premiered>\n  <plot><![CDATA[女主作为一个游戏主播，长期以来人气都不高，朋友建议她直播游戏的时候露个脸，结果露脸之后果然人气暴涨，还有粉丝邀请主播线下聚会唱K。]]></plot>\n  <rating>1.0</rating>\n  <votes>1</votes>\n  <tmdbid>244575</tmdbid>\n  <genre>动画</genre>\n  <country>JP</country>\n  <studio>Pink Pineapple</studio>\n  <director>Hideta Oota</director>\n  <actor>\n    <name>Mizuki Yamaguchi</name>\n    <role>Mii-chan (voice)</role>\n    <originalname>山口瑞</originalname>\n    <thumb>images/actors/Mizuki Yamaguchi.jpg</thumb>\n  </actor>\n  <actor>\n    <name>Ryouko Tezuka</name>\n    <role>Ai (voice)</role>\n    <originalname>手塚りょうこ</originalname>\n    <thumb>images/actors/Ryouko Tezuka.jpg</thumb>\n  </actor>\n  <actor>\n    <name>Hiroshi Watanabe</name>\n    <role>Otoko (voice)</role>\n    <originalname>渡辺紘</originalname>\n    <thumb>images/actors/Hiroshi Watanabe.jpg</thumb>\n  </actor>\n  <actor>\n    <name>Aika Yuku</name>\n    <role>Kaito/ Fan C (voice)</role>\n    <originalname>愛雅宿</originalname>\n    <thumb>images/actors/Aika Yuku.jpg</thumb>\n  </actor>\n  <actor>\n    <name>Uzuki Inari</name>\n    <role>Keisatsukan (voice)</role>\n    <originalname>いなりうづき</originalname>\n  </actor>\n  <status>Returning Series</status>\n  <homepage>https://www.pinkpineapple.co.jp/detail.php?did=2459&amp;cid=4</homepage>\n  <uniqueid type=\"tmdb\" default=\"true\">244575</uniqueid>\n  <thumb>images/poster/poster.jpg</thumb>\n  <fanart>images/fanart/fanart.jpg</fanart>\n  <tag>腐女</tag>\n</tvshow>\n"
+  },
+  "output": {
+    "status": "completed",
+    "files": {
+      "nfo_file": "/Volumes/video/Animation/The Animation/雌吹 (Unknown Year)/tvshow.nfo",
+      "images_dir": "/Volumes/video/Animation/The Animation/雌吹 (Unknown Year)/images",
+      "media_dir": "/Volumes/video/Animation/The Animation/雌吹 (Unknown Year)",
+      "season_1_episode_1": "/Volumes/video/Animation/The Animation/雌吹 (Unknown Year)/Season 01/雌吹 - S01E01 - 第 1 集.nfo",
+      "season_1_episode_2": "/Volumes/video/Animation/The Animation/雌吹 (Unknown Year)/Season 01/雌吹 - S01E02 - 第 2 集.nfo"
+    }
+  },
+  "errors": [],
+  "end_time": "2025-12-06T00:56:11.410857"
+}

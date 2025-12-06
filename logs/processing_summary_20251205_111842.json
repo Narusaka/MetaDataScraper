@@ -1,0 +1,2464 @@
+{
+  "start_time": "2025-12-05T11:18:26.431434",
+  "input": {
+    "media_type": "tv",
+    "query": null,
+    "output_dir": "./output",
+    "verbose": true,
+    "quiet": false,
+    "aid_search": false,
+    "language": "zh-CN",
+    "translate": false,
+    "tmdb_id": 241002
+  },
+  "search": {
+    "results": {},
+    "skip_search": true
+  },
+  "fetch": {
+    "main": {
+      "adult": false,
+      "backdrop_path": "/bM4nCynOSA5oCNqLsqb1Fo56sZQ.jpg",
+      "created_by": [],
+      "episode_run_time": [
+        4
+      ],
+      "first_air_date": "2024-01-08",
+      "genres": [
+        {
+          "id": 16,
+          "name": "动画"
+        }
+      ],
+      "homepage": "https://adamkun.af-original.com",
+      "id": 241002,
+      "in_production": false,
+      "languages": [
+        "ja"
+      ],
+      "last_air_date": "2024-03-04",
+      "last_episode_to_air": {
+        "id": 5057957,
+        "name": "绝对要让你选我",
+        "overview": "园宫一树的秘密是世界上唯一不是“ED”的事实。这个秘密被姬乃朱莉、椎名枫、九重杏季、胡桃泽结衣知道了。朱莉和枫在混浴池里围绕一树争吵。令人惊讶的是，她们开始用猜拳来争夺与一树亲密接触的权利。“那么，我就开动了！”枫脸红地扑向一树，朱莉也不甘示弱地开始责备一树。这些女人无法停止的欲望……由四位夏娃们展开的争夺亚当的战斗，究竟会如何发展……",
+        "vote_average": 3.0,
+        "vote_count": 1,
+        "air_date": "2024-03-04",
+        "episode_number": 8,
+        "episode_type": "finale",
+        "production_code": "",
+        "runtime": 4,
+        "season_number": 1,
+        "show_id": 241002,
+        "still_path": "/xx1YFblhtFogTF88o3esGkDkZti.jpg"
+      },
+      "name": "挣扎吧，亚当君",
+      "next_episode_to_air": null,
+      "networks": [
+        {
+          "id": 614,
+          "logo_path": "/hSdroyVthq3CynxTIIY7lnS8w1.png",
+          "name": "Tokyo MX",
+          "origin_country": "JP"
+        },
+        {
+          "id": 861,
+          "logo_path": "/JQ5bx6n7Qmdmyqz6sqjo5Fz2iR.png",
+          "name": "BS11",
+          "origin_country": "JP"
+        }
+      ],
+      "number_of_episodes": 8,
+      "number_of_seasons": 1,
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "悶えてよ、アダムくん",
+      "overview": "这是一个关于被四十亿夏娃追求的唯一一个亚当的故事。在一场大流行病中，所有人类都变成了ED（勃起功能障碍），但男学生一树成为了唯一一个免于ED的特殊存在。如果被发现，他将会被当作实验动物一辈子……他不想这样！明明必须保守秘密，他却转学到了一个意想不到的地方，一个全是女生的后宫学园！？友好且随和的前辈、欲求不满的女教师、学园的王子、财阀的千金小姐……一树能够吸引任何女性！究竟一树会选择谁……",
+      "popularity": 37.1279,
+      "poster_path": "/giO0mia8jAknuCxVMsuBv2NjgvS.jpg",
+      "production_companies": [
+        {
+          "id": 125825,
+          "logo_path": "/fXHTT3i73u6eSJS3UZQVVwADqqo.png",
+          "name": "studio HōKIBOSHI",
+          "origin_country": "JP"
+        },
+        {
+          "id": 149421,
+          "logo_path": "/6UqbB0NLRWEIaCKsd5YkOigJgXb.png",
+          "name": "Suiseisha",
+          "origin_country": "JP"
+        },
+        {
+          "id": 238639,
+          "logo_path": "/9ppANNPsmICiGDGjWO53gIA6SwT.png",
+          "name": "WWWave",
+          "origin_country": "JP"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "JP",
+          "name": "Japan"
+        }
+      ],
+      "seasons": [
+        {
+          "air_date": "2024-02-02",
+          "episode_count": 3,
+          "id": 377540,
+          "name": "特别篇",
+          "overview": "",
+          "poster_path": "/bs70WStsspaiclienWGeMBUDotQ.jpg",
+          "season_number": 0,
+          "vote_average": 0.0
+        },
+        {
+          "air_date": "2024-01-08",
+          "episode_count": 8,
+          "id": 368699,
+          "name": "第 1 季",
+          "overview": "这是一个关于被四十亿夏娃追求的唯一一个亚当的故事。在一场大流行病中，所有人类都变成了ED（勃起功能障碍），但男学生一树成为了唯一一个免于ED的特殊存在。如果被发现，他将会被当作实验动物一辈子……他不想这样！明明必须保守秘密，他却转学到了一个意想不到的地方，一个全是女生的后宫学园！？友好且随和的前辈、欲求不满的女教师、学园的王子、财阀的千金小姐……一树能够吸引任何女性！究竟一树会选择谁……",
+          "poster_path": "/1n1ZP0KHXUSvVxZG63x7aOzmO4M.jpg",
+          "season_number": 1,
+          "vote_average": 4.8
+        }
+      ],
+      "spoken_languages": [
+        {
+          "english_name": "Japanese",
+          "iso_639_1": "ja",
+          "name": "日本語"
+        }
+      ],
+      "status": "Ended",
+      "tagline": "",
+      "type": "Scripted",
+      "vote_average": 6.773,
+      "vote_count": 33
+    },
+    "credits": {
+      "cast": [
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 2947255,
+          "known_for_department": "Acting",
+          "name": "Hana Kuga",
+          "original_name": "空賀花",
+          "popularity": 4.748,
+          "profile_path": "/ey0VHk0gFfhhSEvdNcCMm0xAh6.jpg",
+          "character": "Akari Himeno (voice)",
+          "credit_id": "65ad2277bd588b00ebad6989",
+          "order": 0
+        },
+        {
+          "adult": false,
+          "gender": 1,
+          "id": 571993,
+          "known_for_department": "Acting",
+          "name": "Shizuka Itoh",
+          "original_name": "伊藤静",
+          "popularity": 2.0386,
+          "profile_path": "/n47YvFPlJzl8HnsoDBtM8SUqG8q.jpg",
+          "character": "Kaede Shiina (voice)",
+          "credit_id": "65ad22da67b61300afef3f81",
+          "order": 1
+        },
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 1256101,
+          "known_for_department": "Acting",
+          "name": "Mari Kirimura",
+          "original_name": "桐村まり",
+          "popularity": 7.358,
+          "profile_path": "/g8GqBelCDQGv3ki4UYn95RvionP.jpg",
+          "character": "Aki Kokonoe (voice)",
+          "credit_id": "65ad22be09c24c00caae22e7",
+          "order": 2
+        },
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 2546658,
+          "known_for_department": "Acting",
+          "name": "Kaho Shibuya",
+          "original_name": "澁谷果歩",
+          "popularity": 0.6,
+          "profile_path": "/olt8zwxGNTJz0F0acOeTPH5AuHq.jpg",
+          "character": "Yui Kurumizawa (voice)",
+          "credit_id": "65b619ca4f33ad017a0ca9ff",
+          "order": 3
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 1251442,
+          "known_for_department": "Acting",
+          "name": "Shinnosuke Tachibana",
+          "original_name": "立花慎之介",
+          "popularity": 1.0065,
+          "profile_path": "/uPw2IDfXyndFDQ8vtdA69WDSnrz.jpg",
+          "character": "Kumazawa (voice)",
+          "credit_id": "65b619a8afe2240163398aea",
+          "order": 4
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 5179135,
+          "known_for_department": "Acting",
+          "name": "Harumichi Shito",
+          "original_name": "志藤春道",
+          "popularity": 0.1328,
+          "profile_path": null,
+          "character": "Itsuki Sonomiya",
+          "credit_id": "67867d50c81acaa63dbc2d86",
+          "order": 5
+        }
+      ],
+      "crew": [
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 4492391,
+          "known_for_department": "Production",
+          "name": "Tatsutaro Murai",
+          "original_name": "村井辰太郎",
+          "popularity": 0.645,
+          "profile_path": null,
+          "credit_id": "65c18a308e8d30017b7795d3",
+          "department": "Writing",
+          "job": "Series Composition"
+        },
+        {
+          "adult": true,
+          "gender": 2,
+          "id": 4998343,
+          "known_for_department": "Art",
+          "name": "Gaou",
+          "original_name": "がおう",
+          "popularity": 0.001,
+          "profile_path": null,
+          "credit_id": "6745552aa7d2393708d80ce5",
+          "department": "Art",
+          "job": "Art Direction"
+        },
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 3374879,
+          "known_for_department": "Visual Effects",
+          "name": "Rena Nasu",
+          "original_name": "那須玲奈",
+          "popularity": 0.3641,
+          "profile_path": null,
+          "credit_id": "6772869e05c46ab3fc92a72a",
+          "department": "Visual Effects",
+          "job": "Supervising Animation Director"
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 148465,
+          "known_for_department": "Visual Effects",
+          "name": "Kazuya Kuroda",
+          "original_name": "黒田和也",
+          "popularity": 1.7924,
+          "profile_path": null,
+          "credit_id": "677286b605c46ab3fc92a734",
+          "department": "Visual Effects",
+          "job": "Supervising Animation Director"
+        },
+        {
+          "adult": false,
+          "gender": 0,
+          "id": 3313829,
+          "known_for_department": "Sound",
+          "name": "Hiroki Nishiyama",
+          "original_name": "西山寛基",
+          "popularity": 0.0672,
+          "profile_path": null,
+          "credit_id": "65ad23925294e700eb419e88",
+          "department": "Sound",
+          "job": "Sound Director"
+        },
+        {
+          "adult": true,
+          "gender": 2,
+          "id": 1778160,
+          "known_for_department": "Editing",
+          "name": "Kouki Shinkai",
+          "original_name": "新海コウキ",
+          "popularity": 7.492,
+          "profile_path": null,
+          "credit_id": "65ad23f63e2ec8010b04a8d0",
+          "department": "Editing",
+          "job": "Editor"
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 2468991,
+          "known_for_department": "Directing",
+          "name": "Rei Ishikura",
+          "original_name": "石倉礼",
+          "popularity": 0.8101,
+          "profile_path": "/kahZT9CshN3HJkQD5jk8shsC4WQ.jpg",
+          "credit_id": "65ad23ce3e2ec800ebef4b37",
+          "department": "Sound",
+          "job": "Sound Director"
+        },
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 3374879,
+          "known_for_department": "Visual Effects",
+          "name": "Rena Nasu",
+          "original_name": "那須玲奈",
+          "popularity": 0.3641,
+          "profile_path": null,
+          "credit_id": "65ad240ed100b6010c819961",
+          "department": "Art",
+          "job": "Art Designer"
+        },
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 3374879,
+          "known_for_department": "Visual Effects",
+          "name": "Rena Nasu",
+          "original_name": "那須玲奈",
+          "popularity": 0.3641,
+          "profile_path": null,
+          "credit_id": "65ad233ef263ba00ad8490e8",
+          "department": "Visual Effects",
+          "job": "Character Designer"
+        }
+      ],
+      "id": 241002
+    },
+    "keywords": {
+      "id": 241002,
+      "results": [
+        {
+          "name": "harem",
+          "id": 9194
+        },
+        {
+          "name": "school",
+          "id": 10873
+        },
+        {
+          "name": "based on manga",
+          "id": 13141
+        },
+        {
+          "name": "ecchi",
+          "id": 195669
+        },
+        {
+          "name": "anime",
+          "id": 210024
+        }
+      ]
+    },
+    "seasons": [
+      {
+        "_id": "656ff0f4e1faed00fec4cdcc",
+        "air_date": "2024-01-08",
+        "episodes": [
+          {
+            "air_date": "2024-01-08",
+            "episode_number": 1,
+            "episode_type": "standard",
+            "id": 4978463,
+            "name": "同情我就挣扎吧",
+            "overview": "转校生园宫一树的秘密是他在世界上唯一不患有“ED”的人。在女性占比超过9成的学园里保守这个秘密是很困难的，某个事件成为导火索，一树被引导者姬乃前辈发现了他的特殊存在。“喂，园宫君。女孩子其实……是色情的哦？”两人独处时，姬乃前辈的眼神变了。她粗鲁地呼吸着，脱下衣服，舔着嘴唇逐渐逼近……",
+            "production_code": "",
+            "runtime": 4,
+            "season_number": 1,
+            "show_id": 241002,
+            "still_path": "/ynrWaNlzInItEIf4hwEZ2VY8VLV.jpg",
+            "vote_average": 5.8,
+            "vote_count": 4,
+            "crew": [
+              {
+                "job": "Director",
+                "department": "Directing",
+                "credit_id": "65c18ba3efea7a018451a0be",
+                "adult": false,
+                "gender": 2,
+                "id": 2411671,
+                "known_for_department": "Directing",
+                "name": "神原敏昭",
+                "original_name": "神原敏昭",
+                "popularity": 0.8034,
+                "profile_path": null
+              },
+              {
+                "job": "Writer",
+                "department": "Writing",
+                "credit_id": "65c18b8a9369a201849c4745",
+                "adult": false,
+                "gender": 0,
+                "id": 2649444,
+                "known_for_department": "Writing",
+                "name": "黑崎英代",
+                "original_name": "黒崎エーヨ",
+                "popularity": 0.7359,
+                "profile_path": null
+              },
+              {
+                "job": "Animation Director",
+                "department": "Visual Effects",
+                "credit_id": "65c18bb6c50ad2018789e54d",
+                "adult": false,
+                "gender": 0,
+                "id": 4283105,
+                "known_for_department": "Visual Effects",
+                "name": "龙青三",
+                "original_name": "龍青三",
+                "popularity": 0.2658,
+                "profile_path": null
+              },
+              {
+                "job": "Animation Director",
+                "department": "Visual Effects",
+                "credit_id": "65c18bc2efea7a018451a15a",
+                "adult": false,
+                "gender": 1,
+                "id": 2336354,
+                "known_for_department": "Visual Effects",
+                "name": "片冈惠美子",
+                "original_name": "片岡恵美子",
+                "popularity": 0.7388,
+                "profile_path": null
+              }
+            ],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2024-01-15",
+            "episode_number": 2,
+            "episode_type": "standard",
+            "id": 5057466,
+            "name": "老师得帮你镇静下来才行",
+            "overview": "女教师·椎名枫超级欲求不满。自从大流行导致全人类患上勃起功能障碍以来，她渴望有个男人能满足自己。而出现在枫面前的是，一位带着坚挺下体的转学生，园宫一树。尽管身为教师，枫却毫不顾忌地向一树示好。“你是唯一的存在，我已经忍耐了很久……所以……”一树被恳求后做出了选择……",
+            "production_code": "",
+            "runtime": 4,
+            "season_number": 1,
+            "show_id": 241002,
+            "still_path": "/b7JpSrDi1p7IbneGtvmaSdiAs6B.jpg",
+            "vote_average": 4.0,
+            "vote_count": 1,
+            "crew": [
+              {
+                "job": "Director",
+                "department": "Directing",
+                "credit_id": "65c18ba3efea7a018451a0be",
+                "adult": false,
+                "gender": 2,
+                "id": 2411671,
+                "known_for_department": "Directing",
+                "name": "神原敏昭",
+                "original_name": "神原敏昭",
+                "popularity": 0.8034,
+                "profile_path": null
+              },
+              {
+                "job": "Animation Director",
+                "department": "Visual Effects",
+                "credit_id": "65c18c089590e30182b198ef",
+                "adult": false,
+                "gender": 1,
+                "id": 1845941,
+                "known_for_department": "Visual Effects",
+                "name": "松下纯子",
+                "original_name": "松下純子",
+                "popularity": 0.5935,
+                "profile_path": null
+              },
+              {
+                "job": "Animation Director",
+                "department": "Visual Effects",
+                "credit_id": "65c18c11abdafc017c5e93d4",
+                "adult": false,
+                "gender": 2,
+                "id": 2815257,
+                "known_for_department": "Visual Effects",
+                "name": "樱井拓郎",
+                "original_name": "櫻井拓郎",
+                "popularity": 0.9339,
+                "profile_path": null
+              },
+              {
+                "job": "Writer",
+                "department": "Writing",
+                "credit_id": "65c18b8a9369a201849c4745",
+                "adult": false,
+                "gender": 0,
+                "id": 2649444,
+                "known_for_department": "Writing",
+                "name": "黑崎英代",
+                "original_name": "黒崎エーヨ",
+                "popularity": 0.7359,
+                "profile_path": null
+              }
+            ],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2024-01-22",
+            "episode_number": 3,
+            "episode_type": "standard",
+            "id": 5057467,
+            "name": "我不隐藏了",
+            "overview": "九重杏季讨厌男人。在一个女生为主的学园里，被当作“王子殿下”受到宠爱的杏季看不起失去獠牙的男人们。某天，杏季在学园的男女共用更衣室里发现蜷缩着遮住下体的一树。杏季走近想取笑他的勃起障碍，却看到了不该勃起的那个东西……“看了我的身体就这样了吗……？”像被热情冲昏头的杏季开始用指尖侍奉下体。趁着更衣室变成密室的机会，两人就这样……",
+            "production_code": "",
+            "runtime": 4,
+            "season_number": 1,
+            "show_id": 241002,
+            "still_path": "/74OM76AtHKQDvSN5jqRiGIxuIMC.jpg",
+            "vote_average": 7.5,
+            "vote_count": 2,
+            "crew": [
+              {
+                "job": "Animation Director",
+                "department": "Visual Effects",
+                "credit_id": "65c18c499369a2014a9bea06",
+                "adult": false,
+                "gender": 2,
+                "id": 2398152,
+                "known_for_department": "Visual Effects",
+                "name": "川口弘明",
+                "original_name": "川口弘明",
+                "popularity": 1.6303,
+                "profile_path": null
+              },
+              {
+                "job": "Director",
+                "department": "Directing",
+                "credit_id": "65c18c3a8e8d3000e5773a37",
+                "adult": true,
+                "gender": 2,
+                "id": 2883956,
+                "known_for_department": "Directing",
+                "name": "黑津口成惠",
+                "original_name": "黒津口成恵",
+                "popularity": 0.6,
+                "profile_path": null
+              },
+              {
+                "job": "Writer",
+                "department": "Writing",
+                "credit_id": "65c18b8a9369a201849c4745",
+                "adult": false,
+                "gender": 0,
+                "id": 2649444,
+                "known_for_department": "Writing",
+                "name": "黑崎英代",
+                "original_name": "黒崎エーヨ",
+                "popularity": 0.7359,
+                "profile_path": null
+              },
+              {
+                "job": "Animation Director",
+                "department": "Visual Effects",
+                "credit_id": "65c18c528e8d3000e5773a6a",
+                "adult": false,
+                "gender": 2,
+                "id": 2809661,
+                "known_for_department": "Visual Effects",
+                "name": "西川真人",
+                "original_name": "西川真人",
+                "popularity": 0.8574,
+                "profile_path": null
+              },
+              {
+                "job": "Animation Director",
+                "department": "Visual Effects",
+                "credit_id": "65c18c5b8e8d30017b779ee7",
+                "adult": false,
+                "gender": 1,
+                "id": 3033341,
+                "known_for_department": "Visual Effects",
+                "name": "增喜美和子",
+                "original_name": "増喜美和子",
+                "popularity": 0.5003,
+                "profile_path": null
+              }
+            ],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2024-02-05",
+            "episode_number": 4,
+            "episode_type": "standard",
+            "id": 5057469,
+            "name": "寻找未婚夫",
+            "overview": "财阀千金结衣被祖父命令寻找未婚夫。未婚夫的条件是“不是ED的男人”。在空教室里一边看色情书一边为这个难题而苦恼时，转校生园宫一树出现了。两人因为一个偶然的机会摔倒而身体密切接触，结衣的手碰到了一树膨胀的下体。“如果不想引起骚动的话……就脱掉吧。”一树到底是不是真正适合做未婚夫的男人，结衣的测试强行开始了……",
+            "production_code": "",
+            "runtime": 4,
+            "season_number": 1,
+            "show_id": 241002,
+            "still_path": "/uxmfiNejU6MX52bAlKE39XZZGim.jpg",
+            "vote_average": 4.0,
+            "vote_count": 1,
+            "crew": [
+              {
+                "job": "Animation Director",
+                "department": "Visual Effects",
+                "credit_id": "65c18ca4abdafc017c5e96cd",
+                "adult": false,
+                "gender": 2,
+                "id": 2396276,
+                "known_for_department": "Visual Effects",
+                "name": "森悦史",
+                "original_name": "森悦史",
+                "popularity": 1.0421,
+                "profile_path": null
+              },
+              {
+                "job": "Director",
+                "department": "Directing",
+                "credit_id": "65c18c3a8e8d3000e5773a37",
+                "adult": true,
+                "gender": 2,
+                "id": 2883956,
+                "known_for_department": "Directing",
+                "name": "黑津口成惠",
+                "original_name": "黒津口成恵",
+                "popularity": 0.6,
+                "profile_path": null
+              },
+              {
+                "job": "Animation Director",
+                "department": "Visual Effects",
+                "credit_id": "65c18c9d0929f600c9e3b70c",
+                "adult": false,
+                "gender": 1,
+                "id": 3393885,
+                "known_for_department": "Visual Effects",
+                "name": "池上理惠",
+                "original_name": "池上理恵",
+                "popularity": 0.6496,
+                "profile_path": null
+              },
+              {
+                "job": "Writer",
+                "department": "Writing",
+                "credit_id": "65c18b8a9369a201849c4745",
+                "adult": false,
+                "gender": 0,
+                "id": 2649444,
+                "known_for_department": "Writing",
+                "name": "黑崎英代",
+                "original_name": "黒崎エーヨ",
+                "popularity": 0.7359,
+                "profile_path": null
+              }
+            ],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2024-02-12",
+            "episode_number": 5,
+            "episode_type": "standard",
+            "id": 5057954,
+            "name": "不是约好给我处理了吗",
+            "overview": "在空教室里，一树被结衣逼迫订婚。这时，姬乃朱莉走了进来。察觉到结衣和一树之间透露出的“男女”氛围的朱莉，只带着一树去了洗手间。一进入隔间，朱莉就吻了一树。她让一树坐在马桶上，然后跨坐在他挺立的下体上进行询问。“这是我答应过的吧？你的……性·欲·处·理。”对一树与其他女孩有不正当关系感到嫉妒的朱莉。逐渐混乱的甜蜜呼吸，在短暂的休息时间里一点点流逝着……",
+            "production_code": "",
+            "runtime": 4,
+            "season_number": 1,
+            "show_id": 241002,
+            "still_path": "/1zcduAD9Gf4ivEqfj3eBzzk49aM.jpg",
+            "vote_average": 5.0,
+            "vote_count": 1,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2024-02-19",
+            "episode_number": 6,
+            "episode_type": "standard",
+            "id": 5057955,
+            "name": "喜欢看书的王子",
+            "overview": "一树在书店悄悄购买了色情书籍，正准备离开时却意外地遇见了杏季。原来杏季也是在购买色情书籍后回家的，一树的下体开始膨胀。杏季注意到这一点，便把一树带到了网咖。“你自己的意志……控制不住了吧？”杏季脱掉衣服只剩内衣，诱惑着一树，一树无法抗拒自己的欲望……",
+            "production_code": "",
+            "runtime": 4,
+            "season_number": 1,
+            "show_id": 241002,
+            "still_path": "/1QVM5DzhpEjjHORHszmi1KPQbza.jpg",
+            "vote_average": 6.0,
+            "vote_count": 1,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2024-03-04",
+            "episode_number": 7,
+            "episode_type": "standard",
+            "id": 5057956,
+            "name": "在淋浴间3个人",
+            "overview": "为了考察修学旅行的准备工作，学园一行来到了海边。在朱莉和枫去看宿舍的时候，一树却在给杏季和结衣擦防晒霜的时候意外地让自己的下体膨胀起来了。一树撒了个谎说“自己处理不了膨胀的下体”，结果被揭穿，向杏季求原谅。“那么……那个……那个再……”杏季带着贪婪的表情看着一树，看着在淋浴间热闹起来的两人，结衣也不甘示弱……",
+            "production_code": "",
+            "runtime": 4,
+            "season_number": 1,
+            "show_id": 241002,
+            "still_path": "/tTq2KEqgunWQTnARBVmry3oYXWc.jpg",
+            "vote_average": 4.0,
+            "vote_count": 1,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2024-03-04",
+            "episode_number": 8,
+            "episode_type": "finale",
+            "id": 5057957,
+            "name": "绝对要让你选我",
+            "overview": "园宫一树的秘密是世界上唯一不是“ED”的事实。这个秘密被姬乃朱莉、椎名枫、九重杏季、胡桃泽结衣知道了。朱莉和枫在混浴池里围绕一树争吵。令人惊讶的是，她们开始用猜拳来争夺与一树亲密接触的权利。“那么，我就开动了！”枫脸红地扑向一树，朱莉也不甘示弱地开始责备一树。这些女人无法停止的欲望……由四位夏娃们展开的争夺亚当的战斗，究竟会如何发展……",
+            "production_code": "",
+            "runtime": 4,
+            "season_number": 1,
+            "show_id": 241002,
+            "still_path": "/xx1YFblhtFogTF88o3esGkDkZti.jpg",
+            "vote_average": 3.0,
+            "vote_count": 1,
+            "crew": [],
+            "guest_stars": []
+          }
+        ],
+        "name": "第 1 季",
+        "networks": [
+          {
+            "id": 614,
+            "logo_path": "/hSdroyVthq3CynxTIIY7lnS8w1.png",
+            "name": "Tokyo MX",
+            "origin_country": "JP"
+          },
+          {
+            "id": 861,
+            "logo_path": "/JQ5bx6n7Qmdmyqz6sqjo5Fz2iR.png",
+            "name": "BS11",
+            "origin_country": "JP"
+          }
+        ],
+        "overview": "这是一个关于被四十亿夏娃追求的唯一一个亚当的故事。在一场大流行病中，所有人类都变成了ED（勃起功能障碍），但男学生一树成为了唯一一个免于ED的特殊存在。如果被发现，他将会被当作实验动物一辈子……他不想这样！明明必须保守秘密，他却转学到了一个意想不到的地方，一个全是女生的后宫学园！？友好且随和的前辈、欲求不满的女教师、学园的王子、财阀的千金小姐……一树能够吸引任何女性！究竟一树会选择谁……",
+        "id": 368699,
+        "poster_path": "/1n1ZP0KHXUSvVxZG63x7aOzmO4M.jpg",
+        "season_number": 1,
+        "vote_average": 4.8
+      }
+    ],
+    "episodes": [
+      {
+        "air_date": "2024-01-08",
+        "crew": [
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "65c18ba3efea7a018451a0be",
+            "adult": false,
+            "gender": 2,
+            "id": 2411671,
+            "known_for_department": "Directing",
+            "name": "神原敏昭",
+            "original_name": "神原敏昭",
+            "popularity": 0.8034,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "65c18b8a9369a201849c4745",
+            "adult": false,
+            "gender": 0,
+            "id": 2649444,
+            "known_for_department": "Writing",
+            "name": "黑崎英代",
+            "original_name": "黒崎エーヨ",
+            "popularity": 0.7359,
+            "profile_path": null
+          },
+          {
+            "job": "Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "65c18bb6c50ad2018789e54d",
+            "adult": false,
+            "gender": 0,
+            "id": 4283105,
+            "known_for_department": "Visual Effects",
+            "name": "龙青三",
+            "original_name": "龍青三",
+            "popularity": 0.2658,
+            "profile_path": null
+          },
+          {
+            "job": "Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "65c18bc2efea7a018451a15a",
+            "adult": false,
+            "gender": 1,
+            "id": 2336354,
+            "known_for_department": "Visual Effects",
+            "name": "片冈惠美子",
+            "original_name": "片岡恵美子",
+            "popularity": 0.7388,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "同情我就挣扎吧",
+        "overview": "转校生园宫一树的秘密是他在世界上唯一不患有“ED”的人。在女性占比超过9成的学园里保守这个秘密是很困难的，某个事件成为导火索，一树被引导者姬乃前辈发现了他的特殊存在。“喂，园宫君。女孩子其实……是色情的哦？”两人独处时，姬乃前辈的眼神变了。她粗鲁地呼吸着，脱下衣服，舔着嘴唇逐渐逼近……",
+        "id": 4978463,
+        "production_code": "",
+        "runtime": 4,
+        "season_number": 1,
+        "still_path": "/ynrWaNlzInItEIf4hwEZ2VY8VLV.jpg",
+        "vote_average": 5.8,
+        "vote_count": 4
+      },
+      {
+        "air_date": "2024-01-15",
+        "crew": [
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "65c18ba3efea7a018451a0be",
+            "adult": false,
+            "gender": 2,
+            "id": 2411671,
+            "known_for_department": "Directing",
+            "name": "神原敏昭",
+            "original_name": "神原敏昭",
+            "popularity": 0.8034,
+            "profile_path": null
+          },
+          {
+            "job": "Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "65c18c089590e30182b198ef",
+            "adult": false,
+            "gender": 1,
+            "id": 1845941,
+            "known_for_department": "Visual Effects",
+            "name": "松下纯子",
+            "original_name": "松下純子",
+            "popularity": 0.5935,
+            "profile_path": null
+          },
+          {
+            "job": "Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "65c18c11abdafc017c5e93d4",
+            "adult": false,
+            "gender": 2,
+            "id": 2815257,
+            "known_for_department": "Visual Effects",
+            "name": "樱井拓郎",
+            "original_name": "櫻井拓郎",
+            "popularity": 0.9339,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "65c18b8a9369a201849c4745",
+            "adult": false,
+            "gender": 0,
+            "id": 2649444,
+            "known_for_department": "Writing",
+            "name": "黑崎英代",
+            "original_name": "黒崎エーヨ",
+            "popularity": 0.7359,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "老师得帮你镇静下来才行",
+        "overview": "女教师·椎名枫超级欲求不满。自从大流行导致全人类患上勃起功能障碍以来，她渴望有个男人能满足自己。而出现在枫面前的是，一位带着坚挺下体的转学生，园宫一树。尽管身为教师，枫却毫不顾忌地向一树示好。“你是唯一的存在，我已经忍耐了很久……所以……”一树被恳求后做出了选择……",
+        "id": 5057466,
+        "production_code": "",
+        "runtime": 4,
+        "season_number": 1,
+        "still_path": "/b7JpSrDi1p7IbneGtvmaSdiAs6B.jpg",
+        "vote_average": 4.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2024-01-22",
+        "crew": [
+          {
+            "job": "Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "65c18c499369a2014a9bea06",
+            "adult": false,
+            "gender": 2,
+            "id": 2398152,
+            "known_for_department": "Visual Effects",
+            "name": "川口弘明",
+            "original_name": "川口弘明",
+            "popularity": 1.6303,
+            "profile_path": null
+          },
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "65c18c3a8e8d3000e5773a37",
+            "adult": true,
+            "gender": 2,
+            "id": 2883956,
+            "known_for_department": "Directing",
+            "name": "黑津口成惠",
+            "original_name": "黒津口成恵",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "65c18b8a9369a201849c4745",
+            "adult": false,
+            "gender": 0,
+            "id": 2649444,
+            "known_for_department": "Writing",
+            "name": "黑崎英代",
+            "original_name": "黒崎エーヨ",
+            "popularity": 0.7359,
+            "profile_path": null
+          },
+          {
+            "job": "Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "65c18c528e8d3000e5773a6a",
+            "adult": false,
+            "gender": 2,
+            "id": 2809661,
+            "known_for_department": "Visual Effects",
+            "name": "西川真人",
+            "original_name": "西川真人",
+            "popularity": 0.8574,
+            "profile_path": null
+          },
+          {
+            "job": "Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "65c18c5b8e8d30017b779ee7",
+            "adult": false,
+            "gender": 1,
+            "id": 3033341,
+            "known_for_department": "Visual Effects",
+            "name": "增喜美和子",
+            "original_name": "増喜美和子",
+            "popularity": 0.5003,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 3,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "我不隐藏了",
+        "overview": "九重杏季讨厌男人。在一个女生为主的学园里，被当作“王子殿下”受到宠爱的杏季看不起失去獠牙的男人们。某天，杏季在学园的男女共用更衣室里发现蜷缩着遮住下体的一树。杏季走近想取笑他的勃起障碍，却看到了不该勃起的那个东西……“看了我的身体就这样了吗……？”像被热情冲昏头的杏季开始用指尖侍奉下体。趁着更衣室变成密室的机会，两人就这样……",
+        "id": 5057467,
+        "production_code": "",
+        "runtime": 4,
+        "season_number": 1,
+        "still_path": "/74OM76AtHKQDvSN5jqRiGIxuIMC.jpg",
+        "vote_average": 7.5,
+        "vote_count": 2
+      },
+      {
+        "air_date": "2024-02-05",
+        "crew": [
+          {
+            "job": "Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "65c18ca4abdafc017c5e96cd",
+            "adult": false,
+            "gender": 2,
+            "id": 2396276,
+            "known_for_department": "Visual Effects",
+            "name": "森悦史",
+            "original_name": "森悦史",
+            "popularity": 1.0421,
+            "profile_path": null
+          },
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "65c18c3a8e8d3000e5773a37",
+            "adult": true,
+            "gender": 2,
+            "id": 2883956,
+            "known_for_department": "Directing",
+            "name": "黑津口成惠",
+            "original_name": "黒津口成恵",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "65c18c9d0929f600c9e3b70c",
+            "adult": false,
+            "gender": 1,
+            "id": 3393885,
+            "known_for_department": "Visual Effects",
+            "name": "池上理惠",
+            "original_name": "池上理恵",
+            "popularity": 0.6496,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "65c18b8a9369a201849c4745",
+            "adult": false,
+            "gender": 0,
+            "id": 2649444,
+            "known_for_department": "Writing",
+            "name": "黑崎英代",
+            "original_name": "黒崎エーヨ",
+            "popularity": 0.7359,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 4,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "寻找未婚夫",
+        "overview": "财阀千金结衣被祖父命令寻找未婚夫。未婚夫的条件是“不是ED的男人”。在空教室里一边看色情书一边为这个难题而苦恼时，转校生园宫一树出现了。两人因为一个偶然的机会摔倒而身体密切接触，结衣的手碰到了一树膨胀的下体。“如果不想引起骚动的话……就脱掉吧。”一树到底是不是真正适合做未婚夫的男人，结衣的测试强行开始了……",
+        "id": 5057469,
+        "production_code": "",
+        "runtime": 4,
+        "season_number": 1,
+        "still_path": "/uxmfiNejU6MX52bAlKE39XZZGim.jpg",
+        "vote_average": 4.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2024-02-12",
+        "crew": [],
+        "episode_number": 5,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "不是约好给我处理了吗",
+        "overview": "在空教室里，一树被结衣逼迫订婚。这时，姬乃朱莉走了进来。察觉到结衣和一树之间透露出的“男女”氛围的朱莉，只带着一树去了洗手间。一进入隔间，朱莉就吻了一树。她让一树坐在马桶上，然后跨坐在他挺立的下体上进行询问。“这是我答应过的吧？你的……性·欲·处·理。”对一树与其他女孩有不正当关系感到嫉妒的朱莉。逐渐混乱的甜蜜呼吸，在短暂的休息时间里一点点流逝着……",
+        "id": 5057954,
+        "production_code": "",
+        "runtime": 4,
+        "season_number": 1,
+        "still_path": "/1zcduAD9Gf4ivEqfj3eBzzk49aM.jpg",
+        "vote_average": 5.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2024-02-19",
+        "crew": [],
+        "episode_number": 6,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "喜欢看书的王子",
+        "overview": "一树在书店悄悄购买了色情书籍，正准备离开时却意外地遇见了杏季。原来杏季也是在购买色情书籍后回家的，一树的下体开始膨胀。杏季注意到这一点，便把一树带到了网咖。“你自己的意志……控制不住了吧？”杏季脱掉衣服只剩内衣，诱惑着一树，一树无法抗拒自己的欲望……",
+        "id": 5057955,
+        "production_code": "",
+        "runtime": 4,
+        "season_number": 1,
+        "still_path": "/1QVM5DzhpEjjHORHszmi1KPQbza.jpg",
+        "vote_average": 6.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2024-03-04",
+        "crew": [],
+        "episode_number": 7,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "在淋浴间3个人",
+        "overview": "为了考察修学旅行的准备工作，学园一行来到了海边。在朱莉和枫去看宿舍的时候，一树却在给杏季和结衣擦防晒霜的时候意外地让自己的下体膨胀起来了。一树撒了个谎说“自己处理不了膨胀的下体”，结果被揭穿，向杏季求原谅。“那么……那个……那个再……”杏季带着贪婪的表情看着一树，看着在淋浴间热闹起来的两人，结衣也不甘示弱……",
+        "id": 5057956,
+        "production_code": "",
+        "runtime": 4,
+        "season_number": 1,
+        "still_path": "/tTq2KEqgunWQTnARBVmry3oYXWc.jpg",
+        "vote_average": 4.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2024-03-04",
+        "crew": [],
+        "episode_number": 8,
+        "episode_type": "finale",
+        "guest_stars": [],
+        "name": "绝对要让你选我",
+        "overview": "园宫一树的秘密是世界上唯一不是“ED”的事实。这个秘密被姬乃朱莉、椎名枫、九重杏季、胡桃泽结衣知道了。朱莉和枫在混浴池里围绕一树争吵。令人惊讶的是，她们开始用猜拳来争夺与一树亲密接触的权利。“那么，我就开动了！”枫脸红地扑向一树，朱莉也不甘示弱地开始责备一树。这些女人无法停止的欲望……由四位夏娃们展开的争夺亚当的战斗，究竟会如何发展……",
+        "id": 5057957,
+        "production_code": "",
+        "runtime": 4,
+        "season_number": 1,
+        "still_path": "/xx1YFblhtFogTF88o3esGkDkZti.jpg",
+        "vote_average": 3.0,
+        "vote_count": 1
+      }
+    ]
+  },
+  "translate": {
+    "translated": {
+      "media_type": "tv",
+      "tmdb_id": 241002,
+      "title": "挣扎吧，亚当君",
+      "original_title": "悶えてよ、アダムくん",
+      "year": 2024,
+      "plot": "这是一个关于被四十亿夏娃追求的唯一一个亚当的故事。在一场大流行病中，所有人类都变成了ED（勃起功能障碍），但男学生一树成为了唯一一个免于ED的特殊存在。如果被发现，他将会被当作实验动物一辈子……他不想这样！明明必须保守秘密，他却转学到了一个意想不到的地方，一个全是女生的后宫学园！？友好且随和的前辈、欲求不满的女教师、学园的王子、财阀的千金小姐……一树能够吸引任何女性！究竟一树会选择谁……",
+      "tagline": "",
+      "runtime": 4,
+      "release_date": "2024-01-08",
+      "rating": 6.773,
+      "rating_count": 33,
+      "genres": [
+        "动画"
+      ],
+      "countries": [
+        "JP"
+      ],
+      "languages": [
+        "ja"
+      ],
+      "studios": [
+        "studio HōKIBOSHI",
+        "Suiseisha",
+        "WWWave"
+      ],
+      "cast": [
+        {
+          "name_en": "Hana Kuga",
+          "name_zh": null,
+          "role": "Akari Himeno (voice)"
+        },
+        {
+          "name_en": "Shizuka Itoh",
+          "name_zh": null,
+          "role": "Kaede Shiina (voice)"
+        },
+        {
+          "name_en": "Mari Kirimura",
+          "name_zh": null,
+          "role": "Aki Kokonoe (voice)"
+        },
+        {
+          "name_en": "Kaho Shibuya",
+          "name_zh": null,
+          "role": "Yui Kurumizawa (voice)"
+        },
+        {
+          "name_en": "Shinnosuke Tachibana",
+          "name_zh": null,
+          "role": "Kumazawa (voice)"
+        },
+        {
+          "name_en": "Harumichi Shito",
+          "name_zh": null,
+          "role": "Itsuki Sonomiya"
+        }
+      ],
+      "directors": [],
+      "writers": [
+        "Tatsutaro Murai"
+      ],
+      "images": {},
+      "seasons": [
+        {
+          "air_date": "2024-02-02",
+          "episode_count": 3,
+          "id": 377540,
+          "name": "特别篇",
+          "overview": "",
+          "poster_path": "/bs70WStsspaiclienWGeMBUDotQ.jpg",
+          "season_number": 0,
+          "vote_average": 0.0
+        },
+        {
+          "air_date": "2024-01-08",
+          "episode_count": 8,
+          "id": 368699,
+          "name": "第 1 季",
+          "overview": "这是一个关于被四十亿夏娃追求的唯一一个亚当的故事。在一场大流行病中，所有人类都变成了ED（勃起功能障碍），但男学生一树成为了唯一一个免于ED的特殊存在。如果被发现，他将会被当作实验动物一辈子……他不想这样！明明必须保守秘密，他却转学到了一个意想不到的地方，一个全是女生的后宫学园！？友好且随和的前辈、欲求不满的女教师、学园的王子、财阀的千金小姐……一树能够吸引任何女性！究竟一树会选择谁……",
+          "poster_path": "/1n1ZP0KHXUSvVxZG63x7aOzmO4M.jpg",
+          "season_number": 1,
+          "vote_average": 4.8
+        }
+      ],
+      "episodes": [
+        {
+          "air_date": "2024-01-08",
+          "crew": [
+            {
+              "job": "Director",
+              "department": "Directing",
+              "credit_id": "65c18ba3efea7a018451a0be",
+              "adult": false,
+              "gender": 2,
+              "id": 2411671,
+              "known_for_department": "Directing",
+              "name": "神原敏昭",
+              "original_name": "神原敏昭",
+              "popularity": 0.8034,
+              "profile_path": null
+            },
+            {
+              "job": "Writer",
+              "department": "Writing",
+              "credit_id": "65c18b8a9369a201849c4745",
+              "adult": false,
+              "gender": 0,
+              "id": 2649444,
+              "known_for_department": "Writing",
+              "name": "黑崎英代",
+              "original_name": "黒崎エーヨ",
+              "popularity": 0.7359,
+              "profile_path": null
+            },
+            {
+              "job": "Animation Director",
+              "department": "Visual Effects",
+              "credit_id": "65c18bb6c50ad2018789e54d",
+              "adult": false,
+              "gender": 0,
+              "id": 4283105,
+              "known_for_department": "Visual Effects",
+              "name": "龙青三",
+              "original_name": "龍青三",
+              "popularity": 0.2658,
+              "profile_path": null
+            },
+            {
+              "job": "Animation Director",
+              "department": "Visual Effects",
+              "credit_id": "65c18bc2efea7a018451a15a",
+              "adult": false,
+              "gender": 1,
+              "id": 2336354,
+              "known_for_department": "Visual Effects",
+              "name": "片冈惠美子",
+              "original_name": "片岡恵美子",
+              "popularity": 0.7388,
+              "profile_path": null
+            }
+          ],
+          "episode_number": 1,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "同情我就挣扎吧",
+          "overview": "转校生园宫一树的秘密是他在世界上唯一不患有“ED”的人。在女性占比超过9成的学园里保守这个秘密是很困难的，某个事件成为导火索，一树被引导者姬乃前辈发现了他的特殊存在。“喂，园宫君。女孩子其实……是色情的哦？”两人独处时，姬乃前辈的眼神变了。她粗鲁地呼吸着，脱下衣服，舔着嘴唇逐渐逼近……",
+          "id": 4978463,
+          "production_code": "",
+          "runtime": 4,
+          "season_number": 1,
+          "still_path": "/ynrWaNlzInItEIf4hwEZ2VY8VLV.jpg",
+          "vote_average": 5.8,
+          "vote_count": 4
+        },
+        {
+          "air_date": "2024-01-15",
+          "crew": [
+            {
+              "job": "Director",
+              "department": "Directing",
+              "credit_id": "65c18ba3efea7a018451a0be",
+              "adult": false,
+              "gender": 2,
+              "id": 2411671,
+              "known_for_department": "Directing",
+              "name": "神原敏昭",
+              "original_name": "神原敏昭",
+              "popularity": 0.8034,
+              "profile_path": null
+            },
+            {
+              "job": "Animation Director",
+              "department": "Visual Effects",
+              "credit_id": "65c18c089590e30182b198ef",
+              "adult": false,
+              "gender": 1,
+              "id": 1845941,
+              "known_for_department": "Visual Effects",
+              "name": "松下纯子",
+              "original_name": "松下純子",
+              "popularity": 0.5935,
+              "profile_path": null
+            },
+            {
+              "job": "Animation Director",
+              "department": "Visual Effects",
+              "credit_id": "65c18c11abdafc017c5e93d4",
+              "adult": false,
+              "gender": 2,
+              "id": 2815257,
+              "known_for_department": "Visual Effects",
+              "name": "樱井拓郎",
+              "original_name": "櫻井拓郎",
+              "popularity": 0.9339,
+              "profile_path": null
+            },
+            {
+              "job": "Writer",
+              "department": "Writing",
+              "credit_id": "65c18b8a9369a201849c4745",
+              "adult": false,
+              "gender": 0,
+              "id": 2649444,
+              "known_for_department": "Writing",
+              "name": "黑崎英代",
+              "original_name": "黒崎エーヨ",
+              "popularity": 0.7359,
+              "profile_path": null
+            }
+          ],
+          "episode_number": 2,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "老师得帮你镇静下来才行",
+          "overview": "女教师·椎名枫超级欲求不满。自从大流行导致全人类患上勃起功能障碍以来，她渴望有个男人能满足自己。而出现在枫面前的是，一位带着坚挺下体的转学生，园宫一树。尽管身为教师，枫却毫不顾忌地向一树示好。“你是唯一的存在，我已经忍耐了很久……所以……”一树被恳求后做出了选择……",
+          "id": 5057466,
+          "production_code": "",
+          "runtime": 4,
+          "season_number": 1,
+          "still_path": "/b7JpSrDi1p7IbneGtvmaSdiAs6B.jpg",
+          "vote_average": 4.0,
+          "vote_count": 1
+        },
+        {
+          "air_date": "2024-01-22",
+          "crew": [
+            {
+              "job": "Animation Director",
+              "department": "Visual Effects",
+              "credit_id": "65c18c499369a2014a9bea06",
+              "adult": false,
+              "gender": 2,
+              "id": 2398152,
+              "known_for_department": "Visual Effects",
+              "name": "川口弘明",
+              "original_name": "川口弘明",
+              "popularity": 1.6303,
+              "profile_path": null
+            },
+            {
+              "job": "Director",
+              "department": "Directing",
+              "credit_id": "65c18c3a8e8d3000e5773a37",
+              "adult": true,
+              "gender": 2,
+              "id": 2883956,
+              "known_for_department": "Directing",
+              "name": "黑津口成惠",
+              "original_name": "黒津口成恵",
+              "popularity": 0.6,
+              "profile_path": null
+            },
+            {
+              "job": "Writer",
+              "department": "Writing",
+              "credit_id": "65c18b8a9369a201849c4745",
+              "adult": false,
+              "gender": 0,
+              "id": 2649444,
+              "known_for_department": "Writing",
+              "name": "黑崎英代",
+              "original_name": "黒崎エーヨ",
+              "popularity": 0.7359,
+              "profile_path": null
+            },
+            {
+              "job": "Animation Director",
+              "department": "Visual Effects",
+              "credit_id": "65c18c528e8d3000e5773a6a",
+              "adult": false,
+              "gender": 2,
+              "id": 2809661,
+              "known_for_department": "Visual Effects",
+              "name": "西川真人",
+              "original_name": "西川真人",
+              "popularity": 0.8574,
+              "profile_path": null
+            },
+            {
+              "job": "Animation Director",
+              "department": "Visual Effects",
+              "credit_id": "65c18c5b8e8d30017b779ee7",
+              "adult": false,
+              "gender": 1,
+              "id": 3033341,
+              "known_for_department": "Visual Effects",
+              "name": "增喜美和子",
+              "original_name": "増喜美和子",
+              "popularity": 0.5003,
+              "profile_path": null
+            }
+          ],
+          "episode_number": 3,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "我不隐藏了",
+          "overview": "九重杏季讨厌男人。在一个女生为主的学园里，被当作“王子殿下”受到宠爱的杏季看不起失去獠牙的男人们。某天，杏季在学园的男女共用更衣室里发现蜷缩着遮住下体的一树。杏季走近想取笑他的勃起障碍，却看到了不该勃起的那个东西……“看了我的身体就这样了吗……？”像被热情冲昏头的杏季开始用指尖侍奉下体。趁着更衣室变成密室的机会，两人就这样……",
+          "id": 5057467,
+          "production_code": "",
+          "runtime": 4,
+          "season_number": 1,
+          "still_path": "/74OM76AtHKQDvSN5jqRiGIxuIMC.jpg",
+          "vote_average": 7.5,
+          "vote_count": 2
+        },
+        {
+          "air_date": "2024-02-05",
+          "crew": [
+            {
+              "job": "Animation Director",
+              "department": "Visual Effects",
+              "credit_id": "65c18ca4abdafc017c5e96cd",
+              "adult": false,
+              "gender": 2,
+              "id": 2396276,
+              "known_for_department": "Visual Effects",
+              "name": "森悦史",
+              "original_name": "森悦史",
+              "popularity": 1.0421,
+              "profile_path": null
+            },
+            {
+              "job": "Director",
+              "department": "Directing",
+              "credit_id": "65c18c3a8e8d3000e5773a37",
+              "adult": true,
+              "gender": 2,
+              "id": 2883956,
+              "known_for_department": "Directing",
+              "name": "黑津口成惠",
+              "original_name": "黒津口成恵",
+              "popularity": 0.6,
+              "profile_path": null
+            },
+            {
+              "job": "Animation Director",
+              "department": "Visual Effects",
+              "credit_id": "65c18c9d0929f600c9e3b70c",
+              "adult": false,
+              "gender": 1,
+              "id": 3393885,
+              "known_for_department": "Visual Effects",
+              "name": "池上理惠",
+              "original_name": "池上理恵",
+              "popularity": 0.6496,
+              "profile_path": null
+            },
+            {
+              "job": "Writer",
+              "department": "Writing",
+              "credit_id": "65c18b8a9369a201849c4745",
+              "adult": false,
+              "gender": 0,
+              "id": 2649444,
+              "known_for_department": "Writing",
+              "name": "黑崎英代",
+              "original_name": "黒崎エーヨ",
+              "popularity": 0.7359,
+              "profile_path": null
+            }
+          ],
+          "episode_number": 4,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "寻找未婚夫",
+          "overview": "财阀千金结衣被祖父命令寻找未婚夫。未婚夫的条件是“不是ED的男人”。在空教室里一边看色情书一边为这个难题而苦恼时，转校生园宫一树出现了。两人因为一个偶然的机会摔倒而身体密切接触，结衣的手碰到了一树膨胀的下体。“如果不想引起骚动的话……就脱掉吧。”一树到底是不是真正适合做未婚夫的男人，结衣的测试强行开始了……",
+          "id": 5057469,
+          "production_code": "",
+          "runtime": 4,
+          "season_number": 1,
+          "still_path": "/uxmfiNejU6MX52bAlKE39XZZGim.jpg",
+          "vote_average": 4.0,
+          "vote_count": 1
+        },
+        {
+          "air_date": "2024-02-12",
+          "crew": [],
+          "episode_number": 5,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "不是约好给我处理了吗",
+          "overview": "在空教室里，一树被结衣逼迫订婚。这时，姬乃朱莉走了进来。察觉到结衣和一树之间透露出的“男女”氛围的朱莉，只带着一树去了洗手间。一进入隔间，朱莉就吻了一树。她让一树坐在马桶上，然后跨坐在他挺立的下体上进行询问。“这是我答应过的吧？你的……性·欲·处·理。”对一树与其他女孩有不正当关系感到嫉妒的朱莉。逐渐混乱的甜蜜呼吸，在短暂的休息时间里一点点流逝着……",
+          "id": 5057954,
+          "production_code": "",
+          "runtime": 4,
+          "season_number": 1,
+          "still_path": "/1zcduAD9Gf4ivEqfj3eBzzk49aM.jpg",
+          "vote_average": 5.0,
+          "vote_count": 1
+        },
+        {
+          "air_date": "2024-02-19",
+          "crew": [],
+          "episode_number": 6,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "喜欢看书的王子",
+          "overview": "一树在书店悄悄购买了色情书籍，正准备离开时却意外地遇见了杏季。原来杏季也是在购买色情书籍后回家的，一树的下体开始膨胀。杏季注意到这一点，便把一树带到了网咖。“你自己的意志……控制不住了吧？”杏季脱掉衣服只剩内衣，诱惑着一树，一树无法抗拒自己的欲望……",
+          "id": 5057955,
+          "production_code": "",
+          "runtime": 4,
+          "season_number": 1,
+          "still_path": "/1QVM5DzhpEjjHORHszmi1KPQbza.jpg",
+          "vote_average": 6.0,
+          "vote_count": 1
+        },
+        {
+          "air_date": "2024-03-04",
+          "crew": [],
+          "episode_number": 7,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "在淋浴间3个人",
+          "overview": "为了考察修学旅行的准备工作，学园一行来到了海边。在朱莉和枫去看宿舍的时候，一树却在给杏季和结衣擦防晒霜的时候意外地让自己的下体膨胀起来了。一树撒了个谎说“自己处理不了膨胀的下体”，结果被揭穿，向杏季求原谅。“那么……那个……那个再……”杏季带着贪婪的表情看着一树，看着在淋浴间热闹起来的两人，结衣也不甘示弱……",
+          "id": 5057956,
+          "production_code": "",
+          "runtime": 4,
+          "season_number": 1,
+          "still_path": "/tTq2KEqgunWQTnARBVmry3oYXWc.jpg",
+          "vote_average": 4.0,
+          "vote_count": 1
+        },
+        {
+          "air_date": "2024-03-04",
+          "crew": [],
+          "episode_number": 8,
+          "episode_type": "finale",
+          "guest_stars": [],
+          "name": "绝对要让你选我",
+          "overview": "园宫一树的秘密是世界上唯一不是“ED”的事实。这个秘密被姬乃朱莉、椎名枫、九重杏季、胡桃泽结衣知道了。朱莉和枫在混浴池里围绕一树争吵。令人惊讶的是，她们开始用猜拳来争夺与一树亲密接触的权利。“那么，我就开动了！”枫脸红地扑向一树，朱莉也不甘示弱地开始责备一树。这些女人无法停止的欲望……由四位夏娃们展开的争夺亚当的战斗，究竟会如何发展……",
+          "id": 5057957,
+          "production_code": "",
+          "runtime": 4,
+          "season_number": 1,
+          "still_path": "/xx1YFblhtFogTF88o3esGkDkZti.jpg",
+          "vote_average": 3.0,
+          "vote_count": 1
+        }
+      ],
+      "keywords_en": [
+        "harem",
+        "school",
+        "based on manga",
+        "ecchi",
+        "anime"
+      ],
+      "keywords": [
+        "harem",
+        "school",
+        "based on manga",
+        "ecchi",
+        "anime"
+      ]
+    },
+    "episodes": [
+      {
+        "air_date": "2024-01-08",
+        "crew": [
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "65c18ba3efea7a018451a0be",
+            "adult": false,
+            "gender": 2,
+            "id": 2411671,
+            "known_for_department": "Directing",
+            "name": "神原敏昭",
+            "original_name": "神原敏昭",
+            "popularity": 0.8034,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "65c18b8a9369a201849c4745",
+            "adult": false,
+            "gender": 0,
+            "id": 2649444,
+            "known_for_department": "Writing",
+            "name": "黑崎英代",
+            "original_name": "黒崎エーヨ",
+            "popularity": 0.7359,
+            "profile_path": null
+          },
+          {
+            "job": "Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "65c18bb6c50ad2018789e54d",
+            "adult": false,
+            "gender": 0,
+            "id": 4283105,
+            "known_for_department": "Visual Effects",
+            "name": "龙青三",
+            "original_name": "龍青三",
+            "popularity": 0.2658,
+            "profile_path": null
+          },
+          {
+            "job": "Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "65c18bc2efea7a018451a15a",
+            "adult": false,
+            "gender": 1,
+            "id": 2336354,
+            "known_for_department": "Visual Effects",
+            "name": "片冈惠美子",
+            "original_name": "片岡恵美子",
+            "popularity": 0.7388,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "同情我就挣扎吧",
+        "overview": "转校生园宫一树的秘密是他在世界上唯一不患有“ED”的人。在女性占比超过9成的学园里保守这个秘密是很困难的，某个事件成为导火索，一树被引导者姬乃前辈发现了他的特殊存在。“喂，园宫君。女孩子其实……是色情的哦？”两人独处时，姬乃前辈的眼神变了。她粗鲁地呼吸着，脱下衣服，舔着嘴唇逐渐逼近……",
+        "id": 4978463,
+        "production_code": "",
+        "runtime": 4,
+        "season_number": 1,
+        "still_path": "/ynrWaNlzInItEIf4hwEZ2VY8VLV.jpg",
+        "vote_average": 5.8,
+        "vote_count": 4
+      },
+      {
+        "air_date": "2024-01-15",
+        "crew": [
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "65c18ba3efea7a018451a0be",
+            "adult": false,
+            "gender": 2,
+            "id": 2411671,
+            "known_for_department": "Directing",
+            "name": "神原敏昭",
+            "original_name": "神原敏昭",
+            "popularity": 0.8034,
+            "profile_path": null
+          },
+          {
+            "job": "Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "65c18c089590e30182b198ef",
+            "adult": false,
+            "gender": 1,
+            "id": 1845941,
+            "known_for_department": "Visual Effects",
+            "name": "松下纯子",
+            "original_name": "松下純子",
+            "popularity": 0.5935,
+            "profile_path": null
+          },
+          {
+            "job": "Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "65c18c11abdafc017c5e93d4",
+            "adult": false,
+            "gender": 2,
+            "id": 2815257,
+            "known_for_department": "Visual Effects",
+            "name": "樱井拓郎",
+            "original_name": "櫻井拓郎",
+            "popularity": 0.9339,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "65c18b8a9369a201849c4745",
+            "adult": false,
+            "gender": 0,
+            "id": 2649444,
+            "known_for_department": "Writing",
+            "name": "黑崎英代",
+            "original_name": "黒崎エーヨ",
+            "popularity": 0.7359,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "老师得帮你镇静下来才行",
+        "overview": "女教师·椎名枫超级欲求不满。自从大流行导致全人类患上勃起功能障碍以来，她渴望有个男人能满足自己。而出现在枫面前的是，一位带着坚挺下体的转学生，园宫一树。尽管身为教师，枫却毫不顾忌地向一树示好。“你是唯一的存在，我已经忍耐了很久……所以……”一树被恳求后做出了选择……",
+        "id": 5057466,
+        "production_code": "",
+        "runtime": 4,
+        "season_number": 1,
+        "still_path": "/b7JpSrDi1p7IbneGtvmaSdiAs6B.jpg",
+        "vote_average": 4.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2024-01-22",
+        "crew": [
+          {
+            "job": "Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "65c18c499369a2014a9bea06",
+            "adult": false,
+            "gender": 2,
+            "id": 2398152,
+            "known_for_department": "Visual Effects",
+            "name": "川口弘明",
+            "original_name": "川口弘明",
+            "popularity": 1.6303,
+            "profile_path": null
+          },
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "65c18c3a8e8d3000e5773a37",
+            "adult": true,
+            "gender": 2,
+            "id": 2883956,
+            "known_for_department": "Directing",
+            "name": "黑津口成惠",
+            "original_name": "黒津口成恵",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "65c18b8a9369a201849c4745",
+            "adult": false,
+            "gender": 0,
+            "id": 2649444,
+            "known_for_department": "Writing",
+            "name": "黑崎英代",
+            "original_name": "黒崎エーヨ",
+            "popularity": 0.7359,
+            "profile_path": null
+          },
+          {
+            "job": "Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "65c18c528e8d3000e5773a6a",
+            "adult": false,
+            "gender": 2,
+            "id": 2809661,
+            "known_for_department": "Visual Effects",
+            "name": "西川真人",
+            "original_name": "西川真人",
+            "popularity": 0.8574,
+            "profile_path": null
+          },
+          {
+            "job": "Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "65c18c5b8e8d30017b779ee7",
+            "adult": false,
+            "gender": 1,
+            "id": 3033341,
+            "known_for_department": "Visual Effects",
+            "name": "增喜美和子",
+            "original_name": "増喜美和子",
+            "popularity": 0.5003,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 3,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "我不隐藏了",
+        "overview": "九重杏季讨厌男人。在一个女生为主的学园里，被当作“王子殿下”受到宠爱的杏季看不起失去獠牙的男人们。某天，杏季在学园的男女共用更衣室里发现蜷缩着遮住下体的一树。杏季走近想取笑他的勃起障碍，却看到了不该勃起的那个东西……“看了我的身体就这样了吗……？”像被热情冲昏头的杏季开始用指尖侍奉下体。趁着更衣室变成密室的机会，两人就这样……",
+        "id": 5057467,
+        "production_code": "",
+        "runtime": 4,
+        "season_number": 1,
+        "still_path": "/74OM76AtHKQDvSN5jqRiGIxuIMC.jpg",
+        "vote_average": 7.5,
+        "vote_count": 2
+      },
+      {
+        "air_date": "2024-02-05",
+        "crew": [
+          {
+            "job": "Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "65c18ca4abdafc017c5e96cd",
+            "adult": false,
+            "gender": 2,
+            "id": 2396276,
+            "known_for_department": "Visual Effects",
+            "name": "森悦史",
+            "original_name": "森悦史",
+            "popularity": 1.0421,
+            "profile_path": null
+          },
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "65c18c3a8e8d3000e5773a37",
+            "adult": true,
+            "gender": 2,
+            "id": 2883956,
+            "known_for_department": "Directing",
+            "name": "黑津口成惠",
+            "original_name": "黒津口成恵",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "65c18c9d0929f600c9e3b70c",
+            "adult": false,
+            "gender": 1,
+            "id": 3393885,
+            "known_for_department": "Visual Effects",
+            "name": "池上理惠",
+            "original_name": "池上理恵",
+            "popularity": 0.6496,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "65c18b8a9369a201849c4745",
+            "adult": false,
+            "gender": 0,
+            "id": 2649444,
+            "known_for_department": "Writing",
+            "name": "黑崎英代",
+            "original_name": "黒崎エーヨ",
+            "popularity": 0.7359,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 4,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "寻找未婚夫",
+        "overview": "财阀千金结衣被祖父命令寻找未婚夫。未婚夫的条件是“不是ED的男人”。在空教室里一边看色情书一边为这个难题而苦恼时，转校生园宫一树出现了。两人因为一个偶然的机会摔倒而身体密切接触，结衣的手碰到了一树膨胀的下体。“如果不想引起骚动的话……就脱掉吧。”一树到底是不是真正适合做未婚夫的男人，结衣的测试强行开始了……",
+        "id": 5057469,
+        "production_code": "",
+        "runtime": 4,
+        "season_number": 1,
+        "still_path": "/uxmfiNejU6MX52bAlKE39XZZGim.jpg",
+        "vote_average": 4.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2024-02-12",
+        "crew": [],
+        "episode_number": 5,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "不是约好给我处理了吗",
+        "overview": "在空教室里，一树被结衣逼迫订婚。这时，姬乃朱莉走了进来。察觉到结衣和一树之间透露出的“男女”氛围的朱莉，只带着一树去了洗手间。一进入隔间，朱莉就吻了一树。她让一树坐在马桶上，然后跨坐在他挺立的下体上进行询问。“这是我答应过的吧？你的……性·欲·处·理。”对一树与其他女孩有不正当关系感到嫉妒的朱莉。逐渐混乱的甜蜜呼吸，在短暂的休息时间里一点点流逝着……",
+        "id": 5057954,
+        "production_code": "",
+        "runtime": 4,
+        "season_number": 1,
+        "still_path": "/1zcduAD9Gf4ivEqfj3eBzzk49aM.jpg",
+        "vote_average": 5.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2024-02-19",
+        "crew": [],
+        "episode_number": 6,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "喜欢看书的王子",
+        "overview": "一树在书店悄悄购买了色情书籍，正准备离开时却意外地遇见了杏季。原来杏季也是在购买色情书籍后回家的，一树的下体开始膨胀。杏季注意到这一点，便把一树带到了网咖。“你自己的意志……控制不住了吧？”杏季脱掉衣服只剩内衣，诱惑着一树，一树无法抗拒自己的欲望……",
+        "id": 5057955,
+        "production_code": "",
+        "runtime": 4,
+        "season_number": 1,
+        "still_path": "/1QVM5DzhpEjjHORHszmi1KPQbza.jpg",
+        "vote_average": 6.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2024-03-04",
+        "crew": [],
+        "episode_number": 7,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "在淋浴间3个人",
+        "overview": "为了考察修学旅行的准备工作，学园一行来到了海边。在朱莉和枫去看宿舍的时候，一树却在给杏季和结衣擦防晒霜的时候意外地让自己的下体膨胀起来了。一树撒了个谎说“自己处理不了膨胀的下体”，结果被揭穿，向杏季求原谅。“那么……那个……那个再……”杏季带着贪婪的表情看着一树，看着在淋浴间热闹起来的两人，结衣也不甘示弱……",
+        "id": 5057956,
+        "production_code": "",
+        "runtime": 4,
+        "season_number": 1,
+        "still_path": "/tTq2KEqgunWQTnARBVmry3oYXWc.jpg",
+        "vote_average": 4.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2024-03-04",
+        "crew": [],
+        "episode_number": 8,
+        "episode_type": "finale",
+        "guest_stars": [],
+        "name": "绝对要让你选我",
+        "overview": "园宫一树的秘密是世界上唯一不是“ED”的事实。这个秘密被姬乃朱莉、椎名枫、九重杏季、胡桃泽结衣知道了。朱莉和枫在混浴池里围绕一树争吵。令人惊讶的是，她们开始用猜拳来争夺与一树亲密接触的权利。“那么，我就开动了！”枫脸红地扑向一树，朱莉也不甘示弱地开始责备一树。这些女人无法停止的欲望……由四位夏娃们展开的争夺亚当的战斗，究竟会如何发展……",
+        "id": 5057957,
+        "production_code": "",
+        "runtime": 4,
+        "season_number": 1,
+        "still_path": "/xx1YFblhtFogTF88o3esGkDkZti.jpg",
+        "vote_average": 3.0,
+        "vote_count": 1
+      }
+    ]
+  },
+  "normalize": {
+    "media_type": "tv",
+    "tmdb_id": 241002,
+    "title": "挣扎吧，亚当君",
+    "original_title": "悶えてよ、アダムくん",
+    "year": 2024,
+    "plot": "这是一个关于被四十亿夏娃追求的唯一一个亚当的故事。在一场大流行病中，所有人类都变成了ED（勃起功能障碍），但男学生一树成为了唯一一个免于ED的特殊存在。如果被发现，他将会被当作实验动物一辈子……他不想这样！明明必须保守秘密，他却转学到了一个意想不到的地方，一个全是女生的后宫学园！？友好且随和的前辈、欲求不满的女教师、学园的王子、财阀的千金小姐……一树能够吸引任何女性！究竟一树会选择谁……",
+    "tagline": "",
+    "runtime": 4,
+    "release_date": "2024-01-08",
+    "rating": 6.773,
+    "rating_count": 33,
+    "genres": [
+      "动画"
+    ],
+    "countries": [
+      "JP"
+    ],
+    "languages": [
+      "ja"
+    ],
+    "studios": [
+      "studio HōKIBOSHI",
+      "Suiseisha",
+      "WWWave"
+    ],
+    "cast": [
+      {
+        "name_en": "Hana Kuga",
+        "name_zh": null,
+        "role": "Akari Himeno (voice)"
+      },
+      {
+        "name_en": "Shizuka Itoh",
+        "name_zh": null,
+        "role": "Kaede Shiina (voice)"
+      },
+      {
+        "name_en": "Mari Kirimura",
+        "name_zh": null,
+        "role": "Aki Kokonoe (voice)"
+      },
+      {
+        "name_en": "Kaho Shibuya",
+        "name_zh": null,
+        "role": "Yui Kurumizawa (voice)"
+      },
+      {
+        "name_en": "Shinnosuke Tachibana",
+        "name_zh": null,
+        "role": "Kumazawa (voice)"
+      },
+      {
+        "name_en": "Harumichi Shito",
+        "name_zh": null,
+        "role": "Itsuki Sonomiya"
+      }
+    ],
+    "directors": [],
+    "writers": [
+      "Tatsutaro Murai"
+    ],
+    "images": {},
+    "seasons": [
+      {
+        "air_date": "2024-02-02",
+        "episode_count": 3,
+        "id": 377540,
+        "name": "特别篇",
+        "overview": "",
+        "poster_path": "/bs70WStsspaiclienWGeMBUDotQ.jpg",
+        "season_number": 0,
+        "vote_average": 0.0
+      },
+      {
+        "air_date": "2024-01-08",
+        "episode_count": 8,
+        "id": 368699,
+        "name": "第 1 季",
+        "overview": "这是一个关于被四十亿夏娃追求的唯一一个亚当的故事。在一场大流行病中，所有人类都变成了ED（勃起功能障碍），但男学生一树成为了唯一一个免于ED的特殊存在。如果被发现，他将会被当作实验动物一辈子……他不想这样！明明必须保守秘密，他却转学到了一个意想不到的地方，一个全是女生的后宫学园！？友好且随和的前辈、欲求不满的女教师、学园的王子、财阀的千金小姐……一树能够吸引任何女性！究竟一树会选择谁……",
+        "poster_path": "/1n1ZP0KHXUSvVxZG63x7aOzmO4M.jpg",
+        "season_number": 1,
+        "vote_average": 4.8
+      }
+    ],
+    "episodes": [
+      {
+        "air_date": "2024-01-08",
+        "crew": [
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "65c18ba3efea7a018451a0be",
+            "adult": false,
+            "gender": 2,
+            "id": 2411671,
+            "known_for_department": "Directing",
+            "name": "神原敏昭",
+            "original_name": "神原敏昭",
+            "popularity": 0.8034,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "65c18b8a9369a201849c4745",
+            "adult": false,
+            "gender": 0,
+            "id": 2649444,
+            "known_for_department": "Writing",
+            "name": "黑崎英代",
+            "original_name": "黒崎エーヨ",
+            "popularity": 0.7359,
+            "profile_path": null
+          },
+          {
+            "job": "Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "65c18bb6c50ad2018789e54d",
+            "adult": false,
+            "gender": 0,
+            "id": 4283105,
+            "known_for_department": "Visual Effects",
+            "name": "龙青三",
+            "original_name": "龍青三",
+            "popularity": 0.2658,
+            "profile_path": null
+          },
+          {
+            "job": "Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "65c18bc2efea7a018451a15a",
+            "adult": false,
+            "gender": 1,
+            "id": 2336354,
+            "known_for_department": "Visual Effects",
+            "name": "片冈惠美子",
+            "original_name": "片岡恵美子",
+            "popularity": 0.7388,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "同情我就挣扎吧",
+        "overview": "转校生园宫一树的秘密是他在世界上唯一不患有“ED”的人。在女性占比超过9成的学园里保守这个秘密是很困难的，某个事件成为导火索，一树被引导者姬乃前辈发现了他的特殊存在。“喂，园宫君。女孩子其实……是色情的哦？”两人独处时，姬乃前辈的眼神变了。她粗鲁地呼吸着，脱下衣服，舔着嘴唇逐渐逼近……",
+        "id": 4978463,
+        "production_code": "",
+        "runtime": 4,
+        "season_number": 1,
+        "still_path": "/ynrWaNlzInItEIf4hwEZ2VY8VLV.jpg",
+        "vote_average": 5.8,
+        "vote_count": 4
+      },
+      {
+        "air_date": "2024-01-15",
+        "crew": [
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "65c18ba3efea7a018451a0be",
+            "adult": false,
+            "gender": 2,
+            "id": 2411671,
+            "known_for_department": "Directing",
+            "name": "神原敏昭",
+            "original_name": "神原敏昭",
+            "popularity": 0.8034,
+            "profile_path": null
+          },
+          {
+            "job": "Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "65c18c089590e30182b198ef",
+            "adult": false,
+            "gender": 1,
+            "id": 1845941,
+            "known_for_department": "Visual Effects",
+            "name": "松下纯子",
+            "original_name": "松下純子",
+            "popularity": 0.5935,
+            "profile_path": null
+          },
+          {
+            "job": "Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "65c18c11abdafc017c5e93d4",
+            "adult": false,
+            "gender": 2,
+            "id": 2815257,
+            "known_for_department": "Visual Effects",
+            "name": "樱井拓郎",
+            "original_name": "櫻井拓郎",
+            "popularity": 0.9339,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "65c18b8a9369a201849c4745",
+            "adult": false,
+            "gender": 0,
+            "id": 2649444,
+            "known_for_department": "Writing",
+            "name": "黑崎英代",
+            "original_name": "黒崎エーヨ",
+            "popularity": 0.7359,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "老师得帮你镇静下来才行",
+        "overview": "女教师·椎名枫超级欲求不满。自从大流行导致全人类患上勃起功能障碍以来，她渴望有个男人能满足自己。而出现在枫面前的是，一位带着坚挺下体的转学生，园宫一树。尽管身为教师，枫却毫不顾忌地向一树示好。“你是唯一的存在，我已经忍耐了很久……所以……”一树被恳求后做出了选择……",
+        "id": 5057466,
+        "production_code": "",
+        "runtime": 4,
+        "season_number": 1,
+        "still_path": "/b7JpSrDi1p7IbneGtvmaSdiAs6B.jpg",
+        "vote_average": 4.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2024-01-22",
+        "crew": [
+          {
+            "job": "Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "65c18c499369a2014a9bea06",
+            "adult": false,
+            "gender": 2,
+            "id": 2398152,
+            "known_for_department": "Visual Effects",
+            "name": "川口弘明",
+            "original_name": "川口弘明",
+            "popularity": 1.6303,
+            "profile_path": null
+          },
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "65c18c3a8e8d3000e5773a37",
+            "adult": true,
+            "gender": 2,
+            "id": 2883956,
+            "known_for_department": "Directing",
+            "name": "黑津口成惠",
+            "original_name": "黒津口成恵",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "65c18b8a9369a201849c4745",
+            "adult": false,
+            "gender": 0,
+            "id": 2649444,
+            "known_for_department": "Writing",
+            "name": "黑崎英代",
+            "original_name": "黒崎エーヨ",
+            "popularity": 0.7359,
+            "profile_path": null
+          },
+          {
+            "job": "Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "65c18c528e8d3000e5773a6a",
+            "adult": false,
+            "gender": 2,
+            "id": 2809661,
+            "known_for_department": "Visual Effects",
+            "name": "西川真人",
+            "original_name": "西川真人",
+            "popularity": 0.8574,
+            "profile_path": null
+          },
+          {
+            "job": "Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "65c18c5b8e8d30017b779ee7",
+            "adult": false,
+            "gender": 1,
+            "id": 3033341,
+            "known_for_department": "Visual Effects",
+            "name": "增喜美和子",
+            "original_name": "増喜美和子",
+            "popularity": 0.5003,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 3,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "我不隐藏了",
+        "overview": "九重杏季讨厌男人。在一个女生为主的学园里，被当作“王子殿下”受到宠爱的杏季看不起失去獠牙的男人们。某天，杏季在学园的男女共用更衣室里发现蜷缩着遮住下体的一树。杏季走近想取笑他的勃起障碍，却看到了不该勃起的那个东西……“看了我的身体就这样了吗……？”像被热情冲昏头的杏季开始用指尖侍奉下体。趁着更衣室变成密室的机会，两人就这样……",
+        "id": 5057467,
+        "production_code": "",
+        "runtime": 4,
+        "season_number": 1,
+        "still_path": "/74OM76AtHKQDvSN5jqRiGIxuIMC.jpg",
+        "vote_average": 7.5,
+        "vote_count": 2
+      },
+      {
+        "air_date": "2024-02-05",
+        "crew": [
+          {
+            "job": "Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "65c18ca4abdafc017c5e96cd",
+            "adult": false,
+            "gender": 2,
+            "id": 2396276,
+            "known_for_department": "Visual Effects",
+            "name": "森悦史",
+            "original_name": "森悦史",
+            "popularity": 1.0421,
+            "profile_path": null
+          },
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "65c18c3a8e8d3000e5773a37",
+            "adult": true,
+            "gender": 2,
+            "id": 2883956,
+            "known_for_department": "Directing",
+            "name": "黑津口成惠",
+            "original_name": "黒津口成恵",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "65c18c9d0929f600c9e3b70c",
+            "adult": false,
+            "gender": 1,
+            "id": 3393885,
+            "known_for_department": "Visual Effects",
+            "name": "池上理惠",
+            "original_name": "池上理恵",
+            "popularity": 0.6496,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "65c18b8a9369a201849c4745",
+            "adult": false,
+            "gender": 0,
+            "id": 2649444,
+            "known_for_department": "Writing",
+            "name": "黑崎英代",
+            "original_name": "黒崎エーヨ",
+            "popularity": 0.7359,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 4,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "寻找未婚夫",
+        "overview": "财阀千金结衣被祖父命令寻找未婚夫。未婚夫的条件是“不是ED的男人”。在空教室里一边看色情书一边为这个难题而苦恼时，转校生园宫一树出现了。两人因为一个偶然的机会摔倒而身体密切接触，结衣的手碰到了一树膨胀的下体。“如果不想引起骚动的话……就脱掉吧。”一树到底是不是真正适合做未婚夫的男人，结衣的测试强行开始了……",
+        "id": 5057469,
+        "production_code": "",
+        "runtime": 4,
+        "season_number": 1,
+        "still_path": "/uxmfiNejU6MX52bAlKE39XZZGim.jpg",
+        "vote_average": 4.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2024-02-12",
+        "crew": [],
+        "episode_number": 5,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "不是约好给我处理了吗",
+        "overview": "在空教室里，一树被结衣逼迫订婚。这时，姬乃朱莉走了进来。察觉到结衣和一树之间透露出的“男女”氛围的朱莉，只带着一树去了洗手间。一进入隔间，朱莉就吻了一树。她让一树坐在马桶上，然后跨坐在他挺立的下体上进行询问。“这是我答应过的吧？你的……性·欲·处·理。”对一树与其他女孩有不正当关系感到嫉妒的朱莉。逐渐混乱的甜蜜呼吸，在短暂的休息时间里一点点流逝着……",
+        "id": 5057954,
+        "production_code": "",
+        "runtime": 4,
+        "season_number": 1,
+        "still_path": "/1zcduAD9Gf4ivEqfj3eBzzk49aM.jpg",
+        "vote_average": 5.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2024-02-19",
+        "crew": [],
+        "episode_number": 6,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "喜欢看书的王子",
+        "overview": "一树在书店悄悄购买了色情书籍，正准备离开时却意外地遇见了杏季。原来杏季也是在购买色情书籍后回家的，一树的下体开始膨胀。杏季注意到这一点，便把一树带到了网咖。“你自己的意志……控制不住了吧？”杏季脱掉衣服只剩内衣，诱惑着一树，一树无法抗拒自己的欲望……",
+        "id": 5057955,
+        "production_code": "",
+        "runtime": 4,
+        "season_number": 1,
+        "still_path": "/1QVM5DzhpEjjHORHszmi1KPQbza.jpg",
+        "vote_average": 6.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2024-03-04",
+        "crew": [],
+        "episode_number": 7,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "在淋浴间3个人",
+        "overview": "为了考察修学旅行的准备工作，学园一行来到了海边。在朱莉和枫去看宿舍的时候，一树却在给杏季和结衣擦防晒霜的时候意外地让自己的下体膨胀起来了。一树撒了个谎说“自己处理不了膨胀的下体”，结果被揭穿，向杏季求原谅。“那么……那个……那个再……”杏季带着贪婪的表情看着一树，看着在淋浴间热闹起来的两人，结衣也不甘示弱……",
+        "id": 5057956,
+        "production_code": "",
+        "runtime": 4,
+        "season_number": 1,
+        "still_path": "/tTq2KEqgunWQTnARBVmry3oYXWc.jpg",
+        "vote_average": 4.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2024-03-04",
+        "crew": [],
+        "episode_number": 8,
+        "episode_type": "finale",
+        "guest_stars": [],
+        "name": "绝对要让你选我",
+        "overview": "园宫一树的秘密是世界上唯一不是“ED”的事实。这个秘密被姬乃朱莉、椎名枫、九重杏季、胡桃泽结衣知道了。朱莉和枫在混浴池里围绕一树争吵。令人惊讶的是，她们开始用猜拳来争夺与一树亲密接触的权利。“那么，我就开动了！”枫脸红地扑向一树，朱莉也不甘示弱地开始责备一树。这些女人无法停止的欲望……由四位夏娃们展开的争夺亚当的战斗，究竟会如何发展……",
+        "id": 5057957,
+        "production_code": "",
+        "runtime": 4,
+        "season_number": 1,
+        "still_path": "/xx1YFblhtFogTF88o3esGkDkZti.jpg",
+        "vote_average": 3.0,
+        "vote_count": 1
+      }
+    ],
+    "keywords_en": [
+      "harem",
+      "school",
+      "based on manga",
+      "ecchi",
+      "anime"
+    ],
+    "keywords": [
+      "harem",
+      "school",
+      "based on manga",
+      "ecchi",
+      "anime"
+    ]
+  },
+  "nfo": {
+    "data": {
+      "title": "挣扎吧，亚当君",
+      "originaltitle": "悶えてよ、アダムくん",
+      "year": 2024,
+      "premiered": "2024-01-08",
+      "plot": "这是一个关于被四十亿夏娃追求的唯一一个亚当的故事。在一场大流行病中，所有人类都变成了ED（勃起功能障碍），但男学生一树成为了唯一一个免于ED的特殊存在。如果被发现，他将会被当作实验动物一辈子……他不想这样！明明必须保守秘密，他却转学到了一个意想不到的地方，一个全是女生的后宫学园！？友好且随和的前辈、欲求不满的女教师、学园的王子、财阀的千金小姐……一树能够吸引任何女性！究竟一树会选择谁……",
+      "tagline": "",
+      "runtime": 4,
+      "rating": 6.773,
+      "votes": 33,
+      "genre": [
+        "动画"
+      ],
+      "country": [
+        "JP"
+      ],
+      "studio": [
+        "studio HōKIBOSHI",
+        "Suiseisha",
+        "WWWave"
+      ],
+      "credits": [
+        "Tatsutaro Murai"
+      ],
+      "director": [],
+      "actor": [
+        {
+          "name": "Hana Kuga",
+          "role": "Akari Himeno (voice)"
+        },
+        {
+          "name": "Shizuka Itoh",
+          "role": "Kaede Shiina (voice)"
+        },
+        {
+          "name": "Mari Kirimura",
+          "role": "Aki Kokonoe (voice)"
+        },
+        {
+          "name": "Kaho Shibuya",
+          "role": "Yui Kurumizawa (voice)"
+        },
+        {
+          "name": "Shinnosuke Tachibana",
+          "role": "Kumazawa (voice)"
+        },
+        {
+          "name": "Harumichi Shito",
+          "role": "Itsuki Sonomiya"
+        }
+      ],
+      "thumb": "poster.jpg",
+      "fanart": "fanart.jpg",
+      "tags": [
+        "harem",
+        "school",
+        "based on manga",
+        "ecchi",
+        "anime"
+      ],
+      "validated": true
+    },
+    "xml": "<?xml version=\"1.0\" ?>\n<tvshow>\n  <title>挣扎吧，亚当君</title>\n  <originaltitle>悶えてよ、アダムくん</originaltitle>\n  <year>2024</year>\n  <premiered>2024-01-08</premiered>\n  <plot><![CDATA[这是一个关于被四十亿夏娃追求的唯一一个亚当的故事。在一场大流行病中，所有人类都变成了ED（勃起功能障碍），但男学生一树成为了唯一一个免于ED的特殊存在。如果被发现，他将会被当作实验动物一辈子……他不想这样！明明必须保守秘密，他却转学到了一个意想不到的地方，一个全是女生的后宫学园！？友好且随和的前辈、欲求不满的女教师、学园的王子、财阀的千金小姐……一树能够吸引任何女性！究竟一树会选择谁……]]></plot>\n  <runtime>4</runtime>\n  <rating>6.773</rating>\n  <votes>33</votes>\n  <tmdbid>241002</tmdbid>\n  <genre>动画</genre>\n  <country>JP</country>\n  <studio>studio HōKIBOSHI</studio>\n  <studio>Suiseisha</studio>\n  <studio>WWWave</studio>\n  <credits>Tatsutaro Murai</credits>\n  <actor>\n    <name>Hana Kuga</name>\n    <role>Akari Himeno (voice)</role>\n  </actor>\n  <actor>\n    <name>Shizuka Itoh</name>\n    <role>Kaede Shiina (voice)</role>\n  </actor>\n  <actor>\n    <name>Mari Kirimura</name>\n    <role>Aki Kokonoe (voice)</role>\n  </actor>\n  <actor>\n    <name>Kaho Shibuya</name>\n    <role>Yui Kurumizawa (voice)</role>\n  </actor>\n  <actor>\n    <name>Shinnosuke Tachibana</name>\n    <role>Kumazawa (voice)</role>\n  </actor>\n  <actor>\n    <name>Harumichi Shito</name>\n    <role>Itsuki Sonomiya</role>\n  </actor>\n  <thumb>poster.jpg</thumb>\n  <fanart>fanart.jpg</fanart>\n  <tag>harem</tag>\n  <tag>school</tag>\n  <tag>based on manga</tag>\n  <tag>ecchi</tag>\n  <tag>anime</tag>\n</tvshow>\n"
+  },
+  "output": {
+    "status": "completed",
+    "files": {
+      "nfo_file": "./output/TV/挣扎吧亚当君 (2024)/tvshow.nfo",
+      "images_dir": "./output/TV/挣扎吧亚当君 (2024)/images",
+      "media_dir": "./output/TV/挣扎吧亚当君 (2024)",
+      "season_1_episode_1": "./output/TV/挣扎吧亚当君 (2024)/Season 01/挣扎吧，亚当君 - S01E01 - 同情我就挣扎吧.nfo",
+      "season_1_episode_2": "./output/TV/挣扎吧亚当君 (2024)/Season 01/挣扎吧，亚当君 - S01E02 - 老师得帮你镇静下来才行.nfo",
+      "season_1_episode_3": "./output/TV/挣扎吧亚当君 (2024)/Season 01/挣扎吧，亚当君 - S01E03 - 我不隐藏了.nfo",
+      "season_1_episode_4": "./output/TV/挣扎吧亚当君 (2024)/Season 01/挣扎吧，亚当君 - S01E04 - 寻找未婚夫.nfo",
+      "season_1_episode_5": "./output/TV/挣扎吧亚当君 (2024)/Season 01/挣扎吧，亚当君 - S01E05 - 不是约好给我处理了吗.nfo",
+      "season_1_episode_6": "./output/TV/挣扎吧亚当君 (2024)/Season 01/挣扎吧，亚当君 - S01E06 - 喜欢看书的王子.nfo",
+      "season_1_episode_7": "./output/TV/挣扎吧亚当君 (2024)/Season 01/挣扎吧，亚当君 - S01E07 - 在淋浴间3个人.nfo",
+      "season_1_episode_8": "./output/TV/挣扎吧亚当君 (2024)/Season 01/挣扎吧，亚当君 - S01E08 - 绝对要让你选我.nfo"
+    }
+  },
+  "errors": [],
+  "end_time": "2025-12-05T11:18:42.077378"
+}

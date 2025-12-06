@@ -1,0 +1,2540 @@
+2025-12-05 23:27:04,765 - MetadataAgent - INFO - Input parameters parsed
+2025-12-05 23:27:04,765 - MetadataAgent - DEBUG - Input data: {
+  "media_type": "tv",
+  "query": "女神宿舍的管理员",
+  "output_dir": "/Volumes/video/Animation/The Animation/女神宿舍的管理员 (2021)",
+  "verbose": false,
+  "quiet": true,
+  "aid_search": true
+}
+2025-12-05 23:27:05,924 - MetadataAgent - INFO - Search completed: 1 results
+2025-12-05 23:27:05,924 - MetadataAgent - DEBUG - Search results: {
+  "page": 1,
+  "results": [
+    {
+      "adult": false,
+      "backdrop_path": "/q9ZWkpeMsKj3A7010KQX8NU5jQd.jpg",
+      "genre_ids": [
+        16,
+        35
+      ],
+      "id": 103962,
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "女神寮の寮母くん。",
+      "overview": "Down-on-his-luck Koushi Nagumo wanders the streets unemployed, homeless and in search of his next meal. His fortunes improve after a chance meeting with a vivacious young woman whose proposition seemingly solves nearly all his problems. Thanks to her, Koushi enters the welcoming halls of a dormitory at a women’s college… only this particular assignment is no stuffy, sleepy affair. The Goddess’ Dormitory is known for housing the college’s most unruly students! If he wants to keep a roof over his head, Koushi must become the “Dormitory Mother” charged with maintaining order and good discipline. But doing his job and keeping his sanity are no small feat with characters as endearingly eccentric and untamable as these!",
+      "popularity": 3.8124,
+      "poster_path": "/xT7qlkEjWBAyScZRp6ElGXccPJG.jpg",
+      "first_air_date": "2021-07-14",
+      "name": "Mother of the Goddess' Dormitory",
+      "vote_average": 6.9,
+      "vote_count": 52
+    }
+  ],
+  "total_pages": 1,
+  "total_results": 1
+}
+2025-12-05 23:27:10,064 - MetadataAgent - INFO - Data fetching completed
+2025-12-05 23:27:10,064 - MetadataAgent - DEBUG - Main data: {
+  "adult": false,
+  "backdrop_path": "/q9ZWkpeMsKj3A7010KQX8NU5jQd.jpg",
+  "created_by": [],
+  "episode_run_time": [
+    24
+  ],
+  "first_air_date": "2021-07-14",
+  "genres": [
+    {
+      "id": 16,
+      "name": "动画"
+    },
+    {
+      "id": 35,
+      "name": "喜剧"
+    }
+  ],
+  "homepage": "https://megamiryou.com",
+  "id": 103962,
+  "in_production": false,
+  "languages": [
+    "ja"
+  ],
+  "last_air_date": "2021-09-15",
+  "last_episode_to_air": {
+    "id": 3073420,
+    "name": "女神宿舍的女神们",
+    "overview": "孝士一大早就在刺骨的寒风中打扫女神宿舍的庭院。亚典娜的编织也快要告一个段落了。就在此时，和基丽耶一起前去购物的孝士居然倒下了。",
+    "vote_average": 0.0,
+    "vote_count": 0,
+    "air_date": "2021-09-15",
+    "episode_number": 10,
+    "episode_type": "finale",
+    "production_code": "",
+    "runtime": 24,
+    "season_number": 1,
+    "show_id": 103962,
+    "still_path": "/pnZBiIbHpKl3fRIM8xxlfeORjLg.jpg"
+  },
+  "name": "女神宿舍的管理员",
+  "next_episode_to_air": null,
+  "networks": [
+    {
+      "id": 173,
+      "logo_path": "/fERjndErEpveJmQZccJbJDi93rj.png",
+      "name": "AT-X",
+      "origin_country": "JP"
+    }
+  ],
+  "number_of_episodes": 10,
+  "number_of_seasons": 1,
+  "origin_country": [
+    "JP"
+  ],
+  "original_language": "ja",
+  "original_name": "女神寮の寮母くん。",
+  "overview": "家里由于一场火灾，再加上不负责任的爸爸，使得年仅12岁的南云孝士在一夜之间就变得无家可归、身无分文且无依无靠。饿倒在路边的他由于一场因缘际会而当上宿舍管理员，然而这间宿舍的房客竟都是女子大学的学生！而且这间宿舍的房客，全都是些异于常人，而且别有隐情的大姐姐！少年宿舍管理员有点色色的奋斗记，就此开幕——",
+  "popularity": 3.8124,
+  "poster_path": "/jIVgHusvAp5xjuocYjf7FJK6LZM.jpg",
+  "production_companies": [
+    {
+      "id": 42519,
+      "logo_path": "/7jRR2EPInUfApPZA1T54cpffphx.png",
+      "name": "asread.",
+      "origin_country": "JP"
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "JP",
+      "name": "Japan"
+    }
+  ],
+  "seasons": [
+    {
+      "air_date": "2021-07-14",
+      "episode_count": 10,
+      "id": 151836,
+      "name": "女神宿舍的管理员",
+      "overview": "房子被烧掉、爸爸失踪、也没有储蓄。初中男生南云孝士在城市中一个人走着倒下了。偶然相遇的女大学生和知米涅儿向他提案，让孝士去她住的大学生宿舍来担任管理员。\n\n在女生宿舍相遇的有，对男性没有耐性的超纯情少女早乙女亚典娜、一害羞就会拳脚相向的武斗派少女战笑基丽耶、喜欢让人COSPLAY的失控型COSER弗蕾、怠惰的运动裤电波少女八月朔日赛勒涅、以及做着诡异实验的疯狂科学家和知米涅儿，全都是特异独行的美少女们。\n\n他将担任管理员和她们一同度过每天，在逐渐认识的过程中加深羁绊。孝士被大姐姐们耍得团团转的日常开始了。",
+      "poster_path": "/qgRclHB3dXbdrANV8gKL58Vp4PZ.jpg",
+      "season_number": 1,
+      "vote_average": 7.3
+    }
+  ],
+  "spoken_languages": [
+    {
+      "english_name": "Japanese",
+      "iso_639_1": "ja",
+      "name": "日本語"
+    }
+  ],
+  "status": "Ended",
+  "tagline": "",
+  "type": "Scripted",
+  "vote_average": 6.9,
+  "vote_count": 52
+}
+2025-12-05 23:27:10,064 - MetadataAgent - DEBUG - Credits data: {
+  "cast": [
+    {
+      "adult": false,
+      "gender": 1,
+      "id": 2946720,
+      "known_for_department": "Acting",
+      "name": "Misuzu Yamada",
+      "original_name": "山田美鈴",
+      "popularity": 0.9485,
+      "profile_path": "/gSSROCvoqaKBWaQP4AyFTOXVl7f.jpg",
+      "character": "Koushi Nagumo (voice)",
+      "credit_id": "600a564c391b9c0041d2f9e5",
+      "order": 0
+    },
+    {
+      "adult": false,
+      "gender": 1,
+      "id": 2946722,
+      "known_for_department": "Acting",
+      "name": "Asaki Fukuyama",
+      "original_name": "福山あさき",
+      "popularity": 0.7868,
+      "profile_path": "/4694dcS9Us5MyO08o8g5lOKQn53.jpg",
+      "character": "Frey (voice)",
+      "credit_id": "600a56c82a210c003f9950b3",
+      "order": 1
+    },
+    {
+      "adult": false,
+      "gender": 1,
+      "id": 2946723,
+      "known_for_department": "Acting",
+      "name": "Hikaru Nanjo",
+      "original_name": "南條ひかる",
+      "popularity": 0.6946,
+      "profile_path": "/nuAu9MzrJFmIrbtp3tt9mRZS0Dq.jpg",
+      "character": "Sutea Khoroya (voice)",
+      "credit_id": "600a5712dd83fa003d8f1168",
+      "order": 2
+    },
+    {
+      "adult": false,
+      "gender": 1,
+      "id": 1563445,
+      "known_for_department": "Acting",
+      "name": "Ayaka Nanase",
+      "original_name": "七瀬彩夏",
+      "popularity": 0.9127,
+      "profile_path": "/9eKNKMFFhbtG74V3OOiVKEgm1ul.jpg",
+      "character": "Atena Saotome (voice)",
+      "credit_id": "600a566add83fa003e8e0e8f",
+      "order": 3
+    },
+    {
+      "adult": false,
+      "gender": 1,
+      "id": 1222054,
+      "known_for_department": "Acting",
+      "name": "Chiaki Takahashi",
+      "original_name": "たかはし智秋",
+      "popularity": 1.3544,
+      "profile_path": "/A0iBTBEYncQ3K9QVQAps0stDjaS.jpg",
+      "character": "Mineru Wachi (voice)",
+      "credit_id": "600a5686d70594003c1d67b3",
+      "order": 4
+    },
+    {
+      "adult": false,
+      "gender": 1,
+      "id": 1860263,
+      "known_for_department": "Acting",
+      "name": "Risako Murai",
+      "original_name": "村井理沙子",
+      "popularity": 0.8186,
+      "profile_path": "/y8alBsN89iKmKEs8gZmCw8slwjK.jpg",
+      "character": "Kiriya Sensho (voice)",
+      "credit_id": "600a56aa4d0e8d003d6fd5db",
+      "order": 5
+    },
+    {
+      "adult": false,
+      "gender": 1,
+      "id": 2629871,
+      "known_for_department": "Acting",
+      "name": "Yuki Yomichi",
+      "original_name": "夜道雪",
+      "popularity": 1.1385,
+      "profile_path": "/ksTCjacSyW1lUFtsCYAPmtfWUSW.jpg",
+      "character": "Serene Hozumi (voice)",
+      "credit_id": "600a56e3d55c3d00406ceb23",
+      "order": 6
+    }
+  ],
+  "crew": [
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 1627340,
+      "known_for_department": "Directing",
+      "name": "Shunsuke Nakashige",
+      "original_name": "中重俊祐",
+      "popularity": 1.0845,
+      "profile_path": "/6HX5nrn8uClBQpgqvtm3V3KzmVb.jpg",
+      "credit_id": "600a573ae04d8a003ec3deed",
+      "department": "Directing",
+      "job": "Series Director"
+    },
+    {
+      "adult": false,
+      "gender": 0,
+      "id": 2946725,
+      "known_for_department": "Writing",
+      "name": "Ikumi Hino",
+      "original_name": "Ikumi Hino",
+      "popularity": 0.0596,
+      "profile_path": null,
+      "credit_id": "600a57902495ab003e0addc2",
+      "department": "Writing",
+      "job": "Comic Book"
+    },
+    {
+      "adult": false,
+      "gender": 1,
+      "id": 2957273,
+      "known_for_department": "Visual Effects",
+      "name": "Maiko Okada",
+      "original_name": "岡田万衣子",
+      "popularity": 1.0938,
+      "profile_path": null,
+      "credit_id": "6014925c0816c7004083dd8c",
+      "department": "Visual Effects",
+      "job": "Character Designer"
+    },
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 1794466,
+      "known_for_department": "Camera",
+      "name": "Kenji Takehara",
+      "original_name": "武原健二",
+      "popularity": 0.8488,
+      "profile_path": null,
+      "credit_id": "60e7dc07a3b5e6005d95a863",
+      "department": "Camera",
+      "job": "Director of Photography"
+    },
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 1301234,
+      "known_for_department": "Editing",
+      "name": "Tomoki Nagasaka",
+      "original_name": "長坂智樹",
+      "popularity": 0.9432,
+      "profile_path": null,
+      "credit_id": "60e7dc29cd2046007e9463b7",
+      "department": "Editing",
+      "job": "Editor"
+    },
+    {
+      "adult": false,
+      "gender": 1,
+      "id": 1821643,
+      "known_for_department": "Sound",
+      "name": "Hidemi Tanaka",
+      "original_name": "田中秀実",
+      "popularity": 0.8181,
+      "profile_path": null,
+      "credit_id": "60e7dc5b83ee67005dead58e",
+      "department": "Sound",
+      "job": "Sound Effects"
+    },
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 2362604,
+      "known_for_department": "Visual Effects",
+      "name": "Naoki Fukutani",
+      "original_name": "福谷直樹",
+      "popularity": 0.8209,
+      "profile_path": null,
+      "credit_id": "60e7dc7ccaaca2005e5a7b4a",
+      "department": "Visual Effects",
+      "job": "Color Designer"
+    },
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 1787321,
+      "known_for_department": "Sound",
+      "name": "Tomoki Kikuya",
+      "original_name": "菊谷知樹",
+      "popularity": 1.6994,
+      "profile_path": "/whhiOgmicUMbSqWJPPKy8R8TTGR.jpg",
+      "credit_id": "61801f9e229ae2002a6197e6",
+      "department": "Sound",
+      "job": "Original Music Composer"
+    },
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 1260810,
+      "known_for_department": "Writing",
+      "name": "Masashi Suzuki",
+      "original_name": "鈴木雅詞",
+      "popularity": 1.4099,
+      "profile_path": null,
+      "credit_id": "61801ffbe7414600438397b7",
+      "department": "Writing",
+      "job": "Series Composition"
+    },
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 3151032,
+      "known_for_department": "Art",
+      "name": "Hiroshi Izumi",
+      "original_name": "泉寛",
+      "popularity": 0.8051,
+      "profile_path": null,
+      "credit_id": "6180201a3faba000421d2516",
+      "department": "Art",
+      "job": "Art Designer"
+    },
+    {
+      "adult": false,
+      "gender": 0,
+      "id": 3477437,
+      "known_for_department": "Visual Effects",
+      "name": "Yu Kadokura",
+      "original_name": "Yu Kadokura",
+      "popularity": 0.0143,
+      "profile_path": null,
+      "credit_id": "623b53c458361b0095b6a01a",
+      "department": "Visual Effects",
+      "job": "Opening/Ending Animation"
+    },
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 1504275,
+      "known_for_department": "Art",
+      "name": "Toshiyuki Tokuda",
+      "original_name": "徳田俊之",
+      "popularity": 0.6587,
+      "profile_path": null,
+      "credit_id": "6266b87df495ee6de5444600",
+      "department": "Art",
+      "job": "Art Direction"
+    },
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 1782560,
+      "known_for_department": "Sound",
+      "name": "Yasushi Nagura",
+      "original_name": "名倉靖",
+      "popularity": 0.8369,
+      "profile_path": null,
+      "credit_id": "6266b88bf794ad004ff12920",
+      "department": "Sound",
+      "job": "Sound Director"
+    },
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 144657,
+      "known_for_department": "Production",
+      "name": "Atsushi Itou",
+      "original_name": "伊藤敦",
+      "popularity": 2.0202,
+      "profile_path": null,
+      "credit_id": "6266b891f794ad004ff1292a",
+      "department": "Production",
+      "job": "Producer"
+    },
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 1564658,
+      "known_for_department": "Production",
+      "name": "Mitsuhiro Ogata",
+      "original_name": "尾形光広",
+      "popularity": 1.7121,
+      "profile_path": null,
+      "credit_id": "6266b8957caa472d77dbb291",
+      "department": "Production",
+      "job": "Producer"
+    },
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 1647646,
+      "known_for_department": "Production",
+      "name": "Noritomo Isogai",
+      "original_name": "礒谷徳知",
+      "popularity": 1.9948,
+      "profile_path": null,
+      "credit_id": "6266b89a75f1ad0f470a5cb9",
+      "department": "Production",
+      "job": "Producer"
+    },
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 3039544,
+      "known_for_department": "Visual Effects",
+      "name": "Hidetsugu Hirayama",
+      "original_name": "平山英嗣",
+      "popularity": 1.1587,
+      "profile_path": null,
+      "credit_id": "6266b8b37fcab3116987ad75",
+      "department": "Costume & Make-Up",
+      "job": "Costume Designer"
+    },
+    {
+      "adult": false,
+      "gender": 1,
+      "id": 3257489,
+      "known_for_department": "Sound",
+      "name": "Chieko Mizutori",
+      "original_name": "水鳥智栄子",
+      "popularity": 1.0929,
+      "profile_path": null,
+      "credit_id": "6266b8df158c850050608563",
+      "department": "Sound",
+      "job": "Music Producer"
+    },
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 3184474,
+      "known_for_department": "Editing",
+      "name": "Takahiro Adachi",
+      "original_name": "Takahiro Adachi",
+      "popularity": 0.0865,
+      "profile_path": null,
+      "credit_id": "6266b92164f71600a4990efc",
+      "department": "Editing",
+      "job": "Online Editor"
+    },
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 3473487,
+      "known_for_department": "Sound",
+      "name": "Yoichi Shiratori",
+      "original_name": "Yoichi Shiratori",
+      "popularity": 0.0071,
+      "profile_path": null,
+      "credit_id": "6266b98e5ab81a009a109ab0",
+      "department": "Sound",
+      "job": "Sound Mixer"
+    },
+    {
+      "adult": false,
+      "gender": 1,
+      "id": 3427687,
+      "known_for_department": "Crew",
+      "name": "Tomomi Ishihara",
+      "original_name": "石原智美",
+      "popularity": 0.866,
+      "profile_path": null,
+      "credit_id": "6266b9a75b4fed00506d57cc",
+      "department": "Crew",
+      "job": "Special Effects"
+    }
+  ],
+  "id": 103962
+}
+2025-12-05 23:27:10,064 - MetadataAgent - DEBUG - Keywords data: {
+  "id": 103962,
+  "results": [
+    {
+      "name": "harem",
+      "id": 9194
+    },
+    {
+      "name": "romance",
+      "id": 9840
+    },
+    {
+      "name": "slice of life",
+      "id": 9914
+    },
+    {
+      "name": "based on manga",
+      "id": 13141
+    },
+    {
+      "name": "ecchi",
+      "id": 195669
+    },
+    {
+      "name": "anime",
+      "id": 210024
+    }
+  ]
+}
+2025-12-05 23:27:10,065 - MetadataAgent - DEBUG - Episodes data: [
+  {
+    "air_date": "2021-07-14",
+    "crew": [
+      {
+        "job": "Online Editor",
+        "department": "Editing",
+        "credit_id": "6266b92d12aabc00a6dd91f9",
+        "adult": false,
+        "gender": 2,
+        "id": 3498274,
+        "known_for_department": "Editing",
+        "name": "宮井堂行",
+        "original_name": "宮井堂行",
+        "popularity": 0.5868,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 1,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "孝士，成为宿舍管理员",
+    "overview": "房子因为火灾被烧掉，一个人徘徊在都会的孤傲战士，南云孝士12歳。被偶然相遇的米涅儿所救后，他被带到女子大学的宿舍。正想着要先洗个澡放松的时候……",
+    "id": 2283810,
+    "production_code": "",
+    "runtime": 24,
+    "season_number": 1,
+    "still_path": "/sr7VRU4xUF5h15xBJe0HVBtIvBw.jpg",
+    "vote_average": 8.0,
+    "vote_count": 1
+  },
+  {
+    "air_date": "2021-07-21",
+    "crew": [
+      {
+        "job": "Online Editor",
+        "department": "Editing",
+        "credit_id": "6266b938001bbd005197de3c",
+        "adult": false,
+        "gender": 2,
+        "id": 3498272,
+        "known_for_department": "Editing",
+        "name": "高桥和基",
+        "original_name": "髙橋和基",
+        "popularity": 0.7627,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 2,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "基丽耶和塞勒涅是问题人物／雅典娜觉醒",
+    "overview": "女神宿舍的居民温暖地接纳了孝士。孝士被分配到一楼的管理员居室，终于可以在温暖的床上就寝。但稳的时间并没有持续多久，因为天花板突然出现女性的裸足。",
+    "id": 3068482,
+    "production_code": "",
+    "runtime": 24,
+    "season_number": 1,
+    "still_path": "/9zsPEHuMmAmiWp9ZLrVmdSxEpRe.jpg",
+    "vote_average": 7.0,
+    "vote_count": 1
+  },
+  {
+    "air_date": "2021-07-28",
+    "crew": [
+      {
+        "job": "Online Editor",
+        "department": "Editing",
+        "credit_id": "6266b938001bbd005197de3c",
+        "adult": false,
+        "gender": 2,
+        "id": 3498272,
+        "known_for_department": "Editing",
+        "name": "高桥和基",
+        "original_name": "髙橋和基",
+        "popularity": 0.7627,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 3,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "孝士陷入烦恼／孝士重新上学",
+    "overview": "孝士来到宿舍经过了两个礼拜，他仍一直在意着没办法去学校的现况。女神宿舍的居民们在此时为了要孝士叫他们姐姐，开始以各自的方式逼近而来。",
+    "id": 3068483,
+    "production_code": "",
+    "runtime": 24,
+    "season_number": 1,
+    "still_path": "/yctrGyDl0QILxOrJjZD62qZEeDR.jpg",
+    "vote_average": 7.0,
+    "vote_count": 1
+  },
+  {
+    "air_date": "2021-08-04",
+    "crew": [
+      {
+        "job": "Online Editor",
+        "department": "Editing",
+        "credit_id": "6266b92d12aabc00a6dd91f9",
+        "adult": false,
+        "gender": 2,
+        "id": 3498274,
+        "known_for_department": "Editing",
+        "name": "宮井堂行",
+        "original_name": "宮井堂行",
+        "popularity": 0.5868,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 4,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "青梅竹马来到宿舍／孝士潜入女子大学",
+    "overview": "亚典娜回到宿舍之后，发现孝士的同学兼青梅竹马香炉野斯提雅在客厅。斯提雅是来确认女神宿舍是否值得信任。亚典娜等住宿生被青梅竹马角色耍得团团转。",
+    "id": 3068484,
+    "production_code": "",
+    "runtime": 24,
+    "season_number": 1,
+    "still_path": "/a1h0ICj0DdNDrPjKblYU1DuoKeE.jpg",
+    "vote_average": 8.0,
+    "vote_count": 1
+  },
+  {
+    "air_date": "2021-08-11",
+    "crew": [
+      {
+        "job": "Online Editor",
+        "department": "Editing",
+        "credit_id": "6266b92d12aabc00a6dd91f9",
+        "adult": false,
+        "gender": 2,
+        "id": 3498274,
+        "known_for_department": "Editing",
+        "name": "宮井堂行",
+        "original_name": "宮井堂行",
+        "popularity": 0.5868,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 5,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "赛勒涅足不出户／女神宿舍出发去旅行",
+    "overview": "亚典娜提案大家一起去旅行，但赛勒涅却把自己关进房里。孝士为了了解详情“入侵”了赛勒涅的居室。才知道赛勒涅没有去过学校附近外的地方。",
+    "id": 3068485,
+    "production_code": "",
+    "runtime": 24,
+    "season_number": 1,
+    "still_path": "/fFWSc3MOgZYlF7MCbDbWGds2DAe.jpg",
+    "vote_average": 7.0,
+    "vote_count": 1
+  },
+  {
+    "air_date": "2021-08-18",
+    "crew": [
+      {
+        "job": "Online Editor",
+        "department": "Editing",
+        "credit_id": "6266b92d12aabc00a6dd91f9",
+        "adult": false,
+        "gender": 2,
+        "id": 3498274,
+        "known_for_department": "Editing",
+        "name": "宮井堂行",
+        "original_name": "宮井堂行",
+        "popularity": 0.5868,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 6,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "斯提雅对海有所思／孝士COSPLAY出道",
+    "overview": "亚典娜一行人来到海边，在大家嬉闹的同时，斯提雅却独自一人游着泳。因为她对孝士一直盯着着亚典娜的泳装看感到忌妒。但情况突然变得很奇怪，斯提雅与其说是游泳，看起来到有点像溺水。",
+    "id": 3068486,
+    "production_code": "",
+    "runtime": 24,
+    "season_number": 1,
+    "still_path": "/9b9ADJRfFGbEmLDoj3IPhGBUa9H.jpg",
+    "vote_average": 6.0,
+    "vote_count": 1
+  },
+  {
+    "air_date": "2021-08-25",
+    "crew": [
+      {
+        "job": "Online Editor",
+        "department": "Editing",
+        "credit_id": "6266b92d12aabc00a6dd91f9",
+        "adult": false,
+        "gender": 2,
+        "id": 3498274,
+        "known_for_department": "Editing",
+        "name": "宮井堂行",
+        "original_name": "宮井堂行",
+        "popularity": 0.5868,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 7,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "星间女子大学学园祭",
+    "overview": "到了校庆的季节，孝士和斯提雅来到星间女子大学的校庆。芙蕾来迎接他们，并带他们到在某个奇怪地方等待着的米涅儿面前。米涅儿像两人推荐了不妙的药物。",
+    "id": 3073417,
+    "production_code": "",
+    "runtime": 24,
+    "season_number": 1,
+    "still_path": "/uFq7uZswrbcm1h3Ifxa8EecaN4V.jpg",
+    "vote_average": 8.0,
+    "vote_count": 1
+  },
+  {
+    "air_date": "2021-09-01",
+    "crew": [
+      {
+        "job": "Online Editor",
+        "department": "Editing",
+        "credit_id": "6266b92d12aabc00a6dd91f9",
+        "adult": false,
+        "gender": 2,
+        "id": 3498274,
+        "known_for_department": "Editing",
+        "name": "宮井堂行",
+        "original_name": "宮井堂行",
+        "popularity": 0.5868,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 8,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "基丽耶的圣诞愿望",
+    "overview": "基丽耶露出了愁眉苦脸的表情，原来是她得一个人准备老家道场每年举办的圣诞派对。担心基丽耶的亚典娜和孝士决定和她出门，帮她一起买东西。",
+    "id": 3073418,
+    "production_code": "",
+    "runtime": 24,
+    "season_number": 1,
+    "still_path": "/6wv7TSxWl52zy8Q7V1UlftfB5lh.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2021-09-08",
+    "crew": [
+      {
+        "job": "Online Editor",
+        "department": "Editing",
+        "credit_id": "6266b92d12aabc00a6dd91f9",
+        "adult": false,
+        "gender": 2,
+        "id": 3498274,
+        "known_for_department": "Editing",
+        "name": "宮井堂行",
+        "original_name": "宮井堂行",
+        "popularity": 0.5868,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 9,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "斯提亚于被炉中有所思／孝士挑战大扫除",
+    "overview": "女神宿舍拿出了暖桌，孝士十分憧憬暖桌并感到非常开心。马上就和大家一起进去取暖，本应是这样……芙蕾和米涅儿却开始用脚对孝士恶作剧。",
+    "id": 3073419,
+    "production_code": "",
+    "runtime": 24,
+    "season_number": 1,
+    "still_path": "/vT1M3TAkeX57U9qurHOcZ3ckduK.jpg",
+    "vote_average": 7.0,
+    "vote_count": 1
+  },
+  {
+    "air_date": "2021-09-15",
+    "crew": [
+      {
+        "job": "Online Editor",
+        "department": "Editing",
+        "credit_id": "6266b92d12aabc00a6dd91f9",
+        "adult": false,
+        "gender": 2,
+        "id": 3498274,
+        "known_for_department": "Editing",
+        "name": "宮井堂行",
+        "original_name": "宮井堂行",
+        "popularity": 0.5868,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 10,
+    "episode_type": "finale",
+    "guest_stars": [],
+    "name": "女神宿舍的女神们",
+    "overview": "孝士一大早就在刺骨的寒风中打扫女神宿舍的庭院。亚典娜的编织也快要告一个段落了。就在此时，和基丽耶一起前去购物的孝士居然倒下了。",
+    "id": 3073420,
+    "production_code": "",
+    "runtime": 24,
+    "season_number": 1,
+    "still_path": "/pnZBiIbHpKl3fRIM8xxlfeORjLg.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  }
+]
+2025-12-05 23:27:10,065 - MetadataAgent - DEBUG - Seasons data: [
+  {
+    "_id": "5ecc792035818f0020c02088",
+    "air_date": "2021-07-14",
+    "episodes": [
+      {
+        "air_date": "2021-07-14",
+        "episode_number": 1,
+        "episode_type": "standard",
+        "id": 2283810,
+        "name": "孝士，成为宿舍管理员",
+        "overview": "房子因为火灾被烧掉，一个人徘徊在都会的孤傲战士，南云孝士12歳。被偶然相遇的米涅儿所救后，他被带到女子大学的宿舍。正想着要先洗个澡放松的时候……",
+        "production_code": "",
+        "runtime": 24,
+        "season_number": 1,
+        "show_id": 103962,
+        "still_path": "/sr7VRU4xUF5h15xBJe0HVBtIvBw.jpg",
+        "vote_average": 8.0,
+        "vote_count": 1,
+        "crew": [
+          {
+            "job": "Online Editor",
+            "department": "Editing",
+            "credit_id": "6266b92d12aabc00a6dd91f9",
+            "adult": false,
+            "gender": 2,
+            "id": 3498274,
+            "known_for_department": "Editing",
+            "name": "宮井堂行",
+            "original_name": "宮井堂行",
+            "popularity": 0.5868,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2021-07-21",
+        "episode_number": 2,
+        "episode_type": "standard",
+        "id": 3068482,
+        "name": "基丽耶和塞勒涅是问题人物／雅典娜觉醒",
+        "overview": "女神宿舍的居民温暖地接纳了孝士。孝士被分配到一楼的管理员居室，终于可以在温暖的床上就寝。但稳的时间并没有持续多久，因为天花板突然出现女性的裸足。",
+        "production_code": "",
+        "runtime": 24,
+        "season_number": 1,
+        "show_id": 103962,
+        "still_path": "/9zsPEHuMmAmiWp9ZLrVmdSxEpRe.jpg",
+        "vote_average": 7.0,
+        "vote_count": 1,
+        "crew": [
+          {
+            "job": "Online Editor",
+            "department": "Editing",
+            "credit_id": "6266b938001bbd005197de3c",
+            "adult": false,
+            "gender": 2,
+            "id": 3498272,
+            "known_for_department": "Editing",
+            "name": "高桥和基",
+            "original_name": "髙橋和基",
+            "popularity": 0.7627,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2021-07-28",
+        "episode_number": 3,
+        "episode_type": "standard",
+        "id": 3068483,
+        "name": "孝士陷入烦恼／孝士重新上学",
+        "overview": "孝士来到宿舍经过了两个礼拜，他仍一直在意着没办法去学校的现况。女神宿舍的居民们在此时为了要孝士叫他们姐姐，开始以各自的方式逼近而来。",
+        "production_code": "",
+        "runtime": 24,
+        "season_number": 1,
+        "show_id": 103962,
+        "still_path": "/yctrGyDl0QILxOrJjZD62qZEeDR.jpg",
+        "vote_average": 7.0,
+        "vote_count": 1,
+        "crew": [
+          {
+            "job": "Online Editor",
+            "department": "Editing",
+            "credit_id": "6266b938001bbd005197de3c",
+            "adult": false,
+            "gender": 2,
+            "id": 3498272,
+            "known_for_department": "Editing",
+            "name": "高桥和基",
+            "original_name": "髙橋和基",
+            "popularity": 0.7627,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2021-08-04",
+        "episode_number": 4,
+        "episode_type": "standard",
+        "id": 3068484,
+        "name": "青梅竹马来到宿舍／孝士潜入女子大学",
+        "overview": "亚典娜回到宿舍之后，发现孝士的同学兼青梅竹马香炉野斯提雅在客厅。斯提雅是来确认女神宿舍是否值得信任。亚典娜等住宿生被青梅竹马角色耍得团团转。",
+        "production_code": "",
+        "runtime": 24,
+        "season_number": 1,
+        "show_id": 103962,
+        "still_path": "/a1h0ICj0DdNDrPjKblYU1DuoKeE.jpg",
+        "vote_average": 8.0,
+        "vote_count": 1,
+        "crew": [
+          {
+            "job": "Online Editor",
+            "department": "Editing",
+            "credit_id": "6266b92d12aabc00a6dd91f9",
+            "adult": false,
+            "gender": 2,
+            "id": 3498274,
+            "known_for_department": "Editing",
+            "name": "宮井堂行",
+            "original_name": "宮井堂行",
+            "popularity": 0.5868,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2021-08-11",
+        "episode_number": 5,
+        "episode_type": "standard",
+        "id": 3068485,
+        "name": "赛勒涅足不出户／女神宿舍出发去旅行",
+        "overview": "亚典娜提案大家一起去旅行，但赛勒涅却把自己关进房里。孝士为了了解详情“入侵”了赛勒涅的居室。才知道赛勒涅没有去过学校附近外的地方。",
+        "production_code": "",
+        "runtime": 24,
+        "season_number": 1,
+        "show_id": 103962,
+        "still_path": "/fFWSc3MOgZYlF7MCbDbWGds2DAe.jpg",
+        "vote_average": 7.0,
+        "vote_count": 1,
+        "crew": [
+          {
+            "job": "Online Editor",
+            "department": "Editing",
+            "credit_id": "6266b92d12aabc00a6dd91f9",
+            "adult": false,
+            "gender": 2,
+            "id": 3498274,
+            "known_for_department": "Editing",
+            "name": "宮井堂行",
+            "original_name": "宮井堂行",
+            "popularity": 0.5868,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2021-08-18",
+        "episode_number": 6,
+        "episode_type": "standard",
+        "id": 3068486,
+        "name": "斯提雅对海有所思／孝士COSPLAY出道",
+        "overview": "亚典娜一行人来到海边，在大家嬉闹的同时，斯提雅却独自一人游着泳。因为她对孝士一直盯着着亚典娜的泳装看感到忌妒。但情况突然变得很奇怪，斯提雅与其说是游泳，看起来到有点像溺水。",
+        "production_code": "",
+        "runtime": 24,
+        "season_number": 1,
+        "show_id": 103962,
+        "still_path": "/9b9ADJRfFGbEmLDoj3IPhGBUa9H.jpg",
+        "vote_average": 6.0,
+        "vote_count": 1,
+        "crew": [
+          {
+            "job": "Online Editor",
+            "department": "Editing",
+            "credit_id": "6266b92d12aabc00a6dd91f9",
+            "adult": false,
+            "gender": 2,
+            "id": 3498274,
+            "known_for_department": "Editing",
+            "name": "宮井堂行",
+            "original_name": "宮井堂行",
+            "popularity": 0.5868,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2021-08-25",
+        "episode_number": 7,
+        "episode_type": "standard",
+        "id": 3073417,
+        "name": "星间女子大学学园祭",
+        "overview": "到了校庆的季节，孝士和斯提雅来到星间女子大学的校庆。芙蕾来迎接他们，并带他们到在某个奇怪地方等待着的米涅儿面前。米涅儿像两人推荐了不妙的药物。",
+        "production_code": "",
+        "runtime": 24,
+        "season_number": 1,
+        "show_id": 103962,
+        "still_path": "/uFq7uZswrbcm1h3Ifxa8EecaN4V.jpg",
+        "vote_average": 8.0,
+        "vote_count": 1,
+        "crew": [
+          {
+            "job": "Online Editor",
+            "department": "Editing",
+            "credit_id": "6266b92d12aabc00a6dd91f9",
+            "adult": false,
+            "gender": 2,
+            "id": 3498274,
+            "known_for_department": "Editing",
+            "name": "宮井堂行",
+            "original_name": "宮井堂行",
+            "popularity": 0.5868,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2021-09-01",
+        "episode_number": 8,
+        "episode_type": "standard",
+        "id": 3073418,
+        "name": "基丽耶的圣诞愿望",
+        "overview": "基丽耶露出了愁眉苦脸的表情，原来是她得一个人准备老家道场每年举办的圣诞派对。担心基丽耶的亚典娜和孝士决定和她出门，帮她一起买东西。",
+        "production_code": "",
+        "runtime": 24,
+        "season_number": 1,
+        "show_id": 103962,
+        "still_path": "/6wv7TSxWl52zy8Q7V1UlftfB5lh.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [
+          {
+            "job": "Online Editor",
+            "department": "Editing",
+            "credit_id": "6266b92d12aabc00a6dd91f9",
+            "adult": false,
+            "gender": 2,
+            "id": 3498274,
+            "known_for_department": "Editing",
+            "name": "宮井堂行",
+            "original_name": "宮井堂行",
+            "popularity": 0.5868,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2021-09-08",
+        "episode_number": 9,
+        "episode_type": "standard",
+        "id": 3073419,
+        "name": "斯提亚于被炉中有所思／孝士挑战大扫除",
+        "overview": "女神宿舍拿出了暖桌，孝士十分憧憬暖桌并感到非常开心。马上就和大家一起进去取暖，本应是这样……芙蕾和米涅儿却开始用脚对孝士恶作剧。",
+        "production_code": "",
+        "runtime": 24,
+        "season_number": 1,
+        "show_id": 103962,
+        "still_path": "/vT1M3TAkeX57U9qurHOcZ3ckduK.jpg",
+        "vote_average": 7.0,
+        "vote_count": 1,
+        "crew": [
+          {
+            "job": "Online Editor",
+            "department": "Editing",
+            "credit_id": "6266b92d12aabc00a6dd91f9",
+            "adult": false,
+            "gender": 2,
+            "id": 3498274,
+            "known_for_department": "Editing",
+            "name": "宮井堂行",
+            "original_name": "宮井堂行",
+            "popularity": 0.5868,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2021-09-15",
+        "episode_number": 10,
+        "episode_type": "finale",
+        "id": 3073420,
+        "name": "女神宿舍的女神们",
+        "overview": "孝士一大早就在刺骨的寒风中打扫女神宿舍的庭院。亚典娜的编织也快要告一个段落了。就在此时，和基丽耶一起前去购物的孝士居然倒下了。",
+        "production_code": "",
+        "runtime": 24,
+        "season_number": 1,
+        "show_id": 103962,
+        "still_path": "/pnZBiIbHpKl3fRIM8xxlfeORjLg.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [
+          {
+            "job": "Online Editor",
+            "department": "Editing",
+            "credit_id": "6266b92d12aabc00a6dd91f9",
+            "adult": false,
+            "gender": 2,
+            "id": 3498274,
+            "known_for_department": "Editing",
+            "name": "宮井堂行",
+            "original_name": "宮井堂行",
+            "popularity": 0.5868,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": []
+      }
+    ],
+    "name": "女神宿舍的管理员",
+    "networks": [
+      {
+        "id": 173,
+        "logo_path": "/fERjndErEpveJmQZccJbJDi93rj.png",
+        "name": "AT-X",
+        "origin_country": "JP"
+      }
+    ],
+    "overview": "房子被烧掉、爸爸失踪、也没有储蓄。初中男生南云孝士在城市中一个人走着倒下了。偶然相遇的女大学生和知米涅儿向他提案，让孝士去她住的大学生宿舍来担任管理员。\n\n在女生宿舍相遇的有，对男性没有耐性的超纯情少女早乙女亚典娜、一害羞就会拳脚相向的武斗派少女战笑基丽耶、喜欢让人COSPLAY的失控型COSER弗蕾、怠惰的运动裤电波少女八月朔日赛勒涅、以及做着诡异实验的疯狂科学家和知米涅儿，全都是特异独行的美少女们。\n\n他将担任管理员和她们一同度过每天，在逐渐认识的过程中加深羁绊。孝士被大姐姐们耍得团团转的日常开始了。",
+    "id": 151836,
+    "poster_path": "/qgRclHB3dXbdrANV8gKL58Vp4PZ.jpg",
+    "season_number": 1,
+    "vote_average": 7.3
+  }
+]
+2025-12-05 23:27:10,066 - MetadataAgent - INFO - Data normalization completed
+2025-12-05 23:27:10,066 - MetadataAgent - DEBUG - Normalized data: {
+  "media_type": "tv",
+  "tmdb_id": 103962,
+  "title": "女神宿舍的管理员",
+  "original_title": "女神寮の寮母くん。",
+  "year": 2021,
+  "plot": "家里由于一场火灾，再加上不负责任的爸爸，使得年仅12岁的南云孝士在一夜之间就变得无家可归、身无分文且无依无靠。饿倒在路边的他由于一场因缘际会而当上宿舍管理员，然而这间宿舍的房客竟都是女子大学的学生！而且这间宿舍的房客，全都是些异于常人，而且别有隐情的大姐姐！少年宿舍管理员有点色色的奋斗记，就此开幕——",
+  "tagline": "",
+  "runtime": 24,
+  "release_date": "2021-07-14",
+  "rating": 6.9,
+  "rating_count": 52,
+  "genres": [
+    "动画",
+    "喜剧"
+  ],
+  "countries": [
+    "JP"
+  ],
+  "languages": [
+    "ja"
+  ],
+  "studios": [
+    "asread."
+  ],
+  "networks": [
+    "AT-X"
+  ],
+  "network": "AT-X",
+  "status": "Ended",
+  "homepage": "https://megamiryou.com",
+  "cast": [
+    {
+      "name_en": "Misuzu Yamada",
+      "name_zh": null,
+      "role": "Koushi Nagumo (voice)",
+      "original_name": "山田美鈴",
+      "profile_path": "/gSSROCvoqaKBWaQP4AyFTOXVl7f.jpg",
+      "popularity": 0.9485
+    },
+    {
+      "name_en": "Asaki Fukuyama",
+      "name_zh": null,
+      "role": "Frey (voice)",
+      "original_name": "福山あさき",
+      "profile_path": "/4694dcS9Us5MyO08o8g5lOKQn53.jpg",
+      "popularity": 0.7868
+    },
+    {
+      "name_en": "Hikaru Nanjo",
+      "name_zh": null,
+      "role": "Sutea Khoroya (voice)",
+      "original_name": "南條ひかる",
+      "profile_path": "/nuAu9MzrJFmIrbtp3tt9mRZS0Dq.jpg",
+      "popularity": 0.6946
+    },
+    {
+      "name_en": "Ayaka Nanase",
+      "name_zh": null,
+      "role": "Atena Saotome (voice)",
+      "original_name": "七瀬彩夏",
+      "profile_path": "/9eKNKMFFhbtG74V3OOiVKEgm1ul.jpg",
+      "popularity": 0.9127
+    },
+    {
+      "name_en": "Chiaki Takahashi",
+      "name_zh": null,
+      "role": "Mineru Wachi (voice)",
+      "original_name": "たかはし智秋",
+      "profile_path": "/A0iBTBEYncQ3K9QVQAps0stDjaS.jpg",
+      "popularity": 1.3544
+    },
+    {
+      "name_en": "Risako Murai",
+      "name_zh": null,
+      "role": "Kiriya Sensho (voice)",
+      "original_name": "村井理沙子",
+      "profile_path": "/y8alBsN89iKmKEs8gZmCw8slwjK.jpg",
+      "popularity": 0.8186
+    },
+    {
+      "name_en": "Yuki Yomichi",
+      "name_zh": null,
+      "role": "Serene Hozumi (voice)",
+      "original_name": "夜道雪",
+      "profile_path": "/ksTCjacSyW1lUFtsCYAPmtfWUSW.jpg",
+      "popularity": 1.1385
+    }
+  ],
+  "directors": [
+    "Shunsuke Nakashige"
+  ],
+  "writers": [
+    "Ikumi Hino",
+    "Masashi Suzuki"
+  ],
+  "images": {},
+  "seasons": [
+    {
+      "air_date": "2021-07-14",
+      "episode_count": 10,
+      "id": 151836,
+      "name": "女神宿舍的管理员",
+      "overview": "房子被烧掉、爸爸失踪、也没有储蓄。初中男生南云孝士在城市中一个人走着倒下了。偶然相遇的女大学生和知米涅儿向他提案，让孝士去她住的大学生宿舍来担任管理员。\n\n在女生宿舍相遇的有，对男性没有耐性的超纯情少女早乙女亚典娜、一害羞就会拳脚相向的武斗派少女战笑基丽耶、喜欢让人COSPLAY的失控型COSER弗蕾、怠惰的运动裤电波少女八月朔日赛勒涅、以及做着诡异实验的疯狂科学家和知米涅儿，全都是特异独行的美少女们。\n\n他将担任管理员和她们一同度过每天，在逐渐认识的过程中加深羁绊。孝士被大姐姐们耍得团团转的日常开始了。",
+      "poster_path": "/qgRclHB3dXbdrANV8gKL58Vp4PZ.jpg",
+      "season_number": 1,
+      "vote_average": 7.3
+    }
+  ],
+  "episodes": [
+    {
+      "air_date": "2021-07-14",
+      "crew": [
+        {
+          "job": "Online Editor",
+          "department": "Editing",
+          "credit_id": "6266b92d12aabc00a6dd91f9",
+          "adult": false,
+          "gender": 2,
+          "id": 3498274,
+          "known_for_department": "Editing",
+          "name": "宮井堂行",
+          "original_name": "宮井堂行",
+          "popularity": 0.5868,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 1,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "孝士，成为宿舍管理员",
+      "overview": "房子因为火灾被烧掉，一个人徘徊在都会的孤傲战士，南云孝士12歳。被偶然相遇的米涅儿所救后，他被带到女子大学的宿舍。正想着要先洗个澡放松的时候……",
+      "id": 2283810,
+      "production_code": "",
+      "runtime": 24,
+      "season_number": 1,
+      "still_path": "/sr7VRU4xUF5h15xBJe0HVBtIvBw.jpg",
+      "vote_average": 8.0,
+      "vote_count": 1
+    },
+    {
+      "air_date": "2021-07-21",
+      "crew": [
+        {
+          "job": "Online Editor",
+          "department": "Editing",
+          "credit_id": "6266b938001bbd005197de3c",
+          "adult": false,
+          "gender": 2,
+          "id": 3498272,
+          "known_for_department": "Editing",
+          "name": "高桥和基",
+          "original_name": "髙橋和基",
+          "popularity": 0.7627,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 2,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "基丽耶和塞勒涅是问题人物／雅典娜觉醒",
+      "overview": "女神宿舍的居民温暖地接纳了孝士。孝士被分配到一楼的管理员居室，终于可以在温暖的床上就寝。但稳的时间并没有持续多久，因为天花板突然出现女性的裸足。",
+      "id": 3068482,
+      "production_code": "",
+      "runtime": 24,
+      "season_number": 1,
+      "still_path": "/9zsPEHuMmAmiWp9ZLrVmdSxEpRe.jpg",
+      "vote_average": 7.0,
+      "vote_count": 1
+    },
+    {
+      "air_date": "2021-07-28",
+      "crew": [
+        {
+          "job": "Online Editor",
+          "department": "Editing",
+          "credit_id": "6266b938001bbd005197de3c",
+          "adult": false,
+          "gender": 2,
+          "id": 3498272,
+          "known_for_department": "Editing",
+          "name": "高桥和基",
+          "original_name": "髙橋和基",
+          "popularity": 0.7627,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 3,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "孝士陷入烦恼／孝士重新上学",
+      "overview": "孝士来到宿舍经过了两个礼拜，他仍一直在意着没办法去学校的现况。女神宿舍的居民们在此时为了要孝士叫他们姐姐，开始以各自的方式逼近而来。",
+      "id": 3068483,
+      "production_code": "",
+      "runtime": 24,
+      "season_number": 1,
+      "still_path": "/yctrGyDl0QILxOrJjZD62qZEeDR.jpg",
+      "vote_average": 7.0,
+      "vote_count": 1
+    },
+    {
+      "air_date": "2021-08-04",
+      "crew": [
+        {
+          "job": "Online Editor",
+          "department": "Editing",
+          "credit_id": "6266b92d12aabc00a6dd91f9",
+          "adult": false,
+          "gender": 2,
+          "id": 3498274,
+          "known_for_department": "Editing",
+          "name": "宮井堂行",
+          "original_name": "宮井堂行",
+          "popularity": 0.5868,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 4,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "青梅竹马来到宿舍／孝士潜入女子大学",
+      "overview": "亚典娜回到宿舍之后，发现孝士的同学兼青梅竹马香炉野斯提雅在客厅。斯提雅是来确认女神宿舍是否值得信任。亚典娜等住宿生被青梅竹马角色耍得团团转。",
+      "id": 3068484,
+      "production_code": "",
+      "runtime": 24,
+      "season_number": 1,
+      "still_path": "/a1h0ICj0DdNDrPjKblYU1DuoKeE.jpg",
+      "vote_average": 8.0,
+      "vote_count": 1
+    },
+    {
+      "air_date": "2021-08-11",
+      "crew": [
+        {
+          "job": "Online Editor",
+          "department": "Editing",
+          "credit_id": "6266b92d12aabc00a6dd91f9",
+          "adult": false,
+          "gender": 2,
+          "id": 3498274,
+          "known_for_department": "Editing",
+          "name": "宮井堂行",
+          "original_name": "宮井堂行",
+          "popularity": 0.5868,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 5,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "赛勒涅足不出户／女神宿舍出发去旅行",
+      "overview": "亚典娜提案大家一起去旅行，但赛勒涅却把自己关进房里。孝士为了了解详情“入侵”了赛勒涅的居室。才知道赛勒涅没有去过学校附近外的地方。",
+      "id": 3068485,
+      "production_code": "",
+      "runtime": 24,
+      "season_number": 1,
+      "still_path": "/fFWSc3MOgZYlF7MCbDbWGds2DAe.jpg",
+      "vote_average": 7.0,
+      "vote_count": 1
+    },
+    {
+      "air_date": "2021-08-18",
+      "crew": [
+        {
+          "job": "Online Editor",
+          "department": "Editing",
+          "credit_id": "6266b92d12aabc00a6dd91f9",
+          "adult": false,
+          "gender": 2,
+          "id": 3498274,
+          "known_for_department": "Editing",
+          "name": "宮井堂行",
+          "original_name": "宮井堂行",
+          "popularity": 0.5868,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 6,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "斯提雅对海有所思／孝士COSPLAY出道",
+      "overview": "亚典娜一行人来到海边，在大家嬉闹的同时，斯提雅却独自一人游着泳。因为她对孝士一直盯着着亚典娜的泳装看感到忌妒。但情况突然变得很奇怪，斯提雅与其说是游泳，看起来到有点像溺水。",
+      "id": 3068486,
+      "production_code": "",
+      "runtime": 24,
+      "season_number": 1,
+      "still_path": "/9b9ADJRfFGbEmLDoj3IPhGBUa9H.jpg",
+      "vote_average": 6.0,
+      "vote_count": 1
+    },
+    {
+      "air_date": "2021-08-25",
+      "crew": [
+        {
+          "job": "Online Editor",
+          "department": "Editing",
+          "credit_id": "6266b92d12aabc00a6dd91f9",
+          "adult": false,
+          "gender": 2,
+          "id": 3498274,
+          "known_for_department": "Editing",
+          "name": "宮井堂行",
+          "original_name": "宮井堂行",
+          "popularity": 0.5868,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 7,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "星间女子大学学园祭",
+      "overview": "到了校庆的季节，孝士和斯提雅来到星间女子大学的校庆。芙蕾来迎接他们，并带他们到在某个奇怪地方等待着的米涅儿面前。米涅儿像两人推荐了不妙的药物。",
+      "id": 3073417,
+      "production_code": "",
+      "runtime": 24,
+      "season_number": 1,
+      "still_path": "/uFq7uZswrbcm1h3Ifxa8EecaN4V.jpg",
+      "vote_average": 8.0,
+      "vote_count": 1
+    },
+    {
+      "air_date": "2021-09-01",
+      "crew": [
+        {
+          "job": "Online Editor",
+          "department": "Editing",
+          "credit_id": "6266b92d12aabc00a6dd91f9",
+          "adult": false,
+          "gender": 2,
+          "id": 3498274,
+          "known_for_department": "Editing",
+          "name": "宮井堂行",
+          "original_name": "宮井堂行",
+          "popularity": 0.5868,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 8,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "基丽耶的圣诞愿望",
+      "overview": "基丽耶露出了愁眉苦脸的表情，原来是她得一个人准备老家道场每年举办的圣诞派对。担心基丽耶的亚典娜和孝士决定和她出门，帮她一起买东西。",
+      "id": 3073418,
+      "production_code": "",
+      "runtime": 24,
+      "season_number": 1,
+      "still_path": "/6wv7TSxWl52zy8Q7V1UlftfB5lh.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2021-09-08",
+      "crew": [
+        {
+          "job": "Online Editor",
+          "department": "Editing",
+          "credit_id": "6266b92d12aabc00a6dd91f9",
+          "adult": false,
+          "gender": 2,
+          "id": 3498274,
+          "known_for_department": "Editing",
+          "name": "宮井堂行",
+          "original_name": "宮井堂行",
+          "popularity": 0.5868,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 9,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "斯提亚于被炉中有所思／孝士挑战大扫除",
+      "overview": "女神宿舍拿出了暖桌，孝士十分憧憬暖桌并感到非常开心。马上就和大家一起进去取暖，本应是这样……芙蕾和米涅儿却开始用脚对孝士恶作剧。",
+      "id": 3073419,
+      "production_code": "",
+      "runtime": 24,
+      "season_number": 1,
+      "still_path": "/vT1M3TAkeX57U9qurHOcZ3ckduK.jpg",
+      "vote_average": 7.0,
+      "vote_count": 1
+    },
+    {
+      "air_date": "2021-09-15",
+      "crew": [
+        {
+          "job": "Online Editor",
+          "department": "Editing",
+          "credit_id": "6266b92d12aabc00a6dd91f9",
+          "adult": false,
+          "gender": 2,
+          "id": 3498274,
+          "known_for_department": "Editing",
+          "name": "宮井堂行",
+          "original_name": "宮井堂行",
+          "popularity": 0.5868,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 10,
+      "episode_type": "finale",
+      "guest_stars": [],
+      "name": "女神宿舍的女神们",
+      "overview": "孝士一大早就在刺骨的寒风中打扫女神宿舍的庭院。亚典娜的编织也快要告一个段落了。就在此时，和基丽耶一起前去购物的孝士居然倒下了。",
+      "id": 3073420,
+      "production_code": "",
+      "runtime": 24,
+      "season_number": 1,
+      "still_path": "/pnZBiIbHpKl3fRIM8xxlfeORjLg.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    }
+  ],
+  "title_zh": "女神宿舍的管理员",
+  "plot_zh": "家里由于一场火灾，再加上不负责任的爸爸，使得年仅12岁的南云孝士在一夜之间就变得无家可归、身无分文且无依无靠。饿倒在路边的他由于一场因缘际会而当上宿舍管理员，然而这间宿舍的房客竟都是女子大学的学生！而且这间宿舍的房客，全都是些异于常人，而且别有隐情的大姐姐！少年宿舍管理员有点色色的奋斗记，就此开幕——",
+  "keywords_en": [
+    "harem",
+    "romance",
+    "slice of life",
+    "based on manga",
+    "ecchi",
+    "anime"
+  ],
+  "keywords": [
+    "harem",
+    "romance",
+    "slice of life",
+    "based on manga",
+    "ecchi",
+    "anime"
+  ],
+  "keywords_zh": [
+    "后宫",
+    "浪漫",
+    "日常片段",
+    "改编自漫画",
+    "害羞",
+    "动画"
+  ]
+}
+2025-12-05 23:27:10,068 - MetadataAgent - INFO - Translation processing completed
+2025-12-05 23:27:10,068 - MetadataAgent - DEBUG - Translated data: {
+  "media_type": "tv",
+  "tmdb_id": 103962,
+  "title": "女神宿舍的管理员",
+  "original_title": "女神寮の寮母くん。",
+  "year": 2021,
+  "plot": "家里由于一场火灾，再加上不负责任的爸爸，使得年仅12岁的南云孝士在一夜之间就变得无家可归、身无分文且无依无靠。饿倒在路边的他由于一场因缘际会而当上宿舍管理员，然而这间宿舍的房客竟都是女子大学的学生！而且这间宿舍的房客，全都是些异于常人，而且别有隐情的大姐姐！少年宿舍管理员有点色色的奋斗记，就此开幕——",
+  "tagline": "",
+  "runtime": 24,
+  "release_date": "2021-07-14",
+  "rating": 6.9,
+  "rating_count": 52,
+  "genres": [
+    "动画",
+    "喜剧"
+  ],
+  "countries": [
+    "JP"
+  ],
+  "languages": [
+    "ja"
+  ],
+  "studios": [
+    "asread."
+  ],
+  "networks": [
+    "AT-X"
+  ],
+  "network": "AT-X",
+  "status": "Ended",
+  "homepage": "https://megamiryou.com",
+  "cast": [
+    {
+      "name_en": "Misuzu Yamada",
+      "name_zh": null,
+      "role": "Koushi Nagumo (voice)",
+      "original_name": "山田美鈴",
+      "profile_path": "/gSSROCvoqaKBWaQP4AyFTOXVl7f.jpg",
+      "popularity": 0.9485
+    },
+    {
+      "name_en": "Asaki Fukuyama",
+      "name_zh": null,
+      "role": "Frey (voice)",
+      "original_name": "福山あさき",
+      "profile_path": "/4694dcS9Us5MyO08o8g5lOKQn53.jpg",
+      "popularity": 0.7868
+    },
+    {
+      "name_en": "Hikaru Nanjo",
+      "name_zh": null,
+      "role": "Sutea Khoroya (voice)",
+      "original_name": "南條ひかる",
+      "profile_path": "/nuAu9MzrJFmIrbtp3tt9mRZS0Dq.jpg",
+      "popularity": 0.6946
+    },
+    {
+      "name_en": "Ayaka Nanase",
+      "name_zh": null,
+      "role": "Atena Saotome (voice)",
+      "original_name": "七瀬彩夏",
+      "profile_path": "/9eKNKMFFhbtG74V3OOiVKEgm1ul.jpg",
+      "popularity": 0.9127
+    },
+    {
+      "name_en": "Chiaki Takahashi",
+      "name_zh": null,
+      "role": "Mineru Wachi (voice)",
+      "original_name": "たかはし智秋",
+      "profile_path": "/A0iBTBEYncQ3K9QVQAps0stDjaS.jpg",
+      "popularity": 1.3544
+    },
+    {
+      "name_en": "Risako Murai",
+      "name_zh": null,
+      "role": "Kiriya Sensho (voice)",
+      "original_name": "村井理沙子",
+      "profile_path": "/y8alBsN89iKmKEs8gZmCw8slwjK.jpg",
+      "popularity": 0.8186
+    },
+    {
+      "name_en": "Yuki Yomichi",
+      "name_zh": null,
+      "role": "Serene Hozumi (voice)",
+      "original_name": "夜道雪",
+      "profile_path": "/ksTCjacSyW1lUFtsCYAPmtfWUSW.jpg",
+      "popularity": 1.1385
+    }
+  ],
+  "directors": [
+    "Shunsuke Nakashige"
+  ],
+  "writers": [
+    "Ikumi Hino",
+    "Masashi Suzuki"
+  ],
+  "images": {},
+  "seasons": [
+    {
+      "air_date": "2021-07-14",
+      "episode_count": 10,
+      "id": 151836,
+      "name": "女神宿舍的管理员",
+      "overview": "房子被烧掉、爸爸失踪、也没有储蓄。初中男生南云孝士在城市中一个人走着倒下了。偶然相遇的女大学生和知米涅儿向他提案，让孝士去她住的大学生宿舍来担任管理员。\n\n在女生宿舍相遇的有，对男性没有耐性的超纯情少女早乙女亚典娜、一害羞就会拳脚相向的武斗派少女战笑基丽耶、喜欢让人COSPLAY的失控型COSER弗蕾、怠惰的运动裤电波少女八月朔日赛勒涅、以及做着诡异实验的疯狂科学家和知米涅儿，全都是特异独行的美少女们。\n\n他将担任管理员和她们一同度过每天，在逐渐认识的过程中加深羁绊。孝士被大姐姐们耍得团团转的日常开始了。",
+      "poster_path": "/qgRclHB3dXbdrANV8gKL58Vp4PZ.jpg",
+      "season_number": 1,
+      "vote_average": 7.3
+    }
+  ],
+  "episodes": [
+    {
+      "air_date": "2021-07-14",
+      "crew": [
+        {
+          "job": "Online Editor",
+          "department": "Editing",
+          "credit_id": "6266b92d12aabc00a6dd91f9",
+          "adult": false,
+          "gender": 2,
+          "id": 3498274,
+          "known_for_department": "Editing",
+          "name": "宮井堂行",
+          "original_name": "宮井堂行",
+          "popularity": 0.5868,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 1,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "孝士，成为宿舍管理员",
+      "overview": "房子因为火灾被烧掉，一个人徘徊在都会的孤傲战士，南云孝士12歳。被偶然相遇的米涅儿所救后，他被带到女子大学的宿舍。正想着要先洗个澡放松的时候……",
+      "id": 2283810,
+      "production_code": "",
+      "runtime": 24,
+      "season_number": 1,
+      "still_path": "/sr7VRU4xUF5h15xBJe0HVBtIvBw.jpg",
+      "vote_average": 8.0,
+      "vote_count": 1
+    },
+    {
+      "air_date": "2021-07-21",
+      "crew": [
+        {
+          "job": "Online Editor",
+          "department": "Editing",
+          "credit_id": "6266b938001bbd005197de3c",
+          "adult": false,
+          "gender": 2,
+          "id": 3498272,
+          "known_for_department": "Editing",
+          "name": "高桥和基",
+          "original_name": "髙橋和基",
+          "popularity": 0.7627,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 2,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "基丽耶和塞勒涅是问题人物／雅典娜觉醒",
+      "overview": "女神宿舍的居民温暖地接纳了孝士。孝士被分配到一楼的管理员居室，终于可以在温暖的床上就寝。但稳的时间并没有持续多久，因为天花板突然出现女性的裸足。",
+      "id": 3068482,
+      "production_code": "",
+      "runtime": 24,
+      "season_number": 1,
+      "still_path": "/9zsPEHuMmAmiWp9ZLrVmdSxEpRe.jpg",
+      "vote_average": 7.0,
+      "vote_count": 1
+    },
+    {
+      "air_date": "2021-07-28",
+      "crew": [
+        {
+          "job": "Online Editor",
+          "department": "Editing",
+          "credit_id": "6266b938001bbd005197de3c",
+          "adult": false,
+          "gender": 2,
+          "id": 3498272,
+          "known_for_department": "Editing",
+          "name": "高桥和基",
+          "original_name": "髙橋和基",
+          "popularity": 0.7627,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 3,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "孝士陷入烦恼／孝士重新上学",
+      "overview": "孝士来到宿舍经过了两个礼拜，他仍一直在意着没办法去学校的现况。女神宿舍的居民们在此时为了要孝士叫他们姐姐，开始以各自的方式逼近而来。",
+      "id": 3068483,
+      "production_code": "",
+      "runtime": 24,
+      "season_number": 1,
+      "still_path": "/yctrGyDl0QILxOrJjZD62qZEeDR.jpg",
+      "vote_average": 7.0,
+      "vote_count": 1
+    },
+    {
+      "air_date": "2021-08-04",
+      "crew": [
+        {
+          "job": "Online Editor",
+          "department": "Editing",
+          "credit_id": "6266b92d12aabc00a6dd91f9",
+          "adult": false,
+          "gender": 2,
+          "id": 3498274,
+          "known_for_department": "Editing",
+          "name": "宮井堂行",
+          "original_name": "宮井堂行",
+          "popularity": 0.5868,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 4,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "青梅竹马来到宿舍／孝士潜入女子大学",
+      "overview": "亚典娜回到宿舍之后，发现孝士的同学兼青梅竹马香炉野斯提雅在客厅。斯提雅是来确认女神宿舍是否值得信任。亚典娜等住宿生被青梅竹马角色耍得团团转。",
+      "id": 3068484,
+      "production_code": "",
+      "runtime": 24,
+      "season_number": 1,
+      "still_path": "/a1h0ICj0DdNDrPjKblYU1DuoKeE.jpg",
+      "vote_average": 8.0,
+      "vote_count": 1
+    },
+    {
+      "air_date": "2021-08-11",
+      "crew": [
+        {
+          "job": "Online Editor",
+          "department": "Editing",
+          "credit_id": "6266b92d12aabc00a6dd91f9",
+          "adult": false,
+          "gender": 2,
+          "id": 3498274,
+          "known_for_department": "Editing",
+          "name": "宮井堂行",
+          "original_name": "宮井堂行",
+          "popularity": 0.5868,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 5,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "赛勒涅足不出户／女神宿舍出发去旅行",
+      "overview": "亚典娜提案大家一起去旅行，但赛勒涅却把自己关进房里。孝士为了了解详情“入侵”了赛勒涅的居室。才知道赛勒涅没有去过学校附近外的地方。",
+      "id": 3068485,
+      "production_code": "",
+      "runtime": 24,
+      "season_number": 1,
+      "still_path": "/fFWSc3MOgZYlF7MCbDbWGds2DAe.jpg",
+      "vote_average": 7.0,
+      "vote_count": 1
+    },
+    {
+      "air_date": "2021-08-18",
+      "crew": [
+        {
+          "job": "Online Editor",
+          "department": "Editing",
+          "credit_id": "6266b92d12aabc00a6dd91f9",
+          "adult": false,
+          "gender": 2,
+          "id": 3498274,
+          "known_for_department": "Editing",
+          "name": "宮井堂行",
+          "original_name": "宮井堂行",
+          "popularity": 0.5868,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 6,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "斯提雅对海有所思／孝士COSPLAY出道",
+      "overview": "亚典娜一行人来到海边，在大家嬉闹的同时，斯提雅却独自一人游着泳。因为她对孝士一直盯着着亚典娜的泳装看感到忌妒。但情况突然变得很奇怪，斯提雅与其说是游泳，看起来到有点像溺水。",
+      "id": 3068486,
+      "production_code": "",
+      "runtime": 24,
+      "season_number": 1,
+      "still_path": "/9b9ADJRfFGbEmLDoj3IPhGBUa9H.jpg",
+      "vote_average": 6.0,
+      "vote_count": 1
+    },
+    {
+      "air_date": "2021-08-25",
+      "crew": [
+        {
+          "job": "Online Editor",
+          "department": "Editing",
+          "credit_id": "6266b92d12aabc00a6dd91f9",
+          "adult": false,
+          "gender": 2,
+          "id": 3498274,
+          "known_for_department": "Editing",
+          "name": "宮井堂行",
+          "original_name": "宮井堂行",
+          "popularity": 0.5868,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 7,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "星间女子大学学园祭",
+      "overview": "到了校庆的季节，孝士和斯提雅来到星间女子大学的校庆。芙蕾来迎接他们，并带他们到在某个奇怪地方等待着的米涅儿面前。米涅儿像两人推荐了不妙的药物。",
+      "id": 3073417,
+      "production_code": "",
+      "runtime": 24,
+      "season_number": 1,
+      "still_path": "/uFq7uZswrbcm1h3Ifxa8EecaN4V.jpg",
+      "vote_average": 8.0,
+      "vote_count": 1
+    },
+    {
+      "air_date": "2021-09-01",
+      "crew": [
+        {
+          "job": "Online Editor",
+          "department": "Editing",
+          "credit_id": "6266b92d12aabc00a6dd91f9",
+          "adult": false,
+          "gender": 2,
+          "id": 3498274,
+          "known_for_department": "Editing",
+          "name": "宮井堂行",
+          "original_name": "宮井堂行",
+          "popularity": 0.5868,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 8,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "基丽耶的圣诞愿望",
+      "overview": "基丽耶露出了愁眉苦脸的表情，原来是她得一个人准备老家道场每年举办的圣诞派对。担心基丽耶的亚典娜和孝士决定和她出门，帮她一起买东西。",
+      "id": 3073418,
+      "production_code": "",
+      "runtime": 24,
+      "season_number": 1,
+      "still_path": "/6wv7TSxWl52zy8Q7V1UlftfB5lh.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2021-09-08",
+      "crew": [
+        {
+          "job": "Online Editor",
+          "department": "Editing",
+          "credit_id": "6266b92d12aabc00a6dd91f9",
+          "adult": false,
+          "gender": 2,
+          "id": 3498274,
+          "known_for_department": "Editing",
+          "name": "宮井堂行",
+          "original_name": "宮井堂行",
+          "popularity": 0.5868,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 9,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "斯提亚于被炉中有所思／孝士挑战大扫除",
+      "overview": "女神宿舍拿出了暖桌，孝士十分憧憬暖桌并感到非常开心。马上就和大家一起进去取暖，本应是这样……芙蕾和米涅儿却开始用脚对孝士恶作剧。",
+      "id": 3073419,
+      "production_code": "",
+      "runtime": 24,
+      "season_number": 1,
+      "still_path": "/vT1M3TAkeX57U9qurHOcZ3ckduK.jpg",
+      "vote_average": 7.0,
+      "vote_count": 1
+    },
+    {
+      "air_date": "2021-09-15",
+      "crew": [
+        {
+          "job": "Online Editor",
+          "department": "Editing",
+          "credit_id": "6266b92d12aabc00a6dd91f9",
+          "adult": false,
+          "gender": 2,
+          "id": 3498274,
+          "known_for_department": "Editing",
+          "name": "宮井堂行",
+          "original_name": "宮井堂行",
+          "popularity": 0.5868,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 10,
+      "episode_type": "finale",
+      "guest_stars": [],
+      "name": "女神宿舍的女神们",
+      "overview": "孝士一大早就在刺骨的寒风中打扫女神宿舍的庭院。亚典娜的编织也快要告一个段落了。就在此时，和基丽耶一起前去购物的孝士居然倒下了。",
+      "id": 3073420,
+      "production_code": "",
+      "runtime": 24,
+      "season_number": 1,
+      "still_path": "/pnZBiIbHpKl3fRIM8xxlfeORjLg.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    }
+  ],
+  "title_zh": "女神宿舍的管理员",
+  "plot_zh": "家里由于一场火灾，再加上不负责任的爸爸，使得年仅12岁的南云孝士在一夜之间就变得无家可归、身无分文且无依无靠。饿倒在路边的他由于一场因缘际会而当上宿舍管理员，然而这间宿舍的房客竟都是女子大学的学生！而且这间宿舍的房客，全都是些异于常人，而且别有隐情的大姐姐！少年宿舍管理员有点色色的奋斗记，就此开幕——",
+  "keywords_en": [
+    "harem",
+    "romance",
+    "slice of life",
+    "based on manga",
+    "ecchi",
+    "anime"
+  ],
+  "keywords": [
+    "harem",
+    "romance",
+    "slice of life",
+    "based on manga",
+    "ecchi",
+    "anime"
+  ],
+  "keywords_zh": [
+    "后宫",
+    "浪漫",
+    "日常片段",
+    "改编自漫画",
+    "害羞",
+    "动画"
+  ]
+}
+2025-12-05 23:27:10,068 - MetadataAgent - DEBUG - Translated episodes: [
+  {
+    "air_date": "2021-07-14",
+    "crew": [
+      {
+        "job": "Online Editor",
+        "department": "Editing",
+        "credit_id": "6266b92d12aabc00a6dd91f9",
+        "adult": false,
+        "gender": 2,
+        "id": 3498274,
+        "known_for_department": "Editing",
+        "name": "宮井堂行",
+        "original_name": "宮井堂行",
+        "popularity": 0.5868,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 1,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "孝士，成为宿舍管理员",
+    "overview": "房子因为火灾被烧掉，一个人徘徊在都会的孤傲战士，南云孝士12歳。被偶然相遇的米涅儿所救后，他被带到女子大学的宿舍。正想着要先洗个澡放松的时候……",
+    "id": 2283810,
+    "production_code": "",
+    "runtime": 24,
+    "season_number": 1,
+    "still_path": "/sr7VRU4xUF5h15xBJe0HVBtIvBw.jpg",
+    "vote_average": 8.0,
+    "vote_count": 1
+  },
+  {
+    "air_date": "2021-07-21",
+    "crew": [
+      {
+        "job": "Online Editor",
+        "department": "Editing",
+        "credit_id": "6266b938001bbd005197de3c",
+        "adult": false,
+        "gender": 2,
+        "id": 3498272,
+        "known_for_department": "Editing",
+        "name": "高桥和基",
+        "original_name": "髙橋和基",
+        "popularity": 0.7627,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 2,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "基丽耶和塞勒涅是问题人物／雅典娜觉醒",
+    "overview": "女神宿舍的居民温暖地接纳了孝士。孝士被分配到一楼的管理员居室，终于可以在温暖的床上就寝。但稳的时间并没有持续多久，因为天花板突然出现女性的裸足。",
+    "id": 3068482,
+    "production_code": "",
+    "runtime": 24,
+    "season_number": 1,
+    "still_path": "/9zsPEHuMmAmiWp9ZLrVmdSxEpRe.jpg",
+    "vote_average": 7.0,
+    "vote_count": 1
+  },
+  {
+    "air_date": "2021-07-28",
+    "crew": [
+      {
+        "job": "Online Editor",
+        "department": "Editing",
+        "credit_id": "6266b938001bbd005197de3c",
+        "adult": false,
+        "gender": 2,
+        "id": 3498272,
+        "known_for_department": "Editing",
+        "name": "高桥和基",
+        "original_name": "髙橋和基",
+        "popularity": 0.7627,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 3,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "孝士陷入烦恼／孝士重新上学",
+    "overview": "孝士来到宿舍经过了两个礼拜，他仍一直在意着没办法去学校的现况。女神宿舍的居民们在此时为了要孝士叫他们姐姐，开始以各自的方式逼近而来。",
+    "id": 3068483,
+    "production_code": "",
+    "runtime": 24,
+    "season_number": 1,
+    "still_path": "/yctrGyDl0QILxOrJjZD62qZEeDR.jpg",
+    "vote_average": 7.0,
+    "vote_count": 1
+  },
+  {
+    "air_date": "2021-08-04",
+    "crew": [
+      {
+        "job": "Online Editor",
+        "department": "Editing",
+        "credit_id": "6266b92d12aabc00a6dd91f9",
+        "adult": false,
+        "gender": 2,
+        "id": 3498274,
+        "known_for_department": "Editing",
+        "name": "宮井堂行",
+        "original_name": "宮井堂行",
+        "popularity": 0.5868,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 4,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "青梅竹马来到宿舍／孝士潜入女子大学",
+    "overview": "亚典娜回到宿舍之后，发现孝士的同学兼青梅竹马香炉野斯提雅在客厅。斯提雅是来确认女神宿舍是否值得信任。亚典娜等住宿生被青梅竹马角色耍得团团转。",
+    "id": 3068484,
+    "production_code": "",
+    "runtime": 24,
+    "season_number": 1,
+    "still_path": "/a1h0ICj0DdNDrPjKblYU1DuoKeE.jpg",
+    "vote_average": 8.0,
+    "vote_count": 1
+  },
+  {
+    "air_date": "2021-08-11",
+    "crew": [
+      {
+        "job": "Online Editor",
+        "department": "Editing",
+        "credit_id": "6266b92d12aabc00a6dd91f9",
+        "adult": false,
+        "gender": 2,
+        "id": 3498274,
+        "known_for_department": "Editing",
+        "name": "宮井堂行",
+        "original_name": "宮井堂行",
+        "popularity": 0.5868,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 5,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "赛勒涅足不出户／女神宿舍出发去旅行",
+    "overview": "亚典娜提案大家一起去旅行，但赛勒涅却把自己关进房里。孝士为了了解详情“入侵”了赛勒涅的居室。才知道赛勒涅没有去过学校附近外的地方。",
+    "id": 3068485,
+    "production_code": "",
+    "runtime": 24,
+    "season_number": 1,
+    "still_path": "/fFWSc3MOgZYlF7MCbDbWGds2DAe.jpg",
+    "vote_average": 7.0,
+    "vote_count": 1
+  },
+  {
+    "air_date": "2021-08-18",
+    "crew": [
+      {
+        "job": "Online Editor",
+        "department": "Editing",
+        "credit_id": "6266b92d12aabc00a6dd91f9",
+        "adult": false,
+        "gender": 2,
+        "id": 3498274,
+        "known_for_department": "Editing",
+        "name": "宮井堂行",
+        "original_name": "宮井堂行",
+        "popularity": 0.5868,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 6,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "斯提雅对海有所思／孝士COSPLAY出道",
+    "overview": "亚典娜一行人来到海边，在大家嬉闹的同时，斯提雅却独自一人游着泳。因为她对孝士一直盯着着亚典娜的泳装看感到忌妒。但情况突然变得很奇怪，斯提雅与其说是游泳，看起来到有点像溺水。",
+    "id": 3068486,
+    "production_code": "",
+    "runtime": 24,
+    "season_number": 1,
+    "still_path": "/9b9ADJRfFGbEmLDoj3IPhGBUa9H.jpg",
+    "vote_average": 6.0,
+    "vote_count": 1
+  },
+  {
+    "air_date": "2021-08-25",
+    "crew": [
+      {
+        "job": "Online Editor",
+        "department": "Editing",
+        "credit_id": "6266b92d12aabc00a6dd91f9",
+        "adult": false,
+        "gender": 2,
+        "id": 3498274,
+        "known_for_department": "Editing",
+        "name": "宮井堂行",
+        "original_name": "宮井堂行",
+        "popularity": 0.5868,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 7,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "星间女子大学学园祭",
+    "overview": "到了校庆的季节，孝士和斯提雅来到星间女子大学的校庆。芙蕾来迎接他们，并带他们到在某个奇怪地方等待着的米涅儿面前。米涅儿像两人推荐了不妙的药物。",
+    "id": 3073417,
+    "production_code": "",
+    "runtime": 24,
+    "season_number": 1,
+    "still_path": "/uFq7uZswrbcm1h3Ifxa8EecaN4V.jpg",
+    "vote_average": 8.0,
+    "vote_count": 1
+  },
+  {
+    "air_date": "2021-09-01",
+    "crew": [
+      {
+        "job": "Online Editor",
+        "department": "Editing",
+        "credit_id": "6266b92d12aabc00a6dd91f9",
+        "adult": false,
+        "gender": 2,
+        "id": 3498274,
+        "known_for_department": "Editing",
+        "name": "宮井堂行",
+        "original_name": "宮井堂行",
+        "popularity": 0.5868,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 8,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "基丽耶的圣诞愿望",
+    "overview": "基丽耶露出了愁眉苦脸的表情，原来是她得一个人准备老家道场每年举办的圣诞派对。担心基丽耶的亚典娜和孝士决定和她出门，帮她一起买东西。",
+    "id": 3073418,
+    "production_code": "",
+    "runtime": 24,
+    "season_number": 1,
+    "still_path": "/6wv7TSxWl52zy8Q7V1UlftfB5lh.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2021-09-08",
+    "crew": [
+      {
+        "job": "Online Editor",
+        "department": "Editing",
+        "credit_id": "6266b92d12aabc00a6dd91f9",
+        "adult": false,
+        "gender": 2,
+        "id": 3498274,
+        "known_for_department": "Editing",
+        "name": "宮井堂行",
+        "original_name": "宮井堂行",
+        "popularity": 0.5868,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 9,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "斯提亚于被炉中有所思／孝士挑战大扫除",
+    "overview": "女神宿舍拿出了暖桌，孝士十分憧憬暖桌并感到非常开心。马上就和大家一起进去取暖，本应是这样……芙蕾和米涅儿却开始用脚对孝士恶作剧。",
+    "id": 3073419,
+    "production_code": "",
+    "runtime": 24,
+    "season_number": 1,
+    "still_path": "/vT1M3TAkeX57U9qurHOcZ3ckduK.jpg",
+    "vote_average": 7.0,
+    "vote_count": 1
+  },
+  {
+    "air_date": "2021-09-15",
+    "crew": [
+      {
+        "job": "Online Editor",
+        "department": "Editing",
+        "credit_id": "6266b92d12aabc00a6dd91f9",
+        "adult": false,
+        "gender": 2,
+        "id": 3498274,
+        "known_for_department": "Editing",
+        "name": "宮井堂行",
+        "original_name": "宮井堂行",
+        "popularity": 0.5868,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 10,
+    "episode_type": "finale",
+    "guest_stars": [],
+    "name": "女神宿舍的女神们",
+    "overview": "孝士一大早就在刺骨的寒风中打扫女神宿舍的庭院。亚典娜的编织也快要告一个段落了。就在此时，和基丽耶一起前去购物的孝士居然倒下了。",
+    "id": 3073420,
+    "production_code": "",
+    "runtime": 24,
+    "season_number": 1,
+    "still_path": "/pnZBiIbHpKl3fRIM8xxlfeORjLg.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  }
+]
+2025-12-05 23:27:38,443 - MetadataAgent - INFO - NFO generation completed
+2025-12-05 23:27:38,444 - MetadataAgent - DEBUG - NFO data: {
+  "title": "女神宿舍的管理员",
+  "originaltitle": "女神寮の寮母くん。",
+  "year": 2021,
+  "premiered": "2021-07-14",
+  "plot": "家里由于一场火灾，再加上不负责任的爸爸，使得年仅12岁的南云孝士在一夜之间就变得无家可归、身无分文且无依无靠。饿倒在路边的他由于一场因缘际会而当上宿舍管理员，然而这间宿舍的房客竟都是女子大学的学生！而且这间宿舍的房客，全都是些异于常人，而且别有隐情的大姐姐！少年宿舍管理员有点色色的奋斗记，就此开幕——",
+  "tagline": "",
+  "runtime": 24,
+  "rating": 6.9,
+  "votes": 52,
+  "genre": [
+    "动画",
+    "喜剧"
+  ],
+  "country": [
+    "JP"
+  ],
+  "studio": [
+    "asread."
+  ],
+  "credits": [
+    "Ikumi Hino",
+    "Masashi Suzuki"
+  ],
+  "director": [
+    "Shunsuke Nakashige"
+  ],
+  "actor": [
+    {
+      "name": "Misuzu Yamada",
+      "role": "Koushi Nagumo (voice)",
+      "originalname": "山田美鈴",
+      "thumb": "images/actors/Misuzu Yamada.jpg"
+    },
+    {
+      "name": "Asaki Fukuyama",
+      "role": "Frey (voice)",
+      "originalname": "福山あさき",
+      "thumb": "images/actors/Asaki Fukuyama.jpg"
+    },
+    {
+      "name": "Hikaru Nanjo",
+      "role": "Sutea Khoroya (voice)",
+      "originalname": "南條ひかる",
+      "thumb": "images/actors/Hikaru Nanjo.jpg"
+    },
+    {
+      "name": "Ayaka Nanase",
+      "role": "Atena Saotome (voice)",
+      "originalname": "七瀬彩夏",
+      "thumb": "images/actors/Ayaka Nanase.jpg"
+    },
+    {
+      "name": "Chiaki Takahashi",
+      "role": "Mineru Wachi (voice)",
+      "originalname": "たかはし智秋",
+      "thumb": "images/actors/Chiaki Takahashi.jpg"
+    },
+    {
+      "name": "Risako Murai",
+      "role": "Kiriya Sensho (voice)",
+      "originalname": "村井理沙子",
+      "thumb": "images/actors/Risako Murai.jpg"
+    },
+    {
+      "name": "Yuki Yomichi",
+      "role": "Serene Hozumi (voice)",
+      "originalname": "夜道雪",
+      "thumb": "images/actors/Yuki Yomichi.jpg"
+    }
+  ],
+  "thumb": "poster.jpg",
+  "fanart": "fanart.jpg",
+  "tags": [
+    "后宫",
+    "浪漫",
+    "日常片段",
+    "改编自漫画",
+    "害羞",
+    "动画"
+  ],
+  "network": "AT-X",
+  "networks": [
+    "AT-X"
+  ],
+  "status": "Ended",
+  "homepage": "https://megamiryou.com",
+  "tmdb_id": 103962,
+  "validated": true
+}
+2025-12-05 23:27:38,444 - MetadataAgent - DEBUG - NFO XML content:
+<?xml version="1.0" ?>
+<tvshow>
+  <title>女神宿舍的管理员</title>
+  <originaltitle>女神寮の寮母くん。</originaltitle>
+  <year>2021</year>
+  <premiered>2021-07-14</premiered>
+  <plot><![CDATA[家里由于一场火灾，再加上不负责任的爸爸，使得年仅12岁的南云孝士在一夜之间就变得无家可归、身无分文且无依无靠。饿倒在路边的他由于一场因缘际会而当上宿舍管理员，然而这间宿舍的房客竟都是女子大学的学生！而且这间宿舍的房客，全都是些异于常人，而且别有隐情的大姐姐！少年宿舍管理员有点色色的奋斗记，就此开幕——]]></plot>
+  <runtime>24</runtime>
+  <rating>6.9</rating>
+  <votes>52</votes>
+  <tmdbid>103962</tmdbid>
+  <genre>动画</genre>
+  <genre>喜剧</genre>
+  <country>JP</country>
+  <studio>asread.</studio>
+  <credits>Ikumi Hino, Masashi Suzuki</credits>
+  <director>Shunsuke Nakashige</director>
+  <actor>
+    <name>Misuzu Yamada</name>
+    <role>Koushi Nagumo (voice)</role>
+    <originalname>山田美鈴</originalname>
+    <thumb>images/actors/Misuzu Yamada.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Asaki Fukuyama</name>
+    <role>Frey (voice)</role>
+    <originalname>福山あさき</originalname>
+    <thumb>images/actors/Asaki Fukuyama.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Hikaru Nanjo</name>
+    <role>Sutea Khoroya (voice)</role>
+    <originalname>南條ひかる</originalname>
+    <thumb>images/actors/Hikaru Nanjo.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Ayaka Nanase</name>
+    <role>Atena Saotome (voice)</role>
+    <originalname>七瀬彩夏</originalname>
+    <thumb>images/actors/Ayaka Nanase.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Chiaki Takahashi</name>
+    <role>Mineru Wachi (voice)</role>
+    <originalname>たかはし智秋</originalname>
+    <thumb>images/actors/Chiaki Takahashi.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Risako Murai</name>
+    <role>Kiriya Sensho (voice)</role>
+    <originalname>村井理沙子</originalname>
+    <thumb>images/actors/Risako Murai.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Yuki Yomichi</name>
+    <role>Serene Hozumi (voice)</role>
+    <originalname>夜道雪</originalname>
+    <thumb>images/actors/Yuki Yomichi.jpg</thumb>
+  </actor>
+  <network>AT-X</network>
+  <status>Ended</status>
+  <homepage>https://megamiryou.com</homepage>
+  <uniqueid type="tmdb" default="true">103962</uniqueid>
+  <thumb>images/poster/poster.jpg</thumb>
+  <fanart>images/fanart/fanart.jpg</fanart>
+  <tag>后宫</tag>
+  <tag>浪漫</tag>
+  <tag>日常片段</tag>
+  <tag>改编自漫画</tag>
+  <tag>害羞</tag>
+  <tag>动画</tag>
+</tvshow>
+
+2025-12-05 23:27:47,483 - MetadataAgent - INFO - Output generation completed
+2025-12-05 23:27:47,485 - MetadataAgent - DEBUG - Output data: {
+  "status": "completed",
+  "files": {
+    "nfo_file": "/Volumes/video/Animation/The Animation/女神宿舍的管理员 (2021)/tvshow.nfo",
+    "images_dir": "/Volumes/video/Animation/The Animation/女神宿舍的管理员 (2021)/images",
+    "media_dir": "/Volumes/video/Animation/The Animation/女神宿舍的管理员 (2021)",
+    "season_1_episode_1": "/Volumes/video/Animation/The Animation/女神宿舍的管理员 (2021)/Season 01/女神宿舍的管理员 - S01E01 - 孝士，成为宿舍管理员.nfo",
+    "season_1_episode_2": "/Volumes/video/Animation/The Animation/女神宿舍的管理员 (2021)/Season 01/女神宿舍的管理员 - S01E02 - 基丽耶和塞勒涅是问题人物／雅典娜觉醒.nfo",
+    "season_1_episode_3": "/Volumes/video/Animation/The Animation/女神宿舍的管理员 (2021)/Season 01/女神宿舍的管理员 - S01E03 - 孝士陷入烦恼／孝士重新上学.nfo",
+    "season_1_episode_4": "/Volumes/video/Animation/The Animation/女神宿舍的管理员 (2021)/Season 01/女神宿舍的管理员 - S01E04 - 青梅竹马来到宿舍／孝士潜入女子大学.nfo",
+    "season_1_episode_5": "/Volumes/video/Animation/The Animation/女神宿舍的管理员 (2021)/Season 01/女神宿舍的管理员 - S01E05 - 赛勒涅足不出户／女神宿舍出发去旅行.nfo",
+    "season_1_episode_6": "/Volumes/video/Animation/The Animation/女神宿舍的管理员 (2021)/Season 01/女神宿舍的管理员 - S01E06 - 斯提雅对海有所思／孝士COSPLAY出道.nfo",
+    "season_1_episode_7": "/Volumes/video/Animation/The Animation/女神宿舍的管理员 (2021)/Season 01/女神宿舍的管理员 - S01E07 - 星间女子大学学园祭.nfo",
+    "season_1_episode_8": "/Volumes/video/Animation/The Animation/女神宿舍的管理员 (2021)/Season 01/女神宿舍的管理员 - S01E08 - 基丽耶的圣诞愿望.nfo",
+    "season_1_episode_9": "/Volumes/video/Animation/The Animation/女神宿舍的管理员 (2021)/Season 01/女神宿舍的管理员 - S01E09 - 斯提亚于被炉中有所思／孝士挑战大扫除.nfo",
+    "season_1_episode_10": "/Volumes/video/Animation/The Animation/女神宿舍的管理员 (2021)/Season 01/女神宿舍的管理员 - S01E10 - 女神宿舍的女神们.nfo"
+  }
+}
+2025-12-05 23:27:47,486 - MetadataAgent - INFO - === PROCESSING SUMMARY ===
+2025-12-05 23:27:47,486 - MetadataAgent - INFO - Log file: logs/metadata_agent_20251205_232704.log
+2025-12-05 23:27:47,486 - MetadataAgent - INFO - Processing completed successfully
+2025-12-05 23:27:47,494 - MetadataAgent - INFO - Processing summary saved to: logs/processing_summary_20251205_232747.json

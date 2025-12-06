@@ -1,0 +1,1602 @@
+{
+  "start_time": "2025-12-05T23:23:35.878459",
+  "input": {
+    "media_type": "tv",
+    "query": "为涟苍士献上纯洁",
+    "output_dir": "/Volumes/video/Animation/The Animation/为涟苍士献上纯洁 (2023)",
+    "verbose": false,
+    "quiet": true,
+    "aid_search": true
+  },
+  "search": {
+    "results": {
+      "page": 1,
+      "results": [
+        {
+          "adult": false,
+          "backdrop_path": "/3dqyRG3kaHQgC1n15cGh7YyaSAK.jpg",
+          "genre_ids": [
+            16
+          ],
+          "id": 220118,
+          "origin_country": [
+            "JP"
+          ],
+          "original_language": "ja",
+          "original_name": "漣蒼士に純潔を捧ぐ",
+          "overview": "\"If it's a request from my precious wife, then I will give you the moon and the stars.\" He flashes his gorgeous tattoos at me as he makes passionate love to me. This is bad! Something's coming...!!",
+          "popularity": 4.4674,
+          "poster_path": "/6SHb6A2iAX05kNZug794VFEUt7J.jpg",
+          "first_air_date": "2023-04-03",
+          "name": "Sazanami Soushi ni Junketsu wo Sasagu",
+          "vote_average": 8.2,
+          "vote_count": 5,
+          "media_type": "tv"
+        }
+      ],
+      "total_pages": 1,
+      "total_results": 1
+    },
+    "skip_search": false
+  },
+  "fetch": {
+    "main": {
+      "adult": false,
+      "backdrop_path": "/3dqyRG3kaHQgC1n15cGh7YyaSAK.jpg",
+      "created_by": [],
+      "episode_run_time": [
+        6
+      ],
+      "first_air_date": "2023-04-03",
+      "genres": [
+        {
+          "id": 16,
+          "name": "动画"
+        }
+      ],
+      "homepage": "https://sazanami.af-original.com/",
+      "id": 220118,
+      "in_production": false,
+      "languages": [
+        "ja"
+      ],
+      "last_air_date": "2023-07-01",
+      "last_episode_to_air": {
+        "id": 4560226,
+        "name": "请允许我继续爱你",
+        "overview": "",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "air_date": "2023-07-01",
+        "episode_number": 8,
+        "episode_type": "standard",
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "show_id": 220118,
+        "still_path": "/9ioq8IFFmZg2JqPrOyBcvkbZ5CG.jpg"
+      },
+      "name": "为涟苍士献上纯洁",
+      "next_episode_to_air": null,
+      "networks": [
+        {
+          "id": 614,
+          "logo_path": "/hSdroyVthq3CynxTIIY7lnS8w1.png",
+          "name": "Tokyo MX",
+          "origin_country": "JP"
+        },
+        {
+          "id": 861,
+          "logo_path": "/JQ5bx6n7Qmdmyqz6sqjo5Fz2iR.png",
+          "name": "BS11",
+          "origin_country": "JP"
+        }
+      ],
+      "number_of_episodes": 8,
+      "number_of_seasons": 1,
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "漣蒼士に純潔を捧ぐ",
+      "overview": "没有男性经验、害羞的风平沙，为了改变自己的海外独自旅行，钱包丢了，引起了很大的恐慌。帮助我的是一个绅士般的神秘男子涟苍士。松了一口气也没多久，他拿起风平浪静沙的手说：“你能做我的妻子吗？“突然求婚。虽然是令人惊愕的风平浪静，但他更是被部下称为“卡西拉”的人物……",
+      "popularity": 4.4674,
+      "poster_path": "/9hyTDPS9uo70QJwvBsVGtaLAANB.jpg",
+      "production_companies": [
+        {
+          "id": 125825,
+          "logo_path": "/fXHTT3i73u6eSJS3UZQVVwADqqo.png",
+          "name": "studio HōKIBOSHI",
+          "origin_country": "JP"
+        },
+        {
+          "id": 149421,
+          "logo_path": "/6UqbB0NLRWEIaCKsd5YkOigJgXb.png",
+          "name": "Suiseisha",
+          "origin_country": "JP"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "JP",
+          "name": "Japan"
+        }
+      ],
+      "seasons": [
+        {
+          "air_date": "2023-05-01",
+          "episode_count": 2,
+          "id": 341936,
+          "name": "特别篇",
+          "overview": "",
+          "poster_path": null,
+          "season_number": 0,
+          "vote_average": 0.0
+        },
+        {
+          "air_date": "2023-04-03",
+          "episode_count": 8,
+          "id": 328260,
+          "name": "第 1 季",
+          "overview": "",
+          "poster_path": "/9hyTDPS9uo70QJwvBsVGtaLAANB.jpg",
+          "season_number": 1,
+          "vote_average": 10.0
+        }
+      ],
+      "spoken_languages": [
+        {
+          "english_name": "Japanese",
+          "iso_639_1": "ja",
+          "name": "日本語"
+        }
+      ],
+      "status": "Ended",
+      "tagline": "",
+      "type": "Scripted",
+      "vote_average": 8.2,
+      "vote_count": 5
+    },
+    "credits": {
+      "cast": [
+        {
+          "adult": false,
+          "gender": 1,
+          "id": 2944458,
+          "known_for_department": "Acting",
+          "name": "Saho Shirasu",
+          "original_name": "白砂沙帆",
+          "popularity": 1.6876,
+          "profile_path": "/2iNYxiui27dvP30WiYtVquO1HCN.jpg",
+          "character": "Nagisa Amami (voice)",
+          "credit_id": "63e5aa8d2fccee00bc26f945",
+          "order": 0
+        },
+        {
+          "adult": false,
+          "gender": 1,
+          "id": 3913756,
+          "known_for_department": "Acting",
+          "name": "Satomi Miura",
+          "original_name": "三浦さとみ",
+          "popularity": 0.6403,
+          "profile_path": null,
+          "character": "Nagisa Amami (voice)",
+          "credit_id": "63e5b00fa3d02700c82bcef6",
+          "order": 1
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 2161808,
+          "known_for_department": "Acting",
+          "name": "Yoshiki Nakajima",
+          "original_name": "中島ヨシキ",
+          "popularity": 1.1392,
+          "profile_path": "/izvxmcL0bL5BqpqSdHRuHEPidZ2.jpg",
+          "character": "Sōshi Sazanami (voice)",
+          "credit_id": "63e5b02ca3d027009f3b0673",
+          "order": 2
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 3913760,
+          "known_for_department": "Acting",
+          "name": "Dai Kuki",
+          "original_name": "Dai Kuki",
+          "popularity": 0.1661,
+          "profile_path": null,
+          "character": "Sōshi Sazanami (voice)",
+          "credit_id": "63e5b0e2f48b3400a0890b1c",
+          "order": 3
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 1991242,
+          "known_for_department": "Acting",
+          "name": "Daiki Hamano",
+          "original_name": "濱野大輝",
+          "popularity": 2.4491,
+          "profile_path": "/bykeH3Rhmx9PPFegYNi6s310cNa.jpg",
+          "character": "Tomo Hinata (voice)",
+          "credit_id": "63e5b120a3d02700d332b100",
+          "order": 4
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 3913766,
+          "known_for_department": "Acting",
+          "name": "Tetsu Watake",
+          "original_name": "Tetsu Watake",
+          "popularity": 0.0331,
+          "profile_path": null,
+          "character": "Tomo Hinata (voice)",
+          "credit_id": "63e5b144f48b34007c3c3d61",
+          "order": 5
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 3913768,
+          "known_for_department": "Acting",
+          "name": "Kouta Mashiro",
+          "original_name": "Kouta Mashiro",
+          "popularity": 0.0441,
+          "profile_path": null,
+          "character": "Shibata (voice)",
+          "credit_id": "63e5b193a3d027009f3b073e",
+          "order": 6
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 3913769,
+          "known_for_department": "Acting",
+          "name": "Shuuji Inozuki",
+          "original_name": "Shuuji Inozuki",
+          "popularity": 0.0894,
+          "profile_path": "/bJyEEFV9QphPg4cKtWJiYLPk6FL.jpg",
+          "character": "Shibata (voice)",
+          "credit_id": "63e5b1e72fccee0081714979",
+          "order": 7
+        }
+      ],
+      "crew": [
+        {
+          "adult": false,
+          "gender": 0,
+          "id": 3313829,
+          "known_for_department": "Sound",
+          "name": "Hiroki Nishiyama",
+          "original_name": "西山寛基",
+          "popularity": 0.0611,
+          "profile_path": null,
+          "credit_id": "63e5ba279512e1007965dfaf",
+          "department": "Sound",
+          "job": "Sound Director"
+        },
+        {
+          "adult": false,
+          "gender": 0,
+          "id": 3771381,
+          "known_for_department": "Visual Effects",
+          "name": "Seiya Misawa",
+          "original_name": "三沢聖矢",
+          "popularity": 0.0429,
+          "profile_path": null,
+          "credit_id": "63e5bb549512e100b2b16a3c",
+          "department": "Visual Effects",
+          "job": "Supervising Animation Director"
+        },
+        {
+          "adult": false,
+          "gender": 0,
+          "id": 3913799,
+          "known_for_department": "Visual Effects",
+          "name": "Kazuya Shiroda",
+          "original_name": "Kazuya Shiroda",
+          "popularity": 0.0143,
+          "profile_path": null,
+          "credit_id": "63e5bc1fa3d02700c82bd59a",
+          "department": "Visual Effects",
+          "job": "Supervising Animation Director"
+        },
+        {
+          "adult": false,
+          "gender": 0,
+          "id": 3430399,
+          "known_for_department": "Visual Effects",
+          "name": "Washimi",
+          "original_name": "Washimi",
+          "popularity": 0.3539,
+          "profile_path": null,
+          "credit_id": "63e5bd062fccee00d1750f95",
+          "department": "Visual Effects",
+          "job": "Color Designer"
+        },
+        {
+          "adult": false,
+          "gender": 0,
+          "id": 3913808,
+          "known_for_department": "Camera",
+          "name": "Shurakura Hououin",
+          "original_name": "鳳凰院修羅苦羅",
+          "popularity": 0.5698,
+          "profile_path": null,
+          "credit_id": "63e5bcc0c2ff3d008e589360",
+          "department": "Camera",
+          "job": "Director of Photography"
+        },
+        {
+          "adult": false,
+          "gender": 0,
+          "id": 2649444,
+          "known_for_department": "Writing",
+          "name": "Eeyo Kurosaki",
+          "original_name": "黒崎エーヨ",
+          "popularity": 1.0857,
+          "profile_path": null,
+          "credit_id": "63e5b806c2ff3d00c3db2fbf",
+          "department": "Writing",
+          "job": "Writer"
+        },
+        {
+          "adult": false,
+          "gender": 0,
+          "id": 3913794,
+          "known_for_department": "Writing",
+          "name": "Aki Murakami",
+          "original_name": "Aki Murakami",
+          "popularity": 0.0168,
+          "profile_path": null,
+          "credit_id": "63e5b81af48b3400d5785eb3",
+          "department": "Writing",
+          "job": "Comic Book"
+        },
+        {
+          "adult": true,
+          "gender": 2,
+          "id": 1778160,
+          "known_for_department": "Editing",
+          "name": "Kouki Shinkai",
+          "original_name": "新海コウキ",
+          "popularity": 7.492,
+          "profile_path": null,
+          "credit_id": "63e5ba54c2ff3d007c3bb7a5",
+          "department": "Editing",
+          "job": "Editor"
+        },
+        {
+          "adult": false,
+          "gender": 0,
+          "id": 3257710,
+          "known_for_department": "Directing",
+          "name": "Sanae Nagi",
+          "original_name": "Sanae Nagi",
+          "popularity": 0.1365,
+          "profile_path": null,
+          "credit_id": "63e5b7baa3d02700d332b45c",
+          "department": "Directing",
+          "job": "Series Director"
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 2043269,
+          "known_for_department": "Visual Effects",
+          "name": "Katsuyuki Satou",
+          "original_name": "佐藤勝行",
+          "popularity": 1.0967,
+          "profile_path": null,
+          "credit_id": "63e5bb0e9512e1007f16fe8a",
+          "department": "Visual Effects",
+          "job": "Supervising Animation Director"
+        },
+        {
+          "adult": true,
+          "gender": 2,
+          "id": 3000446,
+          "known_for_department": "Visual Effects",
+          "name": "Binme",
+          "original_name": "Binme",
+          "popularity": 0.6,
+          "profile_path": null,
+          "credit_id": "63e5baecf48b3400bc979fa9",
+          "department": "Visual Effects",
+          "job": "Supervising Animation Director"
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 2043269,
+          "known_for_department": "Visual Effects",
+          "name": "Katsuyuki Satou",
+          "original_name": "佐藤勝行",
+          "popularity": 1.0967,
+          "profile_path": null,
+          "credit_id": "63e5b93a2fccee00d1750d90",
+          "department": "Visual Effects",
+          "job": "Character Designer"
+        },
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 3374879,
+          "known_for_department": "Visual Effects",
+          "name": "Rena Nasu",
+          "original_name": "那須玲奈",
+          "popularity": 0.3641,
+          "profile_path": null,
+          "credit_id": "63e5bb37f48b34008428b7bc",
+          "department": "Visual Effects",
+          "job": "Supervising Animation Director"
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 3913807,
+          "known_for_department": "Camera",
+          "name": "Takuto Tomozawa",
+          "original_name": "友沢匠人",
+          "popularity": 0.0673,
+          "profile_path": null,
+          "credit_id": "63e5bc72a3d0270083837313",
+          "department": "Camera",
+          "job": "Director of Photography"
+        },
+        {
+          "adult": false,
+          "gender": 1,
+          "id": 3766603,
+          "known_for_department": "Art",
+          "name": "Momoko Sato",
+          "original_name": "佐藤桃子",
+          "popularity": 0.627,
+          "profile_path": "/9FuM1ltbQZ9xltkN0SvmkrXohlw.jpg",
+          "credit_id": "63e5b9d4c2ff3d008416367b",
+          "department": "Art",
+          "job": "Art Direction"
+        }
+      ],
+      "id": 220118
+    },
+    "keywords": {
+      "id": 220118,
+      "results": [
+        {
+          "name": "gangster",
+          "id": 3149
+        },
+        {
+          "name": "romance",
+          "id": 9840
+        },
+        {
+          "name": "based on manga",
+          "id": 13141
+        },
+        {
+          "name": "anime",
+          "id": 210024
+        },
+        {
+          "name": "josei",
+          "id": 229074
+        },
+        {
+          "name": "erotic",
+          "id": 256466
+        }
+      ]
+    },
+    "seasons": [
+      {
+        "_id": "63e5a742c2ff3d00f3162fc0",
+        "air_date": "2023-04-03",
+        "episodes": [
+          {
+            "air_date": "2023-04-03",
+            "episode_number": 1,
+            "episode_type": "standard",
+            "id": 4224456,
+            "name": "你愿意做我的妻子吗",
+            "overview": "",
+            "production_code": "",
+            "runtime": null,
+            "season_number": 1,
+            "show_id": 220118,
+            "still_path": "/AqUEyuZ6MOjaaIxrh3bMfQLFp9C.jpg",
+            "vote_average": 10.0,
+            "vote_count": 1,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2023-04-10",
+            "episode_number": 2,
+            "episode_type": "standard",
+            "id": 4355013,
+            "name": "如果这是我亲爱的妻子的愿望，我愿意献出我的一切",
+            "overview": "",
+            "production_code": "",
+            "runtime": null,
+            "season_number": 1,
+            "show_id": 220118,
+            "still_path": "/ydSkNQa6QPiMN7zR8s7p2pyCck5.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2023-04-17",
+            "episode_number": 3,
+            "episode_type": "standard",
+            "id": 4369190,
+            "name": "不要以为你能离开",
+            "overview": "",
+            "production_code": "",
+            "runtime": null,
+            "season_number": 1,
+            "show_id": 220118,
+            "still_path": "/a9hJEpHsnJKmu3y29D47Im35HQm.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2023-04-24",
+            "episode_number": 4,
+            "episode_type": "standard",
+            "id": 4396106,
+            "name": "要我命令你加班吗",
+            "overview": "",
+            "production_code": "",
+            "runtime": null,
+            "season_number": 1,
+            "show_id": 220118,
+            "still_path": "/vRkwsz5XRhWeIb6y6vKW7bVqTYV.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2023-05-08",
+            "episode_number": 5,
+            "episode_type": "standard",
+            "id": 4462783,
+            "name": "你需要一点惩罚吗",
+            "overview": "",
+            "production_code": "",
+            "runtime": null,
+            "season_number": 1,
+            "show_id": 220118,
+            "still_path": "/7hNsgZ8EeQPkSTfUF6uXrcuVAm2.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2023-05-15",
+            "episode_number": 6,
+            "episode_type": "standard",
+            "id": 4462788,
+            "name": "让我检查每一个角落",
+            "overview": "",
+            "production_code": "",
+            "runtime": null,
+            "season_number": 1,
+            "show_id": 220118,
+            "still_path": "/2ONEt4B3gLenhk9vheJ35TS3Zmk.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2023-05-29",
+            "episode_number": 7,
+            "episode_type": "standard",
+            "id": 4462790,
+            "name": "我想把你永远抱在怀里",
+            "overview": "",
+            "production_code": "",
+            "runtime": null,
+            "season_number": 1,
+            "show_id": 220118,
+            "still_path": "/2irnx35bfX1e6MaR2RwKj9NGfMa.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2023-07-01",
+            "episode_number": 8,
+            "episode_type": "standard",
+            "id": 4560226,
+            "name": "请允许我继续爱你",
+            "overview": "",
+            "production_code": "",
+            "runtime": null,
+            "season_number": 1,
+            "show_id": 220118,
+            "still_path": "/9ioq8IFFmZg2JqPrOyBcvkbZ5CG.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          }
+        ],
+        "name": "第 1 季",
+        "networks": [
+          {
+            "id": 614,
+            "logo_path": "/hSdroyVthq3CynxTIIY7lnS8w1.png",
+            "name": "Tokyo MX",
+            "origin_country": "JP"
+          },
+          {
+            "id": 861,
+            "logo_path": "/JQ5bx6n7Qmdmyqz6sqjo5Fz2iR.png",
+            "name": "BS11",
+            "origin_country": "JP"
+          }
+        ],
+        "overview": "",
+        "id": 328260,
+        "poster_path": "/9hyTDPS9uo70QJwvBsVGtaLAANB.jpg",
+        "season_number": 1,
+        "vote_average": 10.0
+      }
+    ],
+    "episodes": [
+      {
+        "air_date": "2023-04-03",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "你愿意做我的妻子吗",
+        "overview": "",
+        "id": 4224456,
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "still_path": "/AqUEyuZ6MOjaaIxrh3bMfQLFp9C.jpg",
+        "vote_average": 10.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2023-04-10",
+        "crew": [],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "如果这是我亲爱的妻子的愿望，我愿意献出我的一切",
+        "overview": "",
+        "id": 4355013,
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "still_path": "/ydSkNQa6QPiMN7zR8s7p2pyCck5.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2023-04-17",
+        "crew": [],
+        "episode_number": 3,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "不要以为你能离开",
+        "overview": "",
+        "id": 4369190,
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "still_path": "/a9hJEpHsnJKmu3y29D47Im35HQm.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2023-04-24",
+        "crew": [],
+        "episode_number": 4,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "要我命令你加班吗",
+        "overview": "",
+        "id": 4396106,
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "still_path": "/vRkwsz5XRhWeIb6y6vKW7bVqTYV.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2023-05-08",
+        "crew": [],
+        "episode_number": 5,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "你需要一点惩罚吗",
+        "overview": "",
+        "id": 4462783,
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "still_path": "/7hNsgZ8EeQPkSTfUF6uXrcuVAm2.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2023-05-15",
+        "crew": [],
+        "episode_number": 6,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "让我检查每一个角落",
+        "overview": "",
+        "id": 4462788,
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "still_path": "/2ONEt4B3gLenhk9vheJ35TS3Zmk.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2023-05-29",
+        "crew": [],
+        "episode_number": 7,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "我想把你永远抱在怀里",
+        "overview": "",
+        "id": 4462790,
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "still_path": "/2irnx35bfX1e6MaR2RwKj9NGfMa.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2023-07-01",
+        "crew": [],
+        "episode_number": 8,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "请允许我继续爱你",
+        "overview": "",
+        "id": 4560226,
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "still_path": "/9ioq8IFFmZg2JqPrOyBcvkbZ5CG.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      }
+    ]
+  },
+  "translate": {
+    "translated": {
+      "media_type": "tv",
+      "tmdb_id": 220118,
+      "title": "为涟苍士献上纯洁",
+      "original_title": "漣蒼士に純潔を捧ぐ",
+      "year": 2023,
+      "plot": "没有男性经验、害羞的风平沙，为了改变自己的海外独自旅行，钱包丢了，引起了很大的恐慌。帮助我的是一个绅士般的神秘男子涟苍士。松了一口气也没多久，他拿起风平浪静沙的手说：“你能做我的妻子吗？“突然求婚。虽然是令人惊愕的风平浪静，但他更是被部下称为“卡西拉”的人物……",
+      "tagline": "",
+      "runtime": 6,
+      "release_date": "2023-04-03",
+      "rating": 8.2,
+      "rating_count": 5,
+      "genres": [
+        "动画"
+      ],
+      "countries": [
+        "JP"
+      ],
+      "languages": [
+        "ja"
+      ],
+      "studios": [
+        "studio HōKIBOSHI",
+        "Suiseisha"
+      ],
+      "networks": [
+        "Tokyo MX",
+        "BS11"
+      ],
+      "network": "Tokyo MX",
+      "status": "Ended",
+      "homepage": "https://sazanami.af-original.com/",
+      "cast": [
+        {
+          "name_en": "Saho Shirasu",
+          "name_zh": null,
+          "role": "Nagisa Amami (voice)",
+          "original_name": "白砂沙帆",
+          "profile_path": "/2iNYxiui27dvP30WiYtVquO1HCN.jpg",
+          "popularity": 1.6876
+        },
+        {
+          "name_en": "Satomi Miura",
+          "name_zh": null,
+          "role": "Nagisa Amami (voice)",
+          "original_name": "三浦さとみ",
+          "profile_path": null,
+          "popularity": 0.6403
+        },
+        {
+          "name_en": "Yoshiki Nakajima",
+          "name_zh": null,
+          "role": "Sōshi Sazanami (voice)",
+          "original_name": "中島ヨシキ",
+          "profile_path": "/izvxmcL0bL5BqpqSdHRuHEPidZ2.jpg",
+          "popularity": 1.1392
+        },
+        {
+          "name_en": "Dai Kuki",
+          "name_zh": null,
+          "role": "Sōshi Sazanami (voice)",
+          "original_name": "Dai Kuki",
+          "profile_path": null,
+          "popularity": 0.1661
+        },
+        {
+          "name_en": "Daiki Hamano",
+          "name_zh": null,
+          "role": "Tomo Hinata (voice)",
+          "original_name": "濱野大輝",
+          "profile_path": "/bykeH3Rhmx9PPFegYNi6s310cNa.jpg",
+          "popularity": 2.4491
+        },
+        {
+          "name_en": "Tetsu Watake",
+          "name_zh": null,
+          "role": "Tomo Hinata (voice)",
+          "original_name": "Tetsu Watake",
+          "profile_path": null,
+          "popularity": 0.0331
+        },
+        {
+          "name_en": "Kouta Mashiro",
+          "name_zh": null,
+          "role": "Shibata (voice)",
+          "original_name": "Kouta Mashiro",
+          "profile_path": null,
+          "popularity": 0.0441
+        },
+        {
+          "name_en": "Shuuji Inozuki",
+          "name_zh": null,
+          "role": "Shibata (voice)",
+          "original_name": "Shuuji Inozuki",
+          "profile_path": "/bJyEEFV9QphPg4cKtWJiYLPk6FL.jpg",
+          "popularity": 0.0894
+        }
+      ],
+      "directors": [
+        "Sanae Nagi"
+      ],
+      "writers": [
+        "Aki Murakami",
+        "Eeyo Kurosaki"
+      ],
+      "images": {},
+      "seasons": [
+        {
+          "air_date": "2023-05-01",
+          "episode_count": 2,
+          "id": 341936,
+          "name": "特别篇",
+          "overview": "",
+          "poster_path": null,
+          "season_number": 0,
+          "vote_average": 0.0
+        },
+        {
+          "air_date": "2023-04-03",
+          "episode_count": 8,
+          "id": 328260,
+          "name": "第 1 季",
+          "overview": "",
+          "poster_path": "/9hyTDPS9uo70QJwvBsVGtaLAANB.jpg",
+          "season_number": 1,
+          "vote_average": 10.0
+        }
+      ],
+      "episodes": [
+        {
+          "air_date": "2023-04-03",
+          "crew": [],
+          "episode_number": 1,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "你愿意做我的妻子吗",
+          "overview": "",
+          "id": 4224456,
+          "production_code": "",
+          "runtime": null,
+          "season_number": 1,
+          "still_path": "/AqUEyuZ6MOjaaIxrh3bMfQLFp9C.jpg",
+          "vote_average": 10.0,
+          "vote_count": 1
+        },
+        {
+          "air_date": "2023-04-10",
+          "crew": [],
+          "episode_number": 2,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "如果这是我亲爱的妻子的愿望，我愿意献出我的一切",
+          "overview": "",
+          "id": 4355013,
+          "production_code": "",
+          "runtime": null,
+          "season_number": 1,
+          "still_path": "/ydSkNQa6QPiMN7zR8s7p2pyCck5.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2023-04-17",
+          "crew": [],
+          "episode_number": 3,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "不要以为你能离开",
+          "overview": "",
+          "id": 4369190,
+          "production_code": "",
+          "runtime": null,
+          "season_number": 1,
+          "still_path": "/a9hJEpHsnJKmu3y29D47Im35HQm.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2023-04-24",
+          "crew": [],
+          "episode_number": 4,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "要我命令你加班吗",
+          "overview": "",
+          "id": 4396106,
+          "production_code": "",
+          "runtime": null,
+          "season_number": 1,
+          "still_path": "/vRkwsz5XRhWeIb6y6vKW7bVqTYV.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2023-05-08",
+          "crew": [],
+          "episode_number": 5,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "你需要一点惩罚吗",
+          "overview": "",
+          "id": 4462783,
+          "production_code": "",
+          "runtime": null,
+          "season_number": 1,
+          "still_path": "/7hNsgZ8EeQPkSTfUF6uXrcuVAm2.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2023-05-15",
+          "crew": [],
+          "episode_number": 6,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "让我检查每一个角落",
+          "overview": "",
+          "id": 4462788,
+          "production_code": "",
+          "runtime": null,
+          "season_number": 1,
+          "still_path": "/2ONEt4B3gLenhk9vheJ35TS3Zmk.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2023-05-29",
+          "crew": [],
+          "episode_number": 7,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "我想把你永远抱在怀里",
+          "overview": "",
+          "id": 4462790,
+          "production_code": "",
+          "runtime": null,
+          "season_number": 1,
+          "still_path": "/2irnx35bfX1e6MaR2RwKj9NGfMa.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2023-07-01",
+          "crew": [],
+          "episode_number": 8,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "请允许我继续爱你",
+          "overview": "",
+          "id": 4560226,
+          "production_code": "",
+          "runtime": null,
+          "season_number": 1,
+          "still_path": "/9ioq8IFFmZg2JqPrOyBcvkbZ5CG.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        }
+      ],
+      "title_zh": "为涟苍士献上纯洁",
+      "plot_zh": "没有男性经验、害羞的风平沙，为了改变自己的海外独自旅行，钱包丢了，引起了很大的恐慌。帮助我的是一个绅士般的神秘男子涟苍士。松了一口气也没多久，他拿起风平浪静沙的手说：“你能做我的妻子吗？“突然求婚。虽然是令人惊愕的风平浪静，但他更是被部下称为“卡西拉”的人物……",
+      "keywords_en": [
+        "gangster",
+        "romance",
+        "based on manga",
+        "anime",
+        "josei",
+        "erotic"
+      ],
+      "keywords": [
+        "gangster",
+        "romance",
+        "based on manga",
+        "anime",
+        "josei",
+        "erotic"
+      ],
+      "keywords_zh": [
+        "黑帮",
+        "浪漫",
+        "改编自漫画",
+        "动画",
+        "乔西",
+        "色情"
+      ]
+    },
+    "episodes": [
+      {
+        "air_date": "2023-04-03",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "你愿意做我的妻子吗",
+        "overview": "",
+        "id": 4224456,
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "still_path": "/AqUEyuZ6MOjaaIxrh3bMfQLFp9C.jpg",
+        "vote_average": 10.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2023-04-10",
+        "crew": [],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "如果这是我亲爱的妻子的愿望，我愿意献出我的一切",
+        "overview": "",
+        "id": 4355013,
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "still_path": "/ydSkNQa6QPiMN7zR8s7p2pyCck5.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2023-04-17",
+        "crew": [],
+        "episode_number": 3,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "不要以为你能离开",
+        "overview": "",
+        "id": 4369190,
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "still_path": "/a9hJEpHsnJKmu3y29D47Im35HQm.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2023-04-24",
+        "crew": [],
+        "episode_number": 4,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "要我命令你加班吗",
+        "overview": "",
+        "id": 4396106,
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "still_path": "/vRkwsz5XRhWeIb6y6vKW7bVqTYV.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2023-05-08",
+        "crew": [],
+        "episode_number": 5,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "你需要一点惩罚吗",
+        "overview": "",
+        "id": 4462783,
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "still_path": "/7hNsgZ8EeQPkSTfUF6uXrcuVAm2.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2023-05-15",
+        "crew": [],
+        "episode_number": 6,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "让我检查每一个角落",
+        "overview": "",
+        "id": 4462788,
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "still_path": "/2ONEt4B3gLenhk9vheJ35TS3Zmk.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2023-05-29",
+        "crew": [],
+        "episode_number": 7,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "我想把你永远抱在怀里",
+        "overview": "",
+        "id": 4462790,
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "still_path": "/2irnx35bfX1e6MaR2RwKj9NGfMa.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2023-07-01",
+        "crew": [],
+        "episode_number": 8,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "请允许我继续爱你",
+        "overview": "",
+        "id": 4560226,
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "still_path": "/9ioq8IFFmZg2JqPrOyBcvkbZ5CG.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      }
+    ]
+  },
+  "normalize": {
+    "media_type": "tv",
+    "tmdb_id": 220118,
+    "title": "为涟苍士献上纯洁",
+    "original_title": "漣蒼士に純潔を捧ぐ",
+    "year": 2023,
+    "plot": "没有男性经验、害羞的风平沙，为了改变自己的海外独自旅行，钱包丢了，引起了很大的恐慌。帮助我的是一个绅士般的神秘男子涟苍士。松了一口气也没多久，他拿起风平浪静沙的手说：“你能做我的妻子吗？“突然求婚。虽然是令人惊愕的风平浪静，但他更是被部下称为“卡西拉”的人物……",
+    "tagline": "",
+    "runtime": 6,
+    "release_date": "2023-04-03",
+    "rating": 8.2,
+    "rating_count": 5,
+    "genres": [
+      "动画"
+    ],
+    "countries": [
+      "JP"
+    ],
+    "languages": [
+      "ja"
+    ],
+    "studios": [
+      "studio HōKIBOSHI",
+      "Suiseisha"
+    ],
+    "networks": [
+      "Tokyo MX",
+      "BS11"
+    ],
+    "network": "Tokyo MX",
+    "status": "Ended",
+    "homepage": "https://sazanami.af-original.com/",
+    "cast": [
+      {
+        "name_en": "Saho Shirasu",
+        "name_zh": null,
+        "role": "Nagisa Amami (voice)",
+        "original_name": "白砂沙帆",
+        "profile_path": "/2iNYxiui27dvP30WiYtVquO1HCN.jpg",
+        "popularity": 1.6876
+      },
+      {
+        "name_en": "Satomi Miura",
+        "name_zh": null,
+        "role": "Nagisa Amami (voice)",
+        "original_name": "三浦さとみ",
+        "profile_path": null,
+        "popularity": 0.6403
+      },
+      {
+        "name_en": "Yoshiki Nakajima",
+        "name_zh": null,
+        "role": "Sōshi Sazanami (voice)",
+        "original_name": "中島ヨシキ",
+        "profile_path": "/izvxmcL0bL5BqpqSdHRuHEPidZ2.jpg",
+        "popularity": 1.1392
+      },
+      {
+        "name_en": "Dai Kuki",
+        "name_zh": null,
+        "role": "Sōshi Sazanami (voice)",
+        "original_name": "Dai Kuki",
+        "profile_path": null,
+        "popularity": 0.1661
+      },
+      {
+        "name_en": "Daiki Hamano",
+        "name_zh": null,
+        "role": "Tomo Hinata (voice)",
+        "original_name": "濱野大輝",
+        "profile_path": "/bykeH3Rhmx9PPFegYNi6s310cNa.jpg",
+        "popularity": 2.4491
+      },
+      {
+        "name_en": "Tetsu Watake",
+        "name_zh": null,
+        "role": "Tomo Hinata (voice)",
+        "original_name": "Tetsu Watake",
+        "profile_path": null,
+        "popularity": 0.0331
+      },
+      {
+        "name_en": "Kouta Mashiro",
+        "name_zh": null,
+        "role": "Shibata (voice)",
+        "original_name": "Kouta Mashiro",
+        "profile_path": null,
+        "popularity": 0.0441
+      },
+      {
+        "name_en": "Shuuji Inozuki",
+        "name_zh": null,
+        "role": "Shibata (voice)",
+        "original_name": "Shuuji Inozuki",
+        "profile_path": "/bJyEEFV9QphPg4cKtWJiYLPk6FL.jpg",
+        "popularity": 0.0894
+      }
+    ],
+    "directors": [
+      "Sanae Nagi"
+    ],
+    "writers": [
+      "Aki Murakami",
+      "Eeyo Kurosaki"
+    ],
+    "images": {},
+    "seasons": [
+      {
+        "air_date": "2023-05-01",
+        "episode_count": 2,
+        "id": 341936,
+        "name": "特别篇",
+        "overview": "",
+        "poster_path": null,
+        "season_number": 0,
+        "vote_average": 0.0
+      },
+      {
+        "air_date": "2023-04-03",
+        "episode_count": 8,
+        "id": 328260,
+        "name": "第 1 季",
+        "overview": "",
+        "poster_path": "/9hyTDPS9uo70QJwvBsVGtaLAANB.jpg",
+        "season_number": 1,
+        "vote_average": 10.0
+      }
+    ],
+    "episodes": [
+      {
+        "air_date": "2023-04-03",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "你愿意做我的妻子吗",
+        "overview": "",
+        "id": 4224456,
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "still_path": "/AqUEyuZ6MOjaaIxrh3bMfQLFp9C.jpg",
+        "vote_average": 10.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2023-04-10",
+        "crew": [],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "如果这是我亲爱的妻子的愿望，我愿意献出我的一切",
+        "overview": "",
+        "id": 4355013,
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "still_path": "/ydSkNQa6QPiMN7zR8s7p2pyCck5.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2023-04-17",
+        "crew": [],
+        "episode_number": 3,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "不要以为你能离开",
+        "overview": "",
+        "id": 4369190,
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "still_path": "/a9hJEpHsnJKmu3y29D47Im35HQm.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2023-04-24",
+        "crew": [],
+        "episode_number": 4,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "要我命令你加班吗",
+        "overview": "",
+        "id": 4396106,
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "still_path": "/vRkwsz5XRhWeIb6y6vKW7bVqTYV.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2023-05-08",
+        "crew": [],
+        "episode_number": 5,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "你需要一点惩罚吗",
+        "overview": "",
+        "id": 4462783,
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "still_path": "/7hNsgZ8EeQPkSTfUF6uXrcuVAm2.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2023-05-15",
+        "crew": [],
+        "episode_number": 6,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "让我检查每一个角落",
+        "overview": "",
+        "id": 4462788,
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "still_path": "/2ONEt4B3gLenhk9vheJ35TS3Zmk.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2023-05-29",
+        "crew": [],
+        "episode_number": 7,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "我想把你永远抱在怀里",
+        "overview": "",
+        "id": 4462790,
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "still_path": "/2irnx35bfX1e6MaR2RwKj9NGfMa.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2023-07-01",
+        "crew": [],
+        "episode_number": 8,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "请允许我继续爱你",
+        "overview": "",
+        "id": 4560226,
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "still_path": "/9ioq8IFFmZg2JqPrOyBcvkbZ5CG.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      }
+    ],
+    "title_zh": "为涟苍士献上纯洁",
+    "plot_zh": "没有男性经验、害羞的风平沙，为了改变自己的海外独自旅行，钱包丢了，引起了很大的恐慌。帮助我的是一个绅士般的神秘男子涟苍士。松了一口气也没多久，他拿起风平浪静沙的手说：“你能做我的妻子吗？“突然求婚。虽然是令人惊愕的风平浪静，但他更是被部下称为“卡西拉”的人物……",
+    "keywords_en": [
+      "gangster",
+      "romance",
+      "based on manga",
+      "anime",
+      "josei",
+      "erotic"
+    ],
+    "keywords": [
+      "gangster",
+      "romance",
+      "based on manga",
+      "anime",
+      "josei",
+      "erotic"
+    ],
+    "keywords_zh": [
+      "黑帮",
+      "浪漫",
+      "改编自漫画",
+      "动画",
+      "乔西",
+      "色情"
+    ]
+  },
+  "nfo": {
+    "data": {
+      "title": "为涟苍士献上纯洁",
+      "originaltitle": "漣蒼士に純潔を捧ぐ",
+      "year": 2023,
+      "premiered": "2023-04-03",
+      "plot": "没有男性经验、害羞的风平沙，为了改变自己的海外独自旅行，钱包丢了，引起了很大的恐慌。帮助我的是一个绅士般的神秘男子涟苍士。松了一口气也没多久，他拿起风平浪静沙的手说：“你能做我的妻子吗？“突然求婚。虽然是令人惊愕的风平浪静，但他更是被部下称为“卡西拉”的人物……",
+      "tagline": "",
+      "runtime": 6,
+      "rating": 8.2,
+      "votes": 5,
+      "genre": [
+        "动画"
+      ],
+      "country": [
+        "JP"
+      ],
+      "studio": [
+        "studio HōKIBOSHI",
+        "Suiseisha"
+      ],
+      "credits": [
+        "Aki Murakami",
+        "Eeyo Kurosaki"
+      ],
+      "director": [
+        "Sanae Nagi"
+      ],
+      "actor": [
+        {
+          "name": "Saho Shirasu",
+          "role": "Nagisa Amami (voice)",
+          "originalname": "白砂沙帆",
+          "thumb": "images/actors/Saho Shirasu.jpg"
+        },
+        {
+          "name": "Satomi Miura",
+          "role": "Nagisa Amami (voice)",
+          "originalname": "三浦さとみ"
+        },
+        {
+          "name": "Yoshiki Nakajima",
+          "role": "Sōshi Sazanami (voice)",
+          "originalname": "中島ヨシキ",
+          "thumb": "images/actors/Yoshiki Nakajima.jpg"
+        },
+        {
+          "name": "Dai Kuki",
+          "role": "Sōshi Sazanami (voice)"
+        },
+        {
+          "name": "Daiki Hamano",
+          "role": "Tomo Hinata (voice)",
+          "originalname": "濱野大輝",
+          "thumb": "images/actors/Daiki Hamano.jpg"
+        },
+        {
+          "name": "Tetsu Watake",
+          "role": "Tomo Hinata (voice)"
+        },
+        {
+          "name": "Kouta Mashiro",
+          "role": "Shibata (voice)"
+        },
+        {
+          "name": "Shuuji Inozuki",
+          "role": "Shibata (voice)",
+          "thumb": "images/actors/Shuuji Inozuki.jpg"
+        }
+      ],
+      "thumb": "poster.jpg",
+      "fanart": "fanart.jpg",
+      "tags": [
+        "黑帮",
+        "浪漫",
+        "改编自漫画",
+        "动画",
+        "乔西",
+        "色情"
+      ],
+      "network": "Tokyo MX",
+      "networks": [
+        "Tokyo MX",
+        "BS11"
+      ],
+      "status": "Ended",
+      "homepage": "https://sazanami.af-original.com/",
+      "tmdb_id": 220118,
+      "validated": true
+    },
+    "xml": "<?xml version=\"1.0\" ?>\n<tvshow>\n  <title>为涟苍士献上纯洁</title>\n  <originaltitle>漣蒼士に純潔を捧ぐ</originaltitle>\n  <year>2023</year>\n  <premiered>2023-04-03</premiered>\n  <plot><![CDATA[没有男性经验、害羞的风平沙，为了改变自己的海外独自旅行，钱包丢了，引起了很大的恐慌。帮助我的是一个绅士般的神秘男子涟苍士。松了一口气也没多久，他拿起风平浪静沙的手说：“你能做我的妻子吗？“突然求婚。虽然是令人惊愕的风平浪静，但他更是被部下称为“卡西拉”的人物……]]></plot>\n  <runtime>6</runtime>\n  <rating>8.2</rating>\n  <votes>5</votes>\n  <tmdbid>220118</tmdbid>\n  <genre>动画</genre>\n  <country>JP</country>\n  <studio>studio HōKIBOSHI</studio>\n  <studio>Suiseisha</studio>\n  <credits>Aki Murakami, Eeyo Kurosaki</credits>\n  <director>Sanae Nagi</director>\n  <actor>\n    <name>Saho Shirasu</name>\n    <role>Nagisa Amami (voice)</role>\n    <originalname>白砂沙帆</originalname>\n    <thumb>images/actors/Saho Shirasu.jpg</thumb>\n  </actor>\n  <actor>\n    <name>Satomi Miura</name>\n    <role>Nagisa Amami (voice)</role>\n    <originalname>三浦さとみ</originalname>\n  </actor>\n  <actor>\n    <name>Yoshiki Nakajima</name>\n    <role>Sōshi Sazanami (voice)</role>\n    <originalname>中島ヨシキ</originalname>\n    <thumb>images/actors/Yoshiki Nakajima.jpg</thumb>\n  </actor>\n  <actor>\n    <name>Dai Kuki</name>\n    <role>Sōshi Sazanami (voice)</role>\n  </actor>\n  <actor>\n    <name>Daiki Hamano</name>\n    <role>Tomo Hinata (voice)</role>\n    <originalname>濱野大輝</originalname>\n    <thumb>images/actors/Daiki Hamano.jpg</thumb>\n  </actor>\n  <actor>\n    <name>Tetsu Watake</name>\n    <role>Tomo Hinata (voice)</role>\n  </actor>\n  <actor>\n    <name>Kouta Mashiro</name>\n    <role>Shibata (voice)</role>\n  </actor>\n  <actor>\n    <name>Shuuji Inozuki</name>\n    <role>Shibata (voice)</role>\n    <thumb>images/actors/Shuuji Inozuki.jpg</thumb>\n  </actor>\n  <network>Tokyo MX</network>\n  <network>BS11</network>\n  <status>Ended</status>\n  <homepage>https://sazanami.af-original.com/</homepage>\n  <uniqueid type=\"tmdb\" default=\"true\">220118</uniqueid>\n  <thumb>images/poster/poster.jpg</thumb>\n  <fanart>images/fanart/fanart.jpg</fanart>\n  <tag>黑帮</tag>\n  <tag>浪漫</tag>\n  <tag>改编自漫画</tag>\n  <tag>动画</tag>\n  <tag>乔西</tag>\n  <tag>色情</tag>\n</tvshow>\n"
+  },
+  "output": {
+    "status": "completed",
+    "files": {
+      "nfo_file": "/Volumes/video/Animation/The Animation/为涟苍士献上纯洁 (2023)/tvshow.nfo",
+      "images_dir": "/Volumes/video/Animation/The Animation/为涟苍士献上纯洁 (2023)/images",
+      "media_dir": "/Volumes/video/Animation/The Animation/为涟苍士献上纯洁 (2023)",
+      "season_1_episode_1": "/Volumes/video/Animation/The Animation/为涟苍士献上纯洁 (2023)/Season 01/为涟苍士献上纯洁 - S01E01 - 你愿意做我的妻子吗.nfo",
+      "season_1_episode_2": "/Volumes/video/Animation/The Animation/为涟苍士献上纯洁 (2023)/Season 01/为涟苍士献上纯洁 - S01E02 - 如果这是我亲爱的妻子的愿望，我愿意献出我的一切.nfo",
+      "season_1_episode_3": "/Volumes/video/Animation/The Animation/为涟苍士献上纯洁 (2023)/Season 01/为涟苍士献上纯洁 - S01E03 - 不要以为你能离开.nfo",
+      "season_1_episode_4": "/Volumes/video/Animation/The Animation/为涟苍士献上纯洁 (2023)/Season 01/为涟苍士献上纯洁 - S01E04 - 要我命令你加班吗.nfo",
+      "season_1_episode_5": "/Volumes/video/Animation/The Animation/为涟苍士献上纯洁 (2023)/Season 01/为涟苍士献上纯洁 - S01E05 - 你需要一点惩罚吗.nfo",
+      "season_1_episode_6": "/Volumes/video/Animation/The Animation/为涟苍士献上纯洁 (2023)/Season 01/为涟苍士献上纯洁 - S01E06 - 让我检查每一个角落.nfo",
+      "season_1_episode_7": "/Volumes/video/Animation/The Animation/为涟苍士献上纯洁 (2023)/Season 01/为涟苍士献上纯洁 - S01E07 - 我想把你永远抱在怀里.nfo",
+      "season_1_episode_8": "/Volumes/video/Animation/The Animation/为涟苍士献上纯洁 (2023)/Season 01/为涟苍士献上纯洁 - S01E08 - 请允许我继续爱你.nfo"
+    }
+  },
+  "errors": [],
+  "end_time": "2025-12-05T23:24:00.253336"
+}

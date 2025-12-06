@@ -1,0 +1,16 @@
+2025-12-05 23:32:05,076 - MetadataAgent - INFO - Input parameters parsed
+2025-12-05 23:32:05,077 - MetadataAgent - DEBUG - Input data: {
+  "media_type": "tv",
+  "query": "僕にハーレムセフレが出来た理由 (Unknown Year)",
+  "output_dir": "/Volumes/video/Animation/The Animation/僕にハーレムセフレが出来た理由 (Unknown Year)",
+  "verbose": false,
+  "quiet": true,
+  "aid_search": true
+}
+2025-12-05 23:32:05,835 - MetadataAgent - INFO - Search completed: 0 results
+2025-12-05 23:32:05,836 - MetadataAgent - DEBUG - Search results: {
+  "page": 1,
+  "results": [],
+  "total_pages": 1,
+  "total_results": 0
+}

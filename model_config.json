@@ -1,0 +1,14 @@
+{
+  "default": {
+        "base_url": "http://127.0.0.1:32668/v1",
+        "api_key": "EMPTY", 
+        "model": "local-4b",
+        "max_retries": 2,
+        "temperature": 0.2,
+        "top_p": 0.95,
+        "top_k": 20,
+        "min_p": 0,
+        "max_tokens": 8000
+      }
+}
+ 

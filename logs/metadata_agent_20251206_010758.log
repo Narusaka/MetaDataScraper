@@ -1,0 +1,980 @@
+2025-12-06 01:07:58,877 - MetadataAgent - INFO - Input parameters parsed
+2025-12-06 01:07:58,877 - MetadataAgent - DEBUG - Input data: {
+  "media_type": "tv",
+  "query": "",
+  "output_dir": "/Volumes/video/Animation/The Animation/らぶみー「楓と鈴」THE ANIMATION  (Unknown Year)",
+  "verbose": false,
+  "quiet": true,
+  "aid_search": true,
+  "tmdb_id": 158208
+}
+2025-12-06 01:07:58,877 - MetadataAgent - INFO - Search completed: 0 results
+2025-12-06 01:07:58,877 - MetadataAgent - DEBUG - Search results: {}
+2025-12-06 01:08:02,027 - MetadataAgent - INFO - Data fetching completed
+2025-12-06 01:08:02,027 - MetadataAgent - DEBUG - Main data: {
+  "adult": true,
+  "backdrop_path": "/pxFJE7JP8u2Xld2jYmuL9q9tOgr.jpg",
+  "created_by": [],
+  "episode_run_time": [
+    26
+  ],
+  "first_air_date": "2022-03-25",
+  "genres": [
+    {
+      "id": 16,
+      "name": "动画"
+    }
+  ],
+  "homepage": "",
+  "id": 158208,
+  "in_production": true,
+  "languages": [
+    "ja"
+  ],
+  "last_air_date": "2024-11-30",
+  "last_episode_to_air": {
+    "id": 5438330,
+    "name": "第 3 集",
+    "overview": "隼人和枫在屋顶上做爱后关系更加亲密，现在他们在铃面前公开调情。然而，周末枫试图通过穿着女仆装出现在隼人的家里来取得先机。但在那里，她遇到了被绑住的隼人和同样穿着女仆装、面无表情的铃。铃平时是一个安静而内敛的妹妹，但她隐藏的感情开始泛滥……",
+    "vote_average": 7.0,
+    "vote_count": 2,
+    "air_date": "2024-11-30",
+    "episode_number": 3,
+    "episode_type": "standard",
+    "production_code": "JDXA57780",
+    "runtime": null,
+    "season_number": 1,
+    "show_id": 158208,
+    "still_path": "/9YTjmtANvMoLVw8rtdyTSoaP0j.jpg"
+  },
+  "name": "枫与铃",
+  "next_episode_to_air": null,
+  "networks": [],
+  "number_of_episodes": 3,
+  "number_of_seasons": 1,
+  "origin_country": [
+    "JP"
+  ],
+  "original_language": "ja",
+  "original_name": "楓と鈴 THE ANIMATION",
+  "overview": "放学后，学生会长枫和秘书隼人被枫的双胞胎妹妹铃叫到学生会室。\n\n枫好奇着桌子上的那个神秘盒子，当他把手伸进去的时候，两只手都被束缚住了……\n\n今天是学园祭的日子。 主角的班级决定扮演女仆咖啡厅，身着女仆装的女孩们表现出色。\n\n当然，同班同学枫也以女仆形象服务顾客。\n\n与此同时，不知何故，来扮演女仆的铃提供了一个神秘的开关。当开关打开进行试验时，枫突然开始扭动。\n\n显然，被主角推动的开关，与插入枫的玩具相连……",
+  "popularity": 0.0,
+  "poster_path": "/1KC0wib95LC2CYP1cHx3q0xJ3wf.jpg",
+  "production_companies": [
+    {
+      "id": 51907,
+      "logo_path": null,
+      "name": "Studio 1st",
+      "origin_country": "JP"
+    },
+    {
+      "id": 80856,
+      "logo_path": "/7tFA0heb8o0hj9IsPehE3zuOHfw.png",
+      "name": "Pink Pineapple",
+      "origin_country": "JP"
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "JP",
+      "name": "Japan"
+    }
+  ],
+  "seasons": [
+    {
+      "air_date": "2022-03-25",
+      "episode_count": 3,
+      "id": 245042,
+      "name": "第 1 季",
+      "overview": "",
+      "poster_path": "/c6HBcbdeO2gWMXE0crneNNfk2VU.jpg",
+      "season_number": 1,
+      "vote_average": 7.6
+    }
+  ],
+  "spoken_languages": [
+    {
+      "english_name": "Japanese",
+      "iso_639_1": "ja",
+      "name": "日本語"
+    }
+  ],
+  "status": "Returning Series",
+  "tagline": "",
+  "type": "Video",
+  "vote_average": 7.8,
+  "vote_count": 19
+}
+2025-12-06 01:08:02,027 - MetadataAgent - DEBUG - Credits data: {
+  "cast": [
+    {
+      "adult": true,
+      "gender": 1,
+      "id": 3658692,
+      "known_for_department": "Acting",
+      "name": "Yuka Hinata",
+      "original_name": "陽向葵ゅか",
+      "popularity": 0.652,
+      "profile_path": "/3390FA7mylvq0XCH65LOCoFk050.jpg",
+      "character": "Suzu (voice)",
+      "credit_id": "6243e6acd100b6008fda4837",
+      "order": 0
+    },
+    {
+      "adult": true,
+      "gender": 2,
+      "id": 2134111,
+      "known_for_department": "Acting",
+      "name": "Kouta Ooshita",
+      "original_name": "大下孝太",
+      "popularity": 18.847,
+      "profile_path": "/zehIZPkdHMPaWYfpJf9F5T7Tzrx.jpg",
+      "character": "Hayato (voice)",
+      "credit_id": "6243e7c3229ae200961a601e",
+      "order": 1
+    },
+    {
+      "adult": true,
+      "gender": 1,
+      "id": 3658692,
+      "known_for_department": "Acting",
+      "name": "Yuka Hinata",
+      "original_name": "陽向葵ゅか",
+      "popularity": 0.652,
+      "profile_path": "/3390FA7mylvq0XCH65LOCoFk050.jpg",
+      "character": "Kaede (voice)",
+      "credit_id": "6714fb280cb6252f9908bc60",
+      "order": 2
+    }
+  ],
+  "crew": [
+    {
+      "adult": true,
+      "gender": 0,
+      "id": 2813335,
+      "known_for_department": "Visual Effects",
+      "name": "Matsu Jun",
+      "original_name": "マツジュン",
+      "popularity": 1.924,
+      "profile_path": null,
+      "credit_id": "621390b01a3248006ab8fa35",
+      "department": "Visual Effects",
+      "job": "Character Designer"
+    },
+    {
+      "adult": true,
+      "gender": 0,
+      "id": 2813335,
+      "known_for_department": "Visual Effects",
+      "name": "Matsu Jun",
+      "original_name": "マツジュン",
+      "popularity": 1.924,
+      "profile_path": null,
+      "credit_id": "6243e5d2c740d9005d7f14ac",
+      "department": "Visual Effects",
+      "job": "Animation Director"
+    },
+    {
+      "adult": true,
+      "gender": 2,
+      "id": 3437174,
+      "known_for_department": "Writing",
+      "name": "Kyockcho",
+      "original_name": "きょくちょ",
+      "popularity": 0.001,
+      "profile_path": null,
+      "credit_id": "6714fc4a650248b9db627787",
+      "department": "Writing",
+      "job": "Original Concept"
+    },
+    {
+      "adult": true,
+      "gender": 2,
+      "id": 1975280,
+      "known_for_department": "Writing",
+      "name": "Sekimachi Taifuu",
+      "original_name": "関町台風",
+      "popularity": 0.6,
+      "profile_path": null,
+      "credit_id": "6886ea0350eaf66252246e59",
+      "department": "Crew",
+      "job": "Script"
+    },
+    {
+      "adult": true,
+      "gender": 2,
+      "id": 2983784,
+      "known_for_department": "Sound",
+      "name": "Kanayama Noboru",
+      "original_name": "金山登",
+      "popularity": 0.6,
+      "profile_path": null,
+      "credit_id": "6886ea617ba2f888ac55f31b",
+      "department": "Sound",
+      "job": "Music"
+    },
+    {
+      "adult": true,
+      "gender": 1,
+      "id": 2983785,
+      "known_for_department": "Sound",
+      "name": "Chiaki Saegusa",
+      "original_name": "三枝千秋",
+      "popularity": 1.932,
+      "profile_path": null,
+      "credit_id": "6886eabed098f600d972efd4",
+      "department": "Sound",
+      "job": "Sound Director"
+    }
+  ],
+  "id": 158208
+}
+2025-12-06 01:08:02,028 - MetadataAgent - DEBUG - Keywords data: {
+  "id": 158208,
+  "results": [
+    {
+      "name": "based on manga",
+      "id": 13141
+    },
+    {
+      "name": "high school student",
+      "id": 33910
+    },
+    {
+      "name": "hentai",
+      "id": 198385
+    }
+  ]
+}
+2025-12-06 01:08:02,028 - MetadataAgent - DEBUG - Episodes data: [
+  {
+    "air_date": "2022-03-25",
+    "crew": [
+      {
+        "job": "Director",
+        "department": "Directing",
+        "credit_id": "6243e5a20d2944005be530f7",
+        "adult": true,
+        "gender": 2,
+        "id": 1458400,
+        "known_for_department": "Directing",
+        "name": "太多秀太",
+        "original_name": "太多秀太",
+        "popularity": 23.763,
+        "profile_path": null
+      },
+      {
+        "job": "Writer",
+        "department": "Writing",
+        "credit_id": "6243e5c09652200048d7c86b",
+        "adult": true,
+        "gender": 2,
+        "id": 1458400,
+        "known_for_department": "Directing",
+        "name": "太多秀太",
+        "original_name": "太多秀太",
+        "popularity": 23.763,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 1,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 1 集",
+    "overview": "放学后，学生会长枫和秘书隼人被枫的双胞胎妹妹铃叫到学生会室。 枫好奇着桌子上的那个神秘盒子，当他把手伸进去的时候，两只手都被束缚住了…… 今天是学园祭的日子。 主角的班级决定扮演女仆咖啡厅，身着女仆装的女孩们表现出色。 当然，同班同学枫也以女仆形象服务顾客。 与此同时，不知何故，来扮演女仆的铃提供了一个神秘的开关。当开关打开进行试验时，枫突然开始扭动。 显然，被主角推动的开关，与插入枫的玩具相连……",
+    "id": 3519903,
+    "production_code": "JDXA57667",
+    "runtime": 27,
+    "season_number": 1,
+    "still_path": "/AfBpHf5rJC18qBAMVqaW6mFFxW2.jpg",
+    "vote_average": 8.4,
+    "vote_count": 9
+  },
+  {
+    "air_date": "2022-10-28",
+    "crew": [],
+    "episode_number": 2,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第2卷",
+    "overview": "傲娇姐姐·枫和无口妹妹·铃是一对双胞胎姐妹。这一天，本该迎来自己生日会的隼人被她们拉走，遮住眼睛坐在高级宾馆的一个房间中。不过，当摘下眼罩之后，出现在面前的竟然是内衣身姿的枫和铃！两人为了庆祝隼人的生日，会提供代替礼物的“服务”…总是被隼人主导的双胞胎姐妹，这次居然用立场逆转的“服务”使他满足！？ 在回家的路上，因为姐妹的生日就要到了，她们期待着隼人会如何回礼。到了二人生日的那天，隼人发现自己和枫一直被铃捉弄着，于是打算趁这个机会，实行「对铃的恶作剧复仇计划」！在学校的屋顶上，正当他用玩具反复玩弄被绑在栏杆上的铃时，突然被无法忍耐的枫夺走了嘴唇…！？",
+    "id": 4023466,
+    "production_code": "JDXA57693",
+    "runtime": 30,
+    "season_number": 1,
+    "still_path": "/p8rpd33Wt0uJkXM7WHWni9HeVBN.jpg",
+    "vote_average": 7.5,
+    "vote_count": 4
+  },
+  {
+    "air_date": "2024-11-30",
+    "crew": [],
+    "episode_number": 3,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 3 集",
+    "overview": "隼人和枫在屋顶上做爱后关系更加亲密，现在他们在铃面前公开调情。然而，周末枫试图通过穿着女仆装出现在隼人的家里来取得先机。但在那里，她遇到了被绑住的隼人和同样穿着女仆装、面无表情的铃。铃平时是一个安静而内敛的妹妹，但她隐藏的感情开始泛滥……",
+    "id": 5438330,
+    "production_code": "JDXA57780",
+    "runtime": null,
+    "season_number": 1,
+    "still_path": "/9YTjmtANvMoLVw8rtdyTSoaP0j.jpg",
+    "vote_average": 7.0,
+    "vote_count": 2
+  }
+]
+2025-12-06 01:08:02,028 - MetadataAgent - DEBUG - Seasons data: [
+  {
+    "_id": "6213900996670e006bac349f",
+    "air_date": "2022-03-25",
+    "episodes": [
+      {
+        "air_date": "2022-03-25",
+        "episode_number": 1,
+        "episode_type": "standard",
+        "id": 3519903,
+        "name": "第 1 集",
+        "overview": "放学后，学生会长枫和秘书隼人被枫的双胞胎妹妹铃叫到学生会室。 枫好奇着桌子上的那个神秘盒子，当他把手伸进去的时候，两只手都被束缚住了…… 今天是学园祭的日子。 主角的班级决定扮演女仆咖啡厅，身着女仆装的女孩们表现出色。 当然，同班同学枫也以女仆形象服务顾客。 与此同时，不知何故，来扮演女仆的铃提供了一个神秘的开关。当开关打开进行试验时，枫突然开始扭动。 显然，被主角推动的开关，与插入枫的玩具相连……",
+        "production_code": "JDXA57667",
+        "runtime": 27,
+        "season_number": 1,
+        "show_id": 158208,
+        "still_path": "/AfBpHf5rJC18qBAMVqaW6mFFxW2.jpg",
+        "vote_average": 8.4,
+        "vote_count": 9,
+        "crew": [
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "6243e5a20d2944005be530f7",
+            "adult": true,
+            "gender": 2,
+            "id": 1458400,
+            "known_for_department": "Directing",
+            "name": "太多秀太",
+            "original_name": "太多秀太",
+            "popularity": 23.763,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "6243e5c09652200048d7c86b",
+            "adult": true,
+            "gender": 2,
+            "id": 1458400,
+            "known_for_department": "Directing",
+            "name": "太多秀太",
+            "original_name": "太多秀太",
+            "popularity": 23.763,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2022-10-28",
+        "episode_number": 2,
+        "episode_type": "standard",
+        "id": 4023466,
+        "name": "第2卷",
+        "overview": "傲娇姐姐·枫和无口妹妹·铃是一对双胞胎姐妹。这一天，本该迎来自己生日会的隼人被她们拉走，遮住眼睛坐在高级宾馆的一个房间中。不过，当摘下眼罩之后，出现在面前的竟然是内衣身姿的枫和铃！两人为了庆祝隼人的生日，会提供代替礼物的“服务”…总是被隼人主导的双胞胎姐妹，这次居然用立场逆转的“服务”使他满足！？ 在回家的路上，因为姐妹的生日就要到了，她们期待着隼人会如何回礼。到了二人生日的那天，隼人发现自己和枫一直被铃捉弄着，于是打算趁这个机会，实行「对铃的恶作剧复仇计划」！在学校的屋顶上，正当他用玩具反复玩弄被绑在栏杆上的铃时，突然被无法忍耐的枫夺走了嘴唇…！？",
+        "production_code": "JDXA57693",
+        "runtime": 30,
+        "season_number": 1,
+        "show_id": 158208,
+        "still_path": "/p8rpd33Wt0uJkXM7WHWni9HeVBN.jpg",
+        "vote_average": 7.5,
+        "vote_count": 4,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2024-11-30",
+        "episode_number": 3,
+        "episode_type": "standard",
+        "id": 5438330,
+        "name": "第 3 集",
+        "overview": "隼人和枫在屋顶上做爱后关系更加亲密，现在他们在铃面前公开调情。然而，周末枫试图通过穿着女仆装出现在隼人的家里来取得先机。但在那里，她遇到了被绑住的隼人和同样穿着女仆装、面无表情的铃。铃平时是一个安静而内敛的妹妹，但她隐藏的感情开始泛滥……",
+        "production_code": "JDXA57780",
+        "runtime": null,
+        "season_number": 1,
+        "show_id": 158208,
+        "still_path": "/9YTjmtANvMoLVw8rtdyTSoaP0j.jpg",
+        "vote_average": 7.0,
+        "vote_count": 2,
+        "crew": [],
+        "guest_stars": []
+      }
+    ],
+    "name": "第 1 季",
+    "networks": [],
+    "overview": "",
+    "id": 245042,
+    "poster_path": "/c6HBcbdeO2gWMXE0crneNNfk2VU.jpg",
+    "season_number": 1,
+    "vote_average": 7.6
+  }
+]
+2025-12-06 01:08:04,487 - MetadataAgent - INFO - Data normalization completed
+2025-12-06 01:08:04,488 - MetadataAgent - DEBUG - Normalized data: {
+  "media_type": "tv",
+  "tmdb_id": 158208,
+  "title": "枫与铃",
+  "original_title": "楓と鈴 THE ANIMATION",
+  "year": 2022,
+  "plot": "放学后，学生会长枫和秘书隼人被枫的双胞胎妹妹铃叫到学生会室。\n\n枫好奇着桌子上的那个神秘盒子，当他把手伸进去的时候，两只手都被束缚住了……\n\n今天是学园祭的日子。 主角的班级决定扮演女仆咖啡厅，身着女仆装的女孩们表现出色。\n\n当然，同班同学枫也以女仆形象服务顾客。\n\n与此同时，不知何故，来扮演女仆的铃提供了一个神秘的开关。当开关打开进行试验时，枫突然开始扭动。\n\n显然，被主角推动的开关，与插入枫的玩具相连……",
+  "tagline": "",
+  "runtime": 26,
+  "release_date": "2022-03-25",
+  "rating": 7.8,
+  "rating_count": 19,
+  "genres": [
+    "动画"
+  ],
+  "countries": [
+    "JP"
+  ],
+  "languages": [
+    "ja"
+  ],
+  "studios": [
+    "Studio 1st",
+    "Pink Pineapple"
+  ],
+  "networks": [],
+  "network": "",
+  "status": "Returning Series",
+  "homepage": "",
+  "cast": [
+    {
+      "name_en": "Yuka Hinata",
+      "name_zh": null,
+      "role": "Suzu (voice)",
+      "original_name": "陽向葵ゅか",
+      "profile_path": "/3390FA7mylvq0XCH65LOCoFk050.jpg",
+      "popularity": 0.652
+    },
+    {
+      "name_en": "Kouta Ooshita",
+      "name_zh": null,
+      "role": "Hayato (voice)",
+      "original_name": "大下孝太",
+      "profile_path": "/zehIZPkdHMPaWYfpJf9F5T7Tzrx.jpg",
+      "popularity": 18.847
+    },
+    {
+      "name_en": "Yuka Hinata",
+      "name_zh": null,
+      "role": "Kaede (voice)",
+      "original_name": "陽向葵ゅか",
+      "profile_path": "/3390FA7mylvq0XCH65LOCoFk050.jpg",
+      "popularity": 0.652
+    }
+  ],
+  "directors": [
+    "太多秀太"
+  ],
+  "writers": [
+    "太多秀太",
+    "Kyockcho"
+  ],
+  "images": {},
+  "seasons": [
+    {
+      "air_date": "2022-03-25",
+      "episode_count": 3,
+      "id": 245042,
+      "name": "第 1 季",
+      "overview": "",
+      "poster_path": "/c6HBcbdeO2gWMXE0crneNNfk2VU.jpg",
+      "season_number": 1,
+      "vote_average": 7.6
+    }
+  ],
+  "episodes": [
+    {
+      "air_date": "2022-03-25",
+      "crew": [
+        {
+          "job": "Director",
+          "department": "Directing",
+          "credit_id": "6243e5a20d2944005be530f7",
+          "adult": true,
+          "gender": 2,
+          "id": 1458400,
+          "known_for_department": "Directing",
+          "name": "太多秀太",
+          "original_name": "太多秀太",
+          "popularity": 23.763,
+          "profile_path": null
+        },
+        {
+          "job": "Writer",
+          "department": "Writing",
+          "credit_id": "6243e5c09652200048d7c86b",
+          "adult": true,
+          "gender": 2,
+          "id": 1458400,
+          "known_for_department": "Directing",
+          "name": "太多秀太",
+          "original_name": "太多秀太",
+          "popularity": 23.763,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 1,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 1 集",
+      "overview": "放学后，学生会长枫和秘书隼人被枫的双胞胎妹妹铃叫到学生会室。 枫好奇着桌子上的那个神秘盒子，当他把手伸进去的时候，两只手都被束缚住了…… 今天是学园祭的日子。 主角的班级决定扮演女仆咖啡厅，身着女仆装的女孩们表现出色。 当然，同班同学枫也以女仆形象服务顾客。 与此同时，不知何故，来扮演女仆的铃提供了一个神秘的开关。当开关打开进行试验时，枫突然开始扭动。 显然，被主角推动的开关，与插入枫的玩具相连……",
+      "id": 3519903,
+      "production_code": "JDXA57667",
+      "runtime": 27,
+      "season_number": 1,
+      "still_path": "/AfBpHf5rJC18qBAMVqaW6mFFxW2.jpg",
+      "vote_average": 8.4,
+      "vote_count": 9
+    },
+    {
+      "air_date": "2022-10-28",
+      "crew": [],
+      "episode_number": 2,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第2卷",
+      "overview": "傲娇姐姐·枫和无口妹妹·铃是一对双胞胎姐妹。这一天，本该迎来自己生日会的隼人被她们拉走，遮住眼睛坐在高级宾馆的一个房间中。不过，当摘下眼罩之后，出现在面前的竟然是内衣身姿的枫和铃！两人为了庆祝隼人的生日，会提供代替礼物的“服务”…总是被隼人主导的双胞胎姐妹，这次居然用立场逆转的“服务”使他满足！？ 在回家的路上，因为姐妹的生日就要到了，她们期待着隼人会如何回礼。到了二人生日的那天，隼人发现自己和枫一直被铃捉弄着，于是打算趁这个机会，实行「对铃的恶作剧复仇计划」！在学校的屋顶上，正当他用玩具反复玩弄被绑在栏杆上的铃时，突然被无法忍耐的枫夺走了嘴唇…！？",
+      "id": 4023466,
+      "production_code": "JDXA57693",
+      "runtime": 30,
+      "season_number": 1,
+      "still_path": "/p8rpd33Wt0uJkXM7WHWni9HeVBN.jpg",
+      "vote_average": 7.5,
+      "vote_count": 4
+    },
+    {
+      "air_date": "2024-11-30",
+      "crew": [],
+      "episode_number": 3,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 3 集",
+      "overview": "隼人和枫在屋顶上做爱后关系更加亲密，现在他们在铃面前公开调情。然而，周末枫试图通过穿着女仆装出现在隼人的家里来取得先机。但在那里，她遇到了被绑住的隼人和同样穿着女仆装、面无表情的铃。铃平时是一个安静而内敛的妹妹，但她隐藏的感情开始泛滥……",
+      "id": 5438330,
+      "production_code": "JDXA57780",
+      "runtime": null,
+      "season_number": 1,
+      "still_path": "/9YTjmtANvMoLVw8rtdyTSoaP0j.jpg",
+      "vote_average": 7.0,
+      "vote_count": 2
+    }
+  ],
+  "title_zh": "枫与铃",
+  "plot_zh": "放学后，学生会长枫和秘书隼人被枫的双胞胎妹妹铃叫到学生会室。\n\n枫好奇着桌子上的那个神秘盒子，当他把手伸进去的时候，两只手都被束缚住了……\n\n今天是学园祭的日子。 主角的班级决定扮演女仆咖啡厅，身着女仆装的女孩们表现出色。\n\n当然，同班同学枫也以女仆形象服务顾客。\n\n与此同时，不知何故，来扮演女仆的铃提供了一个神秘的开关。当开关打开进行试验时，枫突然开始扭动。\n\n显然，被主角推动的开关，与插入枫的玩具相连……",
+  "keywords_en": [
+    "based on manga",
+    "high school student",
+    "hentai"
+  ],
+  "keywords": [
+    "based on manga",
+    "high school student",
+    "hentai"
+  ],
+  "keywords_zh": [
+    "改编自漫画",
+    "高中生",
+    "腐女"
+  ]
+}
+2025-12-06 01:08:04,497 - MetadataAgent - INFO - Translation processing completed
+2025-12-06 01:08:04,498 - MetadataAgent - DEBUG - Translated data: {
+  "media_type": "tv",
+  "tmdb_id": 158208,
+  "title": "枫与铃",
+  "original_title": "楓と鈴 THE ANIMATION",
+  "year": 2022,
+  "plot": "放学后，学生会长枫和秘书隼人被枫的双胞胎妹妹铃叫到学生会室。\n\n枫好奇着桌子上的那个神秘盒子，当他把手伸进去的时候，两只手都被束缚住了……\n\n今天是学园祭的日子。 主角的班级决定扮演女仆咖啡厅，身着女仆装的女孩们表现出色。\n\n当然，同班同学枫也以女仆形象服务顾客。\n\n与此同时，不知何故，来扮演女仆的铃提供了一个神秘的开关。当开关打开进行试验时，枫突然开始扭动。\n\n显然，被主角推动的开关，与插入枫的玩具相连……",
+  "tagline": "",
+  "runtime": 26,
+  "release_date": "2022-03-25",
+  "rating": 7.8,
+  "rating_count": 19,
+  "genres": [
+    "动画"
+  ],
+  "countries": [
+    "JP"
+  ],
+  "languages": [
+    "ja"
+  ],
+  "studios": [
+    "Studio 1st",
+    "Pink Pineapple"
+  ],
+  "networks": [],
+  "network": "",
+  "status": "Returning Series",
+  "homepage": "",
+  "cast": [
+    {
+      "name_en": "Yuka Hinata",
+      "name_zh": null,
+      "role": "Suzu (voice)",
+      "original_name": "陽向葵ゅか",
+      "profile_path": "/3390FA7mylvq0XCH65LOCoFk050.jpg",
+      "popularity": 0.652
+    },
+    {
+      "name_en": "Kouta Ooshita",
+      "name_zh": null,
+      "role": "Hayato (voice)",
+      "original_name": "大下孝太",
+      "profile_path": "/zehIZPkdHMPaWYfpJf9F5T7Tzrx.jpg",
+      "popularity": 18.847
+    },
+    {
+      "name_en": "Yuka Hinata",
+      "name_zh": null,
+      "role": "Kaede (voice)",
+      "original_name": "陽向葵ゅか",
+      "profile_path": "/3390FA7mylvq0XCH65LOCoFk050.jpg",
+      "popularity": 0.652
+    }
+  ],
+  "directors": [
+    "太多秀太"
+  ],
+  "writers": [
+    "太多秀太",
+    "Kyockcho"
+  ],
+  "images": {},
+  "seasons": [
+    {
+      "air_date": "2022-03-25",
+      "episode_count": 3,
+      "id": 245042,
+      "name": "第 1 季",
+      "overview": "",
+      "poster_path": "/c6HBcbdeO2gWMXE0crneNNfk2VU.jpg",
+      "season_number": 1,
+      "vote_average": 7.6
+    }
+  ],
+  "episodes": [
+    {
+      "air_date": "2022-03-25",
+      "crew": [
+        {
+          "job": "Director",
+          "department": "Directing",
+          "credit_id": "6243e5a20d2944005be530f7",
+          "adult": true,
+          "gender": 2,
+          "id": 1458400,
+          "known_for_department": "Directing",
+          "name": "太多秀太",
+          "original_name": "太多秀太",
+          "popularity": 23.763,
+          "profile_path": null
+        },
+        {
+          "job": "Writer",
+          "department": "Writing",
+          "credit_id": "6243e5c09652200048d7c86b",
+          "adult": true,
+          "gender": 2,
+          "id": 1458400,
+          "known_for_department": "Directing",
+          "name": "太多秀太",
+          "original_name": "太多秀太",
+          "popularity": 23.763,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 1,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 1 集",
+      "overview": "放学后，学生会长枫和秘书隼人被枫的双胞胎妹妹铃叫到学生会室。 枫好奇着桌子上的那个神秘盒子，当他把手伸进去的时候，两只手都被束缚住了…… 今天是学园祭的日子。 主角的班级决定扮演女仆咖啡厅，身着女仆装的女孩们表现出色。 当然，同班同学枫也以女仆形象服务顾客。 与此同时，不知何故，来扮演女仆的铃提供了一个神秘的开关。当开关打开进行试验时，枫突然开始扭动。 显然，被主角推动的开关，与插入枫的玩具相连……",
+      "id": 3519903,
+      "production_code": "JDXA57667",
+      "runtime": 27,
+      "season_number": 1,
+      "still_path": "/AfBpHf5rJC18qBAMVqaW6mFFxW2.jpg",
+      "vote_average": 8.4,
+      "vote_count": 9
+    },
+    {
+      "air_date": "2022-10-28",
+      "crew": [],
+      "episode_number": 2,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第2卷",
+      "overview": "傲娇姐姐·枫和无口妹妹·铃是一对双胞胎姐妹。这一天，本该迎来自己生日会的隼人被她们拉走，遮住眼睛坐在高级宾馆的一个房间中。不过，当摘下眼罩之后，出现在面前的竟然是内衣身姿的枫和铃！两人为了庆祝隼人的生日，会提供代替礼物的“服务”…总是被隼人主导的双胞胎姐妹，这次居然用立场逆转的“服务”使他满足！？ 在回家的路上，因为姐妹的生日就要到了，她们期待着隼人会如何回礼。到了二人生日的那天，隼人发现自己和枫一直被铃捉弄着，于是打算趁这个机会，实行「对铃的恶作剧复仇计划」！在学校的屋顶上，正当他用玩具反复玩弄被绑在栏杆上的铃时，突然被无法忍耐的枫夺走了嘴唇…！？",
+      "id": 4023466,
+      "production_code": "JDXA57693",
+      "runtime": 30,
+      "season_number": 1,
+      "still_path": "/p8rpd33Wt0uJkXM7WHWni9HeVBN.jpg",
+      "vote_average": 7.5,
+      "vote_count": 4
+    },
+    {
+      "air_date": "2024-11-30",
+      "crew": [],
+      "episode_number": 3,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 3 集",
+      "overview": "隼人和枫在屋顶上做爱后关系更加亲密，现在他们在铃面前公开调情。然而，周末枫试图通过穿着女仆装出现在隼人的家里来取得先机。但在那里，她遇到了被绑住的隼人和同样穿着女仆装、面无表情的铃。铃平时是一个安静而内敛的妹妹，但她隐藏的感情开始泛滥……",
+      "id": 5438330,
+      "production_code": "JDXA57780",
+      "runtime": null,
+      "season_number": 1,
+      "still_path": "/9YTjmtANvMoLVw8rtdyTSoaP0j.jpg",
+      "vote_average": 7.0,
+      "vote_count": 2
+    }
+  ],
+  "title_zh": "枫与铃",
+  "plot_zh": "放学后，学生会长枫和秘书隼人被枫的双胞胎妹妹铃叫到学生会室。\n\n枫好奇着桌子上的那个神秘盒子，当他把手伸进去的时候，两只手都被束缚住了……\n\n今天是学园祭的日子。 主角的班级决定扮演女仆咖啡厅，身着女仆装的女孩们表现出色。\n\n当然，同班同学枫也以女仆形象服务顾客。\n\n与此同时，不知何故，来扮演女仆的铃提供了一个神秘的开关。当开关打开进行试验时，枫突然开始扭动。\n\n显然，被主角推动的开关，与插入枫的玩具相连……",
+  "keywords_en": [
+    "based on manga",
+    "high school student",
+    "hentai"
+  ],
+  "keywords": [
+    "based on manga",
+    "high school student",
+    "hentai"
+  ],
+  "keywords_zh": [
+    "改编自漫画",
+    "高中生",
+    "腐女"
+  ]
+}
+2025-12-06 01:08:04,498 - MetadataAgent - DEBUG - Translated episodes: [
+  {
+    "air_date": "2022-03-25",
+    "crew": [
+      {
+        "job": "Director",
+        "department": "Directing",
+        "credit_id": "6243e5a20d2944005be530f7",
+        "adult": true,
+        "gender": 2,
+        "id": 1458400,
+        "known_for_department": "Directing",
+        "name": "太多秀太",
+        "original_name": "太多秀太",
+        "popularity": 23.763,
+        "profile_path": null
+      },
+      {
+        "job": "Writer",
+        "department": "Writing",
+        "credit_id": "6243e5c09652200048d7c86b",
+        "adult": true,
+        "gender": 2,
+        "id": 1458400,
+        "known_for_department": "Directing",
+        "name": "太多秀太",
+        "original_name": "太多秀太",
+        "popularity": 23.763,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 1,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 1 集",
+    "overview": "放学后，学生会长枫和秘书隼人被枫的双胞胎妹妹铃叫到学生会室。 枫好奇着桌子上的那个神秘盒子，当他把手伸进去的时候，两只手都被束缚住了…… 今天是学园祭的日子。 主角的班级决定扮演女仆咖啡厅，身着女仆装的女孩们表现出色。 当然，同班同学枫也以女仆形象服务顾客。 与此同时，不知何故，来扮演女仆的铃提供了一个神秘的开关。当开关打开进行试验时，枫突然开始扭动。 显然，被主角推动的开关，与插入枫的玩具相连……",
+    "id": 3519903,
+    "production_code": "JDXA57667",
+    "runtime": 27,
+    "season_number": 1,
+    "still_path": "/AfBpHf5rJC18qBAMVqaW6mFFxW2.jpg",
+    "vote_average": 8.4,
+    "vote_count": 9
+  },
+  {
+    "air_date": "2022-10-28",
+    "crew": [],
+    "episode_number": 2,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第2卷",
+    "overview": "傲娇姐姐·枫和无口妹妹·铃是一对双胞胎姐妹。这一天，本该迎来自己生日会的隼人被她们拉走，遮住眼睛坐在高级宾馆的一个房间中。不过，当摘下眼罩之后，出现在面前的竟然是内衣身姿的枫和铃！两人为了庆祝隼人的生日，会提供代替礼物的“服务”…总是被隼人主导的双胞胎姐妹，这次居然用立场逆转的“服务”使他满足！？ 在回家的路上，因为姐妹的生日就要到了，她们期待着隼人会如何回礼。到了二人生日的那天，隼人发现自己和枫一直被铃捉弄着，于是打算趁这个机会，实行「对铃的恶作剧复仇计划」！在学校的屋顶上，正当他用玩具反复玩弄被绑在栏杆上的铃时，突然被无法忍耐的枫夺走了嘴唇…！？",
+    "id": 4023466,
+    "production_code": "JDXA57693",
+    "runtime": 30,
+    "season_number": 1,
+    "still_path": "/p8rpd33Wt0uJkXM7WHWni9HeVBN.jpg",
+    "vote_average": 7.5,
+    "vote_count": 4
+  },
+  {
+    "air_date": "2024-11-30",
+    "crew": [],
+    "episode_number": 3,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 3 集",
+    "overview": "隼人和枫在屋顶上做爱后关系更加亲密，现在他们在铃面前公开调情。然而，周末枫试图通过穿着女仆装出现在隼人的家里来取得先机。但在那里，她遇到了被绑住的隼人和同样穿着女仆装、面无表情的铃。铃平时是一个安静而内敛的妹妹，但她隐藏的感情开始泛滥……",
+    "id": 5438330,
+    "production_code": "JDXA57780",
+    "runtime": null,
+    "season_number": 1,
+    "still_path": "/9YTjmtANvMoLVw8rtdyTSoaP0j.jpg",
+    "vote_average": 7.0,
+    "vote_count": 2
+  }
+]
+2025-12-06 01:08:18,322 - MetadataAgent - INFO - NFO generation completed
+2025-12-06 01:08:18,324 - MetadataAgent - DEBUG - NFO data: {
+  "title": "枫与铃",
+  "originaltitle": "楓と鈴 THE ANIMATION",
+  "year": 2022,
+  "premiered": "2022-03-25",
+  "plot": "放学后，学生会长枫和秘书隼人被枫的双胞胎妹妹铃叫到学生会室。\n\n枫好奇着桌子上的那个神秘盒子，当他把手伸进去的时候，两只手都被束缚住了……\n\n今天是学园祭的日子。 主角的班级决定扮演女仆咖啡厅，身着女仆装的女孩们表现出色。\n\n当然，同班同学枫也以女仆形象服务顾客。\n\n与此同时，不知何故，来扮演女仆的铃提供了一个神秘的开关。当开关打开进行试验时，枫突然开始扭动。\n\n显然，被主角推动的开关，与插入枫的玩具相连……",
+  "tagline": "",
+  "runtime": 26,
+  "rating": 7.8,
+  "votes": 19,
+  "genre": [
+    "动画"
+  ],
+  "country": [
+    "JP"
+  ],
+  "studio": [
+    "Studio 1st",
+    "Pink Pineapple"
+  ],
+  "credits": [
+    "太多秀太",
+    "Kyockcho"
+  ],
+  "director": [
+    "太多秀太"
+  ],
+  "actor": [
+    {
+      "name": "Yuka Hinata",
+      "role": "Suzu (voice)",
+      "originalname": "陽向葵ゅか",
+      "thumb": "images/actors/Yuka Hinata.jpg"
+    },
+    {
+      "name": "Kouta Ooshita",
+      "role": "Hayato (voice)",
+      "originalname": "大下孝太",
+      "thumb": "images/actors/Kouta Ooshita.jpg"
+    },
+    {
+      "name": "Yuka Hinata",
+      "role": "Kaede (voice)",
+      "originalname": "陽向葵ゅか",
+      "thumb": "images/actors/Yuka Hinata.jpg"
+    }
+  ],
+  "thumb": "poster.jpg",
+  "fanart": "fanart.jpg",
+  "tags": [
+    "改编自漫画",
+    "高中生",
+    "腐女"
+  ],
+  "network": "",
+  "networks": [],
+  "status": "Returning Series",
+  "homepage": "",
+  "tmdb_id": 158208,
+  "validated": true
+}
+2025-12-06 01:08:18,325 - MetadataAgent - DEBUG - NFO XML content:
+<?xml version="1.0" ?>
+<tvshow>
+  <title>枫与铃</title>
+  <originaltitle>楓と鈴 THE ANIMATION</originaltitle>
+  <year>2022</year>
+  <premiered>2022-03-25</premiered>
+  <plot cdata_content="放学后，学生会长枫和秘书隼人被枫的双胞胎妹妹铃叫到学生会室。
+
+枫好奇着桌子上的那个神秘盒子，当他把手伸进去的时候，两只手都被束缚住了……
+
+今天是学园祭的日子。 主角的班级决定扮演女仆咖啡厅，身着女仆装的女孩们表现出色。
+
+当然，同班同学枫也以女仆形象服务顾客。
+
+与此同时，不知何故，来扮演女仆的铃提供了一个神秘的开关。当开关打开进行试验时，枫突然开始扭动。
+
+显然，被主角推动的开关，与插入枫的玩具相连……"><![CDATA[放学后，学生会长枫和秘书隼人被枫的双胞胎妹妹铃叫到学生会室。
+
+枫好奇着桌子上的那个神秘盒子，当他把手伸进去的时候，两只手都被束缚住了……
+
+今天是学园祭的日子。 主角的班级决定扮演女仆咖啡厅，身着女仆装的女孩们表现出色。
+
+当然，同班同学枫也以女仆形象服务顾客。
+
+与此同时，不知何故，来扮演女仆的铃提供了一个神秘的开关。当开关打开进行试验时，枫突然开始扭动。
+
+显然，被主角推动的开关，与插入枫的玩具相连……]]></plot>
+  <runtime>26</runtime>
+  <rating>7.8</rating>
+  <votes>19</votes>
+  <tmdbid>158208</tmdbid>
+  <genre>动画</genre>
+  <country>JP</country>
+  <studio>Studio 1st</studio>
+  <studio>Pink Pineapple</studio>
+  <credits>太多秀太, Kyockcho</credits>
+  <director>太多秀太</director>
+  <actor>
+    <name>Yuka Hinata</name>
+    <role>Suzu (voice)</role>
+    <originalname>陽向葵ゅか</originalname>
+    <thumb>images/actors/Yuka Hinata.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Kouta Ooshita</name>
+    <role>Hayato (voice)</role>
+    <originalname>大下孝太</originalname>
+    <thumb>images/actors/Kouta Ooshita.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Yuka Hinata</name>
+    <role>Kaede (voice)</role>
+    <originalname>陽向葵ゅか</originalname>
+    <thumb>images/actors/Yuka Hinata.jpg</thumb>
+  </actor>
+  <status>Returning Series</status>
+  <uniqueid type="tmdb" default="true">158208</uniqueid>
+  <thumb>images/poster/poster.jpg</thumb>
+  <fanart>images/fanart/fanart.jpg</fanart>
+  <tag>改编自漫画</tag>
+  <tag>高中生</tag>
+  <tag>腐女</tag>
+</tvshow>
+
+2025-12-06 01:08:21,523 - MetadataAgent - INFO - Output generation completed
+2025-12-06 01:08:21,523 - MetadataAgent - DEBUG - Output data: {
+  "status": "completed",
+  "files": {
+    "nfo_file": "/Volumes/video/Animation/The Animation/らぶみー「楓と鈴」THE ANIMATION  (Unknown Year)/tvshow.nfo",
+    "images_dir": "/Volumes/video/Animation/The Animation/らぶみー「楓と鈴」THE ANIMATION  (Unknown Year)/images",
+    "media_dir": "/Volumes/video/Animation/The Animation/らぶみー「楓と鈴」THE ANIMATION  (Unknown Year)",
+    "season_1_episode_1": "/Volumes/video/Animation/The Animation/らぶみー「楓と鈴」THE ANIMATION  (Unknown Year)/Season 01/枫与铃 - S01E01 - 第 1 集.nfo",
+    "season_1_episode_2": "/Volumes/video/Animation/The Animation/らぶみー「楓と鈴」THE ANIMATION  (Unknown Year)/Season 01/枫与铃 - S01E02 - 第2卷.nfo",
+    "season_1_episode_3": "/Volumes/video/Animation/The Animation/らぶみー「楓と鈴」THE ANIMATION  (Unknown Year)/Season 01/枫与铃 - S01E03 - 第 3 集.nfo"
+  }
+}
+2025-12-06 01:08:21,525 - MetadataAgent - INFO - === PROCESSING SUMMARY ===
+2025-12-06 01:08:21,525 - MetadataAgent - INFO - Log file: logs/metadata_agent_20251206_010758.log
+2025-12-06 01:08:21,525 - MetadataAgent - INFO - Processing completed successfully
+2025-12-06 01:08:21,527 - MetadataAgent - INFO - Processing summary saved to: logs/processing_summary_20251206_010821.json

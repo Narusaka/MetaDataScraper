@@ -1,0 +1,1387 @@
+{
+  "start_time": "2025-12-05T23:25:34.833668",
+  "input": {
+    "media_type": "tv",
+    "query": "地味变！！～改变土妹子的纯洁异性交往～",
+    "output_dir": "/Volumes/video/Animation/The Animation/地味变！！～改变土妹子的纯洁异性交往～ (2021)",
+    "verbose": false,
+    "quiet": true,
+    "aid_search": true
+  },
+  "search": {
+    "results": {
+      "page": 1,
+      "results": [
+        {
+          "adult": false,
+          "backdrop_path": "/kPO4rsDkSwmGMRDejvLAel8FafA.jpg",
+          "genre_ids": [
+            16,
+            35
+          ],
+          "id": 113360,
+          "origin_country": [
+            "JP"
+          ],
+          "original_language": "ja",
+          "original_name": "じみへんっ!!～地味子を変えちゃう純異性交遊～",
+          "overview": "The story follows Rena Yukuhasahi, a reserved office lady and Ryouhei Hachiya, a businessman and fellow colleague. Yukuhasahi appears to be the most reserved girl in the company, but becomes a super beautiful woman when she dresses up. Flustered in the presence of her transformed self, Hachiya insists on taking her out, only to find themselves in front of a love hotel.",
+          "popularity": 4.6939,
+          "poster_path": "/to5FshluwPdO9d3Ucs7fagJL7OU.jpg",
+          "first_air_date": "2021-01-03",
+          "name": "Jimihen!! Jimiko o Kae Chau Jun Isei Kouyuu",
+          "vote_average": 6.292,
+          "vote_count": 24,
+          "media_type": "tv"
+        }
+      ],
+      "total_pages": 1,
+      "total_results": 1
+    },
+    "skip_search": false
+  },
+  "fetch": {
+    "main": {
+      "adult": false,
+      "backdrop_path": "/kPO4rsDkSwmGMRDejvLAel8FafA.jpg",
+      "created_by": [],
+      "episode_run_time": [
+        8
+      ],
+      "first_air_date": "2021-01-03",
+      "genres": [
+        {
+          "id": 16,
+          "name": "动画"
+        },
+        {
+          "id": 35,
+          "name": "喜剧"
+        }
+      ],
+      "homepage": "https://jimihen.cf-anime.com",
+      "id": 113360,
+      "in_production": false,
+      "languages": [
+        "ja"
+      ],
+      "last_air_date": "2021-02-21",
+      "last_episode_to_air": {
+        "id": 2741493,
+        "name": "对土妹子意外地认真",
+        "overview": "棱平和关口在餐厅约会，结束后棱平醒悟到自己的错误，拒绝了关口的性邀约，并回到玲奈身边向她道歉，两人进行了性行为。之后，当玲奈在办公室内被同事揶揄时，棱平会适度地阻止嘲笑她的人。",
+        "vote_average": 4.0,
+        "vote_count": 2,
+        "air_date": "2021-02-21",
+        "episode_number": 8,
+        "episode_type": "finale",
+        "production_code": "",
+        "runtime": 8,
+        "season_number": 1,
+        "show_id": 113360,
+        "still_path": "/aBpMMyOLoJbtcThgbSeWs21laQG.jpg"
+      },
+      "name": "地味变！！～改变土妹子的纯洁异性交往～",
+      "next_episode_to_air": null,
+      "networks": [
+        {
+          "id": 614,
+          "logo_path": "/hSdroyVthq3CynxTIIY7lnS8w1.png",
+          "name": "Tokyo MX",
+          "origin_country": "JP"
+        }
+      ],
+      "number_of_episodes": 8,
+      "number_of_seasons": 1,
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "じみへんっ!!～地味子を変えちゃう純異性交遊～",
+      "overview": "土妹子意外地…色色的。公司内首屈一指的土妹子，打扮后会变成超级美人！？面对如此可爱的她我一着急，就在爱情酒店前说出邀请的台词来…不过她好像也挺愿意的…！？土妹子愿意给我做任何事…而且还会说“我还要\"等等…只有我知道的淫秽姿态…让我再看多点——",
+      "popularity": 4.6939,
+      "poster_path": "/to5FshluwPdO9d3Ucs7fagJL7OU.jpg",
+      "production_companies": [
+        {
+          "id": 125825,
+          "logo_path": "/fXHTT3i73u6eSJS3UZQVVwADqqo.png",
+          "name": "studio HōKIBOSHI",
+          "origin_country": "JP"
+        },
+        {
+          "id": 149421,
+          "logo_path": "/6UqbB0NLRWEIaCKsd5YkOigJgXb.png",
+          "name": "Suiseisha",
+          "origin_country": "JP"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "JP",
+          "name": "Japan"
+        }
+      ],
+      "seasons": [
+        {
+          "air_date": "2021-01-03",
+          "episode_count": 8,
+          "id": 169263,
+          "name": "第 1 季",
+          "overview": "电视动画片《地味变！！～改变土妹子的纯洁异性交往～》改编自いぶろー。著作的同名漫画作品，由studio HoKIBOSHI负责制作。",
+          "poster_path": "/to5FshluwPdO9d3Ucs7fagJL7OU.jpg",
+          "season_number": 1,
+          "vote_average": 3.5
+        }
+      ],
+      "spoken_languages": [
+        {
+          "english_name": "Japanese",
+          "iso_639_1": "ja",
+          "name": "日本語"
+        }
+      ],
+      "status": "Ended",
+      "tagline": "",
+      "type": "Miniseries",
+      "vote_average": 6.292,
+      "vote_count": 24
+    },
+    "credits": {
+      "cast": [
+        {
+          "adult": true,
+          "gender": 2,
+          "id": 2860991,
+          "known_for_department": "Acting",
+          "name": "Mahito Kawamura",
+          "original_name": "河村眞人",
+          "popularity": 2.224,
+          "profile_path": null,
+          "character": "Ryouhei Hachiya (voice)",
+          "credit_id": "5fb528bb626208003ebb1b3a",
+          "order": 0
+        },
+        {
+          "adult": false,
+          "gender": 1,
+          "id": 2860993,
+          "known_for_department": "Acting",
+          "name": "Usa Fujisaki",
+          "original_name": "Usa Fujisaki",
+          "popularity": 0.0466,
+          "profile_path": null,
+          "character": "Rie Sekiguchi (voice)",
+          "credit_id": "5fb528dfd55e4d003fd4cbc1",
+          "order": 1
+        },
+        {
+          "adult": true,
+          "gender": 0,
+          "id": 2860994,
+          "known_for_department": "Acting",
+          "name": "Hibiki Nanashino",
+          "original_name": "Hibiki Nanashino",
+          "popularity": 0.98,
+          "profile_path": null,
+          "character": "Buchou (voice)",
+          "credit_id": "5fb52905e640d6004143324c",
+          "order": 2
+        }
+      ],
+      "crew": [
+        {
+          "adult": false,
+          "gender": 0,
+          "id": 2896060,
+          "known_for_department": "Sound",
+          "name": "Saki Hazuki",
+          "original_name": "葉月さき",
+          "popularity": 0.7672,
+          "profile_path": "/qiPofchSPE27AypRxxtIZ6nPwlD.jpg",
+          "credit_id": "5fd995dec9dbf9003d7c2cfd",
+          "department": "Sound",
+          "job": "Theme Song Performance"
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 2468991,
+          "known_for_department": "Directing",
+          "name": "Rei Ishikura",
+          "original_name": "石倉礼",
+          "popularity": 1.0063,
+          "profile_path": "/kahZT9CshN3HJkQD5jk8shsC4WQ.jpg",
+          "credit_id": "5fb529f5945c200041f1ea5b",
+          "department": "Directing",
+          "job": "Series Director"
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 148465,
+          "known_for_department": "Visual Effects",
+          "name": "Kazuya Kuroda",
+          "original_name": "黒田和也",
+          "popularity": 2.2967,
+          "profile_path": null,
+          "credit_id": "5fb52aa33a48c5003f854f99",
+          "department": "Visual Effects",
+          "job": "Character Designer"
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 2210737,
+          "known_for_department": "Sound",
+          "name": "Takahiro Enomoto",
+          "original_name": "榎本崇宏",
+          "popularity": 1.494,
+          "profile_path": null,
+          "credit_id": "5fb52b21d55e4d003cd8cd59",
+          "department": "Sound",
+          "job": "Sound Director"
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 2522182,
+          "known_for_department": "Camera",
+          "name": "Takashi Yanagida",
+          "original_name": "柳田貴志",
+          "popularity": 0.7992,
+          "profile_path": null,
+          "credit_id": "61fa58ff5c32470116f858b5",
+          "department": "Camera",
+          "job": "Director of Photography"
+        },
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 3374879,
+          "known_for_department": "Visual Effects",
+          "name": "Rena Nasu",
+          "original_name": "那須玲奈",
+          "popularity": 0.3641,
+          "profile_path": null,
+          "credit_id": "61da5cde6c8492001c625aff",
+          "department": "Costume & Make-Up",
+          "job": "Costume Design"
+        },
+        {
+          "adult": false,
+          "gender": 0,
+          "id": 2649444,
+          "known_for_department": "Writing",
+          "name": "Eeyo Kurosaki",
+          "original_name": "黒崎エーヨ",
+          "popularity": 1.0857,
+          "profile_path": null,
+          "credit_id": "61da5cae63a695001cd20d49",
+          "department": "Writing",
+          "job": "Screenplay"
+        },
+        {
+          "adult": true,
+          "gender": 2,
+          "id": 1778160,
+          "known_for_department": "Editing",
+          "name": "Kouki Shinkai",
+          "original_name": "新海コウキ",
+          "popularity": 7.492,
+          "profile_path": null,
+          "credit_id": "61da5c360bb076001cd786c2",
+          "department": "Editing",
+          "job": "Editor"
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 2468991,
+          "known_for_department": "Directing",
+          "name": "Rei Ishikura",
+          "original_name": "石倉礼",
+          "popularity": 1.0063,
+          "profile_path": "/kahZT9CshN3HJkQD5jk8shsC4WQ.jpg",
+          "credit_id": "61da5c8863a6950042dc28a0",
+          "department": "Writing",
+          "job": "Screenplay"
+        },
+        {
+          "adult": false,
+          "gender": 1,
+          "id": 3160506,
+          "known_for_department": "Visual Effects",
+          "name": "Hanako Yamada",
+          "original_name": "山田花子",
+          "popularity": 0.4431,
+          "profile_path": null,
+          "credit_id": "61da5bf16c8492008da409c8",
+          "department": "Art",
+          "job": "Art Direction"
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 148465,
+          "known_for_department": "Visual Effects",
+          "name": "Kazuya Kuroda",
+          "original_name": "黒田和也",
+          "popularity": 2.2967,
+          "profile_path": null,
+          "credit_id": "677286d85f1c4fa473617816",
+          "department": "Visual Effects",
+          "job": "Supervising Animation Director"
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 2860999,
+          "known_for_department": "Visual Effects",
+          "name": "Kakuto Gai",
+          "original_name": "牙威格斗",
+          "popularity": 1.1721,
+          "profile_path": null,
+          "credit_id": "677286e198f2f82fc4926f0a",
+          "department": "Visual Effects",
+          "job": "Supervising Animation Director"
+        }
+      ],
+      "id": 113360
+    },
+    "keywords": {
+      "id": 113360,
+      "results": [
+        {
+          "name": "love",
+          "id": 9673
+        },
+        {
+          "name": "romance",
+          "id": 9840
+        },
+        {
+          "name": "slice of life",
+          "id": 9914
+        },
+        {
+          "name": "based on manga",
+          "id": 13141
+        },
+        {
+          "name": "anime",
+          "id": 210024
+        },
+        {
+          "name": "big tits",
+          "id": 230416
+        },
+        {
+          "name": "mature romance",
+          "id": 233305
+        },
+        {
+          "name": "erotic",
+          "id": 256466
+        },
+        {
+          "name": "sex",
+          "id": 267122
+        }
+      ]
+    },
+    "seasons": [
+      {
+        "_id": "5fb528211f0275003e605ead",
+        "air_date": "2021-01-03",
+        "episodes": [
+          {
+            "air_date": "2021-01-03",
+            "episode_number": 1,
+            "episode_type": "standard",
+            "id": 2515737,
+            "name": "土妹子出乎意料的可爱",
+            "overview": "行桥玲奈是个戴眼镜、打扮俗气的粉领族，部长认定她应是处女，并怂恿玲奈的同事八谷棱平去问她此事。因有把柄在部长手上，棱平无法拒绝，但在约玲奈出来后才发现她私下打扮非常时尚且健谈。他在表明来意后惹火了玲奈，在向玲奈道歉后，两人进宾馆发生了性行为，过程中玲奈表示自己是处女。",
+            "production_code": "",
+            "runtime": 8,
+            "season_number": 1,
+            "show_id": 113360,
+            "still_path": "/7pzvVLFojhYjmm48kJIBv5G51Ij.jpg",
+            "vote_average": 6.5,
+            "vote_count": 4,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2021-01-10",
+            "episode_number": 2,
+            "episode_type": "standard",
+            "id": 2631622,
+            "name": "喝醉了也意外地能做",
+            "overview": "部长和同事关口理惠都认为玲奈可能对棱平有意思，便积极撮合两人，在灌醉了棱平后要玲奈送他回家。两人在棱平的床上发生性行为，不过棱平对两人的亲密关系感到犹疑，打算暂时疏远。",
+            "production_code": "",
+            "runtime": 8,
+            "season_number": 1,
+            "show_id": 113360,
+            "still_path": "/fivtqtcRSCGpHqz3ShAmS36e8mZ.jpg",
+            "vote_average": 3.0,
+            "vote_count": 2,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2021-01-17",
+            "episode_number": 3,
+            "episode_type": "standard",
+            "id": 2649657,
+            "name": "泳装意外地湿润",
+            "overview": "棱平和同事一起到海边参加员工旅游，但他却因为脚伤而无法同乐，便和照顾自己的玲奈进行车上性行为。回公司后某日，他在与部长闲谈时透露玲奈不是自己喜欢的类型，而玲奈碰巧听到谈话。",
+            "production_code": "",
+            "runtime": 8,
+            "season_number": 1,
+            "show_id": 113360,
+            "still_path": "/iEiUKzb7cNHgLyY5aJh67k1DBYz.jpg",
+            "vote_average": 3.5,
+            "vote_count": 2,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2021-01-24",
+            "episode_number": 4,
+            "episode_type": "standard",
+            "id": 2666332,
+            "name": "被告白后内心意外地动摇",
+            "overview": "棱平向玲奈道歉，玲奈表示两人并非恋人，但其实非常介意。被留下来加班的两人在办公室坦露了心意并就此交往，之后两人在办公室做爱。次日，棱平得知玲奈并未被要求加班。",
+            "production_code": "",
+            "runtime": 8,
+            "season_number": 1,
+            "show_id": 113360,
+            "still_path": "/tltkBHxPuTVMKynTflG4ir0245l.jpg",
+            "vote_average": 3.5,
+            "vote_count": 2,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2021-01-31",
+            "episode_number": 5,
+            "episode_type": "standard",
+            "id": 2682395,
+            "name": "按摩也意外地擅长",
+            "overview": "棱平和玲奈讨论著约会行程，玲奈表示自己的时尚打扮是请专业人士协助，并对土里土气的自己感到自卑，棱平表示任何形象的玲奈都很好。之后两人进了宾馆，在按摩并使用按摩棒后，发生了性行为。",
+            "production_code": "",
+            "runtime": 8,
+            "season_number": 1,
+            "show_id": 113360,
+            "still_path": "/gSoIPD9gevuaNCyEEwP6tNNkrtM.jpg",
+            "vote_average": 2.5,
+            "vote_count": 2,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2021-02-07",
+            "episode_number": 6,
+            "episode_type": "standard",
+            "id": 2703938,
+            "name": "工作时也意外地激烈",
+            "overview": "在用餐时间，关口对棱平性暗示，让玲奈心生妒忌，并因此在棱平向她求欢时表现出不满，在把话说开后，两人在会议室做爱。",
+            "production_code": "",
+            "runtime": 8,
+            "season_number": 1,
+            "show_id": 113360,
+            "still_path": "/dPy61hn0Wu5J3JO029XCuJRaw8a.jpg",
+            "vote_average": 3.5,
+            "vote_count": 2,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2021-02-14",
+            "episode_number": 7,
+            "episode_type": "standard",
+            "id": 2725127,
+            "name": "我这人意外地过分",
+            "overview": "部长捡到棱平遗落的保险套，误以为他与关口有性行为，尽管棱平否认此事，但关口并未否认，让部长误以为两人确实有交往并将此事告诉玲奈。玲奈提出分手，无法挽回她的棱平要求打分手炮。棱平将她拘束在宾馆的床上，并谎称自己没戴保险套、强硬地进行体内射精。",
+            "production_code": "",
+            "runtime": 8,
+            "season_number": 1,
+            "show_id": 113360,
+            "still_path": "/5C0ufGQqWOuBmDXboNpzpdbljGO.jpg",
+            "vote_average": 1.5,
+            "vote_count": 2,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2021-02-21",
+            "episode_number": 8,
+            "episode_type": "finale",
+            "id": 2741493,
+            "name": "对土妹子意外地认真",
+            "overview": "棱平和关口在餐厅约会，结束后棱平醒悟到自己的错误，拒绝了关口的性邀约，并回到玲奈身边向她道歉，两人进行了性行为。之后，当玲奈在办公室内被同事揶揄时，棱平会适度地阻止嘲笑她的人。",
+            "production_code": "",
+            "runtime": 8,
+            "season_number": 1,
+            "show_id": 113360,
+            "still_path": "/aBpMMyOLoJbtcThgbSeWs21laQG.jpg",
+            "vote_average": 4.0,
+            "vote_count": 2,
+            "crew": [],
+            "guest_stars": []
+          }
+        ],
+        "name": "第 1 季",
+        "networks": [
+          {
+            "id": 614,
+            "logo_path": "/hSdroyVthq3CynxTIIY7lnS8w1.png",
+            "name": "Tokyo MX",
+            "origin_country": "JP"
+          }
+        ],
+        "overview": "电视动画片《地味变！！～改变土妹子的纯洁异性交往～》改编自いぶろー。著作的同名漫画作品，由studio HoKIBOSHI负责制作。",
+        "id": 169263,
+        "poster_path": "/to5FshluwPdO9d3Ucs7fagJL7OU.jpg",
+        "season_number": 1,
+        "vote_average": 3.5
+      }
+    ],
+    "episodes": [
+      {
+        "air_date": "2021-01-03",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "土妹子出乎意料的可爱",
+        "overview": "行桥玲奈是个戴眼镜、打扮俗气的粉领族，部长认定她应是处女，并怂恿玲奈的同事八谷棱平去问她此事。因有把柄在部长手上，棱平无法拒绝，但在约玲奈出来后才发现她私下打扮非常时尚且健谈。他在表明来意后惹火了玲奈，在向玲奈道歉后，两人进宾馆发生了性行为，过程中玲奈表示自己是处女。",
+        "id": 2515737,
+        "production_code": "",
+        "runtime": 8,
+        "season_number": 1,
+        "still_path": "/7pzvVLFojhYjmm48kJIBv5G51Ij.jpg",
+        "vote_average": 6.5,
+        "vote_count": 4
+      },
+      {
+        "air_date": "2021-01-10",
+        "crew": [],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "喝醉了也意外地能做",
+        "overview": "部长和同事关口理惠都认为玲奈可能对棱平有意思，便积极撮合两人，在灌醉了棱平后要玲奈送他回家。两人在棱平的床上发生性行为，不过棱平对两人的亲密关系感到犹疑，打算暂时疏远。",
+        "id": 2631622,
+        "production_code": "",
+        "runtime": 8,
+        "season_number": 1,
+        "still_path": "/fivtqtcRSCGpHqz3ShAmS36e8mZ.jpg",
+        "vote_average": 3.0,
+        "vote_count": 2
+      },
+      {
+        "air_date": "2021-01-17",
+        "crew": [],
+        "episode_number": 3,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "泳装意外地湿润",
+        "overview": "棱平和同事一起到海边参加员工旅游，但他却因为脚伤而无法同乐，便和照顾自己的玲奈进行车上性行为。回公司后某日，他在与部长闲谈时透露玲奈不是自己喜欢的类型，而玲奈碰巧听到谈话。",
+        "id": 2649657,
+        "production_code": "",
+        "runtime": 8,
+        "season_number": 1,
+        "still_path": "/iEiUKzb7cNHgLyY5aJh67k1DBYz.jpg",
+        "vote_average": 3.5,
+        "vote_count": 2
+      },
+      {
+        "air_date": "2021-01-24",
+        "crew": [],
+        "episode_number": 4,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "被告白后内心意外地动摇",
+        "overview": "棱平向玲奈道歉，玲奈表示两人并非恋人，但其实非常介意。被留下来加班的两人在办公室坦露了心意并就此交往，之后两人在办公室做爱。次日，棱平得知玲奈并未被要求加班。",
+        "id": 2666332,
+        "production_code": "",
+        "runtime": 8,
+        "season_number": 1,
+        "still_path": "/tltkBHxPuTVMKynTflG4ir0245l.jpg",
+        "vote_average": 3.5,
+        "vote_count": 2
+      },
+      {
+        "air_date": "2021-01-31",
+        "crew": [],
+        "episode_number": 5,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "按摩也意外地擅长",
+        "overview": "棱平和玲奈讨论著约会行程，玲奈表示自己的时尚打扮是请专业人士协助，并对土里土气的自己感到自卑，棱平表示任何形象的玲奈都很好。之后两人进了宾馆，在按摩并使用按摩棒后，发生了性行为。",
+        "id": 2682395,
+        "production_code": "",
+        "runtime": 8,
+        "season_number": 1,
+        "still_path": "/gSoIPD9gevuaNCyEEwP6tNNkrtM.jpg",
+        "vote_average": 2.5,
+        "vote_count": 2
+      },
+      {
+        "air_date": "2021-02-07",
+        "crew": [],
+        "episode_number": 6,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "工作时也意外地激烈",
+        "overview": "在用餐时间，关口对棱平性暗示，让玲奈心生妒忌，并因此在棱平向她求欢时表现出不满，在把话说开后，两人在会议室做爱。",
+        "id": 2703938,
+        "production_code": "",
+        "runtime": 8,
+        "season_number": 1,
+        "still_path": "/dPy61hn0Wu5J3JO029XCuJRaw8a.jpg",
+        "vote_average": 3.5,
+        "vote_count": 2
+      },
+      {
+        "air_date": "2021-02-14",
+        "crew": [],
+        "episode_number": 7,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "我这人意外地过分",
+        "overview": "部长捡到棱平遗落的保险套，误以为他与关口有性行为，尽管棱平否认此事，但关口并未否认，让部长误以为两人确实有交往并将此事告诉玲奈。玲奈提出分手，无法挽回她的棱平要求打分手炮。棱平将她拘束在宾馆的床上，并谎称自己没戴保险套、强硬地进行体内射精。",
+        "id": 2725127,
+        "production_code": "",
+        "runtime": 8,
+        "season_number": 1,
+        "still_path": "/5C0ufGQqWOuBmDXboNpzpdbljGO.jpg",
+        "vote_average": 1.5,
+        "vote_count": 2
+      },
+      {
+        "air_date": "2021-02-21",
+        "crew": [],
+        "episode_number": 8,
+        "episode_type": "finale",
+        "guest_stars": [],
+        "name": "对土妹子意外地认真",
+        "overview": "棱平和关口在餐厅约会，结束后棱平醒悟到自己的错误，拒绝了关口的性邀约，并回到玲奈身边向她道歉，两人进行了性行为。之后，当玲奈在办公室内被同事揶揄时，棱平会适度地阻止嘲笑她的人。",
+        "id": 2741493,
+        "production_code": "",
+        "runtime": 8,
+        "season_number": 1,
+        "still_path": "/aBpMMyOLoJbtcThgbSeWs21laQG.jpg",
+        "vote_average": 4.0,
+        "vote_count": 2
+      }
+    ]
+  },
+  "translate": {
+    "translated": {
+      "media_type": "tv",
+      "tmdb_id": 113360,
+      "title": "地味变！！～改变土妹子的纯洁异性交往～",
+      "original_title": "じみへんっ!!～地味子を変えちゃう純異性交遊～",
+      "year": 2021,
+      "plot": "土妹子意外地…色色的。公司内首屈一指的土妹子，打扮后会变成超级美人！？面对如此可爱的她我一着急，就在爱情酒店前说出邀请的台词来…不过她好像也挺愿意的…！？土妹子愿意给我做任何事…而且还会说“我还要\"等等…只有我知道的淫秽姿态…让我再看多点——",
+      "tagline": "",
+      "runtime": 8,
+      "release_date": "2021-01-03",
+      "rating": 6.292,
+      "rating_count": 24,
+      "genres": [
+        "动画",
+        "喜剧"
+      ],
+      "countries": [
+        "JP"
+      ],
+      "languages": [
+        "ja"
+      ],
+      "studios": [
+        "studio HōKIBOSHI",
+        "Suiseisha"
+      ],
+      "networks": [
+        "Tokyo MX"
+      ],
+      "network": "Tokyo MX",
+      "status": "Ended",
+      "homepage": "https://jimihen.cf-anime.com",
+      "cast": [
+        {
+          "name_en": "Mahito Kawamura",
+          "name_zh": null,
+          "role": "Ryouhei Hachiya (voice)",
+          "original_name": "河村眞人",
+          "profile_path": null,
+          "popularity": 2.224
+        },
+        {
+          "name_en": "Usa Fujisaki",
+          "name_zh": null,
+          "role": "Rie Sekiguchi (voice)",
+          "original_name": "Usa Fujisaki",
+          "profile_path": null,
+          "popularity": 0.0466
+        },
+        {
+          "name_en": "Hibiki Nanashino",
+          "name_zh": null,
+          "role": "Buchou (voice)",
+          "original_name": "Hibiki Nanashino",
+          "profile_path": null,
+          "popularity": 0.98
+        }
+      ],
+      "directors": [
+        "Rei Ishikura"
+      ],
+      "writers": [
+        "Eeyo Kurosaki",
+        "Rei Ishikura"
+      ],
+      "images": {},
+      "seasons": [
+        {
+          "air_date": "2021-01-03",
+          "episode_count": 8,
+          "id": 169263,
+          "name": "第 1 季",
+          "overview": "电视动画片《地味变！！～改变土妹子的纯洁异性交往～》改编自いぶろー。著作的同名漫画作品，由studio HoKIBOSHI负责制作。",
+          "poster_path": "/to5FshluwPdO9d3Ucs7fagJL7OU.jpg",
+          "season_number": 1,
+          "vote_average": 3.5
+        }
+      ],
+      "episodes": [
+        {
+          "air_date": "2021-01-03",
+          "crew": [],
+          "episode_number": 1,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "土妹子出乎意料的可爱",
+          "overview": "行桥玲奈是个戴眼镜、打扮俗气的粉领族，部长认定她应是处女，并怂恿玲奈的同事八谷棱平去问她此事。因有把柄在部长手上，棱平无法拒绝，但在约玲奈出来后才发现她私下打扮非常时尚且健谈。他在表明来意后惹火了玲奈，在向玲奈道歉后，两人进宾馆发生了性行为，过程中玲奈表示自己是处女。",
+          "id": 2515737,
+          "production_code": "",
+          "runtime": 8,
+          "season_number": 1,
+          "still_path": "/7pzvVLFojhYjmm48kJIBv5G51Ij.jpg",
+          "vote_average": 6.5,
+          "vote_count": 4
+        },
+        {
+          "air_date": "2021-01-10",
+          "crew": [],
+          "episode_number": 2,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "喝醉了也意外地能做",
+          "overview": "部长和同事关口理惠都认为玲奈可能对棱平有意思，便积极撮合两人，在灌醉了棱平后要玲奈送他回家。两人在棱平的床上发生性行为，不过棱平对两人的亲密关系感到犹疑，打算暂时疏远。",
+          "id": 2631622,
+          "production_code": "",
+          "runtime": 8,
+          "season_number": 1,
+          "still_path": "/fivtqtcRSCGpHqz3ShAmS36e8mZ.jpg",
+          "vote_average": 3.0,
+          "vote_count": 2
+        },
+        {
+          "air_date": "2021-01-17",
+          "crew": [],
+          "episode_number": 3,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "泳装意外地湿润",
+          "overview": "棱平和同事一起到海边参加员工旅游，但他却因为脚伤而无法同乐，便和照顾自己的玲奈进行车上性行为。回公司后某日，他在与部长闲谈时透露玲奈不是自己喜欢的类型，而玲奈碰巧听到谈话。",
+          "id": 2649657,
+          "production_code": "",
+          "runtime": 8,
+          "season_number": 1,
+          "still_path": "/iEiUKzb7cNHgLyY5aJh67k1DBYz.jpg",
+          "vote_average": 3.5,
+          "vote_count": 2
+        },
+        {
+          "air_date": "2021-01-24",
+          "crew": [],
+          "episode_number": 4,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "被告白后内心意外地动摇",
+          "overview": "棱平向玲奈道歉，玲奈表示两人并非恋人，但其实非常介意。被留下来加班的两人在办公室坦露了心意并就此交往，之后两人在办公室做爱。次日，棱平得知玲奈并未被要求加班。",
+          "id": 2666332,
+          "production_code": "",
+          "runtime": 8,
+          "season_number": 1,
+          "still_path": "/tltkBHxPuTVMKynTflG4ir0245l.jpg",
+          "vote_average": 3.5,
+          "vote_count": 2
+        },
+        {
+          "air_date": "2021-01-31",
+          "crew": [],
+          "episode_number": 5,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "按摩也意外地擅长",
+          "overview": "棱平和玲奈讨论著约会行程，玲奈表示自己的时尚打扮是请专业人士协助，并对土里土气的自己感到自卑，棱平表示任何形象的玲奈都很好。之后两人进了宾馆，在按摩并使用按摩棒后，发生了性行为。",
+          "id": 2682395,
+          "production_code": "",
+          "runtime": 8,
+          "season_number": 1,
+          "still_path": "/gSoIPD9gevuaNCyEEwP6tNNkrtM.jpg",
+          "vote_average": 2.5,
+          "vote_count": 2
+        },
+        {
+          "air_date": "2021-02-07",
+          "crew": [],
+          "episode_number": 6,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "工作时也意外地激烈",
+          "overview": "在用餐时间，关口对棱平性暗示，让玲奈心生妒忌，并因此在棱平向她求欢时表现出不满，在把话说开后，两人在会议室做爱。",
+          "id": 2703938,
+          "production_code": "",
+          "runtime": 8,
+          "season_number": 1,
+          "still_path": "/dPy61hn0Wu5J3JO029XCuJRaw8a.jpg",
+          "vote_average": 3.5,
+          "vote_count": 2
+        },
+        {
+          "air_date": "2021-02-14",
+          "crew": [],
+          "episode_number": 7,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "我这人意外地过分",
+          "overview": "部长捡到棱平遗落的保险套，误以为他与关口有性行为，尽管棱平否认此事，但关口并未否认，让部长误以为两人确实有交往并将此事告诉玲奈。玲奈提出分手，无法挽回她的棱平要求打分手炮。棱平将她拘束在宾馆的床上，并谎称自己没戴保险套、强硬地进行体内射精。",
+          "id": 2725127,
+          "production_code": "",
+          "runtime": 8,
+          "season_number": 1,
+          "still_path": "/5C0ufGQqWOuBmDXboNpzpdbljGO.jpg",
+          "vote_average": 1.5,
+          "vote_count": 2
+        },
+        {
+          "air_date": "2021-02-21",
+          "crew": [],
+          "episode_number": 8,
+          "episode_type": "finale",
+          "guest_stars": [],
+          "name": "对土妹子意外地认真",
+          "overview": "棱平和关口在餐厅约会，结束后棱平醒悟到自己的错误，拒绝了关口的性邀约，并回到玲奈身边向她道歉，两人进行了性行为。之后，当玲奈在办公室内被同事揶揄时，棱平会适度地阻止嘲笑她的人。",
+          "id": 2741493,
+          "production_code": "",
+          "runtime": 8,
+          "season_number": 1,
+          "still_path": "/aBpMMyOLoJbtcThgbSeWs21laQG.jpg",
+          "vote_average": 4.0,
+          "vote_count": 2
+        }
+      ],
+      "title_zh": "地味变！！～改变土妹子的纯洁异性交往～",
+      "plot_zh": "土妹子意外地…色色的。公司内首屈一指的土妹子，打扮后会变成超级美人！？面对如此可爱的她我一着急，就在爱情酒店前说出邀请的台词来…不过她好像也挺愿意的…！？土妹子愿意给我做任何事…而且还会说“我还要\"等等…只有我知道的淫秽姿态…让我再看多点——",
+      "keywords_en": [
+        "love",
+        "romance",
+        "slice of life",
+        "based on manga",
+        "anime",
+        "big tits",
+        "mature romance",
+        "erotic",
+        "sex"
+      ],
+      "keywords": [
+        "love",
+        "romance",
+        "slice of life",
+        "based on manga",
+        "anime",
+        "big tits",
+        "mature romance",
+        "erotic",
+        "sex"
+      ],
+      "keywords_zh": [
+        "爱情",
+        "浪漫",
+        "日常片段",
+        "改编自漫画",
+        "动画",
+        "大胸",
+        "成熟浪漫",
+        "色情",
+        "性"
+      ]
+    },
+    "episodes": [
+      {
+        "air_date": "2021-01-03",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "土妹子出乎意料的可爱",
+        "overview": "行桥玲奈是个戴眼镜、打扮俗气的粉领族，部长认定她应是处女，并怂恿玲奈的同事八谷棱平去问她此事。因有把柄在部长手上，棱平无法拒绝，但在约玲奈出来后才发现她私下打扮非常时尚且健谈。他在表明来意后惹火了玲奈，在向玲奈道歉后，两人进宾馆发生了性行为，过程中玲奈表示自己是处女。",
+        "id": 2515737,
+        "production_code": "",
+        "runtime": 8,
+        "season_number": 1,
+        "still_path": "/7pzvVLFojhYjmm48kJIBv5G51Ij.jpg",
+        "vote_average": 6.5,
+        "vote_count": 4
+      },
+      {
+        "air_date": "2021-01-10",
+        "crew": [],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "喝醉了也意外地能做",
+        "overview": "部长和同事关口理惠都认为玲奈可能对棱平有意思，便积极撮合两人，在灌醉了棱平后要玲奈送他回家。两人在棱平的床上发生性行为，不过棱平对两人的亲密关系感到犹疑，打算暂时疏远。",
+        "id": 2631622,
+        "production_code": "",
+        "runtime": 8,
+        "season_number": 1,
+        "still_path": "/fivtqtcRSCGpHqz3ShAmS36e8mZ.jpg",
+        "vote_average": 3.0,
+        "vote_count": 2
+      },
+      {
+        "air_date": "2021-01-17",
+        "crew": [],
+        "episode_number": 3,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "泳装意外地湿润",
+        "overview": "棱平和同事一起到海边参加员工旅游，但他却因为脚伤而无法同乐，便和照顾自己的玲奈进行车上性行为。回公司后某日，他在与部长闲谈时透露玲奈不是自己喜欢的类型，而玲奈碰巧听到谈话。",
+        "id": 2649657,
+        "production_code": "",
+        "runtime": 8,
+        "season_number": 1,
+        "still_path": "/iEiUKzb7cNHgLyY5aJh67k1DBYz.jpg",
+        "vote_average": 3.5,
+        "vote_count": 2
+      },
+      {
+        "air_date": "2021-01-24",
+        "crew": [],
+        "episode_number": 4,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "被告白后内心意外地动摇",
+        "overview": "棱平向玲奈道歉，玲奈表示两人并非恋人，但其实非常介意。被留下来加班的两人在办公室坦露了心意并就此交往，之后两人在办公室做爱。次日，棱平得知玲奈并未被要求加班。",
+        "id": 2666332,
+        "production_code": "",
+        "runtime": 8,
+        "season_number": 1,
+        "still_path": "/tltkBHxPuTVMKynTflG4ir0245l.jpg",
+        "vote_average": 3.5,
+        "vote_count": 2
+      },
+      {
+        "air_date": "2021-01-31",
+        "crew": [],
+        "episode_number": 5,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "按摩也意外地擅长",
+        "overview": "棱平和玲奈讨论著约会行程，玲奈表示自己的时尚打扮是请专业人士协助，并对土里土气的自己感到自卑，棱平表示任何形象的玲奈都很好。之后两人进了宾馆，在按摩并使用按摩棒后，发生了性行为。",
+        "id": 2682395,
+        "production_code": "",
+        "runtime": 8,
+        "season_number": 1,
+        "still_path": "/gSoIPD9gevuaNCyEEwP6tNNkrtM.jpg",
+        "vote_average": 2.5,
+        "vote_count": 2
+      },
+      {
+        "air_date": "2021-02-07",
+        "crew": [],
+        "episode_number": 6,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "工作时也意外地激烈",
+        "overview": "在用餐时间，关口对棱平性暗示，让玲奈心生妒忌，并因此在棱平向她求欢时表现出不满，在把话说开后，两人在会议室做爱。",
+        "id": 2703938,
+        "production_code": "",
+        "runtime": 8,
+        "season_number": 1,
+        "still_path": "/dPy61hn0Wu5J3JO029XCuJRaw8a.jpg",
+        "vote_average": 3.5,
+        "vote_count": 2
+      },
+      {
+        "air_date": "2021-02-14",
+        "crew": [],
+        "episode_number": 7,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "我这人意外地过分",
+        "overview": "部长捡到棱平遗落的保险套，误以为他与关口有性行为，尽管棱平否认此事，但关口并未否认，让部长误以为两人确实有交往并将此事告诉玲奈。玲奈提出分手，无法挽回她的棱平要求打分手炮。棱平将她拘束在宾馆的床上，并谎称自己没戴保险套、强硬地进行体内射精。",
+        "id": 2725127,
+        "production_code": "",
+        "runtime": 8,
+        "season_number": 1,
+        "still_path": "/5C0ufGQqWOuBmDXboNpzpdbljGO.jpg",
+        "vote_average": 1.5,
+        "vote_count": 2
+      },
+      {
+        "air_date": "2021-02-21",
+        "crew": [],
+        "episode_number": 8,
+        "episode_type": "finale",
+        "guest_stars": [],
+        "name": "对土妹子意外地认真",
+        "overview": "棱平和关口在餐厅约会，结束后棱平醒悟到自己的错误，拒绝了关口的性邀约，并回到玲奈身边向她道歉，两人进行了性行为。之后，当玲奈在办公室内被同事揶揄时，棱平会适度地阻止嘲笑她的人。",
+        "id": 2741493,
+        "production_code": "",
+        "runtime": 8,
+        "season_number": 1,
+        "still_path": "/aBpMMyOLoJbtcThgbSeWs21laQG.jpg",
+        "vote_average": 4.0,
+        "vote_count": 2
+      }
+    ]
+  },
+  "normalize": {
+    "media_type": "tv",
+    "tmdb_id": 113360,
+    "title": "地味变！！～改变土妹子的纯洁异性交往～",
+    "original_title": "じみへんっ!!～地味子を変えちゃう純異性交遊～",
+    "year": 2021,
+    "plot": "土妹子意外地…色色的。公司内首屈一指的土妹子，打扮后会变成超级美人！？面对如此可爱的她我一着急，就在爱情酒店前说出邀请的台词来…不过她好像也挺愿意的…！？土妹子愿意给我做任何事…而且还会说“我还要\"等等…只有我知道的淫秽姿态…让我再看多点——",
+    "tagline": "",
+    "runtime": 8,
+    "release_date": "2021-01-03",
+    "rating": 6.292,
+    "rating_count": 24,
+    "genres": [
+      "动画",
+      "喜剧"
+    ],
+    "countries": [
+      "JP"
+    ],
+    "languages": [
+      "ja"
+    ],
+    "studios": [
+      "studio HōKIBOSHI",
+      "Suiseisha"
+    ],
+    "networks": [
+      "Tokyo MX"
+    ],
+    "network": "Tokyo MX",
+    "status": "Ended",
+    "homepage": "https://jimihen.cf-anime.com",
+    "cast": [
+      {
+        "name_en": "Mahito Kawamura",
+        "name_zh": null,
+        "role": "Ryouhei Hachiya (voice)",
+        "original_name": "河村眞人",
+        "profile_path": null,
+        "popularity": 2.224
+      },
+      {
+        "name_en": "Usa Fujisaki",
+        "name_zh": null,
+        "role": "Rie Sekiguchi (voice)",
+        "original_name": "Usa Fujisaki",
+        "profile_path": null,
+        "popularity": 0.0466
+      },
+      {
+        "name_en": "Hibiki Nanashino",
+        "name_zh": null,
+        "role": "Buchou (voice)",
+        "original_name": "Hibiki Nanashino",
+        "profile_path": null,
+        "popularity": 0.98
+      }
+    ],
+    "directors": [
+      "Rei Ishikura"
+    ],
+    "writers": [
+      "Eeyo Kurosaki",
+      "Rei Ishikura"
+    ],
+    "images": {},
+    "seasons": [
+      {
+        "air_date": "2021-01-03",
+        "episode_count": 8,
+        "id": 169263,
+        "name": "第 1 季",
+        "overview": "电视动画片《地味变！！～改变土妹子的纯洁异性交往～》改编自いぶろー。著作的同名漫画作品，由studio HoKIBOSHI负责制作。",
+        "poster_path": "/to5FshluwPdO9d3Ucs7fagJL7OU.jpg",
+        "season_number": 1,
+        "vote_average": 3.5
+      }
+    ],
+    "episodes": [
+      {
+        "air_date": "2021-01-03",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "土妹子出乎意料的可爱",
+        "overview": "行桥玲奈是个戴眼镜、打扮俗气的粉领族，部长认定她应是处女，并怂恿玲奈的同事八谷棱平去问她此事。因有把柄在部长手上，棱平无法拒绝，但在约玲奈出来后才发现她私下打扮非常时尚且健谈。他在表明来意后惹火了玲奈，在向玲奈道歉后，两人进宾馆发生了性行为，过程中玲奈表示自己是处女。",
+        "id": 2515737,
+        "production_code": "",
+        "runtime": 8,
+        "season_number": 1,
+        "still_path": "/7pzvVLFojhYjmm48kJIBv5G51Ij.jpg",
+        "vote_average": 6.5,
+        "vote_count": 4
+      },
+      {
+        "air_date": "2021-01-10",
+        "crew": [],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "喝醉了也意外地能做",
+        "overview": "部长和同事关口理惠都认为玲奈可能对棱平有意思，便积极撮合两人，在灌醉了棱平后要玲奈送他回家。两人在棱平的床上发生性行为，不过棱平对两人的亲密关系感到犹疑，打算暂时疏远。",
+        "id": 2631622,
+        "production_code": "",
+        "runtime": 8,
+        "season_number": 1,
+        "still_path": "/fivtqtcRSCGpHqz3ShAmS36e8mZ.jpg",
+        "vote_average": 3.0,
+        "vote_count": 2
+      },
+      {
+        "air_date": "2021-01-17",
+        "crew": [],
+        "episode_number": 3,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "泳装意外地湿润",
+        "overview": "棱平和同事一起到海边参加员工旅游，但他却因为脚伤而无法同乐，便和照顾自己的玲奈进行车上性行为。回公司后某日，他在与部长闲谈时透露玲奈不是自己喜欢的类型，而玲奈碰巧听到谈话。",
+        "id": 2649657,
+        "production_code": "",
+        "runtime": 8,
+        "season_number": 1,
+        "still_path": "/iEiUKzb7cNHgLyY5aJh67k1DBYz.jpg",
+        "vote_average": 3.5,
+        "vote_count": 2
+      },
+      {
+        "air_date": "2021-01-24",
+        "crew": [],
+        "episode_number": 4,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "被告白后内心意外地动摇",
+        "overview": "棱平向玲奈道歉，玲奈表示两人并非恋人，但其实非常介意。被留下来加班的两人在办公室坦露了心意并就此交往，之后两人在办公室做爱。次日，棱平得知玲奈并未被要求加班。",
+        "id": 2666332,
+        "production_code": "",
+        "runtime": 8,
+        "season_number": 1,
+        "still_path": "/tltkBHxPuTVMKynTflG4ir0245l.jpg",
+        "vote_average": 3.5,
+        "vote_count": 2
+      },
+      {
+        "air_date": "2021-01-31",
+        "crew": [],
+        "episode_number": 5,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "按摩也意外地擅长",
+        "overview": "棱平和玲奈讨论著约会行程，玲奈表示自己的时尚打扮是请专业人士协助，并对土里土气的自己感到自卑，棱平表示任何形象的玲奈都很好。之后两人进了宾馆，在按摩并使用按摩棒后，发生了性行为。",
+        "id": 2682395,
+        "production_code": "",
+        "runtime": 8,
+        "season_number": 1,
+        "still_path": "/gSoIPD9gevuaNCyEEwP6tNNkrtM.jpg",
+        "vote_average": 2.5,
+        "vote_count": 2
+      },
+      {
+        "air_date": "2021-02-07",
+        "crew": [],
+        "episode_number": 6,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "工作时也意外地激烈",
+        "overview": "在用餐时间，关口对棱平性暗示，让玲奈心生妒忌，并因此在棱平向她求欢时表现出不满，在把话说开后，两人在会议室做爱。",
+        "id": 2703938,
+        "production_code": "",
+        "runtime": 8,
+        "season_number": 1,
+        "still_path": "/dPy61hn0Wu5J3JO029XCuJRaw8a.jpg",
+        "vote_average": 3.5,
+        "vote_count": 2
+      },
+      {
+        "air_date": "2021-02-14",
+        "crew": [],
+        "episode_number": 7,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "我这人意外地过分",
+        "overview": "部长捡到棱平遗落的保险套，误以为他与关口有性行为，尽管棱平否认此事，但关口并未否认，让部长误以为两人确实有交往并将此事告诉玲奈。玲奈提出分手，无法挽回她的棱平要求打分手炮。棱平将她拘束在宾馆的床上，并谎称自己没戴保险套、强硬地进行体内射精。",
+        "id": 2725127,
+        "production_code": "",
+        "runtime": 8,
+        "season_number": 1,
+        "still_path": "/5C0ufGQqWOuBmDXboNpzpdbljGO.jpg",
+        "vote_average": 1.5,
+        "vote_count": 2
+      },
+      {
+        "air_date": "2021-02-21",
+        "crew": [],
+        "episode_number": 8,
+        "episode_type": "finale",
+        "guest_stars": [],
+        "name": "对土妹子意外地认真",
+        "overview": "棱平和关口在餐厅约会，结束后棱平醒悟到自己的错误，拒绝了关口的性邀约，并回到玲奈身边向她道歉，两人进行了性行为。之后，当玲奈在办公室内被同事揶揄时，棱平会适度地阻止嘲笑她的人。",
+        "id": 2741493,
+        "production_code": "",
+        "runtime": 8,
+        "season_number": 1,
+        "still_path": "/aBpMMyOLoJbtcThgbSeWs21laQG.jpg",
+        "vote_average": 4.0,
+        "vote_count": 2
+      }
+    ],
+    "title_zh": "地味变！！～改变土妹子的纯洁异性交往～",
+    "plot_zh": "土妹子意外地…色色的。公司内首屈一指的土妹子，打扮后会变成超级美人！？面对如此可爱的她我一着急，就在爱情酒店前说出邀请的台词来…不过她好像也挺愿意的…！？土妹子愿意给我做任何事…而且还会说“我还要\"等等…只有我知道的淫秽姿态…让我再看多点——",
+    "keywords_en": [
+      "love",
+      "romance",
+      "slice of life",
+      "based on manga",
+      "anime",
+      "big tits",
+      "mature romance",
+      "erotic",
+      "sex"
+    ],
+    "keywords": [
+      "love",
+      "romance",
+      "slice of life",
+      "based on manga",
+      "anime",
+      "big tits",
+      "mature romance",
+      "erotic",
+      "sex"
+    ],
+    "keywords_zh": [
+      "爱情",
+      "浪漫",
+      "日常片段",
+      "改编自漫画",
+      "动画",
+      "大胸",
+      "成熟浪漫",
+      "色情",
+      "性"
+    ]
+  },
+  "nfo": {
+    "data": {
+      "title": "地味变！！～改变土妹子的纯洁异性交往～",
+      "originaltitle": "じみへんっ!!～地味子を変えちゃう純異性交遊～",
+      "year": 2021,
+      "premiered": "2021-01-03",
+      "plot": "土妹子意外地…色色的。公司内首屈一指的土妹子，打扮后会变成超级美人！？面对如此可爱的她我一着急，就在爱情酒店前说出邀请的台词来…不过她好像也挺愿意的…！？土妹子愿意给我做任何事…而且还会说“我还要\"等等…只有我知道的淫秽姿态…让我再看多点——",
+      "tagline": "",
+      "runtime": 8,
+      "rating": 6.292,
+      "votes": 24,
+      "genre": [
+        "动画",
+        "喜剧"
+      ],
+      "country": [
+        "JP"
+      ],
+      "studio": [
+        "studio HōKIBOSHI",
+        "Suiseisha"
+      ],
+      "credits": [
+        "Eeyo Kurosaki",
+        "Rei Ishikura"
+      ],
+      "director": [
+        "Rei Ishikura"
+      ],
+      "actor": [
+        {
+          "name": "Mahito Kawamura",
+          "role": "Ryouhei Hachiya (voice)",
+          "originalname": "河村眞人"
+        },
+        {
+          "name": "Usa Fujisaki",
+          "role": "Rie Sekiguchi (voice)"
+        },
+        {
+          "name": "Hibiki Nanashino",
+          "role": "Buchou (voice)"
+        }
+      ],
+      "thumb": "poster.jpg",
+      "fanart": "fanart.jpg",
+      "tags": [
+        "爱情",
+        "浪漫",
+        "日常片段",
+        "改编自漫画",
+        "动画",
+        "大胸",
+        "成熟浪漫",
+        "色情",
+        "性"
+      ],
+      "network": "Tokyo MX",
+      "networks": [
+        "Tokyo MX"
+      ],
+      "status": "Ended",
+      "homepage": "https://jimihen.cf-anime.com",
+      "tmdb_id": 113360,
+      "validated": true
+    },
+    "xml": "<?xml version=\"1.0\" ?>\n<tvshow>\n  <title>地味变！！～改变土妹子的纯洁异性交往～</title>\n  <originaltitle>じみへんっ!!～地味子を変えちゃう純異性交遊～</originaltitle>\n  <year>2021</year>\n  <premiered>2021-01-03</premiered>\n  <plot><![CDATA[土妹子意外地…色色的。公司内首屈一指的土妹子，打扮后会变成超级美人！？面对如此可爱的她我一着急，就在爱情酒店前说出邀请的台词来…不过她好像也挺愿意的…！？土妹子愿意给我做任何事…而且还会说“我还要\"等等…只有我知道的淫秽姿态…让我再看多点——]]></plot>\n  <runtime>8</runtime>\n  <rating>6.292</rating>\n  <votes>24</votes>\n  <tmdbid>113360</tmdbid>\n  <genre>动画</genre>\n  <genre>喜剧</genre>\n  <country>JP</country>\n  <studio>studio HōKIBOSHI</studio>\n  <studio>Suiseisha</studio>\n  <credits>Eeyo Kurosaki, Rei Ishikura</credits>\n  <director>Rei Ishikura</director>\n  <actor>\n    <name>Mahito Kawamura</name>\n    <role>Ryouhei Hachiya (voice)</role>\n    <originalname>河村眞人</originalname>\n  </actor>\n  <actor>\n    <name>Usa Fujisaki</name>\n    <role>Rie Sekiguchi (voice)</role>\n  </actor>\n  <actor>\n    <name>Hibiki Nanashino</name>\n    <role>Buchou (voice)</role>\n  </actor>\n  <network>Tokyo MX</network>\n  <status>Ended</status>\n  <homepage>https://jimihen.cf-anime.com</homepage>\n  <uniqueid type=\"tmdb\" default=\"true\">113360</uniqueid>\n  <thumb>images/poster/poster.jpg</thumb>\n  <fanart>images/fanart/fanart.jpg</fanart>\n  <tag>爱情</tag>\n  <tag>浪漫</tag>\n  <tag>日常片段</tag>\n  <tag>改编自漫画</tag>\n  <tag>动画</tag>\n  <tag>大胸</tag>\n  <tag>成熟浪漫</tag>\n  <tag>色情</tag>\n  <tag>性</tag>\n</tvshow>\n"
+  },
+  "output": {
+    "status": "completed",
+    "files": {
+      "nfo_file": "/Volumes/video/Animation/The Animation/地味变！！～改变土妹子的纯洁异性交往～ (2021)/tvshow.nfo",
+      "images_dir": "/Volumes/video/Animation/The Animation/地味变！！～改变土妹子的纯洁异性交往～ (2021)/images",
+      "media_dir": "/Volumes/video/Animation/The Animation/地味变！！～改变土妹子的纯洁异性交往～ (2021)",
+      "season_1_episode_1": "/Volumes/video/Animation/The Animation/地味变！！～改变土妹子的纯洁异性交往～ (2021)/Season 01/地味变！！～改变土妹子的纯洁异性交往～ - S01E01 - 土妹子出乎意料的可爱.nfo",
+      "season_1_episode_2": "/Volumes/video/Animation/The Animation/地味变！！～改变土妹子的纯洁异性交往～ (2021)/Season 01/地味变！！～改变土妹子的纯洁异性交往～ - S01E02 - 喝醉了也意外地能做.nfo",
+      "season_1_episode_3": "/Volumes/video/Animation/The Animation/地味变！！～改变土妹子的纯洁异性交往～ (2021)/Season 01/地味变！！～改变土妹子的纯洁异性交往～ - S01E03 - 泳装意外地湿润.nfo",
+      "season_1_episode_4": "/Volumes/video/Animation/The Animation/地味变！！～改变土妹子的纯洁异性交往～ (2021)/Season 01/地味变！！～改变土妹子的纯洁异性交往～ - S01E04 - 被告白后内心意外地动摇.nfo",
+      "season_1_episode_5": "/Volumes/video/Animation/The Animation/地味变！！～改变土妹子的纯洁异性交往～ (2021)/Season 01/地味变！！～改变土妹子的纯洁异性交往～ - S01E05 - 按摩也意外地擅长.nfo",
+      "season_1_episode_6": "/Volumes/video/Animation/The Animation/地味变！！～改变土妹子的纯洁异性交往～ (2021)/Season 01/地味变！！～改变土妹子的纯洁异性交往～ - S01E06 - 工作时也意外地激烈.nfo",
+      "season_1_episode_7": "/Volumes/video/Animation/The Animation/地味变！！～改变土妹子的纯洁异性交往～ (2021)/Season 01/地味变！！～改变土妹子的纯洁异性交往～ - S01E07 - 我这人意外地过分.nfo",
+      "season_1_episode_8": "/Volumes/video/Animation/The Animation/地味变！！～改变土妹子的纯洁异性交往～ (2021)/Season 01/地味变！！～改变土妹子的纯洁异性交往～ - S01E08 - 对土妹子意外地认真.nfo"
+    }
+  },
+  "errors": [],
+  "end_time": "2025-12-05T23:25:54.401842"
+}

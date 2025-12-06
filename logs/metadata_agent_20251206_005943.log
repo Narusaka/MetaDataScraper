@@ -1,0 +1,639 @@
+2025-12-06 00:59:44,012 - MetadataAgent - INFO - Input parameters parsed
+2025-12-06 00:59:44,012 - MetadataAgent - DEBUG - Input data: {
+  "media_type": "tv",
+  "query": "",
+  "output_dir": "/Volumes/video/Animation/The Animation/妻に黙って即売会に行くんじゃなかった (Unknown Year)",
+  "verbose": false,
+  "quiet": true,
+  "aid_search": true,
+  "tmdb_id": 230410
+}
+2025-12-06 00:59:44,012 - MetadataAgent - INFO - Search completed: 0 results
+2025-12-06 00:59:44,012 - MetadataAgent - DEBUG - Search results: {}
+2025-12-06 00:59:46,537 - MetadataAgent - INFO - Data fetching completed
+2025-12-06 00:59:46,538 - MetadataAgent - DEBUG - Main data: {
+  "adult": true,
+  "backdrop_path": "/4U6wkxaRpKgHvEeswzizhXkIsxw.jpg",
+  "created_by": [],
+  "episode_run_time": [
+    20
+  ],
+  "first_air_date": "2023-10-06",
+  "genres": [
+    {
+      "id": 16,
+      "name": "动画"
+    }
+  ],
+  "homepage": "",
+  "id": 230410,
+  "in_production": false,
+  "languages": [
+    "ja"
+  ],
+  "last_air_date": "2023-10-06",
+  "last_episode_to_air": {
+    "id": 4577909,
+    "name": "第 2 集",
+    "overview": "",
+    "vote_average": 2.8,
+    "vote_count": 4,
+    "air_date": "2023-10-06",
+    "episode_number": 2,
+    "episode_type": "standard",
+    "production_code": "GLOD0307",
+    "runtime": 16,
+    "season_number": 1,
+    "show_id": 230410,
+    "still_path": "/yqKsNl4QGofIzuwK5uC97L8iUge.jpg"
+  },
+  "name": "妻に黙って即売会に行くんじゃなかった",
+  "next_episode_to_air": null,
+  "networks": [],
+  "number_of_episodes": 2,
+  "number_of_seasons": 1,
+  "origin_country": [
+    "JP"
+  ],
+  "original_language": "ja",
+  "original_name": "妻に黙って即売会に行くんじゃなかった",
+  "overview": "丈夫每年盂兰盆节或者年末都要出差，裕美子因此感到寂寞性欲过剩，就在这时她发现了老公房间里极度变态的同人志。原本以为性欲较低的丈夫居然有这样的漫画，裕美子一边想象着自己和丈夫像同人志里面那样做爱边沉醉于自慰，此时邻居的轻浮男子出现..无法反抗年轻男性的激烈性爱。裕美子就这样沉浸于肉欲之中...",
+  "popularity": 0.0,
+  "poster_path": "/dRnvOhTJYODFxF9rblwtK3IhEYP.jpg",
+  "production_companies": [
+    {
+      "id": 96058,
+      "logo_path": null,
+      "name": "T-REX",
+      "origin_country": "JP"
+    },
+    {
+      "id": 153406,
+      "logo_path": "/6XaoW530ZzUCsrTkN1ucEWfqTp.png",
+      "name": "Lune Pictures",
+      "origin_country": "JP"
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "JP",
+      "name": "Japan"
+    }
+  ],
+  "seasons": [
+    {
+      "air_date": "2023-10-06",
+      "episode_count": 2,
+      "id": 348475,
+      "name": "第 1 季",
+      "overview": "丈夫每年盂蘭盆節或者年末都要出差。裕美子因此感到寂寞性慾過剩，就在這時她發現了老公房間里極度變態的同人志。原本以為性慾較低的丈夫居然有這樣的漫畫…裕美子一邊想象著自己和丈夫像同人志裡面那樣做愛一邊沈醉於自慰，此時鄰居的輕浮男子出現…無法反抗年輕男性的激烈性愛，裕美子就這樣沈浸於肉慾之中…",
+      "poster_path": "/dRnvOhTJYODFxF9rblwtK3IhEYP.jpg",
+      "season_number": 1,
+      "vote_average": 5.0
+    }
+  ],
+  "spoken_languages": [
+    {
+      "english_name": "Japanese",
+      "iso_639_1": "ja",
+      "name": "日本語"
+    }
+  ],
+  "status": "Ended",
+  "tagline": "",
+  "type": "Video",
+  "vote_average": 7.167,
+  "vote_count": 12
+}
+2025-12-06 00:59:46,538 - MetadataAgent - DEBUG - Credits data: {
+  "cast": [
+    {
+      "adult": true,
+      "gender": 0,
+      "id": 5676085,
+      "known_for_department": "Acting",
+      "name": "Минами Момоя",
+      "original_name": "Минами Момоя",
+      "popularity": 0.0,
+      "profile_path": null,
+      "character": "Юмико Кимура (озвучка)",
+      "credit_id": "68bd8c70ed4c3c544c069ea7",
+      "order": 0
+    }
+  ],
+  "crew": [
+    {
+      "adult": true,
+      "gender": 2,
+      "id": 1778739,
+      "known_for_department": "Directing",
+      "name": "Ken Raika",
+      "original_name": "雷火剣",
+      "popularity": 194.882,
+      "profile_path": null,
+      "credit_id": "64ad3b6db686b9010e0daea8",
+      "department": "Directing",
+      "job": "Director"
+    },
+    {
+      "adult": true,
+      "gender": 2,
+      "id": 2984359,
+      "known_for_department": "Writing",
+      "name": "Megane Sagari",
+      "original_name": "サガリ 眼鏡",
+      "popularity": 0.6,
+      "profile_path": null,
+      "credit_id": "64ad3ca6e24b930100c7bd40",
+      "department": "Writing",
+      "job": "Storyboard"
+    },
+    {
+      "adult": true,
+      "gender": 0,
+      "id": 2984357,
+      "known_for_department": "Writing",
+      "name": "Tokku03",
+      "original_name": "特区03",
+      "popularity": 21.693,
+      "profile_path": null,
+      "credit_id": "64ad3c8ee24b93011d74f56a",
+      "department": "Crew",
+      "job": "Script"
+    }
+  ],
+  "id": 230410
+}
+2025-12-06 00:59:46,538 - MetadataAgent - DEBUG - Keywords data: {
+  "id": 230410,
+  "results": [
+    {
+      "name": "wife",
+      "id": 4183
+    },
+    {
+      "name": "creampie",
+      "id": 148536
+    },
+    {
+      "name": "hentai",
+      "id": 198385
+    },
+    {
+      "name": "ntr",
+      "id": 221948
+    },
+    {
+      "name": "big tits",
+      "id": 230416
+    }
+  ]
+}
+2025-12-06 00:59:46,539 - MetadataAgent - DEBUG - Episodes data: [
+  {
+    "air_date": "2023-10-06",
+    "crew": [],
+    "episode_number": 1,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 1 集",
+    "overview": "丈夫每年盂蘭盆節或者年末都要出差。裕美子因此感到寂寞性慾過剩，就在這時她發現了老公房間里極度變態的同人志。原本以為性慾較低的丈夫居然有這樣的漫畫…裕美子一邊想象著自己和丈夫像同人志裡面那樣做愛一邊沈醉於自慰，此時鄰居的輕浮男子出現…無法反抗年輕男性的激烈性愛，裕美子就這樣沈浸於肉慾之中…",
+    "id": 4577908,
+    "production_code": "GLOD0305",
+    "runtime": 16,
+    "season_number": 1,
+    "still_path": "/ycOFT0AOAf9HFNK8X0dTciE1ch9.jpg",
+    "vote_average": 7.3,
+    "vote_count": 13
+  },
+  {
+    "air_date": "2023-10-06",
+    "crew": [],
+    "episode_number": 2,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 2 集",
+    "overview": "",
+    "id": 4577909,
+    "production_code": "GLOD0307",
+    "runtime": 16,
+    "season_number": 1,
+    "still_path": "/yqKsNl4QGofIzuwK5uC97L8iUge.jpg",
+    "vote_average": 2.8,
+    "vote_count": 4
+  }
+]
+2025-12-06 00:59:46,539 - MetadataAgent - DEBUG - Seasons data: [
+  {
+    "_id": "64ad3a7ae24b93013abae0f9",
+    "air_date": "2023-10-06",
+    "episodes": [
+      {
+        "air_date": "2023-10-06",
+        "episode_number": 1,
+        "episode_type": "standard",
+        "id": 4577908,
+        "name": "第 1 集",
+        "overview": "丈夫每年盂蘭盆節或者年末都要出差。裕美子因此感到寂寞性慾過剩，就在這時她發現了老公房間里極度變態的同人志。原本以為性慾較低的丈夫居然有這樣的漫畫…裕美子一邊想象著自己和丈夫像同人志裡面那樣做愛一邊沈醉於自慰，此時鄰居的輕浮男子出現…無法反抗年輕男性的激烈性愛，裕美子就這樣沈浸於肉慾之中…",
+        "production_code": "GLOD0305",
+        "runtime": 16,
+        "season_number": 1,
+        "show_id": 230410,
+        "still_path": "/ycOFT0AOAf9HFNK8X0dTciE1ch9.jpg",
+        "vote_average": 7.3,
+        "vote_count": 13,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2023-10-06",
+        "episode_number": 2,
+        "episode_type": "standard",
+        "id": 4577909,
+        "name": "第 2 集",
+        "overview": "",
+        "production_code": "GLOD0307",
+        "runtime": 16,
+        "season_number": 1,
+        "show_id": 230410,
+        "still_path": "/yqKsNl4QGofIzuwK5uC97L8iUge.jpg",
+        "vote_average": 2.8,
+        "vote_count": 4,
+        "crew": [],
+        "guest_stars": []
+      }
+    ],
+    "name": "第 1 季",
+    "networks": [],
+    "overview": "丈夫每年盂蘭盆節或者年末都要出差。裕美子因此感到寂寞性慾過剩，就在這時她發現了老公房間里極度變態的同人志。原本以為性慾較低的丈夫居然有這樣的漫畫…裕美子一邊想象著自己和丈夫像同人志裡面那樣做愛一邊沈醉於自慰，此時鄰居的輕浮男子出現…無法反抗年輕男性的激烈性愛，裕美子就這樣沈浸於肉慾之中…",
+    "id": 348475,
+    "poster_path": "/dRnvOhTJYODFxF9rblwtK3IhEYP.jpg",
+    "season_number": 1,
+    "vote_average": 5.0
+  }
+]
+2025-12-06 00:59:48,241 - MetadataAgent - INFO - Data normalization completed
+2025-12-06 00:59:48,242 - MetadataAgent - DEBUG - Normalized data: {
+  "media_type": "tv",
+  "tmdb_id": 230410,
+  "title": "妻に黙って即売会に行くんじゃなかった",
+  "original_title": "妻に黙って即売会に行くんじゃなかった",
+  "year": 2023,
+  "plot": "丈夫每年盂兰盆节或者年末都要出差，裕美子因此感到寂寞性欲过剩，就在这时她发现了老公房间里极度变态的同人志。原本以为性欲较低的丈夫居然有这样的漫画，裕美子一边想象着自己和丈夫像同人志里面那样做爱边沉醉于自慰，此时邻居的轻浮男子出现..无法反抗年轻男性的激烈性爱。裕美子就这样沉浸于肉欲之中...",
+  "tagline": "",
+  "runtime": 20,
+  "release_date": "2023-10-06",
+  "rating": 7.167,
+  "rating_count": 12,
+  "genres": [
+    "动画"
+  ],
+  "countries": [
+    "JP"
+  ],
+  "languages": [
+    "ja"
+  ],
+  "studios": [
+    "T-REX",
+    "Lune Pictures"
+  ],
+  "networks": [],
+  "network": "",
+  "status": "Ended",
+  "homepage": "",
+  "cast": [
+    {
+      "name_en": "Минами Момоя",
+      "name_zh": null,
+      "role": "Юмико Кимура (озвучка)",
+      "original_name": "Минами Момоя",
+      "profile_path": null,
+      "popularity": 0.0
+    }
+  ],
+  "directors": [
+    "Ken Raika"
+  ],
+  "writers": [
+    "Megane Sagari"
+  ],
+  "images": {},
+  "seasons": [
+    {
+      "air_date": "2023-10-06",
+      "episode_count": 2,
+      "id": 348475,
+      "name": "第 1 季",
+      "overview": "丈夫每年盂蘭盆節或者年末都要出差。裕美子因此感到寂寞性慾過剩，就在這時她發現了老公房間里極度變態的同人志。原本以為性慾較低的丈夫居然有這樣的漫畫…裕美子一邊想象著自己和丈夫像同人志裡面那樣做愛一邊沈醉於自慰，此時鄰居的輕浮男子出現…無法反抗年輕男性的激烈性愛，裕美子就這樣沈浸於肉慾之中…",
+      "poster_path": "/dRnvOhTJYODFxF9rblwtK3IhEYP.jpg",
+      "season_number": 1,
+      "vote_average": 5.0
+    }
+  ],
+  "episodes": [
+    {
+      "air_date": "2023-10-06",
+      "crew": [],
+      "episode_number": 1,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 1 集",
+      "overview": "丈夫每年盂蘭盆節或者年末都要出差。裕美子因此感到寂寞性慾過剩，就在這時她發現了老公房間里極度變態的同人志。原本以為性慾較低的丈夫居然有這樣的漫畫…裕美子一邊想象著自己和丈夫像同人志裡面那樣做愛一邊沈醉於自慰，此時鄰居的輕浮男子出現…無法反抗年輕男性的激烈性愛，裕美子就這樣沈浸於肉慾之中…",
+      "id": 4577908,
+      "production_code": "GLOD0305",
+      "runtime": 16,
+      "season_number": 1,
+      "still_path": "/ycOFT0AOAf9HFNK8X0dTciE1ch9.jpg",
+      "vote_average": 7.3,
+      "vote_count": 13
+    },
+    {
+      "air_date": "2023-10-06",
+      "crew": [],
+      "episode_number": 2,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 2 集",
+      "overview": "",
+      "id": 4577909,
+      "production_code": "GLOD0307",
+      "runtime": 16,
+      "season_number": 1,
+      "still_path": "/yqKsNl4QGofIzuwK5uC97L8iUge.jpg",
+      "vote_average": 2.8,
+      "vote_count": 4
+    }
+  ],
+  "title_zh": "妻に黙って即売会に行くんじゃなかった",
+  "plot_zh": "丈夫每年盂兰盆节或者年末都要出差，裕美子因此感到寂寞性欲过剩，就在这时她发现了老公房间里极度变态的同人志。原本以为性欲较低的丈夫居然有这样的漫画，裕美子一边想象着自己和丈夫像同人志里面那样做爱边沉醉于自慰，此时邻居的轻浮男子出现..无法反抗年轻男性的激烈性爱。裕美子就这样沉浸于肉欲之中...",
+  "keywords_en": [
+    "wife",
+    "creampie",
+    "hentai",
+    "ntr",
+    "big tits"
+  ],
+  "keywords": [
+    "wife",
+    "creampie",
+    "hentai",
+    "ntr",
+    "big tits"
+  ],
+  "keywords_zh": [
+    "妻子",
+    "阴茎勃起",
+    "腐女",
+    "非恋人",
+    "大胸"
+  ]
+}
+2025-12-06 00:59:48,252 - MetadataAgent - INFO - Translation processing completed
+2025-12-06 00:59:48,253 - MetadataAgent - DEBUG - Translated data: {
+  "media_type": "tv",
+  "tmdb_id": 230410,
+  "title": "妻に黙って即売会に行くんじゃなかった",
+  "original_title": "妻に黙って即売会に行くんじゃなかった",
+  "year": 2023,
+  "plot": "丈夫每年盂兰盆节或者年末都要出差，裕美子因此感到寂寞性欲过剩，就在这时她发现了老公房间里极度变态的同人志。原本以为性欲较低的丈夫居然有这样的漫画，裕美子一边想象着自己和丈夫像同人志里面那样做爱边沉醉于自慰，此时邻居的轻浮男子出现..无法反抗年轻男性的激烈性爱。裕美子就这样沉浸于肉欲之中...",
+  "tagline": "",
+  "runtime": 20,
+  "release_date": "2023-10-06",
+  "rating": 7.167,
+  "rating_count": 12,
+  "genres": [
+    "动画"
+  ],
+  "countries": [
+    "JP"
+  ],
+  "languages": [
+    "ja"
+  ],
+  "studios": [
+    "T-REX",
+    "Lune Pictures"
+  ],
+  "networks": [],
+  "network": "",
+  "status": "Ended",
+  "homepage": "",
+  "cast": [
+    {
+      "name_en": "Минами Момоя",
+      "name_zh": null,
+      "role": "Юмико Кимура (озвучка)",
+      "original_name": "Минами Момоя",
+      "profile_path": null,
+      "popularity": 0.0
+    }
+  ],
+  "directors": [
+    "Ken Raika"
+  ],
+  "writers": [
+    "Megane Sagari"
+  ],
+  "images": {},
+  "seasons": [
+    {
+      "air_date": "2023-10-06",
+      "episode_count": 2,
+      "id": 348475,
+      "name": "第 1 季",
+      "overview": "丈夫每年盂蘭盆節或者年末都要出差。裕美子因此感到寂寞性慾過剩，就在這時她發現了老公房間里極度變態的同人志。原本以為性慾較低的丈夫居然有這樣的漫畫…裕美子一邊想象著自己和丈夫像同人志裡面那樣做愛一邊沈醉於自慰，此時鄰居的輕浮男子出現…無法反抗年輕男性的激烈性愛，裕美子就這樣沈浸於肉慾之中…",
+      "poster_path": "/dRnvOhTJYODFxF9rblwtK3IhEYP.jpg",
+      "season_number": 1,
+      "vote_average": 5.0
+    }
+  ],
+  "episodes": [
+    {
+      "air_date": "2023-10-06",
+      "crew": [],
+      "episode_number": 1,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 1 集",
+      "overview": "丈夫每年盂蘭盆節或者年末都要出差。裕美子因此感到寂寞性慾過剩，就在這時她發現了老公房間里極度變態的同人志。原本以為性慾較低的丈夫居然有這樣的漫畫…裕美子一邊想象著自己和丈夫像同人志裡面那樣做愛一邊沈醉於自慰，此時鄰居的輕浮男子出現…無法反抗年輕男性的激烈性愛，裕美子就這樣沈浸於肉慾之中…",
+      "id": 4577908,
+      "production_code": "GLOD0305",
+      "runtime": 16,
+      "season_number": 1,
+      "still_path": "/ycOFT0AOAf9HFNK8X0dTciE1ch9.jpg",
+      "vote_average": 7.3,
+      "vote_count": 13
+    },
+    {
+      "air_date": "2023-10-06",
+      "crew": [],
+      "episode_number": 2,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 2 集",
+      "overview": "",
+      "id": 4577909,
+      "production_code": "GLOD0307",
+      "runtime": 16,
+      "season_number": 1,
+      "still_path": "/yqKsNl4QGofIzuwK5uC97L8iUge.jpg",
+      "vote_average": 2.8,
+      "vote_count": 4
+    }
+  ],
+  "title_zh": "妻に黙って即売会に行くんじゃなかった",
+  "plot_zh": "丈夫每年盂兰盆节或者年末都要出差，裕美子因此感到寂寞性欲过剩，就在这时她发现了老公房间里极度变态的同人志。原本以为性欲较低的丈夫居然有这样的漫画，裕美子一边想象着自己和丈夫像同人志里面那样做爱边沉醉于自慰，此时邻居的轻浮男子出现..无法反抗年轻男性的激烈性爱。裕美子就这样沉浸于肉欲之中...",
+  "keywords_en": [
+    "wife",
+    "creampie",
+    "hentai",
+    "ntr",
+    "big tits"
+  ],
+  "keywords": [
+    "wife",
+    "creampie",
+    "hentai",
+    "ntr",
+    "big tits"
+  ],
+  "keywords_zh": [
+    "妻子",
+    "阴茎勃起",
+    "腐女",
+    "非恋人",
+    "大胸"
+  ]
+}
+2025-12-06 00:59:48,253 - MetadataAgent - DEBUG - Translated episodes: [
+  {
+    "air_date": "2023-10-06",
+    "crew": [],
+    "episode_number": 1,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 1 集",
+    "overview": "丈夫每年盂蘭盆節或者年末都要出差。裕美子因此感到寂寞性慾過剩，就在這時她發現了老公房間里極度變態的同人志。原本以為性慾較低的丈夫居然有這樣的漫畫…裕美子一邊想象著自己和丈夫像同人志裡面那樣做愛一邊沈醉於自慰，此時鄰居的輕浮男子出現…無法反抗年輕男性的激烈性愛，裕美子就這樣沈浸於肉慾之中…",
+    "id": 4577908,
+    "production_code": "GLOD0305",
+    "runtime": 16,
+    "season_number": 1,
+    "still_path": "/ycOFT0AOAf9HFNK8X0dTciE1ch9.jpg",
+    "vote_average": 7.3,
+    "vote_count": 13
+  },
+  {
+    "air_date": "2023-10-06",
+    "crew": [],
+    "episode_number": 2,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 2 集",
+    "overview": "",
+    "id": 4577909,
+    "production_code": "GLOD0307",
+    "runtime": 16,
+    "season_number": 1,
+    "still_path": "/yqKsNl4QGofIzuwK5uC97L8iUge.jpg",
+    "vote_average": 2.8,
+    "vote_count": 4
+  }
+]
+2025-12-06 00:59:58,277 - MetadataAgent - INFO - NFO generation completed
+2025-12-06 00:59:58,277 - MetadataAgent - DEBUG - NFO data: {
+  "title": "妻に黙って即売会に行くんじゃなかった",
+  "originaltitle": "妻に黙って即売会に行くんじゃなかった",
+  "year": 2023,
+  "premiered": "2023-10-06",
+  "plot": "丈夫每年盂兰盆节或者年末都要出差，裕美子因此感到寂寞性欲过剩，就在这时她发现了老公房间里极度变态的同人志。原本以为性欲较低的丈夫居然有这样的漫画，裕美子一边想象着自己和丈夫像同人志里面那样做爱边沉醉于自慰，此时邻居的轻浮男子出现..无法反抗年轻男性的激烈性爱。裕美子就这样沉浸于肉欲之中...",
+  "tagline": "",
+  "runtime": 20,
+  "rating": 7.167,
+  "votes": 12,
+  "genre": [
+    "动画"
+  ],
+  "country": [
+    "JP"
+  ],
+  "studio": [
+    "T-REX",
+    "Lune Pictures"
+  ],
+  "credits": [
+    "Megane Sagari"
+  ],
+  "director": [
+    "Ken Raika"
+  ],
+  "actor": [
+    {
+      "name": "Минами Момоя",
+      "role": "Юмико Кимура (озвучка)"
+    }
+  ],
+  "thumb": "poster.jpg",
+  "fanart": "fanart.jpg",
+  "tags": [
+    "妻子",
+    "阴茎勃起",
+    "腐女",
+    "非恋人",
+    "大胸"
+  ],
+  "network": "",
+  "networks": [],
+  "status": "Ended",
+  "homepage": "",
+  "tmdb_id": 230410,
+  "validated": true
+}
+2025-12-06 00:59:58,277 - MetadataAgent - DEBUG - NFO XML content:
+<?xml version="1.0" ?>
+<tvshow>
+  <title>妻に黙って即売会に行くんじゃなかった</title>
+  <originaltitle>妻に黙って即売会に行くんじゃなかった</originaltitle>
+  <year>2023</year>
+  <premiered>2023-10-06</premiered>
+  <plot><![CDATA[丈夫每年盂兰盆节或者年末都要出差，裕美子因此感到寂寞性欲过剩，就在这时她发现了老公房间里极度变态的同人志。原本以为性欲较低的丈夫居然有这样的漫画，裕美子一边想象着自己和丈夫像同人志里面那样做爱边沉醉于自慰，此时邻居的轻浮男子出现..无法反抗年轻男性的激烈性爱。裕美子就这样沉浸于肉欲之中...]]></plot>
+  <runtime>20</runtime>
+  <rating>7.167</rating>
+  <votes>12</votes>
+  <tmdbid>230410</tmdbid>
+  <genre>动画</genre>
+  <country>JP</country>
+  <studio>T-REX</studio>
+  <studio>Lune Pictures</studio>
+  <credits>Megane Sagari</credits>
+  <director>Ken Raika</director>
+  <actor>
+    <name>Минами Момоя</name>
+    <role>Юмико Кимура (озвучка)</role>
+  </actor>
+  <status>Ended</status>
+  <uniqueid type="tmdb" default="true">230410</uniqueid>
+  <thumb>images/poster/poster.jpg</thumb>
+  <fanart>images/fanart/fanart.jpg</fanart>
+  <tag>妻子</tag>
+  <tag>阴茎勃起</tag>
+  <tag>腐女</tag>
+  <tag>非恋人</tag>
+  <tag>大胸</tag>
+</tvshow>
+
+2025-12-06 01:00:01,009 - MetadataAgent - INFO - Output generation completed
+2025-12-06 01:00:01,010 - MetadataAgent - DEBUG - Output data: {
+  "status": "completed",
+  "files": {
+    "nfo_file": "/Volumes/video/Animation/The Animation/妻に黙って即売会に行くんじゃなかった (Unknown Year)/tvshow.nfo",
+    "images_dir": "/Volumes/video/Animation/The Animation/妻に黙って即売会に行くんじゃなかった (Unknown Year)/images",
+    "media_dir": "/Volumes/video/Animation/The Animation/妻に黙って即売会に行くんじゃなかった (Unknown Year)",
+    "season_1_episode_1": "/Volumes/video/Animation/The Animation/妻に黙って即売会に行くんじゃなかった (Unknown Year)/Season 01/妻に黙って即売会に行くんじゃなかった - S01E01 - 第 1 集.nfo",
+    "season_1_episode_2": "/Volumes/video/Animation/The Animation/妻に黙って即売会に行くんじゃなかった (Unknown Year)/Season 01/妻に黙って即売会に行くんじゃなかった - S01E02 - 第 2 集.nfo"
+  }
+}
+2025-12-06 01:00:01,011 - MetadataAgent - INFO - === PROCESSING SUMMARY ===
+2025-12-06 01:00:01,011 - MetadataAgent - INFO - Log file: logs/metadata_agent_20251206_005943.log
+2025-12-06 01:00:01,011 - MetadataAgent - INFO - Processing completed successfully
+2025-12-06 01:00:01,013 - MetadataAgent - INFO - Processing summary saved to: logs/processing_summary_20251206_010001.json

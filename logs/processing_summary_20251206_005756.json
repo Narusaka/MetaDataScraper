@@ -1,0 +1,583 @@
+{
+  "start_time": "2025-12-06T00:57:30.601693",
+  "input": {
+    "media_type": "tv",
+    "query": "",
+    "output_dir": "/Volumes/video/Animation/The Animation/泡泡浴de在家里de◯◯◯ (Unknown Year)",
+    "verbose": false,
+    "quiet": true,
+    "aid_search": true,
+    "tmdb_id": 254686
+  },
+  "search": {
+    "results": {},
+    "skip_search": true
+  },
+  "fetch": {
+    "main": {
+      "adult": true,
+      "backdrop_path": "/zyChklXBztAwJVEgeYpbTYjJaAy.jpg",
+      "created_by": [],
+      "episode_run_time": [],
+      "first_air_date": "2024-08-30",
+      "genres": [
+        {
+          "id": 16,
+          "name": "动画"
+        }
+      ],
+      "homepage": "",
+      "id": 254686,
+      "in_production": true,
+      "languages": [
+        "ja"
+      ],
+      "last_air_date": "2024-08-30",
+      "last_episode_to_air": {
+        "id": 5353005,
+        "name": "第 1 集",
+        "overview": "某有名的澡堂制造厂以产品的监视器为条件以便宜的价格提供的学生合租房，以便宜的房租为目标尝试了入住，这是4个月前……。\n\n原以为完全落选了，但在下一个点上急转直下，终于合格了！！！\n\n带着喜悦的勇气搬家是好的……注意到的话，这个合租房，居住者除了我以外都是女人！！！\n\n而且，是上同一所大学的一年级前辈的高年级学生！！！\n\n单方面地有认识也是个怪人……。\n\n看来心跳的要素很多……。\n\n在这个“浴室浴室的空间”里，心跳加速的学生共同生活开始了。",
+        "vote_average": 5.6,
+        "vote_count": 9,
+        "air_date": "2024-08-30",
+        "episode_number": 1,
+        "episode_type": "standard",
+        "production_code": "JDXA-57770",
+        "runtime": 31,
+        "season_number": 1,
+        "show_id": 254686,
+        "still_path": "/wtattm4BsBC7PAatlyW7tIHFrN2.jpg"
+      },
+      "name": "泡泡浴de在家里de◯◯◯",
+      "next_episode_to_air": null,
+      "networks": [],
+      "number_of_episodes": 1,
+      "number_of_seasons": 1,
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "バブルdeハウスde◯◯◯",
+      "overview": "工作室嗅觉和原作大受欢迎的PC游戏×话题沸腾的动画监督「石射苍」的期待的OVA化！\n\n约定展开满载！“浴室浴室的空间”的心跳加速的学生共同生活！！\n\n在浴室制造商提供的合租房里\n\n居住者除了我以外都是女孩子！！！\n\n而且，是上同一所大学的高年级学生！！！\n\n起用原作原创角色！",
+      "popularity": 0.0,
+      "poster_path": "/jVlFYfuYqg6C6e8edPKef4PUuWZ.jpg",
+      "production_companies": [
+        {
+          "id": 80856,
+          "logo_path": "/7tFA0heb8o0hj9IsPehE3zuOHfw.png",
+          "name": "Pink Pineapple",
+          "origin_country": "JP"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "JP",
+          "name": "Japan"
+        }
+      ],
+      "seasons": [
+        {
+          "air_date": "2024-08-30",
+          "episode_count": 1,
+          "id": 394199,
+          "name": "第 1 季",
+          "overview": "",
+          "poster_path": "/jVlFYfuYqg6C6e8edPKef4PUuWZ.jpg",
+          "season_number": 1,
+          "vote_average": 5.6
+        }
+      ],
+      "spoken_languages": [
+        {
+          "english_name": "Japanese",
+          "iso_639_1": "ja",
+          "name": "日本語"
+        }
+      ],
+      "status": "Returning Series",
+      "tagline": "",
+      "type": "Scripted",
+      "vote_average": 8.5,
+      "vote_count": 2
+    },
+    "credits": {
+      "cast": [
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 2947255,
+          "known_for_department": "Acting",
+          "name": "Hana Kuga",
+          "original_name": "空賀花",
+          "popularity": 4.748,
+          "profile_path": "/ey0VHk0gFfhhSEvdNcCMm0xAh6.jpg",
+          "character": "Nagisa Morishita (voice)",
+          "credit_id": "664f511514ac332553ec1b7b",
+          "order": 0
+        },
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 4731318,
+          "known_for_department": "Acting",
+          "name": "Minori Ozawa",
+          "original_name": "小澤みのり",
+          "popularity": 0.0,
+          "profile_path": "/pqJsjxF9FTKc16vHQmgtvSjOE1H.jpg",
+          "character": "Izumi Fuuka (voice)",
+          "credit_id": "664f50e70ce32a27aa82b6a8",
+          "order": 1
+        },
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 2562671,
+          "known_for_department": "Acting",
+          "name": "Miku Ozaki",
+          "original_name": "尾崎 未來",
+          "popularity": 17.033,
+          "profile_path": "/co0cCww0tH2P7ehsXEtNEokY7v5.jpg",
+          "character": "Chisato Honjo (voice)",
+          "credit_id": "664f5137435bb7cda182b6c8",
+          "order": 2
+        },
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 1256101,
+          "known_for_department": "Acting",
+          "name": "Mari Kirimura",
+          "original_name": "桐村まり",
+          "popularity": 7.358,
+          "profile_path": "/g8GqBelCDQGv3ki4UYn95RvionP.jpg",
+          "character": "Mitsuki Inoue (voice)",
+          "credit_id": "664f516a5d950e6d1118d49d",
+          "order": 3
+        }
+      ],
+      "crew": [
+        {
+          "adult": true,
+          "gender": 2,
+          "id": 3232515,
+          "known_for_department": "Directing",
+          "name": "Ishii Ao",
+          "original_name": "石射蒼",
+          "popularity": 2.569,
+          "profile_path": null,
+          "credit_id": "664738216aceacecb52f3402",
+          "department": "Directing",
+          "job": "Director"
+        },
+        {
+          "adult": true,
+          "gender": 2,
+          "id": 3232515,
+          "known_for_department": "Directing",
+          "name": "Ishii Ao",
+          "original_name": "石射蒼",
+          "popularity": 2.569,
+          "profile_path": null,
+          "credit_id": "6647382b855bea90f21d00f7",
+          "department": "Visual Effects",
+          "job": "Character Designer"
+        }
+      ],
+      "id": 254686
+    },
+    "keywords": {
+      "id": 254686,
+      "results": [
+        {
+          "name": "harem",
+          "id": 9194
+        },
+        {
+          "name": "hentai",
+          "id": 198385
+        },
+        {
+          "name": "vanilla",
+          "id": 321242
+        }
+      ]
+    },
+    "seasons": [
+      {
+        "_id": "664737484b24f8605022aed7",
+        "air_date": "2024-08-30",
+        "episodes": [
+          {
+            "air_date": "2024-08-30",
+            "episode_number": 1,
+            "episode_type": "standard",
+            "id": 5353005,
+            "name": "第 1 集",
+            "overview": "某有名的澡堂制造厂以产品的监视器为条件以便宜的价格提供的学生合租房，以便宜的房租为目标尝试了入住，这是4个月前……。\n\n原以为完全落选了，但在下一个点上急转直下，终于合格了！！！\n\n带着喜悦的勇气搬家是好的……注意到的话，这个合租房，居住者除了我以外都是女人！！！\n\n而且，是上同一所大学的一年级前辈的高年级学生！！！\n\n单方面地有认识也是个怪人……。\n\n看来心跳的要素很多……。\n\n在这个“浴室浴室的空间”里，心跳加速的学生共同生活开始了。",
+            "production_code": "JDXA-57770",
+            "runtime": 31,
+            "season_number": 1,
+            "show_id": 254686,
+            "still_path": "/wtattm4BsBC7PAatlyW7tIHFrN2.jpg",
+            "vote_average": 5.6,
+            "vote_count": 9,
+            "crew": [],
+            "guest_stars": []
+          }
+        ],
+        "name": "第 1 季",
+        "networks": [],
+        "overview": "",
+        "id": 394199,
+        "poster_path": "/jVlFYfuYqg6C6e8edPKef4PUuWZ.jpg",
+        "season_number": 1,
+        "vote_average": 5.6
+      }
+    ],
+    "episodes": [
+      {
+        "air_date": "2024-08-30",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 1 集",
+        "overview": "某有名的澡堂制造厂以产品的监视器为条件以便宜的价格提供的学生合租房，以便宜的房租为目标尝试了入住，这是4个月前……。\n\n原以为完全落选了，但在下一个点上急转直下，终于合格了！！！\n\n带着喜悦的勇气搬家是好的……注意到的话，这个合租房，居住者除了我以外都是女人！！！\n\n而且，是上同一所大学的一年级前辈的高年级学生！！！\n\n单方面地有认识也是个怪人……。\n\n看来心跳的要素很多……。\n\n在这个“浴室浴室的空间”里，心跳加速的学生共同生活开始了。",
+        "id": 5353005,
+        "production_code": "JDXA-57770",
+        "runtime": 31,
+        "season_number": 1,
+        "still_path": "/wtattm4BsBC7PAatlyW7tIHFrN2.jpg",
+        "vote_average": 5.6,
+        "vote_count": 9
+      }
+    ]
+  },
+  "translate": {
+    "translated": {
+      "media_type": "tv",
+      "tmdb_id": 254686,
+      "title": "泡泡浴de在家里de◯◯◯",
+      "original_title": "バブルdeハウスde◯◯◯",
+      "year": 2024,
+      "plot": "工作室嗅觉和原作大受欢迎的PC游戏×话题沸腾的动画监督「石射苍」的期待的OVA化！\n\n约定展开满载！“浴室浴室的空间”的心跳加速的学生共同生活！！\n\n在浴室制造商提供的合租房里\n\n居住者除了我以外都是女孩子！！！\n\n而且，是上同一所大学的高年级学生！！！\n\n起用原作原创角色！",
+      "tagline": "",
+      "runtime": null,
+      "release_date": "2024-08-30",
+      "rating": 8.5,
+      "rating_count": 2,
+      "genres": [
+        "动画"
+      ],
+      "countries": [
+        "JP"
+      ],
+      "languages": [
+        "ja"
+      ],
+      "studios": [
+        "Pink Pineapple"
+      ],
+      "networks": [],
+      "network": "",
+      "status": "Returning Series",
+      "homepage": "",
+      "cast": [
+        {
+          "name_en": "Hana Kuga",
+          "name_zh": null,
+          "role": "Nagisa Morishita (voice)",
+          "original_name": "空賀花",
+          "profile_path": "/ey0VHk0gFfhhSEvdNcCMm0xAh6.jpg",
+          "popularity": 4.748
+        },
+        {
+          "name_en": "Minori Ozawa",
+          "name_zh": null,
+          "role": "Izumi Fuuka (voice)",
+          "original_name": "小澤みのり",
+          "profile_path": "/pqJsjxF9FTKc16vHQmgtvSjOE1H.jpg",
+          "popularity": 0.0
+        },
+        {
+          "name_en": "Miku Ozaki",
+          "name_zh": null,
+          "role": "Chisato Honjo (voice)",
+          "original_name": "尾崎 未來",
+          "profile_path": "/co0cCww0tH2P7ehsXEtNEokY7v5.jpg",
+          "popularity": 17.033
+        },
+        {
+          "name_en": "Mari Kirimura",
+          "name_zh": null,
+          "role": "Mitsuki Inoue (voice)",
+          "original_name": "桐村まり",
+          "profile_path": "/g8GqBelCDQGv3ki4UYn95RvionP.jpg",
+          "popularity": 7.358
+        }
+      ],
+      "directors": [
+        "Ishii Ao"
+      ],
+      "writers": [],
+      "images": {},
+      "seasons": [
+        {
+          "air_date": "2024-08-30",
+          "episode_count": 1,
+          "id": 394199,
+          "name": "第 1 季",
+          "overview": "",
+          "poster_path": "/jVlFYfuYqg6C6e8edPKef4PUuWZ.jpg",
+          "season_number": 1,
+          "vote_average": 5.6
+        }
+      ],
+      "episodes": [
+        {
+          "air_date": "2024-08-30",
+          "crew": [],
+          "episode_number": 1,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "第 1 集",
+          "overview": "某有名的澡堂制造厂以产品的监视器为条件以便宜的价格提供的学生合租房，以便宜的房租为目标尝试了入住，这是4个月前……。\n\n原以为完全落选了，但在下一个点上急转直下，终于合格了！！！\n\n带着喜悦的勇气搬家是好的……注意到的话，这个合租房，居住者除了我以外都是女人！！！\n\n而且，是上同一所大学的一年级前辈的高年级学生！！！\n\n单方面地有认识也是个怪人……。\n\n看来心跳的要素很多……。\n\n在这个“浴室浴室的空间”里，心跳加速的学生共同生活开始了。",
+          "id": 5353005,
+          "production_code": "JDXA-57770",
+          "runtime": 31,
+          "season_number": 1,
+          "still_path": "/wtattm4BsBC7PAatlyW7tIHFrN2.jpg",
+          "vote_average": 5.6,
+          "vote_count": 9
+        }
+      ],
+      "title_zh": "泡泡浴de在家里de◯◯◯",
+      "plot_zh": "工作室嗅觉和原作大受欢迎的PC游戏×话题沸腾的动画监督「石射苍」的期待的OVA化！\n\n约定展开满载！“浴室浴室的空间”的心跳加速的学生共同生活！！\n\n在浴室制造商提供的合租房里\n\n居住者除了我以外都是女孩子！！！\n\n而且，是上同一所大学的高年级学生！！！\n\n起用原作原创角色！",
+      "keywords_en": [
+        "harem",
+        "hentai",
+        "vanilla"
+      ],
+      "keywords": [
+        "harem",
+        "hentai",
+        "vanilla"
+      ],
+      "keywords_zh": [
+        "后宫",
+        "腐女",
+        "香草"
+      ]
+    },
+    "episodes": [
+      {
+        "air_date": "2024-08-30",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 1 集",
+        "overview": "某有名的澡堂制造厂以产品的监视器为条件以便宜的价格提供的学生合租房，以便宜的房租为目标尝试了入住，这是4个月前……。\n\n原以为完全落选了，但在下一个点上急转直下，终于合格了！！！\n\n带着喜悦的勇气搬家是好的……注意到的话，这个合租房，居住者除了我以外都是女人！！！\n\n而且，是上同一所大学的一年级前辈的高年级学生！！！\n\n单方面地有认识也是个怪人……。\n\n看来心跳的要素很多……。\n\n在这个“浴室浴室的空间”里，心跳加速的学生共同生活开始了。",
+        "id": 5353005,
+        "production_code": "JDXA-57770",
+        "runtime": 31,
+        "season_number": 1,
+        "still_path": "/wtattm4BsBC7PAatlyW7tIHFrN2.jpg",
+        "vote_average": 5.6,
+        "vote_count": 9
+      }
+    ]
+  },
+  "normalize": {
+    "media_type": "tv",
+    "tmdb_id": 254686,
+    "title": "泡泡浴de在家里de◯◯◯",
+    "original_title": "バブルdeハウスde◯◯◯",
+    "year": 2024,
+    "plot": "工作室嗅觉和原作大受欢迎的PC游戏×话题沸腾的动画监督「石射苍」的期待的OVA化！\n\n约定展开满载！“浴室浴室的空间”的心跳加速的学生共同生活！！\n\n在浴室制造商提供的合租房里\n\n居住者除了我以外都是女孩子！！！\n\n而且，是上同一所大学的高年级学生！！！\n\n起用原作原创角色！",
+    "tagline": "",
+    "runtime": null,
+    "release_date": "2024-08-30",
+    "rating": 8.5,
+    "rating_count": 2,
+    "genres": [
+      "动画"
+    ],
+    "countries": [
+      "JP"
+    ],
+    "languages": [
+      "ja"
+    ],
+    "studios": [
+      "Pink Pineapple"
+    ],
+    "networks": [],
+    "network": "",
+    "status": "Returning Series",
+    "homepage": "",
+    "cast": [
+      {
+        "name_en": "Hana Kuga",
+        "name_zh": null,
+        "role": "Nagisa Morishita (voice)",
+        "original_name": "空賀花",
+        "profile_path": "/ey0VHk0gFfhhSEvdNcCMm0xAh6.jpg",
+        "popularity": 4.748
+      },
+      {
+        "name_en": "Minori Ozawa",
+        "name_zh": null,
+        "role": "Izumi Fuuka (voice)",
+        "original_name": "小澤みのり",
+        "profile_path": "/pqJsjxF9FTKc16vHQmgtvSjOE1H.jpg",
+        "popularity": 0.0
+      },
+      {
+        "name_en": "Miku Ozaki",
+        "name_zh": null,
+        "role": "Chisato Honjo (voice)",
+        "original_name": "尾崎 未來",
+        "profile_path": "/co0cCww0tH2P7ehsXEtNEokY7v5.jpg",
+        "popularity": 17.033
+      },
+      {
+        "name_en": "Mari Kirimura",
+        "name_zh": null,
+        "role": "Mitsuki Inoue (voice)",
+        "original_name": "桐村まり",
+        "profile_path": "/g8GqBelCDQGv3ki4UYn95RvionP.jpg",
+        "popularity": 7.358
+      }
+    ],
+    "directors": [
+      "Ishii Ao"
+    ],
+    "writers": [],
+    "images": {},
+    "seasons": [
+      {
+        "air_date": "2024-08-30",
+        "episode_count": 1,
+        "id": 394199,
+        "name": "第 1 季",
+        "overview": "",
+        "poster_path": "/jVlFYfuYqg6C6e8edPKef4PUuWZ.jpg",
+        "season_number": 1,
+        "vote_average": 5.6
+      }
+    ],
+    "episodes": [
+      {
+        "air_date": "2024-08-30",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 1 集",
+        "overview": "某有名的澡堂制造厂以产品的监视器为条件以便宜的价格提供的学生合租房，以便宜的房租为目标尝试了入住，这是4个月前……。\n\n原以为完全落选了，但在下一个点上急转直下，终于合格了！！！\n\n带着喜悦的勇气搬家是好的……注意到的话，这个合租房，居住者除了我以外都是女人！！！\n\n而且，是上同一所大学的一年级前辈的高年级学生！！！\n\n单方面地有认识也是个怪人……。\n\n看来心跳的要素很多……。\n\n在这个“浴室浴室的空间”里，心跳加速的学生共同生活开始了。",
+        "id": 5353005,
+        "production_code": "JDXA-57770",
+        "runtime": 31,
+        "season_number": 1,
+        "still_path": "/wtattm4BsBC7PAatlyW7tIHFrN2.jpg",
+        "vote_average": 5.6,
+        "vote_count": 9
+      }
+    ],
+    "title_zh": "泡泡浴de在家里de◯◯◯",
+    "plot_zh": "工作室嗅觉和原作大受欢迎的PC游戏×话题沸腾的动画监督「石射苍」的期待的OVA化！\n\n约定展开满载！“浴室浴室的空间”的心跳加速的学生共同生活！！\n\n在浴室制造商提供的合租房里\n\n居住者除了我以外都是女孩子！！！\n\n而且，是上同一所大学的高年级学生！！！\n\n起用原作原创角色！",
+    "keywords_en": [
+      "harem",
+      "hentai",
+      "vanilla"
+    ],
+    "keywords": [
+      "harem",
+      "hentai",
+      "vanilla"
+    ],
+    "keywords_zh": [
+      "后宫",
+      "腐女",
+      "香草"
+    ]
+  },
+  "nfo": {
+    "data": {
+      "title": "泡泡浴de在家里de◯◯◯",
+      "originaltitle": "バブルdeハウスde◯◯◯",
+      "year": 2024,
+      "premiered": "2024-08-30",
+      "plot": "工作室嗅觉和原作大受欢迎的PC游戏×话题沸腾的动画监督「石射苍」的期待的OVA化！\n\n约定展开满载！“浴室浴室的空间”的心跳加速的学生共同生活！！\n\n在浴室制造商提供的合租房里\n\n居住者除了我以外都是女孩子！！！\n\n而且，是上同一所大学的高年级学生！！！\n\n起用原作原创角色！",
+      "tagline": "",
+      "runtime": null,
+      "rating": 8.5,
+      "votes": 2,
+      "genre": [
+        "动画"
+      ],
+      "country": [
+        "JP"
+      ],
+      "studio": [
+        "Pink Pineapple"
+      ],
+      "credits": [],
+      "director": [
+        "Ishii Ao"
+      ],
+      "actor": [
+        {
+          "name": "Hana Kuga",
+          "role": "Nagisa Morishita (voice)",
+          "originalname": "空賀花",
+          "thumb": "images/actors/Hana Kuga.jpg"
+        },
+        {
+          "name": "Minori Ozawa",
+          "role": "Izumi Fuuka (voice)",
+          "originalname": "小澤みのり",
+          "thumb": "images/actors/Minori Ozawa.jpg"
+        },
+        {
+          "name": "Miku Ozaki",
+          "role": "Chisato Honjo (voice)",
+          "originalname": "尾崎 未來",
+          "thumb": "images/actors/Miku Ozaki.jpg"
+        },
+        {
+          "name": "Mari Kirimura",
+          "role": "Mitsuki Inoue (voice)",
+          "originalname": "桐村まり",
+          "thumb": "images/actors/Mari Kirimura.jpg"
+        }
+      ],
+      "thumb": "poster.jpg",
+      "fanart": "fanart.jpg",
+      "tags": [
+        "后宫",
+        "腐女",
+        "香草"
+      ],
+      "network": "",
+      "networks": [],
+      "status": "Returning Series",
+      "homepage": "",
+      "tmdb_id": 254686,
+      "validated": true
+    },
+    "xml": "<?xml version=\"1.0\" ?>\n<tvshow>\n  <title>泡泡浴de在家里de◯◯◯</title>\n  <originaltitle>バブルdeハウスde◯◯◯</originaltitle>\n  <year>2024</year>\n  <premiered>2024-08-30</premiered>\n  <plot cdata_content=\"工作室嗅觉和原作大受欢迎的PC游戏×话题沸腾的动画监督「石射苍」的期待的OVA化！\n\n约定展开满载！“浴室浴室的空间”的心跳加速的学生共同生活！！\n\n在浴室制造商提供的合租房里\n\n居住者除了我以外都是女孩子！！！\n\n而且，是上同一所大学的高年级学生！！！\n\n起用原作原创角色！\"><![CDATA[工作室嗅觉和原作大受欢迎的PC游戏×话题沸腾的动画监督「石射苍」的期待的OVA化！\n\n约定展开满载！“浴室浴室的空间”的心跳加速的学生共同生活！！\n\n在浴室制造商提供的合租房里\n\n居住者除了我以外都是女孩子！！！\n\n而且，是上同一所大学的高年级学生！！！\n\n起用原作原创角色！]]></plot>\n  <rating>8.5</rating>\n  <votes>2</votes>\n  <tmdbid>254686</tmdbid>\n  <genre>动画</genre>\n  <country>JP</country>\n  <studio>Pink Pineapple</studio>\n  <director>Ishii Ao</director>\n  <actor>\n    <name>Hana Kuga</name>\n    <role>Nagisa Morishita (voice)</role>\n    <originalname>空賀花</originalname>\n    <thumb>images/actors/Hana Kuga.jpg</thumb>\n  </actor>\n  <actor>\n    <name>Minori Ozawa</name>\n    <role>Izumi Fuuka (voice)</role>\n    <originalname>小澤みのり</originalname>\n    <thumb>images/actors/Minori Ozawa.jpg</thumb>\n  </actor>\n  <actor>\n    <name>Miku Ozaki</name>\n    <role>Chisato Honjo (voice)</role>\n    <originalname>尾崎 未來</originalname>\n    <thumb>images/actors/Miku Ozaki.jpg</thumb>\n  </actor>\n  <actor>\n    <name>Mari Kirimura</name>\n    <role>Mitsuki Inoue (voice)</role>\n    <originalname>桐村まり</originalname>\n    <thumb>images/actors/Mari Kirimura.jpg</thumb>\n  </actor>\n  <status>Returning Series</status>\n  <uniqueid type=\"tmdb\" default=\"true\">254686</uniqueid>\n  <thumb>images/poster/poster.jpg</thumb>\n  <fanart>images/fanart/fanart.jpg</fanart>\n  <tag>后宫</tag>\n  <tag>腐女</tag>\n  <tag>香草</tag>\n</tvshow>\n"
+  },
+  "output": {
+    "status": "completed",
+    "files": {
+      "nfo_file": "/Volumes/video/Animation/The Animation/泡泡浴de在家里de◯◯◯ (Unknown Year)/tvshow.nfo",
+      "images_dir": "/Volumes/video/Animation/The Animation/泡泡浴de在家里de◯◯◯ (Unknown Year)/images",
+      "media_dir": "/Volumes/video/Animation/The Animation/泡泡浴de在家里de◯◯◯ (Unknown Year)",
+      "season_1_episode_1": "/Volumes/video/Animation/The Animation/泡泡浴de在家里de◯◯◯ (Unknown Year)/Season 01/泡泡浴de在家里de◯◯◯ - S01E01 - 第 1 集.nfo"
+    }
+  },
+  "errors": [],
+  "end_time": "2025-12-06T00:57:56.284277"
+}

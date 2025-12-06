@@ -1,0 +1,597 @@
+{
+  "start_time": "2025-12-06T01:16:06.558378",
+  "input": {
+    "media_type": "tv",
+    "query": "",
+    "output_dir": "/Volumes/video/Animation/The Animation/Majo wa Kekkyoku Sono Kyaku to... The Animation (Unknown Year)",
+    "verbose": false,
+    "quiet": true,
+    "aid_search": true,
+    "tmdb_id": 215223
+  },
+  "search": {
+    "results": {},
+    "skip_search": true
+  },
+  "fetch": {
+    "main": {
+      "adult": true,
+      "backdrop_path": "/wSLjmSf7J0kOSmqGTVt9L60sO43.jpg",
+      "created_by": [],
+      "episode_run_time": [
+        30
+      ],
+      "first_air_date": "2023-02-24",
+      "genres": [
+        {
+          "id": 16,
+          "name": "动画"
+        }
+      ],
+      "homepage": "",
+      "id": 215223,
+      "in_production": false,
+      "languages": [
+        "ja"
+      ],
+      "last_air_date": "2023-10-27",
+      "last_episode_to_air": {
+        "id": 4616463,
+        "name": "第 2 集",
+        "overview": "",
+        "vote_average": 10.0,
+        "vote_count": 1,
+        "air_date": "2023-10-27",
+        "episode_number": 2,
+        "episode_type": "standard",
+        "production_code": "JDXA57732",
+        "runtime": 30,
+        "season_number": 1,
+        "show_id": 215223,
+        "still_path": "/f6aZSm5ZFUoIUsRnISyeOfyUKv1.jpg"
+      },
+      "name": "魔女は結局その客と。。。THE ANIMATION",
+      "next_episode_to_air": null,
+      "networks": [],
+      "number_of_episodes": 2,
+      "number_of_seasons": 1,
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "魔女は結局その客と。。。THE ANIMATION",
+      "overview": "见习魔女玛吉卡露开了一家魔法占卜店，以占卜结果准而闻名，有一天店里突然来了个小金毛，请玛吉卡露进行恋爱占卜，占卜结果是玛吉卡露会和小金毛展开一段恋情，不管怎么逃避，恋情都会发生，既然恋情无法避免，那就直接跳过前期流程，进入后期阶段吧!\n\n以代表作《无冰与露次的魔法咨询室》为首，以原创世界观创作作品的西义之先生的圈子【天真武多】，是成人作品前18部的奇迹OVA！",
+      "popularity": 0.0,
+      "poster_path": "/gPRaZna8aghO4t78hbVSXMTBlkt.jpg",
+      "production_companies": [
+        {
+          "id": 80856,
+          "logo_path": "/7tFA0heb8o0hj9IsPehE3zuOHfw.png",
+          "name": "Pink Pineapple",
+          "origin_country": "JP"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "JP",
+          "name": "Japan"
+        }
+      ],
+      "seasons": [
+        {
+          "air_date": "2023-02-24",
+          "episode_count": 2,
+          "id": 317822,
+          "name": "第 1 季",
+          "overview": "",
+          "poster_path": "/wQRCflxC20h2amhFxAMAxwQoBN2.jpg",
+          "season_number": 1,
+          "vote_average": 8.6
+        }
+      ],
+      "spoken_languages": [
+        {
+          "english_name": "Japanese",
+          "iso_639_1": "ja",
+          "name": "日本語"
+        }
+      ],
+      "status": "Ended",
+      "tagline": "",
+      "type": "Video",
+      "vote_average": 6.7,
+      "vote_count": 3
+    },
+    "credits": {
+      "cast": [
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 2476335,
+          "known_for_department": "Acting",
+          "name": "Yumi Yumiya",
+          "original_name": "湯宮由海",
+          "popularity": 2.248,
+          "profile_path": "/mKo2Cwg0WmQkDEur2Nm7dfASwWH.jpg",
+          "character": "Majikaru Mojigawa (voice)",
+          "credit_id": "64c91758f794ad00e26cb4cb",
+          "order": 0
+        },
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 2133998,
+          "known_for_department": "Acting",
+          "name": "Mako Ayane",
+          "original_name": "綾音まこ",
+          "popularity": 23.156,
+          "profile_path": "/btsk2FFHvwz4XFihmnf15sHqsNS.jpg",
+          "character": "Leo (voice)",
+          "credit_id": "64c9179ad5191f01396fa240",
+          "order": 1
+        },
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 2475697,
+          "known_for_department": "Acting",
+          "name": "Yuka Hoshi",
+          "original_name": "星由華",
+          "popularity": 10.125,
+          "profile_path": "/qcKJ7SUxRXzmKW9mMgX2IaEPnHt.jpg",
+          "character": "Mama Mojigawa (voice)",
+          "credit_id": "64c917d4d5191f011c65bf72",
+          "order": 2
+        }
+      ],
+      "crew": [
+        {
+          "adult": true,
+          "gender": 2,
+          "id": 1458400,
+          "known_for_department": "Directing",
+          "name": "Hideta Oota",
+          "original_name": "太多秀太",
+          "popularity": 23.763,
+          "profile_path": null,
+          "credit_id": "6383b01e5b4fed00b12cc1b3",
+          "department": "Directing",
+          "job": "Director"
+        }
+      ],
+      "id": 215223
+    },
+    "keywords": {
+      "id": 215223,
+      "results": [
+        {
+          "name": "hentai",
+          "id": 198385
+        }
+      ]
+    },
+    "seasons": [
+      {
+        "_id": "6383afa35e14e500b8068e07",
+        "air_date": "2023-02-24",
+        "episodes": [
+          {
+            "air_date": "2023-02-24",
+            "episode_number": 1,
+            "episode_type": "standard",
+            "id": 4075860,
+            "name": "第 1 集",
+            "overview": "",
+            "production_code": "JDXA57707",
+            "runtime": 60,
+            "season_number": 1,
+            "show_id": 215223,
+            "still_path": "/7Zdo9yYqWCvRrIY8ZivSnoIt0fp.jpg",
+            "vote_average": 7.2,
+            "vote_count": 4,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2023-10-27",
+            "episode_number": 2,
+            "episode_type": "standard",
+            "id": 4616463,
+            "name": "第 2 集",
+            "overview": "",
+            "production_code": "JDXA57732",
+            "runtime": 30,
+            "season_number": 1,
+            "show_id": 215223,
+            "still_path": "/f6aZSm5ZFUoIUsRnISyeOfyUKv1.jpg",
+            "vote_average": 10.0,
+            "vote_count": 1,
+            "crew": [],
+            "guest_stars": []
+          }
+        ],
+        "name": "第 1 季",
+        "networks": [],
+        "overview": "",
+        "id": 317822,
+        "poster_path": "/wQRCflxC20h2amhFxAMAxwQoBN2.jpg",
+        "season_number": 1,
+        "vote_average": 8.6
+      }
+    ],
+    "episodes": [
+      {
+        "air_date": "2023-02-24",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 1 集",
+        "overview": "",
+        "id": 4075860,
+        "production_code": "JDXA57707",
+        "runtime": 60,
+        "season_number": 1,
+        "still_path": "/7Zdo9yYqWCvRrIY8ZivSnoIt0fp.jpg",
+        "vote_average": 7.2,
+        "vote_count": 4
+      },
+      {
+        "air_date": "2023-10-27",
+        "crew": [],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 2 集",
+        "overview": "",
+        "id": 4616463,
+        "production_code": "JDXA57732",
+        "runtime": 30,
+        "season_number": 1,
+        "still_path": "/f6aZSm5ZFUoIUsRnISyeOfyUKv1.jpg",
+        "vote_average": 10.0,
+        "vote_count": 1
+      }
+    ]
+  },
+  "translate": {
+    "translated": {
+      "media_type": "tv",
+      "tmdb_id": 215223,
+      "title": "魔女は結局その客と。。。THE ANIMATION",
+      "original_title": "魔女は結局その客と。。。THE ANIMATION",
+      "year": 2023,
+      "plot": "见习魔女玛吉卡露开了一家魔法占卜店，以占卜结果准而闻名，有一天店里突然来了个小金毛，请玛吉卡露进行恋爱占卜，占卜结果是玛吉卡露会和小金毛展开一段恋情，不管怎么逃避，恋情都会发生，既然恋情无法避免，那就直接跳过前期流程，进入后期阶段吧!\n\n以代表作《无冰与露次的魔法咨询室》为首，以原创世界观创作作品的西义之先生的圈子【天真武多】，是成人作品前18部的奇迹OVA！",
+      "tagline": "",
+      "runtime": 30,
+      "release_date": "2023-02-24",
+      "rating": 6.7,
+      "rating_count": 3,
+      "genres": [
+        "动画"
+      ],
+      "countries": [
+        "JP"
+      ],
+      "languages": [
+        "ja"
+      ],
+      "studios": [
+        "Pink Pineapple"
+      ],
+      "networks": [],
+      "network": "",
+      "status": "Ended",
+      "homepage": "",
+      "cast": [
+        {
+          "name_en": "Yumi Yumiya",
+          "name_zh": null,
+          "role": "Majikaru Mojigawa (voice)",
+          "original_name": "湯宮由海",
+          "profile_path": "/mKo2Cwg0WmQkDEur2Nm7dfASwWH.jpg",
+          "popularity": 2.248
+        },
+        {
+          "name_en": "Mako Ayane",
+          "name_zh": null,
+          "role": "Leo (voice)",
+          "original_name": "綾音まこ",
+          "profile_path": "/btsk2FFHvwz4XFihmnf15sHqsNS.jpg",
+          "popularity": 23.156
+        },
+        {
+          "name_en": "Yuka Hoshi",
+          "name_zh": null,
+          "role": "Mama Mojigawa (voice)",
+          "original_name": "星由華",
+          "profile_path": "/qcKJ7SUxRXzmKW9mMgX2IaEPnHt.jpg",
+          "popularity": 10.125
+        }
+      ],
+      "directors": [
+        "Hideta Oota"
+      ],
+      "writers": [],
+      "images": {},
+      "seasons": [
+        {
+          "air_date": "2023-02-24",
+          "episode_count": 2,
+          "id": 317822,
+          "name": "第 1 季",
+          "overview": "",
+          "poster_path": "/wQRCflxC20h2amhFxAMAxwQoBN2.jpg",
+          "season_number": 1,
+          "vote_average": 8.6
+        }
+      ],
+      "episodes": [
+        {
+          "air_date": "2023-02-24",
+          "crew": [],
+          "episode_number": 1,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "第 1 集",
+          "overview": "",
+          "id": 4075860,
+          "production_code": "JDXA57707",
+          "runtime": 60,
+          "season_number": 1,
+          "still_path": "/7Zdo9yYqWCvRrIY8ZivSnoIt0fp.jpg",
+          "vote_average": 7.2,
+          "vote_count": 4
+        },
+        {
+          "air_date": "2023-10-27",
+          "crew": [],
+          "episode_number": 2,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "第 2 集",
+          "overview": "",
+          "id": 4616463,
+          "production_code": "JDXA57732",
+          "runtime": 30,
+          "season_number": 1,
+          "still_path": "/f6aZSm5ZFUoIUsRnISyeOfyUKv1.jpg",
+          "vote_average": 10.0,
+          "vote_count": 1
+        }
+      ],
+      "title_zh": "魔女は結局その客と。。。THE ANIMATION",
+      "plot_zh": "见习魔女玛吉卡露开了一家魔法占卜店，以占卜结果准而闻名，有一天店里突然来了个小金毛，请玛吉卡露进行恋爱占卜，占卜结果是玛吉卡露会和小金毛展开一段恋情，不管怎么逃避，恋情都会发生，既然恋情无法避免，那就直接跳过前期流程，进入后期阶段吧!\n\n以代表作《无冰与露次的魔法咨询室》为首，以原创世界观创作作品的西义之先生的圈子【天真武多】，是成人作品前18部的奇迹OVA！",
+      "keywords_en": [
+        "hentai"
+      ],
+      "keywords": [
+        "hentai"
+      ],
+      "keywords_zh": [
+        "腐女"
+      ]
+    },
+    "episodes": [
+      {
+        "air_date": "2023-02-24",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 1 集",
+        "overview": "",
+        "id": 4075860,
+        "production_code": "JDXA57707",
+        "runtime": 60,
+        "season_number": 1,
+        "still_path": "/7Zdo9yYqWCvRrIY8ZivSnoIt0fp.jpg",
+        "vote_average": 7.2,
+        "vote_count": 4
+      },
+      {
+        "air_date": "2023-10-27",
+        "crew": [],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 2 集",
+        "overview": "",
+        "id": 4616463,
+        "production_code": "JDXA57732",
+        "runtime": 30,
+        "season_number": 1,
+        "still_path": "/f6aZSm5ZFUoIUsRnISyeOfyUKv1.jpg",
+        "vote_average": 10.0,
+        "vote_count": 1
+      }
+    ]
+  },
+  "normalize": {
+    "media_type": "tv",
+    "tmdb_id": 215223,
+    "title": "魔女は結局その客と。。。THE ANIMATION",
+    "original_title": "魔女は結局その客と。。。THE ANIMATION",
+    "year": 2023,
+    "plot": "见习魔女玛吉卡露开了一家魔法占卜店，以占卜结果准而闻名，有一天店里突然来了个小金毛，请玛吉卡露进行恋爱占卜，占卜结果是玛吉卡露会和小金毛展开一段恋情，不管怎么逃避，恋情都会发生，既然恋情无法避免，那就直接跳过前期流程，进入后期阶段吧!\n\n以代表作《无冰与露次的魔法咨询室》为首，以原创世界观创作作品的西义之先生的圈子【天真武多】，是成人作品前18部的奇迹OVA！",
+    "tagline": "",
+    "runtime": 30,
+    "release_date": "2023-02-24",
+    "rating": 6.7,
+    "rating_count": 3,
+    "genres": [
+      "动画"
+    ],
+    "countries": [
+      "JP"
+    ],
+    "languages": [
+      "ja"
+    ],
+    "studios": [
+      "Pink Pineapple"
+    ],
+    "networks": [],
+    "network": "",
+    "status": "Ended",
+    "homepage": "",
+    "cast": [
+      {
+        "name_en": "Yumi Yumiya",
+        "name_zh": null,
+        "role": "Majikaru Mojigawa (voice)",
+        "original_name": "湯宮由海",
+        "profile_path": "/mKo2Cwg0WmQkDEur2Nm7dfASwWH.jpg",
+        "popularity": 2.248
+      },
+      {
+        "name_en": "Mako Ayane",
+        "name_zh": null,
+        "role": "Leo (voice)",
+        "original_name": "綾音まこ",
+        "profile_path": "/btsk2FFHvwz4XFihmnf15sHqsNS.jpg",
+        "popularity": 23.156
+      },
+      {
+        "name_en": "Yuka Hoshi",
+        "name_zh": null,
+        "role": "Mama Mojigawa (voice)",
+        "original_name": "星由華",
+        "profile_path": "/qcKJ7SUxRXzmKW9mMgX2IaEPnHt.jpg",
+        "popularity": 10.125
+      }
+    ],
+    "directors": [
+      "Hideta Oota"
+    ],
+    "writers": [],
+    "images": {},
+    "seasons": [
+      {
+        "air_date": "2023-02-24",
+        "episode_count": 2,
+        "id": 317822,
+        "name": "第 1 季",
+        "overview": "",
+        "poster_path": "/wQRCflxC20h2amhFxAMAxwQoBN2.jpg",
+        "season_number": 1,
+        "vote_average": 8.6
+      }
+    ],
+    "episodes": [
+      {
+        "air_date": "2023-02-24",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 1 集",
+        "overview": "",
+        "id": 4075860,
+        "production_code": "JDXA57707",
+        "runtime": 60,
+        "season_number": 1,
+        "still_path": "/7Zdo9yYqWCvRrIY8ZivSnoIt0fp.jpg",
+        "vote_average": 7.2,
+        "vote_count": 4
+      },
+      {
+        "air_date": "2023-10-27",
+        "crew": [],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 2 集",
+        "overview": "",
+        "id": 4616463,
+        "production_code": "JDXA57732",
+        "runtime": 30,
+        "season_number": 1,
+        "still_path": "/f6aZSm5ZFUoIUsRnISyeOfyUKv1.jpg",
+        "vote_average": 10.0,
+        "vote_count": 1
+      }
+    ],
+    "title_zh": "魔女は結局その客と。。。THE ANIMATION",
+    "plot_zh": "见习魔女玛吉卡露开了一家魔法占卜店，以占卜结果准而闻名，有一天店里突然来了个小金毛，请玛吉卡露进行恋爱占卜，占卜结果是玛吉卡露会和小金毛展开一段恋情，不管怎么逃避，恋情都会发生，既然恋情无法避免，那就直接跳过前期流程，进入后期阶段吧!\n\n以代表作《无冰与露次的魔法咨询室》为首，以原创世界观创作作品的西义之先生的圈子【天真武多】，是成人作品前18部的奇迹OVA！",
+    "keywords_en": [
+      "hentai"
+    ],
+    "keywords": [
+      "hentai"
+    ],
+    "keywords_zh": [
+      "腐女"
+    ]
+  },
+  "nfo": {
+    "data": {
+      "title": "魔女は結局その客と。。。THE ANIMATION",
+      "originaltitle": "魔女は結局その客と。。。THE ANIMATION",
+      "year": 2023,
+      "premiered": "2023-02-24",
+      "plot": "见习魔女玛吉卡露开了一家魔法占卜店，以占卜结果准而闻名，有一天店里突然来了个小金毛，请玛吉卡露进行恋爱占卜，占卜结果是玛吉卡露会和小金毛展开一段恋情，不管怎么逃避，恋情都会发生，既然恋情无法避免，那就直接跳过前期流程，进入后期阶段吧!\n\n以代表作《无冰与露次的魔法咨询室》为首，以原创世界观创作作品的西义之先生的圈子【天真武多】，是成人作品前18部的奇迹OVA！",
+      "tagline": "",
+      "runtime": 30,
+      "rating": 6.7,
+      "votes": 3,
+      "genre": [
+        "动画"
+      ],
+      "country": [
+        "JP"
+      ],
+      "studio": [
+        "Pink Pineapple"
+      ],
+      "credits": [],
+      "director": [
+        "Hideta Oota"
+      ],
+      "actor": [
+        {
+          "name": "Yumi Yumiya",
+          "role": "Majikaru Mojigawa (voice)",
+          "originalname": "湯宮由海",
+          "thumb": "images/actors/Yumi Yumiya.jpg"
+        },
+        {
+          "name": "Mako Ayane",
+          "role": "Leo (voice)",
+          "originalname": "綾音まこ",
+          "thumb": "images/actors/Mako Ayane.jpg"
+        },
+        {
+          "name": "Yuka Hoshi",
+          "role": "Mama Mojigawa (voice)",
+          "originalname": "星由華",
+          "thumb": "images/actors/Yuka Hoshi.jpg"
+        }
+      ],
+      "thumb": "poster.jpg",
+      "fanart": "fanart.jpg",
+      "tags": [
+        "腐女"
+      ],
+      "network": "",
+      "networks": [],
+      "status": "Ended",
+      "homepage": "",
+      "tmdb_id": 215223,
+      "validated": true
+    },
+    "xml": "<?xml version=\"1.0\" ?>\n<tvshow>\n  <title>魔女は結局その客と。。。THE ANIMATION</title>\n  <originaltitle>魔女は結局その客と。。。THE ANIMATION</originaltitle>\n  <year>2023</year>\n  <premiered>2023-02-24</premiered>\n  <plot cdata_content=\"见习魔女玛吉卡露开了一家魔法占卜店，以占卜结果准而闻名，有一天店里突然来了个小金毛，请玛吉卡露进行恋爱占卜，占卜结果是玛吉卡露会和小金毛展开一段恋情，不管怎么逃避，恋情都会发生，既然恋情无法避免，那就直接跳过前期流程，进入后期阶段吧!\n\n以代表作《无冰与露次的魔法咨询室》为首，以原创世界观创作作品的西义之先生的圈子【天真武多】，是成人作品前18部的奇迹OVA！\"><![CDATA[见习魔女玛吉卡露开了一家魔法占卜店，以占卜结果准而闻名，有一天店里突然来了个小金毛，请玛吉卡露进行恋爱占卜，占卜结果是玛吉卡露会和小金毛展开一段恋情，不管怎么逃避，恋情都会发生，既然恋情无法避免，那就直接跳过前期流程，进入后期阶段吧!\n\n以代表作《无冰与露次的魔法咨询室》为首，以原创世界观创作作品的西义之先生的圈子【天真武多】，是成人作品前18部的奇迹OVA！]]></plot>\n  <runtime>30</runtime>\n  <rating>6.7</rating>\n  <votes>3</votes>\n  <tmdbid>215223</tmdbid>\n  <genre>动画</genre>\n  <country>JP</country>\n  <studio>Pink Pineapple</studio>\n  <director>Hideta Oota</director>\n  <actor>\n    <name>Yumi Yumiya</name>\n    <role>Majikaru Mojigawa (voice)</role>\n    <originalname>湯宮由海</originalname>\n    <thumb>images/actors/Yumi Yumiya.jpg</thumb>\n  </actor>\n  <actor>\n    <name>Mako Ayane</name>\n    <role>Leo (voice)</role>\n    <originalname>綾音まこ</originalname>\n    <thumb>images/actors/Mako Ayane.jpg</thumb>\n  </actor>\n  <actor>\n    <name>Yuka Hoshi</name>\n    <role>Mama Mojigawa (voice)</role>\n    <originalname>星由華</originalname>\n    <thumb>images/actors/Yuka Hoshi.jpg</thumb>\n  </actor>\n  <status>Ended</status>\n  <uniqueid type=\"tmdb\" default=\"true\">215223</uniqueid>\n  <thumb>images/poster/poster.jpg</thumb>\n  <fanart>images/fanart/fanart.jpg</fanart>\n  <tag>腐女</tag>\n</tvshow>\n"
+  },
+  "output": {
+    "status": "completed",
+    "files": {
+      "nfo_file": "/Volumes/video/Animation/The Animation/Majo wa Kekkyoku Sono Kyaku to... The Animation (Unknown Year)/tvshow.nfo",
+      "images_dir": "/Volumes/video/Animation/The Animation/Majo wa Kekkyoku Sono Kyaku to... The Animation (Unknown Year)/images",
+      "media_dir": "/Volumes/video/Animation/The Animation/Majo wa Kekkyoku Sono Kyaku to... The Animation (Unknown Year)",
+      "season_1_episode_1": "/Volumes/video/Animation/The Animation/Majo wa Kekkyoku Sono Kyaku to... The Animation (Unknown Year)/Season 01/魔女は結局その客と。。。THE ANIMATION - S01E01 - 第 1 集.nfo",
+      "season_1_episode_2": "/Volumes/video/Animation/The Animation/Majo wa Kekkyoku Sono Kyaku to... The Animation (Unknown Year)/Season 01/魔女は結局その客と。。。THE ANIMATION - S01E02 - 第 2 集.nfo"
+    }
+  },
+  "errors": [],
+  "end_time": "2025-12-06T01:16:15.271924"
+}

@@ -1,0 +1,16 @@
+2025-12-05 23:32:22,061 - MetadataAgent - INFO - Input parameters parsed
+2025-12-05 23:32:22,061 - MetadataAgent - DEBUG - Input data: {
+  "media_type": "tv",
+  "query": "妻を同窓会にいかせたら (Unknown Year)",
+  "output_dir": "/Volumes/video/Animation/The Animation/妻を同窓会にいかせたら (Unknown Year)",
+  "verbose": false,
+  "quiet": true,
+  "aid_search": true
+}
+2025-12-05 23:32:22,985 - MetadataAgent - INFO - Search completed: 0 results
+2025-12-05 23:32:22,985 - MetadataAgent - DEBUG - Search results: {
+  "page": 1,
+  "results": [],
+  "total_pages": 1,
+  "total_results": 0
+}

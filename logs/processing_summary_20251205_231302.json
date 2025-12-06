@@ -1,0 +1,3265 @@
+{
+  "start_time": "2025-12-05T23:12:42.293638",
+  "input": {
+    "media_type": "tv",
+    "query": "天降女子！~女孩子从2楼…掉了下来！？~",
+    "output_dir": "/Volumes/video/Animation/The Animation/天降女子！~女孩子从2楼…掉了下来！？~ (2018)",
+    "verbose": false,
+    "quiet": true,
+    "aid_search": true
+  },
+  "search": {
+    "results": {
+      "page": 1,
+      "results": [
+        {
+          "adult": false,
+          "backdrop_path": "/AgTy5IsOv1FAx02gunir8ZSiUxG.jpg",
+          "genre_ids": [],
+          "id": 81044,
+          "origin_country": [
+            "JP"
+          ],
+          "original_language": "ja",
+          "original_name": "じょしおちっ！～2階から女の子が・・・降ってきた！？～",
+          "overview": "Sousuke Aikawa is a part-time worker who lives in a rundown apartment building where his only consolation is that the landlord is a beautiful woman and the girl who lives above him is cute.\n\nOne day though, the ceiling above him creaks and... Bang! In from the second floor, directly above him, the cute girl comes crashing down on him…!?\n\nIn an erotic encounter that can only be classified as a miracle, hearts and bodies are connected by chance. Then for some reason, he starts to live with both of these beautiful women!? Under this one roof, just what exactly will become of this crowded love triangle...!?",
+          "popularity": 9.3788,
+          "poster_path": "/7x8x6dl4leOSw6KGUcOrQew7Eua.jpg",
+          "first_air_date": "2018-07-02",
+          "name": "Joshiochi! 2-kai kara Onnanoko ga... Futtekita!?",
+          "vote_average": 7.326,
+          "vote_count": 23,
+          "media_type": "tv"
+        }
+      ],
+      "total_pages": 1,
+      "total_results": 1
+    },
+    "skip_search": false
+  },
+  "fetch": {
+    "main": {
+      "adult": false,
+      "backdrop_path": "/AgTy5IsOv1FAx02gunir8ZSiUxG.jpg",
+      "created_by": [],
+      "episode_run_time": [
+        7
+      ],
+      "first_air_date": "2018-07-02",
+      "genres": [],
+      "homepage": "https://joshiochi.cf-anime.com",
+      "id": 81044,
+      "in_production": false,
+      "languages": [
+        "ja"
+      ],
+      "last_air_date": "2018-08-27",
+      "last_episode_to_air": {
+        "id": 1560650,
+        "name": "第 9 集",
+        "overview": "由纪和壮介待在女子淋浴间，由纪注意到壮介和其他人的关系，但她迟迟没有坦承自己对壮介的爱意。在壮介的主导下，两人终于发生性行为。之后壮介并未选出自己最心仪的对象，而是和三人同时发生性关系。",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "air_date": "2018-08-27",
+        "episode_number": 9,
+        "episode_type": "finale",
+        "production_code": "",
+        "runtime": 7,
+        "season_number": 1,
+        "show_id": 81044,
+        "still_path": "/yQYlVoOSkbu300zzFevAw0QwBO8.jpg"
+      },
+      "name": "天降女子！~女孩子从2楼…掉了下来！？~",
+      "next_episode_to_air": null,
+      "networks": [
+        {
+          "id": 614,
+          "logo_path": "/hSdroyVthq3CynxTIIY7lnS8w1.png",
+          "name": "Tokyo MX",
+          "origin_country": "JP"
+        },
+        {
+          "id": 8552,
+          "logo_path": null,
+          "name": "Arc",
+          "origin_country": ""
+        }
+      ],
+      "number_of_episodes": 9,
+      "number_of_seasons": 1,
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "じょしおちっ！～2階から女の子が・・・降ってきた！？～",
+      "overview": "　　女孩子穿透天花板，从2楼掉了下来！？ 　　住在破旧公寓里的我，唯一感到治愈的，是美人房东和2楼的可爱女孩。 　　某天，天花板发出嘎吱嘎吱的声音……“啪叽！”一声破裂了，那个2楼的女孩在我的正上方从天而降……！？ 　　通过奇迹般的桃色事件，偶然相连的心灵与身体。 　　之后，我竟然开始与2位美女共同生活！？ 　　同一屋檐下，过于浓密的三角关系会如何发展……！？",
+      "popularity": 9.3788,
+      "poster_path": "/7x8x6dl4leOSw6KGUcOrQew7Eua.jpg",
+      "production_companies": [
+        {
+          "id": 149421,
+          "logo_path": "/6UqbB0NLRWEIaCKsd5YkOigJgXb.png",
+          "name": "Suiseisha",
+          "origin_country": "JP"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "JP",
+          "name": "Japan"
+        }
+      ],
+      "seasons": [
+        {
+          "air_date": "2018-07-02",
+          "episode_count": 9,
+          "id": 106710,
+          "name": "第 1 季",
+          "overview": "",
+          "poster_path": "/oDuMS1ELogFOrPW7rvlo7F8kVMX.jpg",
+          "season_number": 1,
+          "vote_average": 9.0
+        }
+      ],
+      "spoken_languages": [
+        {
+          "english_name": "Japanese",
+          "iso_639_1": "ja",
+          "name": "日本語"
+        }
+      ],
+      "status": "Ended",
+      "tagline": "",
+      "type": "Scripted",
+      "vote_average": 7.326,
+      "vote_count": 23
+    },
+    "credits": {
+      "cast": [
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 1157642,
+          "known_for_department": "Acting",
+          "name": "Shinya Takahashi",
+          "original_name": "高橋伸也",
+          "popularity": 1.1358,
+          "profile_path": "/19DN4yrD9c3E7BWthVEqvwhQNdb.jpg",
+          "character": "Sousuke Aikawa (voice)",
+          "credit_id": "61664ed93a99370062a7ae59",
+          "order": 0
+        },
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 4354056,
+          "known_for_department": "Acting",
+          "name": "Rie Okamoto",
+          "original_name": "岡本理絵",
+          "popularity": 0.0,
+          "profile_path": "/pHqG8t9KlV6zoE6T7Bk7t2Kksfh.jpg",
+          "character": "Yuki Shimizu (voice)",
+          "credit_id": "67b7977b7434200c2822347b",
+          "order": 1
+        },
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 2852873,
+          "known_for_department": "Acting",
+          "name": "Momoko Obana",
+          "original_name": "小花モモコ",
+          "popularity": 1.168,
+          "profile_path": null,
+          "character": "Sunao Unyuu (voice)",
+          "credit_id": "61664f5584591c004333efb9",
+          "order": 2
+        },
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 1256102,
+          "known_for_department": "Acting",
+          "name": "Sakura Nakamura",
+          "original_name": "中村桜",
+          "popularity": 41.353,
+          "profile_path": "/k38ACSJ2NJDcjWLLSQKJtaWGtiX.jpg",
+          "character": "Yuzu Hanazono (voice)",
+          "credit_id": "61664efd0d417e004334fa1d",
+          "order": 3
+        }
+      ],
+      "crew": [
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 2898682,
+          "known_for_department": "Sound",
+          "name": "Katsuhiro Nakajima",
+          "original_name": "中島勝大",
+          "popularity": 1.0409,
+          "profile_path": null,
+          "credit_id": "61664903e4b5760043950af0",
+          "department": "Sound",
+          "job": "Sound Effects"
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 3269053,
+          "known_for_department": "Art",
+          "name": "Takahiro Saito",
+          "original_name": "斉藤隆博",
+          "popularity": 0.4913,
+          "profile_path": null,
+          "credit_id": "6166493815794a00880c780c",
+          "department": "Art",
+          "job": "Art Direction"
+        },
+        {
+          "adult": false,
+          "gender": 1,
+          "id": 2438555,
+          "known_for_department": "Production",
+          "name": "Akiko Segawa",
+          "original_name": "瀬川章子",
+          "popularity": 0.6879,
+          "profile_path": null,
+          "credit_id": "61664962960331002b24bef3",
+          "department": "Production",
+          "job": "Producer"
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 2210737,
+          "known_for_department": "Sound",
+          "name": "Takahiro Enomoto",
+          "original_name": "榎本崇宏",
+          "popularity": 1.494,
+          "profile_path": null,
+          "credit_id": "616648f23a9937002c979713",
+          "department": "Sound",
+          "job": "Sound Director"
+        },
+        {
+          "adult": true,
+          "gender": 2,
+          "id": 81706,
+          "known_for_department": "Art",
+          "name": "Satoshi Urushihara",
+          "original_name": "うるし原智志",
+          "popularity": 3.473,
+          "profile_path": "/sEX6HayR4BHtWU8G11XEHxdOuSN.jpg",
+          "credit_id": "616648e59d592c002b5ca96a",
+          "department": "Visual Effects",
+          "job": "Character Designer"
+        },
+        {
+          "adult": true,
+          "gender": 2,
+          "id": 81705,
+          "known_for_department": "Directing",
+          "name": "Kinji Yoshimoto",
+          "original_name": "吉本欣司",
+          "popularity": 2.36,
+          "profile_path": null,
+          "credit_id": "66df1d901d61a544c0346c0d",
+          "department": "Directing",
+          "job": "Series Director"
+        },
+        {
+          "adult": true,
+          "gender": 2,
+          "id": 81705,
+          "known_for_department": "Directing",
+          "name": "Kinji Yoshimoto",
+          "original_name": "吉本欣司",
+          "popularity": 2.36,
+          "profile_path": null,
+          "credit_id": "66df1d96e8403f841278a363",
+          "department": "Writing",
+          "job": "Series Composition"
+        },
+        {
+          "adult": false,
+          "gender": 0,
+          "id": 2896060,
+          "known_for_department": "Sound",
+          "name": "Saki Hazuki",
+          "original_name": "葉月さき",
+          "popularity": 0.7672,
+          "profile_path": "/qiPofchSPE27AypRxxtIZ6nPwlD.jpg",
+          "credit_id": "670b866ebbb1a9e81c61ec86",
+          "department": "Sound",
+          "job": "Theme Song Performance"
+        },
+        {
+          "adult": false,
+          "gender": 0,
+          "id": 5007075,
+          "known_for_department": "Camera",
+          "name": "Hirao Mori",
+          "original_name": "Hirao Mori",
+          "popularity": 0.0558,
+          "profile_path": null,
+          "credit_id": "6711cc761f0ea4714edbdd76",
+          "department": "Camera",
+          "job": "Director of Photography"
+        },
+        {
+          "adult": false,
+          "gender": 0,
+          "id": 5290636,
+          "known_for_department": "Writing",
+          "name": "Hakaru Takarai",
+          "original_name": "宝依図",
+          "popularity": 0.2579,
+          "profile_path": null,
+          "credit_id": "681e169db1f90a9d1663bd91",
+          "department": "Writing",
+          "job": "Comic Book"
+        }
+      ],
+      "id": 81044
+    },
+    "keywords": {
+      "id": 81044,
+      "results": [
+        {
+          "name": "harem",
+          "id": 9194
+        },
+        {
+          "name": "romance",
+          "id": 9840
+        },
+        {
+          "name": "based on manga",
+          "id": 13141
+        },
+        {
+          "name": "hentai",
+          "id": 198385
+        },
+        {
+          "name": "anime",
+          "id": 210024
+        },
+        {
+          "name": "love polygon",
+          "id": 239884
+        },
+        {
+          "name": "erotic",
+          "id": 256466
+        },
+        {
+          "name": "hentai, sex, youth",
+          "id": 353113
+        }
+      ]
+    },
+    "seasons": [
+      {
+        "_id": "5b537fc00e0a262317016a8b",
+        "air_date": "2018-07-02",
+        "episodes": [
+          {
+            "air_date": "2018-07-02",
+            "episode_number": 1,
+            "episode_type": "standard",
+            "id": 1527836,
+            "name": "第 1 集",
+            "overview": "飞特族相川壮介住在破旧公寓的一楼，并倾心于房东清水由纪的治愈系笑容，某日他受不了楼上的噪音而上楼斥责，但因为二楼住户丹生砂生太可爱而作罢。之后砂生不慎把地板踩出一个洞，让她摔进壮介的房间，并刚好被他的性器插入下体，两人顺势发生了性行为，此景正好被听到巨响而进入屋内查看的由纪看见。",
+            "production_code": "",
+            "runtime": 5,
+            "season_number": 1,
+            "show_id": 81044,
+            "still_path": "/1ELl8Wpl1voq9wg2qaH12j1RvQO.jpg",
+            "vote_average": 9.0,
+            "vote_count": 1,
+            "crew": [
+              {
+                "job": "Storyboard Artist",
+                "department": "Art",
+                "credit_id": "66df1cf224c43c73819ac77d",
+                "adult": true,
+                "gender": 2,
+                "id": 81705,
+                "known_for_department": "Directing",
+                "name": "吉本欣司",
+                "original_name": "吉本欣司",
+                "popularity": 2.36,
+                "profile_path": null
+              },
+              {
+                "job": "Director",
+                "department": "Directing",
+                "credit_id": "66df1cfc6b81db005fc26997",
+                "adult": true,
+                "gender": 2,
+                "id": 81705,
+                "known_for_department": "Directing",
+                "name": "吉本欣司",
+                "original_name": "吉本欣司",
+                "popularity": 2.36,
+                "profile_path": null
+              },
+              {
+                "job": "Writer",
+                "department": "Writing",
+                "credit_id": "66df1d1e1f97882adc493ccd",
+                "adult": true,
+                "gender": 2,
+                "id": 81705,
+                "known_for_department": "Directing",
+                "name": "吉本欣司",
+                "original_name": "吉本欣司",
+                "popularity": 2.36,
+                "profile_path": null
+              }
+            ],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2018-07-09",
+            "episode_number": 2,
+            "episode_type": "standard",
+            "id": 1527964,
+            "name": "第 2 集",
+            "overview": "在修缮期间，砂生暂住于由纪的房间，而晚上时由纪则到壮介的房间过夜，欲火难耐的壮介趁她熟睡时对她爱抚和指交，由纪便在房间里画线作为边界。",
+            "production_code": "",
+            "runtime": 5,
+            "season_number": 1,
+            "show_id": 81044,
+            "still_path": "/qcgyyf8BVSTNWCGI7OYsQDEkQ52.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [
+              {
+                "job": "Storyboard Artist",
+                "department": "Art",
+                "credit_id": "66df1a62ba6d0b3bd9c267bf",
+                "adult": true,
+                "gender": 0,
+                "id": 2287901,
+                "known_for_department": "Visual Effects",
+                "name": "山田太郎",
+                "original_name": "山田太郎",
+                "popularity": 0.6,
+                "profile_path": null
+              },
+              {
+                "job": "Director",
+                "department": "Directing",
+                "credit_id": "66df1a69c15358f3584c304c",
+                "adult": true,
+                "gender": 0,
+                "id": 2287901,
+                "known_for_department": "Visual Effects",
+                "name": "山田太郎",
+                "original_name": "山田太郎",
+                "popularity": 0.6,
+                "profile_path": null
+              },
+              {
+                "job": "Writer",
+                "department": "Writing",
+                "credit_id": "66df1d1e1f97882adc493ccd",
+                "adult": true,
+                "gender": 2,
+                "id": 81705,
+                "known_for_department": "Directing",
+                "name": "吉本欣司",
+                "original_name": "吉本欣司",
+                "popularity": 2.36,
+                "profile_path": null
+              }
+            ],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2018-07-16",
+            "episode_number": 3,
+            "episode_type": "standard",
+            "id": 1527965,
+            "name": "第 3 集",
+            "overview": "另一个夜晚，砂生因为忘不了性行为的快感，从破洞跳到壮介的床铺上，并与他发生性行为，但她离开时却把内裤留了下来，在她回房间拿内裤时，由纪刚好因意外而衣衫不整。",
+            "production_code": "",
+            "runtime": 5,
+            "season_number": 1,
+            "show_id": 81044,
+            "still_path": "/9uVECHCMWNCGyqRcNoA3LOrmvlq.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [
+              {
+                "job": "Director",
+                "department": "Directing",
+                "credit_id": "66df1a69c15358f3584c304c",
+                "adult": true,
+                "gender": 0,
+                "id": 2287901,
+                "known_for_department": "Visual Effects",
+                "name": "山田太郎",
+                "original_name": "山田太郎",
+                "popularity": 0.6,
+                "profile_path": null
+              },
+              {
+                "job": "Storyboard Artist",
+                "department": "Art",
+                "credit_id": "66df1c355c838534fa3d8b10",
+                "adult": false,
+                "gender": 0,
+                "id": 3269056,
+                "known_for_department": "Art",
+                "name": "ちょっこう",
+                "original_name": "ちょっこう",
+                "popularity": 0.1389,
+                "profile_path": null
+              },
+              {
+                "job": "Writer",
+                "department": "Writing",
+                "credit_id": "66df1d1e1f97882adc493ccd",
+                "adult": true,
+                "gender": 2,
+                "id": 81705,
+                "known_for_department": "Directing",
+                "name": "吉本欣司",
+                "original_name": "吉本欣司",
+                "popularity": 2.36,
+                "profile_path": null
+              }
+            ],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2018-07-23",
+            "episode_number": 4,
+            "episode_type": "standard",
+            "id": 1527966,
+            "name": "第 4 集",
+            "overview": "为了避免被误会，壮介和由纪躲了起来，并因为贴著身子而开始爱抚，在砂生找到内裤并离开后，由纪打了壮介一巴掌。由纪注意到砂生与壮介的关系，便提议三人同住一间。",
+            "production_code": "",
+            "runtime": 5,
+            "season_number": 1,
+            "show_id": 81044,
+            "still_path": "/esEVpAta0qK2z82n4QffgiG5PU6.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [
+              {
+                "job": "Storyboard Artist",
+                "department": "Art",
+                "credit_id": "66df1a62ba6d0b3bd9c267bf",
+                "adult": true,
+                "gender": 0,
+                "id": 2287901,
+                "known_for_department": "Visual Effects",
+                "name": "山田太郎",
+                "original_name": "山田太郎",
+                "popularity": 0.6,
+                "profile_path": null
+              },
+              {
+                "job": "Director",
+                "department": "Directing",
+                "credit_id": "66df1a69c15358f3584c304c",
+                "adult": true,
+                "gender": 0,
+                "id": 2287901,
+                "known_for_department": "Visual Effects",
+                "name": "山田太郎",
+                "original_name": "山田太郎",
+                "popularity": 0.6,
+                "profile_path": null
+              },
+              {
+                "job": "Writer",
+                "department": "Writing",
+                "credit_id": "66df1d1e1f97882adc493ccd",
+                "adult": true,
+                "gender": 2,
+                "id": 81705,
+                "known_for_department": "Directing",
+                "name": "吉本欣司",
+                "original_name": "吉本欣司",
+                "popularity": 2.36,
+                "profile_path": null
+              }
+            ],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2018-07-30",
+            "episode_number": 5,
+            "episode_type": "standard",
+            "id": 1555580,
+            "name": "第 5 集",
+            "overview": "砂生邀壮介一起洗澡，两人在浴室发生性行为。由纪注意到此事，并误以为壮介讨厌自己，才会对自己有非礼之举。砂生拿到了三张温泉旅馆的优惠券，便和壮介、由纪一起出游，砂生在泡温泉时向由纪表示自己喜欢壮介，偷听到此事的壮介认为有发生三人性行为的可能。",
+            "production_code": "",
+            "runtime": 6,
+            "season_number": 1,
+            "show_id": 81044,
+            "still_path": "/zOZNaicrHtrraTX71dn6s38LcmT.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [
+              {
+                "job": "Storyboard Artist",
+                "department": "Art",
+                "credit_id": "66df1a62ba6d0b3bd9c267bf",
+                "adult": true,
+                "gender": 0,
+                "id": 2287901,
+                "known_for_department": "Visual Effects",
+                "name": "山田太郎",
+                "original_name": "山田太郎",
+                "popularity": 0.6,
+                "profile_path": null
+              },
+              {
+                "job": "Director",
+                "department": "Directing",
+                "credit_id": "66df1a69c15358f3584c304c",
+                "adult": true,
+                "gender": 0,
+                "id": 2287901,
+                "known_for_department": "Visual Effects",
+                "name": "山田太郎",
+                "original_name": "山田太郎",
+                "popularity": 0.6,
+                "profile_path": null
+              },
+              {
+                "job": "Writer",
+                "department": "Writing",
+                "credit_id": "66df1d1e1f97882adc493ccd",
+                "adult": true,
+                "gender": 2,
+                "id": 81705,
+                "known_for_department": "Directing",
+                "name": "吉本欣司",
+                "original_name": "吉本欣司",
+                "popularity": 2.36,
+                "profile_path": null
+              }
+            ],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2018-08-06",
+            "episode_number": 6,
+            "episode_type": "standard",
+            "id": 1555581,
+            "name": "第 6 集",
+            "overview": "吃饱喝足后，酒醉的由纪邀壮介泡澡，两人在温泉里股交，导致壮介进行体外射精，但清醒后的由纪对自己的行为很诧异。之后三人去逛祭典，砂生向壮介告白，并与他在竹林中发生性行为。",
+            "production_code": "",
+            "runtime": 6,
+            "season_number": 1,
+            "show_id": 81044,
+            "still_path": "/gBbFcgl1LBfVbjszrhRTeFqgWCb.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [
+              {
+                "job": "Storyboard Artist",
+                "department": "Art",
+                "credit_id": "66df1a62ba6d0b3bd9c267bf",
+                "adult": true,
+                "gender": 0,
+                "id": 2287901,
+                "known_for_department": "Visual Effects",
+                "name": "山田太郎",
+                "original_name": "山田太郎",
+                "popularity": 0.6,
+                "profile_path": null
+              },
+              {
+                "job": "Director",
+                "department": "Directing",
+                "credit_id": "66df1a69c15358f3584c304c",
+                "adult": true,
+                "gender": 0,
+                "id": 2287901,
+                "known_for_department": "Visual Effects",
+                "name": "山田太郎",
+                "original_name": "山田太郎",
+                "popularity": 0.6,
+                "profile_path": null
+              },
+              {
+                "job": "Writer",
+                "department": "Writing",
+                "credit_id": "66df1d1e1f97882adc493ccd",
+                "adult": true,
+                "gender": 2,
+                "id": 81705,
+                "known_for_department": "Directing",
+                "name": "吉本欣司",
+                "original_name": "吉本欣司",
+                "popularity": 2.36,
+                "profile_path": null
+              }
+            ],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2018-08-13",
+            "episode_number": 7,
+            "episode_type": "standard",
+            "id": 1555582,
+            "name": "第 7 集",
+            "overview": "砂生邀请由纪和壮介来看自己主演的舞台剧，因为戏剧情节涉及情欲，由纪看戏途中便忍不住要壮介爱抚自己。壮介认为自己游移于两位女性之间十分不妥，认为自己是时候做出选择。壮介的青梅竹马花园柚子来找他，并暂住在壮介房间的隔壁，而这两个房间之间的墙有破洞，壮介偷窥时导致墙壁坍塌，柚子主动和壮介发生了性行为。为了让壮介做出抉择，三位女性决定透过泳装决胜负。",
+            "production_code": "",
+            "runtime": 6,
+            "season_number": 1,
+            "show_id": 81044,
+            "still_path": "/kaIr21pt0z7PnW3vz0w9PNDTAVb.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [
+              {
+                "job": "Director",
+                "department": "Directing",
+                "credit_id": "66df1a69c15358f3584c304c",
+                "adult": true,
+                "gender": 0,
+                "id": 2287901,
+                "known_for_department": "Visual Effects",
+                "name": "山田太郎",
+                "original_name": "山田太郎",
+                "popularity": 0.6,
+                "profile_path": null
+              },
+              {
+                "job": "Storyboard Artist",
+                "department": "Art",
+                "credit_id": "66df1b7ef13eea5e6578a151",
+                "adult": false,
+                "gender": 0,
+                "id": 3269057,
+                "known_for_department": "Art",
+                "name": "伴山人",
+                "original_name": "伴山人",
+                "popularity": 0.3271,
+                "profile_path": null
+              },
+              {
+                "job": "Writer",
+                "department": "Writing",
+                "credit_id": "66df1d1e1f97882adc493ccd",
+                "adult": true,
+                "gender": 2,
+                "id": 81705,
+                "known_for_department": "Directing",
+                "name": "吉本欣司",
+                "original_name": "吉本欣司",
+                "popularity": 2.36,
+                "profile_path": null
+              }
+            ],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2018-08-20",
+            "episode_number": 8,
+            "episode_type": "standard",
+            "id": 1555583,
+            "name": "第 8 集",
+            "overview": "四人到海边游玩，柚子积极地诱惑壮介，并因此和他在海中发生性行为。心生妒忌的砂生和壮介在储藏室进行了性行为。",
+            "production_code": "",
+            "runtime": 6,
+            "season_number": 1,
+            "show_id": 81044,
+            "still_path": "/oSuJ7nN94KjwYs1VRPUCGpH8QUv.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [
+              {
+                "job": "Director",
+                "department": "Directing",
+                "credit_id": "66df1a69c15358f3584c304c",
+                "adult": true,
+                "gender": 0,
+                "id": 2287901,
+                "known_for_department": "Visual Effects",
+                "name": "山田太郎",
+                "original_name": "山田太郎",
+                "popularity": 0.6,
+                "profile_path": null
+              },
+              {
+                "job": "Storyboard Artist",
+                "department": "Art",
+                "credit_id": "66df1b7ef13eea5e6578a151",
+                "adult": false,
+                "gender": 0,
+                "id": 3269057,
+                "known_for_department": "Art",
+                "name": "伴山人",
+                "original_name": "伴山人",
+                "popularity": 0.3271,
+                "profile_path": null
+              },
+              {
+                "job": "Writer",
+                "department": "Writing",
+                "credit_id": "66df1d1e1f97882adc493ccd",
+                "adult": true,
+                "gender": 2,
+                "id": 81705,
+                "known_for_department": "Directing",
+                "name": "吉本欣司",
+                "original_name": "吉本欣司",
+                "popularity": 2.36,
+                "profile_path": null
+              }
+            ],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2018-08-27",
+            "episode_number": 9,
+            "episode_type": "finale",
+            "id": 1560650,
+            "name": "第 9 集",
+            "overview": "由纪和壮介待在女子淋浴间，由纪注意到壮介和其他人的关系，但她迟迟没有坦承自己对壮介的爱意。在壮介的主导下，两人终于发生性行为。之后壮介并未选出自己最心仪的对象，而是和三人同时发生性关系。",
+            "production_code": "",
+            "runtime": 7,
+            "season_number": 1,
+            "show_id": 81044,
+            "still_path": "/yQYlVoOSkbu300zzFevAw0QwBO8.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [
+              {
+                "job": "Director",
+                "department": "Directing",
+                "credit_id": "66df1a69c15358f3584c304c",
+                "adult": true,
+                "gender": 0,
+                "id": 2287901,
+                "known_for_department": "Visual Effects",
+                "name": "山田太郎",
+                "original_name": "山田太郎",
+                "popularity": 0.6,
+                "profile_path": null
+              },
+              {
+                "job": "Storyboard Artist",
+                "department": "Art",
+                "credit_id": "66df1b7ef13eea5e6578a151",
+                "adult": false,
+                "gender": 0,
+                "id": 3269057,
+                "known_for_department": "Art",
+                "name": "伴山人",
+                "original_name": "伴山人",
+                "popularity": 0.3271,
+                "profile_path": null
+              },
+              {
+                "job": "Writer",
+                "department": "Writing",
+                "credit_id": "66df1d1e1f97882adc493ccd",
+                "adult": true,
+                "gender": 2,
+                "id": 81705,
+                "known_for_department": "Directing",
+                "name": "吉本欣司",
+                "original_name": "吉本欣司",
+                "popularity": 2.36,
+                "profile_path": null
+              }
+            ],
+            "guest_stars": []
+          }
+        ],
+        "name": "第 1 季",
+        "networks": [
+          {
+            "id": 614,
+            "logo_path": "/hSdroyVthq3CynxTIIY7lnS8w1.png",
+            "name": "Tokyo MX",
+            "origin_country": "JP"
+          },
+          {
+            "id": 8552,
+            "logo_path": null,
+            "name": "Arc",
+            "origin_country": ""
+          }
+        ],
+        "overview": "",
+        "id": 106710,
+        "poster_path": "/oDuMS1ELogFOrPW7rvlo7F8kVMX.jpg",
+        "season_number": 1,
+        "vote_average": 9.0
+      }
+    ],
+    "episodes": [
+      {
+        "air_date": "2018-07-02",
+        "crew": [
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "66df1cf224c43c73819ac77d",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          },
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "66df1cfc6b81db005fc26997",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "66df1d1e1f97882adc493ccd",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 1 集",
+        "overview": "飞特族相川壮介住在破旧公寓的一楼，并倾心于房东清水由纪的治愈系笑容，某日他受不了楼上的噪音而上楼斥责，但因为二楼住户丹生砂生太可爱而作罢。之后砂生不慎把地板踩出一个洞，让她摔进壮介的房间，并刚好被他的性器插入下体，两人顺势发生了性行为，此景正好被听到巨响而进入屋内查看的由纪看见。",
+        "id": 1527836,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/1ELl8Wpl1voq9wg2qaH12j1RvQO.jpg",
+        "vote_average": 9.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-07-09",
+        "crew": [
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "66df1a62ba6d0b3bd9c267bf",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "66df1a69c15358f3584c304c",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "66df1d1e1f97882adc493ccd",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 2 集",
+        "overview": "在修缮期间，砂生暂住于由纪的房间，而晚上时由纪则到壮介的房间过夜，欲火难耐的壮介趁她熟睡时对她爱抚和指交，由纪便在房间里画线作为边界。",
+        "id": 1527964,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/qcgyyf8BVSTNWCGI7OYsQDEkQ52.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2018-07-16",
+        "crew": [
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "66df1a69c15358f3584c304c",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "66df1c355c838534fa3d8b10",
+            "adult": false,
+            "gender": 0,
+            "id": 3269056,
+            "known_for_department": "Art",
+            "name": "ちょっこう",
+            "original_name": "ちょっこう",
+            "popularity": 0.1389,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "66df1d1e1f97882adc493ccd",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 3,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 3 集",
+        "overview": "另一个夜晚，砂生因为忘不了性行为的快感，从破洞跳到壮介的床铺上，并与他发生性行为，但她离开时却把内裤留了下来，在她回房间拿内裤时，由纪刚好因意外而衣衫不整。",
+        "id": 1527965,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/9uVECHCMWNCGyqRcNoA3LOrmvlq.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2018-07-23",
+        "crew": [
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "66df1a62ba6d0b3bd9c267bf",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "66df1a69c15358f3584c304c",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "66df1d1e1f97882adc493ccd",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 4,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 4 集",
+        "overview": "为了避免被误会，壮介和由纪躲了起来，并因为贴著身子而开始爱抚，在砂生找到内裤并离开后，由纪打了壮介一巴掌。由纪注意到砂生与壮介的关系，便提议三人同住一间。",
+        "id": 1527966,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/esEVpAta0qK2z82n4QffgiG5PU6.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2018-07-30",
+        "crew": [
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "66df1a62ba6d0b3bd9c267bf",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "66df1a69c15358f3584c304c",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "66df1d1e1f97882adc493ccd",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 5,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 5 集",
+        "overview": "砂生邀壮介一起洗澡，两人在浴室发生性行为。由纪注意到此事，并误以为壮介讨厌自己，才会对自己有非礼之举。砂生拿到了三张温泉旅馆的优惠券，便和壮介、由纪一起出游，砂生在泡温泉时向由纪表示自己喜欢壮介，偷听到此事的壮介认为有发生三人性行为的可能。",
+        "id": 1555580,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/zOZNaicrHtrraTX71dn6s38LcmT.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2018-08-06",
+        "crew": [
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "66df1a62ba6d0b3bd9c267bf",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "66df1a69c15358f3584c304c",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "66df1d1e1f97882adc493ccd",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 6,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 6 集",
+        "overview": "吃饱喝足后，酒醉的由纪邀壮介泡澡，两人在温泉里股交，导致壮介进行体外射精，但清醒后的由纪对自己的行为很诧异。之后三人去逛祭典，砂生向壮介告白，并与他在竹林中发生性行为。",
+        "id": 1555581,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/gBbFcgl1LBfVbjszrhRTeFqgWCb.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2018-08-13",
+        "crew": [
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "66df1a69c15358f3584c304c",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "66df1b7ef13eea5e6578a151",
+            "adult": false,
+            "gender": 0,
+            "id": 3269057,
+            "known_for_department": "Art",
+            "name": "伴山人",
+            "original_name": "伴山人",
+            "popularity": 0.3271,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "66df1d1e1f97882adc493ccd",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 7,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 7 集",
+        "overview": "砂生邀请由纪和壮介来看自己主演的舞台剧，因为戏剧情节涉及情欲，由纪看戏途中便忍不住要壮介爱抚自己。壮介认为自己游移于两位女性之间十分不妥，认为自己是时候做出选择。壮介的青梅竹马花园柚子来找他，并暂住在壮介房间的隔壁，而这两个房间之间的墙有破洞，壮介偷窥时导致墙壁坍塌，柚子主动和壮介发生了性行为。为了让壮介做出抉择，三位女性决定透过泳装决胜负。",
+        "id": 1555582,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/kaIr21pt0z7PnW3vz0w9PNDTAVb.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2018-08-20",
+        "crew": [
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "66df1a69c15358f3584c304c",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "66df1b7ef13eea5e6578a151",
+            "adult": false,
+            "gender": 0,
+            "id": 3269057,
+            "known_for_department": "Art",
+            "name": "伴山人",
+            "original_name": "伴山人",
+            "popularity": 0.3271,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "66df1d1e1f97882adc493ccd",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 8,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 8 集",
+        "overview": "四人到海边游玩，柚子积极地诱惑壮介，并因此和他在海中发生性行为。心生妒忌的砂生和壮介在储藏室进行了性行为。",
+        "id": 1555583,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/oSuJ7nN94KjwYs1VRPUCGpH8QUv.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2018-08-27",
+        "crew": [
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "66df1a69c15358f3584c304c",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "66df1b7ef13eea5e6578a151",
+            "adult": false,
+            "gender": 0,
+            "id": 3269057,
+            "known_for_department": "Art",
+            "name": "伴山人",
+            "original_name": "伴山人",
+            "popularity": 0.3271,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "66df1d1e1f97882adc493ccd",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 9,
+        "episode_type": "finale",
+        "guest_stars": [],
+        "name": "第 9 集",
+        "overview": "由纪和壮介待在女子淋浴间，由纪注意到壮介和其他人的关系，但她迟迟没有坦承自己对壮介的爱意。在壮介的主导下，两人终于发生性行为。之后壮介并未选出自己最心仪的对象，而是和三人同时发生性关系。",
+        "id": 1560650,
+        "production_code": "",
+        "runtime": 7,
+        "season_number": 1,
+        "still_path": "/yQYlVoOSkbu300zzFevAw0QwBO8.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      }
+    ]
+  },
+  "translate": {
+    "translated": {
+      "media_type": "tv",
+      "tmdb_id": 81044,
+      "title": "天降女子！~女孩子从2楼…掉了下来！？~",
+      "original_title": "じょしおちっ！～2階から女の子が・・・降ってきた！？～",
+      "year": 2018,
+      "plot": "　　女孩子穿透天花板，从2楼掉了下来！？ 　　住在破旧公寓里的我，唯一感到治愈的，是美人房东和2楼的可爱女孩。 　　某天，天花板发出嘎吱嘎吱的声音……“啪叽！”一声破裂了，那个2楼的女孩在我的正上方从天而降……！？ 　　通过奇迹般的桃色事件，偶然相连的心灵与身体。 　　之后，我竟然开始与2位美女共同生活！？ 　　同一屋檐下，过于浓密的三角关系会如何发展……！？",
+      "tagline": "",
+      "runtime": 7,
+      "release_date": "2018-07-02",
+      "rating": 7.326,
+      "rating_count": 23,
+      "genres": [],
+      "countries": [
+        "JP"
+      ],
+      "languages": [
+        "ja"
+      ],
+      "studios": [
+        "Suiseisha"
+      ],
+      "networks": [
+        "Tokyo MX",
+        "Arc"
+      ],
+      "network": "Tokyo MX",
+      "status": "Ended",
+      "homepage": "https://joshiochi.cf-anime.com",
+      "cast": [
+        {
+          "name_en": "Shinya Takahashi",
+          "name_zh": null,
+          "role": "Sousuke Aikawa (voice)",
+          "original_name": "高橋伸也",
+          "profile_path": "/19DN4yrD9c3E7BWthVEqvwhQNdb.jpg",
+          "popularity": 1.1358
+        },
+        {
+          "name_en": "Rie Okamoto",
+          "name_zh": null,
+          "role": "Yuki Shimizu (voice)",
+          "original_name": "岡本理絵",
+          "profile_path": "/pHqG8t9KlV6zoE6T7Bk7t2Kksfh.jpg",
+          "popularity": 0.0
+        },
+        {
+          "name_en": "Momoko Obana",
+          "name_zh": null,
+          "role": "Sunao Unyuu (voice)",
+          "original_name": "小花モモコ",
+          "profile_path": null,
+          "popularity": 1.168
+        },
+        {
+          "name_en": "Sakura Nakamura",
+          "name_zh": null,
+          "role": "Yuzu Hanazono (voice)",
+          "original_name": "中村桜",
+          "profile_path": "/k38ACSJ2NJDcjWLLSQKJtaWGtiX.jpg",
+          "popularity": 41.353
+        }
+      ],
+      "directors": [
+        "Kinji Yoshimoto",
+        "山田太郎",
+        "吉本欣司"
+      ],
+      "writers": [
+        "Kinji Yoshimoto",
+        "Hakaru Takarai",
+        "吉本欣司"
+      ],
+      "images": {},
+      "seasons": [
+        {
+          "air_date": "2018-07-02",
+          "episode_count": 9,
+          "id": 106710,
+          "name": "第 1 季",
+          "overview": "",
+          "poster_path": "/oDuMS1ELogFOrPW7rvlo7F8kVMX.jpg",
+          "season_number": 1,
+          "vote_average": 9.0
+        }
+      ],
+      "episodes": [
+        {
+          "air_date": "2018-07-02",
+          "crew": [
+            {
+              "job": "Storyboard Artist",
+              "department": "Art",
+              "credit_id": "66df1cf224c43c73819ac77d",
+              "adult": true,
+              "gender": 2,
+              "id": 81705,
+              "known_for_department": "Directing",
+              "name": "吉本欣司",
+              "original_name": "吉本欣司",
+              "popularity": 2.36,
+              "profile_path": null
+            },
+            {
+              "job": "Director",
+              "department": "Directing",
+              "credit_id": "66df1cfc6b81db005fc26997",
+              "adult": true,
+              "gender": 2,
+              "id": 81705,
+              "known_for_department": "Directing",
+              "name": "吉本欣司",
+              "original_name": "吉本欣司",
+              "popularity": 2.36,
+              "profile_path": null
+            },
+            {
+              "job": "Writer",
+              "department": "Writing",
+              "credit_id": "66df1d1e1f97882adc493ccd",
+              "adult": true,
+              "gender": 2,
+              "id": 81705,
+              "known_for_department": "Directing",
+              "name": "吉本欣司",
+              "original_name": "吉本欣司",
+              "popularity": 2.36,
+              "profile_path": null
+            }
+          ],
+          "episode_number": 1,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "第 1 集",
+          "overview": "飞特族相川壮介住在破旧公寓的一楼，并倾心于房东清水由纪的治愈系笑容，某日他受不了楼上的噪音而上楼斥责，但因为二楼住户丹生砂生太可爱而作罢。之后砂生不慎把地板踩出一个洞，让她摔进壮介的房间，并刚好被他的性器插入下体，两人顺势发生了性行为，此景正好被听到巨响而进入屋内查看的由纪看见。",
+          "id": 1527836,
+          "production_code": "",
+          "runtime": 5,
+          "season_number": 1,
+          "still_path": "/1ELl8Wpl1voq9wg2qaH12j1RvQO.jpg",
+          "vote_average": 9.0,
+          "vote_count": 1
+        },
+        {
+          "air_date": "2018-07-09",
+          "crew": [
+            {
+              "job": "Storyboard Artist",
+              "department": "Art",
+              "credit_id": "66df1a62ba6d0b3bd9c267bf",
+              "adult": true,
+              "gender": 0,
+              "id": 2287901,
+              "known_for_department": "Visual Effects",
+              "name": "山田太郎",
+              "original_name": "山田太郎",
+              "popularity": 0.6,
+              "profile_path": null
+            },
+            {
+              "job": "Director",
+              "department": "Directing",
+              "credit_id": "66df1a69c15358f3584c304c",
+              "adult": true,
+              "gender": 0,
+              "id": 2287901,
+              "known_for_department": "Visual Effects",
+              "name": "山田太郎",
+              "original_name": "山田太郎",
+              "popularity": 0.6,
+              "profile_path": null
+            },
+            {
+              "job": "Writer",
+              "department": "Writing",
+              "credit_id": "66df1d1e1f97882adc493ccd",
+              "adult": true,
+              "gender": 2,
+              "id": 81705,
+              "known_for_department": "Directing",
+              "name": "吉本欣司",
+              "original_name": "吉本欣司",
+              "popularity": 2.36,
+              "profile_path": null
+            }
+          ],
+          "episode_number": 2,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "第 2 集",
+          "overview": "在修缮期间，砂生暂住于由纪的房间，而晚上时由纪则到壮介的房间过夜，欲火难耐的壮介趁她熟睡时对她爱抚和指交，由纪便在房间里画线作为边界。",
+          "id": 1527964,
+          "production_code": "",
+          "runtime": 5,
+          "season_number": 1,
+          "still_path": "/qcgyyf8BVSTNWCGI7OYsQDEkQ52.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2018-07-16",
+          "crew": [
+            {
+              "job": "Director",
+              "department": "Directing",
+              "credit_id": "66df1a69c15358f3584c304c",
+              "adult": true,
+              "gender": 0,
+              "id": 2287901,
+              "known_for_department": "Visual Effects",
+              "name": "山田太郎",
+              "original_name": "山田太郎",
+              "popularity": 0.6,
+              "profile_path": null
+            },
+            {
+              "job": "Storyboard Artist",
+              "department": "Art",
+              "credit_id": "66df1c355c838534fa3d8b10",
+              "adult": false,
+              "gender": 0,
+              "id": 3269056,
+              "known_for_department": "Art",
+              "name": "ちょっこう",
+              "original_name": "ちょっこう",
+              "popularity": 0.1389,
+              "profile_path": null
+            },
+            {
+              "job": "Writer",
+              "department": "Writing",
+              "credit_id": "66df1d1e1f97882adc493ccd",
+              "adult": true,
+              "gender": 2,
+              "id": 81705,
+              "known_for_department": "Directing",
+              "name": "吉本欣司",
+              "original_name": "吉本欣司",
+              "popularity": 2.36,
+              "profile_path": null
+            }
+          ],
+          "episode_number": 3,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "第 3 集",
+          "overview": "另一个夜晚，砂生因为忘不了性行为的快感，从破洞跳到壮介的床铺上，并与他发生性行为，但她离开时却把内裤留了下来，在她回房间拿内裤时，由纪刚好因意外而衣衫不整。",
+          "id": 1527965,
+          "production_code": "",
+          "runtime": 5,
+          "season_number": 1,
+          "still_path": "/9uVECHCMWNCGyqRcNoA3LOrmvlq.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2018-07-23",
+          "crew": [
+            {
+              "job": "Storyboard Artist",
+              "department": "Art",
+              "credit_id": "66df1a62ba6d0b3bd9c267bf",
+              "adult": true,
+              "gender": 0,
+              "id": 2287901,
+              "known_for_department": "Visual Effects",
+              "name": "山田太郎",
+              "original_name": "山田太郎",
+              "popularity": 0.6,
+              "profile_path": null
+            },
+            {
+              "job": "Director",
+              "department": "Directing",
+              "credit_id": "66df1a69c15358f3584c304c",
+              "adult": true,
+              "gender": 0,
+              "id": 2287901,
+              "known_for_department": "Visual Effects",
+              "name": "山田太郎",
+              "original_name": "山田太郎",
+              "popularity": 0.6,
+              "profile_path": null
+            },
+            {
+              "job": "Writer",
+              "department": "Writing",
+              "credit_id": "66df1d1e1f97882adc493ccd",
+              "adult": true,
+              "gender": 2,
+              "id": 81705,
+              "known_for_department": "Directing",
+              "name": "吉本欣司",
+              "original_name": "吉本欣司",
+              "popularity": 2.36,
+              "profile_path": null
+            }
+          ],
+          "episode_number": 4,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "第 4 集",
+          "overview": "为了避免被误会，壮介和由纪躲了起来，并因为贴著身子而开始爱抚，在砂生找到内裤并离开后，由纪打了壮介一巴掌。由纪注意到砂生与壮介的关系，便提议三人同住一间。",
+          "id": 1527966,
+          "production_code": "",
+          "runtime": 5,
+          "season_number": 1,
+          "still_path": "/esEVpAta0qK2z82n4QffgiG5PU6.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2018-07-30",
+          "crew": [
+            {
+              "job": "Storyboard Artist",
+              "department": "Art",
+              "credit_id": "66df1a62ba6d0b3bd9c267bf",
+              "adult": true,
+              "gender": 0,
+              "id": 2287901,
+              "known_for_department": "Visual Effects",
+              "name": "山田太郎",
+              "original_name": "山田太郎",
+              "popularity": 0.6,
+              "profile_path": null
+            },
+            {
+              "job": "Director",
+              "department": "Directing",
+              "credit_id": "66df1a69c15358f3584c304c",
+              "adult": true,
+              "gender": 0,
+              "id": 2287901,
+              "known_for_department": "Visual Effects",
+              "name": "山田太郎",
+              "original_name": "山田太郎",
+              "popularity": 0.6,
+              "profile_path": null
+            },
+            {
+              "job": "Writer",
+              "department": "Writing",
+              "credit_id": "66df1d1e1f97882adc493ccd",
+              "adult": true,
+              "gender": 2,
+              "id": 81705,
+              "known_for_department": "Directing",
+              "name": "吉本欣司",
+              "original_name": "吉本欣司",
+              "popularity": 2.36,
+              "profile_path": null
+            }
+          ],
+          "episode_number": 5,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "第 5 集",
+          "overview": "砂生邀壮介一起洗澡，两人在浴室发生性行为。由纪注意到此事，并误以为壮介讨厌自己，才会对自己有非礼之举。砂生拿到了三张温泉旅馆的优惠券，便和壮介、由纪一起出游，砂生在泡温泉时向由纪表示自己喜欢壮介，偷听到此事的壮介认为有发生三人性行为的可能。",
+          "id": 1555580,
+          "production_code": "",
+          "runtime": 6,
+          "season_number": 1,
+          "still_path": "/zOZNaicrHtrraTX71dn6s38LcmT.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2018-08-06",
+          "crew": [
+            {
+              "job": "Storyboard Artist",
+              "department": "Art",
+              "credit_id": "66df1a62ba6d0b3bd9c267bf",
+              "adult": true,
+              "gender": 0,
+              "id": 2287901,
+              "known_for_department": "Visual Effects",
+              "name": "山田太郎",
+              "original_name": "山田太郎",
+              "popularity": 0.6,
+              "profile_path": null
+            },
+            {
+              "job": "Director",
+              "department": "Directing",
+              "credit_id": "66df1a69c15358f3584c304c",
+              "adult": true,
+              "gender": 0,
+              "id": 2287901,
+              "known_for_department": "Visual Effects",
+              "name": "山田太郎",
+              "original_name": "山田太郎",
+              "popularity": 0.6,
+              "profile_path": null
+            },
+            {
+              "job": "Writer",
+              "department": "Writing",
+              "credit_id": "66df1d1e1f97882adc493ccd",
+              "adult": true,
+              "gender": 2,
+              "id": 81705,
+              "known_for_department": "Directing",
+              "name": "吉本欣司",
+              "original_name": "吉本欣司",
+              "popularity": 2.36,
+              "profile_path": null
+            }
+          ],
+          "episode_number": 6,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "第 6 集",
+          "overview": "吃饱喝足后，酒醉的由纪邀壮介泡澡，两人在温泉里股交，导致壮介进行体外射精，但清醒后的由纪对自己的行为很诧异。之后三人去逛祭典，砂生向壮介告白，并与他在竹林中发生性行为。",
+          "id": 1555581,
+          "production_code": "",
+          "runtime": 6,
+          "season_number": 1,
+          "still_path": "/gBbFcgl1LBfVbjszrhRTeFqgWCb.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2018-08-13",
+          "crew": [
+            {
+              "job": "Director",
+              "department": "Directing",
+              "credit_id": "66df1a69c15358f3584c304c",
+              "adult": true,
+              "gender": 0,
+              "id": 2287901,
+              "known_for_department": "Visual Effects",
+              "name": "山田太郎",
+              "original_name": "山田太郎",
+              "popularity": 0.6,
+              "profile_path": null
+            },
+            {
+              "job": "Storyboard Artist",
+              "department": "Art",
+              "credit_id": "66df1b7ef13eea5e6578a151",
+              "adult": false,
+              "gender": 0,
+              "id": 3269057,
+              "known_for_department": "Art",
+              "name": "伴山人",
+              "original_name": "伴山人",
+              "popularity": 0.3271,
+              "profile_path": null
+            },
+            {
+              "job": "Writer",
+              "department": "Writing",
+              "credit_id": "66df1d1e1f97882adc493ccd",
+              "adult": true,
+              "gender": 2,
+              "id": 81705,
+              "known_for_department": "Directing",
+              "name": "吉本欣司",
+              "original_name": "吉本欣司",
+              "popularity": 2.36,
+              "profile_path": null
+            }
+          ],
+          "episode_number": 7,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "第 7 集",
+          "overview": "砂生邀请由纪和壮介来看自己主演的舞台剧，因为戏剧情节涉及情欲，由纪看戏途中便忍不住要壮介爱抚自己。壮介认为自己游移于两位女性之间十分不妥，认为自己是时候做出选择。壮介的青梅竹马花园柚子来找他，并暂住在壮介房间的隔壁，而这两个房间之间的墙有破洞，壮介偷窥时导致墙壁坍塌，柚子主动和壮介发生了性行为。为了让壮介做出抉择，三位女性决定透过泳装决胜负。",
+          "id": 1555582,
+          "production_code": "",
+          "runtime": 6,
+          "season_number": 1,
+          "still_path": "/kaIr21pt0z7PnW3vz0w9PNDTAVb.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2018-08-20",
+          "crew": [
+            {
+              "job": "Director",
+              "department": "Directing",
+              "credit_id": "66df1a69c15358f3584c304c",
+              "adult": true,
+              "gender": 0,
+              "id": 2287901,
+              "known_for_department": "Visual Effects",
+              "name": "山田太郎",
+              "original_name": "山田太郎",
+              "popularity": 0.6,
+              "profile_path": null
+            },
+            {
+              "job": "Storyboard Artist",
+              "department": "Art",
+              "credit_id": "66df1b7ef13eea5e6578a151",
+              "adult": false,
+              "gender": 0,
+              "id": 3269057,
+              "known_for_department": "Art",
+              "name": "伴山人",
+              "original_name": "伴山人",
+              "popularity": 0.3271,
+              "profile_path": null
+            },
+            {
+              "job": "Writer",
+              "department": "Writing",
+              "credit_id": "66df1d1e1f97882adc493ccd",
+              "adult": true,
+              "gender": 2,
+              "id": 81705,
+              "known_for_department": "Directing",
+              "name": "吉本欣司",
+              "original_name": "吉本欣司",
+              "popularity": 2.36,
+              "profile_path": null
+            }
+          ],
+          "episode_number": 8,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "第 8 集",
+          "overview": "四人到海边游玩，柚子积极地诱惑壮介，并因此和他在海中发生性行为。心生妒忌的砂生和壮介在储藏室进行了性行为。",
+          "id": 1555583,
+          "production_code": "",
+          "runtime": 6,
+          "season_number": 1,
+          "still_path": "/oSuJ7nN94KjwYs1VRPUCGpH8QUv.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2018-08-27",
+          "crew": [
+            {
+              "job": "Director",
+              "department": "Directing",
+              "credit_id": "66df1a69c15358f3584c304c",
+              "adult": true,
+              "gender": 0,
+              "id": 2287901,
+              "known_for_department": "Visual Effects",
+              "name": "山田太郎",
+              "original_name": "山田太郎",
+              "popularity": 0.6,
+              "profile_path": null
+            },
+            {
+              "job": "Storyboard Artist",
+              "department": "Art",
+              "credit_id": "66df1b7ef13eea5e6578a151",
+              "adult": false,
+              "gender": 0,
+              "id": 3269057,
+              "known_for_department": "Art",
+              "name": "伴山人",
+              "original_name": "伴山人",
+              "popularity": 0.3271,
+              "profile_path": null
+            },
+            {
+              "job": "Writer",
+              "department": "Writing",
+              "credit_id": "66df1d1e1f97882adc493ccd",
+              "adult": true,
+              "gender": 2,
+              "id": 81705,
+              "known_for_department": "Directing",
+              "name": "吉本欣司",
+              "original_name": "吉本欣司",
+              "popularity": 2.36,
+              "profile_path": null
+            }
+          ],
+          "episode_number": 9,
+          "episode_type": "finale",
+          "guest_stars": [],
+          "name": "第 9 集",
+          "overview": "由纪和壮介待在女子淋浴间，由纪注意到壮介和其他人的关系，但她迟迟没有坦承自己对壮介的爱意。在壮介的主导下，两人终于发生性行为。之后壮介并未选出自己最心仪的对象，而是和三人同时发生性关系。",
+          "id": 1560650,
+          "production_code": "",
+          "runtime": 7,
+          "season_number": 1,
+          "still_path": "/yQYlVoOSkbu300zzFevAw0QwBO8.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        }
+      ],
+      "title_zh": "天降女子！~女孩子从2楼…掉了下来！？~",
+      "plot_zh": "　　女孩子穿透天花板，从2楼掉了下来！？ 　　住在破旧公寓里的我，唯一感到治愈的，是美人房东和2楼的可爱女孩。 　　某天，天花板发出嘎吱嘎吱的声音……“啪叽！”一声破裂了，那个2楼的女孩在我的正上方从天而降……！？ 　　通过奇迹般的桃色事件，偶然相连的心灵与身体。 　　之后，我竟然开始与2位美女共同生活！？ 　　同一屋檐下，过于浓密的三角关系会如何发展……！？",
+      "keywords_en": [
+        "harem",
+        "romance",
+        "based on manga",
+        "hentai",
+        "anime",
+        "love polygon",
+        "erotic",
+        "hentai, sex, youth"
+      ],
+      "keywords": [
+        "harem",
+        "romance",
+        "based on manga",
+        "hentai",
+        "anime",
+        "love polygon",
+        "erotic",
+        "hentai, sex, youth"
+      ],
+      "keywords_zh": [
+        "后宫",
+        "浪漫",
+        "改编自漫画",
+        "腐女",
+        "动画",
+        "爱的多边形",
+        "色情",
+        "色情，性，青年"
+      ]
+    },
+    "episodes": [
+      {
+        "air_date": "2018-07-02",
+        "crew": [
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "66df1cf224c43c73819ac77d",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          },
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "66df1cfc6b81db005fc26997",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "66df1d1e1f97882adc493ccd",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 1 集",
+        "overview": "飞特族相川壮介住在破旧公寓的一楼，并倾心于房东清水由纪的治愈系笑容，某日他受不了楼上的噪音而上楼斥责，但因为二楼住户丹生砂生太可爱而作罢。之后砂生不慎把地板踩出一个洞，让她摔进壮介的房间，并刚好被他的性器插入下体，两人顺势发生了性行为，此景正好被听到巨响而进入屋内查看的由纪看见。",
+        "id": 1527836,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/1ELl8Wpl1voq9wg2qaH12j1RvQO.jpg",
+        "vote_average": 9.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-07-09",
+        "crew": [
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "66df1a62ba6d0b3bd9c267bf",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "66df1a69c15358f3584c304c",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "66df1d1e1f97882adc493ccd",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 2 集",
+        "overview": "在修缮期间，砂生暂住于由纪的房间，而晚上时由纪则到壮介的房间过夜，欲火难耐的壮介趁她熟睡时对她爱抚和指交，由纪便在房间里画线作为边界。",
+        "id": 1527964,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/qcgyyf8BVSTNWCGI7OYsQDEkQ52.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2018-07-16",
+        "crew": [
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "66df1a69c15358f3584c304c",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "66df1c355c838534fa3d8b10",
+            "adult": false,
+            "gender": 0,
+            "id": 3269056,
+            "known_for_department": "Art",
+            "name": "ちょっこう",
+            "original_name": "ちょっこう",
+            "popularity": 0.1389,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "66df1d1e1f97882adc493ccd",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 3,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 3 集",
+        "overview": "另一个夜晚，砂生因为忘不了性行为的快感，从破洞跳到壮介的床铺上，并与他发生性行为，但她离开时却把内裤留了下来，在她回房间拿内裤时，由纪刚好因意外而衣衫不整。",
+        "id": 1527965,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/9uVECHCMWNCGyqRcNoA3LOrmvlq.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2018-07-23",
+        "crew": [
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "66df1a62ba6d0b3bd9c267bf",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "66df1a69c15358f3584c304c",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "66df1d1e1f97882adc493ccd",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 4,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 4 集",
+        "overview": "为了避免被误会，壮介和由纪躲了起来，并因为贴著身子而开始爱抚，在砂生找到内裤并离开后，由纪打了壮介一巴掌。由纪注意到砂生与壮介的关系，便提议三人同住一间。",
+        "id": 1527966,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/esEVpAta0qK2z82n4QffgiG5PU6.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2018-07-30",
+        "crew": [
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "66df1a62ba6d0b3bd9c267bf",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "66df1a69c15358f3584c304c",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "66df1d1e1f97882adc493ccd",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 5,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 5 集",
+        "overview": "砂生邀壮介一起洗澡，两人在浴室发生性行为。由纪注意到此事，并误以为壮介讨厌自己，才会对自己有非礼之举。砂生拿到了三张温泉旅馆的优惠券，便和壮介、由纪一起出游，砂生在泡温泉时向由纪表示自己喜欢壮介，偷听到此事的壮介认为有发生三人性行为的可能。",
+        "id": 1555580,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/zOZNaicrHtrraTX71dn6s38LcmT.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2018-08-06",
+        "crew": [
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "66df1a62ba6d0b3bd9c267bf",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "66df1a69c15358f3584c304c",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "66df1d1e1f97882adc493ccd",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 6,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 6 集",
+        "overview": "吃饱喝足后，酒醉的由纪邀壮介泡澡，两人在温泉里股交，导致壮介进行体外射精，但清醒后的由纪对自己的行为很诧异。之后三人去逛祭典，砂生向壮介告白，并与他在竹林中发生性行为。",
+        "id": 1555581,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/gBbFcgl1LBfVbjszrhRTeFqgWCb.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2018-08-13",
+        "crew": [
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "66df1a69c15358f3584c304c",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "66df1b7ef13eea5e6578a151",
+            "adult": false,
+            "gender": 0,
+            "id": 3269057,
+            "known_for_department": "Art",
+            "name": "伴山人",
+            "original_name": "伴山人",
+            "popularity": 0.3271,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "66df1d1e1f97882adc493ccd",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 7,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 7 集",
+        "overview": "砂生邀请由纪和壮介来看自己主演的舞台剧，因为戏剧情节涉及情欲，由纪看戏途中便忍不住要壮介爱抚自己。壮介认为自己游移于两位女性之间十分不妥，认为自己是时候做出选择。壮介的青梅竹马花园柚子来找他，并暂住在壮介房间的隔壁，而这两个房间之间的墙有破洞，壮介偷窥时导致墙壁坍塌，柚子主动和壮介发生了性行为。为了让壮介做出抉择，三位女性决定透过泳装决胜负。",
+        "id": 1555582,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/kaIr21pt0z7PnW3vz0w9PNDTAVb.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2018-08-20",
+        "crew": [
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "66df1a69c15358f3584c304c",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "66df1b7ef13eea5e6578a151",
+            "adult": false,
+            "gender": 0,
+            "id": 3269057,
+            "known_for_department": "Art",
+            "name": "伴山人",
+            "original_name": "伴山人",
+            "popularity": 0.3271,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "66df1d1e1f97882adc493ccd",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 8,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 8 集",
+        "overview": "四人到海边游玩，柚子积极地诱惑壮介，并因此和他在海中发生性行为。心生妒忌的砂生和壮介在储藏室进行了性行为。",
+        "id": 1555583,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/oSuJ7nN94KjwYs1VRPUCGpH8QUv.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2018-08-27",
+        "crew": [
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "66df1a69c15358f3584c304c",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "66df1b7ef13eea5e6578a151",
+            "adult": false,
+            "gender": 0,
+            "id": 3269057,
+            "known_for_department": "Art",
+            "name": "伴山人",
+            "original_name": "伴山人",
+            "popularity": 0.3271,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "66df1d1e1f97882adc493ccd",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 9,
+        "episode_type": "finale",
+        "guest_stars": [],
+        "name": "第 9 集",
+        "overview": "由纪和壮介待在女子淋浴间，由纪注意到壮介和其他人的关系，但她迟迟没有坦承自己对壮介的爱意。在壮介的主导下，两人终于发生性行为。之后壮介并未选出自己最心仪的对象，而是和三人同时发生性关系。",
+        "id": 1560650,
+        "production_code": "",
+        "runtime": 7,
+        "season_number": 1,
+        "still_path": "/yQYlVoOSkbu300zzFevAw0QwBO8.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      }
+    ]
+  },
+  "normalize": {
+    "media_type": "tv",
+    "tmdb_id": 81044,
+    "title": "天降女子！~女孩子从2楼…掉了下来！？~",
+    "original_title": "じょしおちっ！～2階から女の子が・・・降ってきた！？～",
+    "year": 2018,
+    "plot": "　　女孩子穿透天花板，从2楼掉了下来！？ 　　住在破旧公寓里的我，唯一感到治愈的，是美人房东和2楼的可爱女孩。 　　某天，天花板发出嘎吱嘎吱的声音……“啪叽！”一声破裂了，那个2楼的女孩在我的正上方从天而降……！？ 　　通过奇迹般的桃色事件，偶然相连的心灵与身体。 　　之后，我竟然开始与2位美女共同生活！？ 　　同一屋檐下，过于浓密的三角关系会如何发展……！？",
+    "tagline": "",
+    "runtime": 7,
+    "release_date": "2018-07-02",
+    "rating": 7.326,
+    "rating_count": 23,
+    "genres": [],
+    "countries": [
+      "JP"
+    ],
+    "languages": [
+      "ja"
+    ],
+    "studios": [
+      "Suiseisha"
+    ],
+    "networks": [
+      "Tokyo MX",
+      "Arc"
+    ],
+    "network": "Tokyo MX",
+    "status": "Ended",
+    "homepage": "https://joshiochi.cf-anime.com",
+    "cast": [
+      {
+        "name_en": "Shinya Takahashi",
+        "name_zh": null,
+        "role": "Sousuke Aikawa (voice)",
+        "original_name": "高橋伸也",
+        "profile_path": "/19DN4yrD9c3E7BWthVEqvwhQNdb.jpg",
+        "popularity": 1.1358
+      },
+      {
+        "name_en": "Rie Okamoto",
+        "name_zh": null,
+        "role": "Yuki Shimizu (voice)",
+        "original_name": "岡本理絵",
+        "profile_path": "/pHqG8t9KlV6zoE6T7Bk7t2Kksfh.jpg",
+        "popularity": 0.0
+      },
+      {
+        "name_en": "Momoko Obana",
+        "name_zh": null,
+        "role": "Sunao Unyuu (voice)",
+        "original_name": "小花モモコ",
+        "profile_path": null,
+        "popularity": 1.168
+      },
+      {
+        "name_en": "Sakura Nakamura",
+        "name_zh": null,
+        "role": "Yuzu Hanazono (voice)",
+        "original_name": "中村桜",
+        "profile_path": "/k38ACSJ2NJDcjWLLSQKJtaWGtiX.jpg",
+        "popularity": 41.353
+      }
+    ],
+    "directors": [
+      "Kinji Yoshimoto",
+      "山田太郎",
+      "吉本欣司"
+    ],
+    "writers": [
+      "Kinji Yoshimoto",
+      "Hakaru Takarai",
+      "吉本欣司"
+    ],
+    "images": {},
+    "seasons": [
+      {
+        "air_date": "2018-07-02",
+        "episode_count": 9,
+        "id": 106710,
+        "name": "第 1 季",
+        "overview": "",
+        "poster_path": "/oDuMS1ELogFOrPW7rvlo7F8kVMX.jpg",
+        "season_number": 1,
+        "vote_average": 9.0
+      }
+    ],
+    "episodes": [
+      {
+        "air_date": "2018-07-02",
+        "crew": [
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "66df1cf224c43c73819ac77d",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          },
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "66df1cfc6b81db005fc26997",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "66df1d1e1f97882adc493ccd",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 1 集",
+        "overview": "飞特族相川壮介住在破旧公寓的一楼，并倾心于房东清水由纪的治愈系笑容，某日他受不了楼上的噪音而上楼斥责，但因为二楼住户丹生砂生太可爱而作罢。之后砂生不慎把地板踩出一个洞，让她摔进壮介的房间，并刚好被他的性器插入下体，两人顺势发生了性行为，此景正好被听到巨响而进入屋内查看的由纪看见。",
+        "id": 1527836,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/1ELl8Wpl1voq9wg2qaH12j1RvQO.jpg",
+        "vote_average": 9.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-07-09",
+        "crew": [
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "66df1a62ba6d0b3bd9c267bf",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "66df1a69c15358f3584c304c",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "66df1d1e1f97882adc493ccd",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 2 集",
+        "overview": "在修缮期间，砂生暂住于由纪的房间，而晚上时由纪则到壮介的房间过夜，欲火难耐的壮介趁她熟睡时对她爱抚和指交，由纪便在房间里画线作为边界。",
+        "id": 1527964,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/qcgyyf8BVSTNWCGI7OYsQDEkQ52.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2018-07-16",
+        "crew": [
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "66df1a69c15358f3584c304c",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "66df1c355c838534fa3d8b10",
+            "adult": false,
+            "gender": 0,
+            "id": 3269056,
+            "known_for_department": "Art",
+            "name": "ちょっこう",
+            "original_name": "ちょっこう",
+            "popularity": 0.1389,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "66df1d1e1f97882adc493ccd",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 3,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 3 集",
+        "overview": "另一个夜晚，砂生因为忘不了性行为的快感，从破洞跳到壮介的床铺上，并与他发生性行为，但她离开时却把内裤留了下来，在她回房间拿内裤时，由纪刚好因意外而衣衫不整。",
+        "id": 1527965,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/9uVECHCMWNCGyqRcNoA3LOrmvlq.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2018-07-23",
+        "crew": [
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "66df1a62ba6d0b3bd9c267bf",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "66df1a69c15358f3584c304c",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "66df1d1e1f97882adc493ccd",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 4,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 4 集",
+        "overview": "为了避免被误会，壮介和由纪躲了起来，并因为贴著身子而开始爱抚，在砂生找到内裤并离开后，由纪打了壮介一巴掌。由纪注意到砂生与壮介的关系，便提议三人同住一间。",
+        "id": 1527966,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/esEVpAta0qK2z82n4QffgiG5PU6.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2018-07-30",
+        "crew": [
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "66df1a62ba6d0b3bd9c267bf",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "66df1a69c15358f3584c304c",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "66df1d1e1f97882adc493ccd",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 5,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 5 集",
+        "overview": "砂生邀壮介一起洗澡，两人在浴室发生性行为。由纪注意到此事，并误以为壮介讨厌自己，才会对自己有非礼之举。砂生拿到了三张温泉旅馆的优惠券，便和壮介、由纪一起出游，砂生在泡温泉时向由纪表示自己喜欢壮介，偷听到此事的壮介认为有发生三人性行为的可能。",
+        "id": 1555580,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/zOZNaicrHtrraTX71dn6s38LcmT.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2018-08-06",
+        "crew": [
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "66df1a62ba6d0b3bd9c267bf",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "66df1a69c15358f3584c304c",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "66df1d1e1f97882adc493ccd",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 6,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 6 集",
+        "overview": "吃饱喝足后，酒醉的由纪邀壮介泡澡，两人在温泉里股交，导致壮介进行体外射精，但清醒后的由纪对自己的行为很诧异。之后三人去逛祭典，砂生向壮介告白，并与他在竹林中发生性行为。",
+        "id": 1555581,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/gBbFcgl1LBfVbjszrhRTeFqgWCb.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2018-08-13",
+        "crew": [
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "66df1a69c15358f3584c304c",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "66df1b7ef13eea5e6578a151",
+            "adult": false,
+            "gender": 0,
+            "id": 3269057,
+            "known_for_department": "Art",
+            "name": "伴山人",
+            "original_name": "伴山人",
+            "popularity": 0.3271,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "66df1d1e1f97882adc493ccd",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 7,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 7 集",
+        "overview": "砂生邀请由纪和壮介来看自己主演的舞台剧，因为戏剧情节涉及情欲，由纪看戏途中便忍不住要壮介爱抚自己。壮介认为自己游移于两位女性之间十分不妥，认为自己是时候做出选择。壮介的青梅竹马花园柚子来找他，并暂住在壮介房间的隔壁，而这两个房间之间的墙有破洞，壮介偷窥时导致墙壁坍塌，柚子主动和壮介发生了性行为。为了让壮介做出抉择，三位女性决定透过泳装决胜负。",
+        "id": 1555582,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/kaIr21pt0z7PnW3vz0w9PNDTAVb.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2018-08-20",
+        "crew": [
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "66df1a69c15358f3584c304c",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "66df1b7ef13eea5e6578a151",
+            "adult": false,
+            "gender": 0,
+            "id": 3269057,
+            "known_for_department": "Art",
+            "name": "伴山人",
+            "original_name": "伴山人",
+            "popularity": 0.3271,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "66df1d1e1f97882adc493ccd",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 8,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "第 8 集",
+        "overview": "四人到海边游玩，柚子积极地诱惑壮介，并因此和他在海中发生性行为。心生妒忌的砂生和壮介在储藏室进行了性行为。",
+        "id": 1555583,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/oSuJ7nN94KjwYs1VRPUCGpH8QUv.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2018-08-27",
+        "crew": [
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "66df1a69c15358f3584c304c",
+            "adult": true,
+            "gender": 0,
+            "id": 2287901,
+            "known_for_department": "Visual Effects",
+            "name": "山田太郎",
+            "original_name": "山田太郎",
+            "popularity": 0.6,
+            "profile_path": null
+          },
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "66df1b7ef13eea5e6578a151",
+            "adult": false,
+            "gender": 0,
+            "id": 3269057,
+            "known_for_department": "Art",
+            "name": "伴山人",
+            "original_name": "伴山人",
+            "popularity": 0.3271,
+            "profile_path": null
+          },
+          {
+            "job": "Writer",
+            "department": "Writing",
+            "credit_id": "66df1d1e1f97882adc493ccd",
+            "adult": true,
+            "gender": 2,
+            "id": 81705,
+            "known_for_department": "Directing",
+            "name": "吉本欣司",
+            "original_name": "吉本欣司",
+            "popularity": 2.36,
+            "profile_path": null
+          }
+        ],
+        "episode_number": 9,
+        "episode_type": "finale",
+        "guest_stars": [],
+        "name": "第 9 集",
+        "overview": "由纪和壮介待在女子淋浴间，由纪注意到壮介和其他人的关系，但她迟迟没有坦承自己对壮介的爱意。在壮介的主导下，两人终于发生性行为。之后壮介并未选出自己最心仪的对象，而是和三人同时发生性关系。",
+        "id": 1560650,
+        "production_code": "",
+        "runtime": 7,
+        "season_number": 1,
+        "still_path": "/yQYlVoOSkbu300zzFevAw0QwBO8.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      }
+    ],
+    "title_zh": "天降女子！~女孩子从2楼…掉了下来！？~",
+    "plot_zh": "　　女孩子穿透天花板，从2楼掉了下来！？ 　　住在破旧公寓里的我，唯一感到治愈的，是美人房东和2楼的可爱女孩。 　　某天，天花板发出嘎吱嘎吱的声音……“啪叽！”一声破裂了，那个2楼的女孩在我的正上方从天而降……！？ 　　通过奇迹般的桃色事件，偶然相连的心灵与身体。 　　之后，我竟然开始与2位美女共同生活！？ 　　同一屋檐下，过于浓密的三角关系会如何发展……！？",
+    "keywords_en": [
+      "harem",
+      "romance",
+      "based on manga",
+      "hentai",
+      "anime",
+      "love polygon",
+      "erotic",
+      "hentai, sex, youth"
+    ],
+    "keywords": [
+      "harem",
+      "romance",
+      "based on manga",
+      "hentai",
+      "anime",
+      "love polygon",
+      "erotic",
+      "hentai, sex, youth"
+    ],
+    "keywords_zh": [
+      "后宫",
+      "浪漫",
+      "改编自漫画",
+      "腐女",
+      "动画",
+      "爱的多边形",
+      "色情",
+      "色情，性，青年"
+    ]
+  },
+  "nfo": {
+    "data": {
+      "title": "天降女子！~女孩子从2楼…掉了下来！？~",
+      "originaltitle": "じょしおちっ！～2階から女の子が・・・降ってきた！？～",
+      "year": 2018,
+      "premiered": "2018-07-02",
+      "plot": "　　女孩子穿透天花板，从2楼掉了下来！？ 　　住在破旧公寓里的我，唯一感到治愈的，是美人房东和2楼的可爱女孩。 　　某天，天花板发出嘎吱嘎吱的声音……“啪叽！”一声破裂了，那个2楼的女孩在我的正上方从天而降……！？ 　　通过奇迹般的桃色事件，偶然相连的心灵与身体。 　　之后，我竟然开始与2位美女共同生活！？ 　　同一屋檐下，过于浓密的三角关系会如何发展……！？",
+      "tagline": "",
+      "runtime": 7,
+      "rating": 7.326,
+      "votes": 23,
+      "genre": [],
+      "country": [
+        "JP"
+      ],
+      "studio": [
+        "Suiseisha"
+      ],
+      "credits": [
+        "Kinji Yoshimoto",
+        "Hakaru Takarai",
+        "吉本欣司"
+      ],
+      "director": [
+        "Kinji Yoshimoto",
+        "山田太郎",
+        "吉本欣司"
+      ],
+      "actor": [
+        {
+          "name": "Shinya Takahashi",
+          "role": "Sousuke Aikawa (voice)",
+          "originalname": "高橋伸也",
+          "thumb": "images/actors/Shinya Takahashi.jpg"
+        },
+        {
+          "name": "Rie Okamoto",
+          "role": "Yuki Shimizu (voice)",
+          "originalname": "岡本理絵",
+          "thumb": "images/actors/Rie Okamoto.jpg"
+        },
+        {
+          "name": "Momoko Obana",
+          "role": "Sunao Unyuu (voice)",
+          "originalname": "小花モモコ"
+        },
+        {
+          "name": "Sakura Nakamura",
+          "role": "Yuzu Hanazono (voice)",
+          "originalname": "中村桜",
+          "thumb": "images/actors/Sakura Nakamura.jpg"
+        }
+      ],
+      "thumb": "poster.jpg",
+      "fanart": "fanart.jpg",
+      "tags": [
+        "后宫",
+        "浪漫",
+        "改编自漫画",
+        "腐女",
+        "动画",
+        "爱的多边形",
+        "色情",
+        "色情，性，青年"
+      ],
+      "network": "Tokyo MX",
+      "networks": [
+        "Tokyo MX",
+        "Arc"
+      ],
+      "status": "Ended",
+      "homepage": "https://joshiochi.cf-anime.com",
+      "tmdb_id": 81044,
+      "validated": true
+    },
+    "xml": "<?xml version=\"1.0\" ?>\n<tvshow>\n  <title>天降女子！~女孩子从2楼…掉了下来！？~</title>\n  <originaltitle>じょしおちっ！～2階から女の子が・・・降ってきた！？～</originaltitle>\n  <year>2018</year>\n  <premiered>2018-07-02</premiered>\n  <plot><![CDATA[　　女孩子穿透天花板，从2楼掉了下来！？ 　　住在破旧公寓里的我，唯一感到治愈的，是美人房东和2楼的可爱女孩。 　　某天，天花板发出嘎吱嘎吱的声音……“啪叽！”一声破裂了，那个2楼的女孩在我的正上方从天而降……！？ 　　通过奇迹般的桃色事件，偶然相连的心灵与身体。 　　之后，我竟然开始与2位美女共同生活！？ 　　同一屋檐下，过于浓密的三角关系会如何发展……！？]]></plot>\n  <runtime>7</runtime>\n  <rating>7.326</rating>\n  <votes>23</votes>\n  <tmdbid>81044</tmdbid>\n  <country>JP</country>\n  <studio>Suiseisha</studio>\n  <credits>Kinji Yoshimoto, Hakaru Takarai, 吉本欣司</credits>\n  <director>Kinji Yoshimoto</director>\n  <director>山田太郎</director>\n  <director>吉本欣司</director>\n  <actor>\n    <name>Shinya Takahashi</name>\n    <role>Sousuke Aikawa (voice)</role>\n    <originalname>高橋伸也</originalname>\n    <thumb>images/actors/Shinya Takahashi.jpg</thumb>\n  </actor>\n  <actor>\n    <name>Rie Okamoto</name>\n    <role>Yuki Shimizu (voice)</role>\n    <originalname>岡本理絵</originalname>\n    <thumb>images/actors/Rie Okamoto.jpg</thumb>\n  </actor>\n  <actor>\n    <name>Momoko Obana</name>\n    <role>Sunao Unyuu (voice)</role>\n    <originalname>小花モモコ</originalname>\n  </actor>\n  <actor>\n    <name>Sakura Nakamura</name>\n    <role>Yuzu Hanazono (voice)</role>\n    <originalname>中村桜</originalname>\n    <thumb>images/actors/Sakura Nakamura.jpg</thumb>\n  </actor>\n  <network>Tokyo MX</network>\n  <network>Arc</network>\n  <status>Ended</status>\n  <homepage>https://joshiochi.cf-anime.com</homepage>\n  <uniqueid type=\"tmdb\" default=\"true\">81044</uniqueid>\n  <thumb>images/poster/poster.jpg</thumb>\n  <fanart>images/fanart/fanart.jpg</fanart>\n  <tag>后宫</tag>\n  <tag>浪漫</tag>\n  <tag>改编自漫画</tag>\n  <tag>腐女</tag>\n  <tag>动画</tag>\n  <tag>爱的多边形</tag>\n  <tag>色情</tag>\n  <tag>色情，性，青年</tag>\n</tvshow>\n"
+  },
+  "output": {
+    "status": "completed",
+    "files": {
+      "nfo_file": "/Volumes/video/Animation/The Animation/天降女子！~女孩子从2楼…掉了下来！？~ (2018)/tvshow.nfo",
+      "images_dir": "/Volumes/video/Animation/The Animation/天降女子！~女孩子从2楼…掉了下来！？~ (2018)/images",
+      "media_dir": "/Volumes/video/Animation/The Animation/天降女子！~女孩子从2楼…掉了下来！？~ (2018)",
+      "season_1_episode_1": "/Volumes/video/Animation/The Animation/天降女子！~女孩子从2楼…掉了下来！？~ (2018)/Season 01/天降女子！~女孩子从2楼…掉了下来！？~ - S01E01 - 第 1 集.nfo",
+      "season_1_episode_2": "/Volumes/video/Animation/The Animation/天降女子！~女孩子从2楼…掉了下来！？~ (2018)/Season 01/天降女子！~女孩子从2楼…掉了下来！？~ - S01E02 - 第 2 集.nfo",
+      "season_1_episode_3": "/Volumes/video/Animation/The Animation/天降女子！~女孩子从2楼…掉了下来！？~ (2018)/Season 01/天降女子！~女孩子从2楼…掉了下来！？~ - S01E03 - 第 3 集.nfo",
+      "season_1_episode_4": "/Volumes/video/Animation/The Animation/天降女子！~女孩子从2楼…掉了下来！？~ (2018)/Season 01/天降女子！~女孩子从2楼…掉了下来！？~ - S01E04 - 第 4 集.nfo",
+      "season_1_episode_5": "/Volumes/video/Animation/The Animation/天降女子！~女孩子从2楼…掉了下来！？~ (2018)/Season 01/天降女子！~女孩子从2楼…掉了下来！？~ - S01E05 - 第 5 集.nfo",
+      "season_1_episode_6": "/Volumes/video/Animation/The Animation/天降女子！~女孩子从2楼…掉了下来！？~ (2018)/Season 01/天降女子！~女孩子从2楼…掉了下来！？~ - S01E06 - 第 6 集.nfo",
+      "season_1_episode_7": "/Volumes/video/Animation/The Animation/天降女子！~女孩子从2楼…掉了下来！？~ (2018)/Season 01/天降女子！~女孩子从2楼…掉了下来！？~ - S01E07 - 第 7 集.nfo",
+      "season_1_episode_8": "/Volumes/video/Animation/The Animation/天降女子！~女孩子从2楼…掉了下来！？~ (2018)/Season 01/天降女子！~女孩子从2楼…掉了下来！？~ - S01E08 - 第 8 集.nfo",
+      "season_1_episode_9": "/Volumes/video/Animation/The Animation/天降女子！~女孩子从2楼…掉了下来！？~ (2018)/Season 01/天降女子！~女孩子从2楼…掉了下来！？~ - S01E09 - 第 9 集.nfo"
+    }
+  },
+  "errors": [],
+  "end_time": "2025-12-05T23:13:02.592814"
+}

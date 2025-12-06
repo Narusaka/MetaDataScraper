@@ -1,0 +1,1600 @@
+{
+  "start_time": "2025-12-05T23:15:26.673896",
+  "input": {
+    "media_type": "tv",
+    "query": "裙子里面是野兽",
+    "output_dir": "/Volumes/video/Animation/The Animation/裙子里面是野兽 (2017)",
+    "verbose": false,
+    "quiet": true,
+    "aid_search": true
+  },
+  "search": {
+    "results": {
+      "page": 1,
+      "results": [
+        {
+          "adult": false,
+          "backdrop_path": "/g4xIonifR3ainYvoTBJhW2Zrcdr.jpg",
+          "genre_ids": [
+            16
+          ],
+          "id": 72520,
+          "origin_country": [
+            "JP"
+          ],
+          "original_language": "ja",
+          "original_name": "スカートの中はケダモノでした。",
+          "overview": "The story begins when the reserved Shizuka attends a local mixer party but has trouble adjusting to the atmosphere. A beautiful older female college student named Ryou starts talking to her, and the pair hit it off. Shizuka goes to spend the night at Ryou's place. However, Ryou unexpectedly kisses Shizuka and pushes her down. Shizuka thinks the beautiful woman is a lesbian but soon discovers that Ryou is actually a man dressed as a woman.",
+          "popularity": 2.8047,
+          "poster_path": "/5o2TArFnXPzBvLdH97AOnJCfwW0.jpg",
+          "first_air_date": "2017-07-01",
+          "name": "A Predator in a Skirt",
+          "vote_average": 6.2,
+          "vote_count": 14,
+          "media_type": "tv"
+        }
+      ],
+      "total_pages": 1,
+      "total_results": 1
+    },
+    "skip_search": false
+  },
+  "fetch": {
+    "main": {
+      "adult": false,
+      "backdrop_path": "/g4xIonifR3ainYvoTBJhW2Zrcdr.jpg",
+      "created_by": [],
+      "episode_run_time": [
+        5
+      ],
+      "first_air_date": "2017-07-01",
+      "genres": [
+        {
+          "id": 16,
+          "name": "动画"
+        }
+      ],
+      "homepage": "http://skirt.w-anime.com/",
+      "id": 72520,
+      "in_production": false,
+      "languages": [
+        "ja"
+      ],
+      "last_air_date": "2017-09-18",
+      "last_episode_to_air": {
+        "id": 1398391,
+        "name": "喜欢你…真的喜欢你…",
+        "overview": "",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "air_date": "2017-09-18",
+        "episode_number": 12,
+        "episode_type": "finale",
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "show_id": 72520,
+        "still_path": "/tPtezfWEoNVpMFYWsyAC9WvwStm.jpg"
+      },
+      "name": "裙子里面是野兽",
+      "next_episode_to_air": null,
+      "networks": [
+        {
+          "id": 614,
+          "logo_path": "/hSdroyVthq3CynxTIIY7lnS8w1.png",
+          "name": "Tokyo MX",
+          "origin_country": "JP"
+        }
+      ],
+      "number_of_episodes": 12,
+      "number_of_seasons": 1,
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "スカートの中はケダモノでした。",
+      "overview": "遇见了美人大姐姐……才怪!?\n\n参加了街道联谊，却无法融入这种气氛的静歌。向她搭话的是，比她年长的女大学生凉。两人很快便意气相投，但静歌却在凉的房间突然被吻，并被推倒——「难道凉小姐是蕾丝!?」虽然一开始这么想，但是作为女孩子的身体来说总有哪里不对…不会吧…难道说这个人，是女装!?",
+      "popularity": 2.8047,
+      "poster_path": "/5o2TArFnXPzBvLdH97AOnJCfwW0.jpg",
+      "production_companies": [
+        {
+          "id": 13078,
+          "logo_path": "/jnayAepbXCflSI4jkH59a84HiIK.png",
+          "name": "Magic Bus",
+          "origin_country": "JP"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "JP",
+          "name": "Japan"
+        }
+      ],
+      "seasons": [
+        {
+          "air_date": "2017-07-01",
+          "episode_count": 12,
+          "id": 89824,
+          "name": "第 1 季",
+          "overview": "",
+          "poster_path": "/yna6Y31rf8CiT4Wq0rF97u3Zsf1.jpg",
+          "season_number": 1,
+          "vote_average": 5.0
+        }
+      ],
+      "spoken_languages": [
+        {
+          "english_name": "Japanese",
+          "iso_639_1": "ja",
+          "name": "日本語"
+        }
+      ],
+      "status": "Ended",
+      "tagline": "",
+      "type": "Scripted",
+      "vote_average": 6.2,
+      "vote_count": 14
+    },
+    "credits": {
+      "cast": [
+        {
+          "adult": false,
+          "gender": 0,
+          "id": 3468721,
+          "known_for_department": "Acting",
+          "name": "Shiori Satsuki",
+          "original_name": "Shiori Satsuki",
+          "popularity": 0.0363,
+          "profile_path": null,
+          "character": "Ryou Kirishima (voice)",
+          "credit_id": "62331a65904f6d0044a88326",
+          "order": 0
+        },
+        {
+          "adult": false,
+          "gender": 1,
+          "id": 3053510,
+          "known_for_department": "Acting",
+          "name": "Miho Hayashi",
+          "original_name": "拝師みほ",
+          "popularity": 0.9922,
+          "profile_path": "/1HMRlGAUNGRZ5xNRpBwWAJubRSZ.jpg",
+          "character": "Shizuka Kominami (voice)",
+          "credit_id": "62331ababa131b001f86341a",
+          "order": 1
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 1824188,
+          "known_for_department": "Acting",
+          "name": "Koudai Sakai",
+          "original_name": "酒井広大",
+          "popularity": 1.7368,
+          "profile_path": "/b4hiaAJY5sjIpJlTQf3A0DyqdCn.jpg",
+          "character": "Sousuke Kuratani (voice)",
+          "credit_id": "62331b01c525c40046216304",
+          "order": 2
+        },
+        {
+          "adult": true,
+          "gender": 0,
+          "id": 3465105,
+          "known_for_department": "Acting",
+          "name": "Maika Hara",
+          "original_name": "原舞歌",
+          "popularity": 1.282,
+          "profile_path": null,
+          "character": "Sumire Sakurai (voice)",
+          "credit_id": "62331b2453866e0048510d99",
+          "order": 3
+        }
+      ],
+      "crew": [
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 1681345,
+          "known_for_department": "Directing",
+          "name": "Mitsutaka Noshitani",
+          "original_name": "熨斗谷充孝",
+          "popularity": 0.9299,
+          "profile_path": null,
+          "credit_id": "623319d98e8d300047abe43c",
+          "department": "Directing",
+          "job": "Director"
+        },
+        {
+          "adult": false,
+          "gender": 0,
+          "id": 2979918,
+          "known_for_department": "Visual Effects",
+          "name": "Nanashi",
+          "original_name": "Nanashi",
+          "popularity": 0.3825,
+          "profile_path": null,
+          "credit_id": "623319f38e8d30001d07ff08",
+          "department": "Visual Effects",
+          "job": "Character Designer"
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 1722605,
+          "known_for_department": "Sound",
+          "name": "Hisayoshi Hirasawa",
+          "original_name": "ひらさわひさよし",
+          "popularity": 1.0014,
+          "profile_path": null,
+          "credit_id": "62331a12904f6d0044a882a4",
+          "department": "Sound",
+          "job": "Sound Director"
+        },
+        {
+          "adult": false,
+          "gender": 0,
+          "id": 2896060,
+          "known_for_department": "Sound",
+          "name": "Saki Hazuki",
+          "original_name": "葉月さき",
+          "popularity": 0.7672,
+          "profile_path": "/qiPofchSPE27AypRxxtIZ6nPwlD.jpg",
+          "credit_id": "670b86f4f58a9206aa40d0df",
+          "department": "Sound",
+          "job": "Theme Song Performance"
+        }
+      ],
+      "id": 72520
+    },
+    "keywords": {
+      "id": 72520,
+      "results": [
+        {
+          "name": "trap",
+          "id": 11060
+        },
+        {
+          "name": "cross dressing",
+          "id": 12090
+        },
+        {
+          "name": "based on manga",
+          "id": 13141
+        },
+        {
+          "name": "hentai",
+          "id": 198385
+        },
+        {
+          "name": "josei",
+          "id": 229074
+        },
+        {
+          "name": "erotic",
+          "id": 256466
+        },
+        {
+          "name": "nudity",
+          "id": 281741
+        }
+      ]
+    },
+    "seasons": [
+      {
+        "_id": "594e9451c3a36832ad03974c",
+        "air_date": "2017-07-01",
+        "episodes": [
+          {
+            "air_date": "2017-07-01",
+            "episode_number": 1,
+            "episode_type": "standard",
+            "id": 1331457,
+            "name": "对不起，已经把持不住了",
+            "overview": "",
+            "production_code": "",
+            "runtime": 5,
+            "season_number": 1,
+            "show_id": 72520,
+            "still_path": "/fjHxAvnGuAsfnNioNaP59TPCYtc.jpg",
+            "vote_average": 5.0,
+            "vote_count": 1,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2017-07-08",
+            "episode_number": 2,
+            "episode_type": "standard",
+            "id": 1349091,
+            "name": "上次的后续，这回就做到最后吧？",
+            "overview": "",
+            "production_code": "",
+            "runtime": 5,
+            "season_number": 1,
+            "show_id": 72520,
+            "still_path": "/g4xIonifR3ainYvoTBJhW2Zrcdr.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2017-07-15",
+            "episode_number": 3,
+            "episode_type": "standard",
+            "id": 1349094,
+            "name": "如何？我真正的样子",
+            "overview": "",
+            "production_code": "",
+            "runtime": 5,
+            "season_number": 1,
+            "show_id": 72520,
+            "still_path": "/xsQqjMYkqs1tztvNvFlAWrLQcIt.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2017-07-22",
+            "episode_number": 4,
+            "episode_type": "standard",
+            "id": 1349097,
+            "name": "我喜欢静歌哦",
+            "overview": "",
+            "production_code": "",
+            "runtime": 5,
+            "season_number": 1,
+            "show_id": 72520,
+            "still_path": "/o2S0BOwbvpWMq1QDm9THhZZXL4r.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2017-07-29",
+            "episode_number": 5,
+            "episode_type": "standard",
+            "id": 1349100,
+            "name": "如果不是认真的话，是不会这么执着的",
+            "overview": "",
+            "production_code": "",
+            "runtime": 5,
+            "season_number": 1,
+            "show_id": 72520,
+            "still_path": "/svLi3nYm5w65FBLc2b4aQct9RvJ.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2017-08-05",
+            "episode_number": 6,
+            "episode_type": "standard",
+            "id": 1349103,
+            "name": "希望你能好好看着我",
+            "overview": "",
+            "production_code": "",
+            "runtime": 5,
+            "season_number": 1,
+            "show_id": 72520,
+            "still_path": "/hmVAgeljgIw6QIUGfvjKI2NFRjG.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2017-08-16",
+            "episode_number": 7,
+            "episode_type": "standard",
+            "id": 1356376,
+            "name": "煽主动挑起的人是你啊",
+            "overview": "",
+            "production_code": "",
+            "runtime": 5,
+            "season_number": 1,
+            "show_id": 72520,
+            "still_path": "/l12Th1qZUfcx72BCBio9uaGzSPR.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2017-08-24",
+            "episode_number": 8,
+            "episode_type": "standard",
+            "id": 1356378,
+            "name": "还想再约会一次呢",
+            "overview": "",
+            "production_code": "",
+            "runtime": 5,
+            "season_number": 1,
+            "show_id": 72520,
+            "still_path": "/6ubnLwAtDwfvluv6gusUkpRvvEx.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2017-08-28",
+            "episode_number": 9,
+            "episode_type": "standard",
+            "id": 1398388,
+            "name": "太可惜了，不好好弄干净的话",
+            "overview": "",
+            "production_code": "",
+            "runtime": 5,
+            "season_number": 1,
+            "show_id": 72520,
+            "still_path": "/7kgLU97RwTwbnupZBYSe2d8tZFS.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2017-09-04",
+            "episode_number": 10,
+            "episode_type": "standard",
+            "id": 1398389,
+            "name": "真可爱",
+            "overview": "",
+            "production_code": "",
+            "runtime": 5,
+            "season_number": 1,
+            "show_id": 72520,
+            "still_path": "/aXuUeIR50bLV7sry3w4cfopudrm.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2017-09-11",
+            "episode_number": 11,
+            "episode_type": "standard",
+            "id": 1398390,
+            "name": "绝对不要，没有办法放弃",
+            "overview": "",
+            "production_code": "",
+            "runtime": 5,
+            "season_number": 1,
+            "show_id": 72520,
+            "still_path": "/1kEVwnG1pNEupQNPYSBzrfcwGtb.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2017-09-18",
+            "episode_number": 12,
+            "episode_type": "finale",
+            "id": 1398391,
+            "name": "喜欢你…真的喜欢你…",
+            "overview": "",
+            "production_code": "",
+            "runtime": 5,
+            "season_number": 1,
+            "show_id": 72520,
+            "still_path": "/tPtezfWEoNVpMFYWsyAC9WvwStm.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          }
+        ],
+        "name": "第 1 季",
+        "networks": [
+          {
+            "id": 614,
+            "logo_path": "/hSdroyVthq3CynxTIIY7lnS8w1.png",
+            "name": "Tokyo MX",
+            "origin_country": "JP"
+          }
+        ],
+        "overview": "",
+        "id": 89824,
+        "poster_path": "/yna6Y31rf8CiT4Wq0rF97u3Zsf1.jpg",
+        "season_number": 1,
+        "vote_average": 5.0
+      }
+    ],
+    "episodes": [
+      {
+        "air_date": "2017-07-01",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "对不起，已经把持不住了",
+        "overview": "",
+        "id": 1331457,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/fjHxAvnGuAsfnNioNaP59TPCYtc.jpg",
+        "vote_average": 5.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2017-07-08",
+        "crew": [],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "上次的后续，这回就做到最后吧？",
+        "overview": "",
+        "id": 1349091,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/g4xIonifR3ainYvoTBJhW2Zrcdr.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-07-15",
+        "crew": [],
+        "episode_number": 3,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "如何？我真正的样子",
+        "overview": "",
+        "id": 1349094,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/xsQqjMYkqs1tztvNvFlAWrLQcIt.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-07-22",
+        "crew": [],
+        "episode_number": 4,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "我喜欢静歌哦",
+        "overview": "",
+        "id": 1349097,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/o2S0BOwbvpWMq1QDm9THhZZXL4r.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-07-29",
+        "crew": [],
+        "episode_number": 5,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "如果不是认真的话，是不会这么执着的",
+        "overview": "",
+        "id": 1349100,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/svLi3nYm5w65FBLc2b4aQct9RvJ.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-08-05",
+        "crew": [],
+        "episode_number": 6,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "希望你能好好看着我",
+        "overview": "",
+        "id": 1349103,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/hmVAgeljgIw6QIUGfvjKI2NFRjG.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-08-16",
+        "crew": [],
+        "episode_number": 7,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "煽主动挑起的人是你啊",
+        "overview": "",
+        "id": 1356376,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/l12Th1qZUfcx72BCBio9uaGzSPR.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-08-24",
+        "crew": [],
+        "episode_number": 8,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "还想再约会一次呢",
+        "overview": "",
+        "id": 1356378,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/6ubnLwAtDwfvluv6gusUkpRvvEx.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-08-28",
+        "crew": [],
+        "episode_number": 9,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "太可惜了，不好好弄干净的话",
+        "overview": "",
+        "id": 1398388,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/7kgLU97RwTwbnupZBYSe2d8tZFS.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-09-04",
+        "crew": [],
+        "episode_number": 10,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "真可爱",
+        "overview": "",
+        "id": 1398389,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/aXuUeIR50bLV7sry3w4cfopudrm.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-09-11",
+        "crew": [],
+        "episode_number": 11,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "绝对不要，没有办法放弃",
+        "overview": "",
+        "id": 1398390,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/1kEVwnG1pNEupQNPYSBzrfcwGtb.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-09-18",
+        "crew": [],
+        "episode_number": 12,
+        "episode_type": "finale",
+        "guest_stars": [],
+        "name": "喜欢你…真的喜欢你…",
+        "overview": "",
+        "id": 1398391,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/tPtezfWEoNVpMFYWsyAC9WvwStm.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      }
+    ]
+  },
+  "translate": {
+    "translated": {
+      "media_type": "tv",
+      "tmdb_id": 72520,
+      "title": "裙子里面是野兽",
+      "original_title": "スカートの中はケダモノでした。",
+      "year": 2017,
+      "plot": "遇见了美人大姐姐……才怪!?\n\n参加了街道联谊，却无法融入这种气氛的静歌。向她搭话的是，比她年长的女大学生凉。两人很快便意气相投，但静歌却在凉的房间突然被吻，并被推倒——「难道凉小姐是蕾丝!?」虽然一开始这么想，但是作为女孩子的身体来说总有哪里不对…不会吧…难道说这个人，是女装!?",
+      "tagline": "",
+      "runtime": 5,
+      "release_date": "2017-07-01",
+      "rating": 6.2,
+      "rating_count": 14,
+      "genres": [
+        "动画"
+      ],
+      "countries": [
+        "JP"
+      ],
+      "languages": [
+        "ja"
+      ],
+      "studios": [
+        "Magic Bus"
+      ],
+      "networks": [
+        "Tokyo MX"
+      ],
+      "network": "Tokyo MX",
+      "status": "Ended",
+      "homepage": "http://skirt.w-anime.com/",
+      "cast": [
+        {
+          "name_en": "Shiori Satsuki",
+          "name_zh": null,
+          "role": "Ryou Kirishima (voice)",
+          "original_name": "Shiori Satsuki",
+          "profile_path": null,
+          "popularity": 0.0363
+        },
+        {
+          "name_en": "Miho Hayashi",
+          "name_zh": null,
+          "role": "Shizuka Kominami (voice)",
+          "original_name": "拝師みほ",
+          "profile_path": "/1HMRlGAUNGRZ5xNRpBwWAJubRSZ.jpg",
+          "popularity": 0.9922
+        },
+        {
+          "name_en": "Koudai Sakai",
+          "name_zh": null,
+          "role": "Sousuke Kuratani (voice)",
+          "original_name": "酒井広大",
+          "profile_path": "/b4hiaAJY5sjIpJlTQf3A0DyqdCn.jpg",
+          "popularity": 1.7368
+        },
+        {
+          "name_en": "Maika Hara",
+          "name_zh": null,
+          "role": "Sumire Sakurai (voice)",
+          "original_name": "原舞歌",
+          "profile_path": null,
+          "popularity": 1.282
+        }
+      ],
+      "directors": [
+        "Mitsutaka Noshitani"
+      ],
+      "writers": [],
+      "images": {},
+      "seasons": [
+        {
+          "air_date": "2017-07-01",
+          "episode_count": 12,
+          "id": 89824,
+          "name": "第 1 季",
+          "overview": "",
+          "poster_path": "/yna6Y31rf8CiT4Wq0rF97u3Zsf1.jpg",
+          "season_number": 1,
+          "vote_average": 5.0
+        }
+      ],
+      "episodes": [
+        {
+          "air_date": "2017-07-01",
+          "crew": [],
+          "episode_number": 1,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "对不起，已经把持不住了",
+          "overview": "",
+          "id": 1331457,
+          "production_code": "",
+          "runtime": 5,
+          "season_number": 1,
+          "still_path": "/fjHxAvnGuAsfnNioNaP59TPCYtc.jpg",
+          "vote_average": 5.0,
+          "vote_count": 1
+        },
+        {
+          "air_date": "2017-07-08",
+          "crew": [],
+          "episode_number": 2,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "上次的后续，这回就做到最后吧？",
+          "overview": "",
+          "id": 1349091,
+          "production_code": "",
+          "runtime": 5,
+          "season_number": 1,
+          "still_path": "/g4xIonifR3ainYvoTBJhW2Zrcdr.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2017-07-15",
+          "crew": [],
+          "episode_number": 3,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "如何？我真正的样子",
+          "overview": "",
+          "id": 1349094,
+          "production_code": "",
+          "runtime": 5,
+          "season_number": 1,
+          "still_path": "/xsQqjMYkqs1tztvNvFlAWrLQcIt.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2017-07-22",
+          "crew": [],
+          "episode_number": 4,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "我喜欢静歌哦",
+          "overview": "",
+          "id": 1349097,
+          "production_code": "",
+          "runtime": 5,
+          "season_number": 1,
+          "still_path": "/o2S0BOwbvpWMq1QDm9THhZZXL4r.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2017-07-29",
+          "crew": [],
+          "episode_number": 5,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "如果不是认真的话，是不会这么执着的",
+          "overview": "",
+          "id": 1349100,
+          "production_code": "",
+          "runtime": 5,
+          "season_number": 1,
+          "still_path": "/svLi3nYm5w65FBLc2b4aQct9RvJ.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2017-08-05",
+          "crew": [],
+          "episode_number": 6,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "希望你能好好看着我",
+          "overview": "",
+          "id": 1349103,
+          "production_code": "",
+          "runtime": 5,
+          "season_number": 1,
+          "still_path": "/hmVAgeljgIw6QIUGfvjKI2NFRjG.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2017-08-16",
+          "crew": [],
+          "episode_number": 7,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "煽主动挑起的人是你啊",
+          "overview": "",
+          "id": 1356376,
+          "production_code": "",
+          "runtime": 5,
+          "season_number": 1,
+          "still_path": "/l12Th1qZUfcx72BCBio9uaGzSPR.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2017-08-24",
+          "crew": [],
+          "episode_number": 8,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "还想再约会一次呢",
+          "overview": "",
+          "id": 1356378,
+          "production_code": "",
+          "runtime": 5,
+          "season_number": 1,
+          "still_path": "/6ubnLwAtDwfvluv6gusUkpRvvEx.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2017-08-28",
+          "crew": [],
+          "episode_number": 9,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "太可惜了，不好好弄干净的话",
+          "overview": "",
+          "id": 1398388,
+          "production_code": "",
+          "runtime": 5,
+          "season_number": 1,
+          "still_path": "/7kgLU97RwTwbnupZBYSe2d8tZFS.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2017-09-04",
+          "crew": [],
+          "episode_number": 10,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "真可爱",
+          "overview": "",
+          "id": 1398389,
+          "production_code": "",
+          "runtime": 5,
+          "season_number": 1,
+          "still_path": "/aXuUeIR50bLV7sry3w4cfopudrm.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2017-09-11",
+          "crew": [],
+          "episode_number": 11,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "绝对不要，没有办法放弃",
+          "overview": "",
+          "id": 1398390,
+          "production_code": "",
+          "runtime": 5,
+          "season_number": 1,
+          "still_path": "/1kEVwnG1pNEupQNPYSBzrfcwGtb.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2017-09-18",
+          "crew": [],
+          "episode_number": 12,
+          "episode_type": "finale",
+          "guest_stars": [],
+          "name": "喜欢你…真的喜欢你…",
+          "overview": "",
+          "id": 1398391,
+          "production_code": "",
+          "runtime": 5,
+          "season_number": 1,
+          "still_path": "/tPtezfWEoNVpMFYWsyAC9WvwStm.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        }
+      ],
+      "title_zh": "裙子里面是野兽",
+      "plot_zh": "遇见了美人大姐姐……才怪!?\n\n参加了街道联谊，却无法融入这种气氛的静歌。向她搭话的是，比她年长的女大学生凉。两人很快便意气相投，但静歌却在凉的房间突然被吻，并被推倒——「难道凉小姐是蕾丝!?」虽然一开始这么想，但是作为女孩子的身体来说总有哪里不对…不会吧…难道说这个人，是女装!?",
+      "keywords_en": [
+        "trap",
+        "cross dressing",
+        "based on manga",
+        "hentai",
+        "josei",
+        "erotic",
+        "nudity"
+      ],
+      "keywords": [
+        "trap",
+        "cross dressing",
+        "based on manga",
+        "hentai",
+        "josei",
+        "erotic",
+        "nudity"
+      ],
+      "keywords_zh": [
+        "陷阱",
+        "穿女装",
+        "改编自漫画",
+        "腐女",
+        "乔西",
+        "色情",
+        "裸露"
+      ]
+    },
+    "episodes": [
+      {
+        "air_date": "2017-07-01",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "对不起，已经把持不住了",
+        "overview": "",
+        "id": 1331457,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/fjHxAvnGuAsfnNioNaP59TPCYtc.jpg",
+        "vote_average": 5.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2017-07-08",
+        "crew": [],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "上次的后续，这回就做到最后吧？",
+        "overview": "",
+        "id": 1349091,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/g4xIonifR3ainYvoTBJhW2Zrcdr.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-07-15",
+        "crew": [],
+        "episode_number": 3,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "如何？我真正的样子",
+        "overview": "",
+        "id": 1349094,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/xsQqjMYkqs1tztvNvFlAWrLQcIt.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-07-22",
+        "crew": [],
+        "episode_number": 4,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "我喜欢静歌哦",
+        "overview": "",
+        "id": 1349097,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/o2S0BOwbvpWMq1QDm9THhZZXL4r.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-07-29",
+        "crew": [],
+        "episode_number": 5,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "如果不是认真的话，是不会这么执着的",
+        "overview": "",
+        "id": 1349100,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/svLi3nYm5w65FBLc2b4aQct9RvJ.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-08-05",
+        "crew": [],
+        "episode_number": 6,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "希望你能好好看着我",
+        "overview": "",
+        "id": 1349103,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/hmVAgeljgIw6QIUGfvjKI2NFRjG.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-08-16",
+        "crew": [],
+        "episode_number": 7,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "煽主动挑起的人是你啊",
+        "overview": "",
+        "id": 1356376,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/l12Th1qZUfcx72BCBio9uaGzSPR.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-08-24",
+        "crew": [],
+        "episode_number": 8,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "还想再约会一次呢",
+        "overview": "",
+        "id": 1356378,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/6ubnLwAtDwfvluv6gusUkpRvvEx.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-08-28",
+        "crew": [],
+        "episode_number": 9,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "太可惜了，不好好弄干净的话",
+        "overview": "",
+        "id": 1398388,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/7kgLU97RwTwbnupZBYSe2d8tZFS.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-09-04",
+        "crew": [],
+        "episode_number": 10,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "真可爱",
+        "overview": "",
+        "id": 1398389,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/aXuUeIR50bLV7sry3w4cfopudrm.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-09-11",
+        "crew": [],
+        "episode_number": 11,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "绝对不要，没有办法放弃",
+        "overview": "",
+        "id": 1398390,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/1kEVwnG1pNEupQNPYSBzrfcwGtb.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-09-18",
+        "crew": [],
+        "episode_number": 12,
+        "episode_type": "finale",
+        "guest_stars": [],
+        "name": "喜欢你…真的喜欢你…",
+        "overview": "",
+        "id": 1398391,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/tPtezfWEoNVpMFYWsyAC9WvwStm.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      }
+    ]
+  },
+  "normalize": {
+    "media_type": "tv",
+    "tmdb_id": 72520,
+    "title": "裙子里面是野兽",
+    "original_title": "スカートの中はケダモノでした。",
+    "year": 2017,
+    "plot": "遇见了美人大姐姐……才怪!?\n\n参加了街道联谊，却无法融入这种气氛的静歌。向她搭话的是，比她年长的女大学生凉。两人很快便意气相投，但静歌却在凉的房间突然被吻，并被推倒——「难道凉小姐是蕾丝!?」虽然一开始这么想，但是作为女孩子的身体来说总有哪里不对…不会吧…难道说这个人，是女装!?",
+    "tagline": "",
+    "runtime": 5,
+    "release_date": "2017-07-01",
+    "rating": 6.2,
+    "rating_count": 14,
+    "genres": [
+      "动画"
+    ],
+    "countries": [
+      "JP"
+    ],
+    "languages": [
+      "ja"
+    ],
+    "studios": [
+      "Magic Bus"
+    ],
+    "networks": [
+      "Tokyo MX"
+    ],
+    "network": "Tokyo MX",
+    "status": "Ended",
+    "homepage": "http://skirt.w-anime.com/",
+    "cast": [
+      {
+        "name_en": "Shiori Satsuki",
+        "name_zh": null,
+        "role": "Ryou Kirishima (voice)",
+        "original_name": "Shiori Satsuki",
+        "profile_path": null,
+        "popularity": 0.0363
+      },
+      {
+        "name_en": "Miho Hayashi",
+        "name_zh": null,
+        "role": "Shizuka Kominami (voice)",
+        "original_name": "拝師みほ",
+        "profile_path": "/1HMRlGAUNGRZ5xNRpBwWAJubRSZ.jpg",
+        "popularity": 0.9922
+      },
+      {
+        "name_en": "Koudai Sakai",
+        "name_zh": null,
+        "role": "Sousuke Kuratani (voice)",
+        "original_name": "酒井広大",
+        "profile_path": "/b4hiaAJY5sjIpJlTQf3A0DyqdCn.jpg",
+        "popularity": 1.7368
+      },
+      {
+        "name_en": "Maika Hara",
+        "name_zh": null,
+        "role": "Sumire Sakurai (voice)",
+        "original_name": "原舞歌",
+        "profile_path": null,
+        "popularity": 1.282
+      }
+    ],
+    "directors": [
+      "Mitsutaka Noshitani"
+    ],
+    "writers": [],
+    "images": {},
+    "seasons": [
+      {
+        "air_date": "2017-07-01",
+        "episode_count": 12,
+        "id": 89824,
+        "name": "第 1 季",
+        "overview": "",
+        "poster_path": "/yna6Y31rf8CiT4Wq0rF97u3Zsf1.jpg",
+        "season_number": 1,
+        "vote_average": 5.0
+      }
+    ],
+    "episodes": [
+      {
+        "air_date": "2017-07-01",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "对不起，已经把持不住了",
+        "overview": "",
+        "id": 1331457,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/fjHxAvnGuAsfnNioNaP59TPCYtc.jpg",
+        "vote_average": 5.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2017-07-08",
+        "crew": [],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "上次的后续，这回就做到最后吧？",
+        "overview": "",
+        "id": 1349091,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/g4xIonifR3ainYvoTBJhW2Zrcdr.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-07-15",
+        "crew": [],
+        "episode_number": 3,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "如何？我真正的样子",
+        "overview": "",
+        "id": 1349094,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/xsQqjMYkqs1tztvNvFlAWrLQcIt.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-07-22",
+        "crew": [],
+        "episode_number": 4,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "我喜欢静歌哦",
+        "overview": "",
+        "id": 1349097,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/o2S0BOwbvpWMq1QDm9THhZZXL4r.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-07-29",
+        "crew": [],
+        "episode_number": 5,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "如果不是认真的话，是不会这么执着的",
+        "overview": "",
+        "id": 1349100,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/svLi3nYm5w65FBLc2b4aQct9RvJ.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-08-05",
+        "crew": [],
+        "episode_number": 6,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "希望你能好好看着我",
+        "overview": "",
+        "id": 1349103,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/hmVAgeljgIw6QIUGfvjKI2NFRjG.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-08-16",
+        "crew": [],
+        "episode_number": 7,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "煽主动挑起的人是你啊",
+        "overview": "",
+        "id": 1356376,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/l12Th1qZUfcx72BCBio9uaGzSPR.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-08-24",
+        "crew": [],
+        "episode_number": 8,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "还想再约会一次呢",
+        "overview": "",
+        "id": 1356378,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/6ubnLwAtDwfvluv6gusUkpRvvEx.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-08-28",
+        "crew": [],
+        "episode_number": 9,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "太可惜了，不好好弄干净的话",
+        "overview": "",
+        "id": 1398388,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/7kgLU97RwTwbnupZBYSe2d8tZFS.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-09-04",
+        "crew": [],
+        "episode_number": 10,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "真可爱",
+        "overview": "",
+        "id": 1398389,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/aXuUeIR50bLV7sry3w4cfopudrm.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-09-11",
+        "crew": [],
+        "episode_number": 11,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "绝对不要，没有办法放弃",
+        "overview": "",
+        "id": 1398390,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/1kEVwnG1pNEupQNPYSBzrfcwGtb.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2017-09-18",
+        "crew": [],
+        "episode_number": 12,
+        "episode_type": "finale",
+        "guest_stars": [],
+        "name": "喜欢你…真的喜欢你…",
+        "overview": "",
+        "id": 1398391,
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "still_path": "/tPtezfWEoNVpMFYWsyAC9WvwStm.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      }
+    ],
+    "title_zh": "裙子里面是野兽",
+    "plot_zh": "遇见了美人大姐姐……才怪!?\n\n参加了街道联谊，却无法融入这种气氛的静歌。向她搭话的是，比她年长的女大学生凉。两人很快便意气相投，但静歌却在凉的房间突然被吻，并被推倒——「难道凉小姐是蕾丝!?」虽然一开始这么想，但是作为女孩子的身体来说总有哪里不对…不会吧…难道说这个人，是女装!?",
+    "keywords_en": [
+      "trap",
+      "cross dressing",
+      "based on manga",
+      "hentai",
+      "josei",
+      "erotic",
+      "nudity"
+    ],
+    "keywords": [
+      "trap",
+      "cross dressing",
+      "based on manga",
+      "hentai",
+      "josei",
+      "erotic",
+      "nudity"
+    ],
+    "keywords_zh": [
+      "陷阱",
+      "穿女装",
+      "改编自漫画",
+      "腐女",
+      "乔西",
+      "色情",
+      "裸露"
+    ]
+  },
+  "nfo": {
+    "data": {
+      "title": "裙子里面是野兽",
+      "originaltitle": "スカートの中はケダモノでした。",
+      "year": 2017,
+      "premiered": "2017-07-01",
+      "plot": "遇见了美人大姐姐……才怪!?\n\n参加了街道联谊，却无法融入这种气氛的静歌。向她搭话的是，比她年长的女大学生凉。两人很快便意气相投，但静歌却在凉的房间突然被吻，并被推倒——「难道凉小姐是蕾丝!?」虽然一开始这么想，但是作为女孩子的身体来说总有哪里不对…不会吧…难道说这个人，是女装!?",
+      "tagline": "",
+      "runtime": 5,
+      "rating": 6.2,
+      "votes": 14,
+      "genre": [
+        "动画"
+      ],
+      "country": [
+        "JP"
+      ],
+      "studio": [
+        "Magic Bus"
+      ],
+      "credits": [],
+      "director": [
+        "Mitsutaka Noshitani"
+      ],
+      "actor": [
+        {
+          "name": "Shiori Satsuki",
+          "role": "Ryou Kirishima (voice)"
+        },
+        {
+          "name": "Miho Hayashi",
+          "role": "Shizuka Kominami (voice)",
+          "originalname": "拝師みほ",
+          "thumb": "images/actors/Miho Hayashi.jpg"
+        },
+        {
+          "name": "Koudai Sakai",
+          "role": "Sousuke Kuratani (voice)",
+          "originalname": "酒井広大",
+          "thumb": "images/actors/Koudai Sakai.jpg"
+        },
+        {
+          "name": "Maika Hara",
+          "role": "Sumire Sakurai (voice)",
+          "originalname": "原舞歌"
+        }
+      ],
+      "thumb": "poster.jpg",
+      "fanart": "fanart.jpg",
+      "tags": [
+        "陷阱",
+        "穿女装",
+        "改编自漫画",
+        "腐女",
+        "乔西",
+        "色情",
+        "裸露"
+      ],
+      "network": "Tokyo MX",
+      "networks": [
+        "Tokyo MX"
+      ],
+      "status": "Ended",
+      "homepage": "http://skirt.w-anime.com/",
+      "tmdb_id": 72520,
+      "validated": true
+    },
+    "xml": "<?xml version=\"1.0\" ?>\n<tvshow>\n  <title>裙子里面是野兽</title>\n  <originaltitle>スカートの中はケダモノでした。</originaltitle>\n  <year>2017</year>\n  <premiered>2017-07-01</premiered>\n  <plot cdata_content=\"遇见了美人大姐姐……才怪!?\n\n参加了街道联谊，却无法融入这种气氛的静歌。向她搭话的是，比她年长的女大学生凉。两人很快便意气相投，但静歌却在凉的房间突然被吻，并被推倒——「难道凉小姐是蕾丝!?」虽然一开始这么想，但是作为女孩子的身体来说总有哪里不对…不会吧…难道说这个人，是女装!?\"><![CDATA[遇见了美人大姐姐……才怪!?\n\n参加了街道联谊，却无法融入这种气氛的静歌。向她搭话的是，比她年长的女大学生凉。两人很快便意气相投，但静歌却在凉的房间突然被吻，并被推倒——「难道凉小姐是蕾丝!?」虽然一开始这么想，但是作为女孩子的身体来说总有哪里不对…不会吧…难道说这个人，是女装!?]]></plot>\n  <runtime>5</runtime>\n  <rating>6.2</rating>\n  <votes>14</votes>\n  <tmdbid>72520</tmdbid>\n  <genre>动画</genre>\n  <country>JP</country>\n  <studio>Magic Bus</studio>\n  <director>Mitsutaka Noshitani</director>\n  <actor>\n    <name>Shiori Satsuki</name>\n    <role>Ryou Kirishima (voice)</role>\n  </actor>\n  <actor>\n    <name>Miho Hayashi</name>\n    <role>Shizuka Kominami (voice)</role>\n    <originalname>拝師みほ</originalname>\n    <thumb>images/actors/Miho Hayashi.jpg</thumb>\n  </actor>\n  <actor>\n    <name>Koudai Sakai</name>\n    <role>Sousuke Kuratani (voice)</role>\n    <originalname>酒井広大</originalname>\n    <thumb>images/actors/Koudai Sakai.jpg</thumb>\n  </actor>\n  <actor>\n    <name>Maika Hara</name>\n    <role>Sumire Sakurai (voice)</role>\n    <originalname>原舞歌</originalname>\n  </actor>\n  <network>Tokyo MX</network>\n  <status>Ended</status>\n  <homepage>http://skirt.w-anime.com/</homepage>\n  <uniqueid type=\"tmdb\" default=\"true\">72520</uniqueid>\n  <thumb>images/poster/poster.jpg</thumb>\n  <fanart>images/fanart/fanart.jpg</fanart>\n  <tag>陷阱</tag>\n  <tag>穿女装</tag>\n  <tag>改编自漫画</tag>\n  <tag>腐女</tag>\n  <tag>乔西</tag>\n  <tag>色情</tag>\n  <tag>裸露</tag>\n</tvshow>\n"
+  },
+  "output": {
+    "status": "completed",
+    "files": {
+      "nfo_file": "/Volumes/video/Animation/The Animation/裙子里面是野兽 (2017)/tvshow.nfo",
+      "images_dir": "/Volumes/video/Animation/The Animation/裙子里面是野兽 (2017)/images",
+      "media_dir": "/Volumes/video/Animation/The Animation/裙子里面是野兽 (2017)",
+      "season_1_episode_1": "/Volumes/video/Animation/The Animation/裙子里面是野兽 (2017)/Season 01/裙子里面是野兽 - S01E01 - 对不起，已经把持不住了.nfo",
+      "season_1_episode_2": "/Volumes/video/Animation/The Animation/裙子里面是野兽 (2017)/Season 01/裙子里面是野兽 - S01E02 - 上次的后续，这回就做到最后吧？.nfo",
+      "season_1_episode_3": "/Volumes/video/Animation/The Animation/裙子里面是野兽 (2017)/Season 01/裙子里面是野兽 - S01E03 - 如何？我真正的样子.nfo",
+      "season_1_episode_4": "/Volumes/video/Animation/The Animation/裙子里面是野兽 (2017)/Season 01/裙子里面是野兽 - S01E04 - 我喜欢静歌哦.nfo",
+      "season_1_episode_5": "/Volumes/video/Animation/The Animation/裙子里面是野兽 (2017)/Season 01/裙子里面是野兽 - S01E05 - 如果不是认真的话，是不会这么执着的.nfo",
+      "season_1_episode_6": "/Volumes/video/Animation/The Animation/裙子里面是野兽 (2017)/Season 01/裙子里面是野兽 - S01E06 - 希望你能好好看着我.nfo",
+      "season_1_episode_7": "/Volumes/video/Animation/The Animation/裙子里面是野兽 (2017)/Season 01/裙子里面是野兽 - S01E07 - 煽主动挑起的人是你啊.nfo",
+      "season_1_episode_8": "/Volumes/video/Animation/The Animation/裙子里面是野兽 (2017)/Season 01/裙子里面是野兽 - S01E08 - 还想再约会一次呢.nfo",
+      "season_1_episode_9": "/Volumes/video/Animation/The Animation/裙子里面是野兽 (2017)/Season 01/裙子里面是野兽 - S01E09 - 太可惜了，不好好弄干净的话.nfo",
+      "season_1_episode_10": "/Volumes/video/Animation/The Animation/裙子里面是野兽 (2017)/Season 01/裙子里面是野兽 - S01E10 - 真可爱.nfo",
+      "season_1_episode_11": "/Volumes/video/Animation/The Animation/裙子里面是野兽 (2017)/Season 01/裙子里面是野兽 - S01E11 - 绝对不要，没有办法放弃.nfo",
+      "season_1_episode_12": "/Volumes/video/Animation/The Animation/裙子里面是野兽 (2017)/Season 01/裙子里面是野兽 - S01E12 - 喜欢你…真的喜欢你….nfo"
+    }
+  },
+  "errors": [],
+  "end_time": "2025-12-05T23:15:48.576775"
+}

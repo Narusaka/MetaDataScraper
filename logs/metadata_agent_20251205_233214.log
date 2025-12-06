@@ -1,0 +1,16 @@
+2025-12-05 23:32:14,465 - MetadataAgent - INFO - Input parameters parsed
+2025-12-05 23:32:14,465 - MetadataAgent - DEBUG - Input data: {
+  "media_type": "tv",
+  "query": "妻に黙って即売会に行くんじゃなかった (Unknown Year)",
+  "output_dir": "/Volumes/video/Animation/The Animation/妻に黙って即売会に行くんじゃなかった (Unknown Year)",
+  "verbose": false,
+  "quiet": true,
+  "aid_search": true
+}
+2025-12-05 23:32:15,317 - MetadataAgent - INFO - Search completed: 0 results
+2025-12-05 23:32:15,318 - MetadataAgent - DEBUG - Search results: {
+  "page": 1,
+  "results": [],
+  "total_pages": 1,
+  "total_results": 0
+}

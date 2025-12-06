@@ -1,0 +1,1675 @@
+2025-12-05 23:13:19,974 - MetadataAgent - INFO - Input parameters parsed
+2025-12-05 23:13:19,974 - MetadataAgent - DEBUG - Input data: {
+  "media_type": "tv",
+  "query": "与僧侣交合的色欲之夜",
+  "output_dir": "/Volumes/video/Animation/The Animation/与僧侣交合的色欲之夜 (2017)",
+  "verbose": false,
+  "quiet": true,
+  "aid_search": true
+}
+2025-12-05 23:13:20,742 - MetadataAgent - INFO - Search completed: 1 results
+2025-12-05 23:13:20,743 - MetadataAgent - DEBUG - Search results: {
+  "page": 1,
+  "results": [
+    {
+      "adult": false,
+      "backdrop_path": "/3JN7T3qNfHOJVa7NWaRgkdSYBgr.jpg",
+      "genre_ids": [
+        16,
+        18
+      ],
+      "id": 70998,
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "僧侶と交わる色欲の夜に…",
+      "overview": "At a high school reunion, Mio Fukatani reunites with a classmate she has not seen in years—Takahide Kujou. She had always wanted to know more about the kind-hearted boy in high school, but once she realizes that Kujou has become a monk, she believes that any chance of getting to know him romantically is slim. Deciding to drink away her sorrows, she ends up walking home drunk, and surprisingly, running into Kujou who helps her get home.\n\nHowever, once inside, Kujou's lust for Mio becomes apparent and the two share an erotic night of passion. As this steamy romance blossoms between these two unlikely lovers, Mio and Kujou will undoubtedly spend many nights together in utter ecstasy.",
+      "popularity": 3.9023,
+      "poster_path": "/ueI9EeoRdMVa7hWEm21nQEU8Zv3.jpg",
+      "first_air_date": "2017-04-03",
+      "name": "Souryo to Majiwaru Shikiyoku no Yoru ni...",
+      "vote_average": 5.2,
+      "vote_count": 13
+    }
+  ],
+  "total_pages": 1,
+  "total_results": 1
+}
+2025-12-05 23:13:25,526 - MetadataAgent - INFO - Data fetching completed
+2025-12-05 23:13:25,527 - MetadataAgent - DEBUG - Main data: {
+  "adult": false,
+  "backdrop_path": "/3JN7T3qNfHOJVa7NWaRgkdSYBgr.jpg",
+  "created_by": [],
+  "episode_run_time": [
+    5
+  ],
+  "first_air_date": "2017-04-03",
+  "genres": [
+    {
+      "id": 16,
+      "name": "动画"
+    },
+    {
+      "id": 18,
+      "name": "剧情"
+    }
+  ],
+  "homepage": "http://soryo.w-anime.com/",
+  "id": 70998,
+  "in_production": false,
+  "languages": [
+    "ja"
+  ],
+  "last_air_date": "2017-06-19",
+  "last_episode_to_air": {
+    "id": 1330350,
+    "name": "不想交给任何人",
+    "overview": "终于到了九条修行归来的那天。一直见不到面的两人，互相啃在了一起。九条一边道歉一边紧紧拥抱着美樱，美樱很是感动，迄今为止最深地结合在了一起……",
+    "vote_average": 0.0,
+    "vote_count": 0,
+    "air_date": "2017-06-19",
+    "episode_number": 12,
+    "episode_type": "finale",
+    "production_code": "",
+    "runtime": 5,
+    "season_number": 1,
+    "show_id": 70998,
+    "still_path": "/q0bcGbvunRBFEsFZ8LRK0CcmaE4.jpg"
+  },
+  "name": "与僧侣交合的色欲之夜（僧侣走肾不走心）",
+  "next_episode_to_air": null,
+  "networks": [
+    {
+      "id": 614,
+      "logo_path": "/hSdroyVthq3CynxTIIY7lnS8w1.png",
+      "name": "Tokyo MX",
+      "origin_country": "JP"
+    }
+  ],
+  "number_of_episodes": 12,
+  "number_of_seasons": 1,
+  "origin_country": [
+    "JP"
+  ],
+  "original_language": "ja",
+  "original_name": "僧侶と交わる色欲の夜に…",
+  "overview": "在同学会重逢的初恋对象，是“僧侣”也是“野兽”？！ ——继承了自家寺院、成为僧侣的初恋对象九条君。 面对一如既往地绅士的他，稍一大意，就被他一边说着“在僧侣之前，我首先是个男人”一边逼近…… 从共度一夜后的第二天开始，就被要求扮演未婚妻，强行开始了在寺院的同居生活。 在明明是僧侣却如同野兽般的他的攻势下，24小时都心动不止……",
+  "popularity": 3.9023,
+  "poster_path": "/ueI9EeoRdMVa7hWEm21nQEU8Zv3.jpg",
+  "production_companies": [
+    {
+      "id": 92966,
+      "logo_path": "/9zBMa5LyxHKyatDLHJGal7jetHR.png",
+      "name": "Seven",
+      "origin_country": "JP"
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "JP",
+      "name": "Japan"
+    }
+  ],
+  "seasons": [
+    {
+      "air_date": "2017-04-03",
+      "episode_count": 12,
+      "id": 86816,
+      "name": "第 1 季",
+      "overview": "《与僧侣交合的色欲之夜》（僧侣と交わる色欲の夜に… ），是一部日本电视动画片，改编自同名漫画，每集4分钟左右。由高田诚执导，原舞香、铃城叶等人配音。 作品讲述了身为僧侣的九条和自学生时代就对九条抱有恋慕之心的美樱之间的爱情故事。",
+      "poster_path": "/ueI9EeoRdMVa7hWEm21nQEU8Zv3.jpg",
+      "season_number": 1,
+      "vote_average": 10.0
+    }
+  ],
+  "spoken_languages": [
+    {
+      "english_name": "Japanese",
+      "iso_639_1": "ja",
+      "name": "日本語"
+    }
+  ],
+  "status": "Ended",
+  "tagline": "",
+  "type": "Scripted",
+  "vote_average": 5.2,
+  "vote_count": 13
+}
+2025-12-05 23:13:25,527 - MetadataAgent - DEBUG - Credits data: {
+  "cast": [
+    {
+      "adult": true,
+      "gender": 2,
+      "id": 1862765,
+      "known_for_department": "Acting",
+      "name": "Mutsuki Iwanaka",
+      "original_name": "岩中睦樹",
+      "popularity": 6.733,
+      "profile_path": "/kYZMFkYUKcx9fUM7lqJ8vSJpCPm.jpg",
+      "character": "Yukitaka Kujou (voice)",
+      "credit_id": "66d0e210b74f03d18e70524e",
+      "order": 0
+    },
+    {
+      "adult": false,
+      "gender": 0,
+      "id": 2317585,
+      "known_for_department": "Acting",
+      "name": "Paama Kurukuru",
+      "original_name": "Paama Kurukuru",
+      "popularity": 0.0393,
+      "profile_path": null,
+      "character": "Kiyotaka Kujou (voice)",
+      "credit_id": "5ce316720e0a266f7cd03b36",
+      "order": 1
+    },
+    {
+      "adult": false,
+      "gender": 0,
+      "id": 2317586,
+      "known_for_department": "Acting",
+      "name": "Nerine Akiyama",
+      "original_name": "Nerine Akiyama",
+      "popularity": 0.0614,
+      "profile_path": null,
+      "character": "Shiori Kujou (voice)",
+      "credit_id": "5ce316790e0a266f7cd03b42",
+      "order": 2
+    },
+    {
+      "adult": true,
+      "gender": 1,
+      "id": 1793614,
+      "known_for_department": "Acting",
+      "name": "Yuri Katou",
+      "original_name": "加藤祐梨",
+      "popularity": 1.42,
+      "profile_path": "/zzYyP6i6FSgqiTmUNgHD4RptliF.jpg",
+      "character": "Mio Fukatani (voice)",
+      "credit_id": "5ce316580e0a263f91cb51c3",
+      "order": 3
+    },
+    {
+      "adult": true,
+      "gender": 2,
+      "id": 1577929,
+      "known_for_department": "Acting",
+      "name": "You Suzushiro",
+      "original_name": "鈴城葉",
+      "popularity": 0.6,
+      "profile_path": null,
+      "character": "Takahide Kujou (voice)",
+      "credit_id": "5ce31661c3a36809ec2033bb",
+      "order": 4
+    }
+  ],
+  "crew": [
+    {
+      "adult": false,
+      "gender": 0,
+      "id": 1789116,
+      "known_for_department": "Writing",
+      "name": "Leon Maomi",
+      "original_name": "Leon Maomi",
+      "popularity": 0.0973,
+      "profile_path": null,
+      "credit_id": "58e2b70cc3a36872ee012887",
+      "department": "Writing",
+      "job": "Comic Book"
+    },
+    {
+      "adult": true,
+      "gender": 2,
+      "id": 2855270,
+      "known_for_department": "Directing",
+      "name": "Hideki Araki",
+      "original_name": "荒木英樹",
+      "popularity": 12.754,
+      "profile_path": null,
+      "credit_id": "60544011bd990c00a00f1f40",
+      "department": "Directing",
+      "job": "Director"
+    },
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 1859665,
+      "known_for_department": "Production",
+      "name": "Yoshinobu Iwatani",
+      "original_name": "岩谷能宣",
+      "popularity": 1.1948,
+      "profile_path": null,
+      "credit_id": "68bde0ec934c154ceb8cf014",
+      "department": "Production",
+      "job": "Production Manager"
+    }
+  ],
+  "id": 70998
+}
+2025-12-05 23:13:25,527 - MetadataAgent - DEBUG - Keywords data: {
+  "id": 70998,
+  "results": [
+    {
+      "name": "monk",
+      "id": 345
+    },
+    {
+      "name": "romance",
+      "id": 9840
+    },
+    {
+      "name": "based on manga",
+      "id": 13141
+    },
+    {
+      "name": "anime",
+      "id": 210024
+    },
+    {
+      "name": "josei",
+      "id": 229074
+    },
+    {
+      "name": "erotic",
+      "id": 256466
+    }
+  ]
+}
+2025-12-05 23:13:25,528 - MetadataAgent - DEBUG - Episodes data: [
+  {
+    "air_date": "2017-04-03",
+    "crew": [],
+    "episode_number": 1,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "在僧侣之前……我还是男人啊",
+    "overview": "（美樱）在同学会上与初恋对象九条重逢。成熟之后他越来越有男人味，但当他脱下帽子时，没想到竟是光头！原来他是继承老家寺庙的僧侣。本以为僧侣=恋爱结婚H都不会去想的她却被推倒了……",
+    "id": 1297593,
+    "production_code": "",
+    "runtime": 5,
+    "season_number": 1,
+    "still_path": "/2R5NTnZ8mkzuANIYCgt16GsjuXy.jpg",
+    "vote_average": 10.0,
+    "vote_count": 1
+  },
+  {
+    "air_date": "2017-04-10",
+    "crew": [],
+    "episode_number": 2,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "就算是僧侣，也可以恋爱，可以结婚，以及……",
+    "overview": "美樱在同学会上与九条重逢，并被送回家。因为对方是僧侣就大意了，听着“在僧侣之前……我还是男人啊”这样的话就被推倒了。这意想不到的展开令美樱动摇了。可美樱也没有真心讨厌他的理由……",
+    "id": 1304131,
+    "production_code": "",
+    "runtime": 5,
+    "season_number": 1,
+    "still_path": "/s0WJtJB7bAhaKIeizmTtidChZSq.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2017-04-17",
+    "crew": [],
+    "episode_number": 3,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "我觉得身体的相性好像不错",
+    "overview": "与九条共度一夜的第二天，美樱不知为何被带到九条老家的寺庙。尚未搞懂他的本意，就作为一个假冒的未婚妻被介绍给了双亲。而且，母亲盛情准备了两个人的房间，越来越难以逃脱了……",
+    "id": 1304137,
+    "production_code": "",
+    "runtime": 5,
+    "season_number": 1,
+    "still_path": "/4dXJeAKvqfQMxBdlrLDxWqGLcxq.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2017-04-24",
+    "crew": [],
+    "episode_number": 4,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "……让我摸一下……不行？",
+    "overview": "美樱被九条拜托成为其未婚妻。美樱从初中起就喜欢他，也就随他去了……而作为爱他的未婚妻在父母面前配合他的言行，更让忧伤加深……",
+    "id": 1309604,
+    "production_code": "",
+    "runtime": 5,
+    "season_number": 1,
+    "still_path": "/4rsEiveKIYqgRQYsVqyxD7I3vzR.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2017-05-01",
+    "crew": [],
+    "episode_number": 5,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "以为我什么都没考虑――就做那种事？",
+    "overview": "在九条母亲的劝说下，美樱和九条一同洗澡。不过，面对一线之隔的美樱，九条说着“想看更多”就抚摸上去……",
+    "id": 1324479,
+    "production_code": "",
+    "runtime": 5,
+    "season_number": 1,
+    "still_path": "/z0ntxiCJorQ5etYaoA70tpzNApB.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2017-05-08",
+    "crew": [],
+    "episode_number": 6,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "我也喜欢。喜欢你",
+    "overview": "美樱不能理解九条的心意而选择躲避。于是九条请求道，“如果讨厌我的话就认真抵抗啊。”现在隐藏在心中的情感爆发了……",
+    "id": 1324480,
+    "production_code": "",
+    "runtime": 5,
+    "season_number": 1,
+    "still_path": "/q3gULYGo59NBCVm8ZFZiLbXman.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2017-05-15",
+    "crew": [],
+    "episode_number": 7,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "那就脱掉。边看边做",
+    "overview": "美樱成为了九条的未婚妻。但是，一边上大学一边嫁到寺院修行，前途多难。而且每晚都是被九条爱得睡眠不足。而美樱的面前又出现了新的麻烦……",
+    "id": 1324481,
+    "production_code": "",
+    "runtime": 5,
+    "season_number": 1,
+    "still_path": "/jRx1qLvBnrkR65Gcz7NkPd8MQOa.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2017-05-22",
+    "crew": [],
+    "episode_number": 8,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "我们之间有没有爱，要来确认一下吗？",
+    "overview": "美樱为了成为能配得上九条君的未来的新娘而努力着。可是，美樱无法回答到寺院拜访的施主的提问，因为自己知识不足而消沉。于是九条温柔地开导她……",
+    "id": 1324482,
+    "production_code": "",
+    "runtime": 5,
+    "season_number": 1,
+    "still_path": "/cXlyoDTr0Jvl8AvjqjfQZns0fgK.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2017-05-29",
+    "crew": [],
+    "episode_number": 9,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "还是孩子哦",
+    "overview": "美樱从九条那里拿到了教科书，进行佛教的学习。此时雪隆突然出现。和蔼可亲却常有肌肤之亲的雪隆令美樱感到困扰，美樱也知道了雪隆是九条的弟弟……",
+    "id": 1324483,
+    "production_code": "",
+    "runtime": 5,
+    "season_number": 1,
+    "still_path": "/1NiFUIc3a1AFsANCgVbqWXUH2sF.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2017-06-05",
+    "crew": [],
+    "episode_number": 10,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "深谷是我的东西",
+    "overview": "在美樱的嘴唇快要被雪隆夺走的时候，九条出手搭救。可是九条的气仍不平息，说着“无法证明深谷是谁的东西”，就在雪隆的眼前强行……",
+    "id": 1324484,
+    "production_code": "",
+    "runtime": 5,
+    "season_number": 1,
+    "still_path": "/hpyWFcj61uSqD5pSTtcGuowtqZV.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2017-06-12",
+    "crew": [],
+    "episode_number": 11,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "因为自己的痛苦第一次理解别人的痛苦",
+    "overview": "九条在修行中踏上旅途。美樱虽然知道这是暂时相见，但受到震惊的同时也松了一口气。这时候，雪隆离美樱越来越近……",
+    "id": 1330349,
+    "production_code": "",
+    "runtime": 5,
+    "season_number": 1,
+    "still_path": "/iRu6QYLUlA7GB8j80ZFKKC0Q4zt.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2017-06-19",
+    "crew": [],
+    "episode_number": 12,
+    "episode_type": "finale",
+    "guest_stars": [],
+    "name": "不想交给任何人",
+    "overview": "终于到了九条修行归来的那天。一直见不到面的两人，互相啃在了一起。九条一边道歉一边紧紧拥抱着美樱，美樱很是感动，迄今为止最深地结合在了一起……",
+    "id": 1330350,
+    "production_code": "",
+    "runtime": 5,
+    "season_number": 1,
+    "still_path": "/q0bcGbvunRBFEsFZ8LRK0CcmaE4.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  }
+]
+2025-12-05 23:13:25,529 - MetadataAgent - DEBUG - Seasons data: [
+  {
+    "_id": "58de8fca9251411b7300eff2",
+    "air_date": "2017-04-03",
+    "episodes": [
+      {
+        "air_date": "2017-04-03",
+        "episode_number": 1,
+        "episode_type": "standard",
+        "id": 1297593,
+        "name": "在僧侣之前……我还是男人啊",
+        "overview": "（美樱）在同学会上与初恋对象九条重逢。成熟之后他越来越有男人味，但当他脱下帽子时，没想到竟是光头！原来他是继承老家寺庙的僧侣。本以为僧侣=恋爱结婚H都不会去想的她却被推倒了……",
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "show_id": 70998,
+        "still_path": "/2R5NTnZ8mkzuANIYCgt16GsjuXy.jpg",
+        "vote_average": 10.0,
+        "vote_count": 1,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2017-04-10",
+        "episode_number": 2,
+        "episode_type": "standard",
+        "id": 1304131,
+        "name": "就算是僧侣，也可以恋爱，可以结婚，以及……",
+        "overview": "美樱在同学会上与九条重逢，并被送回家。因为对方是僧侣就大意了，听着“在僧侣之前……我还是男人啊”这样的话就被推倒了。这意想不到的展开令美樱动摇了。可美樱也没有真心讨厌他的理由……",
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "show_id": 70998,
+        "still_path": "/s0WJtJB7bAhaKIeizmTtidChZSq.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2017-04-17",
+        "episode_number": 3,
+        "episode_type": "standard",
+        "id": 1304137,
+        "name": "我觉得身体的相性好像不错",
+        "overview": "与九条共度一夜的第二天，美樱不知为何被带到九条老家的寺庙。尚未搞懂他的本意，就作为一个假冒的未婚妻被介绍给了双亲。而且，母亲盛情准备了两个人的房间，越来越难以逃脱了……",
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "show_id": 70998,
+        "still_path": "/4dXJeAKvqfQMxBdlrLDxWqGLcxq.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2017-04-24",
+        "episode_number": 4,
+        "episode_type": "standard",
+        "id": 1309604,
+        "name": "……让我摸一下……不行？",
+        "overview": "美樱被九条拜托成为其未婚妻。美樱从初中起就喜欢他，也就随他去了……而作为爱他的未婚妻在父母面前配合他的言行，更让忧伤加深……",
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "show_id": 70998,
+        "still_path": "/4rsEiveKIYqgRQYsVqyxD7I3vzR.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2017-05-01",
+        "episode_number": 5,
+        "episode_type": "standard",
+        "id": 1324479,
+        "name": "以为我什么都没考虑――就做那种事？",
+        "overview": "在九条母亲的劝说下，美樱和九条一同洗澡。不过，面对一线之隔的美樱，九条说着“想看更多”就抚摸上去……",
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "show_id": 70998,
+        "still_path": "/z0ntxiCJorQ5etYaoA70tpzNApB.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2017-05-08",
+        "episode_number": 6,
+        "episode_type": "standard",
+        "id": 1324480,
+        "name": "我也喜欢。喜欢你",
+        "overview": "美樱不能理解九条的心意而选择躲避。于是九条请求道，“如果讨厌我的话就认真抵抗啊。”现在隐藏在心中的情感爆发了……",
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "show_id": 70998,
+        "still_path": "/q3gULYGo59NBCVm8ZFZiLbXman.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2017-05-15",
+        "episode_number": 7,
+        "episode_type": "standard",
+        "id": 1324481,
+        "name": "那就脱掉。边看边做",
+        "overview": "美樱成为了九条的未婚妻。但是，一边上大学一边嫁到寺院修行，前途多难。而且每晚都是被九条爱得睡眠不足。而美樱的面前又出现了新的麻烦……",
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "show_id": 70998,
+        "still_path": "/jRx1qLvBnrkR65Gcz7NkPd8MQOa.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2017-05-22",
+        "episode_number": 8,
+        "episode_type": "standard",
+        "id": 1324482,
+        "name": "我们之间有没有爱，要来确认一下吗？",
+        "overview": "美樱为了成为能配得上九条君的未来的新娘而努力着。可是，美樱无法回答到寺院拜访的施主的提问，因为自己知识不足而消沉。于是九条温柔地开导她……",
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "show_id": 70998,
+        "still_path": "/cXlyoDTr0Jvl8AvjqjfQZns0fgK.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2017-05-29",
+        "episode_number": 9,
+        "episode_type": "standard",
+        "id": 1324483,
+        "name": "还是孩子哦",
+        "overview": "美樱从九条那里拿到了教科书，进行佛教的学习。此时雪隆突然出现。和蔼可亲却常有肌肤之亲的雪隆令美樱感到困扰，美樱也知道了雪隆是九条的弟弟……",
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "show_id": 70998,
+        "still_path": "/1NiFUIc3a1AFsANCgVbqWXUH2sF.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2017-06-05",
+        "episode_number": 10,
+        "episode_type": "standard",
+        "id": 1324484,
+        "name": "深谷是我的东西",
+        "overview": "在美樱的嘴唇快要被雪隆夺走的时候，九条出手搭救。可是九条的气仍不平息，说着“无法证明深谷是谁的东西”，就在雪隆的眼前强行……",
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "show_id": 70998,
+        "still_path": "/hpyWFcj61uSqD5pSTtcGuowtqZV.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2017-06-12",
+        "episode_number": 11,
+        "episode_type": "standard",
+        "id": 1330349,
+        "name": "因为自己的痛苦第一次理解别人的痛苦",
+        "overview": "九条在修行中踏上旅途。美樱虽然知道这是暂时相见，但受到震惊的同时也松了一口气。这时候，雪隆离美樱越来越近……",
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "show_id": 70998,
+        "still_path": "/iRu6QYLUlA7GB8j80ZFKKC0Q4zt.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2017-06-19",
+        "episode_number": 12,
+        "episode_type": "finale",
+        "id": 1330350,
+        "name": "不想交给任何人",
+        "overview": "终于到了九条修行归来的那天。一直见不到面的两人，互相啃在了一起。九条一边道歉一边紧紧拥抱着美樱，美樱很是感动，迄今为止最深地结合在了一起……",
+        "production_code": "",
+        "runtime": 5,
+        "season_number": 1,
+        "show_id": 70998,
+        "still_path": "/q0bcGbvunRBFEsFZ8LRK0CcmaE4.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [],
+        "guest_stars": []
+      }
+    ],
+    "name": "第 1 季",
+    "networks": [
+      {
+        "id": 614,
+        "logo_path": "/hSdroyVthq3CynxTIIY7lnS8w1.png",
+        "name": "Tokyo MX",
+        "origin_country": "JP"
+      }
+    ],
+    "overview": "《与僧侣交合的色欲之夜》（僧侣と交わる色欲の夜に… ），是一部日本电视动画片，改编自同名漫画，每集4分钟左右。由高田诚执导，原舞香、铃城叶等人配音。 作品讲述了身为僧侣的九条和自学生时代就对九条抱有恋慕之心的美樱之间的爱情故事。",
+    "id": 86816,
+    "poster_path": "/ueI9EeoRdMVa7hWEm21nQEU8Zv3.jpg",
+    "season_number": 1,
+    "vote_average": 10.0
+  }
+]
+2025-12-05 23:13:26,482 - MetadataAgent - INFO - Data normalization completed
+2025-12-05 23:13:26,486 - MetadataAgent - DEBUG - Normalized data: {
+  "media_type": "tv",
+  "tmdb_id": 70998,
+  "title": "与僧侣交合的色欲之夜（僧侣走肾不走心）",
+  "original_title": "僧侶と交わる色欲の夜に…",
+  "year": 2017,
+  "plot": "在同学会重逢的初恋对象，是“僧侣”也是“野兽”？！ ——继承了自家寺院、成为僧侣的初恋对象九条君。 面对一如既往地绅士的他，稍一大意，就被他一边说着“在僧侣之前，我首先是个男人”一边逼近…… 从共度一夜后的第二天开始，就被要求扮演未婚妻，强行开始了在寺院的同居生活。 在明明是僧侣却如同野兽般的他的攻势下，24小时都心动不止……",
+  "tagline": "",
+  "runtime": 5,
+  "release_date": "2017-04-03",
+  "rating": 5.2,
+  "rating_count": 13,
+  "genres": [
+    "动画",
+    "剧情"
+  ],
+  "countries": [
+    "JP"
+  ],
+  "languages": [
+    "ja"
+  ],
+  "studios": [
+    "Seven"
+  ],
+  "networks": [
+    "Tokyo MX"
+  ],
+  "network": "Tokyo MX",
+  "status": "Ended",
+  "homepage": "http://soryo.w-anime.com/",
+  "cast": [
+    {
+      "name_en": "Mutsuki Iwanaka",
+      "name_zh": null,
+      "role": "Yukitaka Kujou (voice)",
+      "original_name": "岩中睦樹",
+      "profile_path": "/kYZMFkYUKcx9fUM7lqJ8vSJpCPm.jpg",
+      "popularity": 6.733
+    },
+    {
+      "name_en": "Paama Kurukuru",
+      "name_zh": null,
+      "role": "Kiyotaka Kujou (voice)",
+      "original_name": "Paama Kurukuru",
+      "profile_path": null,
+      "popularity": 0.0393
+    },
+    {
+      "name_en": "Nerine Akiyama",
+      "name_zh": null,
+      "role": "Shiori Kujou (voice)",
+      "original_name": "Nerine Akiyama",
+      "profile_path": null,
+      "popularity": 0.0614
+    },
+    {
+      "name_en": "Yuri Katou",
+      "name_zh": null,
+      "role": "Mio Fukatani (voice)",
+      "original_name": "加藤祐梨",
+      "profile_path": "/zzYyP6i6FSgqiTmUNgHD4RptliF.jpg",
+      "popularity": 1.42
+    },
+    {
+      "name_en": "You Suzushiro",
+      "name_zh": null,
+      "role": "Takahide Kujou (voice)",
+      "original_name": "鈴城葉",
+      "profile_path": null,
+      "popularity": 0.6
+    }
+  ],
+  "directors": [
+    "Hideki Araki"
+  ],
+  "writers": [
+    "Leon Maomi"
+  ],
+  "images": {},
+  "seasons": [
+    {
+      "air_date": "2017-04-03",
+      "episode_count": 12,
+      "id": 86816,
+      "name": "第 1 季",
+      "overview": "《与僧侣交合的色欲之夜》（僧侣と交わる色欲の夜に… ），是一部日本电视动画片，改编自同名漫画，每集4分钟左右。由高田诚执导，原舞香、铃城叶等人配音。 作品讲述了身为僧侣的九条和自学生时代就对九条抱有恋慕之心的美樱之间的爱情故事。",
+      "poster_path": "/ueI9EeoRdMVa7hWEm21nQEU8Zv3.jpg",
+      "season_number": 1,
+      "vote_average": 10.0
+    }
+  ],
+  "episodes": [
+    {
+      "air_date": "2017-04-03",
+      "crew": [],
+      "episode_number": 1,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "在僧侣之前……我还是男人啊",
+      "overview": "（美樱）在同学会上与初恋对象九条重逢。成熟之后他越来越有男人味，但当他脱下帽子时，没想到竟是光头！原来他是继承老家寺庙的僧侣。本以为僧侣=恋爱结婚H都不会去想的她却被推倒了……",
+      "id": 1297593,
+      "production_code": "",
+      "runtime": 5,
+      "season_number": 1,
+      "still_path": "/2R5NTnZ8mkzuANIYCgt16GsjuXy.jpg",
+      "vote_average": 10.0,
+      "vote_count": 1
+    },
+    {
+      "air_date": "2017-04-10",
+      "crew": [],
+      "episode_number": 2,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "就算是僧侣，也可以恋爱，可以结婚，以及……",
+      "overview": "美樱在同学会上与九条重逢，并被送回家。因为对方是僧侣就大意了，听着“在僧侣之前……我还是男人啊”这样的话就被推倒了。这意想不到的展开令美樱动摇了。可美樱也没有真心讨厌他的理由……",
+      "id": 1304131,
+      "production_code": "",
+      "runtime": 5,
+      "season_number": 1,
+      "still_path": "/s0WJtJB7bAhaKIeizmTtidChZSq.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2017-04-17",
+      "crew": [],
+      "episode_number": 3,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "我觉得身体的相性好像不错",
+      "overview": "与九条共度一夜的第二天，美樱不知为何被带到九条老家的寺庙。尚未搞懂他的本意，就作为一个假冒的未婚妻被介绍给了双亲。而且，母亲盛情准备了两个人的房间，越来越难以逃脱了……",
+      "id": 1304137,
+      "production_code": "",
+      "runtime": 5,
+      "season_number": 1,
+      "still_path": "/4dXJeAKvqfQMxBdlrLDxWqGLcxq.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2017-04-24",
+      "crew": [],
+      "episode_number": 4,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "……让我摸一下……不行？",
+      "overview": "美樱被九条拜托成为其未婚妻。美樱从初中起就喜欢他，也就随他去了……而作为爱他的未婚妻在父母面前配合他的言行，更让忧伤加深……",
+      "id": 1309604,
+      "production_code": "",
+      "runtime": 5,
+      "season_number": 1,
+      "still_path": "/4rsEiveKIYqgRQYsVqyxD7I3vzR.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2017-05-01",
+      "crew": [],
+      "episode_number": 5,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "以为我什么都没考虑――就做那种事？",
+      "overview": "在九条母亲的劝说下，美樱和九条一同洗澡。不过，面对一线之隔的美樱，九条说着“想看更多”就抚摸上去……",
+      "id": 1324479,
+      "production_code": "",
+      "runtime": 5,
+      "season_number": 1,
+      "still_path": "/z0ntxiCJorQ5etYaoA70tpzNApB.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2017-05-08",
+      "crew": [],
+      "episode_number": 6,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "我也喜欢。喜欢你",
+      "overview": "美樱不能理解九条的心意而选择躲避。于是九条请求道，“如果讨厌我的话就认真抵抗啊。”现在隐藏在心中的情感爆发了……",
+      "id": 1324480,
+      "production_code": "",
+      "runtime": 5,
+      "season_number": 1,
+      "still_path": "/q3gULYGo59NBCVm8ZFZiLbXman.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2017-05-15",
+      "crew": [],
+      "episode_number": 7,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "那就脱掉。边看边做",
+      "overview": "美樱成为了九条的未婚妻。但是，一边上大学一边嫁到寺院修行，前途多难。而且每晚都是被九条爱得睡眠不足。而美樱的面前又出现了新的麻烦……",
+      "id": 1324481,
+      "production_code": "",
+      "runtime": 5,
+      "season_number": 1,
+      "still_path": "/jRx1qLvBnrkR65Gcz7NkPd8MQOa.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2017-05-22",
+      "crew": [],
+      "episode_number": 8,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "我们之间有没有爱，要来确认一下吗？",
+      "overview": "美樱为了成为能配得上九条君的未来的新娘而努力着。可是，美樱无法回答到寺院拜访的施主的提问，因为自己知识不足而消沉。于是九条温柔地开导她……",
+      "id": 1324482,
+      "production_code": "",
+      "runtime": 5,
+      "season_number": 1,
+      "still_path": "/cXlyoDTr0Jvl8AvjqjfQZns0fgK.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2017-05-29",
+      "crew": [],
+      "episode_number": 9,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "还是孩子哦",
+      "overview": "美樱从九条那里拿到了教科书，进行佛教的学习。此时雪隆突然出现。和蔼可亲却常有肌肤之亲的雪隆令美樱感到困扰，美樱也知道了雪隆是九条的弟弟……",
+      "id": 1324483,
+      "production_code": "",
+      "runtime": 5,
+      "season_number": 1,
+      "still_path": "/1NiFUIc3a1AFsANCgVbqWXUH2sF.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2017-06-05",
+      "crew": [],
+      "episode_number": 10,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "深谷是我的东西",
+      "overview": "在美樱的嘴唇快要被雪隆夺走的时候，九条出手搭救。可是九条的气仍不平息，说着“无法证明深谷是谁的东西”，就在雪隆的眼前强行……",
+      "id": 1324484,
+      "production_code": "",
+      "runtime": 5,
+      "season_number": 1,
+      "still_path": "/hpyWFcj61uSqD5pSTtcGuowtqZV.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2017-06-12",
+      "crew": [],
+      "episode_number": 11,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "因为自己的痛苦第一次理解别人的痛苦",
+      "overview": "九条在修行中踏上旅途。美樱虽然知道这是暂时相见，但受到震惊的同时也松了一口气。这时候，雪隆离美樱越来越近……",
+      "id": 1330349,
+      "production_code": "",
+      "runtime": 5,
+      "season_number": 1,
+      "still_path": "/iRu6QYLUlA7GB8j80ZFKKC0Q4zt.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2017-06-19",
+      "crew": [],
+      "episode_number": 12,
+      "episode_type": "finale",
+      "guest_stars": [],
+      "name": "不想交给任何人",
+      "overview": "终于到了九条修行归来的那天。一直见不到面的两人，互相啃在了一起。九条一边道歉一边紧紧拥抱着美樱，美樱很是感动，迄今为止最深地结合在了一起……",
+      "id": 1330350,
+      "production_code": "",
+      "runtime": 5,
+      "season_number": 1,
+      "still_path": "/q0bcGbvunRBFEsFZ8LRK0CcmaE4.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    }
+  ],
+  "title_zh": "与僧侣交合的色欲之夜（僧侣走肾不走心）",
+  "plot_zh": "在同学会重逢的初恋对象，是“僧侣”也是“野兽”？！ ——继承了自家寺院、成为僧侣的初恋对象九条君。 面对一如既往地绅士的他，稍一大意，就被他一边说着“在僧侣之前，我首先是个男人”一边逼近…… 从共度一夜后的第二天开始，就被要求扮演未婚妻，强行开始了在寺院的同居生活。 在明明是僧侣却如同野兽般的他的攻势下，24小时都心动不止……",
+  "keywords_en": [
+    "monk",
+    "romance",
+    "based on manga",
+    "anime",
+    "josei",
+    "erotic"
+  ],
+  "keywords": [
+    "monk",
+    "romance",
+    "based on manga",
+    "anime",
+    "josei",
+    "erotic"
+  ],
+  "keywords_zh": [
+    "僧侣",
+    "浪漫",
+    "改编自漫画",
+    "动画",
+    "乔西",
+    "色情"
+  ]
+}
+2025-12-05 23:13:26,489 - MetadataAgent - INFO - Translation processing completed
+2025-12-05 23:13:26,490 - MetadataAgent - DEBUG - Translated data: {
+  "media_type": "tv",
+  "tmdb_id": 70998,
+  "title": "与僧侣交合的色欲之夜（僧侣走肾不走心）",
+  "original_title": "僧侶と交わる色欲の夜に…",
+  "year": 2017,
+  "plot": "在同学会重逢的初恋对象，是“僧侣”也是“野兽”？！ ——继承了自家寺院、成为僧侣的初恋对象九条君。 面对一如既往地绅士的他，稍一大意，就被他一边说着“在僧侣之前，我首先是个男人”一边逼近…… 从共度一夜后的第二天开始，就被要求扮演未婚妻，强行开始了在寺院的同居生活。 在明明是僧侣却如同野兽般的他的攻势下，24小时都心动不止……",
+  "tagline": "",
+  "runtime": 5,
+  "release_date": "2017-04-03",
+  "rating": 5.2,
+  "rating_count": 13,
+  "genres": [
+    "动画",
+    "剧情"
+  ],
+  "countries": [
+    "JP"
+  ],
+  "languages": [
+    "ja"
+  ],
+  "studios": [
+    "Seven"
+  ],
+  "networks": [
+    "Tokyo MX"
+  ],
+  "network": "Tokyo MX",
+  "status": "Ended",
+  "homepage": "http://soryo.w-anime.com/",
+  "cast": [
+    {
+      "name_en": "Mutsuki Iwanaka",
+      "name_zh": null,
+      "role": "Yukitaka Kujou (voice)",
+      "original_name": "岩中睦樹",
+      "profile_path": "/kYZMFkYUKcx9fUM7lqJ8vSJpCPm.jpg",
+      "popularity": 6.733
+    },
+    {
+      "name_en": "Paama Kurukuru",
+      "name_zh": null,
+      "role": "Kiyotaka Kujou (voice)",
+      "original_name": "Paama Kurukuru",
+      "profile_path": null,
+      "popularity": 0.0393
+    },
+    {
+      "name_en": "Nerine Akiyama",
+      "name_zh": null,
+      "role": "Shiori Kujou (voice)",
+      "original_name": "Nerine Akiyama",
+      "profile_path": null,
+      "popularity": 0.0614
+    },
+    {
+      "name_en": "Yuri Katou",
+      "name_zh": null,
+      "role": "Mio Fukatani (voice)",
+      "original_name": "加藤祐梨",
+      "profile_path": "/zzYyP6i6FSgqiTmUNgHD4RptliF.jpg",
+      "popularity": 1.42
+    },
+    {
+      "name_en": "You Suzushiro",
+      "name_zh": null,
+      "role": "Takahide Kujou (voice)",
+      "original_name": "鈴城葉",
+      "profile_path": null,
+      "popularity": 0.6
+    }
+  ],
+  "directors": [
+    "Hideki Araki"
+  ],
+  "writers": [
+    "Leon Maomi"
+  ],
+  "images": {},
+  "seasons": [
+    {
+      "air_date": "2017-04-03",
+      "episode_count": 12,
+      "id": 86816,
+      "name": "第 1 季",
+      "overview": "《与僧侣交合的色欲之夜》（僧侣と交わる色欲の夜に… ），是一部日本电视动画片，改编自同名漫画，每集4分钟左右。由高田诚执导，原舞香、铃城叶等人配音。 作品讲述了身为僧侣的九条和自学生时代就对九条抱有恋慕之心的美樱之间的爱情故事。",
+      "poster_path": "/ueI9EeoRdMVa7hWEm21nQEU8Zv3.jpg",
+      "season_number": 1,
+      "vote_average": 10.0
+    }
+  ],
+  "episodes": [
+    {
+      "air_date": "2017-04-03",
+      "crew": [],
+      "episode_number": 1,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "在僧侣之前……我还是男人啊",
+      "overview": "（美樱）在同学会上与初恋对象九条重逢。成熟之后他越来越有男人味，但当他脱下帽子时，没想到竟是光头！原来他是继承老家寺庙的僧侣。本以为僧侣=恋爱结婚H都不会去想的她却被推倒了……",
+      "id": 1297593,
+      "production_code": "",
+      "runtime": 5,
+      "season_number": 1,
+      "still_path": "/2R5NTnZ8mkzuANIYCgt16GsjuXy.jpg",
+      "vote_average": 10.0,
+      "vote_count": 1
+    },
+    {
+      "air_date": "2017-04-10",
+      "crew": [],
+      "episode_number": 2,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "就算是僧侣，也可以恋爱，可以结婚，以及……",
+      "overview": "美樱在同学会上与九条重逢，并被送回家。因为对方是僧侣就大意了，听着“在僧侣之前……我还是男人啊”这样的话就被推倒了。这意想不到的展开令美樱动摇了。可美樱也没有真心讨厌他的理由……",
+      "id": 1304131,
+      "production_code": "",
+      "runtime": 5,
+      "season_number": 1,
+      "still_path": "/s0WJtJB7bAhaKIeizmTtidChZSq.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2017-04-17",
+      "crew": [],
+      "episode_number": 3,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "我觉得身体的相性好像不错",
+      "overview": "与九条共度一夜的第二天，美樱不知为何被带到九条老家的寺庙。尚未搞懂他的本意，就作为一个假冒的未婚妻被介绍给了双亲。而且，母亲盛情准备了两个人的房间，越来越难以逃脱了……",
+      "id": 1304137,
+      "production_code": "",
+      "runtime": 5,
+      "season_number": 1,
+      "still_path": "/4dXJeAKvqfQMxBdlrLDxWqGLcxq.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2017-04-24",
+      "crew": [],
+      "episode_number": 4,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "……让我摸一下……不行？",
+      "overview": "美樱被九条拜托成为其未婚妻。美樱从初中起就喜欢他，也就随他去了……而作为爱他的未婚妻在父母面前配合他的言行，更让忧伤加深……",
+      "id": 1309604,
+      "production_code": "",
+      "runtime": 5,
+      "season_number": 1,
+      "still_path": "/4rsEiveKIYqgRQYsVqyxD7I3vzR.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2017-05-01",
+      "crew": [],
+      "episode_number": 5,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "以为我什么都没考虑――就做那种事？",
+      "overview": "在九条母亲的劝说下，美樱和九条一同洗澡。不过，面对一线之隔的美樱，九条说着“想看更多”就抚摸上去……",
+      "id": 1324479,
+      "production_code": "",
+      "runtime": 5,
+      "season_number": 1,
+      "still_path": "/z0ntxiCJorQ5etYaoA70tpzNApB.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2017-05-08",
+      "crew": [],
+      "episode_number": 6,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "我也喜欢。喜欢你",
+      "overview": "美樱不能理解九条的心意而选择躲避。于是九条请求道，“如果讨厌我的话就认真抵抗啊。”现在隐藏在心中的情感爆发了……",
+      "id": 1324480,
+      "production_code": "",
+      "runtime": 5,
+      "season_number": 1,
+      "still_path": "/q3gULYGo59NBCVm8ZFZiLbXman.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2017-05-15",
+      "crew": [],
+      "episode_number": 7,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "那就脱掉。边看边做",
+      "overview": "美樱成为了九条的未婚妻。但是，一边上大学一边嫁到寺院修行，前途多难。而且每晚都是被九条爱得睡眠不足。而美樱的面前又出现了新的麻烦……",
+      "id": 1324481,
+      "production_code": "",
+      "runtime": 5,
+      "season_number": 1,
+      "still_path": "/jRx1qLvBnrkR65Gcz7NkPd8MQOa.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2017-05-22",
+      "crew": [],
+      "episode_number": 8,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "我们之间有没有爱，要来确认一下吗？",
+      "overview": "美樱为了成为能配得上九条君的未来的新娘而努力着。可是，美樱无法回答到寺院拜访的施主的提问，因为自己知识不足而消沉。于是九条温柔地开导她……",
+      "id": 1324482,
+      "production_code": "",
+      "runtime": 5,
+      "season_number": 1,
+      "still_path": "/cXlyoDTr0Jvl8AvjqjfQZns0fgK.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2017-05-29",
+      "crew": [],
+      "episode_number": 9,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "还是孩子哦",
+      "overview": "美樱从九条那里拿到了教科书，进行佛教的学习。此时雪隆突然出现。和蔼可亲却常有肌肤之亲的雪隆令美樱感到困扰，美樱也知道了雪隆是九条的弟弟……",
+      "id": 1324483,
+      "production_code": "",
+      "runtime": 5,
+      "season_number": 1,
+      "still_path": "/1NiFUIc3a1AFsANCgVbqWXUH2sF.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2017-06-05",
+      "crew": [],
+      "episode_number": 10,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "深谷是我的东西",
+      "overview": "在美樱的嘴唇快要被雪隆夺走的时候，九条出手搭救。可是九条的气仍不平息，说着“无法证明深谷是谁的东西”，就在雪隆的眼前强行……",
+      "id": 1324484,
+      "production_code": "",
+      "runtime": 5,
+      "season_number": 1,
+      "still_path": "/hpyWFcj61uSqD5pSTtcGuowtqZV.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2017-06-12",
+      "crew": [],
+      "episode_number": 11,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "因为自己的痛苦第一次理解别人的痛苦",
+      "overview": "九条在修行中踏上旅途。美樱虽然知道这是暂时相见，但受到震惊的同时也松了一口气。这时候，雪隆离美樱越来越近……",
+      "id": 1330349,
+      "production_code": "",
+      "runtime": 5,
+      "season_number": 1,
+      "still_path": "/iRu6QYLUlA7GB8j80ZFKKC0Q4zt.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2017-06-19",
+      "crew": [],
+      "episode_number": 12,
+      "episode_type": "finale",
+      "guest_stars": [],
+      "name": "不想交给任何人",
+      "overview": "终于到了九条修行归来的那天。一直见不到面的两人，互相啃在了一起。九条一边道歉一边紧紧拥抱着美樱，美樱很是感动，迄今为止最深地结合在了一起……",
+      "id": 1330350,
+      "production_code": "",
+      "runtime": 5,
+      "season_number": 1,
+      "still_path": "/q0bcGbvunRBFEsFZ8LRK0CcmaE4.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    }
+  ],
+  "title_zh": "与僧侣交合的色欲之夜（僧侣走肾不走心）",
+  "plot_zh": "在同学会重逢的初恋对象，是“僧侣”也是“野兽”？！ ——继承了自家寺院、成为僧侣的初恋对象九条君。 面对一如既往地绅士的他，稍一大意，就被他一边说着“在僧侣之前，我首先是个男人”一边逼近…… 从共度一夜后的第二天开始，就被要求扮演未婚妻，强行开始了在寺院的同居生活。 在明明是僧侣却如同野兽般的他的攻势下，24小时都心动不止……",
+  "keywords_en": [
+    "monk",
+    "romance",
+    "based on manga",
+    "anime",
+    "josei",
+    "erotic"
+  ],
+  "keywords": [
+    "monk",
+    "romance",
+    "based on manga",
+    "anime",
+    "josei",
+    "erotic"
+  ],
+  "keywords_zh": [
+    "僧侣",
+    "浪漫",
+    "改编自漫画",
+    "动画",
+    "乔西",
+    "色情"
+  ]
+}
+2025-12-05 23:13:26,490 - MetadataAgent - DEBUG - Translated episodes: [
+  {
+    "air_date": "2017-04-03",
+    "crew": [],
+    "episode_number": 1,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "在僧侣之前……我还是男人啊",
+    "overview": "（美樱）在同学会上与初恋对象九条重逢。成熟之后他越来越有男人味，但当他脱下帽子时，没想到竟是光头！原来他是继承老家寺庙的僧侣。本以为僧侣=恋爱结婚H都不会去想的她却被推倒了……",
+    "id": 1297593,
+    "production_code": "",
+    "runtime": 5,
+    "season_number": 1,
+    "still_path": "/2R5NTnZ8mkzuANIYCgt16GsjuXy.jpg",
+    "vote_average": 10.0,
+    "vote_count": 1
+  },
+  {
+    "air_date": "2017-04-10",
+    "crew": [],
+    "episode_number": 2,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "就算是僧侣，也可以恋爱，可以结婚，以及……",
+    "overview": "美樱在同学会上与九条重逢，并被送回家。因为对方是僧侣就大意了，听着“在僧侣之前……我还是男人啊”这样的话就被推倒了。这意想不到的展开令美樱动摇了。可美樱也没有真心讨厌他的理由……",
+    "id": 1304131,
+    "production_code": "",
+    "runtime": 5,
+    "season_number": 1,
+    "still_path": "/s0WJtJB7bAhaKIeizmTtidChZSq.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2017-04-17",
+    "crew": [],
+    "episode_number": 3,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "我觉得身体的相性好像不错",
+    "overview": "与九条共度一夜的第二天，美樱不知为何被带到九条老家的寺庙。尚未搞懂他的本意，就作为一个假冒的未婚妻被介绍给了双亲。而且，母亲盛情准备了两个人的房间，越来越难以逃脱了……",
+    "id": 1304137,
+    "production_code": "",
+    "runtime": 5,
+    "season_number": 1,
+    "still_path": "/4dXJeAKvqfQMxBdlrLDxWqGLcxq.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2017-04-24",
+    "crew": [],
+    "episode_number": 4,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "……让我摸一下……不行？",
+    "overview": "美樱被九条拜托成为其未婚妻。美樱从初中起就喜欢他，也就随他去了……而作为爱他的未婚妻在父母面前配合他的言行，更让忧伤加深……",
+    "id": 1309604,
+    "production_code": "",
+    "runtime": 5,
+    "season_number": 1,
+    "still_path": "/4rsEiveKIYqgRQYsVqyxD7I3vzR.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2017-05-01",
+    "crew": [],
+    "episode_number": 5,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "以为我什么都没考虑――就做那种事？",
+    "overview": "在九条母亲的劝说下，美樱和九条一同洗澡。不过，面对一线之隔的美樱，九条说着“想看更多”就抚摸上去……",
+    "id": 1324479,
+    "production_code": "",
+    "runtime": 5,
+    "season_number": 1,
+    "still_path": "/z0ntxiCJorQ5etYaoA70tpzNApB.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2017-05-08",
+    "crew": [],
+    "episode_number": 6,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "我也喜欢。喜欢你",
+    "overview": "美樱不能理解九条的心意而选择躲避。于是九条请求道，“如果讨厌我的话就认真抵抗啊。”现在隐藏在心中的情感爆发了……",
+    "id": 1324480,
+    "production_code": "",
+    "runtime": 5,
+    "season_number": 1,
+    "still_path": "/q3gULYGo59NBCVm8ZFZiLbXman.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2017-05-15",
+    "crew": [],
+    "episode_number": 7,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "那就脱掉。边看边做",
+    "overview": "美樱成为了九条的未婚妻。但是，一边上大学一边嫁到寺院修行，前途多难。而且每晚都是被九条爱得睡眠不足。而美樱的面前又出现了新的麻烦……",
+    "id": 1324481,
+    "production_code": "",
+    "runtime": 5,
+    "season_number": 1,
+    "still_path": "/jRx1qLvBnrkR65Gcz7NkPd8MQOa.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2017-05-22",
+    "crew": [],
+    "episode_number": 8,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "我们之间有没有爱，要来确认一下吗？",
+    "overview": "美樱为了成为能配得上九条君的未来的新娘而努力着。可是，美樱无法回答到寺院拜访的施主的提问，因为自己知识不足而消沉。于是九条温柔地开导她……",
+    "id": 1324482,
+    "production_code": "",
+    "runtime": 5,
+    "season_number": 1,
+    "still_path": "/cXlyoDTr0Jvl8AvjqjfQZns0fgK.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2017-05-29",
+    "crew": [],
+    "episode_number": 9,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "还是孩子哦",
+    "overview": "美樱从九条那里拿到了教科书，进行佛教的学习。此时雪隆突然出现。和蔼可亲却常有肌肤之亲的雪隆令美樱感到困扰，美樱也知道了雪隆是九条的弟弟……",
+    "id": 1324483,
+    "production_code": "",
+    "runtime": 5,
+    "season_number": 1,
+    "still_path": "/1NiFUIc3a1AFsANCgVbqWXUH2sF.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2017-06-05",
+    "crew": [],
+    "episode_number": 10,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "深谷是我的东西",
+    "overview": "在美樱的嘴唇快要被雪隆夺走的时候，九条出手搭救。可是九条的气仍不平息，说着“无法证明深谷是谁的东西”，就在雪隆的眼前强行……",
+    "id": 1324484,
+    "production_code": "",
+    "runtime": 5,
+    "season_number": 1,
+    "still_path": "/hpyWFcj61uSqD5pSTtcGuowtqZV.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2017-06-12",
+    "crew": [],
+    "episode_number": 11,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "因为自己的痛苦第一次理解别人的痛苦",
+    "overview": "九条在修行中踏上旅途。美樱虽然知道这是暂时相见，但受到震惊的同时也松了一口气。这时候，雪隆离美樱越来越近……",
+    "id": 1330349,
+    "production_code": "",
+    "runtime": 5,
+    "season_number": 1,
+    "still_path": "/iRu6QYLUlA7GB8j80ZFKKC0Q4zt.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2017-06-19",
+    "crew": [],
+    "episode_number": 12,
+    "episode_type": "finale",
+    "guest_stars": [],
+    "name": "不想交给任何人",
+    "overview": "终于到了九条修行归来的那天。一直见不到面的两人，互相啃在了一起。九条一边道歉一边紧紧拥抱着美樱，美樱很是感动，迄今为止最深地结合在了一起……",
+    "id": 1330350,
+    "production_code": "",
+    "runtime": 5,
+    "season_number": 1,
+    "still_path": "/q0bcGbvunRBFEsFZ8LRK0CcmaE4.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  }
+]
+2025-12-05 23:13:34,372 - MetadataAgent - INFO - NFO generation completed
+2025-12-05 23:13:34,373 - MetadataAgent - DEBUG - NFO data: {
+  "title": "与僧侣交合的色欲之夜（僧侣走肾不走心）",
+  "originaltitle": "僧侶と交わる色欲の夜に…",
+  "year": 2017,
+  "premiered": "2017-04-03",
+  "plot": "在同学会重逢的初恋对象，是“僧侣”也是“野兽”？！ ——继承了自家寺院、成为僧侣的初恋对象九条君。 面对一如既往地绅士的他，稍一大意，就被他一边说着“在僧侣之前，我首先是个男人”一边逼近…… 从共度一夜后的第二天开始，就被要求扮演未婚妻，强行开始了在寺院的同居生活。 在明明是僧侣却如同野兽般的他的攻势下，24小时都心动不止……",
+  "tagline": "",
+  "runtime": 5,
+  "rating": 5.2,
+  "votes": 13,
+  "genre": [
+    "动画",
+    "剧情"
+  ],
+  "country": [
+    "JP"
+  ],
+  "studio": [
+    "Seven"
+  ],
+  "credits": [
+    "Leon Maomi"
+  ],
+  "director": [
+    "Hideki Araki"
+  ],
+  "actor": [
+    {
+      "name": "Mutsuki Iwanaka",
+      "role": "Yukitaka Kujou (voice)",
+      "originalname": "岩中睦樹",
+      "thumb": "images/actors/Mutsuki Iwanaka.jpg"
+    },
+    {
+      "name": "Paama Kurukuru",
+      "role": "Kiyotaka Kujou (voice)"
+    },
+    {
+      "name": "Nerine Akiyama",
+      "role": "Shiori Kujou (voice)"
+    },
+    {
+      "name": "Yuri Katou",
+      "role": "Mio Fukatani (voice)",
+      "originalname": "加藤祐梨",
+      "thumb": "images/actors/Yuri Katou.jpg"
+    },
+    {
+      "name": "You Suzushiro",
+      "role": "Takahide Kujou (voice)",
+      "originalname": "鈴城葉"
+    }
+  ],
+  "thumb": "poster.jpg",
+  "fanart": "fanart.jpg",
+  "tags": [
+    "僧侣",
+    "浪漫",
+    "改编自漫画",
+    "动画",
+    "乔西",
+    "色情"
+  ],
+  "network": "Tokyo MX",
+  "networks": [
+    "Tokyo MX"
+  ],
+  "status": "Ended",
+  "homepage": "http://soryo.w-anime.com/",
+  "tmdb_id": 70998,
+  "validated": true
+}
+2025-12-05 23:13:34,373 - MetadataAgent - DEBUG - NFO XML content:
+<?xml version="1.0" ?>
+<tvshow>
+  <title>与僧侣交合的色欲之夜（僧侣走肾不走心）</title>
+  <originaltitle>僧侶と交わる色欲の夜に…</originaltitle>
+  <year>2017</year>
+  <premiered>2017-04-03</premiered>
+  <plot><![CDATA[在同学会重逢的初恋对象，是“僧侣”也是“野兽”？！ ——继承了自家寺院、成为僧侣的初恋对象九条君。 面对一如既往地绅士的他，稍一大意，就被他一边说着“在僧侣之前，我首先是个男人”一边逼近…… 从共度一夜后的第二天开始，就被要求扮演未婚妻，强行开始了在寺院的同居生活。 在明明是僧侣却如同野兽般的他的攻势下，24小时都心动不止……]]></plot>
+  <runtime>5</runtime>
+  <rating>5.2</rating>
+  <votes>13</votes>
+  <tmdbid>70998</tmdbid>
+  <genre>动画</genre>
+  <genre>剧情</genre>
+  <country>JP</country>
+  <studio>Seven</studio>
+  <credits>Leon Maomi</credits>
+  <director>Hideki Araki</director>
+  <actor>
+    <name>Mutsuki Iwanaka</name>
+    <role>Yukitaka Kujou (voice)</role>
+    <originalname>岩中睦樹</originalname>
+    <thumb>images/actors/Mutsuki Iwanaka.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Paama Kurukuru</name>
+    <role>Kiyotaka Kujou (voice)</role>
+  </actor>
+  <actor>
+    <name>Nerine Akiyama</name>
+    <role>Shiori Kujou (voice)</role>
+  </actor>
+  <actor>
+    <name>Yuri Katou</name>
+    <role>Mio Fukatani (voice)</role>
+    <originalname>加藤祐梨</originalname>
+    <thumb>images/actors/Yuri Katou.jpg</thumb>
+  </actor>
+  <actor>
+    <name>You Suzushiro</name>
+    <role>Takahide Kujou (voice)</role>
+    <originalname>鈴城葉</originalname>
+  </actor>
+  <network>Tokyo MX</network>
+  <status>Ended</status>
+  <homepage>http://soryo.w-anime.com/</homepage>
+  <uniqueid type="tmdb" default="true">70998</uniqueid>
+  <thumb>images/poster/poster.jpg</thumb>
+  <fanart>images/fanart/fanart.jpg</fanart>
+  <tag>僧侣</tag>
+  <tag>浪漫</tag>
+  <tag>改编自漫画</tag>
+  <tag>动画</tag>
+  <tag>乔西</tag>
+  <tag>色情</tag>
+</tvshow>
+
+2025-12-05 23:13:42,520 - MetadataAgent - INFO - Output generation completed
+2025-12-05 23:13:42,521 - MetadataAgent - DEBUG - Output data: {
+  "status": "completed",
+  "files": {
+    "nfo_file": "/Volumes/video/Animation/The Animation/与僧侣交合的色欲之夜 (2017)/tvshow.nfo",
+    "images_dir": "/Volumes/video/Animation/The Animation/与僧侣交合的色欲之夜 (2017)/images",
+    "media_dir": "/Volumes/video/Animation/The Animation/与僧侣交合的色欲之夜 (2017)",
+    "season_1_episode_1": "/Volumes/video/Animation/The Animation/与僧侣交合的色欲之夜 (2017)/Season 01/与僧侣交合的色欲之夜（僧侣走肾不走心） - S01E01 - 在僧侣之前……我还是男人啊.nfo",
+    "season_1_episode_2": "/Volumes/video/Animation/The Animation/与僧侣交合的色欲之夜 (2017)/Season 01/与僧侣交合的色欲之夜（僧侣走肾不走心） - S01E02 - 就算是僧侣，也可以恋爱，可以结婚，以及…….nfo",
+    "season_1_episode_3": "/Volumes/video/Animation/The Animation/与僧侣交合的色欲之夜 (2017)/Season 01/与僧侣交合的色欲之夜（僧侣走肾不走心） - S01E03 - 我觉得身体的相性好像不错.nfo",
+    "season_1_episode_4": "/Volumes/video/Animation/The Animation/与僧侣交合的色欲之夜 (2017)/Season 01/与僧侣交合的色欲之夜（僧侣走肾不走心） - S01E04 - ……让我摸一下……不行？.nfo",
+    "season_1_episode_5": "/Volumes/video/Animation/The Animation/与僧侣交合的色欲之夜 (2017)/Season 01/与僧侣交合的色欲之夜（僧侣走肾不走心） - S01E05 - 以为我什么都没考虑――就做那种事？.nfo",
+    "season_1_episode_6": "/Volumes/video/Animation/The Animation/与僧侣交合的色欲之夜 (2017)/Season 01/与僧侣交合的色欲之夜（僧侣走肾不走心） - S01E06 - 我也喜欢。喜欢你.nfo",
+    "season_1_episode_7": "/Volumes/video/Animation/The Animation/与僧侣交合的色欲之夜 (2017)/Season 01/与僧侣交合的色欲之夜（僧侣走肾不走心） - S01E07 - 那就脱掉。边看边做.nfo",
+    "season_1_episode_8": "/Volumes/video/Animation/The Animation/与僧侣交合的色欲之夜 (2017)/Season 01/与僧侣交合的色欲之夜（僧侣走肾不走心） - S01E08 - 我们之间有没有爱，要来确认一下吗？.nfo",
+    "season_1_episode_9": "/Volumes/video/Animation/The Animation/与僧侣交合的色欲之夜 (2017)/Season 01/与僧侣交合的色欲之夜（僧侣走肾不走心） - S01E09 - 还是孩子哦.nfo",
+    "season_1_episode_10": "/Volumes/video/Animation/The Animation/与僧侣交合的色欲之夜 (2017)/Season 01/与僧侣交合的色欲之夜（僧侣走肾不走心） - S01E10 - 深谷是我的东西.nfo",
+    "season_1_episode_11": "/Volumes/video/Animation/The Animation/与僧侣交合的色欲之夜 (2017)/Season 01/与僧侣交合的色欲之夜（僧侣走肾不走心） - S01E11 - 因为自己的痛苦第一次理解别人的痛苦.nfo",
+    "season_1_episode_12": "/Volumes/video/Animation/The Animation/与僧侣交合的色欲之夜 (2017)/Season 01/与僧侣交合的色欲之夜（僧侣走肾不走心） - S01E12 - 不想交给任何人.nfo"
+  }
+}
+2025-12-05 23:13:42,523 - MetadataAgent - INFO - === PROCESSING SUMMARY ===
+2025-12-05 23:13:42,524 - MetadataAgent - INFO - Log file: logs/metadata_agent_20251205_231319.log
+2025-12-05 23:13:42,524 - MetadataAgent - INFO - Processing completed successfully
+2025-12-05 23:13:42,529 - MetadataAgent - INFO - Processing summary saved to: logs/processing_summary_20251205_231342.json

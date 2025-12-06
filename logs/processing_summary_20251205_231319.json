@@ -1,0 +1,1353 @@
+{
+  "start_time": "2025-12-05T23:13:02.802888",
+  "input": {
+    "media_type": "tv",
+    "query": "洗屋先生！～我和那家伙在女浴池！？～",
+    "output_dir": "/Volumes/video/Animation/The Animation/洗屋先生！～我和那家伙在女浴池！？～ (2019)",
+    "verbose": false,
+    "quiet": true,
+    "aid_search": true
+  },
+  "search": {
+    "results": {
+      "page": 1,
+      "results": [
+        {
+          "adult": false,
+          "backdrop_path": "/jxBUmVXcrkMLCjyzCOhHMmZ5qqO.jpg",
+          "genre_ids": [],
+          "id": 88090,
+          "origin_country": [
+            "JP"
+          ],
+          "original_language": "ja",
+          "original_name": "洗い屋さん！～俺とアイツが女湯で！？～",
+          "overview": "Male student Souta Tsukishima begins working at his family's public bathhouse as a back washer. While concealing her true identity, Souta's classmate Aoi Yuzuki visits the bathhouse. A relationship between the two begins to develop when Souta washes Aoi's back.",
+          "popularity": 5.2841,
+          "poster_path": "/upxgNd7JdqbxUXDuEkgba18iG8F.jpg",
+          "first_air_date": "2019-04-08",
+          "name": "Araiya-san! Ore to Aitsu ga Onnayu de!?",
+          "vote_average": 6.0,
+          "vote_count": 33,
+          "media_type": "tv"
+        }
+      ],
+      "total_pages": 1,
+      "total_results": 1
+    },
+    "skip_search": false
+  },
+  "fetch": {
+    "main": {
+      "adult": false,
+      "backdrop_path": "/jxBUmVXcrkMLCjyzCOhHMmZ5qqO.jpg",
+      "created_by": [],
+      "episode_run_time": [
+        7
+      ],
+      "first_air_date": "2019-04-08",
+      "genres": [],
+      "homepage": "https://araiya.cf-anime.com/",
+      "id": 88090,
+      "in_production": false,
+      "languages": [
+        "ja"
+      ],
+      "last_air_date": "2019-05-27",
+      "last_episode_to_air": {
+        "id": 1812219,
+        "name": "无法冲刷的心情",
+        "overview": "在桑拿房里失去意识的奏太醒来后正被葵在房间里照顾着。\n\n葵误以为奏太在睡觉，\n\n为了进行告白的预演，就自己喜欢上奏太的契机一点一点地开始说。\n\n奏太虽然葵很笨拙，但却被她直率的想法所打动，于是停止了假装睡觉的样子，自己也将这样的想法撞到了她身上。\n\n相爱的两个年轻人为了确认这份感情再次将炽热的肌肤重叠在一起……",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "air_date": "2019-05-27",
+        "episode_number": 8,
+        "episode_type": "finale",
+        "production_code": "",
+        "runtime": 7,
+        "season_number": 1,
+        "show_id": 88090,
+        "still_path": "/1rPd35v5YFEByd5Z2uJIUY7QEWB.jpg"
+      },
+      "name": "洗屋先生！～我和那家伙在女浴池！？～",
+      "next_episode_to_air": null,
+      "networks": [
+        {
+          "id": 614,
+          "logo_path": "/hSdroyVthq3CynxTIIY7lnS8w1.png",
+          "name": "Tokyo MX",
+          "origin_country": "JP"
+        }
+      ],
+      "number_of_episodes": 8,
+      "number_of_seasons": 1,
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "洗い屋さん！～俺とアイツが女湯で！？～",
+      "overview": "讲述在老家的钱汤开始了搓背员兼职工作的月岛奏太，由于害怕见到熟人，于是隐瞒了自己的真实身份。但是他还是遇到了和自己同班同学的结月葵，并在和她打打闹闹中爱上了彼此。",
+      "popularity": 5.2841,
+      "poster_path": "/upxgNd7JdqbxUXDuEkgba18iG8F.jpg",
+      "production_companies": [
+        {
+          "id": 13078,
+          "logo_path": "/jnayAepbXCflSI4jkH59a84HiIK.png",
+          "name": "Magic Bus",
+          "origin_country": "JP"
+        },
+        {
+          "id": 149420,
+          "logo_path": null,
+          "name": "Picante Circus",
+          "origin_country": "JP"
+        },
+        {
+          "id": 149421,
+          "logo_path": "/6UqbB0NLRWEIaCKsd5YkOigJgXb.png",
+          "name": "Suiseisha",
+          "origin_country": "JP"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "JP",
+          "name": "Japan"
+        }
+      ],
+      "seasons": [
+        {
+          "air_date": "2019-04-08",
+          "episode_count": 8,
+          "id": 121459,
+          "name": "第 1 季",
+          "overview": "Tsukishima Souta开始在家里的公共澡堂做洗碗工。在隐瞒真实身份的同时，Souta的同学Yuzuki Aoi参观了澡堂。",
+          "poster_path": "/a00JKaQlGXPGtvWDHo6rs2amBTO.jpg",
+          "season_number": 1,
+          "vote_average": 0.0
+        }
+      ],
+      "spoken_languages": [
+        {
+          "english_name": "Japanese",
+          "iso_639_1": "ja",
+          "name": "日本語"
+        }
+      ],
+      "status": "Ended",
+      "tagline": "",
+      "type": "Scripted",
+      "vote_average": 6.0,
+      "vote_count": 33
+    },
+    "credits": {
+      "cast": [
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 2438556,
+          "known_for_department": "Acting",
+          "name": "Ayaka Igasaki",
+          "original_name": "伊ヶ崎綾香",
+          "popularity": 3.199,
+          "profile_path": "/yAwmznAiNj1YxoVUjHutw6zGIct.jpg",
+          "character": "Sasakura Mei (voice)",
+          "credit_id": "5daf23a71cac8c00130ca2eb",
+          "order": 0
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 1255697,
+          "known_for_department": "Acting",
+          "name": "Shohei Kajikawa",
+          "original_name": "梶川翔平",
+          "popularity": 1.8032,
+          "profile_path": "/yZccGkTo1lgdnDzBAH94B3i6ig5.jpg",
+          "character": "Tsukishima Souta (voice)",
+          "credit_id": "680dabb971dedcb8acead494",
+          "order": 1
+        },
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 2134079,
+          "known_for_department": "Acting",
+          "name": "Ringo Aoba",
+          "original_name": "青葉りんご",
+          "popularity": 13.098,
+          "profile_path": "/5gb4rQOhW6Hzs7LNuxGUemUVwa7.jpg",
+          "character": "Yuzuki Aoi (voice)",
+          "credit_id": "5daf23daae36680018d752b9",
+          "order": 2
+        },
+        {
+          "adult": true,
+          "gender": 2,
+          "id": 2317451,
+          "known_for_department": "Acting",
+          "name": "Tetsuto Furuwaka",
+          "original_name": "古河徹人",
+          "popularity": 9.874,
+          "profile_path": "/1NnsKP2ZECXS2f0yMUfIM78VYZ5.jpg",
+          "character": "Takasugi Hidemoto (voice)",
+          "credit_id": "5daf23b0a44d0900118325e7",
+          "order": 3
+        },
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 2852873,
+          "known_for_department": "Acting",
+          "name": "Momoko Obana",
+          "original_name": "小花モモコ",
+          "popularity": 1.168,
+          "profile_path": null,
+          "character": "Kaede Yuzuki (voice)",
+          "credit_id": "68c80be9af5f3484a8c90390",
+          "order": 4
+        }
+      ],
+      "crew": [
+        {
+          "adult": true,
+          "gender": 2,
+          "id": 2132660,
+          "known_for_department": "Directing",
+          "name": "Kazuhiro Toda",
+          "original_name": "Kazuhiro Toda",
+          "popularity": 0.6,
+          "profile_path": null,
+          "credit_id": "5daf22f3b5bc210014728fad",
+          "department": "Writing",
+          "job": "Screenplay"
+        },
+        {
+          "adult": false,
+          "gender": 1,
+          "id": 2438555,
+          "known_for_department": "Production",
+          "name": "Akiko Segawa",
+          "original_name": "瀬川章子",
+          "popularity": 0.6879,
+          "profile_path": null,
+          "credit_id": "5daf2301ae36680018d750a6",
+          "department": "Production",
+          "job": "Producer"
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 1681345,
+          "known_for_department": "Directing",
+          "name": "Mitsutaka Noshitani",
+          "original_name": "熨斗谷充孝",
+          "popularity": 0.9299,
+          "profile_path": null,
+          "credit_id": "5fa9a40fffc9de003f8b2bd5",
+          "department": "Directing",
+          "job": "Series Director"
+        },
+        {
+          "adult": false,
+          "gender": 1,
+          "id": 2842865,
+          "known_for_department": "Writing",
+          "name": "Nanashi",
+          "original_name": "ナナシ",
+          "popularity": 0.461,
+          "profile_path": null,
+          "credit_id": "5fa9a431a402c1004235c77c",
+          "department": "Visual Effects",
+          "job": "Character Designer"
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 1681345,
+          "known_for_department": "Directing",
+          "name": "Mitsutaka Noshitani",
+          "original_name": "熨斗谷充孝",
+          "popularity": 0.9299,
+          "profile_path": null,
+          "credit_id": "5fa9a46a81383100409c86cf",
+          "department": "Writing",
+          "job": "Storyboard"
+        },
+        {
+          "adult": false,
+          "gender": 1,
+          "id": 2842865,
+          "known_for_department": "Writing",
+          "name": "Nanashi",
+          "original_name": "ナナシ",
+          "popularity": 0.461,
+          "profile_path": null,
+          "credit_id": "5fa9a44effc9de003e8c685e",
+          "department": "Visual Effects",
+          "job": "Animation Director"
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 4492391,
+          "known_for_department": "Production",
+          "name": "Tatsutaro Murai",
+          "original_name": "村井辰太郎",
+          "popularity": 0.7707,
+          "profile_path": null,
+          "credit_id": "6756099bd428ca1c5d62e830",
+          "department": "Production",
+          "job": "Producer"
+        },
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 1256101,
+          "known_for_department": "Acting",
+          "name": "Mari Kirimura",
+          "original_name": "桐村まり",
+          "popularity": 7.358,
+          "profile_path": "/g8GqBelCDQGv3ki4UYn95RvionP.jpg",
+          "credit_id": "68bd47da0377f70de706a0da",
+          "department": "Production",
+          "job": "Producer"
+        }
+      ],
+      "id": 88090
+    },
+    "keywords": {
+      "id": 88090,
+      "results": [
+        {
+          "name": "romance",
+          "id": 9840
+        },
+        {
+          "name": "based on manga",
+          "id": 13141
+        },
+        {
+          "name": "anime",
+          "id": 210024
+        },
+        {
+          "name": "erotic",
+          "id": 256466
+        },
+        {
+          "name": "sentō",
+          "id": 348093
+        }
+      ]
+    },
+    "seasons": [
+      {
+        "_id": "5ca141d10e0a26598efbc49f",
+        "air_date": "2019-04-08",
+        "episodes": [
+          {
+            "air_date": "2019-04-08",
+            "episode_number": 1,
+            "episode_type": "standard",
+            "id": 1744232,
+            "name": "瘦身按摩",
+            "overview": "代替腰扭伤的祖父，在老家的澡堂打工的男生奏太。\n\n打工当天，出现在女汤的是平时总是吵架的同学·葵和女子排球部的成员们！\n\n变装后的奏太没有暴露真面目，为了消除平日的怨恨，对葵的身体实施性骚扰瘦身按摩。\n\n心情爽快，复仇成功！没想到，按摩结束后马上知道了葵的冲击性秘密……",
+            "production_code": "",
+            "runtime": 7,
+            "season_number": 1,
+            "show_id": 88090,
+            "still_path": "/zGnH27QEkxanMH8bqkMq1TlxBv.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2019-04-15",
+            "episode_number": 2,
+            "episode_type": "standard",
+            "id": 1753558,
+            "name": "特别的触碰方法",
+            "overview": "奏太虽然内心对葵的秘密感到困惑，但为了不让她暴露真相，继续着澡堂的工作。\n\n这次的客人是女排部队长芽衣。\n\n在只有两个人的大浴场里拼命触摸那个过于敏感的身体的话，\n\n突然被识破了奏太的真面目，陷入了大危机！\n\n原以为会被骂，但芽衣却对无敌微笑。\n\n而且意外的是，被要求进行“更厉害的按摩”……",
+            "production_code": "",
+            "runtime": 7,
+            "season_number": 1,
+            "show_id": 88090,
+            "still_path": "/7ikId22OvhjliKvW6HEx6HFtC2W.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2019-04-22",
+            "episode_number": 3,
+            "episode_type": "standard",
+            "id": 1760353,
+            "name": "淋浴室的秘密",
+            "overview": "在社团活动中，奏太因为吃了葵的迎面击球而气绝。\n\n醒来后社团活动结束了，其他成员都回家了。\n\n没办法，自己也准备回去，于是去了男子浴室，不知为何那里出现了全裸的葵…！\n\n奏太发现自己做错了事进了女子浴室，急忙想要出去，\n\n葵挽留了这样的他，不知道为什么又去要那个瘦身按摩……",
+            "production_code": "",
+            "runtime": 7,
+            "season_number": 1,
+            "show_id": 88090,
+            "still_path": "/dySXhPsWijjPlnIooOub5cSevnG.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2019-04-29",
+            "episode_number": 4,
+            "episode_type": "standard",
+            "id": 1812215,
+            "name": "无法隐藏的恋心",
+            "overview": "在淋浴室的行为结束后，正要出去的两人面前突然出现了女排队员们！\n\n奏太和葵一下子就光着身子躲在淋浴间。\n\n为了欺骗状况，葵就这样开始了女生的谈话，\n\n突然被其他女部员问到对奏太的心情，她很脸红。\n\n无法隐藏的直率想法、无法停止对葵的爱戴的奏太就这样偷偷地……",
+            "production_code": "",
+            "runtime": 7,
+            "season_number": 1,
+            "show_id": 88090,
+            "still_path": "/mhJk3LFm98HIpIYIsZjLlnslsq1.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2019-05-06",
+            "episode_number": 5,
+            "episode_type": "standard",
+            "id": 1812216,
+            "name": "在被子下重叠",
+            "overview": "奏太为了慰问请假不去学校的葵，第一次去了结月家。\n\n本来应该和葵两个人在一起的，后来因为高杉来了而慌慌张张地钻进被子里！\n\n另一方面，高杉也不知道奏太藏起来，开始接近葵。\n\n在被子下默默听着的奏太被嫉妒所驱使。\n\n再次只有两个人的时候，奏太开始脱下葵的睡衣……",
+            "production_code": "",
+            "runtime": 7,
+            "season_number": 1,
+            "show_id": 88090,
+            "still_path": "/wDL7DDX2eKHXQgqP4nc01Ffnd6h.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2019-05-13",
+            "episode_number": 6,
+            "episode_type": "standard",
+            "id": 1812217,
+            "name": "93℃的三角关系",
+            "overview": "夏季合宿旅馆住宿中的排球部成员。\n\n因为意外的契机，奏太再次变身为洗浴人员，潜入了女浴室。\n\n芽衣已经知道了洗浴人员的真面目，觉得状况很有趣，就带奏太去了葵所在的桑拿店。\n\n被两位裸体美少女包围着，奏太被拜托在那里进行瘦身按摩……",
+            "production_code": "",
+            "runtime": 7,
+            "season_number": 1,
+            "show_id": 88090,
+            "still_path": "/zFRKSSx4EPFouCAKzZRiCshaQif.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2019-05-20",
+            "episode_number": 7,
+            "episode_type": "standard",
+            "id": 1812218,
+            "name": "灼烧般的告白",
+            "overview": "由于芽衣的机智而无人的女浴池。\n\n但是，在桑拿房里，葵躺在粗暴的喘息中，奏太看到这一幕，再次无法抑制兴奋。\n\n因为按摩而变得粘稠的身体，一点点的接吻和触摸马上又会着火。\n\n汗流浃背的两人本能地互相寻求对方……",
+            "production_code": "",
+            "runtime": 7,
+            "season_number": 1,
+            "show_id": 88090,
+            "still_path": "/sBM5cfC5eIuvyY9oNgRmdDgEs4C.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2019-05-27",
+            "episode_number": 8,
+            "episode_type": "finale",
+            "id": 1812219,
+            "name": "无法冲刷的心情",
+            "overview": "在桑拿房里失去意识的奏太醒来后正被葵在房间里照顾着。\n\n葵误以为奏太在睡觉，\n\n为了进行告白的预演，就自己喜欢上奏太的契机一点一点地开始说。\n\n奏太虽然葵很笨拙，但却被她直率的想法所打动，于是停止了假装睡觉的样子，自己也将这样的想法撞到了她身上。\n\n相爱的两个年轻人为了确认这份感情再次将炽热的肌肤重叠在一起……",
+            "production_code": "",
+            "runtime": 7,
+            "season_number": 1,
+            "show_id": 88090,
+            "still_path": "/1rPd35v5YFEByd5Z2uJIUY7QEWB.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          }
+        ],
+        "name": "第 1 季",
+        "networks": [
+          {
+            "id": 614,
+            "logo_path": "/hSdroyVthq3CynxTIIY7lnS8w1.png",
+            "name": "Tokyo MX",
+            "origin_country": "JP"
+          }
+        ],
+        "overview": "Tsukishima Souta开始在家里的公共澡堂做洗碗工。在隐瞒真实身份的同时，Souta的同学Yuzuki Aoi参观了澡堂。",
+        "id": 121459,
+        "poster_path": "/a00JKaQlGXPGtvWDHo6rs2amBTO.jpg",
+        "season_number": 1,
+        "vote_average": 0.0
+      }
+    ],
+    "episodes": [
+      {
+        "air_date": "2019-04-08",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "瘦身按摩",
+        "overview": "代替腰扭伤的祖父，在老家的澡堂打工的男生奏太。\n\n打工当天，出现在女汤的是平时总是吵架的同学·葵和女子排球部的成员们！\n\n变装后的奏太没有暴露真面目，为了消除平日的怨恨，对葵的身体实施性骚扰瘦身按摩。\n\n心情爽快，复仇成功！没想到，按摩结束后马上知道了葵的冲击性秘密……",
+        "id": 1744232,
+        "production_code": "",
+        "runtime": 7,
+        "season_number": 1,
+        "still_path": "/zGnH27QEkxanMH8bqkMq1TlxBv.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2019-04-15",
+        "crew": [],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "特别的触碰方法",
+        "overview": "奏太虽然内心对葵的秘密感到困惑，但为了不让她暴露真相，继续着澡堂的工作。\n\n这次的客人是女排部队长芽衣。\n\n在只有两个人的大浴场里拼命触摸那个过于敏感的身体的话，\n\n突然被识破了奏太的真面目，陷入了大危机！\n\n原以为会被骂，但芽衣却对无敌微笑。\n\n而且意外的是，被要求进行“更厉害的按摩”……",
+        "id": 1753558,
+        "production_code": "",
+        "runtime": 7,
+        "season_number": 1,
+        "still_path": "/7ikId22OvhjliKvW6HEx6HFtC2W.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2019-04-22",
+        "crew": [],
+        "episode_number": 3,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "淋浴室的秘密",
+        "overview": "在社团活动中，奏太因为吃了葵的迎面击球而气绝。\n\n醒来后社团活动结束了，其他成员都回家了。\n\n没办法，自己也准备回去，于是去了男子浴室，不知为何那里出现了全裸的葵…！\n\n奏太发现自己做错了事进了女子浴室，急忙想要出去，\n\n葵挽留了这样的他，不知道为什么又去要那个瘦身按摩……",
+        "id": 1760353,
+        "production_code": "",
+        "runtime": 7,
+        "season_number": 1,
+        "still_path": "/dySXhPsWijjPlnIooOub5cSevnG.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2019-04-29",
+        "crew": [],
+        "episode_number": 4,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "无法隐藏的恋心",
+        "overview": "在淋浴室的行为结束后，正要出去的两人面前突然出现了女排队员们！\n\n奏太和葵一下子就光着身子躲在淋浴间。\n\n为了欺骗状况，葵就这样开始了女生的谈话，\n\n突然被其他女部员问到对奏太的心情，她很脸红。\n\n无法隐藏的直率想法、无法停止对葵的爱戴的奏太就这样偷偷地……",
+        "id": 1812215,
+        "production_code": "",
+        "runtime": 7,
+        "season_number": 1,
+        "still_path": "/mhJk3LFm98HIpIYIsZjLlnslsq1.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2019-05-06",
+        "crew": [],
+        "episode_number": 5,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "在被子下重叠",
+        "overview": "奏太为了慰问请假不去学校的葵，第一次去了结月家。\n\n本来应该和葵两个人在一起的，后来因为高杉来了而慌慌张张地钻进被子里！\n\n另一方面，高杉也不知道奏太藏起来，开始接近葵。\n\n在被子下默默听着的奏太被嫉妒所驱使。\n\n再次只有两个人的时候，奏太开始脱下葵的睡衣……",
+        "id": 1812216,
+        "production_code": "",
+        "runtime": 7,
+        "season_number": 1,
+        "still_path": "/wDL7DDX2eKHXQgqP4nc01Ffnd6h.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2019-05-13",
+        "crew": [],
+        "episode_number": 6,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "93℃的三角关系",
+        "overview": "夏季合宿旅馆住宿中的排球部成员。\n\n因为意外的契机，奏太再次变身为洗浴人员，潜入了女浴室。\n\n芽衣已经知道了洗浴人员的真面目，觉得状况很有趣，就带奏太去了葵所在的桑拿店。\n\n被两位裸体美少女包围着，奏太被拜托在那里进行瘦身按摩……",
+        "id": 1812217,
+        "production_code": "",
+        "runtime": 7,
+        "season_number": 1,
+        "still_path": "/zFRKSSx4EPFouCAKzZRiCshaQif.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2019-05-20",
+        "crew": [],
+        "episode_number": 7,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "灼烧般的告白",
+        "overview": "由于芽衣的机智而无人的女浴池。\n\n但是，在桑拿房里，葵躺在粗暴的喘息中，奏太看到这一幕，再次无法抑制兴奋。\n\n因为按摩而变得粘稠的身体，一点点的接吻和触摸马上又会着火。\n\n汗流浃背的两人本能地互相寻求对方……",
+        "id": 1812218,
+        "production_code": "",
+        "runtime": 7,
+        "season_number": 1,
+        "still_path": "/sBM5cfC5eIuvyY9oNgRmdDgEs4C.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2019-05-27",
+        "crew": [],
+        "episode_number": 8,
+        "episode_type": "finale",
+        "guest_stars": [],
+        "name": "无法冲刷的心情",
+        "overview": "在桑拿房里失去意识的奏太醒来后正被葵在房间里照顾着。\n\n葵误以为奏太在睡觉，\n\n为了进行告白的预演，就自己喜欢上奏太的契机一点一点地开始说。\n\n奏太虽然葵很笨拙，但却被她直率的想法所打动，于是停止了假装睡觉的样子，自己也将这样的想法撞到了她身上。\n\n相爱的两个年轻人为了确认这份感情再次将炽热的肌肤重叠在一起……",
+        "id": 1812219,
+        "production_code": "",
+        "runtime": 7,
+        "season_number": 1,
+        "still_path": "/1rPd35v5YFEByd5Z2uJIUY7QEWB.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      }
+    ]
+  },
+  "translate": {
+    "translated": {
+      "media_type": "tv",
+      "tmdb_id": 88090,
+      "title": "洗屋先生！～我和那家伙在女浴池！？～",
+      "original_title": "洗い屋さん！～俺とアイツが女湯で！？～",
+      "year": 2019,
+      "plot": "讲述在老家的钱汤开始了搓背员兼职工作的月岛奏太，由于害怕见到熟人，于是隐瞒了自己的真实身份。但是他还是遇到了和自己同班同学的结月葵，并在和她打打闹闹中爱上了彼此。",
+      "tagline": "",
+      "runtime": 7,
+      "release_date": "2019-04-08",
+      "rating": 6.0,
+      "rating_count": 33,
+      "genres": [],
+      "countries": [
+        "JP"
+      ],
+      "languages": [
+        "ja"
+      ],
+      "studios": [
+        "Magic Bus",
+        "Picante Circus",
+        "Suiseisha"
+      ],
+      "networks": [
+        "Tokyo MX"
+      ],
+      "network": "Tokyo MX",
+      "status": "Ended",
+      "homepage": "https://araiya.cf-anime.com/",
+      "cast": [
+        {
+          "name_en": "Ayaka Igasaki",
+          "name_zh": null,
+          "role": "Sasakura Mei (voice)",
+          "original_name": "伊ヶ崎綾香",
+          "profile_path": "/yAwmznAiNj1YxoVUjHutw6zGIct.jpg",
+          "popularity": 3.199
+        },
+        {
+          "name_en": "Shohei Kajikawa",
+          "name_zh": null,
+          "role": "Tsukishima Souta (voice)",
+          "original_name": "梶川翔平",
+          "profile_path": "/yZccGkTo1lgdnDzBAH94B3i6ig5.jpg",
+          "popularity": 1.8032
+        },
+        {
+          "name_en": "Ringo Aoba",
+          "name_zh": null,
+          "role": "Yuzuki Aoi (voice)",
+          "original_name": "青葉りんご",
+          "profile_path": "/5gb4rQOhW6Hzs7LNuxGUemUVwa7.jpg",
+          "popularity": 13.098
+        },
+        {
+          "name_en": "Tetsuto Furuwaka",
+          "name_zh": null,
+          "role": "Takasugi Hidemoto (voice)",
+          "original_name": "古河徹人",
+          "profile_path": "/1NnsKP2ZECXS2f0yMUfIM78VYZ5.jpg",
+          "popularity": 9.874
+        },
+        {
+          "name_en": "Momoko Obana",
+          "name_zh": null,
+          "role": "Kaede Yuzuki (voice)",
+          "original_name": "小花モモコ",
+          "profile_path": null,
+          "popularity": 1.168
+        }
+      ],
+      "directors": [
+        "Mitsutaka Noshitani"
+      ],
+      "writers": [
+        "Kazuhiro Toda",
+        "Mitsutaka Noshitani"
+      ],
+      "images": {},
+      "seasons": [
+        {
+          "air_date": "2019-04-08",
+          "episode_count": 8,
+          "id": 121459,
+          "name": "第 1 季",
+          "overview": "Tsukishima Souta开始在家里的公共澡堂做洗碗工。在隐瞒真实身份的同时，Souta的同学Yuzuki Aoi参观了澡堂。",
+          "poster_path": "/a00JKaQlGXPGtvWDHo6rs2amBTO.jpg",
+          "season_number": 1,
+          "vote_average": 0.0
+        }
+      ],
+      "episodes": [
+        {
+          "air_date": "2019-04-08",
+          "crew": [],
+          "episode_number": 1,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "瘦身按摩",
+          "overview": "代替腰扭伤的祖父，在老家的澡堂打工的男生奏太。\n\n打工当天，出现在女汤的是平时总是吵架的同学·葵和女子排球部的成员们！\n\n变装后的奏太没有暴露真面目，为了消除平日的怨恨，对葵的身体实施性骚扰瘦身按摩。\n\n心情爽快，复仇成功！没想到，按摩结束后马上知道了葵的冲击性秘密……",
+          "id": 1744232,
+          "production_code": "",
+          "runtime": 7,
+          "season_number": 1,
+          "still_path": "/zGnH27QEkxanMH8bqkMq1TlxBv.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2019-04-15",
+          "crew": [],
+          "episode_number": 2,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "特别的触碰方法",
+          "overview": "奏太虽然内心对葵的秘密感到困惑，但为了不让她暴露真相，继续着澡堂的工作。\n\n这次的客人是女排部队长芽衣。\n\n在只有两个人的大浴场里拼命触摸那个过于敏感的身体的话，\n\n突然被识破了奏太的真面目，陷入了大危机！\n\n原以为会被骂，但芽衣却对无敌微笑。\n\n而且意外的是，被要求进行“更厉害的按摩”……",
+          "id": 1753558,
+          "production_code": "",
+          "runtime": 7,
+          "season_number": 1,
+          "still_path": "/7ikId22OvhjliKvW6HEx6HFtC2W.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2019-04-22",
+          "crew": [],
+          "episode_number": 3,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "淋浴室的秘密",
+          "overview": "在社团活动中，奏太因为吃了葵的迎面击球而气绝。\n\n醒来后社团活动结束了，其他成员都回家了。\n\n没办法，自己也准备回去，于是去了男子浴室，不知为何那里出现了全裸的葵…！\n\n奏太发现自己做错了事进了女子浴室，急忙想要出去，\n\n葵挽留了这样的他，不知道为什么又去要那个瘦身按摩……",
+          "id": 1760353,
+          "production_code": "",
+          "runtime": 7,
+          "season_number": 1,
+          "still_path": "/dySXhPsWijjPlnIooOub5cSevnG.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2019-04-29",
+          "crew": [],
+          "episode_number": 4,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "无法隐藏的恋心",
+          "overview": "在淋浴室的行为结束后，正要出去的两人面前突然出现了女排队员们！\n\n奏太和葵一下子就光着身子躲在淋浴间。\n\n为了欺骗状况，葵就这样开始了女生的谈话，\n\n突然被其他女部员问到对奏太的心情，她很脸红。\n\n无法隐藏的直率想法、无法停止对葵的爱戴的奏太就这样偷偷地……",
+          "id": 1812215,
+          "production_code": "",
+          "runtime": 7,
+          "season_number": 1,
+          "still_path": "/mhJk3LFm98HIpIYIsZjLlnslsq1.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2019-05-06",
+          "crew": [],
+          "episode_number": 5,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "在被子下重叠",
+          "overview": "奏太为了慰问请假不去学校的葵，第一次去了结月家。\n\n本来应该和葵两个人在一起的，后来因为高杉来了而慌慌张张地钻进被子里！\n\n另一方面，高杉也不知道奏太藏起来，开始接近葵。\n\n在被子下默默听着的奏太被嫉妒所驱使。\n\n再次只有两个人的时候，奏太开始脱下葵的睡衣……",
+          "id": 1812216,
+          "production_code": "",
+          "runtime": 7,
+          "season_number": 1,
+          "still_path": "/wDL7DDX2eKHXQgqP4nc01Ffnd6h.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2019-05-13",
+          "crew": [],
+          "episode_number": 6,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "93℃的三角关系",
+          "overview": "夏季合宿旅馆住宿中的排球部成员。\n\n因为意外的契机，奏太再次变身为洗浴人员，潜入了女浴室。\n\n芽衣已经知道了洗浴人员的真面目，觉得状况很有趣，就带奏太去了葵所在的桑拿店。\n\n被两位裸体美少女包围着，奏太被拜托在那里进行瘦身按摩……",
+          "id": 1812217,
+          "production_code": "",
+          "runtime": 7,
+          "season_number": 1,
+          "still_path": "/zFRKSSx4EPFouCAKzZRiCshaQif.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2019-05-20",
+          "crew": [],
+          "episode_number": 7,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "灼烧般的告白",
+          "overview": "由于芽衣的机智而无人的女浴池。\n\n但是，在桑拿房里，葵躺在粗暴的喘息中，奏太看到这一幕，再次无法抑制兴奋。\n\n因为按摩而变得粘稠的身体，一点点的接吻和触摸马上又会着火。\n\n汗流浃背的两人本能地互相寻求对方……",
+          "id": 1812218,
+          "production_code": "",
+          "runtime": 7,
+          "season_number": 1,
+          "still_path": "/sBM5cfC5eIuvyY9oNgRmdDgEs4C.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2019-05-27",
+          "crew": [],
+          "episode_number": 8,
+          "episode_type": "finale",
+          "guest_stars": [],
+          "name": "无法冲刷的心情",
+          "overview": "在桑拿房里失去意识的奏太醒来后正被葵在房间里照顾着。\n\n葵误以为奏太在睡觉，\n\n为了进行告白的预演，就自己喜欢上奏太的契机一点一点地开始说。\n\n奏太虽然葵很笨拙，但却被她直率的想法所打动，于是停止了假装睡觉的样子，自己也将这样的想法撞到了她身上。\n\n相爱的两个年轻人为了确认这份感情再次将炽热的肌肤重叠在一起……",
+          "id": 1812219,
+          "production_code": "",
+          "runtime": 7,
+          "season_number": 1,
+          "still_path": "/1rPd35v5YFEByd5Z2uJIUY7QEWB.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        }
+      ],
+      "title_zh": "洗屋先生！～我和那家伙在女浴池！？～",
+      "plot_zh": "讲述在老家的钱汤开始了搓背员兼职工作的月岛奏太，由于害怕见到熟人，于是隐瞒了自己的真实身份。但是他还是遇到了和自己同班同学的结月葵，并在和她打打闹闹中爱上了彼此。",
+      "keywords_en": [
+        "romance",
+        "based on manga",
+        "anime",
+        "erotic",
+        "sentō"
+      ],
+      "keywords": [
+        "romance",
+        "based on manga",
+        "anime",
+        "erotic",
+        "sentō"
+      ],
+      "keywords_zh": [
+        "浪漫",
+        "改编自漫画",
+        "动画",
+        "色情",
+        "送电"
+      ]
+    },
+    "episodes": [
+      {
+        "air_date": "2019-04-08",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "瘦身按摩",
+        "overview": "代替腰扭伤的祖父，在老家的澡堂打工的男生奏太。\n\n打工当天，出现在女汤的是平时总是吵架的同学·葵和女子排球部的成员们！\n\n变装后的奏太没有暴露真面目，为了消除平日的怨恨，对葵的身体实施性骚扰瘦身按摩。\n\n心情爽快，复仇成功！没想到，按摩结束后马上知道了葵的冲击性秘密……",
+        "id": 1744232,
+        "production_code": "",
+        "runtime": 7,
+        "season_number": 1,
+        "still_path": "/zGnH27QEkxanMH8bqkMq1TlxBv.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2019-04-15",
+        "crew": [],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "特别的触碰方法",
+        "overview": "奏太虽然内心对葵的秘密感到困惑，但为了不让她暴露真相，继续着澡堂的工作。\n\n这次的客人是女排部队长芽衣。\n\n在只有两个人的大浴场里拼命触摸那个过于敏感的身体的话，\n\n突然被识破了奏太的真面目，陷入了大危机！\n\n原以为会被骂，但芽衣却对无敌微笑。\n\n而且意外的是，被要求进行“更厉害的按摩”……",
+        "id": 1753558,
+        "production_code": "",
+        "runtime": 7,
+        "season_number": 1,
+        "still_path": "/7ikId22OvhjliKvW6HEx6HFtC2W.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2019-04-22",
+        "crew": [],
+        "episode_number": 3,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "淋浴室的秘密",
+        "overview": "在社团活动中，奏太因为吃了葵的迎面击球而气绝。\n\n醒来后社团活动结束了，其他成员都回家了。\n\n没办法，自己也准备回去，于是去了男子浴室，不知为何那里出现了全裸的葵…！\n\n奏太发现自己做错了事进了女子浴室，急忙想要出去，\n\n葵挽留了这样的他，不知道为什么又去要那个瘦身按摩……",
+        "id": 1760353,
+        "production_code": "",
+        "runtime": 7,
+        "season_number": 1,
+        "still_path": "/dySXhPsWijjPlnIooOub5cSevnG.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2019-04-29",
+        "crew": [],
+        "episode_number": 4,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "无法隐藏的恋心",
+        "overview": "在淋浴室的行为结束后，正要出去的两人面前突然出现了女排队员们！\n\n奏太和葵一下子就光着身子躲在淋浴间。\n\n为了欺骗状况，葵就这样开始了女生的谈话，\n\n突然被其他女部员问到对奏太的心情，她很脸红。\n\n无法隐藏的直率想法、无法停止对葵的爱戴的奏太就这样偷偷地……",
+        "id": 1812215,
+        "production_code": "",
+        "runtime": 7,
+        "season_number": 1,
+        "still_path": "/mhJk3LFm98HIpIYIsZjLlnslsq1.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2019-05-06",
+        "crew": [],
+        "episode_number": 5,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "在被子下重叠",
+        "overview": "奏太为了慰问请假不去学校的葵，第一次去了结月家。\n\n本来应该和葵两个人在一起的，后来因为高杉来了而慌慌张张地钻进被子里！\n\n另一方面，高杉也不知道奏太藏起来，开始接近葵。\n\n在被子下默默听着的奏太被嫉妒所驱使。\n\n再次只有两个人的时候，奏太开始脱下葵的睡衣……",
+        "id": 1812216,
+        "production_code": "",
+        "runtime": 7,
+        "season_number": 1,
+        "still_path": "/wDL7DDX2eKHXQgqP4nc01Ffnd6h.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2019-05-13",
+        "crew": [],
+        "episode_number": 6,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "93℃的三角关系",
+        "overview": "夏季合宿旅馆住宿中的排球部成员。\n\n因为意外的契机，奏太再次变身为洗浴人员，潜入了女浴室。\n\n芽衣已经知道了洗浴人员的真面目，觉得状况很有趣，就带奏太去了葵所在的桑拿店。\n\n被两位裸体美少女包围着，奏太被拜托在那里进行瘦身按摩……",
+        "id": 1812217,
+        "production_code": "",
+        "runtime": 7,
+        "season_number": 1,
+        "still_path": "/zFRKSSx4EPFouCAKzZRiCshaQif.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2019-05-20",
+        "crew": [],
+        "episode_number": 7,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "灼烧般的告白",
+        "overview": "由于芽衣的机智而无人的女浴池。\n\n但是，在桑拿房里，葵躺在粗暴的喘息中，奏太看到这一幕，再次无法抑制兴奋。\n\n因为按摩而变得粘稠的身体，一点点的接吻和触摸马上又会着火。\n\n汗流浃背的两人本能地互相寻求对方……",
+        "id": 1812218,
+        "production_code": "",
+        "runtime": 7,
+        "season_number": 1,
+        "still_path": "/sBM5cfC5eIuvyY9oNgRmdDgEs4C.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2019-05-27",
+        "crew": [],
+        "episode_number": 8,
+        "episode_type": "finale",
+        "guest_stars": [],
+        "name": "无法冲刷的心情",
+        "overview": "在桑拿房里失去意识的奏太醒来后正被葵在房间里照顾着。\n\n葵误以为奏太在睡觉，\n\n为了进行告白的预演，就自己喜欢上奏太的契机一点一点地开始说。\n\n奏太虽然葵很笨拙，但却被她直率的想法所打动，于是停止了假装睡觉的样子，自己也将这样的想法撞到了她身上。\n\n相爱的两个年轻人为了确认这份感情再次将炽热的肌肤重叠在一起……",
+        "id": 1812219,
+        "production_code": "",
+        "runtime": 7,
+        "season_number": 1,
+        "still_path": "/1rPd35v5YFEByd5Z2uJIUY7QEWB.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      }
+    ]
+  },
+  "normalize": {
+    "media_type": "tv",
+    "tmdb_id": 88090,
+    "title": "洗屋先生！～我和那家伙在女浴池！？～",
+    "original_title": "洗い屋さん！～俺とアイツが女湯で！？～",
+    "year": 2019,
+    "plot": "讲述在老家的钱汤开始了搓背员兼职工作的月岛奏太，由于害怕见到熟人，于是隐瞒了自己的真实身份。但是他还是遇到了和自己同班同学的结月葵，并在和她打打闹闹中爱上了彼此。",
+    "tagline": "",
+    "runtime": 7,
+    "release_date": "2019-04-08",
+    "rating": 6.0,
+    "rating_count": 33,
+    "genres": [],
+    "countries": [
+      "JP"
+    ],
+    "languages": [
+      "ja"
+    ],
+    "studios": [
+      "Magic Bus",
+      "Picante Circus",
+      "Suiseisha"
+    ],
+    "networks": [
+      "Tokyo MX"
+    ],
+    "network": "Tokyo MX",
+    "status": "Ended",
+    "homepage": "https://araiya.cf-anime.com/",
+    "cast": [
+      {
+        "name_en": "Ayaka Igasaki",
+        "name_zh": null,
+        "role": "Sasakura Mei (voice)",
+        "original_name": "伊ヶ崎綾香",
+        "profile_path": "/yAwmznAiNj1YxoVUjHutw6zGIct.jpg",
+        "popularity": 3.199
+      },
+      {
+        "name_en": "Shohei Kajikawa",
+        "name_zh": null,
+        "role": "Tsukishima Souta (voice)",
+        "original_name": "梶川翔平",
+        "profile_path": "/yZccGkTo1lgdnDzBAH94B3i6ig5.jpg",
+        "popularity": 1.8032
+      },
+      {
+        "name_en": "Ringo Aoba",
+        "name_zh": null,
+        "role": "Yuzuki Aoi (voice)",
+        "original_name": "青葉りんご",
+        "profile_path": "/5gb4rQOhW6Hzs7LNuxGUemUVwa7.jpg",
+        "popularity": 13.098
+      },
+      {
+        "name_en": "Tetsuto Furuwaka",
+        "name_zh": null,
+        "role": "Takasugi Hidemoto (voice)",
+        "original_name": "古河徹人",
+        "profile_path": "/1NnsKP2ZECXS2f0yMUfIM78VYZ5.jpg",
+        "popularity": 9.874
+      },
+      {
+        "name_en": "Momoko Obana",
+        "name_zh": null,
+        "role": "Kaede Yuzuki (voice)",
+        "original_name": "小花モモコ",
+        "profile_path": null,
+        "popularity": 1.168
+      }
+    ],
+    "directors": [
+      "Mitsutaka Noshitani"
+    ],
+    "writers": [
+      "Kazuhiro Toda",
+      "Mitsutaka Noshitani"
+    ],
+    "images": {},
+    "seasons": [
+      {
+        "air_date": "2019-04-08",
+        "episode_count": 8,
+        "id": 121459,
+        "name": "第 1 季",
+        "overview": "Tsukishima Souta开始在家里的公共澡堂做洗碗工。在隐瞒真实身份的同时，Souta的同学Yuzuki Aoi参观了澡堂。",
+        "poster_path": "/a00JKaQlGXPGtvWDHo6rs2amBTO.jpg",
+        "season_number": 1,
+        "vote_average": 0.0
+      }
+    ],
+    "episodes": [
+      {
+        "air_date": "2019-04-08",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "瘦身按摩",
+        "overview": "代替腰扭伤的祖父，在老家的澡堂打工的男生奏太。\n\n打工当天，出现在女汤的是平时总是吵架的同学·葵和女子排球部的成员们！\n\n变装后的奏太没有暴露真面目，为了消除平日的怨恨，对葵的身体实施性骚扰瘦身按摩。\n\n心情爽快，复仇成功！没想到，按摩结束后马上知道了葵的冲击性秘密……",
+        "id": 1744232,
+        "production_code": "",
+        "runtime": 7,
+        "season_number": 1,
+        "still_path": "/zGnH27QEkxanMH8bqkMq1TlxBv.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2019-04-15",
+        "crew": [],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "特别的触碰方法",
+        "overview": "奏太虽然内心对葵的秘密感到困惑，但为了不让她暴露真相，继续着澡堂的工作。\n\n这次的客人是女排部队长芽衣。\n\n在只有两个人的大浴场里拼命触摸那个过于敏感的身体的话，\n\n突然被识破了奏太的真面目，陷入了大危机！\n\n原以为会被骂，但芽衣却对无敌微笑。\n\n而且意外的是，被要求进行“更厉害的按摩”……",
+        "id": 1753558,
+        "production_code": "",
+        "runtime": 7,
+        "season_number": 1,
+        "still_path": "/7ikId22OvhjliKvW6HEx6HFtC2W.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2019-04-22",
+        "crew": [],
+        "episode_number": 3,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "淋浴室的秘密",
+        "overview": "在社团活动中，奏太因为吃了葵的迎面击球而气绝。\n\n醒来后社团活动结束了，其他成员都回家了。\n\n没办法，自己也准备回去，于是去了男子浴室，不知为何那里出现了全裸的葵…！\n\n奏太发现自己做错了事进了女子浴室，急忙想要出去，\n\n葵挽留了这样的他，不知道为什么又去要那个瘦身按摩……",
+        "id": 1760353,
+        "production_code": "",
+        "runtime": 7,
+        "season_number": 1,
+        "still_path": "/dySXhPsWijjPlnIooOub5cSevnG.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2019-04-29",
+        "crew": [],
+        "episode_number": 4,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "无法隐藏的恋心",
+        "overview": "在淋浴室的行为结束后，正要出去的两人面前突然出现了女排队员们！\n\n奏太和葵一下子就光着身子躲在淋浴间。\n\n为了欺骗状况，葵就这样开始了女生的谈话，\n\n突然被其他女部员问到对奏太的心情，她很脸红。\n\n无法隐藏的直率想法、无法停止对葵的爱戴的奏太就这样偷偷地……",
+        "id": 1812215,
+        "production_code": "",
+        "runtime": 7,
+        "season_number": 1,
+        "still_path": "/mhJk3LFm98HIpIYIsZjLlnslsq1.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2019-05-06",
+        "crew": [],
+        "episode_number": 5,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "在被子下重叠",
+        "overview": "奏太为了慰问请假不去学校的葵，第一次去了结月家。\n\n本来应该和葵两个人在一起的，后来因为高杉来了而慌慌张张地钻进被子里！\n\n另一方面，高杉也不知道奏太藏起来，开始接近葵。\n\n在被子下默默听着的奏太被嫉妒所驱使。\n\n再次只有两个人的时候，奏太开始脱下葵的睡衣……",
+        "id": 1812216,
+        "production_code": "",
+        "runtime": 7,
+        "season_number": 1,
+        "still_path": "/wDL7DDX2eKHXQgqP4nc01Ffnd6h.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2019-05-13",
+        "crew": [],
+        "episode_number": 6,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "93℃的三角关系",
+        "overview": "夏季合宿旅馆住宿中的排球部成员。\n\n因为意外的契机，奏太再次变身为洗浴人员，潜入了女浴室。\n\n芽衣已经知道了洗浴人员的真面目，觉得状况很有趣，就带奏太去了葵所在的桑拿店。\n\n被两位裸体美少女包围着，奏太被拜托在那里进行瘦身按摩……",
+        "id": 1812217,
+        "production_code": "",
+        "runtime": 7,
+        "season_number": 1,
+        "still_path": "/zFRKSSx4EPFouCAKzZRiCshaQif.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2019-05-20",
+        "crew": [],
+        "episode_number": 7,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "灼烧般的告白",
+        "overview": "由于芽衣的机智而无人的女浴池。\n\n但是，在桑拿房里，葵躺在粗暴的喘息中，奏太看到这一幕，再次无法抑制兴奋。\n\n因为按摩而变得粘稠的身体，一点点的接吻和触摸马上又会着火。\n\n汗流浃背的两人本能地互相寻求对方……",
+        "id": 1812218,
+        "production_code": "",
+        "runtime": 7,
+        "season_number": 1,
+        "still_path": "/sBM5cfC5eIuvyY9oNgRmdDgEs4C.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2019-05-27",
+        "crew": [],
+        "episode_number": 8,
+        "episode_type": "finale",
+        "guest_stars": [],
+        "name": "无法冲刷的心情",
+        "overview": "在桑拿房里失去意识的奏太醒来后正被葵在房间里照顾着。\n\n葵误以为奏太在睡觉，\n\n为了进行告白的预演，就自己喜欢上奏太的契机一点一点地开始说。\n\n奏太虽然葵很笨拙，但却被她直率的想法所打动，于是停止了假装睡觉的样子，自己也将这样的想法撞到了她身上。\n\n相爱的两个年轻人为了确认这份感情再次将炽热的肌肤重叠在一起……",
+        "id": 1812219,
+        "production_code": "",
+        "runtime": 7,
+        "season_number": 1,
+        "still_path": "/1rPd35v5YFEByd5Z2uJIUY7QEWB.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      }
+    ],
+    "title_zh": "洗屋先生！～我和那家伙在女浴池！？～",
+    "plot_zh": "讲述在老家的钱汤开始了搓背员兼职工作的月岛奏太，由于害怕见到熟人，于是隐瞒了自己的真实身份。但是他还是遇到了和自己同班同学的结月葵，并在和她打打闹闹中爱上了彼此。",
+    "keywords_en": [
+      "romance",
+      "based on manga",
+      "anime",
+      "erotic",
+      "sentō"
+    ],
+    "keywords": [
+      "romance",
+      "based on manga",
+      "anime",
+      "erotic",
+      "sentō"
+    ],
+    "keywords_zh": [
+      "浪漫",
+      "改编自漫画",
+      "动画",
+      "色情",
+      "送电"
+    ]
+  },
+  "nfo": {
+    "data": {
+      "title": "洗屋先生！～我和那家伙在女浴池！？～",
+      "originaltitle": "洗い屋さん！～俺とアイツが女湯で！？～",
+      "year": 2019,
+      "premiered": "2019-04-08",
+      "plot": "讲述在老家的钱汤开始了搓背员兼职工作的月岛奏太，由于害怕见到熟人，于是隐瞒了自己的真实身份。但是他还是遇到了和自己同班同学的结月葵，并在和她打打闹闹中爱上了彼此。",
+      "tagline": "",
+      "runtime": 7,
+      "rating": 6.0,
+      "votes": 33,
+      "genre": [],
+      "country": [
+        "JP"
+      ],
+      "studio": [
+        "Magic Bus",
+        "Picante Circus",
+        "Suiseisha"
+      ],
+      "credits": [
+        "Kazuhiro Toda",
+        "Mitsutaka Noshitani"
+      ],
+      "director": [
+        "Mitsutaka Noshitani"
+      ],
+      "actor": [
+        {
+          "name": "Ayaka Igasaki",
+          "role": "Sasakura Mei (voice)",
+          "originalname": "伊ヶ崎綾香",
+          "thumb": "images/actors/Ayaka Igasaki.jpg"
+        },
+        {
+          "name": "Shohei Kajikawa",
+          "role": "Tsukishima Souta (voice)",
+          "originalname": "梶川翔平",
+          "thumb": "images/actors/Shohei Kajikawa.jpg"
+        },
+        {
+          "name": "Ringo Aoba",
+          "role": "Yuzuki Aoi (voice)",
+          "originalname": "青葉りんご",
+          "thumb": "images/actors/Ringo Aoba.jpg"
+        },
+        {
+          "name": "Tetsuto Furuwaka",
+          "role": "Takasugi Hidemoto (voice)",
+          "originalname": "古河徹人",
+          "thumb": "images/actors/Tetsuto Furuwaka.jpg"
+        },
+        {
+          "name": "Momoko Obana",
+          "role": "Kaede Yuzuki (voice)",
+          "originalname": "小花モモコ"
+        }
+      ],
+      "thumb": "poster.jpg",
+      "fanart": "fanart.jpg",
+      "tags": [
+        "浪漫",
+        "改编自漫画",
+        "动画",
+        "色情",
+        "送电"
+      ],
+      "network": "Tokyo MX",
+      "networks": [
+        "Tokyo MX"
+      ],
+      "status": "Ended",
+      "homepage": "https://araiya.cf-anime.com/",
+      "tmdb_id": 88090,
+      "validated": true
+    },
+    "xml": "<?xml version=\"1.0\" ?>\n<tvshow>\n  <title>洗屋先生！～我和那家伙在女浴池！？～</title>\n  <originaltitle>洗い屋さん！～俺とアイツが女湯で！？～</originaltitle>\n  <year>2019</year>\n  <premiered>2019-04-08</premiered>\n  <plot><![CDATA[讲述在老家的钱汤开始了搓背员兼职工作的月岛奏太，由于害怕见到熟人，于是隐瞒了自己的真实身份。但是他还是遇到了和自己同班同学的结月葵，并在和她打打闹闹中爱上了彼此。]]></plot>\n  <runtime>7</runtime>\n  <rating>6.0</rating>\n  <votes>33</votes>\n  <tmdbid>88090</tmdbid>\n  <country>JP</country>\n  <studio>Magic Bus</studio>\n  <studio>Picante Circus</studio>\n  <studio>Suiseisha</studio>\n  <credits>Kazuhiro Toda, Mitsutaka Noshitani</credits>\n  <director>Mitsutaka Noshitani</director>\n  <actor>\n    <name>Ayaka Igasaki</name>\n    <role>Sasakura Mei (voice)</role>\n    <originalname>伊ヶ崎綾香</originalname>\n    <thumb>images/actors/Ayaka Igasaki.jpg</thumb>\n  </actor>\n  <actor>\n    <name>Shohei Kajikawa</name>\n    <role>Tsukishima Souta (voice)</role>\n    <originalname>梶川翔平</originalname>\n    <thumb>images/actors/Shohei Kajikawa.jpg</thumb>\n  </actor>\n  <actor>\n    <name>Ringo Aoba</name>\n    <role>Yuzuki Aoi (voice)</role>\n    <originalname>青葉りんご</originalname>\n    <thumb>images/actors/Ringo Aoba.jpg</thumb>\n  </actor>\n  <actor>\n    <name>Tetsuto Furuwaka</name>\n    <role>Takasugi Hidemoto (voice)</role>\n    <originalname>古河徹人</originalname>\n    <thumb>images/actors/Tetsuto Furuwaka.jpg</thumb>\n  </actor>\n  <actor>\n    <name>Momoko Obana</name>\n    <role>Kaede Yuzuki (voice)</role>\n    <originalname>小花モモコ</originalname>\n  </actor>\n  <network>Tokyo MX</network>\n  <status>Ended</status>\n  <homepage>https://araiya.cf-anime.com/</homepage>\n  <uniqueid type=\"tmdb\" default=\"true\">88090</uniqueid>\n  <thumb>images/poster/poster.jpg</thumb>\n  <fanart>images/fanart/fanart.jpg</fanart>\n  <tag>浪漫</tag>\n  <tag>改编自漫画</tag>\n  <tag>动画</tag>\n  <tag>色情</tag>\n  <tag>送电</tag>\n</tvshow>\n"
+  },
+  "output": {
+    "status": "completed",
+    "files": {
+      "nfo_file": "/Volumes/video/Animation/The Animation/洗屋先生！～我和那家伙在女浴池！？～ (2019)/tvshow.nfo",
+      "images_dir": "/Volumes/video/Animation/The Animation/洗屋先生！～我和那家伙在女浴池！？～ (2019)/images",
+      "media_dir": "/Volumes/video/Animation/The Animation/洗屋先生！～我和那家伙在女浴池！？～ (2019)",
+      "season_1_episode_1": "/Volumes/video/Animation/The Animation/洗屋先生！～我和那家伙在女浴池！？～ (2019)/Season 01/洗屋先生！～我和那家伙在女浴池！？～ - S01E01 - 瘦身按摩.nfo",
+      "season_1_episode_2": "/Volumes/video/Animation/The Animation/洗屋先生！～我和那家伙在女浴池！？～ (2019)/Season 01/洗屋先生！～我和那家伙在女浴池！？～ - S01E02 - 特别的触碰方法.nfo",
+      "season_1_episode_3": "/Volumes/video/Animation/The Animation/洗屋先生！～我和那家伙在女浴池！？～ (2019)/Season 01/洗屋先生！～我和那家伙在女浴池！？～ - S01E03 - 淋浴室的秘密.nfo",
+      "season_1_episode_4": "/Volumes/video/Animation/The Animation/洗屋先生！～我和那家伙在女浴池！？～ (2019)/Season 01/洗屋先生！～我和那家伙在女浴池！？～ - S01E04 - 无法隐藏的恋心.nfo",
+      "season_1_episode_5": "/Volumes/video/Animation/The Animation/洗屋先生！～我和那家伙在女浴池！？～ (2019)/Season 01/洗屋先生！～我和那家伙在女浴池！？～ - S01E05 - 在被子下重叠.nfo",
+      "season_1_episode_6": "/Volumes/video/Animation/The Animation/洗屋先生！～我和那家伙在女浴池！？～ (2019)/Season 01/洗屋先生！～我和那家伙在女浴池！？～ - S01E06 - 93℃的三角关系.nfo",
+      "season_1_episode_7": "/Volumes/video/Animation/The Animation/洗屋先生！～我和那家伙在女浴池！？～ (2019)/Season 01/洗屋先生！～我和那家伙在女浴池！？～ - S01E07 - 灼烧般的告白.nfo",
+      "season_1_episode_8": "/Volumes/video/Animation/The Animation/洗屋先生！～我和那家伙在女浴池！？～ (2019)/Season 01/洗屋先生！～我和那家伙在女浴池！？～ - S01E08 - 无法冲刷的心情.nfo"
+    }
+  },
+  "errors": [],
+  "end_time": "2025-12-05T23:13:19.274801"
+}

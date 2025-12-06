@@ -1,0 +1,1192 @@
+{
+  "start_time": "2025-12-06T01:32:13.871706",
+  "input": {
+    "media_type": "tv",
+    "query": "",
+    "output_dir": "/Volumes/video/Animation/The Animation/いまりあ (Unknown Year)",
+    "verbose": false,
+    "quiet": true,
+    "aid_search": true,
+    "tmdb_id": 259214
+  },
+  "search": {
+    "results": {},
+    "skip_search": true
+  },
+  "fetch": {
+    "main": {
+      "adult": true,
+      "backdrop_path": "/jEPH0DCPJ6ovMwengHUW4YHbs0F.jpg",
+      "created_by": [],
+      "episode_run_time": [],
+      "first_air_date": "2024-08-30",
+      "genres": [
+        {
+          "id": 16,
+          "name": "动画"
+        }
+      ],
+      "homepage": "https://www.lune-soft.jp/ova/27312",
+      "id": 259214,
+      "in_production": true,
+      "languages": [
+        "ja"
+      ],
+      "last_air_date": "2025-05-30",
+      "last_episode_to_air": {
+        "id": 6076494,
+        "name": "我的秘密向我梦中情人透露了♡",
+        "overview": "綾香的丈夫因工作外派，独自居住。作为认真且有良知的年轻主妇，她接受了邻居家的请求，当起了诚的家庭教师。\n\n然而有一天，因丈夫外派导致积压的性欲难以抑制，她不慎进行的自慰行为被诚撞见！因此被诚威胁并压制。在诚年轻的身体和汹涌的性欲面前，綾香逐渐沉溺其中……？",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "air_date": "2025-05-30",
+        "episode_number": 6,
+        "episode_type": "standard",
+        "production_code": "",
+        "runtime": 16,
+        "season_number": 1,
+        "show_id": 259214,
+        "still_path": "/pBuxD6pEtSvO2rdPYBea0da2gsv.jpg"
+      },
+      "name": "偶像女友墮落NTR",
+      "next_episode_to_air": null,
+      "networks": [
+        {
+          "id": 1807,
+          "logo_path": "/z2rWC9f1T8J9O1MEHNXWmncCYFL.png",
+          "name": "RTV 1",
+          "origin_country": "RS"
+        }
+      ],
+      "number_of_episodes": 6,
+      "number_of_seasons": 1,
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "OVAいま♡りあ",
+      "overview": "偶像快乐堕落的金字塔！武田弘光老师的「现在♡莉亚」动画化！",
+      "popularity": 0.0,
+      "poster_path": "/kMX1v4zOferkrkF04kUlppIfJ0u.jpg",
+      "production_companies": [
+        {
+          "id": 164757,
+          "logo_path": null,
+          "name": "Antechinus",
+          "origin_country": "JP"
+        },
+        {
+          "id": 96058,
+          "logo_path": null,
+          "name": "T-REX",
+          "origin_country": "JP"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "JP",
+          "name": "Japan"
+        }
+      ],
+      "seasons": [
+        {
+          "air_date": "2024-08-30",
+          "episode_count": 6,
+          "id": 402301,
+          "name": "第 1 季",
+          "overview": "",
+          "poster_path": "/L9tz7LKHC9IaK6ymCZ8Fz5j2TU.jpg",
+          "season_number": 1,
+          "vote_average": 10.0
+        }
+      ],
+      "spoken_languages": [
+        {
+          "english_name": "Japanese",
+          "iso_639_1": "ja",
+          "name": "日本語"
+        }
+      ],
+      "status": "Returning Series",
+      "tagline": "",
+      "type": "Video",
+      "vote_average": 10.0,
+      "vote_count": 1
+    },
+    "credits": {
+      "cast": [
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 4670765,
+          "known_for_department": "Acting",
+          "name": "Hazuki Akari",
+          "original_name": "葉月あかり",
+          "popularity": 0.0,
+          "profile_path": null,
+          "character": "Mukaihi Kisara (voice)",
+          "credit_id": "67a3bcb5c1e5ed8bfc859ab6",
+          "order": 0
+        },
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 3031026,
+          "known_for_department": "Acting",
+          "name": "Shiu Kase",
+          "original_name": "鹿瀬紫卯",
+          "popularity": 0.6,
+          "profile_path": null,
+          "character": "Seika Yumenoki (voice)",
+          "credit_id": "67a507928858c8705a66f889",
+          "order": 1
+        },
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 5229995,
+          "known_for_department": "Acting",
+          "name": "Utane Moriya",
+          "original_name": "森谷うたね",
+          "popularity": 0.0,
+          "profile_path": null,
+          "character": "Honami Mizuhara/ Yuri Kawasaki (voice)",
+          "credit_id": "67a50dd2c1e5ed8bfc85c3be",
+          "order": 2
+        },
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 5331038,
+          "known_for_department": "Acting",
+          "name": "Fujii Nekoko",
+          "original_name": "藤井ねここ",
+          "popularity": 0.0,
+          "profile_path": null,
+          "character": "Amamiya Tsubaki (voice)",
+          "credit_id": "67e5177e2074b0ee56003012",
+          "order": 3
+        },
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 3079148,
+          "known_for_department": "Acting",
+          "name": "Miki Horiba",
+          "original_name": "堀場美希",
+          "popularity": 1.646,
+          "profile_path": "/qcuFyo0tbhp6FPuB0q8aXTOKCwW.jpg",
+          "character": "Saiki Ayaka (voice)",
+          "credit_id": "67e52363421eb8c331ba435f",
+          "order": 4
+        },
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 5331038,
+          "known_for_department": "Acting",
+          "name": "Fujii Nekoko",
+          "original_name": "藤井ねここ",
+          "popularity": 0.0,
+          "profile_path": null,
+          "character": "Mother (voice)",
+          "credit_id": "67e5237b421eb8c331ba436d",
+          "order": 5
+        }
+      ],
+      "crew": [
+        {
+          "adult": true,
+          "gender": 2,
+          "id": 2421480,
+          "known_for_department": "Visual Effects",
+          "name": "Hiromitsu Takeda",
+          "original_name": "武田弘光",
+          "popularity": 0.984,
+          "profile_path": null,
+          "credit_id": "6753ed844624397fa811a175",
+          "department": "Writing",
+          "job": "Comic Book"
+        },
+        {
+          "adult": true,
+          "gender": 2,
+          "id": 2421480,
+          "known_for_department": "Visual Effects",
+          "name": "Hiromitsu Takeda",
+          "original_name": "武田弘光",
+          "popularity": 0.984,
+          "profile_path": null,
+          "credit_id": "6753ed94ab6cc3a4c8fca007",
+          "department": "Art",
+          "job": "Original Series Design"
+        },
+        {
+          "adult": true,
+          "gender": 2,
+          "id": 2984359,
+          "known_for_department": "Writing",
+          "name": "Megane Sagari",
+          "original_name": "サガリ 眼鏡",
+          "popularity": 0.6,
+          "profile_path": null,
+          "credit_id": "688dd165d0c5443a1ede6455",
+          "department": "Writing",
+          "job": "Storyboard"
+        },
+        {
+          "adult": true,
+          "gender": 2,
+          "id": 1778739,
+          "known_for_department": "Directing",
+          "name": "Ken Raika",
+          "original_name": "雷火剣",
+          "popularity": 194.882,
+          "profile_path": null,
+          "credit_id": "688dd1756fd7bd326cf3dcd2",
+          "department": "Directing",
+          "job": "Director"
+        },
+        {
+          "adult": true,
+          "gender": 0,
+          "id": 2790694,
+          "known_for_department": "Visual Effects",
+          "name": "Takato Suzuki",
+          "original_name": "Takato Suzuki",
+          "popularity": 0.84,
+          "profile_path": null,
+          "credit_id": "68bd5d9f1f905b767f9c028e",
+          "department": "Visual Effects",
+          "job": "Character Designer"
+        },
+        {
+          "adult": true,
+          "gender": 2,
+          "id": 2984359,
+          "known_for_department": "Writing",
+          "name": "Megane Sagari",
+          "original_name": "サガリ 眼鏡",
+          "popularity": 0.6,
+          "profile_path": null,
+          "credit_id": "68bd5daf5107ff83b51bc4e6",
+          "department": "Art",
+          "job": "Storyboard Artist"
+        }
+      ],
+      "id": 259214
+    },
+    "keywords": {
+      "id": 259214,
+      "results": [
+        {
+          "name": "rape",
+          "id": 570
+        },
+        {
+          "name": "orgy",
+          "id": 1817
+        },
+        {
+          "name": "creampie",
+          "id": 148536
+        },
+        {
+          "name": "exhibitionism",
+          "id": 169815
+        },
+        {
+          "name": "hentai",
+          "id": 198385
+        },
+        {
+          "name": "big tits",
+          "id": 230416
+        },
+        {
+          "name": "idol",
+          "id": 287664
+        }
+      ]
+    },
+    "seasons": [
+      {
+        "_id": "66955d770c199ce4b95972ae",
+        "air_date": "2024-08-30",
+        "episodes": [
+          {
+            "air_date": "2024-08-30",
+            "episode_number": 1,
+            "episode_type": "standard",
+            "id": 5477923,
+            "name": "公寓管理员是我最喜欢的清纯偶像♡",
+            "overview": "只是默默支持就好了……结果公寓管理员卡兹雅却把我当哥哥般崇拜，她竟然是我偶像的纯爱派偶像爱原穂名美！某天，我撞见她用我的照片进行自慰，他因此被她以惩罚为名要求脱下内衣……？露出一也的命根子舔舐，忍不住求着发生关系的偶像穂名美！既然到了这一步，就让她高潮昏沉前绝不收手！？",
+            "production_code": "",
+            "runtime": 16,
+            "season_number": 1,
+            "show_id": 259214,
+            "still_path": "/7cicbOYumMXA1keyMR4Rwag5JzD.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2024-08-30",
+            "episode_number": 2,
+            "episode_type": "standard",
+            "id": 5477942,
+            "name": "唯一能洗清这篇虚假文章污名的，就是这场充满性暗示的运动会……",
+            "overview": "被捏造的丑闻逼到解雇边缘的偶像雪梨卡，却被提议参加满是落魄偶像的运动会！为了重返娱乐圈，她一边被含媚药的乳液弄得身心酥软，一边硬是超越其他竞争偶像！看着那些未能通关而惨遭羞辱的偶像们，雪梨卡勉强通过一系列超级变态项目，最终抵达最终关卡时，等待她的真相究竟是……？！",
+            "production_code": "",
+            "runtime": 16,
+            "season_number": 1,
+            "show_id": 259214,
+            "still_path": "/qlVodv5cM0VIGp8GYlaWUrWQOHo.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2024-12-27",
+            "episode_number": 3,
+            "episode_type": "standard",
+            "id": 5712581,
+            "name": "私生活曝光……无辜偶像的激进猥亵行为被揭露",
+            "overview": "一直视作兄长的卡兹雅与写真集偶像穗波结为恋人。两人过着幸福的恋人生活，并互相许下未来承诺，却没想到这段热恋关系被周刊杂志曝光！为弥补这场巨大丑闻带来的巨额损失，制作人提议她出演露骨的形象视频！虽然穗波已决心终将回到他身边，却等来一个地狱般的计划——全员都是男性的工作人员团队，就这样开始了拍摄……！",
+            "production_code": "",
+            "runtime": 16,
+            "season_number": 1,
+            "show_id": 259214,
+            "still_path": "/mkd9HrJALUPhdoPZzwRnyFeBVug.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2024-12-27",
+            "episode_number": 4,
+            "episode_type": "standard",
+            "id": 5712589,
+            "name": "我...无论你变成什么样子都会爱你",
+            "overview": "某日，被告知能与既是偶像又是恋人的穗波见面，卡兹雅来到某酒店，却看到她早已堕落的模样——曾作为清纯派偶像活跃的她，如今在南国岛屿上沉溺于享乐。在恋人卡兹雅面前，穗波与同样堕落的偶像圣佳，各自与各自的“主人”展开混乱的派对……昔日深爱卡兹雅的她，如今已完全迷失在快感中，昔日的影子荡然无存！",
+            "production_code": "",
+            "runtime": 16,
+            "season_number": 1,
+            "show_id": 259214,
+            "still_path": "/qAaPr5oyMzJraxSA8aaucZ3v0m7.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2025-05-30",
+            "episode_number": 5,
+            "episode_type": "standard",
+            "id": 6076492,
+            "name": "她是一个认真的女孩，将自己的身体奉献给社团。",
+            "overview": "椿是一名不输于男生的优秀剑道部员，甚至能担任指导工作，她暗恋着同为部员的相马……\n\n某天，椿向校长陈诉了剑道部存续危机，校长却以保证部存续为条件，要求她在一个月内任由他随意触碰身体！为了部的存续，她接受了校长的提议……每天不分地点被那充满快感的魔爪纠缠，她的身心逐渐被侵蚀……！",
+            "production_code": "",
+            "runtime": 16,
+            "season_number": 1,
+            "show_id": 259214,
+            "still_path": "/gRy7GBJaoBtOmGzkmxGVNoOWBpi.jpg",
+            "vote_average": 10.0,
+            "vote_count": 1,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2025-05-30",
+            "episode_number": 6,
+            "episode_type": "standard",
+            "id": 6076494,
+            "name": "我的秘密向我梦中情人透露了♡",
+            "overview": "綾香的丈夫因工作外派，独自居住。作为认真且有良知的年轻主妇，她接受了邻居家的请求，当起了诚的家庭教师。\n\n然而有一天，因丈夫外派导致积压的性欲难以抑制，她不慎进行的自慰行为被诚撞见！因此被诚威胁并压制。在诚年轻的身体和汹涌的性欲面前，綾香逐渐沉溺其中……？",
+            "production_code": "",
+            "runtime": 16,
+            "season_number": 1,
+            "show_id": 259214,
+            "still_path": "/pBuxD6pEtSvO2rdPYBea0da2gsv.jpg",
+            "vote_average": 0.0,
+            "vote_count": 0,
+            "crew": [],
+            "guest_stars": []
+          }
+        ],
+        "name": "第 1 季",
+        "networks": [
+          {
+            "id": 1807,
+            "logo_path": "/z2rWC9f1T8J9O1MEHNXWmncCYFL.png",
+            "name": "RTV 1",
+            "origin_country": "RS"
+          }
+        ],
+        "overview": "",
+        "id": 402301,
+        "poster_path": "/L9tz7LKHC9IaK6ymCZ8Fz5j2TU.jpg",
+        "season_number": 1,
+        "vote_average": 10.0
+      }
+    ],
+    "episodes": [
+      {
+        "air_date": "2024-08-30",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "公寓管理员是我最喜欢的清纯偶像♡",
+        "overview": "只是默默支持就好了……结果公寓管理员卡兹雅却把我当哥哥般崇拜，她竟然是我偶像的纯爱派偶像爱原穂名美！某天，我撞见她用我的照片进行自慰，他因此被她以惩罚为名要求脱下内衣……？露出一也的命根子舔舐，忍不住求着发生关系的偶像穂名美！既然到了这一步，就让她高潮昏沉前绝不收手！？",
+        "id": 5477923,
+        "production_code": "",
+        "runtime": 16,
+        "season_number": 1,
+        "still_path": "/7cicbOYumMXA1keyMR4Rwag5JzD.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2024-08-30",
+        "crew": [],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "唯一能洗清这篇虚假文章污名的，就是这场充满性暗示的运动会……",
+        "overview": "被捏造的丑闻逼到解雇边缘的偶像雪梨卡，却被提议参加满是落魄偶像的运动会！为了重返娱乐圈，她一边被含媚药的乳液弄得身心酥软，一边硬是超越其他竞争偶像！看着那些未能通关而惨遭羞辱的偶像们，雪梨卡勉强通过一系列超级变态项目，最终抵达最终关卡时，等待她的真相究竟是……？！",
+        "id": 5477942,
+        "production_code": "",
+        "runtime": 16,
+        "season_number": 1,
+        "still_path": "/qlVodv5cM0VIGp8GYlaWUrWQOHo.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2024-12-27",
+        "crew": [],
+        "episode_number": 3,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "私生活曝光……无辜偶像的激进猥亵行为被揭露",
+        "overview": "一直视作兄长的卡兹雅与写真集偶像穗波结为恋人。两人过着幸福的恋人生活，并互相许下未来承诺，却没想到这段热恋关系被周刊杂志曝光！为弥补这场巨大丑闻带来的巨额损失，制作人提议她出演露骨的形象视频！虽然穗波已决心终将回到他身边，却等来一个地狱般的计划——全员都是男性的工作人员团队，就这样开始了拍摄……！",
+        "id": 5712581,
+        "production_code": "",
+        "runtime": 16,
+        "season_number": 1,
+        "still_path": "/mkd9HrJALUPhdoPZzwRnyFeBVug.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2024-12-27",
+        "crew": [],
+        "episode_number": 4,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "我...无论你变成什么样子都会爱你",
+        "overview": "某日，被告知能与既是偶像又是恋人的穗波见面，卡兹雅来到某酒店，却看到她早已堕落的模样——曾作为清纯派偶像活跃的她，如今在南国岛屿上沉溺于享乐。在恋人卡兹雅面前，穗波与同样堕落的偶像圣佳，各自与各自的“主人”展开混乱的派对……昔日深爱卡兹雅的她，如今已完全迷失在快感中，昔日的影子荡然无存！",
+        "id": 5712589,
+        "production_code": "",
+        "runtime": 16,
+        "season_number": 1,
+        "still_path": "/qAaPr5oyMzJraxSA8aaucZ3v0m7.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2025-05-30",
+        "crew": [],
+        "episode_number": 5,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "她是一个认真的女孩，将自己的身体奉献给社团。",
+        "overview": "椿是一名不输于男生的优秀剑道部员，甚至能担任指导工作，她暗恋着同为部员的相马……\n\n某天，椿向校长陈诉了剑道部存续危机，校长却以保证部存续为条件，要求她在一个月内任由他随意触碰身体！为了部的存续，她接受了校长的提议……每天不分地点被那充满快感的魔爪纠缠，她的身心逐渐被侵蚀……！",
+        "id": 6076492,
+        "production_code": "",
+        "runtime": 16,
+        "season_number": 1,
+        "still_path": "/gRy7GBJaoBtOmGzkmxGVNoOWBpi.jpg",
+        "vote_average": 10.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2025-05-30",
+        "crew": [],
+        "episode_number": 6,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "我的秘密向我梦中情人透露了♡",
+        "overview": "綾香的丈夫因工作外派，独自居住。作为认真且有良知的年轻主妇，她接受了邻居家的请求，当起了诚的家庭教师。\n\n然而有一天，因丈夫外派导致积压的性欲难以抑制，她不慎进行的自慰行为被诚撞见！因此被诚威胁并压制。在诚年轻的身体和汹涌的性欲面前，綾香逐渐沉溺其中……？",
+        "id": 6076494,
+        "production_code": "",
+        "runtime": 16,
+        "season_number": 1,
+        "still_path": "/pBuxD6pEtSvO2rdPYBea0da2gsv.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      }
+    ]
+  },
+  "translate": {
+    "translated": {
+      "media_type": "tv",
+      "tmdb_id": 259214,
+      "title": "偶像女友墮落NTR",
+      "original_title": "OVAいま♡りあ",
+      "year": 2024,
+      "plot": "偶像快乐堕落的金字塔！武田弘光老师的「现在♡莉亚」动画化！",
+      "tagline": "",
+      "runtime": null,
+      "release_date": "2024-08-30",
+      "rating": 10.0,
+      "rating_count": 1,
+      "genres": [
+        "动画"
+      ],
+      "countries": [
+        "JP"
+      ],
+      "languages": [
+        "ja"
+      ],
+      "studios": [
+        "Antechinus",
+        "T-REX"
+      ],
+      "networks": [
+        "RTV 1"
+      ],
+      "network": "RTV 1",
+      "status": "Returning Series",
+      "homepage": "https://www.lune-soft.jp/ova/27312",
+      "cast": [
+        {
+          "name_en": "Hazuki Akari",
+          "name_zh": null,
+          "role": "Mukaihi Kisara (voice)",
+          "original_name": "葉月あかり",
+          "profile_path": null,
+          "popularity": 0.0
+        },
+        {
+          "name_en": "Shiu Kase",
+          "name_zh": null,
+          "role": "Seika Yumenoki (voice)",
+          "original_name": "鹿瀬紫卯",
+          "profile_path": null,
+          "popularity": 0.6
+        },
+        {
+          "name_en": "Utane Moriya",
+          "name_zh": null,
+          "role": "Honami Mizuhara/ Yuri Kawasaki (voice)",
+          "original_name": "森谷うたね",
+          "profile_path": null,
+          "popularity": 0.0
+        },
+        {
+          "name_en": "Fujii Nekoko",
+          "name_zh": null,
+          "role": "Amamiya Tsubaki (voice)",
+          "original_name": "藤井ねここ",
+          "profile_path": null,
+          "popularity": 0.0
+        },
+        {
+          "name_en": "Miki Horiba",
+          "name_zh": null,
+          "role": "Saiki Ayaka (voice)",
+          "original_name": "堀場美希",
+          "profile_path": "/qcuFyo0tbhp6FPuB0q8aXTOKCwW.jpg",
+          "popularity": 1.646
+        },
+        {
+          "name_en": "Fujii Nekoko",
+          "name_zh": null,
+          "role": "Mother (voice)",
+          "original_name": "藤井ねここ",
+          "profile_path": null,
+          "popularity": 0.0
+        }
+      ],
+      "directors": [
+        "Ken Raika"
+      ],
+      "writers": [
+        "Megane Sagari",
+        "Hiromitsu Takeda"
+      ],
+      "images": {},
+      "seasons": [
+        {
+          "air_date": "2024-08-30",
+          "episode_count": 6,
+          "id": 402301,
+          "name": "第 1 季",
+          "overview": "",
+          "poster_path": "/L9tz7LKHC9IaK6ymCZ8Fz5j2TU.jpg",
+          "season_number": 1,
+          "vote_average": 10.0
+        }
+      ],
+      "episodes": [
+        {
+          "air_date": "2024-08-30",
+          "crew": [],
+          "episode_number": 1,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "公寓管理员是我最喜欢的清纯偶像♡",
+          "overview": "只是默默支持就好了……结果公寓管理员卡兹雅却把我当哥哥般崇拜，她竟然是我偶像的纯爱派偶像爱原穂名美！某天，我撞见她用我的照片进行自慰，他因此被她以惩罚为名要求脱下内衣……？露出一也的命根子舔舐，忍不住求着发生关系的偶像穂名美！既然到了这一步，就让她高潮昏沉前绝不收手！？",
+          "id": 5477923,
+          "production_code": "",
+          "runtime": 16,
+          "season_number": 1,
+          "still_path": "/7cicbOYumMXA1keyMR4Rwag5JzD.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2024-08-30",
+          "crew": [],
+          "episode_number": 2,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "唯一能洗清这篇虚假文章污名的，就是这场充满性暗示的运动会……",
+          "overview": "被捏造的丑闻逼到解雇边缘的偶像雪梨卡，却被提议参加满是落魄偶像的运动会！为了重返娱乐圈，她一边被含媚药的乳液弄得身心酥软，一边硬是超越其他竞争偶像！看着那些未能通关而惨遭羞辱的偶像们，雪梨卡勉强通过一系列超级变态项目，最终抵达最终关卡时，等待她的真相究竟是……？！",
+          "id": 5477942,
+          "production_code": "",
+          "runtime": 16,
+          "season_number": 1,
+          "still_path": "/qlVodv5cM0VIGp8GYlaWUrWQOHo.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2024-12-27",
+          "crew": [],
+          "episode_number": 3,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "私生活曝光……无辜偶像的激进猥亵行为被揭露",
+          "overview": "一直视作兄长的卡兹雅与写真集偶像穗波结为恋人。两人过着幸福的恋人生活，并互相许下未来承诺，却没想到这段热恋关系被周刊杂志曝光！为弥补这场巨大丑闻带来的巨额损失，制作人提议她出演露骨的形象视频！虽然穗波已决心终将回到他身边，却等来一个地狱般的计划——全员都是男性的工作人员团队，就这样开始了拍摄……！",
+          "id": 5712581,
+          "production_code": "",
+          "runtime": 16,
+          "season_number": 1,
+          "still_path": "/mkd9HrJALUPhdoPZzwRnyFeBVug.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2024-12-27",
+          "crew": [],
+          "episode_number": 4,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "我...无论你变成什么样子都会爱你",
+          "overview": "某日，被告知能与既是偶像又是恋人的穗波见面，卡兹雅来到某酒店，却看到她早已堕落的模样——曾作为清纯派偶像活跃的她，如今在南国岛屿上沉溺于享乐。在恋人卡兹雅面前，穗波与同样堕落的偶像圣佳，各自与各自的“主人”展开混乱的派对……昔日深爱卡兹雅的她，如今已完全迷失在快感中，昔日的影子荡然无存！",
+          "id": 5712589,
+          "production_code": "",
+          "runtime": 16,
+          "season_number": 1,
+          "still_path": "/qAaPr5oyMzJraxSA8aaucZ3v0m7.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        },
+        {
+          "air_date": "2025-05-30",
+          "crew": [],
+          "episode_number": 5,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "她是一个认真的女孩，将自己的身体奉献给社团。",
+          "overview": "椿是一名不输于男生的优秀剑道部员，甚至能担任指导工作，她暗恋着同为部员的相马……\n\n某天，椿向校长陈诉了剑道部存续危机，校长却以保证部存续为条件，要求她在一个月内任由他随意触碰身体！为了部的存续，她接受了校长的提议……每天不分地点被那充满快感的魔爪纠缠，她的身心逐渐被侵蚀……！",
+          "id": 6076492,
+          "production_code": "",
+          "runtime": 16,
+          "season_number": 1,
+          "still_path": "/gRy7GBJaoBtOmGzkmxGVNoOWBpi.jpg",
+          "vote_average": 10.0,
+          "vote_count": 1
+        },
+        {
+          "air_date": "2025-05-30",
+          "crew": [],
+          "episode_number": 6,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "我的秘密向我梦中情人透露了♡",
+          "overview": "綾香的丈夫因工作外派，独自居住。作为认真且有良知的年轻主妇，她接受了邻居家的请求，当起了诚的家庭教师。\n\n然而有一天，因丈夫外派导致积压的性欲难以抑制，她不慎进行的自慰行为被诚撞见！因此被诚威胁并压制。在诚年轻的身体和汹涌的性欲面前，綾香逐渐沉溺其中……？",
+          "id": 6076494,
+          "production_code": "",
+          "runtime": 16,
+          "season_number": 1,
+          "still_path": "/pBuxD6pEtSvO2rdPYBea0da2gsv.jpg",
+          "vote_average": 0.0,
+          "vote_count": 0
+        }
+      ],
+      "title_zh": "偶像女友墮落NTR",
+      "plot_zh": "偶像快乐堕落的金字塔！武田弘光老师的「现在♡莉亚」动画化！",
+      "keywords_en": [
+        "rape",
+        "orgy",
+        "creampie",
+        "exhibitionism",
+        "hentai",
+        "big tits",
+        "idol"
+      ],
+      "keywords": [
+        "rape",
+        "orgy",
+        "creampie",
+        "exhibitionism",
+        "hentai",
+        "big tits",
+        "idol"
+      ],
+      "keywords_zh": [
+        "强奸",
+        "狂欢",
+        "阴茎勃起",
+        "炫耀癖",
+        "腐女",
+        "大胸",
+        "偶像"
+      ]
+    },
+    "episodes": [
+      {
+        "air_date": "2024-08-30",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "公寓管理员是我最喜欢的清纯偶像♡",
+        "overview": "只是默默支持就好了……结果公寓管理员卡兹雅却把我当哥哥般崇拜，她竟然是我偶像的纯爱派偶像爱原穂名美！某天，我撞见她用我的照片进行自慰，他因此被她以惩罚为名要求脱下内衣……？露出一也的命根子舔舐，忍不住求着发生关系的偶像穂名美！既然到了这一步，就让她高潮昏沉前绝不收手！？",
+        "id": 5477923,
+        "production_code": "",
+        "runtime": 16,
+        "season_number": 1,
+        "still_path": "/7cicbOYumMXA1keyMR4Rwag5JzD.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2024-08-30",
+        "crew": [],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "唯一能洗清这篇虚假文章污名的，就是这场充满性暗示的运动会……",
+        "overview": "被捏造的丑闻逼到解雇边缘的偶像雪梨卡，却被提议参加满是落魄偶像的运动会！为了重返娱乐圈，她一边被含媚药的乳液弄得身心酥软，一边硬是超越其他竞争偶像！看着那些未能通关而惨遭羞辱的偶像们，雪梨卡勉强通过一系列超级变态项目，最终抵达最终关卡时，等待她的真相究竟是……？！",
+        "id": 5477942,
+        "production_code": "",
+        "runtime": 16,
+        "season_number": 1,
+        "still_path": "/qlVodv5cM0VIGp8GYlaWUrWQOHo.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2024-12-27",
+        "crew": [],
+        "episode_number": 3,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "私生活曝光……无辜偶像的激进猥亵行为被揭露",
+        "overview": "一直视作兄长的卡兹雅与写真集偶像穗波结为恋人。两人过着幸福的恋人生活，并互相许下未来承诺，却没想到这段热恋关系被周刊杂志曝光！为弥补这场巨大丑闻带来的巨额损失，制作人提议她出演露骨的形象视频！虽然穗波已决心终将回到他身边，却等来一个地狱般的计划——全员都是男性的工作人员团队，就这样开始了拍摄……！",
+        "id": 5712581,
+        "production_code": "",
+        "runtime": 16,
+        "season_number": 1,
+        "still_path": "/mkd9HrJALUPhdoPZzwRnyFeBVug.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2024-12-27",
+        "crew": [],
+        "episode_number": 4,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "我...无论你变成什么样子都会爱你",
+        "overview": "某日，被告知能与既是偶像又是恋人的穗波见面，卡兹雅来到某酒店，却看到她早已堕落的模样——曾作为清纯派偶像活跃的她，如今在南国岛屿上沉溺于享乐。在恋人卡兹雅面前，穗波与同样堕落的偶像圣佳，各自与各自的“主人”展开混乱的派对……昔日深爱卡兹雅的她，如今已完全迷失在快感中，昔日的影子荡然无存！",
+        "id": 5712589,
+        "production_code": "",
+        "runtime": 16,
+        "season_number": 1,
+        "still_path": "/qAaPr5oyMzJraxSA8aaucZ3v0m7.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2025-05-30",
+        "crew": [],
+        "episode_number": 5,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "她是一个认真的女孩，将自己的身体奉献给社团。",
+        "overview": "椿是一名不输于男生的优秀剑道部员，甚至能担任指导工作，她暗恋着同为部员的相马……\n\n某天，椿向校长陈诉了剑道部存续危机，校长却以保证部存续为条件，要求她在一个月内任由他随意触碰身体！为了部的存续，她接受了校长的提议……每天不分地点被那充满快感的魔爪纠缠，她的身心逐渐被侵蚀……！",
+        "id": 6076492,
+        "production_code": "",
+        "runtime": 16,
+        "season_number": 1,
+        "still_path": "/gRy7GBJaoBtOmGzkmxGVNoOWBpi.jpg",
+        "vote_average": 10.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2025-05-30",
+        "crew": [],
+        "episode_number": 6,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "我的秘密向我梦中情人透露了♡",
+        "overview": "綾香的丈夫因工作外派，独自居住。作为认真且有良知的年轻主妇，她接受了邻居家的请求，当起了诚的家庭教师。\n\n然而有一天，因丈夫外派导致积压的性欲难以抑制，她不慎进行的自慰行为被诚撞见！因此被诚威胁并压制。在诚年轻的身体和汹涌的性欲面前，綾香逐渐沉溺其中……？",
+        "id": 6076494,
+        "production_code": "",
+        "runtime": 16,
+        "season_number": 1,
+        "still_path": "/pBuxD6pEtSvO2rdPYBea0da2gsv.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      }
+    ]
+  },
+  "normalize": {
+    "media_type": "tv",
+    "tmdb_id": 259214,
+    "title": "偶像女友墮落NTR",
+    "original_title": "OVAいま♡りあ",
+    "year": 2024,
+    "plot": "偶像快乐堕落的金字塔！武田弘光老师的「现在♡莉亚」动画化！",
+    "tagline": "",
+    "runtime": null,
+    "release_date": "2024-08-30",
+    "rating": 10.0,
+    "rating_count": 1,
+    "genres": [
+      "动画"
+    ],
+    "countries": [
+      "JP"
+    ],
+    "languages": [
+      "ja"
+    ],
+    "studios": [
+      "Antechinus",
+      "T-REX"
+    ],
+    "networks": [
+      "RTV 1"
+    ],
+    "network": "RTV 1",
+    "status": "Returning Series",
+    "homepage": "https://www.lune-soft.jp/ova/27312",
+    "cast": [
+      {
+        "name_en": "Hazuki Akari",
+        "name_zh": null,
+        "role": "Mukaihi Kisara (voice)",
+        "original_name": "葉月あかり",
+        "profile_path": null,
+        "popularity": 0.0
+      },
+      {
+        "name_en": "Shiu Kase",
+        "name_zh": null,
+        "role": "Seika Yumenoki (voice)",
+        "original_name": "鹿瀬紫卯",
+        "profile_path": null,
+        "popularity": 0.6
+      },
+      {
+        "name_en": "Utane Moriya",
+        "name_zh": null,
+        "role": "Honami Mizuhara/ Yuri Kawasaki (voice)",
+        "original_name": "森谷うたね",
+        "profile_path": null,
+        "popularity": 0.0
+      },
+      {
+        "name_en": "Fujii Nekoko",
+        "name_zh": null,
+        "role": "Amamiya Tsubaki (voice)",
+        "original_name": "藤井ねここ",
+        "profile_path": null,
+        "popularity": 0.0
+      },
+      {
+        "name_en": "Miki Horiba",
+        "name_zh": null,
+        "role": "Saiki Ayaka (voice)",
+        "original_name": "堀場美希",
+        "profile_path": "/qcuFyo0tbhp6FPuB0q8aXTOKCwW.jpg",
+        "popularity": 1.646
+      },
+      {
+        "name_en": "Fujii Nekoko",
+        "name_zh": null,
+        "role": "Mother (voice)",
+        "original_name": "藤井ねここ",
+        "profile_path": null,
+        "popularity": 0.0
+      }
+    ],
+    "directors": [
+      "Ken Raika"
+    ],
+    "writers": [
+      "Megane Sagari",
+      "Hiromitsu Takeda"
+    ],
+    "images": {},
+    "seasons": [
+      {
+        "air_date": "2024-08-30",
+        "episode_count": 6,
+        "id": 402301,
+        "name": "第 1 季",
+        "overview": "",
+        "poster_path": "/L9tz7LKHC9IaK6ymCZ8Fz5j2TU.jpg",
+        "season_number": 1,
+        "vote_average": 10.0
+      }
+    ],
+    "episodes": [
+      {
+        "air_date": "2024-08-30",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "公寓管理员是我最喜欢的清纯偶像♡",
+        "overview": "只是默默支持就好了……结果公寓管理员卡兹雅却把我当哥哥般崇拜，她竟然是我偶像的纯爱派偶像爱原穂名美！某天，我撞见她用我的照片进行自慰，他因此被她以惩罚为名要求脱下内衣……？露出一也的命根子舔舐，忍不住求着发生关系的偶像穂名美！既然到了这一步，就让她高潮昏沉前绝不收手！？",
+        "id": 5477923,
+        "production_code": "",
+        "runtime": 16,
+        "season_number": 1,
+        "still_path": "/7cicbOYumMXA1keyMR4Rwag5JzD.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2024-08-30",
+        "crew": [],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "唯一能洗清这篇虚假文章污名的，就是这场充满性暗示的运动会……",
+        "overview": "被捏造的丑闻逼到解雇边缘的偶像雪梨卡，却被提议参加满是落魄偶像的运动会！为了重返娱乐圈，她一边被含媚药的乳液弄得身心酥软，一边硬是超越其他竞争偶像！看着那些未能通关而惨遭羞辱的偶像们，雪梨卡勉强通过一系列超级变态项目，最终抵达最终关卡时，等待她的真相究竟是……？！",
+        "id": 5477942,
+        "production_code": "",
+        "runtime": 16,
+        "season_number": 1,
+        "still_path": "/qlVodv5cM0VIGp8GYlaWUrWQOHo.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2024-12-27",
+        "crew": [],
+        "episode_number": 3,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "私生活曝光……无辜偶像的激进猥亵行为被揭露",
+        "overview": "一直视作兄长的卡兹雅与写真集偶像穗波结为恋人。两人过着幸福的恋人生活，并互相许下未来承诺，却没想到这段热恋关系被周刊杂志曝光！为弥补这场巨大丑闻带来的巨额损失，制作人提议她出演露骨的形象视频！虽然穗波已决心终将回到他身边，却等来一个地狱般的计划——全员都是男性的工作人员团队，就这样开始了拍摄……！",
+        "id": 5712581,
+        "production_code": "",
+        "runtime": 16,
+        "season_number": 1,
+        "still_path": "/mkd9HrJALUPhdoPZzwRnyFeBVug.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2024-12-27",
+        "crew": [],
+        "episode_number": 4,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "我...无论你变成什么样子都会爱你",
+        "overview": "某日，被告知能与既是偶像又是恋人的穗波见面，卡兹雅来到某酒店，却看到她早已堕落的模样——曾作为清纯派偶像活跃的她，如今在南国岛屿上沉溺于享乐。在恋人卡兹雅面前，穗波与同样堕落的偶像圣佳，各自与各自的“主人”展开混乱的派对……昔日深爱卡兹雅的她，如今已完全迷失在快感中，昔日的影子荡然无存！",
+        "id": 5712589,
+        "production_code": "",
+        "runtime": 16,
+        "season_number": 1,
+        "still_path": "/qAaPr5oyMzJraxSA8aaucZ3v0m7.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      },
+      {
+        "air_date": "2025-05-30",
+        "crew": [],
+        "episode_number": 5,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "她是一个认真的女孩，将自己的身体奉献给社团。",
+        "overview": "椿是一名不输于男生的优秀剑道部员，甚至能担任指导工作，她暗恋着同为部员的相马……\n\n某天，椿向校长陈诉了剑道部存续危机，校长却以保证部存续为条件，要求她在一个月内任由他随意触碰身体！为了部的存续，她接受了校长的提议……每天不分地点被那充满快感的魔爪纠缠，她的身心逐渐被侵蚀……！",
+        "id": 6076492,
+        "production_code": "",
+        "runtime": 16,
+        "season_number": 1,
+        "still_path": "/gRy7GBJaoBtOmGzkmxGVNoOWBpi.jpg",
+        "vote_average": 10.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2025-05-30",
+        "crew": [],
+        "episode_number": 6,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "我的秘密向我梦中情人透露了♡",
+        "overview": "綾香的丈夫因工作外派，独自居住。作为认真且有良知的年轻主妇，她接受了邻居家的请求，当起了诚的家庭教师。\n\n然而有一天，因丈夫外派导致积压的性欲难以抑制，她不慎进行的自慰行为被诚撞见！因此被诚威胁并压制。在诚年轻的身体和汹涌的性欲面前，綾香逐渐沉溺其中……？",
+        "id": 6076494,
+        "production_code": "",
+        "runtime": 16,
+        "season_number": 1,
+        "still_path": "/pBuxD6pEtSvO2rdPYBea0da2gsv.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0
+      }
+    ],
+    "title_zh": "偶像女友墮落NTR",
+    "plot_zh": "偶像快乐堕落的金字塔！武田弘光老师的「现在♡莉亚」动画化！",
+    "keywords_en": [
+      "rape",
+      "orgy",
+      "creampie",
+      "exhibitionism",
+      "hentai",
+      "big tits",
+      "idol"
+    ],
+    "keywords": [
+      "rape",
+      "orgy",
+      "creampie",
+      "exhibitionism",
+      "hentai",
+      "big tits",
+      "idol"
+    ],
+    "keywords_zh": [
+      "强奸",
+      "狂欢",
+      "阴茎勃起",
+      "炫耀癖",
+      "腐女",
+      "大胸",
+      "偶像"
+    ]
+  },
+  "nfo": {
+    "data": {
+      "title": "偶像女友墮落NTR",
+      "originaltitle": "OVAいま♡りあ",
+      "year": 2024,
+      "premiered": "2024-08-30",
+      "plot": "偶像快乐堕落的金字塔！武田弘光老师的「现在♡莉亚」动画化！",
+      "tagline": "",
+      "runtime": null,
+      "rating": 10.0,
+      "votes": 1,
+      "genre": [
+        "动画"
+      ],
+      "country": [
+        "JP"
+      ],
+      "studio": [
+        "Antechinus",
+        "T-REX"
+      ],
+      "credits": [
+        "Megane Sagari",
+        "Hiromitsu Takeda"
+      ],
+      "director": [
+        "Ken Raika"
+      ],
+      "actor": [
+        {
+          "name": "Hazuki Akari",
+          "role": "Mukaihi Kisara (voice)",
+          "originalname": "葉月あかり"
+        },
+        {
+          "name": "Shiu Kase",
+          "role": "Seika Yumenoki (voice)",
+          "originalname": "鹿瀬紫卯"
+        },
+        {
+          "name": "Utane Moriya",
+          "role": "Honami Mizuhara/ Yuri Kawasaki (voice)",
+          "originalname": "森谷うたね"
+        },
+        {
+          "name": "Fujii Nekoko",
+          "role": "Amamiya Tsubaki (voice)",
+          "originalname": "藤井ねここ"
+        },
+        {
+          "name": "Miki Horiba",
+          "role": "Saiki Ayaka (voice)",
+          "originalname": "堀場美希",
+          "thumb": "images/actors/Miki Horiba.jpg"
+        },
+        {
+          "name": "Fujii Nekoko",
+          "role": "Mother (voice)",
+          "originalname": "藤井ねここ"
+        }
+      ],
+      "thumb": "poster.jpg",
+      "fanart": "fanart.jpg",
+      "tags": [
+        "强奸",
+        "狂欢",
+        "阴茎勃起",
+        "炫耀癖",
+        "腐女",
+        "大胸",
+        "偶像"
+      ],
+      "network": "RTV 1",
+      "networks": [
+        "RTV 1"
+      ],
+      "status": "Returning Series",
+      "homepage": "https://www.lune-soft.jp/ova/27312",
+      "tmdb_id": 259214,
+      "validated": true
+    },
+    "xml": "<?xml version=\"1.0\" ?>\n<tvshow>\n  <title>偶像女友墮落NTR</title>\n  <originaltitle>OVAいま♡りあ</originaltitle>\n  <year>2024</year>\n  <premiered>2024-08-30</premiered>\n  <plot><![CDATA[偶像快乐堕落的金字塔！武田弘光老师的「现在♡莉亚」动画化！]]></plot>\n  <rating>10.0</rating>\n  <votes>1</votes>\n  <tmdbid>259214</tmdbid>\n  <genre>动画</genre>\n  <country>JP</country>\n  <studio>Antechinus</studio>\n  <studio>T-REX</studio>\n  <credits>Megane Sagari, Hiromitsu Takeda</credits>\n  <director>Ken Raika</director>\n  <actor>\n    <name>Hazuki Akari</name>\n    <role>Mukaihi Kisara (voice)</role>\n    <originalname>葉月あかり</originalname>\n  </actor>\n  <actor>\n    <name>Shiu Kase</name>\n    <role>Seika Yumenoki (voice)</role>\n    <originalname>鹿瀬紫卯</originalname>\n  </actor>\n  <actor>\n    <name>Utane Moriya</name>\n    <role>Honami Mizuhara/ Yuri Kawasaki (voice)</role>\n    <originalname>森谷うたね</originalname>\n  </actor>\n  <actor>\n    <name>Fujii Nekoko</name>\n    <role>Amamiya Tsubaki (voice)</role>\n    <originalname>藤井ねここ</originalname>\n  </actor>\n  <actor>\n    <name>Miki Horiba</name>\n    <role>Saiki Ayaka (voice)</role>\n    <originalname>堀場美希</originalname>\n    <thumb>images/actors/Miki Horiba.jpg</thumb>\n  </actor>\n  <actor>\n    <name>Fujii Nekoko</name>\n    <role>Mother (voice)</role>\n    <originalname>藤井ねここ</originalname>\n  </actor>\n  <network>RTV 1</network>\n  <status>Returning Series</status>\n  <homepage>https://www.lune-soft.jp/ova/27312</homepage>\n  <uniqueid type=\"tmdb\" default=\"true\">259214</uniqueid>\n  <thumb>images/poster/poster.jpg</thumb>\n  <fanart>images/fanart/fanart.jpg</fanart>\n  <tag>强奸</tag>\n  <tag>狂欢</tag>\n  <tag>阴茎勃起</tag>\n  <tag>炫耀癖</tag>\n  <tag>腐女</tag>\n  <tag>大胸</tag>\n  <tag>偶像</tag>\n</tvshow>\n"
+  },
+  "output": {
+    "status": "completed",
+    "files": {
+      "nfo_file": "/Volumes/video/Animation/The Animation/いまりあ (Unknown Year)/tvshow.nfo",
+      "images_dir": "/Volumes/video/Animation/The Animation/いまりあ (Unknown Year)/images",
+      "media_dir": "/Volumes/video/Animation/The Animation/いまりあ (Unknown Year)",
+      "season_1_episode_1": "/Volumes/video/Animation/The Animation/いまりあ (Unknown Year)/Season 01/偶像女友墮落NTR - S01E01 - 公寓管理员是我最喜欢的清纯偶像♡.nfo",
+      "season_1_episode_2": "/Volumes/video/Animation/The Animation/いまりあ (Unknown Year)/Season 01/偶像女友墮落NTR - S01E02 - 唯一能洗清这篇虚假文章污名的，就是这场充满性暗示的运动会…….nfo",
+      "season_1_episode_3": "/Volumes/video/Animation/The Animation/いまりあ (Unknown Year)/Season 01/偶像女友墮落NTR - S01E03 - 私生活曝光……无辜偶像的激进猥亵行为被揭露.nfo",
+      "season_1_episode_4": "/Volumes/video/Animation/The Animation/いまりあ (Unknown Year)/Season 01/偶像女友墮落NTR - S01E04 - 我...无论你变成什么样子都会爱你.nfo",
+      "season_1_episode_5": "/Volumes/video/Animation/The Animation/いまりあ (Unknown Year)/Season 01/偶像女友墮落NTR - S01E05 - 她是一个认真的女孩，将自己的身体奉献给社团。.nfo",
+      "season_1_episode_6": "/Volumes/video/Animation/The Animation/いまりあ (Unknown Year)/Season 01/偶像女友墮落NTR - S01E06 - 我的秘密向我梦中情人透露了♡.nfo"
+    }
+  },
+  "errors": [],
+  "end_time": "2025-12-06T01:32:34.753082"
+}

@@ -1,0 +1,1408 @@
+2025-12-05 23:29:28,276 - MetadataAgent - INFO - Input parameters parsed
+2025-12-05 23:29:28,276 - MetadataAgent - DEBUG - Input data: {
+  "media_type": "tv",
+  "query": "夜游生活！",
+  "output_dir": "/Volumes/video/Animation/The Animation/夜游生活！ (2024)",
+  "verbose": false,
+  "quiet": true,
+  "aid_search": true
+}
+2025-12-05 23:29:29,142 - MetadataAgent - INFO - Search completed: 1 results
+2025-12-05 23:29:29,143 - MetadataAgent - DEBUG - Search results: {
+  "page": 1,
+  "results": [
+    {
+      "adult": false,
+      "backdrop_path": "/iGNDdqA2XFieVUmWpbGL05nYNes.jpg",
+      "genre_ids": [
+        16
+      ],
+      "id": 249891,
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "よあそびぐらしっ！",
+      "overview": "Meet Kazuto, whose hopes of becoming a photographer didn't pan out, and Yayoi, who successfully achieved her dream of becoming a model. Two childhood friends who have grown apart... Suddenly find themselves living together! In the beginning, there's an awkward tension between them, and Yayoi has a secret she can't tell Kazuto... Then, one night, things start to change... Could they be more than just childhood friends...?!",
+      "popularity": 6.0851,
+      "poster_path": "/3XWuseABZAeGeiHgLJXg69GmbuE.jpg",
+      "first_air_date": "2024-07-08",
+      "name": "Yoasobi Gurashi!",
+      "vote_average": 5.0,
+      "vote_count": 4
+    }
+  ],
+  "total_pages": 1,
+  "total_results": 1
+}
+2025-12-05 23:29:34,235 - MetadataAgent - INFO - Data fetching completed
+2025-12-05 23:29:34,236 - MetadataAgent - DEBUG - Main data: {
+  "adult": false,
+  "backdrop_path": "/iGNDdqA2XFieVUmWpbGL05nYNes.jpg",
+  "created_by": [],
+  "episode_run_time": [
+    7
+  ],
+  "first_air_date": "2024-07-08",
+  "genres": [
+    {
+      "id": 16,
+      "name": "动画"
+    }
+  ],
+  "homepage": "https://yoasobigurashi.af-original.com",
+  "id": 249891,
+  "in_production": false,
+  "languages": [
+    "ja"
+  ],
+  "last_air_date": "2024-08-26",
+  "last_episode_to_air": {
+    "id": 5495523,
+    "name": "我回来了！",
+    "overview": "Enjin 已经回到了拍摄工作室工作，但他继续在一家便利店兼职，整天呆着回家。 看到他在拍摄现场尽力而为的弥生说：“片场的和君很酷”，但 Ento 对弥生说，我不会再处理你的了...... 从午夜重逢开始的两人爱情，命运如何？",
+    "vote_average": 0.0,
+    "vote_count": 0,
+    "air_date": "2024-08-26",
+    "episode_number": 8,
+    "episode_type": "finale",
+    "production_code": "",
+    "runtime": 6,
+    "season_number": 1,
+    "show_id": 249891,
+    "still_path": "/t3UwBdQf4CkERgjtLiXJbHFeCWn.jpg"
+  },
+  "name": "夜游生活！",
+  "next_episode_to_air": null,
+  "networks": [
+    {
+      "id": 614,
+      "logo_path": "/hSdroyVthq3CynxTIIY7lnS8w1.png",
+      "name": "Tokyo MX",
+      "origin_country": "JP"
+    },
+    {
+      "id": 861,
+      "logo_path": "/JQ5bx6n7Qmdmyqz6sqjo5Fz2iR.png",
+      "name": "BS11",
+      "origin_country": "JP"
+    }
+  ],
+  "number_of_episodes": 8,
+  "number_of_seasons": 1,
+  "origin_country": [
+    "JP"
+  ],
+  "original_language": "ja",
+  "original_name": "よあそびぐらしっ！",
+  "overview": "“我的房子...... 我变成了一家情趣旅馆。对成为摄影师的梦想感到沮丧的 Ento 和实现模特梦想的弥生。 两个不同的儿时朋友...... 突然开始同居！ 起初，气氛很尴尬，但弥生有一个秘密，她不能告诉 Ento...... 与儿时朋友的新 kankei，从晚上出去玩开始。 我不能再只是一个儿时的朋友",
+  "popularity": 6.0851,
+  "poster_path": "/6H70xDd7NTYLRciTUxhMXfyibNB.jpg",
+  "production_companies": [
+    {
+      "id": 125825,
+      "logo_path": "/fXHTT3i73u6eSJS3UZQVVwADqqo.png",
+      "name": "studio HōKIBOSHI",
+      "origin_country": "JP"
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "JP",
+      "name": "Japan"
+    }
+  ],
+  "seasons": [
+    {
+      "air_date": null,
+      "episode_count": 2,
+      "id": 417843,
+      "name": "特别篇",
+      "overview": "",
+      "poster_path": null,
+      "season_number": 0,
+      "vote_average": 0.0
+    },
+    {
+      "air_date": "2024-07-08",
+      "episode_count": 8,
+      "id": 384965,
+      "name": "第 1 季",
+      "overview": "",
+      "poster_path": "/6H70xDd7NTYLRciTUxhMXfyibNB.jpg",
+      "season_number": 1,
+      "vote_average": 0.0
+    }
+  ],
+  "spoken_languages": [
+    {
+      "english_name": "Japanese",
+      "iso_639_1": "ja",
+      "name": "日本語"
+    }
+  ],
+  "status": "Ended",
+  "tagline": "",
+  "type": "Scripted",
+  "vote_average": 5.0,
+  "vote_count": 4
+}
+2025-12-05 23:29:34,236 - MetadataAgent - DEBUG - Credits data: {
+  "cast": [
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 4886019,
+      "known_for_department": "Acting",
+      "name": "Kofun Penguin",
+      "original_name": "古墳ペンギン",
+      "popularity": 0.3759,
+      "profile_path": null,
+      "character": "Kazuto Mano (voice)",
+      "credit_id": "66ded12e4e44fd4ccf72df50",
+      "order": 0
+    },
+    {
+      "adult": true,
+      "gender": 1,
+      "id": 1258550,
+      "known_for_department": "Acting",
+      "name": "Juri Nagatsuma",
+      "original_name": "長妻樹里",
+      "popularity": 2.088,
+      "profile_path": "/k6tImXfloqrWczRKLfWkuch1o45.jpg",
+      "character": "Yayoi Mutou (voice)",
+      "credit_id": "66ded133ff9e9d0479b967ad",
+      "order": 1
+    },
+    {
+      "adult": false,
+      "gender": 1,
+      "id": 4899602,
+      "known_for_department": "Acting",
+      "name": "Yuka Hanyu",
+      "original_name": "羽生ゆか",
+      "popularity": 0.3856,
+      "profile_path": "/nDhNiZ2XRifMjBgEWpNya24FMiT.jpg",
+      "character": "Kaoru Mutou (voice)",
+      "credit_id": "66ded1394e44fd4ccf72df53",
+      "order": 2
+    }
+  ],
+  "crew": [
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 3153539,
+      "known_for_department": "Directing",
+      "name": "Tatsuya Sasaki",
+      "original_name": "佐々木達也",
+      "popularity": 0.876,
+      "profile_path": null,
+      "credit_id": "66ded16087f2936e3ec263f2",
+      "department": "Art",
+      "job": "Storyboard Artist"
+    },
+    {
+      "adult": true,
+      "gender": 2,
+      "id": 1778160,
+      "known_for_department": "Editing",
+      "name": "Kouki Shinkai",
+      "original_name": "新海コウキ",
+      "popularity": 7.492,
+      "profile_path": null,
+      "credit_id": "66ded165dea31f27076d4fe5",
+      "department": "Editing",
+      "job": "Editor"
+    },
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 3153539,
+      "known_for_department": "Directing",
+      "name": "Tatsuya Sasaki",
+      "original_name": "佐々木達也",
+      "popularity": 0.876,
+      "profile_path": null,
+      "credit_id": "66ded16b8a9f03318c49b495",
+      "department": "Directing",
+      "job": "Series Director"
+    },
+    {
+      "adult": false,
+      "gender": 1,
+      "id": 2713733,
+      "known_for_department": "Sound",
+      "name": "Yuika Shiraishi",
+      "original_name": "白石唯果",
+      "popularity": 1.7626,
+      "profile_path": null,
+      "credit_id": "66ded1736e465c5781789d6e",
+      "department": "Sound",
+      "job": "Sound Effects"
+    },
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 3048321,
+      "known_for_department": "Visual Effects",
+      "name": "Masaaki Sakurai",
+      "original_name": "桜井正明",
+      "popularity": 1.1763,
+      "profile_path": null,
+      "credit_id": "66ded178c1089222ebec9415",
+      "department": "Visual Effects",
+      "job": "Character Designer"
+    },
+    {
+      "adult": false,
+      "gender": 0,
+      "id": 2649444,
+      "known_for_department": "Writing",
+      "name": "Eeyo Kurosaki",
+      "original_name": "黒崎エーヨ",
+      "popularity": 1.0857,
+      "profile_path": null,
+      "credit_id": "66ded17d5f216240706d491c",
+      "department": "Writing",
+      "job": "Series Composition"
+    },
+    {
+      "adult": false,
+      "gender": 0,
+      "id": 4966354,
+      "known_for_department": "Writing",
+      "name": "Suika Ijiro",
+      "original_name": "居城スイカ",
+      "popularity": 0.112,
+      "profile_path": null,
+      "credit_id": "66f6a1306c9a68155070cde8",
+      "department": "Writing",
+      "job": "Original Story"
+    },
+    {
+      "adult": false,
+      "gender": 1,
+      "id": 4899602,
+      "known_for_department": "Acting",
+      "name": "Yuka Hanyu",
+      "original_name": "羽生ゆか",
+      "popularity": 0.3856,
+      "profile_path": "/nDhNiZ2XRifMjBgEWpNya24FMiT.jpg",
+      "credit_id": "66f6a2a4e0bf7ac2859678fa",
+      "department": "Sound",
+      "job": "Theme Song Performance"
+    },
+    {
+      "adult": false,
+      "gender": 0,
+      "id": 4707910,
+      "known_for_department": "Sound",
+      "name": "Kazuki Kaneko",
+      "original_name": "かねこかずき",
+      "popularity": 0.0264,
+      "profile_path": null,
+      "credit_id": "66f6a2fd7b3072688d967aa1",
+      "department": "Sound",
+      "job": "Songs"
+    },
+    {
+      "adult": false,
+      "gender": 0,
+      "id": 4707913,
+      "known_for_department": "Writing",
+      "name": "G-zass",
+      "original_name": "G-zass",
+      "popularity": 0.3001,
+      "profile_path": null,
+      "credit_id": "66f6a374be3f1cab4d70bd9f",
+      "department": "Writing",
+      "job": "Lyricist"
+    },
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 3048321,
+      "known_for_department": "Visual Effects",
+      "name": "Masaaki Sakurai",
+      "original_name": "桜井正明",
+      "popularity": 1.1763,
+      "profile_path": null,
+      "credit_id": "67c8d343821c19b5ebe71b04",
+      "department": "Visual Effects",
+      "job": "Supervising Animation Director"
+    }
+  ],
+  "id": 249891
+}
+2025-12-05 23:29:34,236 - MetadataAgent - DEBUG - Keywords data: {
+  "id": 249891,
+  "results": [
+    {
+      "name": "based on manga",
+      "id": 13141
+    },
+    {
+      "name": "childhood friends",
+      "id": 160246
+    },
+    {
+      "name": "anime",
+      "id": 210024
+    },
+    {
+      "name": "big tits",
+      "id": 230416
+    },
+    {
+      "name": "erotic",
+      "id": 256466
+    }
+  ]
+}
+2025-12-05 23:29:34,237 - MetadataAgent - DEBUG - Episodes data: [
+  {
+    "air_date": "2024-07-08",
+    "crew": [],
+    "episode_number": 1,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "今晚别回来！",
+    "overview": "在便利店上夜班兼职的 Ento Mano 在一天晚上的工作中与儿时的朋友 Yayoi Yumefuji 重逢。弥生非常积极地实现自己成为模特和装饰杂志封面的梦想，由于某些情况，她滚进了 Ento 居住的公寓。然而，随着他们的生活，Ento 开始对弥生的行为产生怀疑。这家伙……我不在家的时候，你不是带了你的男朋友吗……？",
+    "id": 5227032,
+    "production_code": "",
+    "runtime": 6,
+    "season_number": 1,
+    "still_path": "/6T6DQQeBUoVEbWZUV5mrVKF0Nuh.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2024-07-15",
+    "crew": [],
+    "episode_number": 2,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "我就跟你们说一句话！",
+    "overview": "在欲望的驱使下，我得到了弥生……摆脱了自己很好的妄想的 Enjin。 Ento 一边给独自睡觉的弥生披上被褥，一边怀疑“弥生的男朋友”的体面，说：“如果你让它处于这种状态……”确信弥生每晚都会带一个男人进来的 Enjin 采取了一定的措施，出乎意料地踏入了秘密会议地点，但 Ento 在那里看到的……",
+    "id": 5495517,
+    "production_code": "",
+    "runtime": 6,
+    "season_number": 1,
+    "still_path": "/wQtIofQklfDQSPCs9KNhjD88iw8.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2024-07-22",
+    "crew": [],
+    "episode_number": 3,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "不好好释放一下的话！",
+    "overview": "Enjin 在打工时见证了 Yayoi 作为模特的受欢迎程度，并敏锐地意识到世界形象与现实之间的差距。家里的弥生说下班累了，草率地躺下，让 Ento 按摩。Enjin 别无选择，只能回应，但被蹭臀部的弥生却发出了意想不到的声音。兴奋的 Enjin 的按摩朝着不同的方向发展……",
+    "id": 5495518,
+    "production_code": "",
+    "runtime": 6,
+    "season_number": 1,
+    "still_path": "/kwx1Q9mVidPEnJKBbTCVEat0W7L.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2024-07-29",
+    "crew": [],
+    "episode_number": 4,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "竟然……已经睡着了！？",
+    "overview": "弥生误以为她是在试图发生性关系，强烈反对 Ento。用一个卖词和一个买词，Ento 退出了弥生的处理。弥生很天真，但从第二天开始，Ento 真的不再回应了，挫败感积累了。这样的日子还在继续，终于达到极限的弥生踉踉跄跄地回家了。被弥生乞求的 Enjin……",
+    "id": 5495519,
+    "production_code": "",
+    "runtime": 6,
+    "season_number": 1,
+    "still_path": "/gATY8K4VkNf1vbGlnn2Hunr6zb0.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2024-08-05",
+    "crew": [],
+    "episode_number": 5,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "……什么也不做？",
+    "overview": "如约成为模特的弥生，而我负责处理...... 当他想起这件事时，Ento 被他自己的废话吓坏了。 打完工后，一直在睡觉的 Enjin 醒来发现弥生在上面。 - Ento 与似乎在邀请的弥生发生性关系，说：“如果你走到最后也没关系，好吗？ 我本来想让她退后一步，但弥生的反应出乎意料。",
+    "id": 5495520,
+    "production_code": "",
+    "runtime": 6,
+    "season_number": 1,
+    "still_path": "/u2lQuwEigf7rc9ufyw0Q3rNKwuN.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2024-08-12",
+    "crew": [],
+    "episode_number": 6,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "我可不是玩具噢……！",
+    "overview": "- 狡猾地继续保持着超越儿时朋友的肉体关系。 有一天，Enjin 被叫到弥生以前工作的摄影工作室送他遗忘的东西。 看到弥生作为模特在场上大放异彩，Ento 再次感到自己无法平衡。 另一方面，弥生无意中听到 Ento 已停止使用相机。",
+    "id": 5495521,
+    "production_code": "",
+    "runtime": 6,
+    "season_number": 1,
+    "still_path": "/zHifiUkeX2N7l4Wb262lQ9TtM2m.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2024-08-19",
+    "crew": [],
+    "episode_number": 7,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "我答应了！",
+    "overview": "郁闷地回来的 Enjin 受到了也是公寓房东的 Kaoru 的欢迎。 - “你姐姐不鼓励你吗？”- Ento 无法抗拒靠近的 Kaoru。 后来，当弥生回到家时，她冲向了已经自己放弃了梦想的 Enjin。 Ento 说他还扔掉了他们回忆的相机，留下震惊的弥生，前往夜班逃跑。",
+    "id": 5495522,
+    "production_code": "",
+    "runtime": 6,
+    "season_number": 1,
+    "still_path": "/rfmw5Sc7Pz2roCr4h6G4ziWVreQ.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2024-08-26",
+    "crew": [],
+    "episode_number": 8,
+    "episode_type": "finale",
+    "guest_stars": [],
+    "name": "我回来了！",
+    "overview": "Enjin 已经回到了拍摄工作室工作，但他继续在一家便利店兼职，整天呆着回家。 看到他在拍摄现场尽力而为的弥生说：“片场的和君很酷”，但 Ento 对弥生说，我不会再处理你的了...... 从午夜重逢开始的两人爱情，命运如何？",
+    "id": 5495523,
+    "production_code": "",
+    "runtime": 6,
+    "season_number": 1,
+    "still_path": "/t3UwBdQf4CkERgjtLiXJbHFeCWn.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  }
+]
+2025-12-05 23:29:34,237 - MetadataAgent - DEBUG - Seasons data: [
+  {
+    "_id": "65fd857e60620a01492645b5",
+    "air_date": "2024-07-08",
+    "episodes": [
+      {
+        "air_date": "2024-07-08",
+        "episode_number": 1,
+        "episode_type": "standard",
+        "id": 5227032,
+        "name": "今晚别回来！",
+        "overview": "在便利店上夜班兼职的 Ento Mano 在一天晚上的工作中与儿时的朋友 Yayoi Yumefuji 重逢。弥生非常积极地实现自己成为模特和装饰杂志封面的梦想，由于某些情况，她滚进了 Ento 居住的公寓。然而，随着他们的生活，Ento 开始对弥生的行为产生怀疑。这家伙……我不在家的时候，你不是带了你的男朋友吗……？",
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "show_id": 249891,
+        "still_path": "/6T6DQQeBUoVEbWZUV5mrVKF0Nuh.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2024-07-15",
+        "episode_number": 2,
+        "episode_type": "standard",
+        "id": 5495517,
+        "name": "我就跟你们说一句话！",
+        "overview": "在欲望的驱使下，我得到了弥生……摆脱了自己很好的妄想的 Enjin。 Ento 一边给独自睡觉的弥生披上被褥，一边怀疑“弥生的男朋友”的体面，说：“如果你让它处于这种状态……”确信弥生每晚都会带一个男人进来的 Enjin 采取了一定的措施，出乎意料地踏入了秘密会议地点，但 Ento 在那里看到的……",
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "show_id": 249891,
+        "still_path": "/wQtIofQklfDQSPCs9KNhjD88iw8.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2024-07-22",
+        "episode_number": 3,
+        "episode_type": "standard",
+        "id": 5495518,
+        "name": "不好好释放一下的话！",
+        "overview": "Enjin 在打工时见证了 Yayoi 作为模特的受欢迎程度，并敏锐地意识到世界形象与现实之间的差距。家里的弥生说下班累了，草率地躺下，让 Ento 按摩。Enjin 别无选择，只能回应，但被蹭臀部的弥生却发出了意想不到的声音。兴奋的 Enjin 的按摩朝着不同的方向发展……",
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "show_id": 249891,
+        "still_path": "/kwx1Q9mVidPEnJKBbTCVEat0W7L.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2024-07-29",
+        "episode_number": 4,
+        "episode_type": "standard",
+        "id": 5495519,
+        "name": "竟然……已经睡着了！？",
+        "overview": "弥生误以为她是在试图发生性关系，强烈反对 Ento。用一个卖词和一个买词，Ento 退出了弥生的处理。弥生很天真，但从第二天开始，Ento 真的不再回应了，挫败感积累了。这样的日子还在继续，终于达到极限的弥生踉踉跄跄地回家了。被弥生乞求的 Enjin……",
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "show_id": 249891,
+        "still_path": "/gATY8K4VkNf1vbGlnn2Hunr6zb0.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2024-08-05",
+        "episode_number": 5,
+        "episode_type": "standard",
+        "id": 5495520,
+        "name": "……什么也不做？",
+        "overview": "如约成为模特的弥生，而我负责处理...... 当他想起这件事时，Ento 被他自己的废话吓坏了。 打完工后，一直在睡觉的 Enjin 醒来发现弥生在上面。 - Ento 与似乎在邀请的弥生发生性关系，说：“如果你走到最后也没关系，好吗？ 我本来想让她退后一步，但弥生的反应出乎意料。",
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "show_id": 249891,
+        "still_path": "/u2lQuwEigf7rc9ufyw0Q3rNKwuN.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2024-08-12",
+        "episode_number": 6,
+        "episode_type": "standard",
+        "id": 5495521,
+        "name": "我可不是玩具噢……！",
+        "overview": "- 狡猾地继续保持着超越儿时朋友的肉体关系。 有一天，Enjin 被叫到弥生以前工作的摄影工作室送他遗忘的东西。 看到弥生作为模特在场上大放异彩，Ento 再次感到自己无法平衡。 另一方面，弥生无意中听到 Ento 已停止使用相机。",
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "show_id": 249891,
+        "still_path": "/zHifiUkeX2N7l4Wb262lQ9TtM2m.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2024-08-19",
+        "episode_number": 7,
+        "episode_type": "standard",
+        "id": 5495522,
+        "name": "我答应了！",
+        "overview": "郁闷地回来的 Enjin 受到了也是公寓房东的 Kaoru 的欢迎。 - “你姐姐不鼓励你吗？”- Ento 无法抗拒靠近的 Kaoru。 后来，当弥生回到家时，她冲向了已经自己放弃了梦想的 Enjin。 Ento 说他还扔掉了他们回忆的相机，留下震惊的弥生，前往夜班逃跑。",
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "show_id": 249891,
+        "still_path": "/rfmw5Sc7Pz2roCr4h6G4ziWVreQ.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2024-08-26",
+        "episode_number": 8,
+        "episode_type": "finale",
+        "id": 5495523,
+        "name": "我回来了！",
+        "overview": "Enjin 已经回到了拍摄工作室工作，但他继续在一家便利店兼职，整天呆着回家。 看到他在拍摄现场尽力而为的弥生说：“片场的和君很酷”，但 Ento 对弥生说，我不会再处理你的了...... 从午夜重逢开始的两人爱情，命运如何？",
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "show_id": 249891,
+        "still_path": "/t3UwBdQf4CkERgjtLiXJbHFeCWn.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [],
+        "guest_stars": []
+      }
+    ],
+    "name": "第 1 季",
+    "networks": [
+      {
+        "id": 861,
+        "logo_path": "/JQ5bx6n7Qmdmyqz6sqjo5Fz2iR.png",
+        "name": "BS11",
+        "origin_country": "JP"
+      },
+      {
+        "id": 614,
+        "logo_path": "/hSdroyVthq3CynxTIIY7lnS8w1.png",
+        "name": "Tokyo MX",
+        "origin_country": "JP"
+      }
+    ],
+    "overview": "",
+    "id": 384965,
+    "poster_path": "/6H70xDd7NTYLRciTUxhMXfyibNB.jpg",
+    "season_number": 1,
+    "vote_average": 0.0
+  }
+]
+2025-12-05 23:29:35,215 - MetadataAgent - INFO - Data normalization completed
+2025-12-05 23:29:35,215 - MetadataAgent - DEBUG - Normalized data: {
+  "media_type": "tv",
+  "tmdb_id": 249891,
+  "title": "夜游生活！",
+  "original_title": "よあそびぐらしっ！",
+  "year": 2024,
+  "plot": "“我的房子...... 我变成了一家情趣旅馆。对成为摄影师的梦想感到沮丧的 Ento 和实现模特梦想的弥生。 两个不同的儿时朋友...... 突然开始同居！ 起初，气氛很尴尬，但弥生有一个秘密，她不能告诉 Ento...... 与儿时朋友的新 kankei，从晚上出去玩开始。 我不能再只是一个儿时的朋友",
+  "tagline": "",
+  "runtime": 7,
+  "release_date": "2024-07-08",
+  "rating": 5.0,
+  "rating_count": 4,
+  "genres": [
+    "动画"
+  ],
+  "countries": [
+    "JP"
+  ],
+  "languages": [
+    "ja"
+  ],
+  "studios": [
+    "studio HōKIBOSHI"
+  ],
+  "networks": [
+    "Tokyo MX",
+    "BS11"
+  ],
+  "network": "Tokyo MX",
+  "status": "Ended",
+  "homepage": "https://yoasobigurashi.af-original.com",
+  "cast": [
+    {
+      "name_en": "Kofun Penguin",
+      "name_zh": null,
+      "role": "Kazuto Mano (voice)",
+      "original_name": "古墳ペンギン",
+      "profile_path": null,
+      "popularity": 0.3759
+    },
+    {
+      "name_en": "Juri Nagatsuma",
+      "name_zh": null,
+      "role": "Yayoi Mutou (voice)",
+      "original_name": "長妻樹里",
+      "profile_path": "/k6tImXfloqrWczRKLfWkuch1o45.jpg",
+      "popularity": 2.088
+    },
+    {
+      "name_en": "Yuka Hanyu",
+      "name_zh": null,
+      "role": "Kaoru Mutou (voice)",
+      "original_name": "羽生ゆか",
+      "profile_path": "/nDhNiZ2XRifMjBgEWpNya24FMiT.jpg",
+      "popularity": 0.3856
+    }
+  ],
+  "directors": [
+    "Tatsuya Sasaki"
+  ],
+  "writers": [
+    "G-zass",
+    "Eeyo Kurosaki",
+    "Suika Ijiro"
+  ],
+  "images": {},
+  "seasons": [
+    {
+      "air_date": null,
+      "episode_count": 2,
+      "id": 417843,
+      "name": "特别篇",
+      "overview": "",
+      "poster_path": null,
+      "season_number": 0,
+      "vote_average": 0.0
+    },
+    {
+      "air_date": "2024-07-08",
+      "episode_count": 8,
+      "id": 384965,
+      "name": "第 1 季",
+      "overview": "",
+      "poster_path": "/6H70xDd7NTYLRciTUxhMXfyibNB.jpg",
+      "season_number": 1,
+      "vote_average": 0.0
+    }
+  ],
+  "episodes": [
+    {
+      "air_date": "2024-07-08",
+      "crew": [],
+      "episode_number": 1,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "今晚别回来！",
+      "overview": "在便利店上夜班兼职的 Ento Mano 在一天晚上的工作中与儿时的朋友 Yayoi Yumefuji 重逢。弥生非常积极地实现自己成为模特和装饰杂志封面的梦想，由于某些情况，她滚进了 Ento 居住的公寓。然而，随着他们的生活，Ento 开始对弥生的行为产生怀疑。这家伙……我不在家的时候，你不是带了你的男朋友吗……？",
+      "id": 5227032,
+      "production_code": "",
+      "runtime": 6,
+      "season_number": 1,
+      "still_path": "/6T6DQQeBUoVEbWZUV5mrVKF0Nuh.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2024-07-15",
+      "crew": [],
+      "episode_number": 2,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "我就跟你们说一句话！",
+      "overview": "在欲望的驱使下，我得到了弥生……摆脱了自己很好的妄想的 Enjin。 Ento 一边给独自睡觉的弥生披上被褥，一边怀疑“弥生的男朋友”的体面，说：“如果你让它处于这种状态……”确信弥生每晚都会带一个男人进来的 Enjin 采取了一定的措施，出乎意料地踏入了秘密会议地点，但 Ento 在那里看到的……",
+      "id": 5495517,
+      "production_code": "",
+      "runtime": 6,
+      "season_number": 1,
+      "still_path": "/wQtIofQklfDQSPCs9KNhjD88iw8.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2024-07-22",
+      "crew": [],
+      "episode_number": 3,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "不好好释放一下的话！",
+      "overview": "Enjin 在打工时见证了 Yayoi 作为模特的受欢迎程度，并敏锐地意识到世界形象与现实之间的差距。家里的弥生说下班累了，草率地躺下，让 Ento 按摩。Enjin 别无选择，只能回应，但被蹭臀部的弥生却发出了意想不到的声音。兴奋的 Enjin 的按摩朝着不同的方向发展……",
+      "id": 5495518,
+      "production_code": "",
+      "runtime": 6,
+      "season_number": 1,
+      "still_path": "/kwx1Q9mVidPEnJKBbTCVEat0W7L.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2024-07-29",
+      "crew": [],
+      "episode_number": 4,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "竟然……已经睡着了！？",
+      "overview": "弥生误以为她是在试图发生性关系，强烈反对 Ento。用一个卖词和一个买词，Ento 退出了弥生的处理。弥生很天真，但从第二天开始，Ento 真的不再回应了，挫败感积累了。这样的日子还在继续，终于达到极限的弥生踉踉跄跄地回家了。被弥生乞求的 Enjin……",
+      "id": 5495519,
+      "production_code": "",
+      "runtime": 6,
+      "season_number": 1,
+      "still_path": "/gATY8K4VkNf1vbGlnn2Hunr6zb0.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2024-08-05",
+      "crew": [],
+      "episode_number": 5,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "……什么也不做？",
+      "overview": "如约成为模特的弥生，而我负责处理...... 当他想起这件事时，Ento 被他自己的废话吓坏了。 打完工后，一直在睡觉的 Enjin 醒来发现弥生在上面。 - Ento 与似乎在邀请的弥生发生性关系，说：“如果你走到最后也没关系，好吗？ 我本来想让她退后一步，但弥生的反应出乎意料。",
+      "id": 5495520,
+      "production_code": "",
+      "runtime": 6,
+      "season_number": 1,
+      "still_path": "/u2lQuwEigf7rc9ufyw0Q3rNKwuN.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2024-08-12",
+      "crew": [],
+      "episode_number": 6,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "我可不是玩具噢……！",
+      "overview": "- 狡猾地继续保持着超越儿时朋友的肉体关系。 有一天，Enjin 被叫到弥生以前工作的摄影工作室送他遗忘的东西。 看到弥生作为模特在场上大放异彩，Ento 再次感到自己无法平衡。 另一方面，弥生无意中听到 Ento 已停止使用相机。",
+      "id": 5495521,
+      "production_code": "",
+      "runtime": 6,
+      "season_number": 1,
+      "still_path": "/zHifiUkeX2N7l4Wb262lQ9TtM2m.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2024-08-19",
+      "crew": [],
+      "episode_number": 7,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "我答应了！",
+      "overview": "郁闷地回来的 Enjin 受到了也是公寓房东的 Kaoru 的欢迎。 - “你姐姐不鼓励你吗？”- Ento 无法抗拒靠近的 Kaoru。 后来，当弥生回到家时，她冲向了已经自己放弃了梦想的 Enjin。 Ento 说他还扔掉了他们回忆的相机，留下震惊的弥生，前往夜班逃跑。",
+      "id": 5495522,
+      "production_code": "",
+      "runtime": 6,
+      "season_number": 1,
+      "still_path": "/rfmw5Sc7Pz2roCr4h6G4ziWVreQ.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2024-08-26",
+      "crew": [],
+      "episode_number": 8,
+      "episode_type": "finale",
+      "guest_stars": [],
+      "name": "我回来了！",
+      "overview": "Enjin 已经回到了拍摄工作室工作，但他继续在一家便利店兼职，整天呆着回家。 看到他在拍摄现场尽力而为的弥生说：“片场的和君很酷”，但 Ento 对弥生说，我不会再处理你的了...... 从午夜重逢开始的两人爱情，命运如何？",
+      "id": 5495523,
+      "production_code": "",
+      "runtime": 6,
+      "season_number": 1,
+      "still_path": "/t3UwBdQf4CkERgjtLiXJbHFeCWn.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    }
+  ],
+  "title_zh": "夜游生活！",
+  "plot_zh": "“我的房子...... 我变成了一家情趣旅馆。对成为摄影师的梦想感到沮丧的 Ento 和实现模特梦想的弥生。 两个不同的儿时朋友...... 突然开始同居！ 起初，气氛很尴尬，但弥生有一个秘密，她不能告诉 Ento...... 与儿时朋友的新 kankei，从晚上出去玩开始。 我不能再只是一个儿时的朋友",
+  "keywords_en": [
+    "based on manga",
+    "childhood friends",
+    "anime",
+    "big tits",
+    "erotic"
+  ],
+  "keywords": [
+    "based on manga",
+    "childhood friends",
+    "anime",
+    "big tits",
+    "erotic"
+  ],
+  "keywords_zh": [
+    "改编自漫画",
+    "童年好友",
+    "动画",
+    "大胸",
+    "色情"
+  ]
+}
+2025-12-05 23:29:35,217 - MetadataAgent - INFO - Translation processing completed
+2025-12-05 23:29:35,217 - MetadataAgent - DEBUG - Translated data: {
+  "media_type": "tv",
+  "tmdb_id": 249891,
+  "title": "夜游生活！",
+  "original_title": "よあそびぐらしっ！",
+  "year": 2024,
+  "plot": "“我的房子...... 我变成了一家情趣旅馆。对成为摄影师的梦想感到沮丧的 Ento 和实现模特梦想的弥生。 两个不同的儿时朋友...... 突然开始同居！ 起初，气氛很尴尬，但弥生有一个秘密，她不能告诉 Ento...... 与儿时朋友的新 kankei，从晚上出去玩开始。 我不能再只是一个儿时的朋友",
+  "tagline": "",
+  "runtime": 7,
+  "release_date": "2024-07-08",
+  "rating": 5.0,
+  "rating_count": 4,
+  "genres": [
+    "动画"
+  ],
+  "countries": [
+    "JP"
+  ],
+  "languages": [
+    "ja"
+  ],
+  "studios": [
+    "studio HōKIBOSHI"
+  ],
+  "networks": [
+    "Tokyo MX",
+    "BS11"
+  ],
+  "network": "Tokyo MX",
+  "status": "Ended",
+  "homepage": "https://yoasobigurashi.af-original.com",
+  "cast": [
+    {
+      "name_en": "Kofun Penguin",
+      "name_zh": null,
+      "role": "Kazuto Mano (voice)",
+      "original_name": "古墳ペンギン",
+      "profile_path": null,
+      "popularity": 0.3759
+    },
+    {
+      "name_en": "Juri Nagatsuma",
+      "name_zh": null,
+      "role": "Yayoi Mutou (voice)",
+      "original_name": "長妻樹里",
+      "profile_path": "/k6tImXfloqrWczRKLfWkuch1o45.jpg",
+      "popularity": 2.088
+    },
+    {
+      "name_en": "Yuka Hanyu",
+      "name_zh": null,
+      "role": "Kaoru Mutou (voice)",
+      "original_name": "羽生ゆか",
+      "profile_path": "/nDhNiZ2XRifMjBgEWpNya24FMiT.jpg",
+      "popularity": 0.3856
+    }
+  ],
+  "directors": [
+    "Tatsuya Sasaki"
+  ],
+  "writers": [
+    "G-zass",
+    "Eeyo Kurosaki",
+    "Suika Ijiro"
+  ],
+  "images": {},
+  "seasons": [
+    {
+      "air_date": null,
+      "episode_count": 2,
+      "id": 417843,
+      "name": "特别篇",
+      "overview": "",
+      "poster_path": null,
+      "season_number": 0,
+      "vote_average": 0.0
+    },
+    {
+      "air_date": "2024-07-08",
+      "episode_count": 8,
+      "id": 384965,
+      "name": "第 1 季",
+      "overview": "",
+      "poster_path": "/6H70xDd7NTYLRciTUxhMXfyibNB.jpg",
+      "season_number": 1,
+      "vote_average": 0.0
+    }
+  ],
+  "episodes": [
+    {
+      "air_date": "2024-07-08",
+      "crew": [],
+      "episode_number": 1,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "今晚别回来！",
+      "overview": "在便利店上夜班兼职的 Ento Mano 在一天晚上的工作中与儿时的朋友 Yayoi Yumefuji 重逢。弥生非常积极地实现自己成为模特和装饰杂志封面的梦想，由于某些情况，她滚进了 Ento 居住的公寓。然而，随着他们的生活，Ento 开始对弥生的行为产生怀疑。这家伙……我不在家的时候，你不是带了你的男朋友吗……？",
+      "id": 5227032,
+      "production_code": "",
+      "runtime": 6,
+      "season_number": 1,
+      "still_path": "/6T6DQQeBUoVEbWZUV5mrVKF0Nuh.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2024-07-15",
+      "crew": [],
+      "episode_number": 2,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "我就跟你们说一句话！",
+      "overview": "在欲望的驱使下，我得到了弥生……摆脱了自己很好的妄想的 Enjin。 Ento 一边给独自睡觉的弥生披上被褥，一边怀疑“弥生的男朋友”的体面，说：“如果你让它处于这种状态……”确信弥生每晚都会带一个男人进来的 Enjin 采取了一定的措施，出乎意料地踏入了秘密会议地点，但 Ento 在那里看到的……",
+      "id": 5495517,
+      "production_code": "",
+      "runtime": 6,
+      "season_number": 1,
+      "still_path": "/wQtIofQklfDQSPCs9KNhjD88iw8.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2024-07-22",
+      "crew": [],
+      "episode_number": 3,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "不好好释放一下的话！",
+      "overview": "Enjin 在打工时见证了 Yayoi 作为模特的受欢迎程度，并敏锐地意识到世界形象与现实之间的差距。家里的弥生说下班累了，草率地躺下，让 Ento 按摩。Enjin 别无选择，只能回应，但被蹭臀部的弥生却发出了意想不到的声音。兴奋的 Enjin 的按摩朝着不同的方向发展……",
+      "id": 5495518,
+      "production_code": "",
+      "runtime": 6,
+      "season_number": 1,
+      "still_path": "/kwx1Q9mVidPEnJKBbTCVEat0W7L.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2024-07-29",
+      "crew": [],
+      "episode_number": 4,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "竟然……已经睡着了！？",
+      "overview": "弥生误以为她是在试图发生性关系，强烈反对 Ento。用一个卖词和一个买词，Ento 退出了弥生的处理。弥生很天真，但从第二天开始，Ento 真的不再回应了，挫败感积累了。这样的日子还在继续，终于达到极限的弥生踉踉跄跄地回家了。被弥生乞求的 Enjin……",
+      "id": 5495519,
+      "production_code": "",
+      "runtime": 6,
+      "season_number": 1,
+      "still_path": "/gATY8K4VkNf1vbGlnn2Hunr6zb0.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2024-08-05",
+      "crew": [],
+      "episode_number": 5,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "……什么也不做？",
+      "overview": "如约成为模特的弥生，而我负责处理...... 当他想起这件事时，Ento 被他自己的废话吓坏了。 打完工后，一直在睡觉的 Enjin 醒来发现弥生在上面。 - Ento 与似乎在邀请的弥生发生性关系，说：“如果你走到最后也没关系，好吗？ 我本来想让她退后一步，但弥生的反应出乎意料。",
+      "id": 5495520,
+      "production_code": "",
+      "runtime": 6,
+      "season_number": 1,
+      "still_path": "/u2lQuwEigf7rc9ufyw0Q3rNKwuN.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2024-08-12",
+      "crew": [],
+      "episode_number": 6,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "我可不是玩具噢……！",
+      "overview": "- 狡猾地继续保持着超越儿时朋友的肉体关系。 有一天，Enjin 被叫到弥生以前工作的摄影工作室送他遗忘的东西。 看到弥生作为模特在场上大放异彩，Ento 再次感到自己无法平衡。 另一方面，弥生无意中听到 Ento 已停止使用相机。",
+      "id": 5495521,
+      "production_code": "",
+      "runtime": 6,
+      "season_number": 1,
+      "still_path": "/zHifiUkeX2N7l4Wb262lQ9TtM2m.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2024-08-19",
+      "crew": [],
+      "episode_number": 7,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "我答应了！",
+      "overview": "郁闷地回来的 Enjin 受到了也是公寓房东的 Kaoru 的欢迎。 - “你姐姐不鼓励你吗？”- Ento 无法抗拒靠近的 Kaoru。 后来，当弥生回到家时，她冲向了已经自己放弃了梦想的 Enjin。 Ento 说他还扔掉了他们回忆的相机，留下震惊的弥生，前往夜班逃跑。",
+      "id": 5495522,
+      "production_code": "",
+      "runtime": 6,
+      "season_number": 1,
+      "still_path": "/rfmw5Sc7Pz2roCr4h6G4ziWVreQ.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2024-08-26",
+      "crew": [],
+      "episode_number": 8,
+      "episode_type": "finale",
+      "guest_stars": [],
+      "name": "我回来了！",
+      "overview": "Enjin 已经回到了拍摄工作室工作，但他继续在一家便利店兼职，整天呆着回家。 看到他在拍摄现场尽力而为的弥生说：“片场的和君很酷”，但 Ento 对弥生说，我不会再处理你的了...... 从午夜重逢开始的两人爱情，命运如何？",
+      "id": 5495523,
+      "production_code": "",
+      "runtime": 6,
+      "season_number": 1,
+      "still_path": "/t3UwBdQf4CkERgjtLiXJbHFeCWn.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    }
+  ],
+  "title_zh": "夜游生活！",
+  "plot_zh": "“我的房子...... 我变成了一家情趣旅馆。对成为摄影师的梦想感到沮丧的 Ento 和实现模特梦想的弥生。 两个不同的儿时朋友...... 突然开始同居！ 起初，气氛很尴尬，但弥生有一个秘密，她不能告诉 Ento...... 与儿时朋友的新 kankei，从晚上出去玩开始。 我不能再只是一个儿时的朋友",
+  "keywords_en": [
+    "based on manga",
+    "childhood friends",
+    "anime",
+    "big tits",
+    "erotic"
+  ],
+  "keywords": [
+    "based on manga",
+    "childhood friends",
+    "anime",
+    "big tits",
+    "erotic"
+  ],
+  "keywords_zh": [
+    "改编自漫画",
+    "童年好友",
+    "动画",
+    "大胸",
+    "色情"
+  ]
+}
+2025-12-05 23:29:35,218 - MetadataAgent - DEBUG - Translated episodes: [
+  {
+    "air_date": "2024-07-08",
+    "crew": [],
+    "episode_number": 1,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "今晚别回来！",
+    "overview": "在便利店上夜班兼职的 Ento Mano 在一天晚上的工作中与儿时的朋友 Yayoi Yumefuji 重逢。弥生非常积极地实现自己成为模特和装饰杂志封面的梦想，由于某些情况，她滚进了 Ento 居住的公寓。然而，随着他们的生活，Ento 开始对弥生的行为产生怀疑。这家伙……我不在家的时候，你不是带了你的男朋友吗……？",
+    "id": 5227032,
+    "production_code": "",
+    "runtime": 6,
+    "season_number": 1,
+    "still_path": "/6T6DQQeBUoVEbWZUV5mrVKF0Nuh.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2024-07-15",
+    "crew": [],
+    "episode_number": 2,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "我就跟你们说一句话！",
+    "overview": "在欲望的驱使下，我得到了弥生……摆脱了自己很好的妄想的 Enjin。 Ento 一边给独自睡觉的弥生披上被褥，一边怀疑“弥生的男朋友”的体面，说：“如果你让它处于这种状态……”确信弥生每晚都会带一个男人进来的 Enjin 采取了一定的措施，出乎意料地踏入了秘密会议地点，但 Ento 在那里看到的……",
+    "id": 5495517,
+    "production_code": "",
+    "runtime": 6,
+    "season_number": 1,
+    "still_path": "/wQtIofQklfDQSPCs9KNhjD88iw8.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2024-07-22",
+    "crew": [],
+    "episode_number": 3,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "不好好释放一下的话！",
+    "overview": "Enjin 在打工时见证了 Yayoi 作为模特的受欢迎程度，并敏锐地意识到世界形象与现实之间的差距。家里的弥生说下班累了，草率地躺下，让 Ento 按摩。Enjin 别无选择，只能回应，但被蹭臀部的弥生却发出了意想不到的声音。兴奋的 Enjin 的按摩朝着不同的方向发展……",
+    "id": 5495518,
+    "production_code": "",
+    "runtime": 6,
+    "season_number": 1,
+    "still_path": "/kwx1Q9mVidPEnJKBbTCVEat0W7L.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2024-07-29",
+    "crew": [],
+    "episode_number": 4,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "竟然……已经睡着了！？",
+    "overview": "弥生误以为她是在试图发生性关系，强烈反对 Ento。用一个卖词和一个买词，Ento 退出了弥生的处理。弥生很天真，但从第二天开始，Ento 真的不再回应了，挫败感积累了。这样的日子还在继续，终于达到极限的弥生踉踉跄跄地回家了。被弥生乞求的 Enjin……",
+    "id": 5495519,
+    "production_code": "",
+    "runtime": 6,
+    "season_number": 1,
+    "still_path": "/gATY8K4VkNf1vbGlnn2Hunr6zb0.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2024-08-05",
+    "crew": [],
+    "episode_number": 5,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "……什么也不做？",
+    "overview": "如约成为模特的弥生，而我负责处理...... 当他想起这件事时，Ento 被他自己的废话吓坏了。 打完工后，一直在睡觉的 Enjin 醒来发现弥生在上面。 - Ento 与似乎在邀请的弥生发生性关系，说：“如果你走到最后也没关系，好吗？ 我本来想让她退后一步，但弥生的反应出乎意料。",
+    "id": 5495520,
+    "production_code": "",
+    "runtime": 6,
+    "season_number": 1,
+    "still_path": "/u2lQuwEigf7rc9ufyw0Q3rNKwuN.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2024-08-12",
+    "crew": [],
+    "episode_number": 6,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "我可不是玩具噢……！",
+    "overview": "- 狡猾地继续保持着超越儿时朋友的肉体关系。 有一天，Enjin 被叫到弥生以前工作的摄影工作室送他遗忘的东西。 看到弥生作为模特在场上大放异彩，Ento 再次感到自己无法平衡。 另一方面，弥生无意中听到 Ento 已停止使用相机。",
+    "id": 5495521,
+    "production_code": "",
+    "runtime": 6,
+    "season_number": 1,
+    "still_path": "/zHifiUkeX2N7l4Wb262lQ9TtM2m.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2024-08-19",
+    "crew": [],
+    "episode_number": 7,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "我答应了！",
+    "overview": "郁闷地回来的 Enjin 受到了也是公寓房东的 Kaoru 的欢迎。 - “你姐姐不鼓励你吗？”- Ento 无法抗拒靠近的 Kaoru。 后来，当弥生回到家时，她冲向了已经自己放弃了梦想的 Enjin。 Ento 说他还扔掉了他们回忆的相机，留下震惊的弥生，前往夜班逃跑。",
+    "id": 5495522,
+    "production_code": "",
+    "runtime": 6,
+    "season_number": 1,
+    "still_path": "/rfmw5Sc7Pz2roCr4h6G4ziWVreQ.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2024-08-26",
+    "crew": [],
+    "episode_number": 8,
+    "episode_type": "finale",
+    "guest_stars": [],
+    "name": "我回来了！",
+    "overview": "Enjin 已经回到了拍摄工作室工作，但他继续在一家便利店兼职，整天呆着回家。 看到他在拍摄现场尽力而为的弥生说：“片场的和君很酷”，但 Ento 对弥生说，我不会再处理你的了...... 从午夜重逢开始的两人爱情，命运如何？",
+    "id": 5495523,
+    "production_code": "",
+    "runtime": 6,
+    "season_number": 1,
+    "still_path": "/t3UwBdQf4CkERgjtLiXJbHFeCWn.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  }
+]
+2025-12-05 23:29:51,009 - MetadataAgent - INFO - NFO generation completed
+2025-12-05 23:29:51,009 - MetadataAgent - DEBUG - NFO data: {
+  "title": "夜游生活！",
+  "originaltitle": "よあそびぐらしっ！",
+  "year": 2024,
+  "premiered": "2024-07-08",
+  "plot": "“我的房子...... 我变成了一家情趣旅馆。对成为摄影师的梦想感到沮丧的 Ento 和实现模特梦想的弥生。 两个不同的儿时朋友...... 突然开始同居！ 起初，气氛很尴尬，但弥生有一个秘密，她不能告诉 Ento...... 与儿时朋友的新 kankei，从晚上出去玩开始。 我不能再只是一个儿时的朋友",
+  "tagline": "",
+  "runtime": 7,
+  "rating": 5.0,
+  "votes": 4,
+  "genre": [
+    "动画"
+  ],
+  "country": [
+    "JP"
+  ],
+  "studio": [
+    "studio HōKIBOSHI"
+  ],
+  "credits": [
+    "G-zass",
+    "Eeyo Kurosaki",
+    "Suika Ijiro"
+  ],
+  "director": [
+    "Tatsuya Sasaki"
+  ],
+  "actor": [
+    {
+      "name": "Kofun Penguin",
+      "role": "Kazuto Mano (voice)",
+      "originalname": "古墳ペンギン"
+    },
+    {
+      "name": "Juri Nagatsuma",
+      "role": "Yayoi Mutou (voice)",
+      "originalname": "長妻樹里",
+      "thumb": "images/actors/Juri Nagatsuma.jpg"
+    },
+    {
+      "name": "Yuka Hanyu",
+      "role": "Kaoru Mutou (voice)",
+      "originalname": "羽生ゆか",
+      "thumb": "images/actors/Yuka Hanyu.jpg"
+    }
+  ],
+  "thumb": "poster.jpg",
+  "fanart": "fanart.jpg",
+  "tags": [
+    "改编自漫画",
+    "童年好友",
+    "动画",
+    "大胸",
+    "色情"
+  ],
+  "network": "Tokyo MX",
+  "networks": [
+    "Tokyo MX",
+    "BS11"
+  ],
+  "status": "Ended",
+  "homepage": "https://yoasobigurashi.af-original.com",
+  "tmdb_id": 249891,
+  "validated": true
+}
+2025-12-05 23:29:51,009 - MetadataAgent - DEBUG - NFO XML content:
+<?xml version="1.0" ?>
+<tvshow>
+  <title>夜游生活！</title>
+  <originaltitle>よあそびぐらしっ！</originaltitle>
+  <year>2024</year>
+  <premiered>2024-07-08</premiered>
+  <plot><![CDATA[“我的房子...... 我变成了一家情趣旅馆。对成为摄影师的梦想感到沮丧的 Ento 和实现模特梦想的弥生。 两个不同的儿时朋友...... 突然开始同居！ 起初，气氛很尴尬，但弥生有一个秘密，她不能告诉 Ento...... 与儿时朋友的新 kankei，从晚上出去玩开始。 我不能再只是一个儿时的朋友]]></plot>
+  <runtime>7</runtime>
+  <rating>5.0</rating>
+  <votes>4</votes>
+  <tmdbid>249891</tmdbid>
+  <genre>动画</genre>
+  <country>JP</country>
+  <studio>studio HōKIBOSHI</studio>
+  <credits>G-zass, Eeyo Kurosaki, Suika Ijiro</credits>
+  <director>Tatsuya Sasaki</director>
+  <actor>
+    <name>Kofun Penguin</name>
+    <role>Kazuto Mano (voice)</role>
+    <originalname>古墳ペンギン</originalname>
+  </actor>
+  <actor>
+    <name>Juri Nagatsuma</name>
+    <role>Yayoi Mutou (voice)</role>
+    <originalname>長妻樹里</originalname>
+    <thumb>images/actors/Juri Nagatsuma.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Yuka Hanyu</name>
+    <role>Kaoru Mutou (voice)</role>
+    <originalname>羽生ゆか</originalname>
+    <thumb>images/actors/Yuka Hanyu.jpg</thumb>
+  </actor>
+  <network>Tokyo MX</network>
+  <network>BS11</network>
+  <status>Ended</status>
+  <homepage>https://yoasobigurashi.af-original.com</homepage>
+  <uniqueid type="tmdb" default="true">249891</uniqueid>
+  <thumb>images/poster/poster.jpg</thumb>
+  <fanart>images/fanart/fanart.jpg</fanart>
+  <tag>改编自漫画</tag>
+  <tag>童年好友</tag>
+  <tag>动画</tag>
+  <tag>大胸</tag>
+  <tag>色情</tag>
+</tvshow>
+
+2025-12-05 23:29:59,262 - MetadataAgent - INFO - Output generation completed
+2025-12-05 23:29:59,262 - MetadataAgent - DEBUG - Output data: {
+  "status": "completed",
+  "files": {
+    "nfo_file": "/Volumes/video/Animation/The Animation/夜游生活！ (2024)/tvshow.nfo",
+    "images_dir": "/Volumes/video/Animation/The Animation/夜游生活！ (2024)/images",
+    "media_dir": "/Volumes/video/Animation/The Animation/夜游生活！ (2024)",
+    "season_1_episode_1": "/Volumes/video/Animation/The Animation/夜游生活！ (2024)/Season 01/夜游生活！ - S01E01 - 今晚别回来！.nfo",
+    "season_1_episode_2": "/Volumes/video/Animation/The Animation/夜游生活！ (2024)/Season 01/夜游生活！ - S01E02 - 我就跟你们说一句话！.nfo",
+    "season_1_episode_3": "/Volumes/video/Animation/The Animation/夜游生活！ (2024)/Season 01/夜游生活！ - S01E03 - 不好好释放一下的话！.nfo",
+    "season_1_episode_4": "/Volumes/video/Animation/The Animation/夜游生活！ (2024)/Season 01/夜游生活！ - S01E04 - 竟然……已经睡着了！？.nfo",
+    "season_1_episode_5": "/Volumes/video/Animation/The Animation/夜游生活！ (2024)/Season 01/夜游生活！ - S01E05 - ……什么也不做？.nfo",
+    "season_1_episode_6": "/Volumes/video/Animation/The Animation/夜游生活！ (2024)/Season 01/夜游生活！ - S01E06 - 我可不是玩具噢……！.nfo",
+    "season_1_episode_7": "/Volumes/video/Animation/The Animation/夜游生活！ (2024)/Season 01/夜游生活！ - S01E07 - 我答应了！.nfo",
+    "season_1_episode_8": "/Volumes/video/Animation/The Animation/夜游生活！ (2024)/Season 01/夜游生活！ - S01E08 - 我回来了！.nfo"
+  }
+}
+2025-12-05 23:29:59,263 - MetadataAgent - INFO - === PROCESSING SUMMARY ===
+2025-12-05 23:29:59,263 - MetadataAgent - INFO - Log file: logs/metadata_agent_20251205_232928.log
+2025-12-05 23:29:59,263 - MetadataAgent - INFO - Processing completed successfully
+2025-12-05 23:29:59,264 - MetadataAgent - INFO - Processing summary saved to: logs/processing_summary_20251205_232959.json

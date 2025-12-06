@@ -1,0 +1,1020 @@
+2025-12-06 00:48:41,981 - MetadataAgent - INFO - Input parameters parsed
+2025-12-06 00:48:41,981 - MetadataAgent - DEBUG - Input data: {
+  "media_type": "tv",
+  "query": "",
+  "output_dir": "/Volumes/video/Animation/The Animation/1LDK＋JK 突然间展开同居？ (Unknown Year)",
+  "verbose": false,
+  "quiet": true,
+  "aid_search": true,
+  "tmdb_id": 228367
+}
+2025-12-06 00:48:41,982 - MetadataAgent - INFO - Search completed: 0 results
+2025-12-06 00:48:41,982 - MetadataAgent - DEBUG - Search results: {}
+2025-12-06 00:48:44,820 - MetadataAgent - INFO - Data fetching completed
+2025-12-06 00:48:44,821 - MetadataAgent - DEBUG - Main data: {
+  "adult": true,
+  "backdrop_path": "/mUe40hWAs9yJh0v7jAW28W6bjNp.jpg",
+  "created_by": [],
+  "episode_run_time": [
+    20
+  ],
+  "first_air_date": "2023-07-07",
+  "genres": [
+    {
+      "id": 16,
+      "name": "动画"
+    }
+  ],
+  "homepage": "https://www.mediabank.co.jp/product.php?model=KNB-M007",
+  "id": 228367,
+  "in_production": true,
+  "languages": [
+    "ja"
+  ],
+  "last_air_date": "2025-06-20",
+  "last_episode_to_air": {
+    "id": 6034282,
+    "name": "第 6 集",
+    "overview": "茜回到了波佐间的房间，两人的同居生活再次开始，但茜表示因打工晚归。出于担心，波佐间带着狗前往茜的工作地点接她。回家的路上，当他们经过公园时，波佐间的狗“ゴロウ”显得很想玩耍。两人便坐在长椅上，静静观赏ゴロウ玩耍的情景。在此过程中，茜开始讲述自己的身世故事。波佐间听后建议她更多地依赖周围的成年人。不经意间，波佐间注意到ゴロウ不见了，茜于是起身要去寻找，却因踉跄而倒向波佐间。波佐间将她抱住，而他的手随后开始做出暧昧的动作。",
+    "vote_average": 0.0,
+    "vote_count": 0,
+    "air_date": "2025-11-21",
+    "episode_number": 6,
+    "episode_type": "standard",
+    "production_code": "KNB-M014",
+    "runtime": null,
+    "season_number": 1,
+    "show_id": 228367,
+    "still_path": null
+  },
+  "name": "1LDK＋JK 突然间展开同居？",
+  "next_episode_to_air": null,
+  "networks": [],
+  "number_of_episodes": 6,
+  "number_of_seasons": 1,
+  "origin_country": [
+    "JP"
+  ],
+  "original_language": "ja",
+  "original_name": "1LDK+J系 いきなり同居?密着!? 初エッチ!!?",
+  "overview": "二三月そう 原作的《1LDK＋JK 突然间展开同居？极度贴近！？初体验！！？》OVA化\n\n从不可能的麻烦开始的故事",
+  "popularity": 0.0,
+  "poster_path": "/iNrPo8j7EFMMbvTP8C5SroVUOYv.jpg",
+  "production_companies": [
+    {
+      "id": 176572,
+      "logo_path": "/AeyCEPFV4XQKM3iPgJlSIHVNlH1.png",
+      "name": "King Bee",
+      "origin_country": "JP"
+    },
+    {
+      "id": 123563,
+      "logo_path": "/aKS1PfR1FN1d18bCasREcfOizF2.png",
+      "name": "Media Bank",
+      "origin_country": "JP"
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "JP",
+      "name": "Japan"
+    }
+  ],
+  "seasons": [
+    {
+      "air_date": "2023-07-07",
+      "episode_count": 6,
+      "id": 344556,
+      "name": "1LDK+JK 突然同居？密切贴身！？初次性爱！？",
+      "overview": "",
+      "poster_path": "/pDW3mSkT2SrK9pa9zxbG0jEDYzn.jpg",
+      "season_number": 1,
+      "vote_average": 2.5
+    }
+  ],
+  "spoken_languages": [
+    {
+      "english_name": "Japanese",
+      "iso_639_1": "ja",
+      "name": "日本語"
+    }
+  ],
+  "status": "Returning Series",
+  "tagline": "",
+  "type": "Scripted",
+  "vote_average": 6.0,
+  "vote_count": 2
+}
+2025-12-06 00:48:44,821 - MetadataAgent - DEBUG - Credits data: {
+  "cast": [
+    {
+      "adult": true,
+      "gender": 1,
+      "id": 2133998,
+      "known_for_department": "Acting",
+      "name": "Mako Ayane",
+      "original_name": "綾音まこ",
+      "popularity": 23.156,
+      "profile_path": "/btsk2FFHvwz4XFihmnf15sHqsNS.jpg",
+      "character": "Misaki Akane (voice)",
+      "credit_id": "64da5a5dbf31f201ce6a1c41",
+      "order": 0
+    },
+    {
+      "adult": true,
+      "gender": 1,
+      "id": 2134049,
+      "known_for_department": "Acting",
+      "name": "Matsuri Mizuguchi",
+      "original_name": "水口まつり",
+      "popularity": 41.455,
+      "profile_path": "/6CJWgr1vXNTHpNyFKt9nDK3t6Mh.jpg",
+      "character": "Ooya-san (voice)",
+      "credit_id": "64da5aa6d100b6011c833e3e",
+      "order": 1
+    },
+    {
+      "adult": true,
+      "gender": 2,
+      "id": 4214887,
+      "known_for_department": "Acting",
+      "name": "Uzuki Inari",
+      "original_name": "いなりうづき",
+      "popularity": 0.0,
+      "profile_path": null,
+      "character": "Hazama Ken (voice)",
+      "credit_id": "64da5b3637109700ac4269bd",
+      "order": 2
+    }
+  ],
+  "crew": [
+    {
+      "adult": true,
+      "gender": 0,
+      "id": 3051753,
+      "known_for_department": "Production",
+      "name": "Shishido Baidoku",
+      "original_name": "宍戸梅毒",
+      "popularity": 0.98,
+      "profile_path": null,
+      "credit_id": "6886f17103dfd1f10216d3b5",
+      "department": "Production",
+      "job": "Producer"
+    },
+    {
+      "adult": true,
+      "gender": 2,
+      "id": 1458400,
+      "known_for_department": "Directing",
+      "name": "Hideta Oota",
+      "original_name": "太多秀太",
+      "popularity": 23.763,
+      "profile_path": null,
+      "credit_id": "6886f17d51b22c777816c4fe",
+      "department": "Directing",
+      "job": "Director"
+    },
+    {
+      "adult": true,
+      "gender": 2,
+      "id": 1458400,
+      "known_for_department": "Directing",
+      "name": "Hideta Oota",
+      "original_name": "太多秀太",
+      "popularity": 23.763,
+      "profile_path": null,
+      "credit_id": "6886f1846a3804c20e16c44f",
+      "department": "Writing",
+      "job": "Storyboard"
+    }
+  ],
+  "id": 228367
+}
+2025-12-06 00:48:44,821 - MetadataAgent - DEBUG - Keywords data: {
+  "id": 228367,
+  "results": [
+    {
+      "name": "hentai",
+      "id": 198385
+    },
+    {
+      "name": "high school girl",
+      "id": 238675
+    }
+  ]
+}
+2025-12-06 00:48:44,822 - MetadataAgent - DEBUG - Episodes data: [
+  {
+    "air_date": "2023-07-07",
+    "crew": [],
+    "episode_number": 1,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 1 集",
+    "overview": "美崎茜即将开始独居生活。她发现房间内的行李似乎太多，起初觉得是因为房间狭小所致，便开始换衣服。不久后，门打开，一名陌生男子现身。该男子名叫波佐间健，据房东解释，由于合同错误，两人被安排住在同一房间。直到一周后才会有空房，在此之前茜与波佐间必须共处一室。对茜来说，这种情况并不理想，但首日并未出现重大问题，夜晚安然过去。事态发展中，二人最终共用一床被褥入睡。不同于平常的环境，茜难以入睡。就在这时，她听到隔壁房传来淫靡的声音，她很快意识到那正是进行过性行为的声音，哪怕是作为缺乏经验的茜也能分辨出来。在聆听这些声音的过程中，茜的手不知为何在波佐间就在旁边熟睡的情况下伸向了自己的胯部。",
+    "id": 4507870,
+    "production_code": "KNB-M007",
+    "runtime": 15,
+    "season_number": 1,
+    "still_path": "/fQRWhSGsa6XaSFaT3MbCvoSY034.jpg",
+    "vote_average": 2.0,
+    "vote_count": 3
+  },
+  {
+    "air_date": "2023-10-06",
+    "crew": [],
+    "episode_number": 2,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 2 集",
+    "overview": "美崎茜与波佐间健因房东的合同失误，不得不共同居住一周。尽管波佐间是位素不相识的男子，但茜注意到他领带歪斜，并且在种种细节上关心他。波佐间似乎也体贴地为刚疲惫归来的茜准备了餐食。在彼此交流中，两人度过了茜平日与家人相处时未曾体验过的融洽时光。茜渐渐开始觉得这种生活颇为舒适，她为了不让波佐间察觉这一变化，便开始整理随身包里的物品。就在这时，她注意到隔天将有三者面谈。茜以扮作叔叔的身份请求波佐间陪同前往；虽然波佐间起初并无意前往，但在了解了茜的情况后，他决定协助。翌日，三者面谈顺利完成后，波佐间因怀旧情怀在校内漫步，最终来到通向无人问津屋顶的楼梯。突然间，当一名路人经过时，二人出于本能选择躲避，并为寻求掩护而紧密贴身。或许受到了传闻中适合情事场所气氛的影响，波佐间的手不由自主地开始抚摸起茜的臀部。",
+    "id": 4652379,
+    "production_code": "KNB-M008",
+    "runtime": 15,
+    "season_number": 1,
+    "still_path": "/zidW6b0zb3XKWarOC42erYrCD7r.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2024-04-19",
+    "crew": [],
+    "episode_number": 3,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 3 集",
+    "overview": "由于房东的合同失误，美崎茜与波佐间健开始了为期一周的同居生活，数日已经过去。某日，波佐间因茜回家的时间晚而开始担忧，因为茜连电话都不接，于是他决定前往茜打工的地方接她。茜对波佐间前来接她感到高兴，同时也对同居生活即将结束感到复杂。波佐间在等待期间，因饮酒过多，一到房间便扑在桌子上睡去。茜见状担心起来，试图唤醒他。此时，波佐间在唤醒时感受到茜胸部柔软的触感传递到背部，因而生起欲望，将她按倒。面对茜提出“刚回家，请让我先洗个澡”的请求，波佐间虽一度恢复理智，但最终还是决定与茜同浴。然而，一直希望不按波佐间惯常节奏进行性行为的茜，遂采取了某种行动……",
+    "id": 5002864,
+    "production_code": "KNB-M011",
+    "runtime": 15,
+    "season_number": 1,
+    "still_path": "/jBVPz8F6I6rEkQWl0GTSBaP7eHp.jpg",
+    "vote_average": 3.0,
+    "vote_count": 1
+  },
+  {
+    "air_date": "2024-08-02",
+    "crew": [],
+    "episode_number": 4,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 4 集",
+    "overview": "由于房东的合同失误，美崎茜与波佐间健的同居生活即将满一周。与最初不同，如今每当茜回家时看到房间里有波佐间在，她便感到一种安心。当天，房东来到家中，通知她，按照计划，一周期满后她可以搬进新的房间。茜在泡浴时感受到能回归正常生活的实感，但当她回忆起与波佐间共处的日子时，不知为何心中涌现出一丝若有若无的烦躁和复杂情绪。在共睡一床被褥的最后一个夜晚，茜决定采取大胆的举动。",
+    "id": 5298889,
+    "production_code": "KNB-M012",
+    "runtime": 15,
+    "season_number": 1,
+    "still_path": "/cGrEZ8eP0IiG2U0A7pWY3TzhzR1.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2025-06-20",
+    "crew": [],
+    "episode_number": 5,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 5 集",
+    "overview": "由于房东的合同失误，美崎茜与波佐间健的同居生活已经结束数周，自那以后双方几乎不再见面。虽然茜在充实的校园生活中逐渐习惯了独居，但她的内心依然感到空虚和寂寞。与此同时，波佐间也对没有茜在的寂静房间产生了异样的感觉，时常想着她。就在这时，茜突然造访了波佐间的房间，以认真的表情请求能够在他的房间中暂住。波佐间虽一时感到惊讶，但在茜轻松地表示又要同居的意向后，很快予以同意。久别重逢之际，波佐间情不自禁地寻求与茜接吻。",
+    "id": 6034281,
+    "production_code": "",
+    "runtime": null,
+    "season_number": 1,
+    "still_path": "/cd2AYfI9aXBDeXo7U3DrXqv09Ov.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2025-11-21",
+    "crew": [],
+    "episode_number": 6,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 6 集",
+    "overview": "茜回到了波佐间的房间，两人的同居生活再次开始，但茜表示因打工晚归。出于担心，波佐间带着狗前往茜的工作地点接她。回家的路上，当他们经过公园时，波佐间的狗“ゴロウ”显得很想玩耍。两人便坐在长椅上，静静观赏ゴロウ玩耍的情景。在此过程中，茜开始讲述自己的身世故事。波佐间听后建议她更多地依赖周围的成年人。不经意间，波佐间注意到ゴロウ不见了，茜于是起身要去寻找，却因踉跄而倒向波佐间。波佐间将她抱住，而他的手随后开始做出暧昧的动作。",
+    "id": 6034282,
+    "production_code": "KNB-M014",
+    "runtime": null,
+    "season_number": 1,
+    "still_path": null,
+    "vote_average": 0.0,
+    "vote_count": 0
+  }
+]
+2025-12-06 00:48:44,822 - MetadataAgent - DEBUG - Seasons data: [
+  {
+    "_id": "6483593cbf31f25055a0332c",
+    "air_date": "2023-07-07",
+    "episodes": [
+      {
+        "air_date": "2023-07-07",
+        "episode_number": 1,
+        "episode_type": "standard",
+        "id": 4507870,
+        "name": "第 1 集",
+        "overview": "美崎茜即将开始独居生活。她发现房间内的行李似乎太多，起初觉得是因为房间狭小所致，便开始换衣服。不久后，门打开，一名陌生男子现身。该男子名叫波佐间健，据房东解释，由于合同错误，两人被安排住在同一房间。直到一周后才会有空房，在此之前茜与波佐间必须共处一室。对茜来说，这种情况并不理想，但首日并未出现重大问题，夜晚安然过去。事态发展中，二人最终共用一床被褥入睡。不同于平常的环境，茜难以入睡。就在这时，她听到隔壁房传来淫靡的声音，她很快意识到那正是进行过性行为的声音，哪怕是作为缺乏经验的茜也能分辨出来。在聆听这些声音的过程中，茜的手不知为何在波佐间就在旁边熟睡的情况下伸向了自己的胯部。",
+        "production_code": "KNB-M007",
+        "runtime": 15,
+        "season_number": 1,
+        "show_id": 228367,
+        "still_path": "/fQRWhSGsa6XaSFaT3MbCvoSY034.jpg",
+        "vote_average": 2.0,
+        "vote_count": 3,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2023-10-06",
+        "episode_number": 2,
+        "episode_type": "standard",
+        "id": 4652379,
+        "name": "第 2 集",
+        "overview": "美崎茜与波佐间健因房东的合同失误，不得不共同居住一周。尽管波佐间是位素不相识的男子，但茜注意到他领带歪斜，并且在种种细节上关心他。波佐间似乎也体贴地为刚疲惫归来的茜准备了餐食。在彼此交流中，两人度过了茜平日与家人相处时未曾体验过的融洽时光。茜渐渐开始觉得这种生活颇为舒适，她为了不让波佐间察觉这一变化，便开始整理随身包里的物品。就在这时，她注意到隔天将有三者面谈。茜以扮作叔叔的身份请求波佐间陪同前往；虽然波佐间起初并无意前往，但在了解了茜的情况后，他决定协助。翌日，三者面谈顺利完成后，波佐间因怀旧情怀在校内漫步，最终来到通向无人问津屋顶的楼梯。突然间，当一名路人经过时，二人出于本能选择躲避，并为寻求掩护而紧密贴身。或许受到了传闻中适合情事场所气氛的影响，波佐间的手不由自主地开始抚摸起茜的臀部。",
+        "production_code": "KNB-M008",
+        "runtime": 15,
+        "season_number": 1,
+        "show_id": 228367,
+        "still_path": "/zidW6b0zb3XKWarOC42erYrCD7r.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2024-04-19",
+        "episode_number": 3,
+        "episode_type": "standard",
+        "id": 5002864,
+        "name": "第 3 集",
+        "overview": "由于房东的合同失误，美崎茜与波佐间健开始了为期一周的同居生活，数日已经过去。某日，波佐间因茜回家的时间晚而开始担忧，因为茜连电话都不接，于是他决定前往茜打工的地方接她。茜对波佐间前来接她感到高兴，同时也对同居生活即将结束感到复杂。波佐间在等待期间，因饮酒过多，一到房间便扑在桌子上睡去。茜见状担心起来，试图唤醒他。此时，波佐间在唤醒时感受到茜胸部柔软的触感传递到背部，因而生起欲望，将她按倒。面对茜提出“刚回家，请让我先洗个澡”的请求，波佐间虽一度恢复理智，但最终还是决定与茜同浴。然而，一直希望不按波佐间惯常节奏进行性行为的茜，遂采取了某种行动……",
+        "production_code": "KNB-M011",
+        "runtime": 15,
+        "season_number": 1,
+        "show_id": 228367,
+        "still_path": "/jBVPz8F6I6rEkQWl0GTSBaP7eHp.jpg",
+        "vote_average": 3.0,
+        "vote_count": 1,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2024-08-02",
+        "episode_number": 4,
+        "episode_type": "standard",
+        "id": 5298889,
+        "name": "第 4 集",
+        "overview": "由于房东的合同失误，美崎茜与波佐间健的同居生活即将满一周。与最初不同，如今每当茜回家时看到房间里有波佐间在，她便感到一种安心。当天，房东来到家中，通知她，按照计划，一周期满后她可以搬进新的房间。茜在泡浴时感受到能回归正常生活的实感，但当她回忆起与波佐间共处的日子时，不知为何心中涌现出一丝若有若无的烦躁和复杂情绪。在共睡一床被褥的最后一个夜晚，茜决定采取大胆的举动。",
+        "production_code": "KNB-M012",
+        "runtime": 15,
+        "season_number": 1,
+        "show_id": 228367,
+        "still_path": "/cGrEZ8eP0IiG2U0A7pWY3TzhzR1.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2025-06-20",
+        "episode_number": 5,
+        "episode_type": "standard",
+        "id": 6034281,
+        "name": "第 5 集",
+        "overview": "由于房东的合同失误，美崎茜与波佐间健的同居生活已经结束数周，自那以后双方几乎不再见面。虽然茜在充实的校园生活中逐渐习惯了独居，但她的内心依然感到空虚和寂寞。与此同时，波佐间也对没有茜在的寂静房间产生了异样的感觉，时常想着她。就在这时，茜突然造访了波佐间的房间，以认真的表情请求能够在他的房间中暂住。波佐间虽一时感到惊讶，但在茜轻松地表示又要同居的意向后，很快予以同意。久别重逢之际，波佐间情不自禁地寻求与茜接吻。",
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "show_id": 228367,
+        "still_path": "/cd2AYfI9aXBDeXo7U3DrXqv09Ov.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2025-11-21",
+        "episode_number": 6,
+        "episode_type": "standard",
+        "id": 6034282,
+        "name": "第 6 集",
+        "overview": "茜回到了波佐间的房间，两人的同居生活再次开始，但茜表示因打工晚归。出于担心，波佐间带着狗前往茜的工作地点接她。回家的路上，当他们经过公园时，波佐间的狗“ゴロウ”显得很想玩耍。两人便坐在长椅上，静静观赏ゴロウ玩耍的情景。在此过程中，茜开始讲述自己的身世故事。波佐间听后建议她更多地依赖周围的成年人。不经意间，波佐间注意到ゴロウ不见了，茜于是起身要去寻找，却因踉跄而倒向波佐间。波佐间将她抱住，而他的手随后开始做出暧昧的动作。",
+        "production_code": "KNB-M014",
+        "runtime": null,
+        "season_number": 1,
+        "show_id": 228367,
+        "still_path": null,
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [],
+        "guest_stars": []
+      }
+    ],
+    "name": "1LDK+JK 突然同居？密切贴身！？初次性爱！？",
+    "networks": [],
+    "overview": "",
+    "id": 344556,
+    "poster_path": "/pDW3mSkT2SrK9pa9zxbG0jEDYzn.jpg",
+    "season_number": 1,
+    "vote_average": 2.5
+  }
+]
+2025-12-06 00:48:44,829 - MetadataAgent - INFO - Data normalization completed
+2025-12-06 00:48:44,829 - MetadataAgent - DEBUG - Normalized data: {
+  "media_type": "tv",
+  "tmdb_id": 228367,
+  "title": "1LDK＋JK 突然间展开同居？",
+  "original_title": "1LDK+J系 いきなり同居?密着!? 初エッチ!!?",
+  "year": 2023,
+  "plot": "二三月そう 原作的《1LDK＋JK 突然间展开同居？极度贴近！？初体验！！？》OVA化\n\n从不可能的麻烦开始的故事",
+  "tagline": "",
+  "runtime": 20,
+  "release_date": "2023-07-07",
+  "rating": 6.0,
+  "rating_count": 2,
+  "genres": [
+    "动画"
+  ],
+  "countries": [
+    "JP"
+  ],
+  "languages": [
+    "ja"
+  ],
+  "studios": [
+    "King Bee",
+    "Media Bank"
+  ],
+  "networks": [],
+  "network": "",
+  "status": "Returning Series",
+  "homepage": "https://www.mediabank.co.jp/product.php?model=KNB-M007",
+  "cast": [
+    {
+      "name_en": "Mako Ayane",
+      "name_zh": null,
+      "role": "Misaki Akane (voice)",
+      "original_name": "綾音まこ",
+      "profile_path": "/btsk2FFHvwz4XFihmnf15sHqsNS.jpg",
+      "popularity": 23.156
+    },
+    {
+      "name_en": "Matsuri Mizuguchi",
+      "name_zh": null,
+      "role": "Ooya-san (voice)",
+      "original_name": "水口まつり",
+      "profile_path": "/6CJWgr1vXNTHpNyFKt9nDK3t6Mh.jpg",
+      "popularity": 41.455
+    },
+    {
+      "name_en": "Uzuki Inari",
+      "name_zh": null,
+      "role": "Hazama Ken (voice)",
+      "original_name": "いなりうづき",
+      "profile_path": null,
+      "popularity": 0.0
+    }
+  ],
+  "directors": [
+    "Hideta Oota"
+  ],
+  "writers": [
+    "Hideta Oota"
+  ],
+  "images": {},
+  "seasons": [
+    {
+      "air_date": "2023-07-07",
+      "episode_count": 6,
+      "id": 344556,
+      "name": "1LDK+JK 突然同居？密切贴身！？初次性爱！？",
+      "overview": "",
+      "poster_path": "/pDW3mSkT2SrK9pa9zxbG0jEDYzn.jpg",
+      "season_number": 1,
+      "vote_average": 2.5
+    }
+  ],
+  "episodes": [
+    {
+      "air_date": "2023-07-07",
+      "crew": [],
+      "episode_number": 1,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 1 集",
+      "overview": "美崎茜即将开始独居生活。她发现房间内的行李似乎太多，起初觉得是因为房间狭小所致，便开始换衣服。不久后，门打开，一名陌生男子现身。该男子名叫波佐间健，据房东解释，由于合同错误，两人被安排住在同一房间。直到一周后才会有空房，在此之前茜与波佐间必须共处一室。对茜来说，这种情况并不理想，但首日并未出现重大问题，夜晚安然过去。事态发展中，二人最终共用一床被褥入睡。不同于平常的环境，茜难以入睡。就在这时，她听到隔壁房传来淫靡的声音，她很快意识到那正是进行过性行为的声音，哪怕是作为缺乏经验的茜也能分辨出来。在聆听这些声音的过程中，茜的手不知为何在波佐间就在旁边熟睡的情况下伸向了自己的胯部。",
+      "id": 4507870,
+      "production_code": "KNB-M007",
+      "runtime": 15,
+      "season_number": 1,
+      "still_path": "/fQRWhSGsa6XaSFaT3MbCvoSY034.jpg",
+      "vote_average": 2.0,
+      "vote_count": 3
+    },
+    {
+      "air_date": "2023-10-06",
+      "crew": [],
+      "episode_number": 2,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 2 集",
+      "overview": "美崎茜与波佐间健因房东的合同失误，不得不共同居住一周。尽管波佐间是位素不相识的男子，但茜注意到他领带歪斜，并且在种种细节上关心他。波佐间似乎也体贴地为刚疲惫归来的茜准备了餐食。在彼此交流中，两人度过了茜平日与家人相处时未曾体验过的融洽时光。茜渐渐开始觉得这种生活颇为舒适，她为了不让波佐间察觉这一变化，便开始整理随身包里的物品。就在这时，她注意到隔天将有三者面谈。茜以扮作叔叔的身份请求波佐间陪同前往；虽然波佐间起初并无意前往，但在了解了茜的情况后，他决定协助。翌日，三者面谈顺利完成后，波佐间因怀旧情怀在校内漫步，最终来到通向无人问津屋顶的楼梯。突然间，当一名路人经过时，二人出于本能选择躲避，并为寻求掩护而紧密贴身。或许受到了传闻中适合情事场所气氛的影响，波佐间的手不由自主地开始抚摸起茜的臀部。",
+      "id": 4652379,
+      "production_code": "KNB-M008",
+      "runtime": 15,
+      "season_number": 1,
+      "still_path": "/zidW6b0zb3XKWarOC42erYrCD7r.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2024-04-19",
+      "crew": [],
+      "episode_number": 3,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 3 集",
+      "overview": "由于房东的合同失误，美崎茜与波佐间健开始了为期一周的同居生活，数日已经过去。某日，波佐间因茜回家的时间晚而开始担忧，因为茜连电话都不接，于是他决定前往茜打工的地方接她。茜对波佐间前来接她感到高兴，同时也对同居生活即将结束感到复杂。波佐间在等待期间，因饮酒过多，一到房间便扑在桌子上睡去。茜见状担心起来，试图唤醒他。此时，波佐间在唤醒时感受到茜胸部柔软的触感传递到背部，因而生起欲望，将她按倒。面对茜提出“刚回家，请让我先洗个澡”的请求，波佐间虽一度恢复理智，但最终还是决定与茜同浴。然而，一直希望不按波佐间惯常节奏进行性行为的茜，遂采取了某种行动……",
+      "id": 5002864,
+      "production_code": "KNB-M011",
+      "runtime": 15,
+      "season_number": 1,
+      "still_path": "/jBVPz8F6I6rEkQWl0GTSBaP7eHp.jpg",
+      "vote_average": 3.0,
+      "vote_count": 1
+    },
+    {
+      "air_date": "2024-08-02",
+      "crew": [],
+      "episode_number": 4,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 4 集",
+      "overview": "由于房东的合同失误，美崎茜与波佐间健的同居生活即将满一周。与最初不同，如今每当茜回家时看到房间里有波佐间在，她便感到一种安心。当天，房东来到家中，通知她，按照计划，一周期满后她可以搬进新的房间。茜在泡浴时感受到能回归正常生活的实感，但当她回忆起与波佐间共处的日子时，不知为何心中涌现出一丝若有若无的烦躁和复杂情绪。在共睡一床被褥的最后一个夜晚，茜决定采取大胆的举动。",
+      "id": 5298889,
+      "production_code": "KNB-M012",
+      "runtime": 15,
+      "season_number": 1,
+      "still_path": "/cGrEZ8eP0IiG2U0A7pWY3TzhzR1.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2025-06-20",
+      "crew": [],
+      "episode_number": 5,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 5 集",
+      "overview": "由于房东的合同失误，美崎茜与波佐间健的同居生活已经结束数周，自那以后双方几乎不再见面。虽然茜在充实的校园生活中逐渐习惯了独居，但她的内心依然感到空虚和寂寞。与此同时，波佐间也对没有茜在的寂静房间产生了异样的感觉，时常想着她。就在这时，茜突然造访了波佐间的房间，以认真的表情请求能够在他的房间中暂住。波佐间虽一时感到惊讶，但在茜轻松地表示又要同居的意向后，很快予以同意。久别重逢之际，波佐间情不自禁地寻求与茜接吻。",
+      "id": 6034281,
+      "production_code": "",
+      "runtime": null,
+      "season_number": 1,
+      "still_path": "/cd2AYfI9aXBDeXo7U3DrXqv09Ov.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2025-11-21",
+      "crew": [],
+      "episode_number": 6,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 6 集",
+      "overview": "茜回到了波佐间的房间，两人的同居生活再次开始，但茜表示因打工晚归。出于担心，波佐间带着狗前往茜的工作地点接她。回家的路上，当他们经过公园时，波佐间的狗“ゴロウ”显得很想玩耍。两人便坐在长椅上，静静观赏ゴロウ玩耍的情景。在此过程中，茜开始讲述自己的身世故事。波佐间听后建议她更多地依赖周围的成年人。不经意间，波佐间注意到ゴロウ不见了，茜于是起身要去寻找，却因踉跄而倒向波佐间。波佐间将她抱住，而他的手随后开始做出暧昧的动作。",
+      "id": 6034282,
+      "production_code": "KNB-M014",
+      "runtime": null,
+      "season_number": 1,
+      "still_path": null,
+      "vote_average": 0.0,
+      "vote_count": 0
+    }
+  ],
+  "title_zh": "1LDK＋JK 突然间展开同居？",
+  "plot_zh": "二三月そう 原作的《1LDK＋JK 突然间展开同居？极度贴近！？初体验！！？》OVA化\n\n从不可能的麻烦开始的故事",
+  "keywords_en": [
+    "hentai",
+    "high school girl"
+  ],
+  "keywords": [
+    "hentai",
+    "high school girl"
+  ],
+  "keywords_zh": [
+    "腐女",
+    "高中女生"
+  ]
+}
+2025-12-06 00:48:44,832 - MetadataAgent - INFO - Translation processing completed
+2025-12-06 00:48:44,832 - MetadataAgent - DEBUG - Translated data: {
+  "media_type": "tv",
+  "tmdb_id": 228367,
+  "title": "1LDK＋JK 突然间展开同居？",
+  "original_title": "1LDK+J系 いきなり同居?密着!? 初エッチ!!?",
+  "year": 2023,
+  "plot": "二三月そう 原作的《1LDK＋JK 突然间展开同居？极度贴近！？初体验！！？》OVA化\n\n从不可能的麻烦开始的故事",
+  "tagline": "",
+  "runtime": 20,
+  "release_date": "2023-07-07",
+  "rating": 6.0,
+  "rating_count": 2,
+  "genres": [
+    "动画"
+  ],
+  "countries": [
+    "JP"
+  ],
+  "languages": [
+    "ja"
+  ],
+  "studios": [
+    "King Bee",
+    "Media Bank"
+  ],
+  "networks": [],
+  "network": "",
+  "status": "Returning Series",
+  "homepage": "https://www.mediabank.co.jp/product.php?model=KNB-M007",
+  "cast": [
+    {
+      "name_en": "Mako Ayane",
+      "name_zh": null,
+      "role": "Misaki Akane (voice)",
+      "original_name": "綾音まこ",
+      "profile_path": "/btsk2FFHvwz4XFihmnf15sHqsNS.jpg",
+      "popularity": 23.156
+    },
+    {
+      "name_en": "Matsuri Mizuguchi",
+      "name_zh": null,
+      "role": "Ooya-san (voice)",
+      "original_name": "水口まつり",
+      "profile_path": "/6CJWgr1vXNTHpNyFKt9nDK3t6Mh.jpg",
+      "popularity": 41.455
+    },
+    {
+      "name_en": "Uzuki Inari",
+      "name_zh": null,
+      "role": "Hazama Ken (voice)",
+      "original_name": "いなりうづき",
+      "profile_path": null,
+      "popularity": 0.0
+    }
+  ],
+  "directors": [
+    "Hideta Oota"
+  ],
+  "writers": [
+    "Hideta Oota"
+  ],
+  "images": {},
+  "seasons": [
+    {
+      "air_date": "2023-07-07",
+      "episode_count": 6,
+      "id": 344556,
+      "name": "1LDK+JK 突然同居？密切贴身！？初次性爱！？",
+      "overview": "",
+      "poster_path": "/pDW3mSkT2SrK9pa9zxbG0jEDYzn.jpg",
+      "season_number": 1,
+      "vote_average": 2.5
+    }
+  ],
+  "episodes": [
+    {
+      "air_date": "2023-07-07",
+      "crew": [],
+      "episode_number": 1,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 1 集",
+      "overview": "美崎茜即将开始独居生活。她发现房间内的行李似乎太多，起初觉得是因为房间狭小所致，便开始换衣服。不久后，门打开，一名陌生男子现身。该男子名叫波佐间健，据房东解释，由于合同错误，两人被安排住在同一房间。直到一周后才会有空房，在此之前茜与波佐间必须共处一室。对茜来说，这种情况并不理想，但首日并未出现重大问题，夜晚安然过去。事态发展中，二人最终共用一床被褥入睡。不同于平常的环境，茜难以入睡。就在这时，她听到隔壁房传来淫靡的声音，她很快意识到那正是进行过性行为的声音，哪怕是作为缺乏经验的茜也能分辨出来。在聆听这些声音的过程中，茜的手不知为何在波佐间就在旁边熟睡的情况下伸向了自己的胯部。",
+      "id": 4507870,
+      "production_code": "KNB-M007",
+      "runtime": 15,
+      "season_number": 1,
+      "still_path": "/fQRWhSGsa6XaSFaT3MbCvoSY034.jpg",
+      "vote_average": 2.0,
+      "vote_count": 3
+    },
+    {
+      "air_date": "2023-10-06",
+      "crew": [],
+      "episode_number": 2,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 2 集",
+      "overview": "美崎茜与波佐间健因房东的合同失误，不得不共同居住一周。尽管波佐间是位素不相识的男子，但茜注意到他领带歪斜，并且在种种细节上关心他。波佐间似乎也体贴地为刚疲惫归来的茜准备了餐食。在彼此交流中，两人度过了茜平日与家人相处时未曾体验过的融洽时光。茜渐渐开始觉得这种生活颇为舒适，她为了不让波佐间察觉这一变化，便开始整理随身包里的物品。就在这时，她注意到隔天将有三者面谈。茜以扮作叔叔的身份请求波佐间陪同前往；虽然波佐间起初并无意前往，但在了解了茜的情况后，他决定协助。翌日，三者面谈顺利完成后，波佐间因怀旧情怀在校内漫步，最终来到通向无人问津屋顶的楼梯。突然间，当一名路人经过时，二人出于本能选择躲避，并为寻求掩护而紧密贴身。或许受到了传闻中适合情事场所气氛的影响，波佐间的手不由自主地开始抚摸起茜的臀部。",
+      "id": 4652379,
+      "production_code": "KNB-M008",
+      "runtime": 15,
+      "season_number": 1,
+      "still_path": "/zidW6b0zb3XKWarOC42erYrCD7r.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2024-04-19",
+      "crew": [],
+      "episode_number": 3,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 3 集",
+      "overview": "由于房东的合同失误，美崎茜与波佐间健开始了为期一周的同居生活，数日已经过去。某日，波佐间因茜回家的时间晚而开始担忧，因为茜连电话都不接，于是他决定前往茜打工的地方接她。茜对波佐间前来接她感到高兴，同时也对同居生活即将结束感到复杂。波佐间在等待期间，因饮酒过多，一到房间便扑在桌子上睡去。茜见状担心起来，试图唤醒他。此时，波佐间在唤醒时感受到茜胸部柔软的触感传递到背部，因而生起欲望，将她按倒。面对茜提出“刚回家，请让我先洗个澡”的请求，波佐间虽一度恢复理智，但最终还是决定与茜同浴。然而，一直希望不按波佐间惯常节奏进行性行为的茜，遂采取了某种行动……",
+      "id": 5002864,
+      "production_code": "KNB-M011",
+      "runtime": 15,
+      "season_number": 1,
+      "still_path": "/jBVPz8F6I6rEkQWl0GTSBaP7eHp.jpg",
+      "vote_average": 3.0,
+      "vote_count": 1
+    },
+    {
+      "air_date": "2024-08-02",
+      "crew": [],
+      "episode_number": 4,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 4 集",
+      "overview": "由于房东的合同失误，美崎茜与波佐间健的同居生活即将满一周。与最初不同，如今每当茜回家时看到房间里有波佐间在，她便感到一种安心。当天，房东来到家中，通知她，按照计划，一周期满后她可以搬进新的房间。茜在泡浴时感受到能回归正常生活的实感，但当她回忆起与波佐间共处的日子时，不知为何心中涌现出一丝若有若无的烦躁和复杂情绪。在共睡一床被褥的最后一个夜晚，茜决定采取大胆的举动。",
+      "id": 5298889,
+      "production_code": "KNB-M012",
+      "runtime": 15,
+      "season_number": 1,
+      "still_path": "/cGrEZ8eP0IiG2U0A7pWY3TzhzR1.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2025-06-20",
+      "crew": [],
+      "episode_number": 5,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 5 集",
+      "overview": "由于房东的合同失误，美崎茜与波佐间健的同居生活已经结束数周，自那以后双方几乎不再见面。虽然茜在充实的校园生活中逐渐习惯了独居，但她的内心依然感到空虚和寂寞。与此同时，波佐间也对没有茜在的寂静房间产生了异样的感觉，时常想着她。就在这时，茜突然造访了波佐间的房间，以认真的表情请求能够在他的房间中暂住。波佐间虽一时感到惊讶，但在茜轻松地表示又要同居的意向后，很快予以同意。久别重逢之际，波佐间情不自禁地寻求与茜接吻。",
+      "id": 6034281,
+      "production_code": "",
+      "runtime": null,
+      "season_number": 1,
+      "still_path": "/cd2AYfI9aXBDeXo7U3DrXqv09Ov.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    },
+    {
+      "air_date": "2025-11-21",
+      "crew": [],
+      "episode_number": 6,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 6 集",
+      "overview": "茜回到了波佐间的房间，两人的同居生活再次开始，但茜表示因打工晚归。出于担心，波佐间带着狗前往茜的工作地点接她。回家的路上，当他们经过公园时，波佐间的狗“ゴロウ”显得很想玩耍。两人便坐在长椅上，静静观赏ゴロウ玩耍的情景。在此过程中，茜开始讲述自己的身世故事。波佐间听后建议她更多地依赖周围的成年人。不经意间，波佐间注意到ゴロウ不见了，茜于是起身要去寻找，却因踉跄而倒向波佐间。波佐间将她抱住，而他的手随后开始做出暧昧的动作。",
+      "id": 6034282,
+      "production_code": "KNB-M014",
+      "runtime": null,
+      "season_number": 1,
+      "still_path": null,
+      "vote_average": 0.0,
+      "vote_count": 0
+    }
+  ],
+  "title_zh": "1LDK＋JK 突然间展开同居？",
+  "plot_zh": "二三月そう 原作的《1LDK＋JK 突然间展开同居？极度贴近！？初体验！！？》OVA化\n\n从不可能的麻烦开始的故事",
+  "keywords_en": [
+    "hentai",
+    "high school girl"
+  ],
+  "keywords": [
+    "hentai",
+    "high school girl"
+  ],
+  "keywords_zh": [
+    "腐女",
+    "高中女生"
+  ]
+}
+2025-12-06 00:48:44,833 - MetadataAgent - DEBUG - Translated episodes: [
+  {
+    "air_date": "2023-07-07",
+    "crew": [],
+    "episode_number": 1,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 1 集",
+    "overview": "美崎茜即将开始独居生活。她发现房间内的行李似乎太多，起初觉得是因为房间狭小所致，便开始换衣服。不久后，门打开，一名陌生男子现身。该男子名叫波佐间健，据房东解释，由于合同错误，两人被安排住在同一房间。直到一周后才会有空房，在此之前茜与波佐间必须共处一室。对茜来说，这种情况并不理想，但首日并未出现重大问题，夜晚安然过去。事态发展中，二人最终共用一床被褥入睡。不同于平常的环境，茜难以入睡。就在这时，她听到隔壁房传来淫靡的声音，她很快意识到那正是进行过性行为的声音，哪怕是作为缺乏经验的茜也能分辨出来。在聆听这些声音的过程中，茜的手不知为何在波佐间就在旁边熟睡的情况下伸向了自己的胯部。",
+    "id": 4507870,
+    "production_code": "KNB-M007",
+    "runtime": 15,
+    "season_number": 1,
+    "still_path": "/fQRWhSGsa6XaSFaT3MbCvoSY034.jpg",
+    "vote_average": 2.0,
+    "vote_count": 3
+  },
+  {
+    "air_date": "2023-10-06",
+    "crew": [],
+    "episode_number": 2,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 2 集",
+    "overview": "美崎茜与波佐间健因房东的合同失误，不得不共同居住一周。尽管波佐间是位素不相识的男子，但茜注意到他领带歪斜，并且在种种细节上关心他。波佐间似乎也体贴地为刚疲惫归来的茜准备了餐食。在彼此交流中，两人度过了茜平日与家人相处时未曾体验过的融洽时光。茜渐渐开始觉得这种生活颇为舒适，她为了不让波佐间察觉这一变化，便开始整理随身包里的物品。就在这时，她注意到隔天将有三者面谈。茜以扮作叔叔的身份请求波佐间陪同前往；虽然波佐间起初并无意前往，但在了解了茜的情况后，他决定协助。翌日，三者面谈顺利完成后，波佐间因怀旧情怀在校内漫步，最终来到通向无人问津屋顶的楼梯。突然间，当一名路人经过时，二人出于本能选择躲避，并为寻求掩护而紧密贴身。或许受到了传闻中适合情事场所气氛的影响，波佐间的手不由自主地开始抚摸起茜的臀部。",
+    "id": 4652379,
+    "production_code": "KNB-M008",
+    "runtime": 15,
+    "season_number": 1,
+    "still_path": "/zidW6b0zb3XKWarOC42erYrCD7r.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2024-04-19",
+    "crew": [],
+    "episode_number": 3,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 3 集",
+    "overview": "由于房东的合同失误，美崎茜与波佐间健开始了为期一周的同居生活，数日已经过去。某日，波佐间因茜回家的时间晚而开始担忧，因为茜连电话都不接，于是他决定前往茜打工的地方接她。茜对波佐间前来接她感到高兴，同时也对同居生活即将结束感到复杂。波佐间在等待期间，因饮酒过多，一到房间便扑在桌子上睡去。茜见状担心起来，试图唤醒他。此时，波佐间在唤醒时感受到茜胸部柔软的触感传递到背部，因而生起欲望，将她按倒。面对茜提出“刚回家，请让我先洗个澡”的请求，波佐间虽一度恢复理智，但最终还是决定与茜同浴。然而，一直希望不按波佐间惯常节奏进行性行为的茜，遂采取了某种行动……",
+    "id": 5002864,
+    "production_code": "KNB-M011",
+    "runtime": 15,
+    "season_number": 1,
+    "still_path": "/jBVPz8F6I6rEkQWl0GTSBaP7eHp.jpg",
+    "vote_average": 3.0,
+    "vote_count": 1
+  },
+  {
+    "air_date": "2024-08-02",
+    "crew": [],
+    "episode_number": 4,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 4 集",
+    "overview": "由于房东的合同失误，美崎茜与波佐间健的同居生活即将满一周。与最初不同，如今每当茜回家时看到房间里有波佐间在，她便感到一种安心。当天，房东来到家中，通知她，按照计划，一周期满后她可以搬进新的房间。茜在泡浴时感受到能回归正常生活的实感，但当她回忆起与波佐间共处的日子时，不知为何心中涌现出一丝若有若无的烦躁和复杂情绪。在共睡一床被褥的最后一个夜晚，茜决定采取大胆的举动。",
+    "id": 5298889,
+    "production_code": "KNB-M012",
+    "runtime": 15,
+    "season_number": 1,
+    "still_path": "/cGrEZ8eP0IiG2U0A7pWY3TzhzR1.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2025-06-20",
+    "crew": [],
+    "episode_number": 5,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 5 集",
+    "overview": "由于房东的合同失误，美崎茜与波佐间健的同居生活已经结束数周，自那以后双方几乎不再见面。虽然茜在充实的校园生活中逐渐习惯了独居，但她的内心依然感到空虚和寂寞。与此同时，波佐间也对没有茜在的寂静房间产生了异样的感觉，时常想着她。就在这时，茜突然造访了波佐间的房间，以认真的表情请求能够在他的房间中暂住。波佐间虽一时感到惊讶，但在茜轻松地表示又要同居的意向后，很快予以同意。久别重逢之际，波佐间情不自禁地寻求与茜接吻。",
+    "id": 6034281,
+    "production_code": "",
+    "runtime": null,
+    "season_number": 1,
+    "still_path": "/cd2AYfI9aXBDeXo7U3DrXqv09Ov.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  },
+  {
+    "air_date": "2025-11-21",
+    "crew": [],
+    "episode_number": 6,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 6 集",
+    "overview": "茜回到了波佐间的房间，两人的同居生活再次开始，但茜表示因打工晚归。出于担心，波佐间带着狗前往茜的工作地点接她。回家的路上，当他们经过公园时，波佐间的狗“ゴロウ”显得很想玩耍。两人便坐在长椅上，静静观赏ゴロウ玩耍的情景。在此过程中，茜开始讲述自己的身世故事。波佐间听后建议她更多地依赖周围的成年人。不经意间，波佐间注意到ゴロウ不见了，茜于是起身要去寻找，却因踉跄而倒向波佐间。波佐间将她抱住，而他的手随后开始做出暧昧的动作。",
+    "id": 6034282,
+    "production_code": "KNB-M014",
+    "runtime": null,
+    "season_number": 1,
+    "still_path": null,
+    "vote_average": 0.0,
+    "vote_count": 0
+  }
+]
+2025-12-06 00:49:00,778 - MetadataAgent - INFO - NFO generation completed
+2025-12-06 00:49:00,779 - MetadataAgent - DEBUG - NFO data: {
+  "title": "1LDK＋JK 突然间展开同居？",
+  "originaltitle": "1LDK+J系 いきなり同居?密着!? 初エッチ!!?",
+  "year": 2023,
+  "premiered": "2023-07-07",
+  "plot": "二三月そう 原作的《1LDK＋JK 突然间展开同居？极度贴近！？初体验！！？》OVA化\n\n从不可能的麻烦开始的故事",
+  "tagline": "",
+  "runtime": 20,
+  "rating": 6.0,
+  "votes": 2,
+  "genre": [
+    "动画"
+  ],
+  "country": [
+    "JP"
+  ],
+  "studio": [
+    "King Bee",
+    "Media Bank"
+  ],
+  "credits": [
+    "Hideta Oota"
+  ],
+  "director": [
+    "Hideta Oota"
+  ],
+  "actor": [
+    {
+      "name": "Mako Ayane",
+      "role": "Misaki Akane (voice)",
+      "originalname": "綾音まこ",
+      "thumb": "images/actors/Mako Ayane.jpg"
+    },
+    {
+      "name": "Matsuri Mizuguchi",
+      "role": "Ooya-san (voice)",
+      "originalname": "水口まつり",
+      "thumb": "images/actors/Matsuri Mizuguchi.jpg"
+    },
+    {
+      "name": "Uzuki Inari",
+      "role": "Hazama Ken (voice)",
+      "originalname": "いなりうづき"
+    }
+  ],
+  "thumb": "poster.jpg",
+  "fanart": "fanart.jpg",
+  "tags": [
+    "腐女",
+    "高中女生"
+  ],
+  "network": "",
+  "networks": [],
+  "status": "Returning Series",
+  "homepage": "https://www.mediabank.co.jp/product.php?model=KNB-M007",
+  "tmdb_id": 228367,
+  "validated": true
+}
+2025-12-06 00:49:00,779 - MetadataAgent - DEBUG - NFO XML content:
+<?xml version="1.0" ?>
+<tvshow>
+  <title>1LDK＋JK 突然间展开同居？</title>
+  <originaltitle>1LDK+J系 いきなり同居?密着!? 初エッチ!!?</originaltitle>
+  <year>2023</year>
+  <premiered>2023-07-07</premiered>
+  <plot cdata_content="二三月そう 原作的《1LDK＋JK 突然间展开同居？极度贴近！？初体验！！？》OVA化
+
+从不可能的麻烦开始的故事"><![CDATA[二三月そう 原作的《1LDK＋JK 突然间展开同居？极度贴近！？初体验！！？》OVA化
+
+从不可能的麻烦开始的故事]]></plot>
+  <runtime>20</runtime>
+  <rating>6.0</rating>
+  <votes>2</votes>
+  <tmdbid>228367</tmdbid>
+  <genre>动画</genre>
+  <country>JP</country>
+  <studio>King Bee</studio>
+  <studio>Media Bank</studio>
+  <credits>Hideta Oota</credits>
+  <director>Hideta Oota</director>
+  <actor>
+    <name>Mako Ayane</name>
+    <role>Misaki Akane (voice)</role>
+    <originalname>綾音まこ</originalname>
+    <thumb>images/actors/Mako Ayane.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Matsuri Mizuguchi</name>
+    <role>Ooya-san (voice)</role>
+    <originalname>水口まつり</originalname>
+    <thumb>images/actors/Matsuri Mizuguchi.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Uzuki Inari</name>
+    <role>Hazama Ken (voice)</role>
+    <originalname>いなりうづき</originalname>
+  </actor>
+  <status>Returning Series</status>
+  <homepage>https://www.mediabank.co.jp/product.php?model=KNB-M007</homepage>
+  <uniqueid type="tmdb" default="true">228367</uniqueid>
+  <thumb>images/poster/poster.jpg</thumb>
+  <fanart>images/fanart/fanart.jpg</fanart>
+  <tag>腐女</tag>
+  <tag>高中女生</tag>
+</tvshow>
+
+2025-12-06 00:49:10,732 - MetadataAgent - INFO - Output generation completed
+2025-12-06 00:49:10,732 - MetadataAgent - DEBUG - Output data: {
+  "status": "completed",
+  "files": {
+    "nfo_file": "/Volumes/video/Animation/The Animation/1LDK＋JK 突然间展开同居？ (Unknown Year)/tvshow.nfo",
+    "images_dir": "/Volumes/video/Animation/The Animation/1LDK＋JK 突然间展开同居？ (Unknown Year)/images",
+    "media_dir": "/Volumes/video/Animation/The Animation/1LDK＋JK 突然间展开同居？ (Unknown Year)",
+    "season_1_episode_1": "/Volumes/video/Animation/The Animation/1LDK＋JK 突然间展开同居？ (Unknown Year)/Season 01/1LDK＋JK 突然间展开同居？ - S01E01 - 第 1 集.nfo",
+    "season_1_episode_2": "/Volumes/video/Animation/The Animation/1LDK＋JK 突然间展开同居？ (Unknown Year)/Season 01/1LDK＋JK 突然间展开同居？ - S01E02 - 第 2 集.nfo",
+    "season_1_episode_3": "/Volumes/video/Animation/The Animation/1LDK＋JK 突然间展开同居？ (Unknown Year)/Season 01/1LDK＋JK 突然间展开同居？ - S01E03 - 第 3 集.nfo",
+    "season_1_episode_4": "/Volumes/video/Animation/The Animation/1LDK＋JK 突然间展开同居？ (Unknown Year)/Season 01/1LDK＋JK 突然间展开同居？ - S01E04 - 第 4 集.nfo",
+    "season_1_episode_5": "/Volumes/video/Animation/The Animation/1LDK＋JK 突然间展开同居？ (Unknown Year)/Season 01/1LDK＋JK 突然间展开同居？ - S01E05 - 第 5 集.nfo",
+    "season_1_episode_6": "/Volumes/video/Animation/The Animation/1LDK＋JK 突然间展开同居？ (Unknown Year)/Season 01/1LDK＋JK 突然间展开同居？ - S01E06 - 第 6 集.nfo"
+  }
+}
+2025-12-06 00:49:10,736 - MetadataAgent - INFO - === PROCESSING SUMMARY ===
+2025-12-06 00:49:10,736 - MetadataAgent - INFO - Log file: logs/metadata_agent_20251206_004841.log
+2025-12-06 00:49:10,736 - MetadataAgent - INFO - Processing completed successfully
+2025-12-06 00:49:10,739 - MetadataAgent - INFO - Processing summary saved to: logs/processing_summary_20251206_004910.json

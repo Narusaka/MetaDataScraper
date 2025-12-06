@@ -1,0 +1,88 @@
+<?xml version="1.0" ?>
+<tvshow>
+  <title>王冠</title>
+  <originaltitle>The Crown</originaltitle>
+  <year>2016</year>
+  <premiered>2016-11-04</premiered>
+  <plot><![CDATA[这部根据真人真事改编的虚构剧集讲述了伊丽莎白二世的故事，以及影响其统治的政治事件和个人经历。]]></plot>
+  <rating>8.192</rating>
+  <votes>2263</votes>
+  <tmdbid>65494</tmdbid>
+  <genre>剧情</genre>
+  <country>GB</country>
+  <country>US</country>
+  <studio>Left Bank Pictures</studio>
+  <studio>Sony Pictures Television</studio>
+  <credits>James Graham, Jonathan Wilson, 汤姆·埃奇, David Hancock, Meriel Sheibani-Clare, Daniel Marc Janes, Peter Morgan, Laura Deeley, 彼得·摩根, Amy Jenkins</credits>
+  <director>朱利安·贾罗德</director>
+  <director>Philip Martin</director>
+  <director>Jessica Hobbs</director>
+  <director>Dee Koppang O'Leary</director>
+  <director>Ben Rogers</director>
+  <director>May el-Toukhy</director>
+  <director>Mathis Dujardin</director>
+  <director>Chris Stoaling</director>
+  <director>Alex Gabassi</director>
+  <director>史蒂芬·戴德利</director>
+  <director>Philippa Lowthorpe</director>
+  <director>Martin Harrison</director>
+  <director>Finn McGrath</director>
+  <director>Christian Schwochow</director>
+  <director>本·卡隆</director>
+  <director>Molly Manners</director>
+  <director>Erik Richter Strand</director>
+  <director>Nick Heckstall-Smith</director>
+  <director>Paul Whittington</director>
+  <director>Sam Donovan</director>
+  <actor>
+    <name>Imelda Staunton</name>
+    <role>Queen Elizabeth II</role>
+    <thumb>images/actors/Imelda Staunton.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Jonathan Pryce</name>
+    <role>Prince Philip, Duke of Edinburgh</role>
+    <thumb>images/actors/Jonathan Pryce.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Lesley Manville</name>
+    <role>Princess Margaret</role>
+    <thumb>images/actors/Lesley Manville.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Dominic West</name>
+    <role>Prince Charles</role>
+    <thumb>images/actors/Dominic West.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Claudia Harrison</name>
+    <role>Princess Anne</role>
+    <thumb>images/actors/Claudia Harrison.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Marcia Warren</name>
+    <role>Queen Elizabeth the Queen Mother</role>
+    <thumb>images/actors/Marcia Warren.jpg</thumb>
+  </actor>
+  <network>Netflix</network>
+  <status>Ended</status>
+  <homepage>https://www.netflix.com/title/80025678</homepage>
+  <uniqueid type="tmdb" default="true">65494</uniqueid>
+  <thumb>images/poster/poster.jpg</thumb>
+  <fanart>images/fanart/fanart.jpg</fanart>
+  <tag>england</tag>
+  <tag>dynasty</tag>
+  <tag>royal family</tag>
+  <tag>based on true story</tag>
+  <tag>royalty</tag>
+  <tag>based on play or musical</tag>
+  <tag>british politics</tag>
+  <tag>british history</tag>
+  <tag>palace intrigue</tag>
+  <tag>historical drama</tag>
+  <tag>british royal family</tag>
+  <tag>british monarchy</tag>
+  <tag>political</tag>
+  <tag>power</tag>
+  <tag>intimate</tag>
+</tvshow>

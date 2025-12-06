@@ -1,0 +1,3070 @@
+2025-12-06 01:18:59,285 - MetadataAgent - INFO - Input parameters parsed
+2025-12-06 01:18:59,285 - MetadataAgent - DEBUG - Input data: {
+  "media_type": "tv",
+  "query": "",
+  "output_dir": "$/Volumes/video/Animation/The Animation/My Life as Inukai-san's Dog (Unknown Year)",
+  "verbose": false,
+  "quiet": true,
+  "aid_search": true,
+  "tmdb_id": 195081
+}
+2025-12-06 01:18:59,285 - MetadataAgent - INFO - Search completed: 0 results
+2025-12-06 01:18:59,285 - MetadataAgent - DEBUG - Search results: {}
+2025-12-06 01:19:04,300 - MetadataAgent - INFO - Data fetching completed
+2025-12-06 01:19:04,301 - MetadataAgent - DEBUG - Main data: {
+  "adult": false,
+  "backdrop_path": "/jiKtn560NRQ3KUxSA2KBpJd25i.jpg",
+  "created_by": [],
+  "episode_run_time": [
+    12
+  ],
+  "first_air_date": "2023-01-07",
+  "genres": [
+    {
+      "id": 16,
+      "name": "动画"
+    },
+    {
+      "id": 35,
+      "name": "喜剧"
+    }
+  ],
+  "homepage": "https://inuhiro-anime.com",
+  "id": 195081,
+  "in_production": false,
+  "languages": [
+    "ja"
+  ],
+  "last_air_date": "2023-03-25",
+  "last_episode_to_air": {
+    "id": 4288587,
+    "name": "第 12 集",
+    "overview": "波提太从学园的疯狂科学家咲比良伊纳利那里听到了自己被当成狗的理由。伊娜莉以波奇太和犬饲先生为实验对象，监视着两人的一切生活。对于只把犬饲先生当成豚鼠的伊娜莉感到愤慨的波吉太，被告知了让自己变回人类的方法",
+    "vote_average": 6.333,
+    "vote_count": 3,
+    "air_date": "2023-03-25",
+    "episode_number": 12,
+    "episode_type": "finale",
+    "production_code": "",
+    "runtime": 12,
+    "season_number": 1,
+    "show_id": 195081,
+    "still_path": "/eSDBQAwXdG94eiKwARx4YEhj2Sd.jpg"
+  },
+  "name": "犬になったら好きな人に拾われた。",
+  "next_episode_to_air": null,
+  "networks": [
+    {
+      "id": 614,
+      "logo_path": "/hSdroyVthq3CynxTIIY7lnS8w1.png",
+      "name": "Tokyo MX",
+      "origin_country": "JP"
+    }
+  ],
+  "number_of_episodes": 12,
+  "number_of_seasons": 1,
+  "origin_country": [
+    "JP"
+  ],
+  "original_language": "ja",
+  "original_name": "犬になったら好きな人に拾われた。",
+  "overview": "一觉醒来猛地发现——自己竟然变成了心仪的同班同学犬饲家的一条狗“小太”。\n\n在学校里超酷的她，其实挺溺爱自己家的狗狗。散步、上厕所和洗澡——被当成狗养着的每一天都有各种各样的事情发生。虽然想早点变回人类的样子但是被喜欢的人彻底爱着的生活是不知道为什么能如此幸福.....再这样下去，自己的身心都会变成狗。\n\n以“狗狗的视角”展开的全新的爱情喜剧，即将开幕。",
+  "popularity": 3.2117,
+  "poster_path": "/o05lQyT8TAgJKrO7n3JPlPRmte8.jpg",
+  "production_companies": [
+    {
+      "id": 8017,
+      "logo_path": "/jx7ZBQk0AJeICaiMpHuE7qgXwqh.png",
+      "name": "Quad",
+      "origin_country": "JP"
+    },
+    {
+      "id": 4673,
+      "logo_path": "/tXMheRYcKXCK1a90NRESqO1ibhQ.png",
+      "name": "King Records",
+      "origin_country": "JP"
+    },
+    {
+      "id": 238639,
+      "logo_path": "/9ppANNPsmICiGDGjWO53gIA6SwT.png",
+      "name": "WWWave",
+      "origin_country": "JP"
+    },
+    {
+      "id": 59118,
+      "logo_path": "/9nTCEBgGaaI5swkv8gy2vny0Mb5.png",
+      "name": "Kodansha",
+      "origin_country": "JP"
+    },
+    {
+      "id": 6681,
+      "logo_path": "/s4RElEnQyM2VrHZCQ3jYemPdxML.png",
+      "name": "THE KLOCKWORX",
+      "origin_country": "JP"
+    },
+    {
+      "id": 3033,
+      "logo_path": "/AwgX2FHGJd54aSWfWJqptFvT1h.png",
+      "name": "Asmik Ace",
+      "origin_country": "JP"
+    },
+    {
+      "id": 247905,
+      "logo_path": "/d88Js4lDi0ddRfYiRcRqhMCirEx.png",
+      "name": "Deregula",
+      "origin_country": "JP"
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "JP",
+      "name": "Japan"
+    }
+  ],
+  "seasons": [
+    {
+      "air_date": "2023-03-29",
+      "episode_count": 2,
+      "id": 324693,
+      "name": "特别篇",
+      "overview": "",
+      "poster_path": "/vPIzOp0nv3rwceVAqWKbLeMSCIY.jpg",
+      "season_number": 0,
+      "vote_average": 0.0
+    },
+    {
+      "air_date": "2023-01-07",
+      "episode_count": 12,
+      "id": 283307,
+      "name": "第 1 季",
+      "overview": "一觉醒来，发现自己竟然成了心仪同班同学“犬饲先生”的宠物狗“波奇太”!\n\n在学校里是个超酷的女朋友，但实际上超级喜欢狗。\n\n散步、上厕所、泡澡 -- 作为狗被饲养的日子是一连串的意外。\n\n虽然很想早点变回人类，但是被喜欢的人彻底爱着的生活是幸福的... ...\n\n这样下去，身心都会变成狗! ?\n\n以“犬视线(低角度)”带来的新感觉爱情喜剧!",
+      "poster_path": "/o05lQyT8TAgJKrO7n3JPlPRmte8.jpg",
+      "season_number": 1,
+      "vote_average": 6.3
+    }
+  ],
+  "spoken_languages": [
+    {
+      "english_name": "Japanese",
+      "iso_639_1": "ja",
+      "name": "日本語"
+    }
+  ],
+  "status": "Ended",
+  "tagline": "",
+  "type": "Scripted",
+  "vote_average": 5.552,
+  "vote_count": 29
+}
+2025-12-06 01:19:04,301 - MetadataAgent - DEBUG - Credits data: {
+  "cast": [
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 3128816,
+      "known_for_department": "Acting",
+      "name": "Shuichiro Umeda",
+      "original_name": "梅田修一朗",
+      "popularity": 2.7575,
+      "profile_path": "/dCr870q8ojD6qpD1hmS1sdvh2pe.jpg",
+      "character": "Pochita (voice)",
+      "credit_id": "62f3c3de0b5fd6007f76775c",
+      "order": 0
+    },
+    {
+      "adult": false,
+      "gender": 1,
+      "id": 2467933,
+      "known_for_department": "Acting",
+      "name": "Saya Aizawa",
+      "original_name": "会沢紗弥",
+      "popularity": 1.0817,
+      "profile_path": "/3QoVKl1w7uBMf5ivJ4MccYkt4zR.jpg",
+      "character": "Karen Inukai (voice)",
+      "credit_id": "62f3c3f8fea6e3007a51ffb5",
+      "order": 1
+    },
+    {
+      "adult": false,
+      "gender": 1,
+      "id": 2409802,
+      "known_for_department": "Acting",
+      "name": "Mayu Sagara",
+      "original_name": "相良茉優",
+      "popularity": 2.6,
+      "profile_path": "/34nn1h3Mg2TsvOQs9DJViogVurp.jpg",
+      "character": "Mike Nekotani (voice)",
+      "credit_id": "62f3c410813cb600806e7290",
+      "order": 2
+    },
+    {
+      "adult": false,
+      "gender": 1,
+      "id": 2380499,
+      "known_for_department": "Acting",
+      "name": "Yurie Kozakai",
+      "original_name": "小坂井祐莉絵",
+      "popularity": 0.8223,
+      "profile_path": "/mbIMcptHLQir3wrAnnSSAR5uRR1.jpg",
+      "character": "Usagi Tsukishiro (voice)",
+      "credit_id": "62f3c425880c92007f1847a8",
+      "order": 3
+    }
+  ],
+  "crew": [
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 3146891,
+      "known_for_department": "Sound",
+      "name": "Kohei Yoshida",
+      "original_name": "吉田光平",
+      "popularity": 0.9897,
+      "profile_path": null,
+      "credit_id": "62f3c4aad2f5b50085aea2c1",
+      "department": "Sound",
+      "job": "Sound Director"
+    },
+    {
+      "adult": false,
+      "gender": 0,
+      "id": 3658451,
+      "known_for_department": "Directing",
+      "name": "Takashi Yasudo",
+      "original_name": "Takashi Yasudo",
+      "popularity": 0.0214,
+      "profile_path": null,
+      "credit_id": "62f3c4436f31af00916d08a7",
+      "department": "Directing",
+      "job": "Series Director"
+    },
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 1544694,
+      "known_for_department": "Visual Effects",
+      "name": "Kazuaki Morita",
+      "original_name": "森田和明",
+      "popularity": 1.0745,
+      "profile_path": null,
+      "credit_id": "62f3c47c594c94007aa62ca1",
+      "department": "Visual Effects",
+      "job": "Character Designer"
+    },
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 3697722,
+      "known_for_department": "Sound",
+      "name": "Tatsuya Kikuchi",
+      "original_name": "菊池達也",
+      "popularity": 0.2622,
+      "profile_path": null,
+      "credit_id": "631f0b9d0d2f53007c6c13a9",
+      "department": "Sound",
+      "job": "Original Music Composer"
+    },
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 2271256,
+      "known_for_department": "Directing",
+      "name": "Hisashi Saito",
+      "original_name": "斎藤久",
+      "popularity": 0.9681,
+      "profile_path": null,
+      "credit_id": "631f0be5e55937007ad9f9c8",
+      "department": "Visual Effects",
+      "job": "Visual Effects Director"
+    },
+    {
+      "adult": false,
+      "gender": 0,
+      "id": 3937861,
+      "known_for_department": "Writing",
+      "name": "Itsutsuse",
+      "original_name": "Itsutsuse",
+      "popularity": 0.0479,
+      "profile_path": null,
+      "credit_id": "63f9b54796e30b009fc96b14",
+      "department": "Writing",
+      "job": "Original Concept"
+    },
+    {
+      "adult": false,
+      "gender": 1,
+      "id": 1982616,
+      "known_for_department": "Sound",
+      "name": "Miyuki Hashimoto",
+      "original_name": "橋本みゆき",
+      "popularity": 0.9223,
+      "profile_path": null,
+      "credit_id": "67635352713e9ff45bab1150",
+      "department": "Sound",
+      "job": "Theme Song Performance"
+    },
+    {
+      "adult": true,
+      "gender": 1,
+      "id": 1254101,
+      "known_for_department": "Acting",
+      "name": "Yui Sakakibara",
+      "original_name": "榊原ゆい",
+      "popularity": 1.96,
+      "profile_path": "/1a8hoDxu5Txbl0nIuasCsbLGWbs.jpg",
+      "credit_id": "676355a7161ab7dec5fff83c",
+      "department": "Sound",
+      "job": "Theme Song Performance"
+    },
+    {
+      "adult": false,
+      "gender": 1,
+      "id": 1929287,
+      "known_for_department": "Sound",
+      "name": "Sayaka Sasaki",
+      "original_name": "佐咲紗花",
+      "popularity": 1.0558,
+      "profile_path": "/wp4ho04uBF93bWV2fRhkpuIP5Oc.jpg",
+      "credit_id": "676355e1581a3c0507ab09e5",
+      "department": "Sound",
+      "job": "Theme Song Performance"
+    },
+    {
+      "adult": false,
+      "gender": 1,
+      "id": 1970557,
+      "known_for_department": "Acting",
+      "name": "Mitsuki Nakae",
+      "original_name": "中恵光城",
+      "popularity": 2.6297,
+      "profile_path": "/whtOUM6LCtOIYCmNxuqc8uGX2o5.jpg",
+      "credit_id": "67635610581a3c0507ab09f1",
+      "department": "Sound",
+      "job": "Theme Song Performance"
+    },
+    {
+      "adult": false,
+      "gender": 0,
+      "id": 1252387,
+      "known_for_department": "Acting",
+      "name": "Nomico",
+      "original_name": "Nomico",
+      "popularity": 0.3808,
+      "profile_path": null,
+      "credit_id": "6763561e581a3c0507ab09f5",
+      "department": "Sound",
+      "job": "Theme Song Performance"
+    },
+    {
+      "adult": false,
+      "gender": 1,
+      "id": 2864587,
+      "known_for_department": "Sound",
+      "name": "Aki Misato",
+      "original_name": "美郷あき",
+      "popularity": 0.5412,
+      "profile_path": null,
+      "credit_id": "6763562a1f4a9572c4ffe943",
+      "department": "Sound",
+      "job": "Theme Song Performance"
+    },
+    {
+      "adult": false,
+      "gender": 1,
+      "id": 2864584,
+      "known_for_department": "Acting",
+      "name": "yozuca*",
+      "original_name": "yozuca*",
+      "popularity": 1.0114,
+      "profile_path": null,
+      "credit_id": "6763563ae14e3bcfa74a37c5",
+      "department": "Sound",
+      "job": "Theme Song Performance"
+    },
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 2151638,
+      "known_for_department": "Art",
+      "name": "Takuji Jizomoto",
+      "original_name": "地蔵本拓嗣",
+      "popularity": 0.7735,
+      "profile_path": null,
+      "credit_id": "67c080e5c029139b0e35ae25",
+      "department": "Art",
+      "job": "Art Direction"
+    },
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 2151638,
+      "known_for_department": "Art",
+      "name": "Takuji Jizomoto",
+      "original_name": "地蔵本拓嗣",
+      "popularity": 0.7735,
+      "profile_path": null,
+      "credit_id": "67c080f3740c95a371a2548c",
+      "department": "Art",
+      "job": "Art Designer"
+    },
+    {
+      "adult": false,
+      "gender": 2,
+      "id": 1699346,
+      "known_for_department": "Editing",
+      "name": "Yoshiaki Kimura",
+      "original_name": "木村祥明",
+      "popularity": 0.9039,
+      "profile_path": null,
+      "credit_id": "67c0815c8c386c4e5bc8ded1",
+      "department": "Editing",
+      "job": "Editor"
+    }
+  ],
+  "id": 195081
+}
+2025-12-06 01:19:04,301 - MetadataAgent - DEBUG - Keywords data: {
+  "id": 195081,
+  "results": [
+    {
+      "name": "romance",
+      "id": 9840
+    },
+    {
+      "name": "slice of life",
+      "id": 9914
+    },
+    {
+      "name": "school",
+      "id": 10873
+    },
+    {
+      "name": "based on manga",
+      "id": 13141
+    },
+    {
+      "name": "school life",
+      "id": 190116
+    },
+    {
+      "name": "ecchi",
+      "id": 195669
+    },
+    {
+      "name": "anime",
+      "id": 210024
+    },
+    {
+      "name": "japanese high school",
+      "id": 235790
+    }
+  ]
+}
+2025-12-06 01:19:04,302 - MetadataAgent - DEBUG - Episodes data: [
+  {
+    "air_date": "2023-01-07",
+    "crew": [
+      {
+        "job": "Director",
+        "department": "Directing",
+        "credit_id": "63c00c3ae16e5a008ac76c05",
+        "adult": false,
+        "gender": 2,
+        "id": 2381347,
+        "known_for_department": "Directing",
+        "name": "安藤贵史",
+        "original_name": "安藤貴史",
+        "popularity": 1.3927,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 1,
+    "episode_type": "standard",
+    "guest_stars": [
+      {
+        "character": "Karen's Mother (voice)",
+        "credit_id": "63bc4260fc31d30092c58d5c",
+        "order": 500,
+        "adult": false,
+        "gender": 1,
+        "id": 144649,
+        "known_for_department": "Acting",
+        "name": "后藤邑子",
+        "original_name": "後藤邑子",
+        "popularity": 1.0476,
+        "profile_path": "/1VqFJ6oLDQAtSZHHj675QBTDqFD.jpg"
+      }
+    ],
+    "name": "第 1 集",
+    "overview": "主角一醒来就猛然发现自己变成了一只狗。捡到他的人是他在人类时就喜欢的犬饲同学。犬饲将被雨淋湿的波奇太带回家，打算一起洗澡而开始脱衣。波奇太突然被迫看到喜欢的女生的裸体而惊慌失措，但最终还是只能乖乖地被犬饲操弄……。",
+    "id": 3594666,
+    "production_code": "",
+    "runtime": 12,
+    "season_number": 1,
+    "still_path": "/sImHDL0KljiFSjdt1VIiEylKn9N.jpg",
+    "vote_average": 5.333,
+    "vote_count": 6
+  },
+  {
+    "air_date": "2023-01-14",
+    "crew": [
+      {
+        "job": "Director",
+        "department": "Directing",
+        "credit_id": "63c00c3ae16e5a008ac76c05",
+        "adult": false,
+        "gender": 2,
+        "id": 2381347,
+        "known_for_department": "Directing",
+        "name": "安藤贵史",
+        "original_name": "安藤貴史",
+        "popularity": 1.3927,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 2,
+    "episode_type": "standard",
+    "guest_stars": [
+      {
+        "character": "Karen's Mother (voice)",
+        "credit_id": "63bc4260fc31d30092c58d5c",
+        "order": 500,
+        "adult": false,
+        "gender": 1,
+        "id": 144649,
+        "known_for_department": "Acting",
+        "name": "后藤邑子",
+        "original_name": "後藤邑子",
+        "popularity": 1.0476,
+        "profile_path": "/1VqFJ6oLDQAtSZHHj675QBTDqFD.jpg"
+      },
+      {
+        "character": "Girl (voice)",
+        "credit_id": "63c16862a5743d00891056e6",
+        "order": 501,
+        "adult": false,
+        "gender": 1,
+        "id": 3620445,
+        "known_for_department": "Acting",
+        "name": "优希麻梨子",
+        "original_name": "優希麻梨子",
+        "popularity": 0.7473,
+        "profile_path": "/lIbrh4Czf3fcRwHsY8BH47OC79E.jpg"
+      },
+      {
+        "character": "Girl (voice)",
+        "credit_id": "63c1686ca5743d00b0bf62cc",
+        "order": 502,
+        "adult": false,
+        "gender": 1,
+        "id": 3682170,
+        "known_for_department": "Acting",
+        "name": "泽幡枫",
+        "original_name": "澤幡楓",
+        "popularity": 0.6925,
+        "profile_path": "/4CWOQ4dA2JeviJG9kAbgKKPv9Sq.jpg"
+      }
+    ],
+    "name": "第 2 集",
+    "overview": "成为犬饲的宠物狗后第一次去散步。 相反于对从狗的视角看到的户外世界感到害怕的波奇塔，犬饲正心情愉快地向前行走。走着走着，犬饲面临到了突如其来的危机。波奇太冒着生命危险前去保护犬饲同学，但回过神来，眼前却是犬饲同学的内裤……。",
+    "id": 4141217,
+    "production_code": "",
+    "runtime": 12,
+    "season_number": 1,
+    "still_path": "/oBDNyn0Itx7CPlI85X66Rb7YujO.jpg",
+    "vote_average": 6.25,
+    "vote_count": 4
+  },
+  {
+    "air_date": "2023-01-21",
+    "crew": [
+      {
+        "job": "Supervising Animation Director",
+        "department": "Visual Effects",
+        "credit_id": "631f0b90b87aec008283c348",
+        "adult": false,
+        "gender": 2,
+        "id": 1544694,
+        "known_for_department": "Visual Effects",
+        "name": "森田和明",
+        "original_name": "森田和明",
+        "popularity": 1.0745,
+        "profile_path": null
+      },
+      {
+        "job": "Storyboard Artist",
+        "department": "Art",
+        "credit_id": "63c97daa25a5360082d17b7c",
+        "adult": false,
+        "gender": 2,
+        "id": 2050141,
+        "known_for_department": "Art",
+        "name": "吉田英俊",
+        "original_name": "吉田英俊",
+        "popularity": 2.4135,
+        "profile_path": null
+      },
+      {
+        "job": "Director",
+        "department": "Directing",
+        "credit_id": "63c97d9ff5c82400852602cf",
+        "adult": false,
+        "gender": 2,
+        "id": 2750634,
+        "known_for_department": "Directing",
+        "name": "木村佳嗣",
+        "original_name": "木村佳嗣",
+        "popularity": 1.7931,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 3,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 3 集",
+    "overview": "为了回到自己原本的家，波奇太试图让邻居的猫谷喜欢上自己。但其实猫谷超级讨厌狗！猫谷在试图逃离波奇太时，不小心摔倒弄伤了膝盖。波奇太想透过舔舐猫谷的伤口来治疗她。但目睹2人那副模样的犬饲被嫉妒冲昏了头，为了让自己也被波奇太舔舐，而做出了令人震惊的积极行动。",
+    "id": 4141219,
+    "production_code": "",
+    "runtime": 12,
+    "season_number": 1,
+    "still_path": "/dUIvJUEBLXbKJkBLmP3VsRx200B.jpg",
+    "vote_average": 7.0,
+    "vote_count": 3
+  },
+  {
+    "air_date": "2023-01-28",
+    "crew": [
+      {
+        "job": "Storyboard Artist",
+        "department": "Art",
+        "credit_id": "63c97daa25a5360082d17b7c",
+        "adult": false,
+        "gender": 2,
+        "id": 2050141,
+        "known_for_department": "Art",
+        "name": "吉田英俊",
+        "original_name": "吉田英俊",
+        "popularity": 2.4135,
+        "profile_path": null
+      },
+      {
+        "job": "Director",
+        "department": "Directing",
+        "credit_id": "63c97d9ff5c82400852602cf",
+        "adult": false,
+        "gender": 2,
+        "id": 2750634,
+        "known_for_department": "Directing",
+        "name": "木村佳嗣",
+        "original_name": "木村佳嗣",
+        "popularity": 1.7931,
+        "profile_path": null
+      },
+      {
+        "job": "Supervising Animation Director",
+        "department": "Visual Effects",
+        "credit_id": "63d187a6cb71b80081022a42",
+        "adult": false,
+        "gender": 2,
+        "id": 2284407,
+        "known_for_department": "Visual Effects",
+        "name": "森前和也",
+        "original_name": "森前和也",
+        "popularity": 1.8741,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 4,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 4 集",
+    "overview": "犬饲不知为何穿上了狗的装扮。就算为了理解波奇太的想法而模仿狗，也理所当然地不可能听得懂波奇太在说什么。虽然波奇太对犬饲同学的种种古怪行为感到有些傻眼，但听到犬饲同学突然向他吐诉的烦恼，波奇太不禁将彼此的境遇重叠而感同身受。",
+    "id": 4159434,
+    "production_code": "",
+    "runtime": 12,
+    "season_number": 1,
+    "still_path": "/yXdzK3jHhgi9vUfGtFcFV9bYHmU.jpg",
+    "vote_average": 6.667,
+    "vote_count": 3
+  },
+  {
+    "air_date": "2023-02-04",
+    "crew": [
+      {
+        "job": "Supervising Animation Director",
+        "department": "Visual Effects",
+        "credit_id": "631f0b90b87aec008283c348",
+        "adult": false,
+        "gender": 2,
+        "id": 1544694,
+        "known_for_department": "Visual Effects",
+        "name": "森田和明",
+        "original_name": "森田和明",
+        "popularity": 1.0745,
+        "profile_path": null
+      },
+      {
+        "job": "Director",
+        "department": "Directing",
+        "credit_id": "63dc1eb942d8a500dacf0fd9",
+        "adult": false,
+        "gender": 0,
+        "id": 3291887,
+        "known_for_department": "Visual Effects",
+        "name": "岩垂瑞树",
+        "original_name": "岩垂瑞樹",
+        "popularity": 0.9012,
+        "profile_path": null
+      },
+      {
+        "job": "Storyboard Artist",
+        "department": "Art",
+        "credit_id": "63dc1eac00fb6b00d12b917a",
+        "adult": false,
+        "gender": 0,
+        "id": 2844764,
+        "known_for_department": "Art",
+        "name": "RoydenB",
+        "original_name": "RoydenB",
+        "popularity": 0.5319,
+        "profile_path": null
+      },
+      {
+        "job": "Animation Director",
+        "department": "Visual Effects",
+        "credit_id": "63dc1ec710923000bccccc5f",
+        "adult": false,
+        "gender": 1,
+        "id": 2771329,
+        "known_for_department": "Visual Effects",
+        "name": "柄谷绫子",
+        "original_name": "柄谷綾子",
+        "popularity": 1.141,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 5,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 5 集",
+    "overview": "波奇太被邀请到猫谷家作客。于是这次他试图逃离猫谷家，但却被眼尖的犬饲抓到。波奇太虽然一时无计可施，但之前预先准备的作战奏效，使他终于成功回到自家。结果却在那里看到认识的学妹 ── 月城。不顾一旁惊讶的波奇太，月城开始四处打量波奇太的房间……",
+    "id": 4159435,
+    "production_code": "",
+    "runtime": 12,
+    "season_number": 1,
+    "still_path": "/dsVvjyxLsDbZ3RV44k8rP6nlTVO.jpg",
+    "vote_average": 7.0,
+    "vote_count": 3
+  },
+  {
+    "air_date": "2023-02-11",
+    "crew": [],
+    "episode_number": 6,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 6 集",
+    "overview": "被发现藏在月城裙子里的波奇来不及反抗就被月城家带走了。月城计划把波奇当作自己的宠物，不过，刚到家的瞬间，发烧倒下了。觉得这样下去感冒会恶化的波奇，想让月城换掉湿了的衣服…。",
+    "id": 4159438,
+    "production_code": "",
+    "runtime": 12,
+    "season_number": 1,
+    "still_path": "/HWRKF3Zmzpeu0gLtlw3dx7QWVc.jpg",
+    "vote_average": 4.6,
+    "vote_count": 5
+  },
+  {
+    "air_date": "2023-02-18",
+    "crew": [],
+    "episode_number": 7,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 7 集",
+    "overview": "波奇想起了让自己变成狗的元凶。犬饲和月城在一旁，围绕着波奇的所有权产生了对立。双方互不相让，争论走在了平行线上。猫谷在一旁看着她们，建议用一场胜负来了结这件事。那是“波有进入裙子内的一方获胜”，这种意义不明的内容。",
+    "id": 4159439,
+    "production_code": "",
+    "runtime": 12,
+    "season_number": 1,
+    "still_path": "/jpQGh6sMMjhtEIsqEDYndron9kL.jpg",
+    "vote_average": 6.333,
+    "vote_count": 3
+  },
+  {
+    "air_date": "2023-02-25",
+    "crew": [
+      {
+        "job": "Director",
+        "department": "Directing",
+        "credit_id": "63f544c17dfda600792b555c",
+        "adult": false,
+        "gender": 1,
+        "id": 2859895,
+        "known_for_department": "Directing",
+        "name": "森田侑希",
+        "original_name": "森田侑希",
+        "popularity": 1.039,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 8,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 8 集",
+    "overview": "波奇为了找到白衣少女，骗犬饲带它去了学校，在犬饲的包里屏住呼吸的波奇，遇到了同班女生们换衣服的场景。但是随着时间的流逝意外地窥视了犬饲孤独的学园生活。",
+    "id": 4159441,
+    "production_code": "",
+    "runtime": 12,
+    "season_number": 1,
+    "still_path": "/vR2x5ISAFmWfaQyCYcJtbkRympk.jpg",
+    "vote_average": 6.667,
+    "vote_count": 3
+  },
+  {
+    "air_date": "2023-03-04",
+    "crew": [],
+    "episode_number": 9,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 9 集",
+    "overview": "犬饲正在忙着准备咖啡，正在试制热狗的猫谷来了。猫谷惊讶于波奇在学校，不由自主地踩了滚在脚边的邦德。被热狗的气味吸引的狗狗们悄悄靠近浑身黏糊糊的猫谷。",
+    "id": 4159442,
+    "production_code": "",
+    "runtime": 12,
+    "season_number": 1,
+    "still_path": "/q1XwBq9KGBPucDiHSWGIIMkPyQ2.jpg",
+    "vote_average": 6.0,
+    "vote_count": 3
+  },
+  {
+    "air_date": "2023-03-11",
+    "crew": [],
+    "episode_number": 10,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 10 集",
+    "overview": "猫谷为了逃离狗群而在校园内四处奔逃。波奇太觉得这样下去没完没了，于是诱导猫谷到校内的泳池那。和波奇太们一起跳进泳池的猫谷全身被水浸湿，进而消除了衣服上的味道，才终于成功让狗群们散去。猫谷边对波奇太表达感谢，边回到校庆的准备工作上，但是......",
+    "id": 4159443,
+    "production_code": "",
+    "runtime": 12,
+    "season_number": 1,
+    "still_path": "/nVpcZ1xxMQQ0ubKn9k1PFcblG7M.jpg",
+    "vote_average": 7.333,
+    "vote_count": 3
+  },
+  {
+    "air_date": "2023-03-18",
+    "crew": [],
+    "episode_number": 11,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 11 集",
+    "overview": "学园祭当天，犬饲的班级开了一家狗狗咖啡厅，却发现客人被月城的班级表演兔子咖啡厅抢走了。于是犬饲先生提议的不是足浴，而是「犬汤」。被狗舔了脚的女性客人们的喘息声在咖啡厅里回荡，客人们平安无事地回来了。终于，那个白衣少女来到了店里。",
+    "id": 4288586,
+    "production_code": "",
+    "runtime": 12,
+    "season_number": 1,
+    "still_path": "/fuFvwww3jtqCpw62dmtgnHRq9Q.jpg",
+    "vote_average": 5.5,
+    "vote_count": 2
+  },
+  {
+    "air_date": "2023-03-25",
+    "crew": [],
+    "episode_number": 12,
+    "episode_type": "finale",
+    "guest_stars": [],
+    "name": "第 12 集",
+    "overview": "波提太从学园的疯狂科学家咲比良伊纳利那里听到了自己被当成狗的理由。伊娜莉以波奇太和犬饲先生为实验对象，监视着两人的一切生活。对于只把犬饲先生当成豚鼠的伊娜莉感到愤慨的波吉太，被告知了让自己变回人类的方法",
+    "id": 4288587,
+    "production_code": "",
+    "runtime": 12,
+    "season_number": 1,
+    "still_path": "/eSDBQAwXdG94eiKwARx4YEhj2Sd.jpg",
+    "vote_average": 6.333,
+    "vote_count": 3
+  }
+]
+2025-12-06 01:19:04,303 - MetadataAgent - DEBUG - Seasons data: [
+  {
+    "_id": "622f34062a210c001b5eab8c",
+    "air_date": "2023-01-07",
+    "episodes": [
+      {
+        "air_date": "2023-01-07",
+        "episode_number": 1,
+        "episode_type": "standard",
+        "id": 3594666,
+        "name": "第 1 集",
+        "overview": "主角一醒来就猛然发现自己变成了一只狗。捡到他的人是他在人类时就喜欢的犬饲同学。犬饲将被雨淋湿的波奇太带回家，打算一起洗澡而开始脱衣。波奇太突然被迫看到喜欢的女生的裸体而惊慌失措，但最终还是只能乖乖地被犬饲操弄……。",
+        "production_code": "",
+        "runtime": 12,
+        "season_number": 1,
+        "show_id": 195081,
+        "still_path": "/sImHDL0KljiFSjdt1VIiEylKn9N.jpg",
+        "vote_average": 5.333,
+        "vote_count": 6,
+        "crew": [
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "63c00c3ae16e5a008ac76c05",
+            "adult": false,
+            "gender": 2,
+            "id": 2381347,
+            "known_for_department": "Directing",
+            "name": "安藤贵史",
+            "original_name": "安藤貴史",
+            "popularity": 1.3927,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": [
+          {
+            "character": "Karen's Mother (voice)",
+            "credit_id": "63bc4260fc31d30092c58d5c",
+            "order": 500,
+            "adult": false,
+            "gender": 1,
+            "id": 144649,
+            "known_for_department": "Acting",
+            "name": "后藤邑子",
+            "original_name": "後藤邑子",
+            "popularity": 1.0476,
+            "profile_path": "/1VqFJ6oLDQAtSZHHj675QBTDqFD.jpg"
+          }
+        ]
+      },
+      {
+        "air_date": "2023-01-14",
+        "episode_number": 2,
+        "episode_type": "standard",
+        "id": 4141217,
+        "name": "第 2 集",
+        "overview": "成为犬饲的宠物狗后第一次去散步。 相反于对从狗的视角看到的户外世界感到害怕的波奇塔，犬饲正心情愉快地向前行走。走着走着，犬饲面临到了突如其来的危机。波奇太冒着生命危险前去保护犬饲同学，但回过神来，眼前却是犬饲同学的内裤……。",
+        "production_code": "",
+        "runtime": 12,
+        "season_number": 1,
+        "show_id": 195081,
+        "still_path": "/oBDNyn0Itx7CPlI85X66Rb7YujO.jpg",
+        "vote_average": 6.25,
+        "vote_count": 4,
+        "crew": [
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "63c00c3ae16e5a008ac76c05",
+            "adult": false,
+            "gender": 2,
+            "id": 2381347,
+            "known_for_department": "Directing",
+            "name": "安藤贵史",
+            "original_name": "安藤貴史",
+            "popularity": 1.3927,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": [
+          {
+            "character": "Karen's Mother (voice)",
+            "credit_id": "63bc4260fc31d30092c58d5c",
+            "order": 500,
+            "adult": false,
+            "gender": 1,
+            "id": 144649,
+            "known_for_department": "Acting",
+            "name": "后藤邑子",
+            "original_name": "後藤邑子",
+            "popularity": 1.0476,
+            "profile_path": "/1VqFJ6oLDQAtSZHHj675QBTDqFD.jpg"
+          },
+          {
+            "character": "Girl (voice)",
+            "credit_id": "63c16862a5743d00891056e6",
+            "order": 501,
+            "adult": false,
+            "gender": 1,
+            "id": 3620445,
+            "known_for_department": "Acting",
+            "name": "优希麻梨子",
+            "original_name": "優希麻梨子",
+            "popularity": 0.7473,
+            "profile_path": "/lIbrh4Czf3fcRwHsY8BH47OC79E.jpg"
+          },
+          {
+            "character": "Girl (voice)",
+            "credit_id": "63c1686ca5743d00b0bf62cc",
+            "order": 502,
+            "adult": false,
+            "gender": 1,
+            "id": 3682170,
+            "known_for_department": "Acting",
+            "name": "泽幡枫",
+            "original_name": "澤幡楓",
+            "popularity": 0.6925,
+            "profile_path": "/4CWOQ4dA2JeviJG9kAbgKKPv9Sq.jpg"
+          }
+        ]
+      },
+      {
+        "air_date": "2023-01-21",
+        "episode_number": 3,
+        "episode_type": "standard",
+        "id": 4141219,
+        "name": "第 3 集",
+        "overview": "为了回到自己原本的家，波奇太试图让邻居的猫谷喜欢上自己。但其实猫谷超级讨厌狗！猫谷在试图逃离波奇太时，不小心摔倒弄伤了膝盖。波奇太想透过舔舐猫谷的伤口来治疗她。但目睹2人那副模样的犬饲被嫉妒冲昏了头，为了让自己也被波奇太舔舐，而做出了令人震惊的积极行动。",
+        "production_code": "",
+        "runtime": 12,
+        "season_number": 1,
+        "show_id": 195081,
+        "still_path": "/dUIvJUEBLXbKJkBLmP3VsRx200B.jpg",
+        "vote_average": 7.0,
+        "vote_count": 3,
+        "crew": [
+          {
+            "job": "Supervising Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "631f0b90b87aec008283c348",
+            "adult": false,
+            "gender": 2,
+            "id": 1544694,
+            "known_for_department": "Visual Effects",
+            "name": "森田和明",
+            "original_name": "森田和明",
+            "popularity": 1.0745,
+            "profile_path": null
+          },
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "63c97daa25a5360082d17b7c",
+            "adult": false,
+            "gender": 2,
+            "id": 2050141,
+            "known_for_department": "Art",
+            "name": "吉田英俊",
+            "original_name": "吉田英俊",
+            "popularity": 2.4135,
+            "profile_path": null
+          },
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "63c97d9ff5c82400852602cf",
+            "adult": false,
+            "gender": 2,
+            "id": 2750634,
+            "known_for_department": "Directing",
+            "name": "木村佳嗣",
+            "original_name": "木村佳嗣",
+            "popularity": 1.7931,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2023-01-28",
+        "episode_number": 4,
+        "episode_type": "standard",
+        "id": 4159434,
+        "name": "第 4 集",
+        "overview": "犬饲不知为何穿上了狗的装扮。就算为了理解波奇太的想法而模仿狗，也理所当然地不可能听得懂波奇太在说什么。虽然波奇太对犬饲同学的种种古怪行为感到有些傻眼，但听到犬饲同学突然向他吐诉的烦恼，波奇太不禁将彼此的境遇重叠而感同身受。",
+        "production_code": "",
+        "runtime": 12,
+        "season_number": 1,
+        "show_id": 195081,
+        "still_path": "/yXdzK3jHhgi9vUfGtFcFV9bYHmU.jpg",
+        "vote_average": 6.667,
+        "vote_count": 3,
+        "crew": [
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "63c97daa25a5360082d17b7c",
+            "adult": false,
+            "gender": 2,
+            "id": 2050141,
+            "known_for_department": "Art",
+            "name": "吉田英俊",
+            "original_name": "吉田英俊",
+            "popularity": 2.4135,
+            "profile_path": null
+          },
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "63c97d9ff5c82400852602cf",
+            "adult": false,
+            "gender": 2,
+            "id": 2750634,
+            "known_for_department": "Directing",
+            "name": "木村佳嗣",
+            "original_name": "木村佳嗣",
+            "popularity": 1.7931,
+            "profile_path": null
+          },
+          {
+            "job": "Supervising Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "63d187a6cb71b80081022a42",
+            "adult": false,
+            "gender": 2,
+            "id": 2284407,
+            "known_for_department": "Visual Effects",
+            "name": "森前和也",
+            "original_name": "森前和也",
+            "popularity": 1.8741,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2023-02-04",
+        "episode_number": 5,
+        "episode_type": "standard",
+        "id": 4159435,
+        "name": "第 5 集",
+        "overview": "波奇太被邀请到猫谷家作客。于是这次他试图逃离猫谷家，但却被眼尖的犬饲抓到。波奇太虽然一时无计可施，但之前预先准备的作战奏效，使他终于成功回到自家。结果却在那里看到认识的学妹 ── 月城。不顾一旁惊讶的波奇太，月城开始四处打量波奇太的房间……",
+        "production_code": "",
+        "runtime": 12,
+        "season_number": 1,
+        "show_id": 195081,
+        "still_path": "/dsVvjyxLsDbZ3RV44k8rP6nlTVO.jpg",
+        "vote_average": 7.0,
+        "vote_count": 3,
+        "crew": [
+          {
+            "job": "Supervising Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "631f0b90b87aec008283c348",
+            "adult": false,
+            "gender": 2,
+            "id": 1544694,
+            "known_for_department": "Visual Effects",
+            "name": "森田和明",
+            "original_name": "森田和明",
+            "popularity": 1.0745,
+            "profile_path": null
+          },
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "63dc1eb942d8a500dacf0fd9",
+            "adult": false,
+            "gender": 0,
+            "id": 3291887,
+            "known_for_department": "Visual Effects",
+            "name": "岩垂瑞树",
+            "original_name": "岩垂瑞樹",
+            "popularity": 0.9012,
+            "profile_path": null
+          },
+          {
+            "job": "Storyboard Artist",
+            "department": "Art",
+            "credit_id": "63dc1eac00fb6b00d12b917a",
+            "adult": false,
+            "gender": 0,
+            "id": 2844764,
+            "known_for_department": "Art",
+            "name": "RoydenB",
+            "original_name": "RoydenB",
+            "popularity": 0.5319,
+            "profile_path": null
+          },
+          {
+            "job": "Animation Director",
+            "department": "Visual Effects",
+            "credit_id": "63dc1ec710923000bccccc5f",
+            "adult": false,
+            "gender": 1,
+            "id": 2771329,
+            "known_for_department": "Visual Effects",
+            "name": "柄谷绫子",
+            "original_name": "柄谷綾子",
+            "popularity": 1.141,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2023-02-11",
+        "episode_number": 6,
+        "episode_type": "standard",
+        "id": 4159438,
+        "name": "第 6 集",
+        "overview": "被发现藏在月城裙子里的波奇来不及反抗就被月城家带走了。月城计划把波奇当作自己的宠物，不过，刚到家的瞬间，发烧倒下了。觉得这样下去感冒会恶化的波奇，想让月城换掉湿了的衣服…。",
+        "production_code": "",
+        "runtime": 12,
+        "season_number": 1,
+        "show_id": 195081,
+        "still_path": "/HWRKF3Zmzpeu0gLtlw3dx7QWVc.jpg",
+        "vote_average": 4.6,
+        "vote_count": 5,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2023-02-18",
+        "episode_number": 7,
+        "episode_type": "standard",
+        "id": 4159439,
+        "name": "第 7 集",
+        "overview": "波奇想起了让自己变成狗的元凶。犬饲和月城在一旁，围绕着波奇的所有权产生了对立。双方互不相让，争论走在了平行线上。猫谷在一旁看着她们，建议用一场胜负来了结这件事。那是“波有进入裙子内的一方获胜”，这种意义不明的内容。",
+        "production_code": "",
+        "runtime": 12,
+        "season_number": 1,
+        "show_id": 195081,
+        "still_path": "/jpQGh6sMMjhtEIsqEDYndron9kL.jpg",
+        "vote_average": 6.333,
+        "vote_count": 3,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2023-02-25",
+        "episode_number": 8,
+        "episode_type": "standard",
+        "id": 4159441,
+        "name": "第 8 集",
+        "overview": "波奇为了找到白衣少女，骗犬饲带它去了学校，在犬饲的包里屏住呼吸的波奇，遇到了同班女生们换衣服的场景。但是随着时间的流逝意外地窥视了犬饲孤独的学园生活。",
+        "production_code": "",
+        "runtime": 12,
+        "season_number": 1,
+        "show_id": 195081,
+        "still_path": "/vR2x5ISAFmWfaQyCYcJtbkRympk.jpg",
+        "vote_average": 6.667,
+        "vote_count": 3,
+        "crew": [
+          {
+            "job": "Director",
+            "department": "Directing",
+            "credit_id": "63f544c17dfda600792b555c",
+            "adult": false,
+            "gender": 1,
+            "id": 2859895,
+            "known_for_department": "Directing",
+            "name": "森田侑希",
+            "original_name": "森田侑希",
+            "popularity": 1.039,
+            "profile_path": null
+          }
+        ],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2023-03-04",
+        "episode_number": 9,
+        "episode_type": "standard",
+        "id": 4159442,
+        "name": "第 9 集",
+        "overview": "犬饲正在忙着准备咖啡，正在试制热狗的猫谷来了。猫谷惊讶于波奇在学校，不由自主地踩了滚在脚边的邦德。被热狗的气味吸引的狗狗们悄悄靠近浑身黏糊糊的猫谷。",
+        "production_code": "",
+        "runtime": 12,
+        "season_number": 1,
+        "show_id": 195081,
+        "still_path": "/q1XwBq9KGBPucDiHSWGIIMkPyQ2.jpg",
+        "vote_average": 6.0,
+        "vote_count": 3,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2023-03-11",
+        "episode_number": 10,
+        "episode_type": "standard",
+        "id": 4159443,
+        "name": "第 10 集",
+        "overview": "猫谷为了逃离狗群而在校园内四处奔逃。波奇太觉得这样下去没完没了，于是诱导猫谷到校内的泳池那。和波奇太们一起跳进泳池的猫谷全身被水浸湿，进而消除了衣服上的味道，才终于成功让狗群们散去。猫谷边对波奇太表达感谢，边回到校庆的准备工作上，但是......",
+        "production_code": "",
+        "runtime": 12,
+        "season_number": 1,
+        "show_id": 195081,
+        "still_path": "/nVpcZ1xxMQQ0ubKn9k1PFcblG7M.jpg",
+        "vote_average": 7.333,
+        "vote_count": 3,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2023-03-18",
+        "episode_number": 11,
+        "episode_type": "standard",
+        "id": 4288586,
+        "name": "第 11 集",
+        "overview": "学园祭当天，犬饲的班级开了一家狗狗咖啡厅，却发现客人被月城的班级表演兔子咖啡厅抢走了。于是犬饲先生提议的不是足浴，而是「犬汤」。被狗舔了脚的女性客人们的喘息声在咖啡厅里回荡，客人们平安无事地回来了。终于，那个白衣少女来到了店里。",
+        "production_code": "",
+        "runtime": 12,
+        "season_number": 1,
+        "show_id": 195081,
+        "still_path": "/fuFvwww3jtqCpw62dmtgnHRq9Q.jpg",
+        "vote_average": 5.5,
+        "vote_count": 2,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2023-03-25",
+        "episode_number": 12,
+        "episode_type": "finale",
+        "id": 4288587,
+        "name": "第 12 集",
+        "overview": "波提太从学园的疯狂科学家咲比良伊纳利那里听到了自己被当成狗的理由。伊娜莉以波奇太和犬饲先生为实验对象，监视着两人的一切生活。对于只把犬饲先生当成豚鼠的伊娜莉感到愤慨的波吉太，被告知了让自己变回人类的方法",
+        "production_code": "",
+        "runtime": 12,
+        "season_number": 1,
+        "show_id": 195081,
+        "still_path": "/eSDBQAwXdG94eiKwARx4YEhj2Sd.jpg",
+        "vote_average": 6.333,
+        "vote_count": 3,
+        "crew": [],
+        "guest_stars": []
+      }
+    ],
+    "name": "第 1 季",
+    "networks": [
+      {
+        "id": 614,
+        "logo_path": "/hSdroyVthq3CynxTIIY7lnS8w1.png",
+        "name": "Tokyo MX",
+        "origin_country": "JP"
+      }
+    ],
+    "overview": "一觉醒来，发现自己竟然成了心仪同班同学“犬饲先生”的宠物狗“波奇太”!\n\n在学校里是个超酷的女朋友，但实际上超级喜欢狗。\n\n散步、上厕所、泡澡 -- 作为狗被饲养的日子是一连串的意外。\n\n虽然很想早点变回人类，但是被喜欢的人彻底爱着的生活是幸福的... ...\n\n这样下去，身心都会变成狗! ?\n\n以“犬视线(低角度)”带来的新感觉爱情喜剧!",
+    "id": 283307,
+    "poster_path": "/o05lQyT8TAgJKrO7n3JPlPRmte8.jpg",
+    "season_number": 1,
+    "vote_average": 6.3
+  }
+]
+2025-12-06 01:19:04,309 - MetadataAgent - INFO - Data normalization completed
+2025-12-06 01:19:04,310 - MetadataAgent - DEBUG - Normalized data: {
+  "media_type": "tv",
+  "tmdb_id": 195081,
+  "title": "犬になったら好きな人に拾われた。",
+  "original_title": "犬になったら好きな人に拾われた。",
+  "year": 2023,
+  "plot": "一觉醒来猛地发现——自己竟然变成了心仪的同班同学犬饲家的一条狗“小太”。\n\n在学校里超酷的她，其实挺溺爱自己家的狗狗。散步、上厕所和洗澡——被当成狗养着的每一天都有各种各样的事情发生。虽然想早点变回人类的样子但是被喜欢的人彻底爱着的生活是不知道为什么能如此幸福.....再这样下去，自己的身心都会变成狗。\n\n以“狗狗的视角”展开的全新的爱情喜剧，即将开幕。",
+  "tagline": "",
+  "runtime": 12,
+  "release_date": "2023-01-07",
+  "rating": 5.552,
+  "rating_count": 29,
+  "genres": [
+    "动画",
+    "喜剧"
+  ],
+  "countries": [
+    "JP"
+  ],
+  "languages": [
+    "ja"
+  ],
+  "studios": [
+    "Quad",
+    "King Records",
+    "WWWave",
+    "Kodansha",
+    "THE KLOCKWORX",
+    "Asmik Ace",
+    "Deregula"
+  ],
+  "networks": [
+    "Tokyo MX"
+  ],
+  "network": "Tokyo MX",
+  "status": "Ended",
+  "homepage": "https://inuhiro-anime.com",
+  "cast": [
+    {
+      "name_en": "Shuichiro Umeda",
+      "name_zh": null,
+      "role": "Pochita (voice)",
+      "original_name": "梅田修一朗",
+      "profile_path": "/dCr870q8ojD6qpD1hmS1sdvh2pe.jpg",
+      "popularity": 2.7575
+    },
+    {
+      "name_en": "Saya Aizawa",
+      "name_zh": null,
+      "role": "Karen Inukai (voice)",
+      "original_name": "会沢紗弥",
+      "profile_path": "/3QoVKl1w7uBMf5ivJ4MccYkt4zR.jpg",
+      "popularity": 1.0817
+    },
+    {
+      "name_en": "Mayu Sagara",
+      "name_zh": null,
+      "role": "Mike Nekotani (voice)",
+      "original_name": "相良茉優",
+      "profile_path": "/34nn1h3Mg2TsvOQs9DJViogVurp.jpg",
+      "popularity": 2.6
+    },
+    {
+      "name_en": "Yurie Kozakai",
+      "name_zh": null,
+      "role": "Usagi Tsukishiro (voice)",
+      "original_name": "小坂井祐莉絵",
+      "profile_path": "/mbIMcptHLQir3wrAnnSSAR5uRR1.jpg",
+      "popularity": 0.8223
+    }
+  ],
+  "directors": [
+    "木村佳嗣",
+    "森田侑希",
+    "安藤贵史",
+    "Takashi Yasudo",
+    "岩垂瑞树"
+  ],
+  "writers": [
+    "Itsutsuse"
+  ],
+  "images": {},
+  "seasons": [
+    {
+      "air_date": "2023-03-29",
+      "episode_count": 2,
+      "id": 324693,
+      "name": "特别篇",
+      "overview": "",
+      "poster_path": "/vPIzOp0nv3rwceVAqWKbLeMSCIY.jpg",
+      "season_number": 0,
+      "vote_average": 0.0
+    },
+    {
+      "air_date": "2023-01-07",
+      "episode_count": 12,
+      "id": 283307,
+      "name": "第 1 季",
+      "overview": "一觉醒来，发现自己竟然成了心仪同班同学“犬饲先生”的宠物狗“波奇太”!\n\n在学校里是个超酷的女朋友，但实际上超级喜欢狗。\n\n散步、上厕所、泡澡 -- 作为狗被饲养的日子是一连串的意外。\n\n虽然很想早点变回人类，但是被喜欢的人彻底爱着的生活是幸福的... ...\n\n这样下去，身心都会变成狗! ?\n\n以“犬视线(低角度)”带来的新感觉爱情喜剧!",
+      "poster_path": "/o05lQyT8TAgJKrO7n3JPlPRmte8.jpg",
+      "season_number": 1,
+      "vote_average": 6.3
+    }
+  ],
+  "episodes": [
+    {
+      "air_date": "2023-01-07",
+      "crew": [
+        {
+          "job": "Director",
+          "department": "Directing",
+          "credit_id": "63c00c3ae16e5a008ac76c05",
+          "adult": false,
+          "gender": 2,
+          "id": 2381347,
+          "known_for_department": "Directing",
+          "name": "安藤贵史",
+          "original_name": "安藤貴史",
+          "popularity": 1.3927,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 1,
+      "episode_type": "standard",
+      "guest_stars": [
+        {
+          "character": "Karen's Mother (voice)",
+          "credit_id": "63bc4260fc31d30092c58d5c",
+          "order": 500,
+          "adult": false,
+          "gender": 1,
+          "id": 144649,
+          "known_for_department": "Acting",
+          "name": "后藤邑子",
+          "original_name": "後藤邑子",
+          "popularity": 1.0476,
+          "profile_path": "/1VqFJ6oLDQAtSZHHj675QBTDqFD.jpg"
+        }
+      ],
+      "name": "第 1 集",
+      "overview": "主角一醒来就猛然发现自己变成了一只狗。捡到他的人是他在人类时就喜欢的犬饲同学。犬饲将被雨淋湿的波奇太带回家，打算一起洗澡而开始脱衣。波奇太突然被迫看到喜欢的女生的裸体而惊慌失措，但最终还是只能乖乖地被犬饲操弄……。",
+      "id": 3594666,
+      "production_code": "",
+      "runtime": 12,
+      "season_number": 1,
+      "still_path": "/sImHDL0KljiFSjdt1VIiEylKn9N.jpg",
+      "vote_average": 5.333,
+      "vote_count": 6
+    },
+    {
+      "air_date": "2023-01-14",
+      "crew": [
+        {
+          "job": "Director",
+          "department": "Directing",
+          "credit_id": "63c00c3ae16e5a008ac76c05",
+          "adult": false,
+          "gender": 2,
+          "id": 2381347,
+          "known_for_department": "Directing",
+          "name": "安藤贵史",
+          "original_name": "安藤貴史",
+          "popularity": 1.3927,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 2,
+      "episode_type": "standard",
+      "guest_stars": [
+        {
+          "character": "Karen's Mother (voice)",
+          "credit_id": "63bc4260fc31d30092c58d5c",
+          "order": 500,
+          "adult": false,
+          "gender": 1,
+          "id": 144649,
+          "known_for_department": "Acting",
+          "name": "后藤邑子",
+          "original_name": "後藤邑子",
+          "popularity": 1.0476,
+          "profile_path": "/1VqFJ6oLDQAtSZHHj675QBTDqFD.jpg"
+        },
+        {
+          "character": "Girl (voice)",
+          "credit_id": "63c16862a5743d00891056e6",
+          "order": 501,
+          "adult": false,
+          "gender": 1,
+          "id": 3620445,
+          "known_for_department": "Acting",
+          "name": "优希麻梨子",
+          "original_name": "優希麻梨子",
+          "popularity": 0.7473,
+          "profile_path": "/lIbrh4Czf3fcRwHsY8BH47OC79E.jpg"
+        },
+        {
+          "character": "Girl (voice)",
+          "credit_id": "63c1686ca5743d00b0bf62cc",
+          "order": 502,
+          "adult": false,
+          "gender": 1,
+          "id": 3682170,
+          "known_for_department": "Acting",
+          "name": "泽幡枫",
+          "original_name": "澤幡楓",
+          "popularity": 0.6925,
+          "profile_path": "/4CWOQ4dA2JeviJG9kAbgKKPv9Sq.jpg"
+        }
+      ],
+      "name": "第 2 集",
+      "overview": "成为犬饲的宠物狗后第一次去散步。 相反于对从狗的视角看到的户外世界感到害怕的波奇塔，犬饲正心情愉快地向前行走。走着走着，犬饲面临到了突如其来的危机。波奇太冒着生命危险前去保护犬饲同学，但回过神来，眼前却是犬饲同学的内裤……。",
+      "id": 4141217,
+      "production_code": "",
+      "runtime": 12,
+      "season_number": 1,
+      "still_path": "/oBDNyn0Itx7CPlI85X66Rb7YujO.jpg",
+      "vote_average": 6.25,
+      "vote_count": 4
+    },
+    {
+      "air_date": "2023-01-21",
+      "crew": [
+        {
+          "job": "Supervising Animation Director",
+          "department": "Visual Effects",
+          "credit_id": "631f0b90b87aec008283c348",
+          "adult": false,
+          "gender": 2,
+          "id": 1544694,
+          "known_for_department": "Visual Effects",
+          "name": "森田和明",
+          "original_name": "森田和明",
+          "popularity": 1.0745,
+          "profile_path": null
+        },
+        {
+          "job": "Storyboard Artist",
+          "department": "Art",
+          "credit_id": "63c97daa25a5360082d17b7c",
+          "adult": false,
+          "gender": 2,
+          "id": 2050141,
+          "known_for_department": "Art",
+          "name": "吉田英俊",
+          "original_name": "吉田英俊",
+          "popularity": 2.4135,
+          "profile_path": null
+        },
+        {
+          "job": "Director",
+          "department": "Directing",
+          "credit_id": "63c97d9ff5c82400852602cf",
+          "adult": false,
+          "gender": 2,
+          "id": 2750634,
+          "known_for_department": "Directing",
+          "name": "木村佳嗣",
+          "original_name": "木村佳嗣",
+          "popularity": 1.7931,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 3,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 3 集",
+      "overview": "为了回到自己原本的家，波奇太试图让邻居的猫谷喜欢上自己。但其实猫谷超级讨厌狗！猫谷在试图逃离波奇太时，不小心摔倒弄伤了膝盖。波奇太想透过舔舐猫谷的伤口来治疗她。但目睹2人那副模样的犬饲被嫉妒冲昏了头，为了让自己也被波奇太舔舐，而做出了令人震惊的积极行动。",
+      "id": 4141219,
+      "production_code": "",
+      "runtime": 12,
+      "season_number": 1,
+      "still_path": "/dUIvJUEBLXbKJkBLmP3VsRx200B.jpg",
+      "vote_average": 7.0,
+      "vote_count": 3
+    },
+    {
+      "air_date": "2023-01-28",
+      "crew": [
+        {
+          "job": "Storyboard Artist",
+          "department": "Art",
+          "credit_id": "63c97daa25a5360082d17b7c",
+          "adult": false,
+          "gender": 2,
+          "id": 2050141,
+          "known_for_department": "Art",
+          "name": "吉田英俊",
+          "original_name": "吉田英俊",
+          "popularity": 2.4135,
+          "profile_path": null
+        },
+        {
+          "job": "Director",
+          "department": "Directing",
+          "credit_id": "63c97d9ff5c82400852602cf",
+          "adult": false,
+          "gender": 2,
+          "id": 2750634,
+          "known_for_department": "Directing",
+          "name": "木村佳嗣",
+          "original_name": "木村佳嗣",
+          "popularity": 1.7931,
+          "profile_path": null
+        },
+        {
+          "job": "Supervising Animation Director",
+          "department": "Visual Effects",
+          "credit_id": "63d187a6cb71b80081022a42",
+          "adult": false,
+          "gender": 2,
+          "id": 2284407,
+          "known_for_department": "Visual Effects",
+          "name": "森前和也",
+          "original_name": "森前和也",
+          "popularity": 1.8741,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 4,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 4 集",
+      "overview": "犬饲不知为何穿上了狗的装扮。就算为了理解波奇太的想法而模仿狗，也理所当然地不可能听得懂波奇太在说什么。虽然波奇太对犬饲同学的种种古怪行为感到有些傻眼，但听到犬饲同学突然向他吐诉的烦恼，波奇太不禁将彼此的境遇重叠而感同身受。",
+      "id": 4159434,
+      "production_code": "",
+      "runtime": 12,
+      "season_number": 1,
+      "still_path": "/yXdzK3jHhgi9vUfGtFcFV9bYHmU.jpg",
+      "vote_average": 6.667,
+      "vote_count": 3
+    },
+    {
+      "air_date": "2023-02-04",
+      "crew": [
+        {
+          "job": "Supervising Animation Director",
+          "department": "Visual Effects",
+          "credit_id": "631f0b90b87aec008283c348",
+          "adult": false,
+          "gender": 2,
+          "id": 1544694,
+          "known_for_department": "Visual Effects",
+          "name": "森田和明",
+          "original_name": "森田和明",
+          "popularity": 1.0745,
+          "profile_path": null
+        },
+        {
+          "job": "Director",
+          "department": "Directing",
+          "credit_id": "63dc1eb942d8a500dacf0fd9",
+          "adult": false,
+          "gender": 0,
+          "id": 3291887,
+          "known_for_department": "Visual Effects",
+          "name": "岩垂瑞树",
+          "original_name": "岩垂瑞樹",
+          "popularity": 0.9012,
+          "profile_path": null
+        },
+        {
+          "job": "Storyboard Artist",
+          "department": "Art",
+          "credit_id": "63dc1eac00fb6b00d12b917a",
+          "adult": false,
+          "gender": 0,
+          "id": 2844764,
+          "known_for_department": "Art",
+          "name": "RoydenB",
+          "original_name": "RoydenB",
+          "popularity": 0.5319,
+          "profile_path": null
+        },
+        {
+          "job": "Animation Director",
+          "department": "Visual Effects",
+          "credit_id": "63dc1ec710923000bccccc5f",
+          "adult": false,
+          "gender": 1,
+          "id": 2771329,
+          "known_for_department": "Visual Effects",
+          "name": "柄谷绫子",
+          "original_name": "柄谷綾子",
+          "popularity": 1.141,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 5,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 5 集",
+      "overview": "波奇太被邀请到猫谷家作客。于是这次他试图逃离猫谷家，但却被眼尖的犬饲抓到。波奇太虽然一时无计可施，但之前预先准备的作战奏效，使他终于成功回到自家。结果却在那里看到认识的学妹 ── 月城。不顾一旁惊讶的波奇太，月城开始四处打量波奇太的房间……",
+      "id": 4159435,
+      "production_code": "",
+      "runtime": 12,
+      "season_number": 1,
+      "still_path": "/dsVvjyxLsDbZ3RV44k8rP6nlTVO.jpg",
+      "vote_average": 7.0,
+      "vote_count": 3
+    },
+    {
+      "air_date": "2023-02-11",
+      "crew": [],
+      "episode_number": 6,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 6 集",
+      "overview": "被发现藏在月城裙子里的波奇来不及反抗就被月城家带走了。月城计划把波奇当作自己的宠物，不过，刚到家的瞬间，发烧倒下了。觉得这样下去感冒会恶化的波奇，想让月城换掉湿了的衣服…。",
+      "id": 4159438,
+      "production_code": "",
+      "runtime": 12,
+      "season_number": 1,
+      "still_path": "/HWRKF3Zmzpeu0gLtlw3dx7QWVc.jpg",
+      "vote_average": 4.6,
+      "vote_count": 5
+    },
+    {
+      "air_date": "2023-02-18",
+      "crew": [],
+      "episode_number": 7,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 7 集",
+      "overview": "波奇想起了让自己变成狗的元凶。犬饲和月城在一旁，围绕着波奇的所有权产生了对立。双方互不相让，争论走在了平行线上。猫谷在一旁看着她们，建议用一场胜负来了结这件事。那是“波有进入裙子内的一方获胜”，这种意义不明的内容。",
+      "id": 4159439,
+      "production_code": "",
+      "runtime": 12,
+      "season_number": 1,
+      "still_path": "/jpQGh6sMMjhtEIsqEDYndron9kL.jpg",
+      "vote_average": 6.333,
+      "vote_count": 3
+    },
+    {
+      "air_date": "2023-02-25",
+      "crew": [
+        {
+          "job": "Director",
+          "department": "Directing",
+          "credit_id": "63f544c17dfda600792b555c",
+          "adult": false,
+          "gender": 1,
+          "id": 2859895,
+          "known_for_department": "Directing",
+          "name": "森田侑希",
+          "original_name": "森田侑希",
+          "popularity": 1.039,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 8,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 8 集",
+      "overview": "波奇为了找到白衣少女，骗犬饲带它去了学校，在犬饲的包里屏住呼吸的波奇，遇到了同班女生们换衣服的场景。但是随着时间的流逝意外地窥视了犬饲孤独的学园生活。",
+      "id": 4159441,
+      "production_code": "",
+      "runtime": 12,
+      "season_number": 1,
+      "still_path": "/vR2x5ISAFmWfaQyCYcJtbkRympk.jpg",
+      "vote_average": 6.667,
+      "vote_count": 3
+    },
+    {
+      "air_date": "2023-03-04",
+      "crew": [],
+      "episode_number": 9,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 9 集",
+      "overview": "犬饲正在忙着准备咖啡，正在试制热狗的猫谷来了。猫谷惊讶于波奇在学校，不由自主地踩了滚在脚边的邦德。被热狗的气味吸引的狗狗们悄悄靠近浑身黏糊糊的猫谷。",
+      "id": 4159442,
+      "production_code": "",
+      "runtime": 12,
+      "season_number": 1,
+      "still_path": "/q1XwBq9KGBPucDiHSWGIIMkPyQ2.jpg",
+      "vote_average": 6.0,
+      "vote_count": 3
+    },
+    {
+      "air_date": "2023-03-11",
+      "crew": [],
+      "episode_number": 10,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 10 集",
+      "overview": "猫谷为了逃离狗群而在校园内四处奔逃。波奇太觉得这样下去没完没了，于是诱导猫谷到校内的泳池那。和波奇太们一起跳进泳池的猫谷全身被水浸湿，进而消除了衣服上的味道，才终于成功让狗群们散去。猫谷边对波奇太表达感谢，边回到校庆的准备工作上，但是......",
+      "id": 4159443,
+      "production_code": "",
+      "runtime": 12,
+      "season_number": 1,
+      "still_path": "/nVpcZ1xxMQQ0ubKn9k1PFcblG7M.jpg",
+      "vote_average": 7.333,
+      "vote_count": 3
+    },
+    {
+      "air_date": "2023-03-18",
+      "crew": [],
+      "episode_number": 11,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 11 集",
+      "overview": "学园祭当天，犬饲的班级开了一家狗狗咖啡厅，却发现客人被月城的班级表演兔子咖啡厅抢走了。于是犬饲先生提议的不是足浴，而是「犬汤」。被狗舔了脚的女性客人们的喘息声在咖啡厅里回荡，客人们平安无事地回来了。终于，那个白衣少女来到了店里。",
+      "id": 4288586,
+      "production_code": "",
+      "runtime": 12,
+      "season_number": 1,
+      "still_path": "/fuFvwww3jtqCpw62dmtgnHRq9Q.jpg",
+      "vote_average": 5.5,
+      "vote_count": 2
+    },
+    {
+      "air_date": "2023-03-25",
+      "crew": [],
+      "episode_number": 12,
+      "episode_type": "finale",
+      "guest_stars": [],
+      "name": "第 12 集",
+      "overview": "波提太从学园的疯狂科学家咲比良伊纳利那里听到了自己被当成狗的理由。伊娜莉以波奇太和犬饲先生为实验对象，监视着两人的一切生活。对于只把犬饲先生当成豚鼠的伊娜莉感到愤慨的波吉太，被告知了让自己变回人类的方法",
+      "id": 4288587,
+      "production_code": "",
+      "runtime": 12,
+      "season_number": 1,
+      "still_path": "/eSDBQAwXdG94eiKwARx4YEhj2Sd.jpg",
+      "vote_average": 6.333,
+      "vote_count": 3
+    }
+  ],
+  "title_zh": "犬になったら好きな人に拾われた。",
+  "plot_zh": "一觉醒来猛地发现——自己竟然变成了心仪的同班同学犬饲家的一条狗“小太”。\n\n在学校里超酷的她，其实挺溺爱自己家的狗狗。散步、上厕所和洗澡——被当成狗养着的每一天都有各种各样的事情发生。虽然想早点变回人类的样子但是被喜欢的人彻底爱着的生活是不知道为什么能如此幸福.....再这样下去，自己的身心都会变成狗。\n\n以“狗狗的视角”展开的全新的爱情喜剧，即将开幕。",
+  "keywords_en": [
+    "romance",
+    "slice of life",
+    "school",
+    "based on manga",
+    "school life",
+    "ecchi",
+    "anime",
+    "japanese high school"
+  ],
+  "keywords": [
+    "romance",
+    "slice of life",
+    "school",
+    "based on manga",
+    "school life",
+    "ecchi",
+    "anime",
+    "japanese high school"
+  ],
+  "keywords_zh": [
+    "浪漫",
+    "日常片段",
+    "学校",
+    "改编自漫画",
+    "校园生活",
+    "害羞",
+    "动画",
+    "日本高中"
+  ]
+}
+2025-12-06 01:19:04,312 - MetadataAgent - INFO - Translation processing completed
+2025-12-06 01:19:04,313 - MetadataAgent - DEBUG - Translated data: {
+  "media_type": "tv",
+  "tmdb_id": 195081,
+  "title": "犬になったら好きな人に拾われた。",
+  "original_title": "犬になったら好きな人に拾われた。",
+  "year": 2023,
+  "plot": "一觉醒来猛地发现——自己竟然变成了心仪的同班同学犬饲家的一条狗“小太”。\n\n在学校里超酷的她，其实挺溺爱自己家的狗狗。散步、上厕所和洗澡——被当成狗养着的每一天都有各种各样的事情发生。虽然想早点变回人类的样子但是被喜欢的人彻底爱着的生活是不知道为什么能如此幸福.....再这样下去，自己的身心都会变成狗。\n\n以“狗狗的视角”展开的全新的爱情喜剧，即将开幕。",
+  "tagline": "",
+  "runtime": 12,
+  "release_date": "2023-01-07",
+  "rating": 5.552,
+  "rating_count": 29,
+  "genres": [
+    "动画",
+    "喜剧"
+  ],
+  "countries": [
+    "JP"
+  ],
+  "languages": [
+    "ja"
+  ],
+  "studios": [
+    "Quad",
+    "King Records",
+    "WWWave",
+    "Kodansha",
+    "THE KLOCKWORX",
+    "Asmik Ace",
+    "Deregula"
+  ],
+  "networks": [
+    "Tokyo MX"
+  ],
+  "network": "Tokyo MX",
+  "status": "Ended",
+  "homepage": "https://inuhiro-anime.com",
+  "cast": [
+    {
+      "name_en": "Shuichiro Umeda",
+      "name_zh": null,
+      "role": "Pochita (voice)",
+      "original_name": "梅田修一朗",
+      "profile_path": "/dCr870q8ojD6qpD1hmS1sdvh2pe.jpg",
+      "popularity": 2.7575
+    },
+    {
+      "name_en": "Saya Aizawa",
+      "name_zh": null,
+      "role": "Karen Inukai (voice)",
+      "original_name": "会沢紗弥",
+      "profile_path": "/3QoVKl1w7uBMf5ivJ4MccYkt4zR.jpg",
+      "popularity": 1.0817
+    },
+    {
+      "name_en": "Mayu Sagara",
+      "name_zh": null,
+      "role": "Mike Nekotani (voice)",
+      "original_name": "相良茉優",
+      "profile_path": "/34nn1h3Mg2TsvOQs9DJViogVurp.jpg",
+      "popularity": 2.6
+    },
+    {
+      "name_en": "Yurie Kozakai",
+      "name_zh": null,
+      "role": "Usagi Tsukishiro (voice)",
+      "original_name": "小坂井祐莉絵",
+      "profile_path": "/mbIMcptHLQir3wrAnnSSAR5uRR1.jpg",
+      "popularity": 0.8223
+    }
+  ],
+  "directors": [
+    "木村佳嗣",
+    "森田侑希",
+    "安藤贵史",
+    "Takashi Yasudo",
+    "岩垂瑞树"
+  ],
+  "writers": [
+    "Itsutsuse"
+  ],
+  "images": {},
+  "seasons": [
+    {
+      "air_date": "2023-03-29",
+      "episode_count": 2,
+      "id": 324693,
+      "name": "特别篇",
+      "overview": "",
+      "poster_path": "/vPIzOp0nv3rwceVAqWKbLeMSCIY.jpg",
+      "season_number": 0,
+      "vote_average": 0.0
+    },
+    {
+      "air_date": "2023-01-07",
+      "episode_count": 12,
+      "id": 283307,
+      "name": "第 1 季",
+      "overview": "一觉醒来，发现自己竟然成了心仪同班同学“犬饲先生”的宠物狗“波奇太”!\n\n在学校里是个超酷的女朋友，但实际上超级喜欢狗。\n\n散步、上厕所、泡澡 -- 作为狗被饲养的日子是一连串的意外。\n\n虽然很想早点变回人类，但是被喜欢的人彻底爱着的生活是幸福的... ...\n\n这样下去，身心都会变成狗! ?\n\n以“犬视线(低角度)”带来的新感觉爱情喜剧!",
+      "poster_path": "/o05lQyT8TAgJKrO7n3JPlPRmte8.jpg",
+      "season_number": 1,
+      "vote_average": 6.3
+    }
+  ],
+  "episodes": [
+    {
+      "air_date": "2023-01-07",
+      "crew": [
+        {
+          "job": "Director",
+          "department": "Directing",
+          "credit_id": "63c00c3ae16e5a008ac76c05",
+          "adult": false,
+          "gender": 2,
+          "id": 2381347,
+          "known_for_department": "Directing",
+          "name": "安藤贵史",
+          "original_name": "安藤貴史",
+          "popularity": 1.3927,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 1,
+      "episode_type": "standard",
+      "guest_stars": [
+        {
+          "character": "Karen's Mother (voice)",
+          "credit_id": "63bc4260fc31d30092c58d5c",
+          "order": 500,
+          "adult": false,
+          "gender": 1,
+          "id": 144649,
+          "known_for_department": "Acting",
+          "name": "后藤邑子",
+          "original_name": "後藤邑子",
+          "popularity": 1.0476,
+          "profile_path": "/1VqFJ6oLDQAtSZHHj675QBTDqFD.jpg"
+        }
+      ],
+      "name": "第 1 集",
+      "overview": "主角一醒来就猛然发现自己变成了一只狗。捡到他的人是他在人类时就喜欢的犬饲同学。犬饲将被雨淋湿的波奇太带回家，打算一起洗澡而开始脱衣。波奇太突然被迫看到喜欢的女生的裸体而惊慌失措，但最终还是只能乖乖地被犬饲操弄……。",
+      "id": 3594666,
+      "production_code": "",
+      "runtime": 12,
+      "season_number": 1,
+      "still_path": "/sImHDL0KljiFSjdt1VIiEylKn9N.jpg",
+      "vote_average": 5.333,
+      "vote_count": 6
+    },
+    {
+      "air_date": "2023-01-14",
+      "crew": [
+        {
+          "job": "Director",
+          "department": "Directing",
+          "credit_id": "63c00c3ae16e5a008ac76c05",
+          "adult": false,
+          "gender": 2,
+          "id": 2381347,
+          "known_for_department": "Directing",
+          "name": "安藤贵史",
+          "original_name": "安藤貴史",
+          "popularity": 1.3927,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 2,
+      "episode_type": "standard",
+      "guest_stars": [
+        {
+          "character": "Karen's Mother (voice)",
+          "credit_id": "63bc4260fc31d30092c58d5c",
+          "order": 500,
+          "adult": false,
+          "gender": 1,
+          "id": 144649,
+          "known_for_department": "Acting",
+          "name": "后藤邑子",
+          "original_name": "後藤邑子",
+          "popularity": 1.0476,
+          "profile_path": "/1VqFJ6oLDQAtSZHHj675QBTDqFD.jpg"
+        },
+        {
+          "character": "Girl (voice)",
+          "credit_id": "63c16862a5743d00891056e6",
+          "order": 501,
+          "adult": false,
+          "gender": 1,
+          "id": 3620445,
+          "known_for_department": "Acting",
+          "name": "优希麻梨子",
+          "original_name": "優希麻梨子",
+          "popularity": 0.7473,
+          "profile_path": "/lIbrh4Czf3fcRwHsY8BH47OC79E.jpg"
+        },
+        {
+          "character": "Girl (voice)",
+          "credit_id": "63c1686ca5743d00b0bf62cc",
+          "order": 502,
+          "adult": false,
+          "gender": 1,
+          "id": 3682170,
+          "known_for_department": "Acting",
+          "name": "泽幡枫",
+          "original_name": "澤幡楓",
+          "popularity": 0.6925,
+          "profile_path": "/4CWOQ4dA2JeviJG9kAbgKKPv9Sq.jpg"
+        }
+      ],
+      "name": "第 2 集",
+      "overview": "成为犬饲的宠物狗后第一次去散步。 相反于对从狗的视角看到的户外世界感到害怕的波奇塔，犬饲正心情愉快地向前行走。走着走着，犬饲面临到了突如其来的危机。波奇太冒着生命危险前去保护犬饲同学，但回过神来，眼前却是犬饲同学的内裤……。",
+      "id": 4141217,
+      "production_code": "",
+      "runtime": 12,
+      "season_number": 1,
+      "still_path": "/oBDNyn0Itx7CPlI85X66Rb7YujO.jpg",
+      "vote_average": 6.25,
+      "vote_count": 4
+    },
+    {
+      "air_date": "2023-01-21",
+      "crew": [
+        {
+          "job": "Supervising Animation Director",
+          "department": "Visual Effects",
+          "credit_id": "631f0b90b87aec008283c348",
+          "adult": false,
+          "gender": 2,
+          "id": 1544694,
+          "known_for_department": "Visual Effects",
+          "name": "森田和明",
+          "original_name": "森田和明",
+          "popularity": 1.0745,
+          "profile_path": null
+        },
+        {
+          "job": "Storyboard Artist",
+          "department": "Art",
+          "credit_id": "63c97daa25a5360082d17b7c",
+          "adult": false,
+          "gender": 2,
+          "id": 2050141,
+          "known_for_department": "Art",
+          "name": "吉田英俊",
+          "original_name": "吉田英俊",
+          "popularity": 2.4135,
+          "profile_path": null
+        },
+        {
+          "job": "Director",
+          "department": "Directing",
+          "credit_id": "63c97d9ff5c82400852602cf",
+          "adult": false,
+          "gender": 2,
+          "id": 2750634,
+          "known_for_department": "Directing",
+          "name": "木村佳嗣",
+          "original_name": "木村佳嗣",
+          "popularity": 1.7931,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 3,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 3 集",
+      "overview": "为了回到自己原本的家，波奇太试图让邻居的猫谷喜欢上自己。但其实猫谷超级讨厌狗！猫谷在试图逃离波奇太时，不小心摔倒弄伤了膝盖。波奇太想透过舔舐猫谷的伤口来治疗她。但目睹2人那副模样的犬饲被嫉妒冲昏了头，为了让自己也被波奇太舔舐，而做出了令人震惊的积极行动。",
+      "id": 4141219,
+      "production_code": "",
+      "runtime": 12,
+      "season_number": 1,
+      "still_path": "/dUIvJUEBLXbKJkBLmP3VsRx200B.jpg",
+      "vote_average": 7.0,
+      "vote_count": 3
+    },
+    {
+      "air_date": "2023-01-28",
+      "crew": [
+        {
+          "job": "Storyboard Artist",
+          "department": "Art",
+          "credit_id": "63c97daa25a5360082d17b7c",
+          "adult": false,
+          "gender": 2,
+          "id": 2050141,
+          "known_for_department": "Art",
+          "name": "吉田英俊",
+          "original_name": "吉田英俊",
+          "popularity": 2.4135,
+          "profile_path": null
+        },
+        {
+          "job": "Director",
+          "department": "Directing",
+          "credit_id": "63c97d9ff5c82400852602cf",
+          "adult": false,
+          "gender": 2,
+          "id": 2750634,
+          "known_for_department": "Directing",
+          "name": "木村佳嗣",
+          "original_name": "木村佳嗣",
+          "popularity": 1.7931,
+          "profile_path": null
+        },
+        {
+          "job": "Supervising Animation Director",
+          "department": "Visual Effects",
+          "credit_id": "63d187a6cb71b80081022a42",
+          "adult": false,
+          "gender": 2,
+          "id": 2284407,
+          "known_for_department": "Visual Effects",
+          "name": "森前和也",
+          "original_name": "森前和也",
+          "popularity": 1.8741,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 4,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 4 集",
+      "overview": "犬饲不知为何穿上了狗的装扮。就算为了理解波奇太的想法而模仿狗，也理所当然地不可能听得懂波奇太在说什么。虽然波奇太对犬饲同学的种种古怪行为感到有些傻眼，但听到犬饲同学突然向他吐诉的烦恼，波奇太不禁将彼此的境遇重叠而感同身受。",
+      "id": 4159434,
+      "production_code": "",
+      "runtime": 12,
+      "season_number": 1,
+      "still_path": "/yXdzK3jHhgi9vUfGtFcFV9bYHmU.jpg",
+      "vote_average": 6.667,
+      "vote_count": 3
+    },
+    {
+      "air_date": "2023-02-04",
+      "crew": [
+        {
+          "job": "Supervising Animation Director",
+          "department": "Visual Effects",
+          "credit_id": "631f0b90b87aec008283c348",
+          "adult": false,
+          "gender": 2,
+          "id": 1544694,
+          "known_for_department": "Visual Effects",
+          "name": "森田和明",
+          "original_name": "森田和明",
+          "popularity": 1.0745,
+          "profile_path": null
+        },
+        {
+          "job": "Director",
+          "department": "Directing",
+          "credit_id": "63dc1eb942d8a500dacf0fd9",
+          "adult": false,
+          "gender": 0,
+          "id": 3291887,
+          "known_for_department": "Visual Effects",
+          "name": "岩垂瑞树",
+          "original_name": "岩垂瑞樹",
+          "popularity": 0.9012,
+          "profile_path": null
+        },
+        {
+          "job": "Storyboard Artist",
+          "department": "Art",
+          "credit_id": "63dc1eac00fb6b00d12b917a",
+          "adult": false,
+          "gender": 0,
+          "id": 2844764,
+          "known_for_department": "Art",
+          "name": "RoydenB",
+          "original_name": "RoydenB",
+          "popularity": 0.5319,
+          "profile_path": null
+        },
+        {
+          "job": "Animation Director",
+          "department": "Visual Effects",
+          "credit_id": "63dc1ec710923000bccccc5f",
+          "adult": false,
+          "gender": 1,
+          "id": 2771329,
+          "known_for_department": "Visual Effects",
+          "name": "柄谷绫子",
+          "original_name": "柄谷綾子",
+          "popularity": 1.141,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 5,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 5 集",
+      "overview": "波奇太被邀请到猫谷家作客。于是这次他试图逃离猫谷家，但却被眼尖的犬饲抓到。波奇太虽然一时无计可施，但之前预先准备的作战奏效，使他终于成功回到自家。结果却在那里看到认识的学妹 ── 月城。不顾一旁惊讶的波奇太，月城开始四处打量波奇太的房间……",
+      "id": 4159435,
+      "production_code": "",
+      "runtime": 12,
+      "season_number": 1,
+      "still_path": "/dsVvjyxLsDbZ3RV44k8rP6nlTVO.jpg",
+      "vote_average": 7.0,
+      "vote_count": 3
+    },
+    {
+      "air_date": "2023-02-11",
+      "crew": [],
+      "episode_number": 6,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 6 集",
+      "overview": "被发现藏在月城裙子里的波奇来不及反抗就被月城家带走了。月城计划把波奇当作自己的宠物，不过，刚到家的瞬间，发烧倒下了。觉得这样下去感冒会恶化的波奇，想让月城换掉湿了的衣服…。",
+      "id": 4159438,
+      "production_code": "",
+      "runtime": 12,
+      "season_number": 1,
+      "still_path": "/HWRKF3Zmzpeu0gLtlw3dx7QWVc.jpg",
+      "vote_average": 4.6,
+      "vote_count": 5
+    },
+    {
+      "air_date": "2023-02-18",
+      "crew": [],
+      "episode_number": 7,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 7 集",
+      "overview": "波奇想起了让自己变成狗的元凶。犬饲和月城在一旁，围绕着波奇的所有权产生了对立。双方互不相让，争论走在了平行线上。猫谷在一旁看着她们，建议用一场胜负来了结这件事。那是“波有进入裙子内的一方获胜”，这种意义不明的内容。",
+      "id": 4159439,
+      "production_code": "",
+      "runtime": 12,
+      "season_number": 1,
+      "still_path": "/jpQGh6sMMjhtEIsqEDYndron9kL.jpg",
+      "vote_average": 6.333,
+      "vote_count": 3
+    },
+    {
+      "air_date": "2023-02-25",
+      "crew": [
+        {
+          "job": "Director",
+          "department": "Directing",
+          "credit_id": "63f544c17dfda600792b555c",
+          "adult": false,
+          "gender": 1,
+          "id": 2859895,
+          "known_for_department": "Directing",
+          "name": "森田侑希",
+          "original_name": "森田侑希",
+          "popularity": 1.039,
+          "profile_path": null
+        }
+      ],
+      "episode_number": 8,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 8 集",
+      "overview": "波奇为了找到白衣少女，骗犬饲带它去了学校，在犬饲的包里屏住呼吸的波奇，遇到了同班女生们换衣服的场景。但是随着时间的流逝意外地窥视了犬饲孤独的学园生活。",
+      "id": 4159441,
+      "production_code": "",
+      "runtime": 12,
+      "season_number": 1,
+      "still_path": "/vR2x5ISAFmWfaQyCYcJtbkRympk.jpg",
+      "vote_average": 6.667,
+      "vote_count": 3
+    },
+    {
+      "air_date": "2023-03-04",
+      "crew": [],
+      "episode_number": 9,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 9 集",
+      "overview": "犬饲正在忙着准备咖啡，正在试制热狗的猫谷来了。猫谷惊讶于波奇在学校，不由自主地踩了滚在脚边的邦德。被热狗的气味吸引的狗狗们悄悄靠近浑身黏糊糊的猫谷。",
+      "id": 4159442,
+      "production_code": "",
+      "runtime": 12,
+      "season_number": 1,
+      "still_path": "/q1XwBq9KGBPucDiHSWGIIMkPyQ2.jpg",
+      "vote_average": 6.0,
+      "vote_count": 3
+    },
+    {
+      "air_date": "2023-03-11",
+      "crew": [],
+      "episode_number": 10,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 10 集",
+      "overview": "猫谷为了逃离狗群而在校园内四处奔逃。波奇太觉得这样下去没完没了，于是诱导猫谷到校内的泳池那。和波奇太们一起跳进泳池的猫谷全身被水浸湿，进而消除了衣服上的味道，才终于成功让狗群们散去。猫谷边对波奇太表达感谢，边回到校庆的准备工作上，但是......",
+      "id": 4159443,
+      "production_code": "",
+      "runtime": 12,
+      "season_number": 1,
+      "still_path": "/nVpcZ1xxMQQ0ubKn9k1PFcblG7M.jpg",
+      "vote_average": 7.333,
+      "vote_count": 3
+    },
+    {
+      "air_date": "2023-03-18",
+      "crew": [],
+      "episode_number": 11,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 11 集",
+      "overview": "学园祭当天，犬饲的班级开了一家狗狗咖啡厅，却发现客人被月城的班级表演兔子咖啡厅抢走了。于是犬饲先生提议的不是足浴，而是「犬汤」。被狗舔了脚的女性客人们的喘息声在咖啡厅里回荡，客人们平安无事地回来了。终于，那个白衣少女来到了店里。",
+      "id": 4288586,
+      "production_code": "",
+      "runtime": 12,
+      "season_number": 1,
+      "still_path": "/fuFvwww3jtqCpw62dmtgnHRq9Q.jpg",
+      "vote_average": 5.5,
+      "vote_count": 2
+    },
+    {
+      "air_date": "2023-03-25",
+      "crew": [],
+      "episode_number": 12,
+      "episode_type": "finale",
+      "guest_stars": [],
+      "name": "第 12 集",
+      "overview": "波提太从学园的疯狂科学家咲比良伊纳利那里听到了自己被当成狗的理由。伊娜莉以波奇太和犬饲先生为实验对象，监视着两人的一切生活。对于只把犬饲先生当成豚鼠的伊娜莉感到愤慨的波吉太，被告知了让自己变回人类的方法",
+      "id": 4288587,
+      "production_code": "",
+      "runtime": 12,
+      "season_number": 1,
+      "still_path": "/eSDBQAwXdG94eiKwARx4YEhj2Sd.jpg",
+      "vote_average": 6.333,
+      "vote_count": 3
+    }
+  ],
+  "title_zh": "犬になったら好きな人に拾われた。",
+  "plot_zh": "一觉醒来猛地发现——自己竟然变成了心仪的同班同学犬饲家的一条狗“小太”。\n\n在学校里超酷的她，其实挺溺爱自己家的狗狗。散步、上厕所和洗澡——被当成狗养着的每一天都有各种各样的事情发生。虽然想早点变回人类的样子但是被喜欢的人彻底爱着的生活是不知道为什么能如此幸福.....再这样下去，自己的身心都会变成狗。\n\n以“狗狗的视角”展开的全新的爱情喜剧，即将开幕。",
+  "keywords_en": [
+    "romance",
+    "slice of life",
+    "school",
+    "based on manga",
+    "school life",
+    "ecchi",
+    "anime",
+    "japanese high school"
+  ],
+  "keywords": [
+    "romance",
+    "slice of life",
+    "school",
+    "based on manga",
+    "school life",
+    "ecchi",
+    "anime",
+    "japanese high school"
+  ],
+  "keywords_zh": [
+    "浪漫",
+    "日常片段",
+    "学校",
+    "改编自漫画",
+    "校园生活",
+    "害羞",
+    "动画",
+    "日本高中"
+  ]
+}
+2025-12-06 01:19:04,314 - MetadataAgent - DEBUG - Translated episodes: [
+  {
+    "air_date": "2023-01-07",
+    "crew": [
+      {
+        "job": "Director",
+        "department": "Directing",
+        "credit_id": "63c00c3ae16e5a008ac76c05",
+        "adult": false,
+        "gender": 2,
+        "id": 2381347,
+        "known_for_department": "Directing",
+        "name": "安藤贵史",
+        "original_name": "安藤貴史",
+        "popularity": 1.3927,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 1,
+    "episode_type": "standard",
+    "guest_stars": [
+      {
+        "character": "Karen's Mother (voice)",
+        "credit_id": "63bc4260fc31d30092c58d5c",
+        "order": 500,
+        "adult": false,
+        "gender": 1,
+        "id": 144649,
+        "known_for_department": "Acting",
+        "name": "后藤邑子",
+        "original_name": "後藤邑子",
+        "popularity": 1.0476,
+        "profile_path": "/1VqFJ6oLDQAtSZHHj675QBTDqFD.jpg"
+      }
+    ],
+    "name": "第 1 集",
+    "overview": "主角一醒来就猛然发现自己变成了一只狗。捡到他的人是他在人类时就喜欢的犬饲同学。犬饲将被雨淋湿的波奇太带回家，打算一起洗澡而开始脱衣。波奇太突然被迫看到喜欢的女生的裸体而惊慌失措，但最终还是只能乖乖地被犬饲操弄……。",
+    "id": 3594666,
+    "production_code": "",
+    "runtime": 12,
+    "season_number": 1,
+    "still_path": "/sImHDL0KljiFSjdt1VIiEylKn9N.jpg",
+    "vote_average": 5.333,
+    "vote_count": 6
+  },
+  {
+    "air_date": "2023-01-14",
+    "crew": [
+      {
+        "job": "Director",
+        "department": "Directing",
+        "credit_id": "63c00c3ae16e5a008ac76c05",
+        "adult": false,
+        "gender": 2,
+        "id": 2381347,
+        "known_for_department": "Directing",
+        "name": "安藤贵史",
+        "original_name": "安藤貴史",
+        "popularity": 1.3927,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 2,
+    "episode_type": "standard",
+    "guest_stars": [
+      {
+        "character": "Karen's Mother (voice)",
+        "credit_id": "63bc4260fc31d30092c58d5c",
+        "order": 500,
+        "adult": false,
+        "gender": 1,
+        "id": 144649,
+        "known_for_department": "Acting",
+        "name": "后藤邑子",
+        "original_name": "後藤邑子",
+        "popularity": 1.0476,
+        "profile_path": "/1VqFJ6oLDQAtSZHHj675QBTDqFD.jpg"
+      },
+      {
+        "character": "Girl (voice)",
+        "credit_id": "63c16862a5743d00891056e6",
+        "order": 501,
+        "adult": false,
+        "gender": 1,
+        "id": 3620445,
+        "known_for_department": "Acting",
+        "name": "优希麻梨子",
+        "original_name": "優希麻梨子",
+        "popularity": 0.7473,
+        "profile_path": "/lIbrh4Czf3fcRwHsY8BH47OC79E.jpg"
+      },
+      {
+        "character": "Girl (voice)",
+        "credit_id": "63c1686ca5743d00b0bf62cc",
+        "order": 502,
+        "adult": false,
+        "gender": 1,
+        "id": 3682170,
+        "known_for_department": "Acting",
+        "name": "泽幡枫",
+        "original_name": "澤幡楓",
+        "popularity": 0.6925,
+        "profile_path": "/4CWOQ4dA2JeviJG9kAbgKKPv9Sq.jpg"
+      }
+    ],
+    "name": "第 2 集",
+    "overview": "成为犬饲的宠物狗后第一次去散步。 相反于对从狗的视角看到的户外世界感到害怕的波奇塔，犬饲正心情愉快地向前行走。走着走着，犬饲面临到了突如其来的危机。波奇太冒着生命危险前去保护犬饲同学，但回过神来，眼前却是犬饲同学的内裤……。",
+    "id": 4141217,
+    "production_code": "",
+    "runtime": 12,
+    "season_number": 1,
+    "still_path": "/oBDNyn0Itx7CPlI85X66Rb7YujO.jpg",
+    "vote_average": 6.25,
+    "vote_count": 4
+  },
+  {
+    "air_date": "2023-01-21",
+    "crew": [
+      {
+        "job": "Supervising Animation Director",
+        "department": "Visual Effects",
+        "credit_id": "631f0b90b87aec008283c348",
+        "adult": false,
+        "gender": 2,
+        "id": 1544694,
+        "known_for_department": "Visual Effects",
+        "name": "森田和明",
+        "original_name": "森田和明",
+        "popularity": 1.0745,
+        "profile_path": null
+      },
+      {
+        "job": "Storyboard Artist",
+        "department": "Art",
+        "credit_id": "63c97daa25a5360082d17b7c",
+        "adult": false,
+        "gender": 2,
+        "id": 2050141,
+        "known_for_department": "Art",
+        "name": "吉田英俊",
+        "original_name": "吉田英俊",
+        "popularity": 2.4135,
+        "profile_path": null
+      },
+      {
+        "job": "Director",
+        "department": "Directing",
+        "credit_id": "63c97d9ff5c82400852602cf",
+        "adult": false,
+        "gender": 2,
+        "id": 2750634,
+        "known_for_department": "Directing",
+        "name": "木村佳嗣",
+        "original_name": "木村佳嗣",
+        "popularity": 1.7931,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 3,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 3 集",
+    "overview": "为了回到自己原本的家，波奇太试图让邻居的猫谷喜欢上自己。但其实猫谷超级讨厌狗！猫谷在试图逃离波奇太时，不小心摔倒弄伤了膝盖。波奇太想透过舔舐猫谷的伤口来治疗她。但目睹2人那副模样的犬饲被嫉妒冲昏了头，为了让自己也被波奇太舔舐，而做出了令人震惊的积极行动。",
+    "id": 4141219,
+    "production_code": "",
+    "runtime": 12,
+    "season_number": 1,
+    "still_path": "/dUIvJUEBLXbKJkBLmP3VsRx200B.jpg",
+    "vote_average": 7.0,
+    "vote_count": 3
+  },
+  {
+    "air_date": "2023-01-28",
+    "crew": [
+      {
+        "job": "Storyboard Artist",
+        "department": "Art",
+        "credit_id": "63c97daa25a5360082d17b7c",
+        "adult": false,
+        "gender": 2,
+        "id": 2050141,
+        "known_for_department": "Art",
+        "name": "吉田英俊",
+        "original_name": "吉田英俊",
+        "popularity": 2.4135,
+        "profile_path": null
+      },
+      {
+        "job": "Director",
+        "department": "Directing",
+        "credit_id": "63c97d9ff5c82400852602cf",
+        "adult": false,
+        "gender": 2,
+        "id": 2750634,
+        "known_for_department": "Directing",
+        "name": "木村佳嗣",
+        "original_name": "木村佳嗣",
+        "popularity": 1.7931,
+        "profile_path": null
+      },
+      {
+        "job": "Supervising Animation Director",
+        "department": "Visual Effects",
+        "credit_id": "63d187a6cb71b80081022a42",
+        "adult": false,
+        "gender": 2,
+        "id": 2284407,
+        "known_for_department": "Visual Effects",
+        "name": "森前和也",
+        "original_name": "森前和也",
+        "popularity": 1.8741,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 4,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 4 集",
+    "overview": "犬饲不知为何穿上了狗的装扮。就算为了理解波奇太的想法而模仿狗，也理所当然地不可能听得懂波奇太在说什么。虽然波奇太对犬饲同学的种种古怪行为感到有些傻眼，但听到犬饲同学突然向他吐诉的烦恼，波奇太不禁将彼此的境遇重叠而感同身受。",
+    "id": 4159434,
+    "production_code": "",
+    "runtime": 12,
+    "season_number": 1,
+    "still_path": "/yXdzK3jHhgi9vUfGtFcFV9bYHmU.jpg",
+    "vote_average": 6.667,
+    "vote_count": 3
+  },
+  {
+    "air_date": "2023-02-04",
+    "crew": [
+      {
+        "job": "Supervising Animation Director",
+        "department": "Visual Effects",
+        "credit_id": "631f0b90b87aec008283c348",
+        "adult": false,
+        "gender": 2,
+        "id": 1544694,
+        "known_for_department": "Visual Effects",
+        "name": "森田和明",
+        "original_name": "森田和明",
+        "popularity": 1.0745,
+        "profile_path": null
+      },
+      {
+        "job": "Director",
+        "department": "Directing",
+        "credit_id": "63dc1eb942d8a500dacf0fd9",
+        "adult": false,
+        "gender": 0,
+        "id": 3291887,
+        "known_for_department": "Visual Effects",
+        "name": "岩垂瑞树",
+        "original_name": "岩垂瑞樹",
+        "popularity": 0.9012,
+        "profile_path": null
+      },
+      {
+        "job": "Storyboard Artist",
+        "department": "Art",
+        "credit_id": "63dc1eac00fb6b00d12b917a",
+        "adult": false,
+        "gender": 0,
+        "id": 2844764,
+        "known_for_department": "Art",
+        "name": "RoydenB",
+        "original_name": "RoydenB",
+        "popularity": 0.5319,
+        "profile_path": null
+      },
+      {
+        "job": "Animation Director",
+        "department": "Visual Effects",
+        "credit_id": "63dc1ec710923000bccccc5f",
+        "adult": false,
+        "gender": 1,
+        "id": 2771329,
+        "known_for_department": "Visual Effects",
+        "name": "柄谷绫子",
+        "original_name": "柄谷綾子",
+        "popularity": 1.141,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 5,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 5 集",
+    "overview": "波奇太被邀请到猫谷家作客。于是这次他试图逃离猫谷家，但却被眼尖的犬饲抓到。波奇太虽然一时无计可施，但之前预先准备的作战奏效，使他终于成功回到自家。结果却在那里看到认识的学妹 ── 月城。不顾一旁惊讶的波奇太，月城开始四处打量波奇太的房间……",
+    "id": 4159435,
+    "production_code": "",
+    "runtime": 12,
+    "season_number": 1,
+    "still_path": "/dsVvjyxLsDbZ3RV44k8rP6nlTVO.jpg",
+    "vote_average": 7.0,
+    "vote_count": 3
+  },
+  {
+    "air_date": "2023-02-11",
+    "crew": [],
+    "episode_number": 6,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 6 集",
+    "overview": "被发现藏在月城裙子里的波奇来不及反抗就被月城家带走了。月城计划把波奇当作自己的宠物，不过，刚到家的瞬间，发烧倒下了。觉得这样下去感冒会恶化的波奇，想让月城换掉湿了的衣服…。",
+    "id": 4159438,
+    "production_code": "",
+    "runtime": 12,
+    "season_number": 1,
+    "still_path": "/HWRKF3Zmzpeu0gLtlw3dx7QWVc.jpg",
+    "vote_average": 4.6,
+    "vote_count": 5
+  },
+  {
+    "air_date": "2023-02-18",
+    "crew": [],
+    "episode_number": 7,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 7 集",
+    "overview": "波奇想起了让自己变成狗的元凶。犬饲和月城在一旁，围绕着波奇的所有权产生了对立。双方互不相让，争论走在了平行线上。猫谷在一旁看着她们，建议用一场胜负来了结这件事。那是“波有进入裙子内的一方获胜”，这种意义不明的内容。",
+    "id": 4159439,
+    "production_code": "",
+    "runtime": 12,
+    "season_number": 1,
+    "still_path": "/jpQGh6sMMjhtEIsqEDYndron9kL.jpg",
+    "vote_average": 6.333,
+    "vote_count": 3
+  },
+  {
+    "air_date": "2023-02-25",
+    "crew": [
+      {
+        "job": "Director",
+        "department": "Directing",
+        "credit_id": "63f544c17dfda600792b555c",
+        "adult": false,
+        "gender": 1,
+        "id": 2859895,
+        "known_for_department": "Directing",
+        "name": "森田侑希",
+        "original_name": "森田侑希",
+        "popularity": 1.039,
+        "profile_path": null
+      }
+    ],
+    "episode_number": 8,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 8 集",
+    "overview": "波奇为了找到白衣少女，骗犬饲带它去了学校，在犬饲的包里屏住呼吸的波奇，遇到了同班女生们换衣服的场景。但是随着时间的流逝意外地窥视了犬饲孤独的学园生活。",
+    "id": 4159441,
+    "production_code": "",
+    "runtime": 12,
+    "season_number": 1,
+    "still_path": "/vR2x5ISAFmWfaQyCYcJtbkRympk.jpg",
+    "vote_average": 6.667,
+    "vote_count": 3
+  },
+  {
+    "air_date": "2023-03-04",
+    "crew": [],
+    "episode_number": 9,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 9 集",
+    "overview": "犬饲正在忙着准备咖啡，正在试制热狗的猫谷来了。猫谷惊讶于波奇在学校，不由自主地踩了滚在脚边的邦德。被热狗的气味吸引的狗狗们悄悄靠近浑身黏糊糊的猫谷。",
+    "id": 4159442,
+    "production_code": "",
+    "runtime": 12,
+    "season_number": 1,
+    "still_path": "/q1XwBq9KGBPucDiHSWGIIMkPyQ2.jpg",
+    "vote_average": 6.0,
+    "vote_count": 3
+  },
+  {
+    "air_date": "2023-03-11",
+    "crew": [],
+    "episode_number": 10,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 10 集",
+    "overview": "猫谷为了逃离狗群而在校园内四处奔逃。波奇太觉得这样下去没完没了，于是诱导猫谷到校内的泳池那。和波奇太们一起跳进泳池的猫谷全身被水浸湿，进而消除了衣服上的味道，才终于成功让狗群们散去。猫谷边对波奇太表达感谢，边回到校庆的准备工作上，但是......",
+    "id": 4159443,
+    "production_code": "",
+    "runtime": 12,
+    "season_number": 1,
+    "still_path": "/nVpcZ1xxMQQ0ubKn9k1PFcblG7M.jpg",
+    "vote_average": 7.333,
+    "vote_count": 3
+  },
+  {
+    "air_date": "2023-03-18",
+    "crew": [],
+    "episode_number": 11,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 11 集",
+    "overview": "学园祭当天，犬饲的班级开了一家狗狗咖啡厅，却发现客人被月城的班级表演兔子咖啡厅抢走了。于是犬饲先生提议的不是足浴，而是「犬汤」。被狗舔了脚的女性客人们的喘息声在咖啡厅里回荡，客人们平安无事地回来了。终于，那个白衣少女来到了店里。",
+    "id": 4288586,
+    "production_code": "",
+    "runtime": 12,
+    "season_number": 1,
+    "still_path": "/fuFvwww3jtqCpw62dmtgnHRq9Q.jpg",
+    "vote_average": 5.5,
+    "vote_count": 2
+  },
+  {
+    "air_date": "2023-03-25",
+    "crew": [],
+    "episode_number": 12,
+    "episode_type": "finale",
+    "guest_stars": [],
+    "name": "第 12 集",
+    "overview": "波提太从学园的疯狂科学家咲比良伊纳利那里听到了自己被当成狗的理由。伊娜莉以波奇太和犬饲先生为实验对象，监视着两人的一切生活。对于只把犬饲先生当成豚鼠的伊娜莉感到愤慨的波吉太，被告知了让自己变回人类的方法",
+    "id": 4288587,
+    "production_code": "",
+    "runtime": 12,
+    "season_number": 1,
+    "still_path": "/eSDBQAwXdG94eiKwARx4YEhj2Sd.jpg",
+    "vote_average": 6.333,
+    "vote_count": 3
+  }
+]
+2025-12-06 01:19:12,515 - MetadataAgent - INFO - NFO generation completed
+2025-12-06 01:19:12,516 - MetadataAgent - DEBUG - NFO data: {
+  "title": "犬になったら好きな人に拾われた。",
+  "originaltitle": "犬になったら好きな人に拾われた。",
+  "year": 2023,
+  "premiered": "2023-01-07",
+  "plot": "一觉醒来猛地发现——自己竟然变成了心仪的同班同学犬饲家的一条狗“小太”。\n\n在学校里超酷的她，其实挺溺爱自己家的狗狗。散步、上厕所和洗澡——被当成狗养着的每一天都有各种各样的事情发生。虽然想早点变回人类的样子但是被喜欢的人彻底爱着的生活是不知道为什么能如此幸福.....再这样下去，自己的身心都会变成狗。\n\n以“狗狗的视角”展开的全新的爱情喜剧，即将开幕。",
+  "tagline": "",
+  "runtime": 12,
+  "rating": 5.552,
+  "votes": 29,
+  "genre": [
+    "动画",
+    "喜剧"
+  ],
+  "country": [
+    "JP"
+  ],
+  "studio": [
+    "Quad",
+    "King Records",
+    "WWWave",
+    "Kodansha",
+    "THE KLOCKWORX",
+    "Asmik Ace",
+    "Deregula"
+  ],
+  "credits": [
+    "Itsutsuse"
+  ],
+  "director": [
+    "木村佳嗣",
+    "森田侑希",
+    "安藤贵史",
+    "Takashi Yasudo",
+    "岩垂瑞树"
+  ],
+  "actor": [
+    {
+      "name": "Shuichiro Umeda",
+      "role": "Pochita (voice)",
+      "originalname": "梅田修一朗",
+      "thumb": "images/actors/Shuichiro Umeda.jpg"
+    },
+    {
+      "name": "Saya Aizawa",
+      "role": "Karen Inukai (voice)",
+      "originalname": "会沢紗弥",
+      "thumb": "images/actors/Saya Aizawa.jpg"
+    },
+    {
+      "name": "Mayu Sagara",
+      "role": "Mike Nekotani (voice)",
+      "originalname": "相良茉優",
+      "thumb": "images/actors/Mayu Sagara.jpg"
+    },
+    {
+      "name": "Yurie Kozakai",
+      "role": "Usagi Tsukishiro (voice)",
+      "originalname": "小坂井祐莉絵",
+      "thumb": "images/actors/Yurie Kozakai.jpg"
+    }
+  ],
+  "thumb": "poster.jpg",
+  "fanart": "fanart.jpg",
+  "tags": [
+    "浪漫",
+    "日常片段",
+    "学校",
+    "改编自漫画",
+    "校园生活",
+    "害羞",
+    "动画",
+    "日本高中"
+  ],
+  "network": "Tokyo MX",
+  "networks": [
+    "Tokyo MX"
+  ],
+  "status": "Ended",
+  "homepage": "https://inuhiro-anime.com",
+  "tmdb_id": 195081,
+  "validated": true
+}
+2025-12-06 01:19:12,516 - MetadataAgent - DEBUG - NFO XML content:
+<?xml version="1.0" ?>
+<tvshow>
+  <title>犬になったら好きな人に拾われた。</title>
+  <originaltitle>犬になったら好きな人に拾われた。</originaltitle>
+  <year>2023</year>
+  <premiered>2023-01-07</premiered>
+  <plot cdata_content="一觉醒来猛地发现——自己竟然变成了心仪的同班同学犬饲家的一条狗“小太”。
+
+在学校里超酷的她，其实挺溺爱自己家的狗狗。散步、上厕所和洗澡——被当成狗养着的每一天都有各种各样的事情发生。虽然想早点变回人类的样子但是被喜欢的人彻底爱着的生活是不知道为什么能如此幸福.....再这样下去，自己的身心都会变成狗。
+
+以“狗狗的视角”展开的全新的爱情喜剧，即将开幕。"><![CDATA[一觉醒来猛地发现——自己竟然变成了心仪的同班同学犬饲家的一条狗“小太”。
+
+在学校里超酷的她，其实挺溺爱自己家的狗狗。散步、上厕所和洗澡——被当成狗养着的每一天都有各种各样的事情发生。虽然想早点变回人类的样子但是被喜欢的人彻底爱着的生活是不知道为什么能如此幸福.....再这样下去，自己的身心都会变成狗。
+
+以“狗狗的视角”展开的全新的爱情喜剧，即将开幕。]]></plot>
+  <runtime>12</runtime>
+  <rating>5.552</rating>
+  <votes>29</votes>
+  <tmdbid>195081</tmdbid>
+  <genre>动画</genre>
+  <genre>喜剧</genre>
+  <country>JP</country>
+  <studio>Quad</studio>
+  <studio>King Records</studio>
+  <studio>WWWave</studio>
+  <studio>Kodansha</studio>
+  <studio>THE KLOCKWORX</studio>
+  <studio>Asmik Ace</studio>
+  <studio>Deregula</studio>
+  <credits>Itsutsuse</credits>
+  <director>木村佳嗣</director>
+  <director>森田侑希</director>
+  <director>安藤贵史</director>
+  <director>Takashi Yasudo</director>
+  <director>岩垂瑞树</director>
+  <actor>
+    <name>Shuichiro Umeda</name>
+    <role>Pochita (voice)</role>
+    <originalname>梅田修一朗</originalname>
+    <thumb>images/actors/Shuichiro Umeda.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Saya Aizawa</name>
+    <role>Karen Inukai (voice)</role>
+    <originalname>会沢紗弥</originalname>
+    <thumb>images/actors/Saya Aizawa.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Mayu Sagara</name>
+    <role>Mike Nekotani (voice)</role>
+    <originalname>相良茉優</originalname>
+    <thumb>images/actors/Mayu Sagara.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Yurie Kozakai</name>
+    <role>Usagi Tsukishiro (voice)</role>
+    <originalname>小坂井祐莉絵</originalname>
+    <thumb>images/actors/Yurie Kozakai.jpg</thumb>
+  </actor>
+  <network>Tokyo MX</network>
+  <status>Ended</status>
+  <homepage>https://inuhiro-anime.com</homepage>
+  <uniqueid type="tmdb" default="true">195081</uniqueid>
+  <thumb>images/poster/poster.jpg</thumb>
+  <fanart>images/fanart/fanart.jpg</fanart>
+  <tag>浪漫</tag>
+  <tag>日常片段</tag>
+  <tag>学校</tag>
+  <tag>改编自漫画</tag>
+  <tag>校园生活</tag>
+  <tag>害羞</tag>
+  <tag>动画</tag>
+  <tag>日本高中</tag>
+</tvshow>
+
+2025-12-06 01:19:17,515 - MetadataAgent - INFO - Output generation completed
+2025-12-06 01:19:17,515 - MetadataAgent - DEBUG - Output data: {
+  "status": "completed",
+  "files": {
+    "nfo_file": "$/Volumes/video/Animation/The Animation/My Life as Inukai-san's Dog (Unknown Year)/tvshow.nfo",
+    "images_dir": "$/Volumes/video/Animation/The Animation/My Life as Inukai-san's Dog (Unknown Year)/images",
+    "media_dir": "$/Volumes/video/Animation/The Animation/My Life as Inukai-san's Dog (Unknown Year)",
+    "season_1_episode_1": "$/Volumes/video/Animation/The Animation/My Life as Inukai-san's Dog (Unknown Year)/Season 01/犬になったら好きな人に拾われた。 - S01E01 - 第 1 集.nfo",
+    "season_1_episode_2": "$/Volumes/video/Animation/The Animation/My Life as Inukai-san's Dog (Unknown Year)/Season 01/犬になったら好きな人に拾われた。 - S01E02 - 第 2 集.nfo",
+    "season_1_episode_3": "$/Volumes/video/Animation/The Animation/My Life as Inukai-san's Dog (Unknown Year)/Season 01/犬になったら好きな人に拾われた。 - S01E03 - 第 3 集.nfo",
+    "season_1_episode_4": "$/Volumes/video/Animation/The Animation/My Life as Inukai-san's Dog (Unknown Year)/Season 01/犬になったら好きな人に拾われた。 - S01E04 - 第 4 集.nfo",
+    "season_1_episode_5": "$/Volumes/video/Animation/The Animation/My Life as Inukai-san's Dog (Unknown Year)/Season 01/犬になったら好きな人に拾われた。 - S01E05 - 第 5 集.nfo",
+    "season_1_episode_6": "$/Volumes/video/Animation/The Animation/My Life as Inukai-san's Dog (Unknown Year)/Season 01/犬になったら好きな人に拾われた。 - S01E06 - 第 6 集.nfo",
+    "season_1_episode_7": "$/Volumes/video/Animation/The Animation/My Life as Inukai-san's Dog (Unknown Year)/Season 01/犬になったら好きな人に拾われた。 - S01E07 - 第 7 集.nfo",
+    "season_1_episode_8": "$/Volumes/video/Animation/The Animation/My Life as Inukai-san's Dog (Unknown Year)/Season 01/犬になったら好きな人に拾われた。 - S01E08 - 第 8 集.nfo",
+    "season_1_episode_9": "$/Volumes/video/Animation/The Animation/My Life as Inukai-san's Dog (Unknown Year)/Season 01/犬になったら好きな人に拾われた。 - S01E09 - 第 9 集.nfo",
+    "season_1_episode_10": "$/Volumes/video/Animation/The Animation/My Life as Inukai-san's Dog (Unknown Year)/Season 01/犬になったら好きな人に拾われた。 - S01E10 - 第 10 集.nfo",
+    "season_1_episode_11": "$/Volumes/video/Animation/The Animation/My Life as Inukai-san's Dog (Unknown Year)/Season 01/犬になったら好きな人に拾われた。 - S01E11 - 第 11 集.nfo",
+    "season_1_episode_12": "$/Volumes/video/Animation/The Animation/My Life as Inukai-san's Dog (Unknown Year)/Season 01/犬になったら好きな人に拾われた。 - S01E12 - 第 12 集.nfo"
+  }
+}
+2025-12-06 01:19:17,516 - MetadataAgent - INFO - === PROCESSING SUMMARY ===
+2025-12-06 01:19:17,516 - MetadataAgent - INFO - Log file: logs/metadata_agent_20251206_011859.log
+2025-12-06 01:19:17,516 - MetadataAgent - INFO - Processing completed successfully
+2025-12-06 01:19:17,522 - MetadataAgent - INFO - Processing summary saved to: logs/processing_summary_20251206_011917.json

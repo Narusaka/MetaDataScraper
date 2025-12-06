@@ -1,0 +1,100 @@
+<?xml version="1.0" ?>
+<tvshow>
+  <title>为什么老师会在这里</title>
+  <originaltitle>なんでここに先生が!?</originaltitle>
+  <year>2019</year>
+  <premiered>2019-04-08</premiered>
+  <plot cdata_content="为什么老师会在这里!?——
+
+不分场所地接连引发，由老师与男子高中生带来的紧张感满载的突发事件的连续。
+
+充满大人魅力的老师们所展现的种种表情，了解得越多就越觉得可爱！
+
+通过过激的情景描绘出来的“甜甜蜜蜜”而又“摇摇晃晃”的可爱老师们的高中生活！"><![CDATA[为什么老师会在这里!?——
+
+不分场所地接连引发，由老师与男子高中生带来的紧张感满载的突发事件的连续。
+
+充满大人魅力的老师们所展现的种种表情，了解得越多就越觉得可爱！
+
+通过过激的情景描绘出来的“甜甜蜜蜜”而又“摇摇晃晃”的可爱老师们的高中生活！]]></plot>
+  <runtime>12</runtime>
+  <rating>8.423</rating>
+  <votes>686</votes>
+  <tmdbid>86836</tmdbid>
+  <genre>动画</genre>
+  <genre>喜剧</genre>
+  <country>JP</country>
+  <studio>Tear Studio</studio>
+  <studio>Tear Studio</studio>
+  <credits>高林佑树, Soborou, Yuri Fujimaru</credits>
+  <director>Toshikatsu Tokoro</director>
+  <director>所俊克</director>
+  <director>中田诚</director>
+  <actor>
+    <name>Sumire Uesaka</name>
+    <role>Kana Kojima (voice)</role>
+    <originalname>上坂すみれ</originalname>
+    <thumb>images/actors/Sumire Uesaka.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Kazutomi Yamamoto</name>
+    <role>Takashi Takahashi (voice)</role>
+    <originalname>山本和臣</originalname>
+    <thumb>images/actors/Kazutomi Yamamoto.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Yuko Goto</name>
+    <role>Mayu Matsukaze (voice)</role>
+    <originalname>後藤邑子</originalname>
+    <thumb>images/actors/Yuko Goto.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Ryota Suzuki</name>
+    <role>Ichirō Satō (voice)</role>
+    <originalname>鈴木崚汰</originalname>
+    <thumb>images/actors/Ryota Suzuki.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Shizuka Ishigami</name>
+    <role>Hikari Hazakura (voice)</role>
+    <originalname>石上静香</originalname>
+    <thumb>images/actors/Shizuka Ishigami.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Nozomi Yamamoto</name>
+    <role>Chizuru Tachibana (voice)</role>
+    <originalname>山本希望</originalname>
+    <thumb>images/actors/Nozomi Yamamoto.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Yusuke Kobayashi</name>
+    <role>Kō Tanaka (voice)</role>
+    <originalname>小林裕介</originalname>
+    <thumb>images/actors/Yusuke Kobayashi.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Toshiki Masuda</name>
+    <role>Rin Suzuki (voice)</role>
+    <originalname>増田俊樹</originalname>
+    <thumb>images/actors/Toshiki Masuda.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Yuka Otsubo</name>
+    <role>Saya Matsukaze (Voice)</role>
+    <originalname>大坪由佳</originalname>
+    <thumb>images/actors/Yuka Otsubo.jpg</thumb>
+  </actor>
+  <network>AT-X</network>
+  <network>Tokyo MX</network>
+  <status>Ended</status>
+  <homepage>http://www.nankoko-anime.com</homepage>
+  <uniqueid type="tmdb" default="true">86836</uniqueid>
+  <thumb>images/poster/poster.jpg</thumb>
+  <fanart>images/fanart/fanart.jpg</fanart>
+  <tag>school</tag>
+  <tag>based on manga</tag>
+  <tag>teacher student relationship</tag>
+  <tag>seinen</tag>
+  <tag>ecchi</tag>
+  <tag>anime</tag>
+</tvshow>

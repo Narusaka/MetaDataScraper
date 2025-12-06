@@ -1,0 +1,739 @@
+2025-12-06 01:34:03,418 - MetadataAgent - INFO - Input parameters parsed
+2025-12-06 01:34:03,418 - MetadataAgent - DEBUG - Input data: {
+  "media_type": "tv",
+  "query": "",
+  "output_dir": "/Volumes/video/Animation/The Animation/フルール (Unknown Year)",
+  "verbose": false,
+  "quiet": true,
+  "aid_search": true,
+  "tmdb_id": 241179
+}
+2025-12-06 01:34:03,418 - MetadataAgent - INFO - Search completed: 0 results
+2025-12-06 01:34:03,418 - MetadataAgent - DEBUG - Search results: {}
+2025-12-06 01:34:05,789 - MetadataAgent - INFO - Data fetching completed
+2025-12-06 01:34:05,790 - MetadataAgent - DEBUG - Main data: {
+  "adult": true,
+  "backdrop_path": "/4gAAQrgdRSBroQUEphCx97V9zSi.jpg",
+  "created_by": [],
+  "episode_run_time": [],
+  "first_air_date": "2024-01-26",
+  "genres": [
+    {
+      "id": 16,
+      "name": "动画"
+    }
+  ],
+  "homepage": "",
+  "id": 241179,
+  "in_production": true,
+  "languages": [
+    "ja"
+  ],
+  "last_air_date": "2024-12-20",
+  "last_episode_to_air": {
+    "id": 5657248,
+    "name": "第 2 集",
+    "overview": "第3话\n\n尾花老师的作品即将被改编成AV。他和戴眼镜的美女编辑东云小姐一起前往拍摄现场，却意外地在那里遇到了成为AV女演员的旧同学南忧夏！？ 尾花老师被南忧夏的性感魅力深深吸引，然而当他去厕所时……\n\n第4话\n\n尾花老师曾经担任助手的性感美女漫画家南里皐月老师，为了创作漫画，一直观察着尾花老师的身体！“是时候收集新的素材了！”南里老师说着，突然拿出尾花老师的……并开始……！？ 即使尾花老师射精了，南里老师依然兴致勃勃地骑在他身上，脸上充满了快感……",
+    "vote_average": 0.0,
+    "vote_count": 0,
+    "air_date": "2024-12-20",
+    "episode_number": 2,
+    "episode_type": "standard",
+    "production_code": "JDXA57782",
+    "runtime": 22,
+    "season_number": 1,
+    "show_id": 241179,
+    "still_path": "/zqYsYpwyf97MfBE06Qq4XOfAVa6.jpg"
+  },
+  "name": "芙蓉",
+  "next_episode_to_air": null,
+  "networks": [],
+  "number_of_episodes": 2,
+  "number_of_seasons": 1,
+  "origin_country": [
+    "JP"
+  ],
+  "original_language": "ja",
+  "original_name": "フルール THE ANIMATION",
+  "overview": "色情漫画家·尾花老师的担当先生，从工作的支持到身边的关照“什么都”做的眼镜美人编辑的东云先生♪\n\n《Master Piece》、《3Piece》中的老师所描绘的色情漫画家×献身美女的爱情作品制作模样OVA化！\n\n“不用客气。为了老师，我什么都做。”",
+  "popularity": 0.0,
+  "poster_path": "/luHieB09niRBFx89tmnTnUdepZG.jpg",
+  "production_companies": [
+    {
+      "id": 80856,
+      "logo_path": "/7tFA0heb8o0hj9IsPehE3zuOHfw.png",
+      "name": "Pink Pineapple",
+      "origin_country": "JP"
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "JP",
+      "name": "Japan"
+    }
+  ],
+  "seasons": [
+    {
+      "air_date": "2024-01-26",
+      "episode_count": 2,
+      "id": 369037,
+      "name": "第 1 季",
+      "overview": "",
+      "poster_path": "/aEhVRyMsPjQhlxzkG8B1fRquGRb.jpg",
+      "season_number": 1,
+      "vote_average": 6.3
+    }
+  ],
+  "spoken_languages": [
+    {
+      "english_name": "Japanese",
+      "iso_639_1": "ja",
+      "name": "日本語"
+    }
+  ],
+  "status": "Returning Series",
+  "tagline": "",
+  "type": "Video",
+  "vote_average": 7.2,
+  "vote_count": 2
+}
+2025-12-06 01:34:05,790 - MetadataAgent - DEBUG - Credits data: {
+  "cast": [
+    {
+      "adult": true,
+      "gender": 1,
+      "id": 1221868,
+      "known_for_department": "Acting",
+      "name": "Ryoko Ono",
+      "original_name": "小野涼子",
+      "popularity": 2.623,
+      "profile_path": "/7kIVN9vw0sCe4Vfw1NNtY50wENa.jpg",
+      "character": "東雲  (voice)",
+      "credit_id": "66276551258823017d93b7e5",
+      "order": 0
+    },
+    {
+      "adult": true,
+      "gender": 1,
+      "id": 1250764,
+      "known_for_department": "Acting",
+      "name": "Harumi Sakurai",
+      "original_name": "櫻井浩美",
+      "popularity": 13.481,
+      "profile_path": "/ekqKChF19cjjrSB1LYpP6QDJoVR.jpg",
+      "character": "夕風 (voice)",
+      "credit_id": "678a353094d95839f3ad59e8",
+      "order": 1
+    },
+    {
+      "adult": true,
+      "gender": 1,
+      "id": 1241559,
+      "known_for_department": "Acting",
+      "name": "Yokote Kumiko",
+      "original_name": "氷青",
+      "popularity": 11.464,
+      "profile_path": "/h4osaRgm7hCKi8M0c8GS43yOjIf.jpg",
+      "character": "南里皐月 (voice)",
+      "credit_id": "678a354ea64feb16c91d8027",
+      "order": 2
+    },
+    {
+      "adult": true,
+      "gender": 2,
+      "id": 4214887,
+      "known_for_department": "Acting",
+      "name": "Uzuki Inari",
+      "original_name": "いなりうづき",
+      "popularity": 0.0,
+      "profile_path": null,
+      "character": "Ohana (voice)",
+      "credit_id": "67be986812942e54d73d39db",
+      "order": 3
+    }
+  ],
+  "crew": [
+    {
+      "adult": true,
+      "gender": 2,
+      "id": 1458400,
+      "known_for_department": "Directing",
+      "name": "Hideta Oota",
+      "original_name": "太多秀太",
+      "popularity": 23.763,
+      "profile_path": null,
+      "credit_id": "678a3587c9e03e442d9778fa",
+      "department": "Directing",
+      "job": "Director"
+    },
+    {
+      "adult": true,
+      "gender": 0,
+      "id": 5185145,
+      "known_for_department": "Crew",
+      "name": "ななお「Fleur」（GOT刊）",
+      "original_name": "ななお「Fleur」（GOT刊）",
+      "popularity": 0.0,
+      "profile_path": null,
+      "credit_id": "678a35a422f810f7f9975fc2",
+      "department": "Crew",
+      "job": "Creator"
+    }
+  ],
+  "id": 241179
+}
+2025-12-06 01:34:05,790 - MetadataAgent - DEBUG - Keywords data: {
+  "id": 241179,
+  "results": [
+    {
+      "name": "based on manga",
+      "id": 13141
+    },
+    {
+      "name": "hentai",
+      "id": 198385
+    },
+    {
+      "name": "big tits",
+      "id": 230416
+    },
+    {
+      "name": "コミック原作",
+      "id": 345367
+    },
+    {
+      "name": "痴女・淫乱",
+      "id": 345368
+    }
+  ]
+}
+2025-12-06 01:34:05,790 - MetadataAgent - DEBUG - Episodes data: [
+  {
+    "air_date": "2024-01-26",
+    "crew": [],
+    "episode_number": 1,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 1 集",
+    "overview": "第1话\n\n认真温柔且过度操心的责编东云小姐。明知不该用情欲的目光看待她，却控制不住下流的妄想……正在浴室里幻想着她的裸体自慰时，偏偏（或者说正好？）被她撞见，结果把大量体液溅到她身上......\n\n第2话\n\n为了给新画色情漫画取材，东云小姐决定扮演新婚妻子！她一边喊着\"老公\"一边穿着裸体围裙做家务，然而藏不住的性感肢体让我忍不住勃起。察觉这点的东云小姐竟然主动要求进行\"夫妻亲密行为......",
+    "id": 4984241,
+    "production_code": "JDXA-57741",
+    "runtime": 19,
+    "season_number": 1,
+    "still_path": "/6QBMAXENo58yhjnjZ7nVtwMKF0R.jpg",
+    "vote_average": 7.0,
+    "vote_count": 2
+  },
+  {
+    "air_date": "2024-12-20",
+    "crew": [],
+    "episode_number": 2,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 2 集",
+    "overview": "第3话\n\n尾花老师的作品即将被改编成AV。他和戴眼镜的美女编辑东云小姐一起前往拍摄现场，却意外地在那里遇到了成为AV女演员的旧同学南忧夏！？ 尾花老师被南忧夏的性感魅力深深吸引，然而当他去厕所时……\n\n第4话\n\n尾花老师曾经担任助手的性感美女漫画家南里皐月老师，为了创作漫画，一直观察着尾花老师的身体！“是时候收集新的素材了！”南里老师说着，突然拿出尾花老师的……并开始……！？ 即使尾花老师射精了，南里老师依然兴致勃勃地骑在他身上，脸上充满了快感……",
+    "id": 5657248,
+    "production_code": "JDXA57782",
+    "runtime": 22,
+    "season_number": 1,
+    "still_path": "/zqYsYpwyf97MfBE06Qq4XOfAVa6.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  }
+]
+2025-12-06 01:34:05,791 - MetadataAgent - DEBUG - Seasons data: [
+  {
+    "_id": "657410647a3c52010cdd76b3",
+    "air_date": "2024-01-26",
+    "episodes": [
+      {
+        "air_date": "2024-01-26",
+        "episode_number": 1,
+        "episode_type": "standard",
+        "id": 4984241,
+        "name": "第 1 集",
+        "overview": "第1话\n\n认真温柔且过度操心的责编东云小姐。明知不该用情欲的目光看待她，却控制不住下流的妄想……正在浴室里幻想着她的裸体自慰时，偏偏（或者说正好？）被她撞见，结果把大量体液溅到她身上......\n\n第2话\n\n为了给新画色情漫画取材，东云小姐决定扮演新婚妻子！她一边喊着\"老公\"一边穿着裸体围裙做家务，然而藏不住的性感肢体让我忍不住勃起。察觉这点的东云小姐竟然主动要求进行\"夫妻亲密行为......",
+        "production_code": "JDXA-57741",
+        "runtime": 19,
+        "season_number": 1,
+        "show_id": 241179,
+        "still_path": "/6QBMAXENo58yhjnjZ7nVtwMKF0R.jpg",
+        "vote_average": 7.0,
+        "vote_count": 2,
+        "crew": [],
+        "guest_stars": []
+      },
+      {
+        "air_date": "2024-12-20",
+        "episode_number": 2,
+        "episode_type": "standard",
+        "id": 5657248,
+        "name": "第 2 集",
+        "overview": "第3话\n\n尾花老师的作品即将被改编成AV。他和戴眼镜的美女编辑东云小姐一起前往拍摄现场，却意外地在那里遇到了成为AV女演员的旧同学南忧夏！？ 尾花老师被南忧夏的性感魅力深深吸引，然而当他去厕所时……\n\n第4话\n\n尾花老师曾经担任助手的性感美女漫画家南里皐月老师，为了创作漫画，一直观察着尾花老师的身体！“是时候收集新的素材了！”南里老师说着，突然拿出尾花老师的……并开始……！？ 即使尾花老师射精了，南里老师依然兴致勃勃地骑在他身上，脸上充满了快感……",
+        "production_code": "JDXA57782",
+        "runtime": 22,
+        "season_number": 1,
+        "show_id": 241179,
+        "still_path": "/zqYsYpwyf97MfBE06Qq4XOfAVa6.jpg",
+        "vote_average": 0.0,
+        "vote_count": 0,
+        "crew": [],
+        "guest_stars": []
+      }
+    ],
+    "name": "第 1 季",
+    "networks": [],
+    "overview": "",
+    "id": 369037,
+    "poster_path": "/aEhVRyMsPjQhlxzkG8B1fRquGRb.jpg",
+    "season_number": 1,
+    "vote_average": 6.3
+  }
+]
+2025-12-06 01:34:07,574 - MetadataAgent - INFO - Data normalization completed
+2025-12-06 01:34:07,575 - MetadataAgent - DEBUG - Normalized data: {
+  "media_type": "tv",
+  "tmdb_id": 241179,
+  "title": "芙蓉",
+  "original_title": "フルール THE ANIMATION",
+  "year": 2024,
+  "plot": "色情漫画家·尾花老师的担当先生，从工作的支持到身边的关照“什么都”做的眼镜美人编辑的东云先生♪\n\n《Master Piece》、《3Piece》中的老师所描绘的色情漫画家×献身美女的爱情作品制作模样OVA化！\n\n“不用客气。为了老师，我什么都做。”",
+  "tagline": "",
+  "runtime": null,
+  "release_date": "2024-01-26",
+  "rating": 7.2,
+  "rating_count": 2,
+  "genres": [
+    "动画"
+  ],
+  "countries": [
+    "JP"
+  ],
+  "languages": [
+    "ja"
+  ],
+  "studios": [
+    "Pink Pineapple"
+  ],
+  "networks": [],
+  "network": "",
+  "status": "Returning Series",
+  "homepage": "",
+  "cast": [
+    {
+      "name_en": "Ryoko Ono",
+      "name_zh": null,
+      "role": "東雲  (voice)",
+      "original_name": "小野涼子",
+      "profile_path": "/7kIVN9vw0sCe4Vfw1NNtY50wENa.jpg",
+      "popularity": 2.623
+    },
+    {
+      "name_en": "Harumi Sakurai",
+      "name_zh": null,
+      "role": "夕風 (voice)",
+      "original_name": "櫻井浩美",
+      "profile_path": "/ekqKChF19cjjrSB1LYpP6QDJoVR.jpg",
+      "popularity": 13.481
+    },
+    {
+      "name_en": "Yokote Kumiko",
+      "name_zh": null,
+      "role": "南里皐月 (voice)",
+      "original_name": "氷青",
+      "profile_path": "/h4osaRgm7hCKi8M0c8GS43yOjIf.jpg",
+      "popularity": 11.464
+    },
+    {
+      "name_en": "Uzuki Inari",
+      "name_zh": null,
+      "role": "Ohana (voice)",
+      "original_name": "いなりうづき",
+      "profile_path": null,
+      "popularity": 0.0
+    }
+  ],
+  "directors": [
+    "Hideta Oota"
+  ],
+  "writers": [],
+  "images": {},
+  "seasons": [
+    {
+      "air_date": "2024-01-26",
+      "episode_count": 2,
+      "id": 369037,
+      "name": "第 1 季",
+      "overview": "",
+      "poster_path": "/aEhVRyMsPjQhlxzkG8B1fRquGRb.jpg",
+      "season_number": 1,
+      "vote_average": 6.3
+    }
+  ],
+  "episodes": [
+    {
+      "air_date": "2024-01-26",
+      "crew": [],
+      "episode_number": 1,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 1 集",
+      "overview": "第1话\n\n认真温柔且过度操心的责编东云小姐。明知不该用情欲的目光看待她，却控制不住下流的妄想……正在浴室里幻想着她的裸体自慰时，偏偏（或者说正好？）被她撞见，结果把大量体液溅到她身上......\n\n第2话\n\n为了给新画色情漫画取材，东云小姐决定扮演新婚妻子！她一边喊着\"老公\"一边穿着裸体围裙做家务，然而藏不住的性感肢体让我忍不住勃起。察觉这点的东云小姐竟然主动要求进行\"夫妻亲密行为......",
+      "id": 4984241,
+      "production_code": "JDXA-57741",
+      "runtime": 19,
+      "season_number": 1,
+      "still_path": "/6QBMAXENo58yhjnjZ7nVtwMKF0R.jpg",
+      "vote_average": 7.0,
+      "vote_count": 2
+    },
+    {
+      "air_date": "2024-12-20",
+      "crew": [],
+      "episode_number": 2,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 2 集",
+      "overview": "第3话\n\n尾花老师的作品即将被改编成AV。他和戴眼镜的美女编辑东云小姐一起前往拍摄现场，却意外地在那里遇到了成为AV女演员的旧同学南忧夏！？ 尾花老师被南忧夏的性感魅力深深吸引，然而当他去厕所时……\n\n第4话\n\n尾花老师曾经担任助手的性感美女漫画家南里皐月老师，为了创作漫画，一直观察着尾花老师的身体！“是时候收集新的素材了！”南里老师说着，突然拿出尾花老师的……并开始……！？ 即使尾花老师射精了，南里老师依然兴致勃勃地骑在他身上，脸上充满了快感……",
+      "id": 5657248,
+      "production_code": "JDXA57782",
+      "runtime": 22,
+      "season_number": 1,
+      "still_path": "/zqYsYpwyf97MfBE06Qq4XOfAVa6.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    }
+  ],
+  "title_zh": "芙蓉",
+  "plot_zh": "色情漫画家·尾花老师的担当先生，从工作的支持到身边的关照“什么都”做的眼镜美人编辑的东云先生♪\n\n《Master Piece》、《3Piece》中的老师所描绘的色情漫画家×献身美女的爱情作品制作模样OVA化！\n\n“不用客气。为了老师，我什么都做。”",
+  "keywords_en": [
+    "based on manga",
+    "hentai",
+    "big tits",
+    "コミック原作",
+    "痴女・淫乱"
+  ],
+  "keywords": [
+    "based on manga",
+    "hentai",
+    "big tits",
+    "コミック原作",
+    "痴女・淫乱"
+  ],
+  "keywords_zh": [
+    "改编自漫画",
+    "腐女",
+    "大胸",
+    "漫画原作",
+    "痴女·淫乱"
+  ]
+}
+2025-12-06 01:34:07,579 - MetadataAgent - INFO - Translation processing completed
+2025-12-06 01:34:07,580 - MetadataAgent - DEBUG - Translated data: {
+  "media_type": "tv",
+  "tmdb_id": 241179,
+  "title": "芙蓉",
+  "original_title": "フルール THE ANIMATION",
+  "year": 2024,
+  "plot": "色情漫画家·尾花老师的担当先生，从工作的支持到身边的关照“什么都”做的眼镜美人编辑的东云先生♪\n\n《Master Piece》、《3Piece》中的老师所描绘的色情漫画家×献身美女的爱情作品制作模样OVA化！\n\n“不用客气。为了老师，我什么都做。”",
+  "tagline": "",
+  "runtime": null,
+  "release_date": "2024-01-26",
+  "rating": 7.2,
+  "rating_count": 2,
+  "genres": [
+    "动画"
+  ],
+  "countries": [
+    "JP"
+  ],
+  "languages": [
+    "ja"
+  ],
+  "studios": [
+    "Pink Pineapple"
+  ],
+  "networks": [],
+  "network": "",
+  "status": "Returning Series",
+  "homepage": "",
+  "cast": [
+    {
+      "name_en": "Ryoko Ono",
+      "name_zh": null,
+      "role": "東雲  (voice)",
+      "original_name": "小野涼子",
+      "profile_path": "/7kIVN9vw0sCe4Vfw1NNtY50wENa.jpg",
+      "popularity": 2.623
+    },
+    {
+      "name_en": "Harumi Sakurai",
+      "name_zh": null,
+      "role": "夕風 (voice)",
+      "original_name": "櫻井浩美",
+      "profile_path": "/ekqKChF19cjjrSB1LYpP6QDJoVR.jpg",
+      "popularity": 13.481
+    },
+    {
+      "name_en": "Yokote Kumiko",
+      "name_zh": null,
+      "role": "南里皐月 (voice)",
+      "original_name": "氷青",
+      "profile_path": "/h4osaRgm7hCKi8M0c8GS43yOjIf.jpg",
+      "popularity": 11.464
+    },
+    {
+      "name_en": "Uzuki Inari",
+      "name_zh": null,
+      "role": "Ohana (voice)",
+      "original_name": "いなりうづき",
+      "profile_path": null,
+      "popularity": 0.0
+    }
+  ],
+  "directors": [
+    "Hideta Oota"
+  ],
+  "writers": [],
+  "images": {},
+  "seasons": [
+    {
+      "air_date": "2024-01-26",
+      "episode_count": 2,
+      "id": 369037,
+      "name": "第 1 季",
+      "overview": "",
+      "poster_path": "/aEhVRyMsPjQhlxzkG8B1fRquGRb.jpg",
+      "season_number": 1,
+      "vote_average": 6.3
+    }
+  ],
+  "episodes": [
+    {
+      "air_date": "2024-01-26",
+      "crew": [],
+      "episode_number": 1,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 1 集",
+      "overview": "第1话\n\n认真温柔且过度操心的责编东云小姐。明知不该用情欲的目光看待她，却控制不住下流的妄想……正在浴室里幻想着她的裸体自慰时，偏偏（或者说正好？）被她撞见，结果把大量体液溅到她身上......\n\n第2话\n\n为了给新画色情漫画取材，东云小姐决定扮演新婚妻子！她一边喊着\"老公\"一边穿着裸体围裙做家务，然而藏不住的性感肢体让我忍不住勃起。察觉这点的东云小姐竟然主动要求进行\"夫妻亲密行为......",
+      "id": 4984241,
+      "production_code": "JDXA-57741",
+      "runtime": 19,
+      "season_number": 1,
+      "still_path": "/6QBMAXENo58yhjnjZ7nVtwMKF0R.jpg",
+      "vote_average": 7.0,
+      "vote_count": 2
+    },
+    {
+      "air_date": "2024-12-20",
+      "crew": [],
+      "episode_number": 2,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "第 2 集",
+      "overview": "第3话\n\n尾花老师的作品即将被改编成AV。他和戴眼镜的美女编辑东云小姐一起前往拍摄现场，却意外地在那里遇到了成为AV女演员的旧同学南忧夏！？ 尾花老师被南忧夏的性感魅力深深吸引，然而当他去厕所时……\n\n第4话\n\n尾花老师曾经担任助手的性感美女漫画家南里皐月老师，为了创作漫画，一直观察着尾花老师的身体！“是时候收集新的素材了！”南里老师说着，突然拿出尾花老师的……并开始……！？ 即使尾花老师射精了，南里老师依然兴致勃勃地骑在他身上，脸上充满了快感……",
+      "id": 5657248,
+      "production_code": "JDXA57782",
+      "runtime": 22,
+      "season_number": 1,
+      "still_path": "/zqYsYpwyf97MfBE06Qq4XOfAVa6.jpg",
+      "vote_average": 0.0,
+      "vote_count": 0
+    }
+  ],
+  "title_zh": "芙蓉",
+  "plot_zh": "色情漫画家·尾花老师的担当先生，从工作的支持到身边的关照“什么都”做的眼镜美人编辑的东云先生♪\n\n《Master Piece》、《3Piece》中的老师所描绘的色情漫画家×献身美女的爱情作品制作模样OVA化！\n\n“不用客气。为了老师，我什么都做。”",
+  "keywords_en": [
+    "based on manga",
+    "hentai",
+    "big tits",
+    "コミック原作",
+    "痴女・淫乱"
+  ],
+  "keywords": [
+    "based on manga",
+    "hentai",
+    "big tits",
+    "コミック原作",
+    "痴女・淫乱"
+  ],
+  "keywords_zh": [
+    "改编自漫画",
+    "腐女",
+    "大胸",
+    "漫画原作",
+    "痴女·淫乱"
+  ]
+}
+2025-12-06 01:34:07,580 - MetadataAgent - DEBUG - Translated episodes: [
+  {
+    "air_date": "2024-01-26",
+    "crew": [],
+    "episode_number": 1,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 1 集",
+    "overview": "第1话\n\n认真温柔且过度操心的责编东云小姐。明知不该用情欲的目光看待她，却控制不住下流的妄想……正在浴室里幻想着她的裸体自慰时，偏偏（或者说正好？）被她撞见，结果把大量体液溅到她身上......\n\n第2话\n\n为了给新画色情漫画取材，东云小姐决定扮演新婚妻子！她一边喊着\"老公\"一边穿着裸体围裙做家务，然而藏不住的性感肢体让我忍不住勃起。察觉这点的东云小姐竟然主动要求进行\"夫妻亲密行为......",
+    "id": 4984241,
+    "production_code": "JDXA-57741",
+    "runtime": 19,
+    "season_number": 1,
+    "still_path": "/6QBMAXENo58yhjnjZ7nVtwMKF0R.jpg",
+    "vote_average": 7.0,
+    "vote_count": 2
+  },
+  {
+    "air_date": "2024-12-20",
+    "crew": [],
+    "episode_number": 2,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "第 2 集",
+    "overview": "第3话\n\n尾花老师的作品即将被改编成AV。他和戴眼镜的美女编辑东云小姐一起前往拍摄现场，却意外地在那里遇到了成为AV女演员的旧同学南忧夏！？ 尾花老师被南忧夏的性感魅力深深吸引，然而当他去厕所时……\n\n第4话\n\n尾花老师曾经担任助手的性感美女漫画家南里皐月老师，为了创作漫画，一直观察着尾花老师的身体！“是时候收集新的素材了！”南里老师说着，突然拿出尾花老师的……并开始……！？ 即使尾花老师射精了，南里老师依然兴致勃勃地骑在他身上，脸上充满了快感……",
+    "id": 5657248,
+    "production_code": "JDXA57782",
+    "runtime": 22,
+    "season_number": 1,
+    "still_path": "/zqYsYpwyf97MfBE06Qq4XOfAVa6.jpg",
+    "vote_average": 0.0,
+    "vote_count": 0
+  }
+]
+2025-12-06 01:34:16,127 - MetadataAgent - INFO - NFO generation completed
+2025-12-06 01:34:16,127 - MetadataAgent - DEBUG - NFO data: {
+  "title": "芙蓉",
+  "originaltitle": "フルール THE ANIMATION",
+  "year": 2024,
+  "premiered": "2024-01-26",
+  "plot": "色情漫画家·尾花老师的担当先生，从工作的支持到身边的关照“什么都”做的眼镜美人编辑的东云先生♪\n\n《Master Piece》、《3Piece》中的老师所描绘的色情漫画家×献身美女的爱情作品制作模样OVA化！\n\n“不用客气。为了老师，我什么都做。”",
+  "tagline": "",
+  "runtime": null,
+  "rating": 7.2,
+  "votes": 2,
+  "genre": [
+    "动画"
+  ],
+  "country": [
+    "JP"
+  ],
+  "studio": [
+    "Pink Pineapple"
+  ],
+  "credits": [],
+  "director": [
+    "Hideta Oota"
+  ],
+  "actor": [
+    {
+      "name": "Ryoko Ono",
+      "role": "東雲  (voice)",
+      "originalname": "小野涼子",
+      "thumb": "images/actors/Ryoko Ono.jpg"
+    },
+    {
+      "name": "Harumi Sakurai",
+      "role": "夕風 (voice)",
+      "originalname": "櫻井浩美",
+      "thumb": "images/actors/Harumi Sakurai.jpg"
+    },
+    {
+      "name": "Yokote Kumiko",
+      "role": "南里皐月 (voice)",
+      "originalname": "氷青",
+      "thumb": "images/actors/Yokote Kumiko.jpg"
+    },
+    {
+      "name": "Uzuki Inari",
+      "role": "Ohana (voice)",
+      "originalname": "いなりうづき"
+    }
+  ],
+  "thumb": "poster.jpg",
+  "fanart": "fanart.jpg",
+  "tags": [
+    "改编自漫画",
+    "腐女",
+    "大胸",
+    "漫画原作",
+    "痴女·淫乱"
+  ],
+  "network": "",
+  "networks": [],
+  "status": "Returning Series",
+  "homepage": "",
+  "tmdb_id": 241179,
+  "validated": true
+}
+2025-12-06 01:34:16,127 - MetadataAgent - DEBUG - NFO XML content:
+<?xml version="1.0" ?>
+<tvshow>
+  <title>芙蓉</title>
+  <originaltitle>フルール THE ANIMATION</originaltitle>
+  <year>2024</year>
+  <premiered>2024-01-26</premiered>
+  <plot cdata_content="色情漫画家·尾花老师的担当先生，从工作的支持到身边的关照“什么都”做的眼镜美人编辑的东云先生♪
+
+《Master Piece》、《3Piece》中的老师所描绘的色情漫画家×献身美女的爱情作品制作模样OVA化！
+
+“不用客气。为了老师，我什么都做。”"><![CDATA[色情漫画家·尾花老师的担当先生，从工作的支持到身边的关照“什么都”做的眼镜美人编辑的东云先生♪
+
+《Master Piece》、《3Piece》中的老师所描绘的色情漫画家×献身美女的爱情作品制作模样OVA化！
+
+“不用客气。为了老师，我什么都做。”]]></plot>
+  <rating>7.2</rating>
+  <votes>2</votes>
+  <tmdbid>241179</tmdbid>
+  <genre>动画</genre>
+  <country>JP</country>
+  <studio>Pink Pineapple</studio>
+  <director>Hideta Oota</director>
+  <actor>
+    <name>Ryoko Ono</name>
+    <role>東雲  (voice)</role>
+    <originalname>小野涼子</originalname>
+    <thumb>images/actors/Ryoko Ono.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Harumi Sakurai</name>
+    <role>夕風 (voice)</role>
+    <originalname>櫻井浩美</originalname>
+    <thumb>images/actors/Harumi Sakurai.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Yokote Kumiko</name>
+    <role>南里皐月 (voice)</role>
+    <originalname>氷青</originalname>
+    <thumb>images/actors/Yokote Kumiko.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Uzuki Inari</name>
+    <role>Ohana (voice)</role>
+    <originalname>いなりうづき</originalname>
+  </actor>
+  <status>Returning Series</status>
+  <uniqueid type="tmdb" default="true">241179</uniqueid>
+  <thumb>images/poster/poster.jpg</thumb>
+  <fanart>images/fanart/fanart.jpg</fanart>
+  <tag>改编自漫画</tag>
+  <tag>腐女</tag>
+  <tag>大胸</tag>
+  <tag>漫画原作</tag>
+  <tag>痴女·淫乱</tag>
+</tvshow>
+
+2025-12-06 01:34:17,215 - MetadataAgent - INFO - Output generation completed
+2025-12-06 01:34:17,215 - MetadataAgent - DEBUG - Output data: {
+  "status": "completed",
+  "files": {
+    "nfo_file": "/Volumes/video/Animation/The Animation/フルール (Unknown Year)/tvshow.nfo",
+    "images_dir": "/Volumes/video/Animation/The Animation/フルール (Unknown Year)/images",
+    "media_dir": "/Volumes/video/Animation/The Animation/フルール (Unknown Year)",
+    "season_1_episode_1": "/Volumes/video/Animation/The Animation/フルール (Unknown Year)/Season 01/芙蓉 - S01E01 - 第 1 集.nfo",
+    "season_1_episode_2": "/Volumes/video/Animation/The Animation/フルール (Unknown Year)/Season 01/芙蓉 - S01E02 - 第 2 集.nfo"
+  }
+}
+2025-12-06 01:34:17,216 - MetadataAgent - INFO - === PROCESSING SUMMARY ===
+2025-12-06 01:34:17,217 - MetadataAgent - INFO - Log file: logs/metadata_agent_20251206_013403.log
+2025-12-06 01:34:17,217 - MetadataAgent - INFO - Processing completed successfully
+2025-12-06 01:34:17,220 - MetadataAgent - INFO - Processing summary saved to: logs/processing_summary_20251206_013417.json

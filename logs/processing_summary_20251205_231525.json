@@ -1,0 +1,1613 @@
+{
+  "start_time": "2025-12-05T23:15:05.015578",
+  "input": {
+    "media_type": "tv",
+    "query": "25岁的女高中生",
+    "output_dir": "/Volumes/video/Animation/The Animation/25岁的女高中生 (2018)",
+    "verbose": false,
+    "quiet": true,
+    "aid_search": true
+  },
+  "search": {
+    "results": {
+      "page": 1,
+      "results": [
+        {
+          "adult": false,
+          "backdrop_path": "/yARqByzW4paZU6vrwrfuj1N4th4.jpg",
+          "genre_ids": [
+            16
+          ],
+          "id": 75778,
+          "origin_country": [
+            "JP"
+          ],
+          "original_language": "ja",
+          "original_name": "25歳の女子高生",
+          "overview": "Once most students are done with high school, they leave and never come back. However, at 25 years old, Hana Natori finds herself in the role of a student once more at her aunt's request.\n\nSince Hana's cousin, Kaho Miyoshi, refuses to go to school, her aunt begs Hana to take Kaho's place, since the two of them are practically identical. But as luck would have it, she is recognized by Okito Kanie—an old classmate from her days in high school—who is now a teacher! With her cover blown, Hana assumes Kanie will expose her secret. But when he suddenly kisses her, she soon learns he has other ideas.",
+          "popularity": 2.2699,
+          "poster_path": "/ypjJNB2AZ8bffNULuWKwpYUoxC1.jpg",
+          "first_air_date": "2018-01-08",
+          "name": "25-Year-Old High School Girl, I Wouldn’t Do This with a Kid",
+          "vote_average": 5.6,
+          "vote_count": 18,
+          "media_type": "tv"
+        }
+      ],
+      "total_pages": 1,
+      "total_results": 1
+    },
+    "skip_search": false
+  },
+  "fetch": {
+    "main": {
+      "adult": false,
+      "backdrop_path": "/yARqByzW4paZU6vrwrfuj1N4th4.jpg",
+      "created_by": [],
+      "episode_run_time": [
+        6
+      ],
+      "first_air_date": "2018-01-08",
+      "genres": [
+        {
+          "id": 16,
+          "name": "动画"
+        }
+      ],
+      "homepage": "http://nigojo.cf-anime.com/",
+      "id": 75778,
+      "in_production": false,
+      "languages": [
+        "ja"
+      ],
+      "last_air_date": "2018-03-28",
+      "last_episode_to_air": {
+        "id": 1462750,
+        "name": "最喜欢你了",
+        "overview": "蟹江到花的家里来道歉。终于，蟹江说出了从高中时代就有的想法。一心一意思念花朵的温柔话语，让我泪流满面 -- 身体和心灵，至今为止最深的连结... 充满幸福的感动最终话。",
+        "vote_average": 3.0,
+        "vote_count": 1,
+        "air_date": "2018-03-28",
+        "episode_number": 12,
+        "episode_type": "finale",
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "show_id": 75778,
+        "still_path": "/a7ldKuUE0HUEKnLVE5y5nOOlxZk.jpg"
+      },
+      "name": "25岁的女高中生",
+      "next_episode_to_air": null,
+      "networks": [
+        {
+          "id": 614,
+          "logo_path": "/hSdroyVthq3CynxTIIY7lnS8w1.png",
+          "name": "Tokyo MX",
+          "origin_country": "JP"
+        }
+      ],
+      "number_of_episodes": 12,
+      "number_of_seasons": 1,
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "25歳の女子高生",
+      "overview": "花（原田瞳 配音）从来都没想象过，25岁的自己依然在苦苦的寻找着工作。某日，花的亲戚找到了她，提出了一个奇怪的委托。原来，花16岁的表妹是一个家里蹲，不愿意去学校上学，而花的样貌和表妹极为相似，所以亲戚请求花隐姓埋名假扮表妹去学校上课。\n\n走投无路的花接受了委托，经过一番精心的装扮后，自认为无懈可击绝对不会暴露的花踏入了高中的校园。让花没有想到的是，自己的班主任，竟然是曾经的高中同学蟹江，不仅如此，蟹江在第一时间便识破了花的真身。花请求蟹江帮她保守秘密，然而，蟹将却提出了令花感到害臊又悸动的条件。",
+      "popularity": 2.2699,
+      "poster_path": "/ypjJNB2AZ8bffNULuWKwpYUoxC1.jpg",
+      "production_companies": [
+        {
+          "id": 149420,
+          "logo_path": null,
+          "name": "Picante Circus",
+          "origin_country": "JP"
+        },
+        {
+          "id": 149421,
+          "logo_path": "/6UqbB0NLRWEIaCKsd5YkOigJgXb.png",
+          "name": "Suiseisha",
+          "origin_country": "JP"
+        },
+        {
+          "id": 149479,
+          "logo_path": null,
+          "name": "Lyrics",
+          "origin_country": "JP"
+        },
+        {
+          "id": 131403,
+          "logo_path": null,
+          "name": "Cosmic Ray",
+          "origin_country": "JP"
+        },
+        {
+          "id": 157460,
+          "logo_path": "/i4QIRFLdlm7OMlwXE4ue6jIUXw5.png",
+          "name": "TAVAC",
+          "origin_country": "JP"
+        },
+        {
+          "id": 118628,
+          "logo_path": null,
+          "name": "Lilix",
+          "origin_country": ""
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "JP",
+          "name": "Japan"
+        }
+      ],
+      "seasons": [
+        {
+          "air_date": "2018-01-08",
+          "episode_count": 12,
+          "id": 96705,
+          "name": "第 1 季",
+          "overview": "",
+          "poster_path": "/mwHrvIFSxwJSTzocHNsO3MwxpUx.jpg",
+          "season_number": 1,
+          "vote_average": 2.2
+        }
+      ],
+      "spoken_languages": [
+        {
+          "english_name": "Japanese",
+          "iso_639_1": "ja",
+          "name": "日本語"
+        }
+      ],
+      "status": "Ended",
+      "tagline": "",
+      "type": "Scripted",
+      "vote_average": 5.6,
+      "vote_count": 18
+    },
+    "credits": {
+      "cast": [
+        {
+          "adult": false,
+          "gender": 1,
+          "id": 1251015,
+          "known_for_department": "Acting",
+          "name": "Hitomi Harada",
+          "original_name": "原田ひとみ",
+          "popularity": 1.3697,
+          "profile_path": "/vggu5Rw8MVhinrHnpELIm4JErqP.jpg",
+          "character": "Hana Natori (voice)",
+          "credit_id": "5ce2ff599251415430ba4d34",
+          "order": 0
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 2019159,
+          "known_for_department": "Acting",
+          "name": "Chiharu Sawashiro",
+          "original_name": "沢城千春",
+          "popularity": 2.0751,
+          "profile_path": "/7Bs0mNo3nPOnsOLWVCFDdIpohUI.jpg",
+          "character": "Akito Kanie (voice)",
+          "credit_id": "5ce2ff4ec3a368509021908b",
+          "order": 1
+        },
+        {
+          "adult": false,
+          "gender": 2,
+          "id": 2381711,
+          "known_for_department": "Acting",
+          "name": "Tomohito Takatsuka",
+          "original_name": "高塚智人",
+          "popularity": 0.8732,
+          "profile_path": "/jrsGxmSqPqBqno8AsUYGSSTZLsv.jpg",
+          "character": "Naoyuki Aida (voice)",
+          "credit_id": "602c9464d94035003f751f9e",
+          "order": 2
+        }
+      ],
+      "crew": [
+        {
+          "adult": true,
+          "gender": 2,
+          "id": 1458400,
+          "known_for_department": "Directing",
+          "name": "Hideta Oota",
+          "original_name": "太多秀太",
+          "popularity": 23.763,
+          "profile_path": null,
+          "credit_id": "5a3704e50e0a264ccd1e3f01",
+          "department": "Directing",
+          "job": "Director"
+        },
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 1450930,
+          "known_for_department": "Visual Effects",
+          "name": "Sawako Yamamoto",
+          "original_name": "山本佐和子",
+          "popularity": 0.764,
+          "profile_path": null,
+          "credit_id": "602c8ce6a6ddcb003e58258c",
+          "department": "Visual Effects",
+          "job": "Character Designer"
+        },
+        {
+          "adult": false,
+          "gender": 1,
+          "id": 2438555,
+          "known_for_department": "Production",
+          "name": "Akiko Segawa",
+          "original_name": "瀬川章子",
+          "popularity": 0.6879,
+          "profile_path": null,
+          "credit_id": "602c8d101feac1003d42487d",
+          "department": "Production",
+          "job": "Producer"
+        },
+        {
+          "adult": false,
+          "gender": 0,
+          "id": 2896060,
+          "known_for_department": "Sound",
+          "name": "Saki Hazuki",
+          "original_name": "葉月さき",
+          "popularity": 0.7672,
+          "profile_path": "/qiPofchSPE27AypRxxtIZ6nPwlD.jpg",
+          "credit_id": "670b8699bbb1a9e81c61ec97",
+          "department": "Sound",
+          "job": "Theme Song Performance"
+        }
+      ],
+      "id": 75778
+    },
+    "keywords": {
+      "id": 75778,
+      "results": [
+        {
+          "name": "school",
+          "id": 10873
+        },
+        {
+          "name": "female protagonist",
+          "id": 11322
+        },
+        {
+          "name": "based on manga",
+          "id": 13141
+        },
+        {
+          "name": "shoujo",
+          "id": 206437
+        },
+        {
+          "name": "anime",
+          "id": 210024
+        },
+        {
+          "name": "erotic",
+          "id": 256466
+        },
+        {
+          "name": "sex",
+          "id": 267122
+        }
+      ]
+    },
+    "seasons": [
+      {
+        "_id": "5a3704b5c3a368148f05330c",
+        "air_date": "2018-01-08",
+        "episodes": [
+          {
+            "air_date": "2018-01-08",
+            "episode_number": 1,
+            "episode_type": "standard",
+            "id": 1406727,
+            "name": "那是突如其来的重逢",
+            "overview": "这个25岁的小姑娘要冒充逃学的表妹去上学！ 虽然她可以应付去上课，但她无法遵循高中生活的所有华丽伪装，并最终陷入困境，迫使她在护士办公室避难，突然间老师Kanie向她打招呼 说，“你不是Hana Natori吗？”，这完全打破了她的掩饰。 出人意料的是，Kanie竟然是她高中时的同班同学！ 而且，他毫无预兆地问她：“你知道该怎么做才能让男人保持安静吗？” 并开始深深地亲吻她，在这个过程中将她推倒！ 秘密堆积如山，逃不掉！",
+            "production_code": "",
+            "runtime": 6,
+            "season_number": 1,
+            "show_id": 75778,
+            "still_path": "/nkvfmWrBZaQ7KBld3V9ad8U5WAv.jpg",
+            "vote_average": 2.0,
+            "vote_count": 1,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2018-01-17",
+            "episode_number": 2,
+            "episode_type": "standard",
+            "id": 1417775,
+            "name": "在保健室的床上…",
+            "overview": "“我想我可以保守你的秘密。” Kanie 声称他会和我一起工作来隐瞒我代替我表弟上学的事实。 干完这些下流的事后，他亲昵地拍了拍我的头，我的心都怦怦直跳！ 更重要的是，那天晚上我接到了 Kanie 的惊喜电话。 他说他会和我一起参加体育节的训练，但那意味着我们两个放学后会单独在一起！",
+            "production_code": "",
+            "runtime": 6,
+            "season_number": 1,
+            "show_id": 75778,
+            "still_path": "/jtn3IpNkmmCUIPe58FXA2QAyyoj.jpg",
+            "vote_average": 2.0,
+            "vote_count": 1,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2018-01-24",
+            "episode_number": 3,
+            "episode_type": "standard",
+            "id": 1417776,
+            "name": "放学后的秘密课程",
+            "overview": "“我们在运动储藏室做伸展运动……等等，这不对！” Kanie 正在和我一起锻炼，为运动节做准备。 锻炼完后，他帮我伸展，但在他抚摸我的时候，我不小心发出了一些奇怪的声音！ 他指责我带他走，我怎么扭动都无法反抗或逃跑……只有我们两个人，放学后一个人——我又热又汗，感觉我 融化…",
+            "production_code": "",
+            "runtime": 6,
+            "season_number": 1,
+            "show_id": 75778,
+            "still_path": "/l6jnvT96ZLOpZy56p10B828CNRY.jpg",
+            "vote_average": 2.0,
+            "vote_count": 1,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2018-01-31",
+            "episode_number": 4,
+            "episode_type": "standard",
+            "id": 1417777,
+            "name": "校友会的夜晚",
+            "overview": "“今天你不是学生，所以我不会半途而废。” 在我们的同学聚会上，周围没有其他学生或老师，我们像 25 岁的同学一样见面。 开始是一个普通的晚上，突然被我抓住手腕带出会场！ 在一个私人厕所里，他把我拉近并开始亲吻我……即使我们应该参加同学聚会，他也无法把手从我身上移开。 但是，突然之间，我们在这里不再孤单了！",
+            "production_code": "",
+            "runtime": 6,
+            "season_number": 1,
+            "show_id": 75778,
+            "still_path": "/aQqciA9qsHUlmldJ8vXS7mBWcU6.jpg",
+            "vote_average": 2.0,
+            "vote_count": 1,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2018-02-07",
+            "episode_number": 5,
+            "episode_type": "standard",
+            "id": 1462743,
+            "name": "忘了不得了的东西!",
+            "overview": "当Kanie盯着她看时，Hana的心跳加速。 Kanie一脸严肃地说：“裙子的长度、妆容、头发……都违背了代码。” “什么？！” 没错，这是一次着装检查。 下课后，Hana被传唤到准备室接受惩罚，她解释说她穿这样的衣服只是为了看起来像她的表弟Kaho。 不过他还是用妖媚的声音问她是不是要违背老师的话，凑近了…… 做完之后，Kaho丢掉了重要的东西！ 会是什么呢？ 你必须观看才能知道！",
+            "production_code": "",
+            "runtime": 6,
+            "season_number": 1,
+            "show_id": 75778,
+            "still_path": "/lhGg2upEx1bqwCedax0DrGKSJdD.jpg",
+            "vote_average": 2.0,
+            "vote_count": 1,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2018-02-14",
+            "episode_number": 6,
+            "episode_type": "standard",
+            "id": 1462744,
+            "name": "秘密被暴露了!",
+            "overview": "“我……我怎么办？ 我没有穿任何内衣，然后就发生了！” Hana被困在健身房后面，被Aida叫到了那里。 他正要摸她的屁股。 Hana处于紧要关头！ 就在这时，Kanie从背后出现了……",
+            "production_code": "",
+            "runtime": 6,
+            "season_number": 1,
+            "show_id": 75778,
+            "still_path": "/l9uqjs2sRWLGQK7wki6VpsFde12.jpg",
+            "vote_average": 2.0,
+            "vote_count": 1,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2018-02-21",
+            "episode_number": 7,
+            "episode_type": "standard",
+            "id": 1462745,
+            "name": "只有两个人的学习会♥",
+            "overview": "她同意接受辅导，但没想到这个地方会是Kanie的公寓！Hana因为害怕靠近而紧张，害怕让他把手放在她的背上。 她不可能这样学习！ 而且，时间不早了，看样子她要留下来了！",
+            "production_code": "",
+            "runtime": 6,
+            "season_number": 1,
+            "show_id": 75778,
+            "still_path": "/vwl7kffActU5ipfzoBfbwtNi5TC.jpg",
+            "vote_average": 2.0,
+            "vote_count": 1,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2018-02-28",
+            "episode_number": 8,
+            "episode_type": "standard",
+            "id": 1462746,
+            "name": "此时彼克彼处",
+            "overview": "你说我们今天不会做这种事！”——Hana熬夜学习后在Kanie家过夜。 刚洗完澡，看来她借来的衣服太松了！ 她的锁骨和胸部被无情地舔了一下，她被推倒在床上……",
+            "production_code": "",
+            "runtime": 6,
+            "season_number": 1,
+            "show_id": 75778,
+            "still_path": "/vzLWESTKkpLAMeDjxMDQVaIUhIr.jpg",
+            "vote_average": 2.0,
+            "vote_count": 1,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2018-03-07",
+            "episode_number": 9,
+            "episode_type": "standard",
+            "id": 1462747,
+            "name": "那天早上 两个人",
+            "overview": "季节概述：浪漫故事围绕着Hana Natori展开，她是一位认真、善良的 25 岁女性，她的表妹拒绝上高中。 Hana取代了她表妹的位置上高中。 然而，在她的第一天，Hana 的诡计被她以前的高中同学 Okito Kanie 发现了——他恰好是高中的世界历史老师。",
+            "production_code": "",
+            "runtime": 6,
+            "season_number": 1,
+            "show_id": 75778,
+            "still_path": "/fL5IoPnGVFnkB9MPTXreIdPvUKv.jpg",
+            "vote_average": 2.0,
+            "vote_count": 1,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2018-03-14",
+            "episode_number": 10,
+            "episode_type": "standard",
+            "id": 1462748,
+            "name": "这莫非就是在吃醋吗？",
+            "overview": "「在这种地方... 会发出声音... 」 -- 与相田在图书馆学习的花。我把这些告诉了蟹江，她很担心，就跟着来了!三个人尴尬地开始学习。然后在桌子底下，手指被塞进内衣里... !? 不行... ... 明明相田君就在眼前... !",
+            "production_code": "",
+            "runtime": 6,
+            "season_number": 1,
+            "show_id": 75778,
+            "still_path": "/fdGN7ZsX6ooNwkHQibxeFbHNxAp.jpg",
+            "vote_average": 2.0,
+            "vote_count": 1,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2018-03-21",
+            "episode_number": 11,
+            "episode_type": "standard",
+            "id": 1462749,
+            "name": "最糟糕的日子",
+            "overview": "“关不关系，由我来决定”-- 花无意中说了一句话，伤害了蟹江。被推到车子后座，被猛烈地吸吮.../不耐烦地擦身而过，笨拙的两人会变成什么样子... !? 高潮来临前的第11话，敬请期待!",
+            "production_code": "",
+            "runtime": 6,
+            "season_number": 1,
+            "show_id": 75778,
+            "still_path": "/seSqooZY62cTYsqtt0CpapYaEC5.jpg",
+            "vote_average": 3.0,
+            "vote_count": 1,
+            "crew": [],
+            "guest_stars": []
+          },
+          {
+            "air_date": "2018-03-28",
+            "episode_number": 12,
+            "episode_type": "finale",
+            "id": 1462750,
+            "name": "最喜欢你了",
+            "overview": "蟹江到花的家里来道歉。终于，蟹江说出了从高中时代就有的想法。一心一意思念花朵的温柔话语，让我泪流满面 -- 身体和心灵，至今为止最深的连结... 充满幸福的感动最终话。",
+            "production_code": "",
+            "runtime": 6,
+            "season_number": 1,
+            "show_id": 75778,
+            "still_path": "/a7ldKuUE0HUEKnLVE5y5nOOlxZk.jpg",
+            "vote_average": 3.0,
+            "vote_count": 1,
+            "crew": [],
+            "guest_stars": []
+          }
+        ],
+        "name": "第 1 季",
+        "networks": [
+          {
+            "id": 614,
+            "logo_path": "/hSdroyVthq3CynxTIIY7lnS8w1.png",
+            "name": "Tokyo MX",
+            "origin_country": "JP"
+          }
+        ],
+        "overview": "",
+        "id": 96705,
+        "poster_path": "/mwHrvIFSxwJSTzocHNsO3MwxpUx.jpg",
+        "season_number": 1,
+        "vote_average": 2.2
+      }
+    ],
+    "episodes": [
+      {
+        "air_date": "2018-01-08",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "那是突如其来的重逢",
+        "overview": "这个25岁的小姑娘要冒充逃学的表妹去上学！ 虽然她可以应付去上课，但她无法遵循高中生活的所有华丽伪装，并最终陷入困境，迫使她在护士办公室避难，突然间老师Kanie向她打招呼 说，“你不是Hana Natori吗？”，这完全打破了她的掩饰。 出人意料的是，Kanie竟然是她高中时的同班同学！ 而且，他毫无预兆地问她：“你知道该怎么做才能让男人保持安静吗？” 并开始深深地亲吻她，在这个过程中将她推倒！ 秘密堆积如山，逃不掉！",
+        "id": 1406727,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/nkvfmWrBZaQ7KBld3V9ad8U5WAv.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-01-17",
+        "crew": [],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "在保健室的床上…",
+        "overview": "“我想我可以保守你的秘密。” Kanie 声称他会和我一起工作来隐瞒我代替我表弟上学的事实。 干完这些下流的事后，他亲昵地拍了拍我的头，我的心都怦怦直跳！ 更重要的是，那天晚上我接到了 Kanie 的惊喜电话。 他说他会和我一起参加体育节的训练，但那意味着我们两个放学后会单独在一起！",
+        "id": 1417775,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/jtn3IpNkmmCUIPe58FXA2QAyyoj.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-01-24",
+        "crew": [],
+        "episode_number": 3,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "放学后的秘密课程",
+        "overview": "“我们在运动储藏室做伸展运动……等等，这不对！” Kanie 正在和我一起锻炼，为运动节做准备。 锻炼完后，他帮我伸展，但在他抚摸我的时候，我不小心发出了一些奇怪的声音！ 他指责我带他走，我怎么扭动都无法反抗或逃跑……只有我们两个人，放学后一个人——我又热又汗，感觉我 融化…",
+        "id": 1417776,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/l6jnvT96ZLOpZy56p10B828CNRY.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-01-31",
+        "crew": [],
+        "episode_number": 4,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "校友会的夜晚",
+        "overview": "“今天你不是学生，所以我不会半途而废。” 在我们的同学聚会上，周围没有其他学生或老师，我们像 25 岁的同学一样见面。 开始是一个普通的晚上，突然被我抓住手腕带出会场！ 在一个私人厕所里，他把我拉近并开始亲吻我……即使我们应该参加同学聚会，他也无法把手从我身上移开。 但是，突然之间，我们在这里不再孤单了！",
+        "id": 1417777,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/aQqciA9qsHUlmldJ8vXS7mBWcU6.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-02-07",
+        "crew": [],
+        "episode_number": 5,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "忘了不得了的东西!",
+        "overview": "当Kanie盯着她看时，Hana的心跳加速。 Kanie一脸严肃地说：“裙子的长度、妆容、头发……都违背了代码。” “什么？！” 没错，这是一次着装检查。 下课后，Hana被传唤到准备室接受惩罚，她解释说她穿这样的衣服只是为了看起来像她的表弟Kaho。 不过他还是用妖媚的声音问她是不是要违背老师的话，凑近了…… 做完之后，Kaho丢掉了重要的东西！ 会是什么呢？ 你必须观看才能知道！",
+        "id": 1462743,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/lhGg2upEx1bqwCedax0DrGKSJdD.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-02-14",
+        "crew": [],
+        "episode_number": 6,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "秘密被暴露了!",
+        "overview": "“我……我怎么办？ 我没有穿任何内衣，然后就发生了！” Hana被困在健身房后面，被Aida叫到了那里。 他正要摸她的屁股。 Hana处于紧要关头！ 就在这时，Kanie从背后出现了……",
+        "id": 1462744,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/l9uqjs2sRWLGQK7wki6VpsFde12.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-02-21",
+        "crew": [],
+        "episode_number": 7,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "只有两个人的学习会♥",
+        "overview": "她同意接受辅导，但没想到这个地方会是Kanie的公寓！Hana因为害怕靠近而紧张，害怕让他把手放在她的背上。 她不可能这样学习！ 而且，时间不早了，看样子她要留下来了！",
+        "id": 1462745,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/vwl7kffActU5ipfzoBfbwtNi5TC.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-02-28",
+        "crew": [],
+        "episode_number": 8,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "此时彼克彼处",
+        "overview": "你说我们今天不会做这种事！”——Hana熬夜学习后在Kanie家过夜。 刚洗完澡，看来她借来的衣服太松了！ 她的锁骨和胸部被无情地舔了一下，她被推倒在床上……",
+        "id": 1462746,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/vzLWESTKkpLAMeDjxMDQVaIUhIr.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-03-07",
+        "crew": [],
+        "episode_number": 9,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "那天早上 两个人",
+        "overview": "季节概述：浪漫故事围绕着Hana Natori展开，她是一位认真、善良的 25 岁女性，她的表妹拒绝上高中。 Hana取代了她表妹的位置上高中。 然而，在她的第一天，Hana 的诡计被她以前的高中同学 Okito Kanie 发现了——他恰好是高中的世界历史老师。",
+        "id": 1462747,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/fL5IoPnGVFnkB9MPTXreIdPvUKv.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-03-14",
+        "crew": [],
+        "episode_number": 10,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "这莫非就是在吃醋吗？",
+        "overview": "「在这种地方... 会发出声音... 」 -- 与相田在图书馆学习的花。我把这些告诉了蟹江，她很担心，就跟着来了!三个人尴尬地开始学习。然后在桌子底下，手指被塞进内衣里... !? 不行... ... 明明相田君就在眼前... !",
+        "id": 1462748,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/fdGN7ZsX6ooNwkHQibxeFbHNxAp.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-03-21",
+        "crew": [],
+        "episode_number": 11,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "最糟糕的日子",
+        "overview": "“关不关系，由我来决定”-- 花无意中说了一句话，伤害了蟹江。被推到车子后座，被猛烈地吸吮.../不耐烦地擦身而过，笨拙的两人会变成什么样子... !? 高潮来临前的第11话，敬请期待!",
+        "id": 1462749,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/seSqooZY62cTYsqtt0CpapYaEC5.jpg",
+        "vote_average": 3.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-03-28",
+        "crew": [],
+        "episode_number": 12,
+        "episode_type": "finale",
+        "guest_stars": [],
+        "name": "最喜欢你了",
+        "overview": "蟹江到花的家里来道歉。终于，蟹江说出了从高中时代就有的想法。一心一意思念花朵的温柔话语，让我泪流满面 -- 身体和心灵，至今为止最深的连结... 充满幸福的感动最终话。",
+        "id": 1462750,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/a7ldKuUE0HUEKnLVE5y5nOOlxZk.jpg",
+        "vote_average": 3.0,
+        "vote_count": 1
+      }
+    ]
+  },
+  "translate": {
+    "translated": {
+      "media_type": "tv",
+      "tmdb_id": 75778,
+      "title": "25岁的女高中生",
+      "original_title": "25歳の女子高生",
+      "year": 2018,
+      "plot": "花（原田瞳 配音）从来都没想象过，25岁的自己依然在苦苦的寻找着工作。某日，花的亲戚找到了她，提出了一个奇怪的委托。原来，花16岁的表妹是一个家里蹲，不愿意去学校上学，而花的样貌和表妹极为相似，所以亲戚请求花隐姓埋名假扮表妹去学校上课。\n\n走投无路的花接受了委托，经过一番精心的装扮后，自认为无懈可击绝对不会暴露的花踏入了高中的校园。让花没有想到的是，自己的班主任，竟然是曾经的高中同学蟹江，不仅如此，蟹江在第一时间便识破了花的真身。花请求蟹江帮她保守秘密，然而，蟹将却提出了令花感到害臊又悸动的条件。",
+      "tagline": "",
+      "runtime": 6,
+      "release_date": "2018-01-08",
+      "rating": 5.6,
+      "rating_count": 18,
+      "genres": [
+        "动画"
+      ],
+      "countries": [
+        "JP"
+      ],
+      "languages": [
+        "ja"
+      ],
+      "studios": [
+        "Picante Circus",
+        "Suiseisha",
+        "Lyrics",
+        "Cosmic Ray",
+        "TAVAC",
+        "Lilix"
+      ],
+      "networks": [
+        "Tokyo MX"
+      ],
+      "network": "Tokyo MX",
+      "status": "Ended",
+      "homepage": "http://nigojo.cf-anime.com/",
+      "cast": [
+        {
+          "name_en": "Hitomi Harada",
+          "name_zh": null,
+          "role": "Hana Natori (voice)",
+          "original_name": "原田ひとみ",
+          "profile_path": "/vggu5Rw8MVhinrHnpELIm4JErqP.jpg",
+          "popularity": 1.3697
+        },
+        {
+          "name_en": "Chiharu Sawashiro",
+          "name_zh": null,
+          "role": "Akito Kanie (voice)",
+          "original_name": "沢城千春",
+          "profile_path": "/7Bs0mNo3nPOnsOLWVCFDdIpohUI.jpg",
+          "popularity": 2.0751
+        },
+        {
+          "name_en": "Tomohito Takatsuka",
+          "name_zh": null,
+          "role": "Naoyuki Aida (voice)",
+          "original_name": "高塚智人",
+          "profile_path": "/jrsGxmSqPqBqno8AsUYGSSTZLsv.jpg",
+          "popularity": 0.8732
+        }
+      ],
+      "directors": [
+        "Hideta Oota"
+      ],
+      "writers": [],
+      "images": {},
+      "seasons": [
+        {
+          "air_date": "2018-01-08",
+          "episode_count": 12,
+          "id": 96705,
+          "name": "第 1 季",
+          "overview": "",
+          "poster_path": "/mwHrvIFSxwJSTzocHNsO3MwxpUx.jpg",
+          "season_number": 1,
+          "vote_average": 2.2
+        }
+      ],
+      "episodes": [
+        {
+          "air_date": "2018-01-08",
+          "crew": [],
+          "episode_number": 1,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "那是突如其来的重逢",
+          "overview": "这个25岁的小姑娘要冒充逃学的表妹去上学！ 虽然她可以应付去上课，但她无法遵循高中生活的所有华丽伪装，并最终陷入困境，迫使她在护士办公室避难，突然间老师Kanie向她打招呼 说，“你不是Hana Natori吗？”，这完全打破了她的掩饰。 出人意料的是，Kanie竟然是她高中时的同班同学！ 而且，他毫无预兆地问她：“你知道该怎么做才能让男人保持安静吗？” 并开始深深地亲吻她，在这个过程中将她推倒！ 秘密堆积如山，逃不掉！",
+          "id": 1406727,
+          "production_code": "",
+          "runtime": 6,
+          "season_number": 1,
+          "still_path": "/nkvfmWrBZaQ7KBld3V9ad8U5WAv.jpg",
+          "vote_average": 2.0,
+          "vote_count": 1
+        },
+        {
+          "air_date": "2018-01-17",
+          "crew": [],
+          "episode_number": 2,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "在保健室的床上…",
+          "overview": "“我想我可以保守你的秘密。” Kanie 声称他会和我一起工作来隐瞒我代替我表弟上学的事实。 干完这些下流的事后，他亲昵地拍了拍我的头，我的心都怦怦直跳！ 更重要的是，那天晚上我接到了 Kanie 的惊喜电话。 他说他会和我一起参加体育节的训练，但那意味着我们两个放学后会单独在一起！",
+          "id": 1417775,
+          "production_code": "",
+          "runtime": 6,
+          "season_number": 1,
+          "still_path": "/jtn3IpNkmmCUIPe58FXA2QAyyoj.jpg",
+          "vote_average": 2.0,
+          "vote_count": 1
+        },
+        {
+          "air_date": "2018-01-24",
+          "crew": [],
+          "episode_number": 3,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "放学后的秘密课程",
+          "overview": "“我们在运动储藏室做伸展运动……等等，这不对！” Kanie 正在和我一起锻炼，为运动节做准备。 锻炼完后，他帮我伸展，但在他抚摸我的时候，我不小心发出了一些奇怪的声音！ 他指责我带他走，我怎么扭动都无法反抗或逃跑……只有我们两个人，放学后一个人——我又热又汗，感觉我 融化…",
+          "id": 1417776,
+          "production_code": "",
+          "runtime": 6,
+          "season_number": 1,
+          "still_path": "/l6jnvT96ZLOpZy56p10B828CNRY.jpg",
+          "vote_average": 2.0,
+          "vote_count": 1
+        },
+        {
+          "air_date": "2018-01-31",
+          "crew": [],
+          "episode_number": 4,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "校友会的夜晚",
+          "overview": "“今天你不是学生，所以我不会半途而废。” 在我们的同学聚会上，周围没有其他学生或老师，我们像 25 岁的同学一样见面。 开始是一个普通的晚上，突然被我抓住手腕带出会场！ 在一个私人厕所里，他把我拉近并开始亲吻我……即使我们应该参加同学聚会，他也无法把手从我身上移开。 但是，突然之间，我们在这里不再孤单了！",
+          "id": 1417777,
+          "production_code": "",
+          "runtime": 6,
+          "season_number": 1,
+          "still_path": "/aQqciA9qsHUlmldJ8vXS7mBWcU6.jpg",
+          "vote_average": 2.0,
+          "vote_count": 1
+        },
+        {
+          "air_date": "2018-02-07",
+          "crew": [],
+          "episode_number": 5,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "忘了不得了的东西!",
+          "overview": "当Kanie盯着她看时，Hana的心跳加速。 Kanie一脸严肃地说：“裙子的长度、妆容、头发……都违背了代码。” “什么？！” 没错，这是一次着装检查。 下课后，Hana被传唤到准备室接受惩罚，她解释说她穿这样的衣服只是为了看起来像她的表弟Kaho。 不过他还是用妖媚的声音问她是不是要违背老师的话，凑近了…… 做完之后，Kaho丢掉了重要的东西！ 会是什么呢？ 你必须观看才能知道！",
+          "id": 1462743,
+          "production_code": "",
+          "runtime": 6,
+          "season_number": 1,
+          "still_path": "/lhGg2upEx1bqwCedax0DrGKSJdD.jpg",
+          "vote_average": 2.0,
+          "vote_count": 1
+        },
+        {
+          "air_date": "2018-02-14",
+          "crew": [],
+          "episode_number": 6,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "秘密被暴露了!",
+          "overview": "“我……我怎么办？ 我没有穿任何内衣，然后就发生了！” Hana被困在健身房后面，被Aida叫到了那里。 他正要摸她的屁股。 Hana处于紧要关头！ 就在这时，Kanie从背后出现了……",
+          "id": 1462744,
+          "production_code": "",
+          "runtime": 6,
+          "season_number": 1,
+          "still_path": "/l9uqjs2sRWLGQK7wki6VpsFde12.jpg",
+          "vote_average": 2.0,
+          "vote_count": 1
+        },
+        {
+          "air_date": "2018-02-21",
+          "crew": [],
+          "episode_number": 7,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "只有两个人的学习会♥",
+          "overview": "她同意接受辅导，但没想到这个地方会是Kanie的公寓！Hana因为害怕靠近而紧张，害怕让他把手放在她的背上。 她不可能这样学习！ 而且，时间不早了，看样子她要留下来了！",
+          "id": 1462745,
+          "production_code": "",
+          "runtime": 6,
+          "season_number": 1,
+          "still_path": "/vwl7kffActU5ipfzoBfbwtNi5TC.jpg",
+          "vote_average": 2.0,
+          "vote_count": 1
+        },
+        {
+          "air_date": "2018-02-28",
+          "crew": [],
+          "episode_number": 8,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "此时彼克彼处",
+          "overview": "你说我们今天不会做这种事！”——Hana熬夜学习后在Kanie家过夜。 刚洗完澡，看来她借来的衣服太松了！ 她的锁骨和胸部被无情地舔了一下，她被推倒在床上……",
+          "id": 1462746,
+          "production_code": "",
+          "runtime": 6,
+          "season_number": 1,
+          "still_path": "/vzLWESTKkpLAMeDjxMDQVaIUhIr.jpg",
+          "vote_average": 2.0,
+          "vote_count": 1
+        },
+        {
+          "air_date": "2018-03-07",
+          "crew": [],
+          "episode_number": 9,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "那天早上 两个人",
+          "overview": "季节概述：浪漫故事围绕着Hana Natori展开，她是一位认真、善良的 25 岁女性，她的表妹拒绝上高中。 Hana取代了她表妹的位置上高中。 然而，在她的第一天，Hana 的诡计被她以前的高中同学 Okito Kanie 发现了——他恰好是高中的世界历史老师。",
+          "id": 1462747,
+          "production_code": "",
+          "runtime": 6,
+          "season_number": 1,
+          "still_path": "/fL5IoPnGVFnkB9MPTXreIdPvUKv.jpg",
+          "vote_average": 2.0,
+          "vote_count": 1
+        },
+        {
+          "air_date": "2018-03-14",
+          "crew": [],
+          "episode_number": 10,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "这莫非就是在吃醋吗？",
+          "overview": "「在这种地方... 会发出声音... 」 -- 与相田在图书馆学习的花。我把这些告诉了蟹江，她很担心，就跟着来了!三个人尴尬地开始学习。然后在桌子底下，手指被塞进内衣里... !? 不行... ... 明明相田君就在眼前... !",
+          "id": 1462748,
+          "production_code": "",
+          "runtime": 6,
+          "season_number": 1,
+          "still_path": "/fdGN7ZsX6ooNwkHQibxeFbHNxAp.jpg",
+          "vote_average": 2.0,
+          "vote_count": 1
+        },
+        {
+          "air_date": "2018-03-21",
+          "crew": [],
+          "episode_number": 11,
+          "episode_type": "standard",
+          "guest_stars": [],
+          "name": "最糟糕的日子",
+          "overview": "“关不关系，由我来决定”-- 花无意中说了一句话，伤害了蟹江。被推到车子后座，被猛烈地吸吮.../不耐烦地擦身而过，笨拙的两人会变成什么样子... !? 高潮来临前的第11话，敬请期待!",
+          "id": 1462749,
+          "production_code": "",
+          "runtime": 6,
+          "season_number": 1,
+          "still_path": "/seSqooZY62cTYsqtt0CpapYaEC5.jpg",
+          "vote_average": 3.0,
+          "vote_count": 1
+        },
+        {
+          "air_date": "2018-03-28",
+          "crew": [],
+          "episode_number": 12,
+          "episode_type": "finale",
+          "guest_stars": [],
+          "name": "最喜欢你了",
+          "overview": "蟹江到花的家里来道歉。终于，蟹江说出了从高中时代就有的想法。一心一意思念花朵的温柔话语，让我泪流满面 -- 身体和心灵，至今为止最深的连结... 充满幸福的感动最终话。",
+          "id": 1462750,
+          "production_code": "",
+          "runtime": 6,
+          "season_number": 1,
+          "still_path": "/a7ldKuUE0HUEKnLVE5y5nOOlxZk.jpg",
+          "vote_average": 3.0,
+          "vote_count": 1
+        }
+      ],
+      "title_zh": "25岁的女高中生",
+      "plot_zh": "花（原田瞳 配音）从来都没想象过，25岁的自己依然在苦苦的寻找着工作。某日，花的亲戚找到了她，提出了一个奇怪的委托。原来，花16岁的表妹是一个家里蹲，不愿意去学校上学，而花的样貌和表妹极为相似，所以亲戚请求花隐姓埋名假扮表妹去学校上课。\n\n走投无路的花接受了委托，经过一番精心的装扮后，自认为无懈可击绝对不会暴露的花踏入了高中的校园。让花没有想到的是，自己的班主任，竟然是曾经的高中同学蟹江，不仅如此，蟹江在第一时间便识破了花的真身。花请求蟹江帮她保守秘密，然而，蟹将却提出了令花感到害臊又悸动的条件。",
+      "keywords_en": [
+        "school",
+        "female protagonist",
+        "based on manga",
+        "shoujo",
+        "anime",
+        "erotic",
+        "sex"
+      ],
+      "keywords": [
+        "school",
+        "female protagonist",
+        "based on manga",
+        "shoujo",
+        "anime",
+        "erotic",
+        "sex"
+      ],
+      "keywords_zh": [
+        "学校",
+        "女主人公",
+        "改编自漫画",
+        "少女",
+        "动画",
+        "色情",
+        "性"
+      ]
+    },
+    "episodes": [
+      {
+        "air_date": "2018-01-08",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "那是突如其来的重逢",
+        "overview": "这个25岁的小姑娘要冒充逃学的表妹去上学！ 虽然她可以应付去上课，但她无法遵循高中生活的所有华丽伪装，并最终陷入困境，迫使她在护士办公室避难，突然间老师Kanie向她打招呼 说，“你不是Hana Natori吗？”，这完全打破了她的掩饰。 出人意料的是，Kanie竟然是她高中时的同班同学！ 而且，他毫无预兆地问她：“你知道该怎么做才能让男人保持安静吗？” 并开始深深地亲吻她，在这个过程中将她推倒！ 秘密堆积如山，逃不掉！",
+        "id": 1406727,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/nkvfmWrBZaQ7KBld3V9ad8U5WAv.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-01-17",
+        "crew": [],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "在保健室的床上…",
+        "overview": "“我想我可以保守你的秘密。” Kanie 声称他会和我一起工作来隐瞒我代替我表弟上学的事实。 干完这些下流的事后，他亲昵地拍了拍我的头，我的心都怦怦直跳！ 更重要的是，那天晚上我接到了 Kanie 的惊喜电话。 他说他会和我一起参加体育节的训练，但那意味着我们两个放学后会单独在一起！",
+        "id": 1417775,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/jtn3IpNkmmCUIPe58FXA2QAyyoj.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-01-24",
+        "crew": [],
+        "episode_number": 3,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "放学后的秘密课程",
+        "overview": "“我们在运动储藏室做伸展运动……等等，这不对！” Kanie 正在和我一起锻炼，为运动节做准备。 锻炼完后，他帮我伸展，但在他抚摸我的时候，我不小心发出了一些奇怪的声音！ 他指责我带他走，我怎么扭动都无法反抗或逃跑……只有我们两个人，放学后一个人——我又热又汗，感觉我 融化…",
+        "id": 1417776,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/l6jnvT96ZLOpZy56p10B828CNRY.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-01-31",
+        "crew": [],
+        "episode_number": 4,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "校友会的夜晚",
+        "overview": "“今天你不是学生，所以我不会半途而废。” 在我们的同学聚会上，周围没有其他学生或老师，我们像 25 岁的同学一样见面。 开始是一个普通的晚上，突然被我抓住手腕带出会场！ 在一个私人厕所里，他把我拉近并开始亲吻我……即使我们应该参加同学聚会，他也无法把手从我身上移开。 但是，突然之间，我们在这里不再孤单了！",
+        "id": 1417777,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/aQqciA9qsHUlmldJ8vXS7mBWcU6.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-02-07",
+        "crew": [],
+        "episode_number": 5,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "忘了不得了的东西!",
+        "overview": "当Kanie盯着她看时，Hana的心跳加速。 Kanie一脸严肃地说：“裙子的长度、妆容、头发……都违背了代码。” “什么？！” 没错，这是一次着装检查。 下课后，Hana被传唤到准备室接受惩罚，她解释说她穿这样的衣服只是为了看起来像她的表弟Kaho。 不过他还是用妖媚的声音问她是不是要违背老师的话，凑近了…… 做完之后，Kaho丢掉了重要的东西！ 会是什么呢？ 你必须观看才能知道！",
+        "id": 1462743,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/lhGg2upEx1bqwCedax0DrGKSJdD.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-02-14",
+        "crew": [],
+        "episode_number": 6,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "秘密被暴露了!",
+        "overview": "“我……我怎么办？ 我没有穿任何内衣，然后就发生了！” Hana被困在健身房后面，被Aida叫到了那里。 他正要摸她的屁股。 Hana处于紧要关头！ 就在这时，Kanie从背后出现了……",
+        "id": 1462744,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/l9uqjs2sRWLGQK7wki6VpsFde12.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-02-21",
+        "crew": [],
+        "episode_number": 7,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "只有两个人的学习会♥",
+        "overview": "她同意接受辅导，但没想到这个地方会是Kanie的公寓！Hana因为害怕靠近而紧张，害怕让他把手放在她的背上。 她不可能这样学习！ 而且，时间不早了，看样子她要留下来了！",
+        "id": 1462745,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/vwl7kffActU5ipfzoBfbwtNi5TC.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-02-28",
+        "crew": [],
+        "episode_number": 8,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "此时彼克彼处",
+        "overview": "你说我们今天不会做这种事！”——Hana熬夜学习后在Kanie家过夜。 刚洗完澡，看来她借来的衣服太松了！ 她的锁骨和胸部被无情地舔了一下，她被推倒在床上……",
+        "id": 1462746,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/vzLWESTKkpLAMeDjxMDQVaIUhIr.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-03-07",
+        "crew": [],
+        "episode_number": 9,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "那天早上 两个人",
+        "overview": "季节概述：浪漫故事围绕着Hana Natori展开，她是一位认真、善良的 25 岁女性，她的表妹拒绝上高中。 Hana取代了她表妹的位置上高中。 然而，在她的第一天，Hana 的诡计被她以前的高中同学 Okito Kanie 发现了——他恰好是高中的世界历史老师。",
+        "id": 1462747,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/fL5IoPnGVFnkB9MPTXreIdPvUKv.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-03-14",
+        "crew": [],
+        "episode_number": 10,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "这莫非就是在吃醋吗？",
+        "overview": "「在这种地方... 会发出声音... 」 -- 与相田在图书馆学习的花。我把这些告诉了蟹江，她很担心，就跟着来了!三个人尴尬地开始学习。然后在桌子底下，手指被塞进内衣里... !? 不行... ... 明明相田君就在眼前... !",
+        "id": 1462748,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/fdGN7ZsX6ooNwkHQibxeFbHNxAp.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-03-21",
+        "crew": [],
+        "episode_number": 11,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "最糟糕的日子",
+        "overview": "“关不关系，由我来决定”-- 花无意中说了一句话，伤害了蟹江。被推到车子后座，被猛烈地吸吮.../不耐烦地擦身而过，笨拙的两人会变成什么样子... !? 高潮来临前的第11话，敬请期待!",
+        "id": 1462749,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/seSqooZY62cTYsqtt0CpapYaEC5.jpg",
+        "vote_average": 3.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-03-28",
+        "crew": [],
+        "episode_number": 12,
+        "episode_type": "finale",
+        "guest_stars": [],
+        "name": "最喜欢你了",
+        "overview": "蟹江到花的家里来道歉。终于，蟹江说出了从高中时代就有的想法。一心一意思念花朵的温柔话语，让我泪流满面 -- 身体和心灵，至今为止最深的连结... 充满幸福的感动最终话。",
+        "id": 1462750,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/a7ldKuUE0HUEKnLVE5y5nOOlxZk.jpg",
+        "vote_average": 3.0,
+        "vote_count": 1
+      }
+    ]
+  },
+  "normalize": {
+    "media_type": "tv",
+    "tmdb_id": 75778,
+    "title": "25岁的女高中生",
+    "original_title": "25歳の女子高生",
+    "year": 2018,
+    "plot": "花（原田瞳 配音）从来都没想象过，25岁的自己依然在苦苦的寻找着工作。某日，花的亲戚找到了她，提出了一个奇怪的委托。原来，花16岁的表妹是一个家里蹲，不愿意去学校上学，而花的样貌和表妹极为相似，所以亲戚请求花隐姓埋名假扮表妹去学校上课。\n\n走投无路的花接受了委托，经过一番精心的装扮后，自认为无懈可击绝对不会暴露的花踏入了高中的校园。让花没有想到的是，自己的班主任，竟然是曾经的高中同学蟹江，不仅如此，蟹江在第一时间便识破了花的真身。花请求蟹江帮她保守秘密，然而，蟹将却提出了令花感到害臊又悸动的条件。",
+    "tagline": "",
+    "runtime": 6,
+    "release_date": "2018-01-08",
+    "rating": 5.6,
+    "rating_count": 18,
+    "genres": [
+      "动画"
+    ],
+    "countries": [
+      "JP"
+    ],
+    "languages": [
+      "ja"
+    ],
+    "studios": [
+      "Picante Circus",
+      "Suiseisha",
+      "Lyrics",
+      "Cosmic Ray",
+      "TAVAC",
+      "Lilix"
+    ],
+    "networks": [
+      "Tokyo MX"
+    ],
+    "network": "Tokyo MX",
+    "status": "Ended",
+    "homepage": "http://nigojo.cf-anime.com/",
+    "cast": [
+      {
+        "name_en": "Hitomi Harada",
+        "name_zh": null,
+        "role": "Hana Natori (voice)",
+        "original_name": "原田ひとみ",
+        "profile_path": "/vggu5Rw8MVhinrHnpELIm4JErqP.jpg",
+        "popularity": 1.3697
+      },
+      {
+        "name_en": "Chiharu Sawashiro",
+        "name_zh": null,
+        "role": "Akito Kanie (voice)",
+        "original_name": "沢城千春",
+        "profile_path": "/7Bs0mNo3nPOnsOLWVCFDdIpohUI.jpg",
+        "popularity": 2.0751
+      },
+      {
+        "name_en": "Tomohito Takatsuka",
+        "name_zh": null,
+        "role": "Naoyuki Aida (voice)",
+        "original_name": "高塚智人",
+        "profile_path": "/jrsGxmSqPqBqno8AsUYGSSTZLsv.jpg",
+        "popularity": 0.8732
+      }
+    ],
+    "directors": [
+      "Hideta Oota"
+    ],
+    "writers": [],
+    "images": {},
+    "seasons": [
+      {
+        "air_date": "2018-01-08",
+        "episode_count": 12,
+        "id": 96705,
+        "name": "第 1 季",
+        "overview": "",
+        "poster_path": "/mwHrvIFSxwJSTzocHNsO3MwxpUx.jpg",
+        "season_number": 1,
+        "vote_average": 2.2
+      }
+    ],
+    "episodes": [
+      {
+        "air_date": "2018-01-08",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "那是突如其来的重逢",
+        "overview": "这个25岁的小姑娘要冒充逃学的表妹去上学！ 虽然她可以应付去上课，但她无法遵循高中生活的所有华丽伪装，并最终陷入困境，迫使她在护士办公室避难，突然间老师Kanie向她打招呼 说，“你不是Hana Natori吗？”，这完全打破了她的掩饰。 出人意料的是，Kanie竟然是她高中时的同班同学！ 而且，他毫无预兆地问她：“你知道该怎么做才能让男人保持安静吗？” 并开始深深地亲吻她，在这个过程中将她推倒！ 秘密堆积如山，逃不掉！",
+        "id": 1406727,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/nkvfmWrBZaQ7KBld3V9ad8U5WAv.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-01-17",
+        "crew": [],
+        "episode_number": 2,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "在保健室的床上…",
+        "overview": "“我想我可以保守你的秘密。” Kanie 声称他会和我一起工作来隐瞒我代替我表弟上学的事实。 干完这些下流的事后，他亲昵地拍了拍我的头，我的心都怦怦直跳！ 更重要的是，那天晚上我接到了 Kanie 的惊喜电话。 他说他会和我一起参加体育节的训练，但那意味着我们两个放学后会单独在一起！",
+        "id": 1417775,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/jtn3IpNkmmCUIPe58FXA2QAyyoj.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-01-24",
+        "crew": [],
+        "episode_number": 3,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "放学后的秘密课程",
+        "overview": "“我们在运动储藏室做伸展运动……等等，这不对！” Kanie 正在和我一起锻炼，为运动节做准备。 锻炼完后，他帮我伸展，但在他抚摸我的时候，我不小心发出了一些奇怪的声音！ 他指责我带他走，我怎么扭动都无法反抗或逃跑……只有我们两个人，放学后一个人——我又热又汗，感觉我 融化…",
+        "id": 1417776,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/l6jnvT96ZLOpZy56p10B828CNRY.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-01-31",
+        "crew": [],
+        "episode_number": 4,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "校友会的夜晚",
+        "overview": "“今天你不是学生，所以我不会半途而废。” 在我们的同学聚会上，周围没有其他学生或老师，我们像 25 岁的同学一样见面。 开始是一个普通的晚上，突然被我抓住手腕带出会场！ 在一个私人厕所里，他把我拉近并开始亲吻我……即使我们应该参加同学聚会，他也无法把手从我身上移开。 但是，突然之间，我们在这里不再孤单了！",
+        "id": 1417777,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/aQqciA9qsHUlmldJ8vXS7mBWcU6.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-02-07",
+        "crew": [],
+        "episode_number": 5,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "忘了不得了的东西!",
+        "overview": "当Kanie盯着她看时，Hana的心跳加速。 Kanie一脸严肃地说：“裙子的长度、妆容、头发……都违背了代码。” “什么？！” 没错，这是一次着装检查。 下课后，Hana被传唤到准备室接受惩罚，她解释说她穿这样的衣服只是为了看起来像她的表弟Kaho。 不过他还是用妖媚的声音问她是不是要违背老师的话，凑近了…… 做完之后，Kaho丢掉了重要的东西！ 会是什么呢？ 你必须观看才能知道！",
+        "id": 1462743,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/lhGg2upEx1bqwCedax0DrGKSJdD.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-02-14",
+        "crew": [],
+        "episode_number": 6,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "秘密被暴露了!",
+        "overview": "“我……我怎么办？ 我没有穿任何内衣，然后就发生了！” Hana被困在健身房后面，被Aida叫到了那里。 他正要摸她的屁股。 Hana处于紧要关头！ 就在这时，Kanie从背后出现了……",
+        "id": 1462744,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/l9uqjs2sRWLGQK7wki6VpsFde12.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-02-21",
+        "crew": [],
+        "episode_number": 7,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "只有两个人的学习会♥",
+        "overview": "她同意接受辅导，但没想到这个地方会是Kanie的公寓！Hana因为害怕靠近而紧张，害怕让他把手放在她的背上。 她不可能这样学习！ 而且，时间不早了，看样子她要留下来了！",
+        "id": 1462745,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/vwl7kffActU5ipfzoBfbwtNi5TC.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-02-28",
+        "crew": [],
+        "episode_number": 8,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "此时彼克彼处",
+        "overview": "你说我们今天不会做这种事！”——Hana熬夜学习后在Kanie家过夜。 刚洗完澡，看来她借来的衣服太松了！ 她的锁骨和胸部被无情地舔了一下，她被推倒在床上……",
+        "id": 1462746,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/vzLWESTKkpLAMeDjxMDQVaIUhIr.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-03-07",
+        "crew": [],
+        "episode_number": 9,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "那天早上 两个人",
+        "overview": "季节概述：浪漫故事围绕着Hana Natori展开，她是一位认真、善良的 25 岁女性，她的表妹拒绝上高中。 Hana取代了她表妹的位置上高中。 然而，在她的第一天，Hana 的诡计被她以前的高中同学 Okito Kanie 发现了——他恰好是高中的世界历史老师。",
+        "id": 1462747,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/fL5IoPnGVFnkB9MPTXreIdPvUKv.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-03-14",
+        "crew": [],
+        "episode_number": 10,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "这莫非就是在吃醋吗？",
+        "overview": "「在这种地方... 会发出声音... 」 -- 与相田在图书馆学习的花。我把这些告诉了蟹江，她很担心，就跟着来了!三个人尴尬地开始学习。然后在桌子底下，手指被塞进内衣里... !? 不行... ... 明明相田君就在眼前... !",
+        "id": 1462748,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/fdGN7ZsX6ooNwkHQibxeFbHNxAp.jpg",
+        "vote_average": 2.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-03-21",
+        "crew": [],
+        "episode_number": 11,
+        "episode_type": "standard",
+        "guest_stars": [],
+        "name": "最糟糕的日子",
+        "overview": "“关不关系，由我来决定”-- 花无意中说了一句话，伤害了蟹江。被推到车子后座，被猛烈地吸吮.../不耐烦地擦身而过，笨拙的两人会变成什么样子... !? 高潮来临前的第11话，敬请期待!",
+        "id": 1462749,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/seSqooZY62cTYsqtt0CpapYaEC5.jpg",
+        "vote_average": 3.0,
+        "vote_count": 1
+      },
+      {
+        "air_date": "2018-03-28",
+        "crew": [],
+        "episode_number": 12,
+        "episode_type": "finale",
+        "guest_stars": [],
+        "name": "最喜欢你了",
+        "overview": "蟹江到花的家里来道歉。终于，蟹江说出了从高中时代就有的想法。一心一意思念花朵的温柔话语，让我泪流满面 -- 身体和心灵，至今为止最深的连结... 充满幸福的感动最终话。",
+        "id": 1462750,
+        "production_code": "",
+        "runtime": 6,
+        "season_number": 1,
+        "still_path": "/a7ldKuUE0HUEKnLVE5y5nOOlxZk.jpg",
+        "vote_average": 3.0,
+        "vote_count": 1
+      }
+    ],
+    "title_zh": "25岁的女高中生",
+    "plot_zh": "花（原田瞳 配音）从来都没想象过，25岁的自己依然在苦苦的寻找着工作。某日，花的亲戚找到了她，提出了一个奇怪的委托。原来，花16岁的表妹是一个家里蹲，不愿意去学校上学，而花的样貌和表妹极为相似，所以亲戚请求花隐姓埋名假扮表妹去学校上课。\n\n走投无路的花接受了委托，经过一番精心的装扮后，自认为无懈可击绝对不会暴露的花踏入了高中的校园。让花没有想到的是，自己的班主任，竟然是曾经的高中同学蟹江，不仅如此，蟹江在第一时间便识破了花的真身。花请求蟹江帮她保守秘密，然而，蟹将却提出了令花感到害臊又悸动的条件。",
+    "keywords_en": [
+      "school",
+      "female protagonist",
+      "based on manga",
+      "shoujo",
+      "anime",
+      "erotic",
+      "sex"
+    ],
+    "keywords": [
+      "school",
+      "female protagonist",
+      "based on manga",
+      "shoujo",
+      "anime",
+      "erotic",
+      "sex"
+    ],
+    "keywords_zh": [
+      "学校",
+      "女主人公",
+      "改编自漫画",
+      "少女",
+      "动画",
+      "色情",
+      "性"
+    ]
+  },
+  "nfo": {
+    "data": {
+      "title": "25岁的女高中生",
+      "originaltitle": "25歳の女子高生",
+      "year": 2018,
+      "premiered": "2018-01-08",
+      "plot": "花（原田瞳 配音）从来都没想象过，25岁的自己依然在苦苦的寻找着工作。某日，花的亲戚找到了她，提出了一个奇怪的委托。原来，花16岁的表妹是一个家里蹲，不愿意去学校上学，而花的样貌和表妹极为相似，所以亲戚请求花隐姓埋名假扮表妹去学校上课。\n\n走投无路的花接受了委托，经过一番精心的装扮后，自认为无懈可击绝对不会暴露的花踏入了高中的校园。让花没有想到的是，自己的班主任，竟然是曾经的高中同学蟹江，不仅如此，蟹江在第一时间便识破了花的真身。花请求蟹江帮她保守秘密，然而，蟹将却提出了令花感到害臊又悸动的条件。",
+      "tagline": "",
+      "runtime": 6,
+      "rating": 5.6,
+      "votes": 18,
+      "genre": [
+        "动画"
+      ],
+      "country": [
+        "JP"
+      ],
+      "studio": [
+        "Picante Circus",
+        "Suiseisha",
+        "Lyrics",
+        "Cosmic Ray",
+        "TAVAC",
+        "Lilix"
+      ],
+      "credits": [],
+      "director": [
+        "Hideta Oota"
+      ],
+      "actor": [
+        {
+          "name": "Hitomi Harada",
+          "role": "Hana Natori (voice)",
+          "originalname": "原田ひとみ",
+          "thumb": "images/actors/Hitomi Harada.jpg"
+        },
+        {
+          "name": "Chiharu Sawashiro",
+          "role": "Akito Kanie (voice)",
+          "originalname": "沢城千春",
+          "thumb": "images/actors/Chiharu Sawashiro.jpg"
+        },
+        {
+          "name": "Tomohito Takatsuka",
+          "role": "Naoyuki Aida (voice)",
+          "originalname": "高塚智人",
+          "thumb": "images/actors/Tomohito Takatsuka.jpg"
+        }
+      ],
+      "thumb": "poster.jpg",
+      "fanart": "fanart.jpg",
+      "tags": [
+        "学校",
+        "女主人公",
+        "改编自漫画",
+        "少女",
+        "动画",
+        "色情",
+        "性"
+      ],
+      "network": "Tokyo MX",
+      "networks": [
+        "Tokyo MX"
+      ],
+      "status": "Ended",
+      "homepage": "http://nigojo.cf-anime.com/",
+      "tmdb_id": 75778,
+      "validated": true
+    },
+    "xml": "<?xml version=\"1.0\" ?>\n<tvshow>\n  <title>25岁的女高中生</title>\n  <originaltitle>25歳の女子高生</originaltitle>\n  <year>2018</year>\n  <premiered>2018-01-08</premiered>\n  <plot cdata_content=\"花（原田瞳 配音）从来都没想象过，25岁的自己依然在苦苦的寻找着工作。某日，花的亲戚找到了她，提出了一个奇怪的委托。原来，花16岁的表妹是一个家里蹲，不愿意去学校上学，而花的样貌和表妹极为相似，所以亲戚请求花隐姓埋名假扮表妹去学校上课。\n\n走投无路的花接受了委托，经过一番精心的装扮后，自认为无懈可击绝对不会暴露的花踏入了高中的校园。让花没有想到的是，自己的班主任，竟然是曾经的高中同学蟹江，不仅如此，蟹江在第一时间便识破了花的真身。花请求蟹江帮她保守秘密，然而，蟹将却提出了令花感到害臊又悸动的条件。\"><![CDATA[花（原田瞳 配音）从来都没想象过，25岁的自己依然在苦苦的寻找着工作。某日，花的亲戚找到了她，提出了一个奇怪的委托。原来，花16岁的表妹是一个家里蹲，不愿意去学校上学，而花的样貌和表妹极为相似，所以亲戚请求花隐姓埋名假扮表妹去学校上课。\n\n走投无路的花接受了委托，经过一番精心的装扮后，自认为无懈可击绝对不会暴露的花踏入了高中的校园。让花没有想到的是，自己的班主任，竟然是曾经的高中同学蟹江，不仅如此，蟹江在第一时间便识破了花的真身。花请求蟹江帮她保守秘密，然而，蟹将却提出了令花感到害臊又悸动的条件。]]></plot>\n  <runtime>6</runtime>\n  <rating>5.6</rating>\n  <votes>18</votes>\n  <tmdbid>75778</tmdbid>\n  <genre>动画</genre>\n  <country>JP</country>\n  <studio>Picante Circus</studio>\n  <studio>Suiseisha</studio>\n  <studio>Lyrics</studio>\n  <studio>Cosmic Ray</studio>\n  <studio>TAVAC</studio>\n  <studio>Lilix</studio>\n  <director>Hideta Oota</director>\n  <actor>\n    <name>Hitomi Harada</name>\n    <role>Hana Natori (voice)</role>\n    <originalname>原田ひとみ</originalname>\n    <thumb>images/actors/Hitomi Harada.jpg</thumb>\n  </actor>\n  <actor>\n    <name>Chiharu Sawashiro</name>\n    <role>Akito Kanie (voice)</role>\n    <originalname>沢城千春</originalname>\n    <thumb>images/actors/Chiharu Sawashiro.jpg</thumb>\n  </actor>\n  <actor>\n    <name>Tomohito Takatsuka</name>\n    <role>Naoyuki Aida (voice)</role>\n    <originalname>高塚智人</originalname>\n    <thumb>images/actors/Tomohito Takatsuka.jpg</thumb>\n  </actor>\n  <network>Tokyo MX</network>\n  <status>Ended</status>\n  <homepage>http://nigojo.cf-anime.com/</homepage>\n  <uniqueid type=\"tmdb\" default=\"true\">75778</uniqueid>\n  <thumb>images/poster/poster.jpg</thumb>\n  <fanart>images/fanart/fanart.jpg</fanart>\n  <tag>学校</tag>\n  <tag>女主人公</tag>\n  <tag>改编自漫画</tag>\n  <tag>少女</tag>\n  <tag>动画</tag>\n  <tag>色情</tag>\n  <tag>性</tag>\n</tvshow>\n"
+  },
+  "output": {
+    "status": "completed",
+    "files": {
+      "nfo_file": "/Volumes/video/Animation/The Animation/25岁的女高中生 (2018)/tvshow.nfo",
+      "images_dir": "/Volumes/video/Animation/The Animation/25岁的女高中生 (2018)/images",
+      "media_dir": "/Volumes/video/Animation/The Animation/25岁的女高中生 (2018)",
+      "season_1_episode_1": "/Volumes/video/Animation/The Animation/25岁的女高中生 (2018)/Season 01/25岁的女高中生 - S01E01 - 那是突如其来的重逢.nfo",
+      "season_1_episode_2": "/Volumes/video/Animation/The Animation/25岁的女高中生 (2018)/Season 01/25岁的女高中生 - S01E02 - 在保健室的床上….nfo",
+      "season_1_episode_3": "/Volumes/video/Animation/The Animation/25岁的女高中生 (2018)/Season 01/25岁的女高中生 - S01E03 - 放学后的秘密课程.nfo",
+      "season_1_episode_4": "/Volumes/video/Animation/The Animation/25岁的女高中生 (2018)/Season 01/25岁的女高中生 - S01E04 - 校友会的夜晚.nfo",
+      "season_1_episode_5": "/Volumes/video/Animation/The Animation/25岁的女高中生 (2018)/Season 01/25岁的女高中生 - S01E05 - 忘了不得了的东西!.nfo",
+      "season_1_episode_6": "/Volumes/video/Animation/The Animation/25岁的女高中生 (2018)/Season 01/25岁的女高中生 - S01E06 - 秘密被暴露了!.nfo",
+      "season_1_episode_7": "/Volumes/video/Animation/The Animation/25岁的女高中生 (2018)/Season 01/25岁的女高中生 - S01E07 - 只有两个人的学习会♥.nfo",
+      "season_1_episode_8": "/Volumes/video/Animation/The Animation/25岁的女高中生 (2018)/Season 01/25岁的女高中生 - S01E08 - 此时彼克彼处.nfo",
+      "season_1_episode_9": "/Volumes/video/Animation/The Animation/25岁的女高中生 (2018)/Season 01/25岁的女高中生 - S01E09 - 那天早上 两个人.nfo",
+      "season_1_episode_10": "/Volumes/video/Animation/The Animation/25岁的女高中生 (2018)/Season 01/25岁的女高中生 - S01E10 - 这莫非就是在吃醋吗？.nfo",
+      "season_1_episode_11": "/Volumes/video/Animation/The Animation/25岁的女高中生 (2018)/Season 01/25岁的女高中生 - S01E11 - 最糟糕的日子.nfo",
+      "season_1_episode_12": "/Volumes/video/Animation/The Animation/25岁的女高中生 (2018)/Season 01/25岁的女高中生 - S01E12 - 最喜欢你了.nfo"
+    }
+  },
+  "errors": [],
+  "end_time": "2025-12-05T23:15:25.478715"
+}

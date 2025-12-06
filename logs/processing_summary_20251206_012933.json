@@ -1,0 +1,452 @@
+{
+  "start_time": "2025-12-06T01:29:23.981497",
+  "input": {
+    "media_type": "tv",
+    "query": "",
+    "output_dir": "/Volumes/video/Animation/The Animation/デリバリーちんこを頼みたいお姉さん (Unknown Year)",
+    "verbose": false,
+    "quiet": true,
+    "aid_search": true,
+    "tmdb_id": 212154
+  },
+  "search": {
+    "results": {},
+    "skip_search": true
+  },
+  "fetch": {
+    "main": {
+      "adult": true,
+      "backdrop_path": "/qJdSIG8rDoEkDk1Wx8prxVbCKtL.jpg",
+      "created_by": [],
+      "episode_run_time": [
+        27
+      ],
+      "first_air_date": "2022-09-30",
+      "genres": [
+        {
+          "id": 16,
+          "name": "动画"
+        }
+      ],
+      "homepage": "",
+      "id": 212154,
+      "in_production": false,
+      "languages": [
+        "ja"
+      ],
+      "last_air_date": "2022-09-30",
+      "last_episode_to_air": {
+        "id": 4001989,
+        "name": "第 1 集",
+        "overview": "",
+        "vote_average": 9.0,
+        "vote_count": 2,
+        "air_date": "2022-09-30",
+        "episode_number": 1,
+        "episode_type": "finale",
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "show_id": 212154,
+        "still_path": "/8z9QoOsUz1eny7fk9zLDsUntUa3.jpg"
+      },
+      "name": "想要点外送肉棒的大姐姐",
+      "next_episode_to_air": null,
+      "networks": [],
+      "number_of_episodes": 1,
+      "number_of_seasons": 1,
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "デリバリーちんこを頼みたい お姉さん",
+      "overview": "",
+      "popularity": 0.0,
+      "poster_path": "/x4DmDpHxOQiXxEKptOLogoRLD4U.jpg",
+      "production_companies": [
+        {
+          "id": 178152,
+          "logo_path": null,
+          "name": "Shion",
+          "origin_country": "JP"
+        },
+        {
+          "id": 80856,
+          "logo_path": "/7tFA0heb8o0hj9IsPehE3zuOHfw.png",
+          "name": "Pink Pineapple",
+          "origin_country": "JP"
+        }
+      ],
+      "production_countries": [
+        {
+          "iso_3166_1": "JP",
+          "name": "Japan"
+        }
+      ],
+      "seasons": [
+        {
+          "air_date": "2022-09-30",
+          "episode_count": 1,
+          "id": 312325,
+          "name": "第 1 季",
+          "overview": "",
+          "poster_path": "/hy9uJkzkAiK2dxCPWdFyZgfQwK3.jpg",
+          "season_number": 1,
+          "vote_average": 9.0
+        }
+      ],
+      "spoken_languages": [
+        {
+          "english_name": "Japanese",
+          "iso_639_1": "ja",
+          "name": "日本語"
+        }
+      ],
+      "status": "Ended",
+      "tagline": "",
+      "type": "Scripted",
+      "vote_average": 8.0,
+      "vote_count": 2
+    },
+    "credits": {
+      "cast": [
+        {
+          "adult": true,
+          "gender": 1,
+          "id": 3740866,
+          "known_for_department": "Acting",
+          "name": "Kiiro Tsukino",
+          "original_name": "月野きいろ",
+          "popularity": 7.641,
+          "profile_path": "/4fMRoXBHjPcUdx1fbqGDe70wEvM.jpg",
+          "character": "Saiki (voice)",
+          "credit_id": "6349f4ce4813820085d87b97",
+          "order": 0
+        }
+      ],
+      "crew": [
+        {
+          "adult": true,
+          "gender": 2,
+          "id": 1295786,
+          "known_for_department": "Directing",
+          "name": "Toshihiro Watase",
+          "original_name": "わたせとしひろ",
+          "popularity": 1.784,
+          "profile_path": null,
+          "credit_id": "6349f38a021cee007aeb2615",
+          "department": "Directing",
+          "job": "Director"
+        }
+      ],
+      "id": 212154
+    },
+    "keywords": {
+      "id": 212154,
+      "results": [
+        {
+          "name": "hentai",
+          "id": 198385
+        }
+      ]
+    },
+    "seasons": [
+      {
+        "_id": "6346b1fa9bcd0f007afa9a3d",
+        "air_date": "2022-09-30",
+        "episodes": [
+          {
+            "air_date": "2022-09-30",
+            "episode_number": 1,
+            "episode_type": "finale",
+            "id": 4001989,
+            "name": "第 1 集",
+            "overview": "",
+            "production_code": "",
+            "runtime": null,
+            "season_number": 1,
+            "show_id": 212154,
+            "still_path": "/8z9QoOsUz1eny7fk9zLDsUntUa3.jpg",
+            "vote_average": 9.0,
+            "vote_count": 2,
+            "crew": [],
+            "guest_stars": []
+          }
+        ],
+        "name": "第 1 季",
+        "networks": [],
+        "overview": "",
+        "id": 312325,
+        "poster_path": "/hy9uJkzkAiK2dxCPWdFyZgfQwK3.jpg",
+        "season_number": 1,
+        "vote_average": 9.0
+      }
+    ],
+    "episodes": [
+      {
+        "air_date": "2022-09-30",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "finale",
+        "guest_stars": [],
+        "name": "第 1 集",
+        "overview": "",
+        "id": 4001989,
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "still_path": "/8z9QoOsUz1eny7fk9zLDsUntUa3.jpg",
+        "vote_average": 9.0,
+        "vote_count": 2
+      }
+    ]
+  },
+  "translate": {
+    "translated": {
+      "media_type": "tv",
+      "tmdb_id": 212154,
+      "title": "想要点外送肉棒的大姐姐",
+      "original_title": "デリバリーちんこを頼みたい お姉さん",
+      "year": 2022,
+      "plot": "",
+      "tagline": "",
+      "runtime": 27,
+      "release_date": "2022-09-30",
+      "rating": 8.0,
+      "rating_count": 2,
+      "genres": [
+        "动画"
+      ],
+      "countries": [
+        "JP"
+      ],
+      "languages": [
+        "ja"
+      ],
+      "studios": [
+        "Shion",
+        "Pink Pineapple"
+      ],
+      "networks": [],
+      "network": "",
+      "status": "Ended",
+      "homepage": "",
+      "cast": [
+        {
+          "name_en": "Kiiro Tsukino",
+          "name_zh": null,
+          "role": "Saiki (voice)",
+          "original_name": "月野きいろ",
+          "profile_path": "/4fMRoXBHjPcUdx1fbqGDe70wEvM.jpg",
+          "popularity": 7.641
+        }
+      ],
+      "directors": [
+        "Toshihiro Watase"
+      ],
+      "writers": [],
+      "images": {},
+      "seasons": [
+        {
+          "air_date": "2022-09-30",
+          "episode_count": 1,
+          "id": 312325,
+          "name": "第 1 季",
+          "overview": "",
+          "poster_path": "/hy9uJkzkAiK2dxCPWdFyZgfQwK3.jpg",
+          "season_number": 1,
+          "vote_average": 9.0
+        }
+      ],
+      "episodes": [
+        {
+          "air_date": "2022-09-30",
+          "crew": [],
+          "episode_number": 1,
+          "episode_type": "finale",
+          "guest_stars": [],
+          "name": "第 1 集",
+          "overview": "",
+          "id": 4001989,
+          "production_code": "",
+          "runtime": null,
+          "season_number": 1,
+          "still_path": "/8z9QoOsUz1eny7fk9zLDsUntUa3.jpg",
+          "vote_average": 9.0,
+          "vote_count": 2
+        }
+      ],
+      "title_zh": "想要点外送肉棒的大姐姐",
+      "keywords_en": [
+        "hentai"
+      ],
+      "keywords": [
+        "hentai"
+      ],
+      "keywords_zh": [
+        "腐女"
+      ]
+    },
+    "episodes": [
+      {
+        "air_date": "2022-09-30",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "finale",
+        "guest_stars": [],
+        "name": "第 1 集",
+        "overview": "",
+        "id": 4001989,
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "still_path": "/8z9QoOsUz1eny7fk9zLDsUntUa3.jpg",
+        "vote_average": 9.0,
+        "vote_count": 2
+      }
+    ]
+  },
+  "normalize": {
+    "media_type": "tv",
+    "tmdb_id": 212154,
+    "title": "想要点外送肉棒的大姐姐",
+    "original_title": "デリバリーちんこを頼みたい お姉さん",
+    "year": 2022,
+    "plot": "",
+    "tagline": "",
+    "runtime": 27,
+    "release_date": "2022-09-30",
+    "rating": 8.0,
+    "rating_count": 2,
+    "genres": [
+      "动画"
+    ],
+    "countries": [
+      "JP"
+    ],
+    "languages": [
+      "ja"
+    ],
+    "studios": [
+      "Shion",
+      "Pink Pineapple"
+    ],
+    "networks": [],
+    "network": "",
+    "status": "Ended",
+    "homepage": "",
+    "cast": [
+      {
+        "name_en": "Kiiro Tsukino",
+        "name_zh": null,
+        "role": "Saiki (voice)",
+        "original_name": "月野きいろ",
+        "profile_path": "/4fMRoXBHjPcUdx1fbqGDe70wEvM.jpg",
+        "popularity": 7.641
+      }
+    ],
+    "directors": [
+      "Toshihiro Watase"
+    ],
+    "writers": [],
+    "images": {},
+    "seasons": [
+      {
+        "air_date": "2022-09-30",
+        "episode_count": 1,
+        "id": 312325,
+        "name": "第 1 季",
+        "overview": "",
+        "poster_path": "/hy9uJkzkAiK2dxCPWdFyZgfQwK3.jpg",
+        "season_number": 1,
+        "vote_average": 9.0
+      }
+    ],
+    "episodes": [
+      {
+        "air_date": "2022-09-30",
+        "crew": [],
+        "episode_number": 1,
+        "episode_type": "finale",
+        "guest_stars": [],
+        "name": "第 1 集",
+        "overview": "",
+        "id": 4001989,
+        "production_code": "",
+        "runtime": null,
+        "season_number": 1,
+        "still_path": "/8z9QoOsUz1eny7fk9zLDsUntUa3.jpg",
+        "vote_average": 9.0,
+        "vote_count": 2
+      }
+    ],
+    "title_zh": "想要点外送肉棒的大姐姐",
+    "keywords_en": [
+      "hentai"
+    ],
+    "keywords": [
+      "hentai"
+    ],
+    "keywords_zh": [
+      "腐女"
+    ]
+  },
+  "nfo": {
+    "data": {
+      "title": "想要点外送肉棒的大姐姐",
+      "originaltitle": "デリバリーちんこを頼みたい お姉さん",
+      "year": 2022,
+      "premiered": "2022-09-30",
+      "plot": "",
+      "tagline": "",
+      "runtime": 27,
+      "rating": 8.0,
+      "votes": 2,
+      "genre": [
+        "动画"
+      ],
+      "country": [
+        "JP"
+      ],
+      "studio": [
+        "Shion",
+        "Pink Pineapple"
+      ],
+      "credits": [],
+      "director": [
+        "Toshihiro Watase"
+      ],
+      "actor": [
+        {
+          "name": "Kiiro Tsukino",
+          "role": "Saiki (voice)",
+          "originalname": "月野きいろ",
+          "thumb": "images/actors/Kiiro Tsukino.jpg"
+        }
+      ],
+      "thumb": "poster.jpg",
+      "fanart": "fanart.jpg",
+      "tags": [
+        "腐女"
+      ],
+      "network": "",
+      "networks": [],
+      "status": "Ended",
+      "homepage": "",
+      "tmdb_id": 212154,
+      "validated": true
+    },
+    "xml": "<?xml version=\"1.0\" ?>\n<tvshow>\n  <title>想要点外送肉棒的大姐姐</title>\n  <originaltitle>デリバリーちんこを頼みたい お姉さん</originaltitle>\n  <year>2022</year>\n  <premiered>2022-09-30</premiered>\n  <runtime>27</runtime>\n  <rating>8.0</rating>\n  <votes>2</votes>\n  <tmdbid>212154</tmdbid>\n  <genre>动画</genre>\n  <country>JP</country>\n  <studio>Shion</studio>\n  <studio>Pink Pineapple</studio>\n  <director>Toshihiro Watase</director>\n  <actor>\n    <name>Kiiro Tsukino</name>\n    <role>Saiki (voice)</role>\n    <originalname>月野きいろ</originalname>\n    <thumb>images/actors/Kiiro Tsukino.jpg</thumb>\n  </actor>\n  <status>Ended</status>\n  <uniqueid type=\"tmdb\" default=\"true\">212154</uniqueid>\n  <thumb>images/poster/poster.jpg</thumb>\n  <fanart>images/fanart/fanart.jpg</fanart>\n  <tag>腐女</tag>\n</tvshow>\n"
+  },
+  "output": {
+    "status": "completed",
+    "files": {
+      "nfo_file": "/Volumes/video/Animation/The Animation/デリバリーちんこを頼みたいお姉さん (Unknown Year)/tvshow.nfo",
+      "images_dir": "/Volumes/video/Animation/The Animation/デリバリーちんこを頼みたいお姉さん (Unknown Year)/images",
+      "media_dir": "/Volumes/video/Animation/The Animation/デリバリーちんこを頼みたいお姉さん (Unknown Year)",
+      "season_1_episode_1": "/Volumes/video/Animation/The Animation/デリバリーちんこを頼みたいお姉さん (Unknown Year)/Season 01/想要点外送肉棒的大姐姐 - S01E01 - 第 1 集.nfo"
+    }
+  },
+  "errors": [],
+  "end_time": "2025-12-06T01:29:33.961348"
+}

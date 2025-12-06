@@ -1,0 +1,555 @@
+2025-12-06 01:11:41,777 - MetadataAgent - INFO - Input parameters parsed
+2025-12-06 01:11:41,778 - MetadataAgent - DEBUG - Input data: {
+  "media_type": "tv",
+  "query": "",
+  "output_dir": "/Volumes/video/Animation/The Animation/这份恋情望你察觉 (Unknown Year)",
+  "verbose": false,
+  "quiet": true,
+  "aid_search": true,
+  "tmdb_id": 227643
+}
+2025-12-06 01:11:41,778 - MetadataAgent - INFO - Search completed: 0 results
+2025-12-06 01:11:41,778 - MetadataAgent - DEBUG - Search results: {}
+2025-12-06 01:11:44,206 - MetadataAgent - INFO - Data fetching completed
+2025-12-06 01:11:44,206 - MetadataAgent - DEBUG - Main data: {
+  "adult": true,
+  "backdrop_path": "/fp77ckJOZ1dMtrqZgHuH4EKCiOO.jpg",
+  "created_by": [],
+  "episode_run_time": [],
+  "first_air_date": "2023-08-25",
+  "genres": [
+    {
+      "id": 16,
+      "name": "动画"
+    }
+  ],
+  "homepage": "https://www.pinkpineapple.co.jp/detail.php?cid=4&did=2412",
+  "id": 227643,
+  "in_production": true,
+  "languages": [
+    "ja"
+  ],
+  "last_air_date": "2023-08-25",
+  "last_episode_to_air": {
+    "id": 4486946,
+    "name": "注意到这段恋情",
+    "overview": "为了安慰被她甩了的前辈，邀请她喝酒的后辈女子辻中。\n\n看着激动中的前辈，充满了至今为止因为有女朋友而压抑的最喜欢…。\n\n“我可以做前辈的女朋友吗？”\n\n“如果没有女朋友的话，可以尽情地喜欢她吧！”\n\n把困惑的前辈强行带进情人旅馆——！？",
+    "vote_average": 6.8,
+    "vote_count": 5,
+    "air_date": "2023-08-25",
+    "episode_number": 1,
+    "episode_type": "standard",
+    "production_code": "JDXA57728",
+    "runtime": 30,
+    "season_number": 1,
+    "show_id": 227643,
+    "still_path": "/7PRcHkStIRUpfNKhdYBwgrugz3x.jpg"
+  },
+  "name": "这份恋情望你察觉",
+  "next_episode_to_air": null,
+  "networks": [],
+  "number_of_episodes": 1,
+  "number_of_seasons": 1,
+  "origin_country": [
+    "JP"
+  ],
+  "original_language": "ja",
+  "original_name": "この恋に気づいて THE ANIMATION",
+  "overview": "“随便你，让我来。”\n\n装点新时代的至上美少女体验。\n\n描写了与勇敢但积极的后辈女子的调情，最引人注目的作家「たまままる」的代表作终于OVA化！\n\n至今为止压抑着的最喜欢溢出…。\n\n短发巨乳的后辈女子想和前辈一起做的既成事实！\n\n“如果没有女朋友的话，可以尽情地喜欢她吧！”",
+  "popularity": 0.0,
+  "poster_path": "/qGlh2lcwVV5e7rfooW5i0R6JnJd.jpg",
+  "production_companies": [
+    {
+      "id": 80856,
+      "logo_path": "/7tFA0heb8o0hj9IsPehE3zuOHfw.png",
+      "name": "Pink Pineapple",
+      "origin_country": "JP"
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "JP",
+      "name": "Japan"
+    }
+  ],
+  "seasons": [
+    {
+      "air_date": "2023-08-25",
+      "episode_count": 1,
+      "id": 343330,
+      "name": "第 1 季",
+      "overview": "",
+      "poster_path": "/qGlh2lcwVV5e7rfooW5i0R6JnJd.jpg",
+      "season_number": 1,
+      "vote_average": 6.8
+    }
+  ],
+  "spoken_languages": [
+    {
+      "english_name": "Japanese",
+      "iso_639_1": "ja",
+      "name": "日本語"
+    }
+  ],
+  "status": "Returning Series",
+  "tagline": "看奸淫的性交片网：448𝟖𝟰𝟔𝟗.com",
+  "type": "Scripted",
+  "vote_average": 8.3,
+  "vote_count": 7
+}
+2025-12-06 01:11:44,206 - MetadataAgent - DEBUG - Credits data: {
+  "cast": [
+    {
+      "adult": true,
+      "gender": 1,
+      "id": 1165393,
+      "known_for_department": "Acting",
+      "name": "Hikaru Isshiki",
+      "original_name": "田中涼子",
+      "popularity": 0.6,
+      "profile_path": "/pWiXWblS8sBmxt3lKJvvxtzbST.jpg",
+      "character": "Nakamura Shiori (voice)",
+      "credit_id": "66c2a4b7cc8c54efb51aa3a9",
+      "order": 0
+    },
+    {
+      "adult": true,
+      "gender": 1,
+      "id": 2947255,
+      "known_for_department": "Acting",
+      "name": "Hana Kuga",
+      "original_name": "空賀花",
+      "popularity": 4.748,
+      "profile_path": "/ey0VHk0gFfhhSEvdNcCMm0xAh6.jpg",
+      "character": "Tsujinaka Miho (voice)",
+      "credit_id": "66c2a4c79067e65655d560c8",
+      "order": 1
+    }
+  ],
+  "crew": [
+    {
+      "adult": true,
+      "gender": 2,
+      "id": 3232515,
+      "known_for_department": "Directing",
+      "name": "Ishii Ao",
+      "original_name": "石射蒼",
+      "popularity": 2.569,
+      "profile_path": null,
+      "credit_id": "647893f60e29a20116ab7202",
+      "department": "Directing",
+      "job": "Director"
+    },
+    {
+      "adult": true,
+      "gender": 2,
+      "id": 3232515,
+      "known_for_department": "Directing",
+      "name": "Ishii Ao",
+      "original_name": "石射蒼",
+      "popularity": 2.569,
+      "profile_path": null,
+      "credit_id": "647893a493828e0133766a5f",
+      "department": "Visual Effects",
+      "job": "Character Designer"
+    }
+  ],
+  "id": 227643
+}
+2025-12-06 01:11:44,206 - MetadataAgent - DEBUG - Keywords data: {
+  "id": 227643,
+  "results": [
+    {
+      "name": "hentai",
+      "id": 198385
+    },
+    {
+      "name": "big tits",
+      "id": 230416
+    }
+  ]
+}
+2025-12-06 01:11:44,206 - MetadataAgent - DEBUG - Episodes data: [
+  {
+    "air_date": "2023-08-25",
+    "crew": [],
+    "episode_number": 1,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "注意到这段恋情",
+    "overview": "为了安慰被她甩了的前辈，邀请她喝酒的后辈女子辻中。\n\n看着激动中的前辈，充满了至今为止因为有女朋友而压抑的最喜欢…。\n\n“我可以做前辈的女朋友吗？”\n\n“如果没有女朋友的话，可以尽情地喜欢她吧！”\n\n把困惑的前辈强行带进情人旅馆——！？",
+    "id": 4486946,
+    "production_code": "JDXA57728",
+    "runtime": 30,
+    "season_number": 1,
+    "still_path": "/7PRcHkStIRUpfNKhdYBwgrugz3x.jpg",
+    "vote_average": 6.8,
+    "vote_count": 5
+  }
+]
+2025-12-06 01:11:44,207 - MetadataAgent - DEBUG - Seasons data: [
+  {
+    "_id": "647892facf4b8b01031d0c6e",
+    "air_date": "2023-08-25",
+    "episodes": [
+      {
+        "air_date": "2023-08-25",
+        "episode_number": 1,
+        "episode_type": "standard",
+        "id": 4486946,
+        "name": "注意到这段恋情",
+        "overview": "为了安慰被她甩了的前辈，邀请她喝酒的后辈女子辻中。\n\n看着激动中的前辈，充满了至今为止因为有女朋友而压抑的最喜欢…。\n\n“我可以做前辈的女朋友吗？”\n\n“如果没有女朋友的话，可以尽情地喜欢她吧！”\n\n把困惑的前辈强行带进情人旅馆——！？",
+        "production_code": "JDXA57728",
+        "runtime": 30,
+        "season_number": 1,
+        "show_id": 227643,
+        "still_path": "/7PRcHkStIRUpfNKhdYBwgrugz3x.jpg",
+        "vote_average": 6.8,
+        "vote_count": 5,
+        "crew": [],
+        "guest_stars": []
+      }
+    ],
+    "name": "第 1 季",
+    "networks": [],
+    "overview": "",
+    "id": 343330,
+    "poster_path": "/qGlh2lcwVV5e7rfooW5i0R6JnJd.jpg",
+    "season_number": 1,
+    "vote_average": 6.8
+  }
+]
+2025-12-06 01:11:44,209 - MetadataAgent - INFO - Data normalization completed
+2025-12-06 01:11:44,209 - MetadataAgent - DEBUG - Normalized data: {
+  "media_type": "tv",
+  "tmdb_id": 227643,
+  "title": "这份恋情望你察觉",
+  "original_title": "この恋に気づいて THE ANIMATION",
+  "year": 2023,
+  "plot": "“随便你，让我来。”\n\n装点新时代的至上美少女体验。\n\n描写了与勇敢但积极的后辈女子的调情，最引人注目的作家「たまままる」的代表作终于OVA化！\n\n至今为止压抑着的最喜欢溢出…。\n\n短发巨乳的后辈女子想和前辈一起做的既成事实！\n\n“如果没有女朋友的话，可以尽情地喜欢她吧！”",
+  "tagline": "看奸淫的性交片网：448𝟖𝟰𝟔𝟗.com",
+  "runtime": null,
+  "release_date": "2023-08-25",
+  "rating": 8.3,
+  "rating_count": 7,
+  "genres": [
+    "动画"
+  ],
+  "countries": [
+    "JP"
+  ],
+  "languages": [
+    "ja"
+  ],
+  "studios": [
+    "Pink Pineapple"
+  ],
+  "networks": [],
+  "network": "",
+  "status": "Returning Series",
+  "homepage": "https://www.pinkpineapple.co.jp/detail.php?cid=4&did=2412",
+  "cast": [
+    {
+      "name_en": "Hikaru Isshiki",
+      "name_zh": null,
+      "role": "Nakamura Shiori (voice)",
+      "original_name": "田中涼子",
+      "profile_path": "/pWiXWblS8sBmxt3lKJvvxtzbST.jpg",
+      "popularity": 0.6
+    },
+    {
+      "name_en": "Hana Kuga",
+      "name_zh": null,
+      "role": "Tsujinaka Miho (voice)",
+      "original_name": "空賀花",
+      "profile_path": "/ey0VHk0gFfhhSEvdNcCMm0xAh6.jpg",
+      "popularity": 4.748
+    }
+  ],
+  "directors": [
+    "Ishii Ao"
+  ],
+  "writers": [],
+  "images": {},
+  "seasons": [
+    {
+      "air_date": "2023-08-25",
+      "episode_count": 1,
+      "id": 343330,
+      "name": "第 1 季",
+      "overview": "",
+      "poster_path": "/qGlh2lcwVV5e7rfooW5i0R6JnJd.jpg",
+      "season_number": 1,
+      "vote_average": 6.8
+    }
+  ],
+  "episodes": [
+    {
+      "air_date": "2023-08-25",
+      "crew": [],
+      "episode_number": 1,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "注意到这段恋情",
+      "overview": "为了安慰被她甩了的前辈，邀请她喝酒的后辈女子辻中。\n\n看着激动中的前辈，充满了至今为止因为有女朋友而压抑的最喜欢…。\n\n“我可以做前辈的女朋友吗？”\n\n“如果没有女朋友的话，可以尽情地喜欢她吧！”\n\n把困惑的前辈强行带进情人旅馆——！？",
+      "id": 4486946,
+      "production_code": "JDXA57728",
+      "runtime": 30,
+      "season_number": 1,
+      "still_path": "/7PRcHkStIRUpfNKhdYBwgrugz3x.jpg",
+      "vote_average": 6.8,
+      "vote_count": 5
+    }
+  ],
+  "title_zh": "这份恋情望你察觉",
+  "plot_zh": "“随便你，让我来。”\n\n装点新时代的至上美少女体验。\n\n描写了与勇敢但积极的后辈女子的调情，最引人注目的作家「たまままる」的代表作终于OVA化！\n\n至今为止压抑着的最喜欢溢出…。\n\n短发巨乳的后辈女子想和前辈一起做的既成事实！\n\n“如果没有女朋友的话，可以尽情地喜欢她吧！”",
+  "keywords_en": [
+    "hentai",
+    "big tits"
+  ],
+  "keywords": [
+    "hentai",
+    "big tits"
+  ],
+  "keywords_zh": [
+    "腐女",
+    "大胸"
+  ]
+}
+2025-12-06 01:11:44,210 - MetadataAgent - INFO - Translation processing completed
+2025-12-06 01:11:44,211 - MetadataAgent - DEBUG - Translated data: {
+  "media_type": "tv",
+  "tmdb_id": 227643,
+  "title": "这份恋情望你察觉",
+  "original_title": "この恋に気づいて THE ANIMATION",
+  "year": 2023,
+  "plot": "“随便你，让我来。”\n\n装点新时代的至上美少女体验。\n\n描写了与勇敢但积极的后辈女子的调情，最引人注目的作家「たまままる」的代表作终于OVA化！\n\n至今为止压抑着的最喜欢溢出…。\n\n短发巨乳的后辈女子想和前辈一起做的既成事实！\n\n“如果没有女朋友的话，可以尽情地喜欢她吧！”",
+  "tagline": "看奸淫的性交片网：448𝟖𝟰𝟔𝟗.com",
+  "runtime": null,
+  "release_date": "2023-08-25",
+  "rating": 8.3,
+  "rating_count": 7,
+  "genres": [
+    "动画"
+  ],
+  "countries": [
+    "JP"
+  ],
+  "languages": [
+    "ja"
+  ],
+  "studios": [
+    "Pink Pineapple"
+  ],
+  "networks": [],
+  "network": "",
+  "status": "Returning Series",
+  "homepage": "https://www.pinkpineapple.co.jp/detail.php?cid=4&did=2412",
+  "cast": [
+    {
+      "name_en": "Hikaru Isshiki",
+      "name_zh": null,
+      "role": "Nakamura Shiori (voice)",
+      "original_name": "田中涼子",
+      "profile_path": "/pWiXWblS8sBmxt3lKJvvxtzbST.jpg",
+      "popularity": 0.6
+    },
+    {
+      "name_en": "Hana Kuga",
+      "name_zh": null,
+      "role": "Tsujinaka Miho (voice)",
+      "original_name": "空賀花",
+      "profile_path": "/ey0VHk0gFfhhSEvdNcCMm0xAh6.jpg",
+      "popularity": 4.748
+    }
+  ],
+  "directors": [
+    "Ishii Ao"
+  ],
+  "writers": [],
+  "images": {},
+  "seasons": [
+    {
+      "air_date": "2023-08-25",
+      "episode_count": 1,
+      "id": 343330,
+      "name": "第 1 季",
+      "overview": "",
+      "poster_path": "/qGlh2lcwVV5e7rfooW5i0R6JnJd.jpg",
+      "season_number": 1,
+      "vote_average": 6.8
+    }
+  ],
+  "episodes": [
+    {
+      "air_date": "2023-08-25",
+      "crew": [],
+      "episode_number": 1,
+      "episode_type": "standard",
+      "guest_stars": [],
+      "name": "注意到这段恋情",
+      "overview": "为了安慰被她甩了的前辈，邀请她喝酒的后辈女子辻中。\n\n看着激动中的前辈，充满了至今为止因为有女朋友而压抑的最喜欢…。\n\n“我可以做前辈的女朋友吗？”\n\n“如果没有女朋友的话，可以尽情地喜欢她吧！”\n\n把困惑的前辈强行带进情人旅馆——！？",
+      "id": 4486946,
+      "production_code": "JDXA57728",
+      "runtime": 30,
+      "season_number": 1,
+      "still_path": "/7PRcHkStIRUpfNKhdYBwgrugz3x.jpg",
+      "vote_average": 6.8,
+      "vote_count": 5
+    }
+  ],
+  "title_zh": "这份恋情望你察觉",
+  "plot_zh": "“随便你，让我来。”\n\n装点新时代的至上美少女体验。\n\n描写了与勇敢但积极的后辈女子的调情，最引人注目的作家「たまままる」的代表作终于OVA化！\n\n至今为止压抑着的最喜欢溢出…。\n\n短发巨乳的后辈女子想和前辈一起做的既成事实！\n\n“如果没有女朋友的话，可以尽情地喜欢她吧！”",
+  "keywords_en": [
+    "hentai",
+    "big tits"
+  ],
+  "keywords": [
+    "hentai",
+    "big tits"
+  ],
+  "keywords_zh": [
+    "腐女",
+    "大胸"
+  ]
+}
+2025-12-06 01:11:44,211 - MetadataAgent - DEBUG - Translated episodes: [
+  {
+    "air_date": "2023-08-25",
+    "crew": [],
+    "episode_number": 1,
+    "episode_type": "standard",
+    "guest_stars": [],
+    "name": "注意到这段恋情",
+    "overview": "为了安慰被她甩了的前辈，邀请她喝酒的后辈女子辻中。\n\n看着激动中的前辈，充满了至今为止因为有女朋友而压抑的最喜欢…。\n\n“我可以做前辈的女朋友吗？”\n\n“如果没有女朋友的话，可以尽情地喜欢她吧！”\n\n把困惑的前辈强行带进情人旅馆——！？",
+    "id": 4486946,
+    "production_code": "JDXA57728",
+    "runtime": 30,
+    "season_number": 1,
+    "still_path": "/7PRcHkStIRUpfNKhdYBwgrugz3x.jpg",
+    "vote_average": 6.8,
+    "vote_count": 5
+  }
+]
+2025-12-06 01:11:50,140 - MetadataAgent - INFO - NFO generation completed
+2025-12-06 01:11:50,140 - MetadataAgent - DEBUG - NFO data: {
+  "title": "这份恋情望你察觉",
+  "originaltitle": "この恋に気づいて THE ANIMATION",
+  "year": 2023,
+  "premiered": "2023-08-25",
+  "plot": "“随便你，让我来。”\n\n装点新时代的至上美少女体验。\n\n描写了与勇敢但积极的后辈女子的调情，最引人注目的作家「たまままる」的代表作终于OVA化！\n\n至今为止压抑着的最喜欢溢出…。\n\n短发巨乳的后辈女子想和前辈一起做的既成事实！\n\n“如果没有女朋友的话，可以尽情地喜欢她吧！”",
+  "tagline": "看奸淫的性交片网：448𝟖𝟰𝟔𝟗.com",
+  "runtime": null,
+  "rating": 8.3,
+  "votes": 7,
+  "genre": [
+    "动画"
+  ],
+  "country": [
+    "JP"
+  ],
+  "studio": [
+    "Pink Pineapple"
+  ],
+  "credits": [],
+  "director": [
+    "Ishii Ao"
+  ],
+  "actor": [
+    {
+      "name": "Hikaru Isshiki",
+      "role": "Nakamura Shiori (voice)",
+      "originalname": "田中涼子",
+      "thumb": "images/actors/Hikaru Isshiki.jpg"
+    },
+    {
+      "name": "Hana Kuga",
+      "role": "Tsujinaka Miho (voice)",
+      "originalname": "空賀花",
+      "thumb": "images/actors/Hana Kuga.jpg"
+    }
+  ],
+  "thumb": "poster.jpg",
+  "fanart": "fanart.jpg",
+  "tags": [
+    "腐女",
+    "大胸"
+  ],
+  "network": "",
+  "networks": [],
+  "status": "Returning Series",
+  "homepage": "https://www.pinkpineapple.co.jp/detail.php?cid=4&did=2412",
+  "tmdb_id": 227643,
+  "validated": true
+}
+2025-12-06 01:11:50,140 - MetadataAgent - DEBUG - NFO XML content:
+<?xml version="1.0" ?>
+<tvshow>
+  <title>这份恋情望你察觉</title>
+  <originaltitle>この恋に気づいて THE ANIMATION</originaltitle>
+  <year>2023</year>
+  <premiered>2023-08-25</premiered>
+  <plot cdata_content="“随便你，让我来。”
+
+装点新时代的至上美少女体验。
+
+描写了与勇敢但积极的后辈女子的调情，最引人注目的作家「たまままる」的代表作终于OVA化！
+
+至今为止压抑着的最喜欢溢出…。
+
+短发巨乳的后辈女子想和前辈一起做的既成事实！
+
+“如果没有女朋友的话，可以尽情地喜欢她吧！”"><![CDATA[“随便你，让我来。”
+
+装点新时代的至上美少女体验。
+
+描写了与勇敢但积极的后辈女子的调情，最引人注目的作家「たまままる」的代表作终于OVA化！
+
+至今为止压抑着的最喜欢溢出…。
+
+短发巨乳的后辈女子想和前辈一起做的既成事实！
+
+“如果没有女朋友的话，可以尽情地喜欢她吧！”]]></plot>
+  <tagline>看奸淫的性交片网：448𝟖𝟰𝟔𝟗.com</tagline>
+  <rating>8.3</rating>
+  <votes>7</votes>
+  <tmdbid>227643</tmdbid>
+  <genre>动画</genre>
+  <country>JP</country>
+  <studio>Pink Pineapple</studio>
+  <director>Ishii Ao</director>
+  <actor>
+    <name>Hikaru Isshiki</name>
+    <role>Nakamura Shiori (voice)</role>
+    <originalname>田中涼子</originalname>
+    <thumb>images/actors/Hikaru Isshiki.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Hana Kuga</name>
+    <role>Tsujinaka Miho (voice)</role>
+    <originalname>空賀花</originalname>
+    <thumb>images/actors/Hana Kuga.jpg</thumb>
+  </actor>
+  <status>Returning Series</status>
+  <homepage>https://www.pinkpineapple.co.jp/detail.php?cid=4&amp;did=2412</homepage>
+  <uniqueid type="tmdb" default="true">227643</uniqueid>
+  <thumb>images/poster/poster.jpg</thumb>
+  <fanart>images/fanart/fanart.jpg</fanart>
+  <tag>腐女</tag>
+  <tag>大胸</tag>
+</tvshow>
+
+2025-12-06 01:11:50,985 - MetadataAgent - INFO - Output generation completed
+2025-12-06 01:11:50,985 - MetadataAgent - DEBUG - Output data: {
+  "status": "completed",
+  "files": {
+    "nfo_file": "/Volumes/video/Animation/The Animation/这份恋情望你察觉 (Unknown Year)/tvshow.nfo",
+    "images_dir": "/Volumes/video/Animation/The Animation/这份恋情望你察觉 (Unknown Year)/images",
+    "media_dir": "/Volumes/video/Animation/The Animation/这份恋情望你察觉 (Unknown Year)",
+    "season_1_episode_1": "/Volumes/video/Animation/The Animation/这份恋情望你察觉 (Unknown Year)/Season 01/这份恋情望你察觉 - S01E01 - 注意到这段恋情.nfo"
+  }
+}
+2025-12-06 01:11:50,987 - MetadataAgent - INFO - === PROCESSING SUMMARY ===
+2025-12-06 01:11:50,987 - MetadataAgent - INFO - Log file: logs/metadata_agent_20251206_011141.log
+2025-12-06 01:11:50,987 - MetadataAgent - INFO - Processing completed successfully
+2025-12-06 01:11:50,989 - MetadataAgent - INFO - Processing summary saved to: logs/processing_summary_20251206_011150.json

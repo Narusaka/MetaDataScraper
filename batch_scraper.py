@@ -450,12 +450,41 @@ class BatchMediaScraper:
 
         return filename.split()[0] if filename.split() else filename
 
-    def _extract_tmdb_id_from_nfo(self, show_dir: str) -> Optional[int]:
+    def _extract_tmdb_id_from_nfo(self, show_dir: str, movie_title: Optional[str] = None, strict_match: bool = False) -> Optional[int]:
         """Extract TMDB ID from nfo file in the show directory.
-        Priority: tvshow.nfo first, then any other .nfo file.
+
+        Args:
+            show_dir: Directory path to search
+            movie_title: Movie title for strict name matching (when strict_match=True)
+            strict_match: If True, only look for NFO files containing movie_title or folder name
+
+        Priority (when strict_match=False):
+            1. tvshow.nfo
+            2. Any other .nfo file
+
+        Priority (when strict_match=True):
+            1. Any .nfo file containing movie_title/folder name
+            2. Fallback to regular priority if no strict match found
         """
         show_path = Path(show_dir)
+        folder_name = show_path.name
 
+        # Determine the title to match against
+        match_title = movie_title or folder_name
+
+        if strict_match and match_title:
+            # Strict mode: Look for NFO files containing the title
+            for nfo_file in show_path.glob("*.nfo"):
+                try:
+                    content = nfo_file.read_text(encoding='utf-8')
+                    if match_title.lower() in content.lower():
+                        match = re.search(r'<tmdbid>(\d+)</tmdbid>', content, re.IGNORECASE)
+                        if match:
+                            return int(match.group(1))
+                except Exception as e:
+                    print(f"Warning: Could not parse {nfo_file.name} in {show_dir}: {e}")
+
+        # Fallback or regular mode: Standard priority
         # Priority 1: Look for tvshow.nfo
         tvshow_nfo = show_path / "tvshow.nfo"
         if tvshow_nfo.exists():
@@ -1048,9 +1077,18 @@ class BatchMediaScraper:
         # Check if we should extract TMDB ID from local NFO
         local_tmdb_id = tmdb_id
         if self.use_local_nfo and tmdb_id is None:
-            local_tmdb_id = self._extract_tmdb_id_from_nfo(show_dir)
+            # Special logic for --type movie: first try strict match with folder name, then fallback
+            if self.media_type == "movie":
+                print(f"   📄 Searching for NFO files (strict match: folder name, then fallback)...")
+                local_tmdb_id = self._extract_tmdb_id_from_nfo(show_dir, strict_match=True)
+                if not local_tmdb_id:
+                    print(f"   📄 Strict match failed, trying regular NFO search...")
+                    local_tmdb_id = self._extract_tmdb_id_from_nfo(show_dir, strict_match=False)
+            else:
+                local_tmdb_id = self._extract_tmdb_id_from_nfo(show_dir)
+
             if local_tmdb_id:
-                print(f"   📝 Extracted TMDB ID from local NFO: {local_tmdb_id}")
+                print(f"   📝 Extracted TMDB ID {local_tmdb_id} from local NFO")
 
         # If tmdb_id is provided, skip name parsing and use direct ID lookup
         if local_tmdb_id is not None:
@@ -1066,6 +1104,7 @@ class BatchMediaScraper:
         # Use the show directory itself as output directory for in-place mode
         input_data = {
             "media_type": self.media_type,
+            "media_type_forced": self.media_type != "tv",  # If not default tv, force it
             "query": search_query,
             "output_dir": str(show_path),  # Use show directory as output directly
             "verbose": True,  # Enable verbose output for better debugging
@@ -1207,6 +1246,41 @@ class BatchMediaScraper:
         """Rename files within the show folder to proper structure."""
         print(f"    📝 Renaming files in: {show_path.name}")
 
+        # Determine media type from metadata
+        normalized = metadata_result.get("normalized", {})
+        media_type = normalized.get("media_type", "tv")
+
+        # Handle directory renaming for both movies and TV shows
+        try:
+            show_title = metadata_result.get("normalized", {}).get("title_zh",
+                        metadata_result.get("normalized", {}).get("title", show_path.name))
+            show_year = metadata_result.get("normalized", {}).get("year", 0)
+
+            # Clean title for directory name (remove filesystem-illegal characters)
+            safe_title = re.sub(r'[\\/:"*?<>|]', '', show_title).strip()
+            new_dir_name = f"{safe_title} ({show_year})"
+
+            parent_dir = show_path.parent
+            new_show_path = parent_dir / new_dir_name
+
+            # Only rename if the name is different
+            if show_path != new_show_path:
+                show_path.rename(new_show_path)
+                print(f"    📁 Renamed directory: {show_path.name} -> {new_dir_name}")
+                # Update show_path for further operations
+                show_path = new_show_path
+            else:
+                print(f"    ⏭️ Directory already has correct name: {show_path.name}")
+        except Exception as e:
+            print(f"    ⚠️ Failed to rename directory {show_path.name}: {e}")
+
+        if media_type == "movie":
+            # For movies in in-place mode, just confirm metadata generation
+            # Movies don't have episode-style file renaming
+            print(f"    📽️ Movie directory renamed and metadata generated")
+            return
+
+        # TV show logic - handle episode renaming
         # Get episode data from metadata
         source_data = metadata_result.get("source_data", {})
         episodes_data = source_data.get("episodes", [])
@@ -1366,7 +1440,7 @@ class BatchMediaScraper:
 
         print(f"    📊 Renamed {renamed_count} files, skipped {skipped_count} files (no SxxExx pattern)")
 
-        # Rename the input directory to "{title} ({year})"
+        # Rename the input directory to "{title} ({year})" for TV shows only
         try:
             show_title = metadata_result.get("normalized", {}).get("title_zh",
                         metadata_result.get("normalized", {}).get("title", show_path.name))
@@ -1593,12 +1667,58 @@ class BatchMediaScraper:
         for subdir in subdirs:
             print(f"      • {subdir.name}")
             if self.use_local_nfo:
-                nfo_files = self._find_all_nfo_files_with_tmdb_id(str(subdir))
-                if nfo_files:
-                    print(f"        📄 Found {len(nfo_files)} NFO file(s) with TMDB ID(s)")
-                    for tmdb_id, nfo_path in nfo_files:
-                        nfo_tasks.append((tmdb_id, str(subdir), nfo_path))
-                        print(f"          • TMDB ID {tmdb_id} in {Path(nfo_path).name}")
+                # Special logic for --type movie: first try strict match with folder name, then fallback
+                if self.media_type == "movie":
+                    print(f"        📄 Searching for NFO files (strict match: folder name, then fallback)...")
+                    folder_name = subdir.name
+                    # First try strict match with folder name
+                    tmdb_id = self._extract_tmdb_id_from_nfo(str(subdir), folder_name, strict_match=True)
+                    if tmdb_id:
+                        # Find the corresponding NFO file path
+                        nfo_files = list(subdir.glob("*.nfo"))
+                        matching_nfo = f"{str(subdir)}/{subdir.name}.nfo"  # Default assumption
+                        for nfo_file in nfo_files:
+                            try:
+                                content = nfo_file.read_text(encoding='utf-8')
+                                if folder_name.lower() in content.lower():
+                                    matching_nfo = str(nfo_file)
+                                    break
+                            except:
+                                continue
+                        nfo_tasks.append((tmdb_id, str(subdir), matching_nfo))
+                        print(f"        📄 Found TMDB ID {tmdb_id} via strict match in {Path(matching_nfo).name}")
+                        continue  # Skip fallback for this subdirectory
+
+                    # Strict match failed, try regular NFO search
+                    print(f"        📄 Strict match failed, trying regular NFO search...")
+                    nfo_files = self._find_all_nfo_files_with_tmdb_id(str(subdir))
+                    if nfo_files:
+                        print(f"        📄 Found {len(nfo_files)} NFO file(s) with TMDB ID(s) via fallback")
+                        for tmdb_id, nfo_path in nfo_files:
+                            nfo_tasks.append((tmdb_id, str(subdir), nfo_path))
+                            print(f"          • TMDB ID {tmdb_id} in {Path(nfo_path).name}")
+                else:
+                    # Regular NFO search for TV shows
+                    nfo_files = self._find_all_nfo_files_with_tmdb_id(str(subdir))
+                    if nfo_files:
+                        print(f"        📄 Found {len(nfo_files)} NFO file(s) with TMDB ID(s)")
+                        for tmdb_id, nfo_path in nfo_files:
+                            nfo_tasks.append((tmdb_id, str(subdir), nfo_path))
+                            print(f"          • TMDB ID {tmdb_id} in {Path(nfo_path).name}")
+
+        # Also scan root directory for loose NFO files with TMDB IDs
+        loose_nfo_files = []
+        for item in root_path.iterdir():
+            if item.is_file() and item.suffix.lower() == '.nfo':
+                try:
+                    content = item.read_text(encoding='utf-8')
+                    match = re.search(r'<tmdbid>(\d+)</tmdbid>', content, re.IGNORECASE)
+                    if match:
+                        tmdb_id = int(match.group(1))
+                        loose_nfo_files.append((tmdb_id, str(item)))
+                        print(f"      • Loose NFO: {item.name} (TMDB ID: {tmdb_id})")
+                except Exception as e:
+                    print(f"      ⚠️ Could not parse loose NFO file {item.name}: {e}")
 
         print(f"   📹 Found {len(loose_video_files)} loose video files:")
         for video_file in loose_video_files:
@@ -1608,10 +1728,69 @@ class BatchMediaScraper:
             print(f"      • {subtitle_file.name}")
 
         if self.use_local_nfo:
-            print(f"   🆔 Found {len(nfo_tasks)} TMDB ID tasks from NFO files")
+            print(f"   🆔 Found {len(nfo_tasks)} NFO tasks from subfolders")
+            print(f"   📄 Found {len(loose_nfo_files)} loose NFO files with TMDB IDs")
 
         processed_count = 0
         failed_count = 0
+
+        # Process loose NFO files by creating movie directories
+        if loose_nfo_files:
+            print(f"\n🎬 Processing {len(loose_nfo_files)} loose NFO files (creating movie directories)...")
+            for i, (tmdb_id, nfo_path) in enumerate(loose_nfo_files, 1):
+                nfo_name = Path(nfo_path).name
+                print(f"   [{i}/{len(loose_nfo_files)}] Creating movie directory for TMDB ID {tmdb_id} from {nfo_name}")
+                try:
+                    # Create a temporary scraper to generate metadata and folder structure
+                    temp_scraper = BatchMediaScraper(
+                        config_path=None,  # Use default config
+                        copy_files=False,
+                        inplace_rename=True,  # Enable in-place mode
+                        output_dir=None,
+                        multi_mode=False,
+                        tmdb_id=tmdb_id,  # Use TMDB ID for direct lookup
+                        use_local_nfo=False,  # Don't try to extract ID again
+                        extra_images=self.extra_images,
+                        media_type=self.media_type  # Use the specified media type
+                    )
+
+                    # Process the movie - create a directory with same name as NFO file (without extension)
+                    nfo_stem = Path(nfo_path).stem  # Remove .nfo extension
+                    movie_dir = Path(root_path) / nfo_stem
+
+                    if movie_dir.exists():
+                        print(f"   ⚠️ Directory already exists, skipping: {nfo_stem}")
+                        continue
+
+                    movie_dir.mkdir(parents=True, exist_ok=True)
+                    print(f"   📁 Created movie directory: {nfo_stem}")
+
+                    # Copy NFO file to the new directory as movie.nfo
+                    target_nfo = movie_dir / "movie.nfo"
+                    try:
+                        shutil.copy2(nfo_path, target_nfo)
+                        print(f"   📄 Copied NFO to: {target_nfo.name}")
+                    except Exception as e:
+                        print(f"   ❌ Failed to copy NFO: {e}")
+                        continue
+
+                    # Process the newly created directory like a normal organized show
+                    result = temp_scraper.process_organized_show_inplace(str(movie_dir), tmdb_id)
+                    if result:
+                        print(f"   ✅ Created movie directory for TMDB ID {tmdb_id}")
+                        processed_count += 1
+                        # Clean up the loose NFO file since it's been processed
+                        try:
+                            os.remove(nfo_path)
+                            print(f"   🗑️ Cleaned up processed NFO: {nfo_name}")
+                        except Exception as e:
+                            print(f"   ⚠️ Failed to clean up NFO {nfo_path}: {e}")
+                    else:
+                        print(f"   ❌ Failed to create directory for TMDB ID {tmdb_id}")
+                        failed_count += 1
+                except Exception as e:
+                    print(f"   ❌ Error processing TMDB ID {tmdb_id} from {nfo_name}: {e}")
+                    failed_count += 1
 
         # Process NFO-based tasks (each TMDB ID creates a separate task)
         if self.use_local_nfo and nfo_tasks:
@@ -1735,12 +1914,16 @@ class BatchMediaScraper:
 
         # Now process the newly created show directory in-place
         print(f"      🔄 Processing created show directory...")
+        # Create temporary scraper with same settings as the parent scraper
         temp_scraper = BatchMediaScraper(
             config_path=None,  # Use default config
             copy_files=False,
             inplace_rename=True,  # Enable in-place mode
             output_dir=None,
-            multi_mode=False
+            multi_mode=False,
+            use_local_nfo=self.use_local_nfo,
+            extra_images=self.extra_images,
+            media_type=self.media_type  # Use same media type
         )
         result = temp_scraper.process_organized_show_inplace(str(show_dir))
         if result:

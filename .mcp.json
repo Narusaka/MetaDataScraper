@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "milk-tea": {
+      "type": "http",
+      "url": "https://open.bigmodel.cn/api/mcp/milk_tea/mcp",
+      "headers": {
+        "Authorization": "749e5a6473e2433f9e910fa59e1a3f7d.5Rd6tS424AHQ2j4g"
+      }
+    }
+  }
+}

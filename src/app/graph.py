@@ -170,8 +170,22 @@ class MediaMetadataGraph:
         search_results = None
         performed_search_type = None
 
-        # If not forced to a specific type, try TV first then Movie
-        if not media_type_forced:
+        # Search based on media type and forcing
+        if media_type_forced:
+            # Forced to specific type - do direct search
+            if media_type == "movie":
+                if self._should_print(input_data):
+                    print("🔍 搜索Movie...")
+                results = self.tmdb.search_movie(query)
+                performed_search_type = "movie"
+            else:
+                if self._should_print(input_data):
+                    print("🔍 搜索TV...")
+                results = self.tmdb.search_tv(query)
+                performed_search_type = "tv"
+            search_results = results.get("results", [])
+        else:
+            # Auto-detect mode (legacy behavior): try TV first then Movie
             # Try TV first
             if self._should_print(input_data):
                 print("🔍 检查TV结果...")
@@ -196,19 +210,6 @@ class MediaMetadataGraph:
                     performed_search_type = ""
                     if self._should_print(input_data):
                         print("   ❌ 两者均无结果")
-        else:
-            # Forced to specific type
-            if media_type == "movie":
-                if self._should_print(input_data):
-                    print("🔍 搜索Movie...")
-                results = self.tmdb.search_movie(query)
-                performed_search_type = "movie"
-            else:
-                if self._should_print(input_data):
-                    print("🔍 搜索TV...")
-                results = self.tmdb.search_tv(query)
-                performed_search_type = "tv"
-            search_results = results.get("results", [])
 
         # Log search results
         self.logger.log_search({"results": search_results, "performed_search_type": performed_search_type})

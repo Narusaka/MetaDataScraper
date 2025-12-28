@@ -65,7 +65,8 @@ class ArtworkDownloader:
                 response = self.session.get(images_url, params=params, timeout=30)
                 response.raise_for_status()
                 images_data = response.json()
-                if verbose:
+                # Only show total images count if extra_images is enabled, since we only use extra images in that case
+                if verbose and extra_images:
                     total_images = len(images_data.get('posters', [])) + len(images_data.get('backdrops', [])) + len(images_data.get('logos', []))
                     print(f"   获取到图片数据: 共{total_images}张图片")
                 break

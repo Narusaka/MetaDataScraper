@@ -1,234 +1,156 @@
-# Media Metadata Agent
 
-🧠 Media Metadata Agent (LangGraph)
+# Media Metadata Scraper
 
-构建一个 LangGraph 驱动的智能元数据 Agent，支持通过代理访问 TMDB / OMDB 等源，自动获取影视元数据、下载所有图片、生成符合 Infuse / Emby / Jellyfin / Kodi 标准的 .nfo 文件与目录结构。
+**Media Metadata Scraper** is a powerful, autonomous tool for standardizing media libraries.
+**Media Metadata Scraper** 是一个强大的自动化媒体库整理工具，支持智能化元数据获取与重命名。
 
-## 功能特性
+[🇺🇸 English](#english) | [🇨🇳 中文指南](#中文指南)
 
-- ✅ TMDB + LangGraph 全链路集成
-- ✅ OMDB 演员信息补全
-- ✅ 全面图片下载 (poster/fanart/banner/backdrop/logo/stills)
-- ✅ 中英文双语支持，优先中文输出
-- ✅ LLM 驱动的智能翻译
-- ✅ Infuse / Emby / Jellyfin / Kodi 标准目录结构
-- ✅ XML NFO 文件自动生成
+---
 
-## 安装
+<a id="english"></a>
 
-1. 克隆项目
+## English
+
+### Features
+- 🧠 **Smart Detection**: Automatically distinguishes between Movies and TV Shows.
+- 🔍 **Robust Search**: Uses TMDB as primary source, with Tavily AI fallbacks for hard-to-find content.
+- 🈯 **Localization**: AI-powered translation for metadata (Optional).
+- 📂 **Organization**: Renames files and reorganizes directories (In-place or Copy).
+- 🖼️ **Artwork**: Downloads Posters, Fanart, Logos, and Actor images.
+
+### Structure
+```
+media-metadata-scraper/
+├── config/             # Configuration files
+├── logs/               # Runtime logs
+├── src/                # Source code
+├── .env                # API Keys (Create from .env.example)
+├── main.py             # Entry point
+└── requirements.txt    # Dependencies
+```
+
+### Setup
+
+1. **Install Dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. **Configure Secrets**:
+   Copy `.env.example` to `.env` and fill in your API keys:
+   ```bash
+   cp .env.example .env
+   # Edit .env:
+   # TMDB_API_KEY=...
+   ```
+
+3. **Configure Settings** (Optional):
+   Modify `config/config.yaml` for proxies, language preferences, etc.
+
+### Usage
+
+#### 1. Process a Single Directory (Single Mode)
+**Best for**: A specific movie folder or a single TV show folder (e.g., `Inception (2010)` or `Breaking Bad`).
 ```bash
-git clone <repository-url>
-cd Media-Metadata-Agent
+# Basic usage
+python main.py single /path/to/media/Inception
+
+# If path contains spaces, use quotes!
+python main.py single "/path/to/My TV Show"
+
+# Force specific TMDB ID (if search fails)
+python main.py single "/path/to/Show" --tmdb-id 27205
 ```
 
-2. 安装依赖
+#### 2. Process Multiple Directories (Batch Mode)
+**Best for**: A library root folder containing many subfolders (e.g., `Movies/` or `TV Shows/`).
+*Note: Do NOT use this on a single show folder, or it might mistake Season folders for different shows.*
 ```bash
-pip install -r requirements.txt
+python main.py batch /path/to/media_library --workers 8
 ```
 
-3. 配置 API 密钥
+#### Options
+- `--dry-run`: Preview changes without applying them (Highly Recommended for first run).
+- `--inplace`: **Rename files and folders directly in the source.**
+- `--copy`: Copy files to Output Directory instead of renaming in-place.
+- `--output /path/to/output`: Specify output directory.
+- `--no-confirm`: Skip confirmation prompts.
+- `--use-local-nfo`: Parse existing NFO files for TMDB ID to skip search.
+- `--extra-images`: Download extended artwork (posters/backdrops/logos).
+
+---
+
+<a id="中文指南"></a>
+
+## 中文指南
+
+### 功能特性
+- 🧠 **智能检测**: 自动区分电影和电视剧。
+- 🔍 **强力搜索**: 以 TMDB 为主数据源，利用 AI (Tavily) 解决搜索难题。
+- 🈯 **本地化**: 支持通过 LLM 将元数据翻译为中文（可选）。
+- 📂 **自动化整理**: 标准化重命名文件和目录（支持原地修改或复制）。
+- 🖼️ **刮削增强**: 自动下载海报、背景图、Logo 以及演员头像。
+
+### 目录结构
+```
+media-metadata-scraper/
+├── config/             # 配置文件
+├── logs/               # 运行日志
+├── src/                # 源代码
+├── .env                # API 密钥 (从 .env.example 复制)
+├── main.py             # 程序入口
+└── requirements.txt    # 依赖库
+```
+
+### 安装配置
+
+1. **安装依赖**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. **配置密钥**:
+   复制 `.env.example` 为 `.env` 并填入您的 API Key：
+   ```bash
+   cp .env.example .env
+   # 编辑 .env:
+   # TMDB_API_KEY=...
+   ```
+
+3. **系统设置** (可选):
+   修改 `config/config.yaml` 来配置代理、语言偏好等。
+
+### 使用方法
+
+#### 1. 处理单个目录 (Single 模式)
+**适用于**: 单独的一部电影文件夹或一部剧集文件夹（例如 `盗梦空间` 或 `绝命毒师`）。
 ```bash
-# 设置环境变量或修改配置文件
-export TMDB_API_KEY="d17bc8d9f1f1fa66368b54d95a296235"
-export OMDB_API_KEY="http://www.omdbapi.com/?i=tt3896198&apikey=330effac"
+# 基本用法
+python main.py single /path/to/media/Inception
+
+# 如果路径包含空格，请务必加上引号！
+python main.py single "/path/to/My TV Show"
+
+# 强制指定 TMDB ID (如果搜索不准)
+python main.py single "/path/to/Show" --tmdb-id 27205
 ```
 
-4. 启动本地 LLM 服务
+#### 2. 批量处理 (Batch 模式)
+**适用于**: 包含多个子文件夹的媒体库根目录（例如 `Movies/` 或 `TV Shows/`）。
+*注意：请勿在单部剧集文件夹上使用此模式，否则可能会错误地将 `Season` 文件夹识别为别的剧。*
 ```bash
-# 使用提供的脚本启动 llama-server
-./llama_server.sh
+python main.py batch /path/to/media_library --workers 8
 ```
 
-## 配置
+#### 常用选项
+- `--dry-run`: 仅预览变更，不实际修改文件（**强烈推荐**首次运行时开启）。
+- `--inplace`: **直接在原目录原地重命名及整理**。
+- `--copy`: 将文件**复制**到输出目录，而不是原地重命名。
+- `--output /path/to/output`: 指定输出目录。
+- `--no-confirm`: 跳过确认提示（适用于无人值守脚本）。
+- `--use-local-nfo`: 优先读取目录下已有的 NFO 文件中的 TMDB ID，跳过搜索步骤（适用于已刮削过的库）。
+- `--extra-images`: 下载额外的图片资源（多张海报、Logo、背景图）。
 
-复制示例配置文件：
-```bash
-cp config.example.yaml config.yaml
-```
-
-编辑 `config.yaml` 中的 API 密钥和其他设置。
-
-### Google 搜索增强功能（可选）
-
-为了获得更好的谷歌搜索支持，您可以配置 Google Custom Search API：
-
-1. 前往 [Google Cloud Console](https://console.cloud.google.com/)
-2. 启用 Custom Search JSON API
-3. 创建 API 密钥
-4. 创建自定义搜索引擎（CSE）
-5. 在 `config.yaml` 中配置：
-
-```yaml
-google:
-  api_key: "您的 Google API 密钥"
-  search_engine_id: "您的搜索引擎 ID"
-```
-
-配置后重新安装依赖：
-```bash
-pip install -r requirements.txt
-```
-
-如果不配置 Google API，系统将使用网页爬取模式，但可能受 JavaScript 限制。
-
-## 使用
-
-### 命令行界面
-
-```bash
-# 处理电影
-python -m src.app.cli "初恋时间" --type movie --output ./output
-
-# 处理电视剧
-python -m src.app.cli "The Crown" --type tv --tmdb-id 77560 --output ./output
-
-python -m src.app.cli --type tv --tmdb-id 77560 --output ./output --verbose
-# 显示详细输出
-python -m src.app.cli "Oppenheimer" --verbose
-```
-
-### 参数说明
-
-- `query`: 电影/电视剧名称 (可选，如果提供 --tmdb-id 则不需要)
-- `--type, -t`: 媒体类型 (movie/tv，默认: movie)
-- `--tmdb-id`: TMDB ID (可选，如果提供 query 则不需要)
-- `--output, -o`: 输出目录 (默认: ./output)
-- `--config, -c`: 配置文件路径
-- `--verbose, -v`: 详细输出
-- `--aid-search`: 启用谷歌辅助搜索（当 TMDB 搜索无结果时）
-
-**注意**: `query` 和 `--tmdb-id` 至少需要提供一个。
-
-### 高级用法
-
-```bash
-# 启用谷歌辅助搜索（当 TMDB 无结果时自动搜索）
-python -m src.app.cli "小众电影名" --type movie --aid-search --verbose
-
-# 静默模式（只输出结果）
-python -m src.app.cli "电影名" --quiet
-
-# 指定输出目录
-python -m src.app.cli "电影名" --output /path/to/output
-```
-
-## 输出结构
-
-```
-Movies/
-└── 初恋时间 (2023)/
-    ├── 初恋时间 (2023).nfo
-    ├── 初恋时间 (2023).mp4
-    └── images/
-        ├── poster.jpg
-        ├── fanart.jpg
-        ├── banner.jpg
-        ├── backdrop1.jpg
-        ├── backdrop2.jpg
-        ├── logo.png
-        └── stills/
-            ├── 01.jpg
-            ├── 02.jpg
-
-TV/
-└── 初恋时间 (2023)/
-    ├── tvshow.nfo
-    ├── images/
-    │   ├── poster.jpg
-    │   ├── fanart.jpg
-    │   ├── banner.jpg
-    │   └── backdrop1.jpg
-    └── Season 01/
-        ├── 初恋时间.S01E01.女仆的秘密.mp4
-        ├── 初恋时间.S01E01.女仆的秘密.nfo
-        └── images/
-            ├── S01E01.jpg
-            └── S01E01_banner.jpg
-```
-
-## 工作流程
-
-1. **ParseInputNode**: 解析输入参数
-2. **SearchNode**: 搜索媒体项目
-3. **SelectCandidateNode**: 选择最佳候选
-4. **FetchNode**: 获取 TMDB 详细信息
-5. **TranslateNode**: LLM 翻译缺失的中文字段
-6. **OMDBEnrichNode**: OMDB 演员信息补全
-7. **NormalizeNode**: 数据标准化
-8. **PlanArtworkNode**: 规划图片下载
-9. **DownloadAllImagesNode**: 下载所有图片
-10. **LLMMapToNFONode**: LLM 映射到 NFO 格式
-11. **ValidateNFONode**: 验证 NFO 数据
-12. **RenderXMLNode**: 渲染 XML
-13. **WriteOutputNode**: 写入文件
-14. **ReportNode**: 生成报告
-
-## API 密钥
-
-- **TMDB API Key**: 从 [TMDB](https://www.themoviedb.org/settings/api) 获取
-- **OMDB API Key**: 从 [OMDB](http://www.omdbapi.com/apikey.aspx) 获取
-
-## 语言支持
-
-支持多语言优先级配置：
-- zh-CN (简体中文)
-- zh-TW (繁体中文)
-- en-US (英语)
-
-## 缓存
-
-系统使用本地缓存减少 API 调用，缓存文件存储在 `.cache/` 目录下。
-
-## 开发
-
-### 项目结构
-
-```
-src/
-  app/
-    cli.py          # 命令行接口
-    graph.py        # LangGraph 工作流
-    state.py        # 状态定义
-  adapters/
-    tmdb.py         # TMDB API 适配器
-    OMDB.py         # OMDB API 适配器
-  core/
-    schema_internal.py  # 内部数据结构
-    schema_nfo.py       # NFO 数据结构
-    normalize.py        # 数据标准化
-    translator.py       # LLM 翻译
-    llm_mapper.py       # LLM 映射
-    artwork.py          # 图片下载
-    nfo_renderer.py     # XML 渲染
-    filesystem.py       # 文件系统操作
-    cache.py            # 缓存管理
-tests/
-  test_graph.py
-  test_tmdb_fetch.py
-  test_translate.py
-config.example.yaml
-requirements.txt
-README.md
-```
-
-### 运行测试
-
-```bash
-python -m pytest tests/
-```
-
-## 许可证
-
-[MIT License](LICENSE)
-
-## 贡献
-
-欢迎提交 Issue 和 Pull Request！
-
-## 致谢
-
-- [The Movie Database (TMDB)](https://www.themoviedb.org/)
-- [OMDB API](http://www.omdbapi.com/)
-- [LangGraph](https://langchain-ai.github.io/langgraph/)
-- [Llama.cpp](https://github.com/ggerganov/llama.cpp)
+## License
+MIT

@@ -10,6 +10,21 @@ class ArtworkDownloader:
         self.tmdb_api_key = tmdb_api_key
         self.proxy = proxy
         self.session = requests.Session()
+        
+        # Configure robust retries
+        from requests.adapters import HTTPAdapter
+        from urllib3.util.retry import Retry
+        
+        retry_strategy = Retry(
+            total=3,
+            backoff_factor=1,
+            status_forcelist=[429, 500, 502, 503, 504],
+            allowed_methods=["HEAD", "GET", "OPTIONS"]
+        )
+        adapter = HTTPAdapter(max_retries=retry_strategy)
+        self.session.mount("https://", adapter)
+        self.session.mount("http://", adapter)
+
         if proxy:
             self.session.proxies.update(proxy)
         self.base_image_url = "https://image.tmdb.org/t/p/original"
@@ -283,46 +298,47 @@ class ArtworkDownloader:
                 if verbose:
                     print(f"   ✗ 获取剧集截图失败: {e}")
 
-        # Download actor images - directly in root directory (not in actors folder)
-        downloaded_images['actors'] = []
+        # Download actor images - only if extra_images is True
+        if extra_images:
+            downloaded_images['actors'] = []
 
-        # Get credits data to find actor profile paths
-        try:
-            credits_url = f"https://api.themoviedb.org/3/{media_type}/{tmdb_id}/credits"
-            response = self.session.get(credits_url, params={"api_key": self.tmdb_api_key}, timeout=30)
-            response.raise_for_status()
-            credits_data = response.json()
+            # Get credits data to find actor profile paths
+            try:
+                credits_url = f"https://api.themoviedb.org/3/{media_type}/{tmdb_id}/credits"
+                response = self.session.get(credits_url, params={"api_key": self.tmdb_api_key}, timeout=30)
+                response.raise_for_status()
+                credits_data = response.json()
 
-            actor_images = []
-            for actor in credits_data.get('cast', [])[:10]:  # Limit to first 10 actors
-                if actor.get('profile_path'):
-                    profile_path = actor['profile_path']
-                    if not profile_path.startswith('/'):
-                        profile_path = '/' + profile_path
+                actor_images = []
+                for actor in credits_data.get('cast', [])[:10]:  # Limit to first 10 actors
+                    if actor.get('profile_path'):
+                        profile_path = actor['profile_path']
+                        if not profile_path.startswith('/'):
+                            profile_path = '/' + profile_path
 
-                    url = self.base_image_url + profile_path
-                    # Use clean actor names directly in root directory
-                    actor_name = actor.get('name', 'unknown')
-                    actor_name_clean = "".join(c for c in actor_name if c.isalnum() or c in ' _-').strip()
-                    actor_name_clean = actor_name_clean.replace(' ', '_')
-                    filename = f"{actor_name_clean}.jpg"
-                    filepath = os.path.join(output_dir, filename)
+                        url = self.base_image_url + profile_path
+                        # Use clean actor names directly in root directory
+                        actor_name = actor.get('name', 'unknown')
+                        actor_name_clean = "".join(c for c in actor_name if c.isalnum() or c in ' _-').strip()
+                        actor_name_clean = actor_name_clean.replace(' ', '_')
+                        filename = f"{actor_name_clean}.jpg"
+                        filepath = os.path.join(output_dir, filename)
 
-                    try:
-                        if self.download_image(filepath, url):
-                            actor_images.append(filename)
-                    except Exception as e:
-                        if verbose:
-                            print(f"     ✗ 演员头像 {filename} 下载失败: {e}")
-                        continue
+                        try:
+                            if self.download_image(filepath, url):
+                                actor_images.append(filename)
+                        except Exception as e:
+                            if verbose:
+                                print(f"     ✗ 演员头像 {filename} 下载失败: {e}")
+                            continue
 
-            downloaded_images['actors'] = actor_images
-            if verbose and actor_images:
-                print(f"   ✓ 下载了{len(actor_images)}张演员头像到根目录")
+                downloaded_images['actors'] = actor_images
+                if verbose and actor_images:
+                    print(f"   ✓ 下载了{len(actor_images)}张演员头像到根目录")
 
-        except requests.RequestException as e:
-            if verbose:
-                print(f"   ✗ 获取演员头像失败: {e}")
+            except requests.RequestException as e:
+                if verbose:
+                    print(f"   ✗ 获取演员头像失败: {e}")
 
         if verbose:
             total_downloaded = sum(len(images) for images in downloaded_images.values() if isinstance(images, list))

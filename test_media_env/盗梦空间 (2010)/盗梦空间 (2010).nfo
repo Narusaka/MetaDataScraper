@@ -1,0 +1,127 @@
+<?xml version="1.0" ?>
+<movie>
+  <title>盗梦空间</title>
+  <originaltitle>Inception</originaltitle>
+  <year>2010</year>
+  <premiered>2010-07-15</premiered>
+  <plot><![CDATA[道姆·柯布与同事阿瑟和纳什在一次针对日本能源大亨齐藤（渡边谦 饰）的盗梦行动中失败，反被齐藤利用。齐藤威逼利诱因遭通缉而流亡海外的柯布帮他拆分他竞争对手的公司，采取极端措施在其唯一继承人罗伯特·费希尔的深层潜意识中种下放弃家族公司、自立门户的想法。为了重返美国，柯布偷偷求助于岳父迈尔斯，吸收了年轻的梦境设计师艾里阿德妮、梦境演员艾姆斯和药剂师约瑟夫加入行动。在一层层递进的梦境中，柯布不仅要对付费希尔潜意识的本能反抗，还必须直面已逝妻子梅尔的处处破坏，实际情况远比预想危险得多……]]></plot>
+  <tagline>你的梦境 就是 犯罪现场</tagline>
+  <runtime>148</runtime>
+  <rating>8.37</rating>
+  <votes>38565</votes>
+  <tmdbid>27205</tmdbid>
+  <genre>动作</genre>
+  <genre>科幻</genre>
+  <genre>冒险</genre>
+  <country>United Kingdom</country>
+  <country>United States of America</country>
+  <studio>Legendary Pictures</studio>
+  <studio>Syncopy</studio>
+  <studio>Warner Bros. Pictures</studio>
+  <credits>Christopher Nolan</credits>
+  <director>Christopher Nolan</director>
+  <director>Gordon Piper</director>
+  <director>Mohammed Hamza Regragui</director>
+  <director>Sarah Hood</director>
+  <director>Lorie Gibson</director>
+  <director>Richard Graysmark</director>
+  <director>Steve Gehrke</director>
+  <director>Tracey Poirier</director>
+  <director>Tetsuo Funabashi</director>
+  <director>Nilo Otero</director>
+  <director>Ahmed Hatimi</director>
+  <director>Paula Turnbull</director>
+  <director>Jody Ryan</director>
+  <director>Kevin Frilet</director>
+  <director>Yann Mari Faget</director>
+  <director>William D. Robinson</director>
+  <director>Mohamed Essaghir Aabach</director>
+  <director>Gregory J. Pawlik Jr.</director>
+  <director>Tarik Ait Ben Ali</director>
+  <director>Brandon Lambdin</director>
+  <director>Brian Sepanzyk</director>
+  <actor>
+    <name>Leonardo DiCaprio</name>
+    <role>Dom Cobb</role>
+    <type>Actor</type>
+    <thumb>Leonardo_DiCaprio.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Joseph Gordon-Levitt</name>
+    <role>Arthur</role>
+    <type>Actor</type>
+    <thumb>Joseph_Gordon-Levitt.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Ken Watanabe</name>
+    <role>Saito</role>
+    <type>Actor</type>
+    <originalname>渡辺謙</originalname>
+    <thumb>Ken_Watanabe.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Tom Hardy</name>
+    <role>Eames</role>
+    <type>Actor</type>
+    <thumb>Tom_Hardy.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Elliot Page</name>
+    <role>Ariadne</role>
+    <type>Actor</type>
+    <thumb>Elliot_Page.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Dileep Rao</name>
+    <role>Yusuf</role>
+    <type>Actor</type>
+    <thumb>Dileep_Rao.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Cillian Murphy</name>
+    <role>Robert Fischer, Jr.</role>
+    <type>Actor</type>
+    <thumb>Cillian_Murphy.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Tom Berenger</name>
+    <role>Peter Browning</role>
+    <type>Actor</type>
+    <thumb>Tom_Berenger.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Marion Cotillard</name>
+    <role>Mal Cobb</role>
+    <type>Actor</type>
+    <thumb>Marion_Cotillard.jpg</thumb>
+  </actor>
+  <actor>
+    <name>Pete Postlethwaite</name>
+    <role>Maurice Fischer</role>
+    <type>Actor</type>
+    <thumb>Pete_Postlethwaite.jpg</thumb>
+  </actor>
+  <uniqueid type="tmdb" default="true">27205</uniqueid>
+  <thumb>poster.jpg</thumb>
+  <fanart>fanart.jpg</fanart>
+  <tag>营救</tag>
+  <tag>任务</tag>
+  <tag>梦境</tag>
+  <tag>飞机</tag>
+  <tag>法国巴黎</tag>
+  <tag>虚拟现实</tag>
+  <tag>绑架</tag>
+  <tag>哲学</tag>
+  <tag>间谍</tag>
+  <tag>寓言</tag>
+  <tag>操纵</tag>
+  <tag>车祸</tag>
+  <tag>劫案</tag>
+  <tag>记忆</tag>
+  <tag>建筑</tag>
+  <tag>加利福尼亚州洛杉矶</tag>
+  <tag>死亡</tag>
+  <tag>梦境世界</tag>
+  <tag>潜意识</tag>
+  <tag>梦</tag>
+</movie>

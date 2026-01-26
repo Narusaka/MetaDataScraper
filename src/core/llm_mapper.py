@@ -3,7 +3,7 @@ from .schema_nfo import MovieNfo, TvShowNfo, EpisodeNfo
 
 
 class DirectMapper:
-    """Direct JSON mapping without LLM calls."""
+    """Direct JSON mapping from normalized data to NFO schema."""
 
     @staticmethod
     def map_to_movie_nfo(internal_data: Dict[str, Any]) -> MovieNfo:
@@ -197,5 +197,5 @@ class DirectMapper:
         return formatted_cast
 
 
-# Backward compatibility alias
+# Backward compatibility alias (to be deprecated)
 LLMMapper = DirectMapper

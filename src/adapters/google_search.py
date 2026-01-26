@@ -122,7 +122,8 @@ class GoogleSearchAdapter:
             print("   使用网页爬虫模式（需要 JavaScript 支持）")
 
         # 构建搜索查询
-        search_query = f"{query} tmdb"
+        # 构建搜索查询
+        search_query = f"{query} tmdb site:themoviedb.org"
         encoded_query = quote_plus(search_query)
 
         # 构建谷歌搜索URL

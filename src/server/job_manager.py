@@ -19,7 +19,14 @@ class JobManager:
                              config_path: str = "config/config.yaml",
                              workers: int = 4,
                              dry_run: bool = True,
-                             inplace: bool = False):
+                             inplace: bool = False,
+                             copy: bool = False,
+                             output_dir: Optional[str] = None,
+                             use_local_nfo: bool = False,
+                             media_type: Optional[str] = None,
+                             tmdb_id: Optional[int] = None,
+                             search_mode: str = "smart",
+                             enable_fallback: bool = True):
         
         if self.is_running:
             raise Exception("A task is already running")
@@ -34,7 +41,7 @@ class JobManager:
             await loop.run_in_executor(
                 self.executor, 
                 self._run_scraper_sync,
-                input_dir, config_path, workers, dry_run, inplace
+                input_dir, config_path, workers, dry_run, inplace, copy, output_dir, use_local_nfo, extra_images, media_type, tmdb_id, search_mode, enable_fallback
             )
         except Exception as e:
             logger.error(f"JobManager Error: {e}")
@@ -43,20 +50,25 @@ class JobManager:
             self.current_task = None
             logger.info("JobManager: Task finished")
 
-    def _run_scraper_sync(self, input_dir: str, config_path: str, workers: int, dry_run: bool, inplace: bool):
+    def _run_scraper_sync(self, input_dir: str, config_path: str, workers: int, dry_run: bool, inplace: bool, copy: bool, output_dir: Optional[str], use_local_nfo: bool, extra_images: bool, media_type: Optional[str], tmdb_id: Optional[int], search_mode: str, enable_fallback: bool):
         """
         Synchronous wrapper to run BatchMediaScraper
         """
         try:
             scraper = BatchMediaScraper(
                 config_path=config_path,
-                copy_files=False, # Web Mode defaults
+                copy_files=copy,
                 inplace_rename=inplace,
-                output_dir=None,
-                multi_mode=True, # Always assume multi-mode for "Batch"
-                media_type=None,
+                output_dir=output_dir,
+                multi_mode=True, # Always assume multi-mode for "Batch" unless specific ID overrides? Actually single mode logic is handled inside if needed, but BatchMediaScraper loop handles directories.
+                media_type=media_type,
+                tmdb_id=tmdb_id,
+                search_mode=search_mode,
+                enable_fallback=enable_fallback,
                 max_workers=workers,
-                dry_run=dry_run
+                dry_run=dry_run,
+                use_local_nfo=use_local_nfo,
+                extra_images=extra_images
             )
             # Store reference?
             scraper.run(input_dir)

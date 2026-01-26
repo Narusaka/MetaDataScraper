@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { Folder, HardDrive, ChevronRight } from 'lucide-react';
 import { cn } from '../lib/utils';
+import { useTranslation } from '../lib/language';
 import type { FileSystemItem, FileSystemResponse } from '../lib/types';
 
 interface FolderPickerProps {
@@ -10,9 +11,11 @@ interface FolderPickerProps {
 }
 
 export function FolderPicker({ onSelect, className }: FolderPickerProps) {
+    const { t } = useTranslation();
     const [items, setItems] = useState<FileSystemItem[]>([]);
     const [loading, setLoading] = useState(false);
-    const [absolutePath, setAbsolutePath] = useState("");
+
+    const [inputValue, setInputValue] = useState(() => localStorage.getItem('last_path') || "");
 
     const fetchDir = async (path: string) => {
         setLoading(true);
@@ -22,35 +25,52 @@ export function FolderPicker({ onSelect, className }: FolderPickerProps) {
             const data: FileSystemResponse = await res.json();
 
             setItems(data.items);
-            setAbsolutePath(data.current);
+
+            setInputValue(data.current); // Sync input with loaded path
+            localStorage.setItem('last_path', data.current);
             onSelect(data.current); // Notify parent of selection
         } catch (e) {
             console.error(e);
+            // Optional: visual error feedback
         } finally {
             setLoading(false);
         }
     };
 
     useEffect(() => {
-        fetchDir(".");
+        const savedPath = localStorage.getItem('last_path');
+        fetchDir(savedPath || ".");
     }, []);
 
     const handleNavigate = (path: string) => {
         fetchDir(path);
     };
 
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            fetchDir(inputValue);
+        }
+    };
+
     return (
         <div className={cn("flex flex-col", className)}>
             <div className="p-4 border-b border-border/50 bg-black/5 flex items-center gap-3">
-                <HardDrive className="w-4 h-4 text-primary" />
-                <span className="text-xs text-secondary truncate font-mono">{absolutePath || "Select a folder..."}</span>
+                <HardDrive className="w-5 h-5 text-primary shrink-0" />
+                <input
+                    type="text"
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    onKeyDown={handleKeyDown}
+                    placeholder={t('select_folder')}
+                    className="flex-1 bg-black/20 border border-border/30 hover:border-primary/50 focus:border-primary focus:ring-1 focus:ring-primary/50 rounded-md px-3 py-1.5 text-xs text-foreground font-mono outline-none transition-all placeholder:text-muted"
+                />
             </div>
 
             <div className="flex-1 min-h-0 overflow-y-auto p-2 scrollbar-thin">
                 {loading && (
                     <div className="flex items-center justify-center h-full text-secondary gap-2">
                         <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-                        Loading...
+                        {t('loading')}
                     </div>
                 )}
 
@@ -63,11 +83,11 @@ export function FolderPicker({ onSelect, className }: FolderPickerProps) {
                         {item.name === ".." ? (
                             <div className="flex items-center gap-2 text-primary font-medium">
                                 <ChevronRight className="w-4 h-4 rotate-180" />
-                                <span>Back</span>
+                                <span>{t('back')}</span>
                             </div>
                         ) : (
                             <>
-                                <Folder className="w-5 h-5 text-primary/80 group-hover:text-primary transition-colors" />
+                                <Folder className="w-5 h-5 text-primary/80 group-hover:text-primary transition-colors shrink-0" />
                                 <span className="text-sm text-secondary group-hover:text-foreground transition-colors truncate">
                                     {item.name}
                                 </span>

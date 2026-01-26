@@ -2,12 +2,14 @@
 import { useEffect, useRef, useState } from 'react';
 import { cn } from '../lib/utils';
 import { Terminal as TerminalIcon } from 'lucide-react';
+import { useTranslation } from '../lib/language';
 
 interface TerminalViewProps {
     className?: string;
 }
 
 export function TerminalView({ className }: TerminalViewProps) {
+    const { t } = useTranslation();
     const [logs, setLogs] = useState<string[]>([]);
     const bottomRef = useRef<HTMLDivElement>(null);
     const wsRef = useRef<WebSocket | null>(null);
@@ -59,18 +61,18 @@ export function TerminalView({ className }: TerminalViewProps) {
     }, [logs]);
 
     return (
-        <div className={cn("flex flex-col bg-black rounded-lg overflow-hidden border border-slate-700 shadow-2xl font-mono text-sm", className)}>
+        <div className={cn("flex flex-col rounded-lg overflow-hidden border shadow-2xl font-mono text-sm bg-slate-50 dark:bg-black border-slate-200 dark:border-slate-800", className)}>
             {/* Header */}
-            <div className="flex items-center px-4 py-2 bg-slate-800 border-b border-slate-700">
+            <div className="flex items-center px-4 py-2 bg-slate-200 dark:bg-slate-900 border-b border-slate-300 dark:border-slate-800">
                 <TerminalIcon className="w-4 h-4 mr-2 text-primary" />
-                <span className="text-slate-300">Live Logs</span>
+                <span className="text-slate-700 dark:text-slate-300 font-semibold">{t('live_logs')}</span>
             </div>
 
             {/* Content */}
-            <div className="flex-1 p-4 overflow-y-auto h-[400px] scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent">
-                {logs.length === 0 && <span className="text-slate-600 italic">Waiting for logs...</span>}
+            <div className="flex-1 p-4 overflow-y-auto h-[400px] scrollbar-thin scrollbar-thumb-slate-300 dark:scrollbar-thumb-slate-700 scrollbar-track-transparent">
+                {logs.length === 0 && <span className="text-slate-500 dark:text-slate-600 italic">{t('waiting_logs')}</span>}
                 {logs.map((log, i) => (
-                    <div key={i} className="whitespace-pre-wrap text-slate-300 leading-tight mb-1 animate-in fade-in duration-300">
+                    <div key={i} className="whitespace-pre-wrap text-slate-800 dark:text-slate-300 leading-tight mb-1 animate-in fade-in duration-300">
                         {log}
                     </div>
                 ))}

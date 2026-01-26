@@ -1,46 +1,60 @@
 @import "tailwindcss";
 
 :root {
-  /* Light Mode - 清新、通透 */
-  --bg-image: url('/bg-light.jpg');
-  --glass-bg: rgba(255, 255, 255, 0.65);
-  --glass-border: rgba(255, 255, 255, 0.4);
-  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  /* Light Mode - 更高的对比度 */
+  --bg-gradient: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+  --fallback-bg: #f8fafc;
 
-  --text-primary: #1e293b;
-  --text-secondary: #475569;
-  --text-muted: #94a3b8;
+  /* Increased opacity for better readability */
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(30, 41, 59, 0.1);
+  /* Darker border for visibility */
+  --glass-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 
-  --accent-primary: #6366f1;
-  /* Indigo 500 */
-  --accent-glow: rgba(99, 102, 241, 0.3);
+  --text-primary: #0f172a;
+  /* Slate 900 - Darker */
+  --text-secondary: #334155;
+  /* Slate 700 - Darker */
+  --text-muted: #64748b;
+  /* Slate 500 */
 
-  --sidebar-bg: rgba(255, 255, 255, 0.4);
+  --accent-primary: #4f46e5;
+  /* Indigo 600 - Darker/Vibrant */
+  --accent-glow: rgba(79, 70, 229, 0.2);
+
+  --sidebar-bg: rgba(255, 255, 255, 0.7);
 }
 
 .dark {
-  /* Dark Mode - 深邃、赛博 */
-  --bg-image: url('/bg-dark.jpg');
-  --glass-bg: rgba(15, 23, 42, 0.6);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  /* Dark Mode - 深色背景，高亮文字 */
+  --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  --fallback-bg: #020617;
+
+  /* Increased opacity */
+  --glass-bg: rgba(15, 23, 42, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
 
   --text-primary: #f8fafc;
+  /* Slate 50 */
   --text-secondary: #cbd5e1;
-  --text-muted: #64748b;
+  /* Slate 300 */
+  --text-muted: #94a3b8;
+  /* Slate 400 */
 
   --accent-primary: #8b5cf6;
   /* Violet 500 */
-  --accent-glow: rgba(139, 92, 246, 0.4);
+  --accent-glow: rgba(139, 92, 246, 0.3);
 
-  --sidebar-bg: rgba(0, 0, 0, 0.3);
+  --sidebar-bg: rgba(15, 23, 42, 0.6);
 }
 
 @theme {
   --color-border: var(--glass-border);
   --color-input: var(--glass-bg);
   --color-ring: var(--accent-primary);
-  --color-background: transparent;
+  --color-background: var(--fallback-bg);
+  /* Fallback */
   --color-foreground: var(--text-primary);
 
   --color-primary: var(--accent-primary);
@@ -52,28 +66,29 @@ body {
   margin: 0;
   font-family: 'Outfit', 'Inter', system-ui, sans-serif;
   color: var(--text-primary);
-  background-image: var(--bg-image);
+  background-color: var(--fallback-bg);
+  background-image: var(--bg-gradient);
   background-size: cover;
-  background-position: center;
   background-attachment: fixed;
-  transition: background-image 0.5s ease-in-out;
+  transition: color 0.3s ease, background-color 0.3s ease;
   min-height: 100vh;
 }
 
 /* Glassmorphism Utilities */
 .glass-panel {
   background: var(--glass-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow);
 }
 
 .glass-button {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(125, 125, 125, 0.1);
   backdrop-filter: blur(4px);
   border: 1px solid var(--glass-border);
-  transition: all 0.3s ease;
+  transition: all 0.2s ease-in-out;
+  color: var(--text-primary);
 }
 
 .glass-button:hover {
@@ -86,6 +101,7 @@ body {
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -98,5 +114,5 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-primary);
+  background: var(--text-muted);
 }

@@ -27,6 +27,8 @@ class BatchMediaScraper:
                  use_local_nfo: bool = False, 
                  extra_images: bool = False, 
                  media_type: Optional[str] = None,
+                 search_mode: str = "smart",
+                 enable_fallback: bool = True,
                  max_workers: int = 4,
                  dry_run: bool = False):
         
@@ -38,6 +40,8 @@ class BatchMediaScraper:
         self.tmdb_id = tmdb_id
         self.extra_images = extra_images
         self.media_type = media_type
+        self.search_mode = search_mode
+        self.enable_fallback = enable_fallback
         self.max_workers = int(os.getenv("MAX_WORKERS", str(max_workers)))
         self.dry_run = dry_run
         
@@ -170,7 +174,9 @@ class BatchMediaScraper:
             "quiet": True,
             "aid_search": True,
             "inplace": self.inplace_rename,
-            "extra_images": self.extra_images
+            "extra_images": self.extra_images,
+            "tmdb_only": self.search_mode == "tmdb_only",
+            "fallback_on_fail": self.enable_fallback
         }
         if tmdb_id:
             input_data["tmdb_id"] = tmdb_id

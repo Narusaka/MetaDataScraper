@@ -42,7 +42,15 @@ class TaskStartRequest(BaseModel):
     input_dir: str
     dry_run: bool = True
     inplace: bool = False
+    copy_mode: bool = False
+    output_dir: Optional[str] = None
+    use_local_nfo: bool = False
+    extra_images: bool = False
     workers: int = 4
+    media_type: Optional[str] = None
+    tmdb_id: Optional[int] = None
+    search_mode: str = "smart" # smart, tmdb_only
+    enable_fallback: bool = True
 
 class FileSystemNode(BaseModel):
     name: str
@@ -120,7 +128,15 @@ async def start_task(req: TaskStartRequest):
         input_dir=req.input_dir,
         dry_run=req.dry_run,
         inplace=req.inplace,
-        workers=req.workers
+        workers=req.workers,
+        copy=req.copy_mode,
+        output_dir=req.output_dir,
+        use_local_nfo=req.use_local_nfo,
+        extra_images=req.extra_images,
+        media_type=req.media_type,
+        tmdb_id=req.tmdb_id,
+        search_mode=req.search_mode,
+        enable_fallback=req.enable_fallback
     ))
     
     return {"status": "started", "message": f"Scanning {req.input_dir}"}

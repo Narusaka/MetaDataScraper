@@ -144,6 +144,15 @@ class MediaPipeline:
             }
 
         except Exception as e:
+            # Fallback Logic for Manual ID
+            if input_data.get("tmdb_id") and input_data.get("fallback_on_fail", False):
+                 self._log(f"⚠️ Manual ID {input_data['tmdb_id']} failed: {e}. Retrying with auto-search...", verbose_only=False)
+                 # Remove manual ID and force retry
+                 retry_input = input_data.copy()
+                 del retry_input["tmdb_id"]
+                 # Recursive retry (one level)
+                 return self.run(retry_input)
+
             self._log(f"❌ Pipeline Error: {e}", verbose_only=False)
             import traceback
             traceback.print_exc()
@@ -189,7 +198,7 @@ class MediaPipeline:
                 break
         
         # 2. Tavily Search (Fallback)
-        if not candidate and input_data.get("aid_search") and self.tavily_search:
+        if not candidate and input_data.get("aid_search") and not input_data.get("tmdb_only") and self.tavily_search:
             self._log(f"🔍 TMDB failed, trying Tavily Search...")
             # For fallback, if type was NOT forced, we might want to try both? 
             # Usually fallback respects the primary type intent.
@@ -200,7 +209,7 @@ class MediaPipeline:
                 self._log(f"   ✅ Tavily Found ID: {tavily_id}")
         
         # 3. Google Search (Fallback)
-        if not candidate and input_data.get("aid_search") and self.google_search and not self.tavily_search:
+        if not candidate and input_data.get("aid_search") and not input_data.get("tmdb_only") and self.google_search and not self.tavily_search:
              self._log(f"🔍 Trying Google Search...")
              google_id = self.google_search.search_tmdb_id(query, media_type, verbose=self.verbose)
              if google_id:

@@ -1,7 +1,7 @@
 
 import { LayoutDashboard, Settings, Activity } from 'lucide-react';
 import { cn } from '../lib/utils';
-import { ThemeToggle } from './ThemeToggle';
+import { useTranslation } from '../lib/language';
 
 interface SidebarProps {
     activeTab: string;
@@ -9,8 +9,10 @@ interface SidebarProps {
 }
 
 export function Sidebar({ activeTab, onTabChange }: SidebarProps) {
+    const { t } = useTranslation();
+
     return (
-        <div className="w-16 md:w-64 glass-panel border-y-0 border-l-0 border-r border-border/30 flex flex-col items-center md:items-stretch py-6 gap-2 z-20 h-screen">
+        <div className="w-16 md:w-64 glass-panel border-y-0 border-l-0 border-r border-border/30 flex flex-col items-center md:items-stretch py-6 gap-2 z-20 h-screen sticky top-0">
             <div className="px-6 mb-8 hidden md:block">
                 <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-violet-400 bg-clip-text text-transparent">
                     MediaAgent
@@ -20,32 +22,22 @@ export function Sidebar({ activeTab, onTabChange }: SidebarProps) {
 
             <NavItem
                 icon={<LayoutDashboard />}
-                label="Dashboard"
+                label={t('dashboard')}
                 active={activeTab === 'dashboard'}
                 onClick={() => onTabChange('dashboard')}
             />
             <NavItem
                 icon={<Activity />}
-                label="Monitoring"
+                label={t('monitoring')}
                 active={activeTab === 'monitoring'}
                 onClick={() => onTabChange('monitoring')}
             />
 
             <div className="flex-1" />
 
-            <div className="flex flex-col items-center gap-4 mb-4">
-                <div className="hidden md:flex w-full px-6 justify-between items-center text-sm text-secondary font-medium">
-                    <span>Appearance</span>
-                    <ThemeToggle />
-                </div>
-                <div className="md:hidden">
-                    <ThemeToggle />
-                </div>
-            </div>
-
             <NavItem
                 icon={<Settings />}
-                label="Settings"
+                label={t('settings')}
                 active={activeTab === 'settings'}
                 onClick={() => onTabChange('settings')}
             />

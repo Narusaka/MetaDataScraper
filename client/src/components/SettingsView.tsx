@@ -130,7 +130,10 @@ export function SettingsView() {
 
                     {/* UI Appearance */}
                     <div className="space-y-6">
-                        <SectionLabel icon={<Monitor />} label={t('nav_appearance')} />
+                        <div className="flex justify-between items-center">
+                            <SectionLabel icon={<Monitor />} label={t('nav_appearance')} />
+                            <ProxyTester />
+                        </div>
                         <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-2">
                                 <label className="text-xs text-secondary font-medium uppercase">Theme</label>
@@ -292,3 +295,55 @@ function InputGroup({ label, value, onChange, placeholder, type = "text" }: {
         </div>
     )
 }
+
+function ProxyTester() {
+    const [status, setStatus] = useState<any>(null);
+    const [loading, setLoading] = useState(false);
+
+    const check = async () => {
+        setLoading(true);
+        setStatus(null);
+        try {
+            const res = await fetch("http://localhost:8000/api/test_connectivity");
+            if (res.ok) {
+                const data = await res.json();
+                setStatus(data);
+            } else {
+                setStatus({ error: "API failed" });
+            }
+        } catch (e) {
+            setStatus({ error: "Network error" });
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <div className="flex flex-col items-end gap-2">
+            <button
+                onClick={check}
+                disabled={loading}
+                className="text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg flex items-center gap-2 transition-all"
+            >
+                {loading ? <Loader2 className="w-3 h-3 animate-spin" /> : <Monitor className="w-3 h-3" />}
+                Test Connectivity
+            </button>
+            {status && (
+                <div className="flex gap-2">
+                    {['tmdb', 'google'].map(service => (
+                        <div key={service} className={cn(
+                            "px-2 py-0.5 rounded text-[8px] font-bold uppercase tracking-tighter border",
+                            status[service]?.status === 'ok'
+                                ? "bg-green-500/10 border-green-500/30 text-green-400"
+                                : "bg-red-500/10 border-red-500/30 text-red-400"
+                        )}>
+                            {service}: {status[service]?.status || 'error'}
+                        </div>
+                    ))}
+                    {status.error && <div className="text-[8px] text-red-400">{status.error}</div>}
+                </div>
+            )}
+        </div>
+    );
+}
+

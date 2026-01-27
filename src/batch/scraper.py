@@ -74,6 +74,7 @@ class BatchMediaScraper:
         self._inject_env(c, "GOOGLE_SEARCH_ENGINE_ID", ["google", "search_engine_id"])
         self._inject_env(c, "MODEL_API_KEY", ["model", "api_key"])
         self._inject_env(c, "MODEL_BASE_URL", ["model", "base_url"])
+        self._inject_env(c, "TAVILY_API_KEY", ["tavily", "api_key"])
         
         return c
 
@@ -116,10 +117,14 @@ class BatchMediaScraper:
         # Scan
         if self.multi_mode:
              tasks = self.scanner.scan_multi(root_path)
+             # If no sub-dirs or loose files found, maybe the root is the target?
+             if not tasks:
+                 logger.info("No sub-tasks found in multi-mode, falling back to single directory mode.")
+                 tasks = self.scanner.scan_single(root_path)
         else:
              tasks = self.scanner.scan_single(root_path)
 
-        self._execute_tasks(tasks)
+        return self._execute_tasks(tasks)
 
     def _execute_tasks(self, tasks: List[dict]):
         if not tasks:
@@ -132,15 +137,37 @@ class BatchMediaScraper:
             future_to_task = {executor.submit(self._process_task, task): task for task in tasks}
             
             try:
-                completed = 0
-                failed = 0
+                completed_count = 0
+                failed_tasks = []
                 for future in as_completed(future_to_task):
-                    if future.result(): completed += 1
-                    else: failed += 1
-                logger.info(f"Batch processing finished: {completed}/{len(tasks)} successful, {failed} failed")
+                    task = future_to_task[future]
+                    task_name = "Loose Files"
+                    if task["type"] == "directory":
+                        task_name = task["path"].name
+                    
+                    try:
+                        success = future.result()
+                        if success: completed_count += 1
+                        else: failed_tasks.append(task_name)
+                    except Exception as e:
+                        logger.error(f"Task {task_name} raised exception: {e}")
+                        failed_tasks.append(task_name)
+
+                msg = f"Batch processing finished: {completed_count}/{len(tasks)} successful, {len(failed_tasks)} failed"
+                if failed_tasks:
+                    msg += f"\n❌ Failed items: {', '.join(failed_tasks)}"
+                logger.info(msg)
+
+                return {
+                    "completed": completed_count,
+                    "failed": len(failed_tasks),
+                    "total": len(tasks),
+                    "failed_names": failed_tasks
+                }
             except KeyboardInterrupt:
                 logger.warning("\n🛑 Stopping workers... (Ctrl+C pressed)")
                 executor.shutdown(wait=False, cancel_futures=True)
+                return {"completed": 0, "failed": 0, "total": len(tasks), "failed_names": []}
 
     def _process_task(self, task: dict) -> bool:
         if task["type"] == "directory":
@@ -175,6 +202,7 @@ class BatchMediaScraper:
             "aid_search": True,
             "inplace": self.inplace_rename,
             "extra_images": self.extra_images,
+            "search_mode": self.search_mode,
             "tmdb_only": self.search_mode == "tmdb_only",
             "fallback_on_fail": self.enable_fallback
         }

@@ -31,7 +31,10 @@ export function FolderPicker({ onSelect, className }: FolderPickerProps) {
             onSelect(data.current); // Notify parent of selection
         } catch (e) {
             console.error(e);
-            // Optional: visual error feedback
+            // If failed to load a specific path (e.g. cached path deleted), fallback to root
+            if (path !== ".") {
+                fetchDir(".");
+            }
         } finally {
             setLoading(false);
         }

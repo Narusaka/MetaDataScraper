@@ -59,8 +59,12 @@ class MediaPipeline:
 
         # Tavily Search
         tavily_config = config.get("tavily", {})
-        # Combine keys from config and env
         tavily_keys = tavily_config.get("api_keys", [])
+        if not isinstance(tavily_keys, list): tavily_keys = [tavily_keys]
+        
+        # Also check single api_key
+        if tavily_config.get("api_key"): tavily_keys.append(tavily_config.get("api_key"))
+        
         if os.getenv("TAVILY_API_KEY"): tavily_keys.append(os.getenv("TAVILY_API_KEY"))
         if os.getenv("TAVILY_API_KEY_2"): tavily_keys.append(os.getenv("TAVILY_API_KEY_2"))
         
@@ -82,9 +86,17 @@ class MediaPipeline:
         self.artwork = ArtworkDownloader(config["tmdb"]["api_key"], config.get("proxy"))
 
     def _log(self, msg: str, verbose_only: bool = False):
-        if self.quiet: return
+        import logging
+        if self.quiet and not verbose_only: 
+            # In quiet mode, still log to the logging system for remote terminal visibility
+            # but maybe at a lower level or respect the quiet flag?
+            # Actually, the user wants 'Live Logs', so we SHOULD log to the logging system.
+            pass 
+        
         if verbose_only and not self.verbose: return
-        print(msg)
+        
+        # Strip emojis for cleaner system logs if preferred, or keep them
+        logging.info(msg)
 
     def run(self, input_data: Dict[str, Any]) -> Dict[str, Any]:
         """Execute the pipeline linearly."""
@@ -135,6 +147,7 @@ class MediaPipeline:
             if not self.skip_images:
                 self._step_download_images(normalized, output_result["media_dir"], input_data)
 
+            self._log(f"🏆 Task Successfully Finished: {normalized.get('title')}")
             return {
                 "status": "completed",
                 "normalized": normalized,
@@ -159,58 +172,48 @@ class MediaPipeline:
             return {"status": "failed", "error": str(e)}
 
     def _step_search(self, input_data: Dict[str, Any]) -> Dict[str, Any]:
-        """Step 1: Search for media.
-        
-        Strategy:
-        1. Direct ID (if provided)
-        2. TMDB Native Search (best for exact name matches)
-        3. Tavily Search (AI-powered, targeted at site:themoviedb.org to find ID)
-        4. Google Search (Fallback, targeted at site:themoviedb.org)
-        """
+        """Step 1: Search for media."""
         query = input_data.get("query", "")
         tmdb_id = input_data.get("tmdb_id")
         media_type = input_data.get("media_type", "tv")
         force_type = input_data.get("media_type_forced", False)
+        mode = input_data.get("search_mode", "smart") # smart, tmdb_only, tavily_only
         
         # Direct ID
         if tmdb_id:
             return {"selected": {"id": int(tmdb_id), "media_type": media_type}}
             
-        # Search TMDB
-        self._log(f"🔍 Searching TMDB: '{query}' ({'Forced ' if force_type else ''}{media_type}) ...")
-        
         candidate = None
-        
-        # Strategy: 
-        # 1. Search specified type (or auto-detect sequence)
-        # 2. If fail, use Tavily
-        # 3. If fail, use Google
-        
         search_types = [media_type] if force_type else (["tv", "movie"] if media_type == "tv" else ["movie", "tv"])
-        
-        # 1. TMDB Search
-        for m_type in search_types:
-            results = self.tmdb.search_tv(query) if m_type == "tv" else self.tmdb.search_movie(query)
-            if results and results.get("results"):
-                candidate = results["results"][0]
-                candidate["media_type"] = m_type
-                self._log(f"   ✅ TMDB Found: {candidate.get('name') or candidate.get('title')} ({m_type})")
-                break
-        
-        # 2. Tavily Search (Fallback)
-        if not candidate and input_data.get("aid_search") and not input_data.get("tmdb_only") and self.tavily_search:
-            self._log(f"🔍 TMDB failed, trying Tavily Search...")
-            # For fallback, if type was NOT forced, we might want to try both? 
-            # Usually fallback respects the primary type intent.
+
+        # 1. TMDB Search (If mode is smart or tmdb_only)
+        if mode in ["smart", "tmdb_only"]:
+            self._log(f"🔍 Searching TMDB: '{query}' ({'Forced ' if force_type else ''}{media_type}) ...")
+            for m_type in search_types:
+                results = self.tmdb.search_tv(query) if m_type == "tv" else self.tmdb.search_movie(query)
+                if results and results.get("results"):
+                    candidates = results["results"][:3]
+                    self._log(f"   🔎 TMDB Candidates ({len(candidates)}/{results.get('total_results', '?')}):")
+                    for i, c in enumerate(candidates):
+                         self._log(f"      {i+1}. [{c.get('id')}] {c.get('name') or c.get('title')} ({c.get('first_air_date') or c.get('release_date')})")
+                    
+                    candidate = candidates[0]
+                    candidate["media_type"] = m_type
+                    self._log(f"   ✅ Selected: {candidate.get('name') or candidate.get('title')} ({m_type})")
+                    break
+
+        # 2. Tavily Search (If mode is smart AND TMDB failed, OR if mode is tavily_only)
+        if not candidate and mode in ["smart", "tavily_only"] and self.tavily_search:
+            self._log(f"🔍 Trying Tavily Search for ID: '{query}' ({media_type}) ...")
             fallback_type = media_type
             tavily_id = self.tavily_search.search_tmdb_id(query, fallback_type, verbose=self.verbose)
             if tavily_id:
                 candidate = {"id": tavily_id, "media_type": fallback_type}
                 self._log(f"   ✅ Tavily Found ID: {tavily_id}")
         
-        # 3. Google Search (Fallback)
-        if not candidate and input_data.get("aid_search") and not input_data.get("tmdb_only") and self.google_search and not self.tavily_search:
-             self._log(f"🔍 Trying Google Search...")
+        # 3. Google Search (Final Fallback if enabled and others failed)
+        if not candidate and mode == "smart" and self.google_search and not self.tavily_search:
+             self._log(f"🔍 Trying Google Search Fallback...")
              google_id = self.google_search.search_tmdb_id(query, media_type, verbose=self.verbose)
              if google_id:
                  candidate = {"id": google_id, "media_type": media_type}

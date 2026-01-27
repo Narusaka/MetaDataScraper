@@ -15,44 +15,50 @@ export function TerminalView({ className }: TerminalViewProps) {
     const wsRef = useRef<WebSocket | null>(null);
 
     useEffect(() => {
-        // Connect to WebSocket
-        const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-        const wsUrl = `${protocol}//localhost:8000/ws/logs`;
-        console.log("Connecting to WS:", wsUrl);
+        let reconnectTimer: any;
 
-        try {
+        const connect = () => {
+            const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsUrl = `${protocol}//localhost:8000/ws/logs`;
+
             const ws = new WebSocket(wsUrl);
             wsRef.current = ws;
 
             ws.onopen = () => {
                 setLogs(prev => [...prev, "--- Connected to Log Stream ---"]);
+                if (reconnectTimer) {
+                    clearInterval(reconnectTimer);
+                    reconnectTimer = null;
+                }
             };
 
             ws.onmessage = (event) => {
                 const msg = event.data;
                 setLogs(prev => {
-                    // Keep last 1000 lines
                     const newLogs = [...prev, msg];
                     if (newLogs.length > 1000) return newLogs.slice(newLogs.length - 1000);
                     return newLogs;
                 });
             };
 
-            ws.onerror = (e) => {
-                console.error("WebSocket error", e);
-                setLogs(prev => [...prev, "!!! WebSocket Connection Error !!!"]);
-            };
-
             ws.onclose = () => {
-                setLogs(prev => [...prev, "--- Connection Closed ---"]);
+                setLogs(prev => [...prev, "--- Connection Closed. Retrying... ---"]);
+                if (!reconnectTimer) {
+                    reconnectTimer = setInterval(connect, 3000);
+                }
             };
 
-            return () => {
+            ws.onerror = () => {
                 ws.close();
             };
-        } catch (e) {
-            console.error("Failed to construct WebSocket", e);
-        }
+        };
+
+        connect();
+
+        return () => {
+            if (wsRef.current) wsRef.current.close();
+            if (reconnectTimer) clearInterval(reconnectTimer);
+        };
     }, []);
 
     // Auto-scroll

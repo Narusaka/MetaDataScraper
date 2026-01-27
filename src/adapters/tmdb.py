@@ -75,11 +75,11 @@ class TMDBAdapter:
 
     def search_movie(self, query: str) -> Dict[str, Any]:
         """Search for movies."""
-        return self._make_request("/search/movie", {"query": query})
+        return self._make_request("/search/movie", {"query": query, "language": self.preferred_language})
 
     def search_tv(self, query: str) -> Dict[str, Any]:
         """Search for TV shows."""
-        return self._make_request("/search/tv", {"query": query})
+        return self._make_request("/search/tv", {"query": query, "language": self.preferred_language})
 
     def get_images(self, media_type: str, tmdb_id: int) -> Dict[str, Any]:
         """Get images for movie or TV show."""

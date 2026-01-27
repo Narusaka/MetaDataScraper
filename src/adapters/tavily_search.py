@@ -44,36 +44,43 @@ class TavilySearchAdapter:
 
     def search_tmdb_id(self, query: str, media_type: str = "tv", verbose: bool = False) -> Optional[int]:
         """Search specifically for TMDB ID using Tavily."""
-        # Enhanced query for better results - restricts search to TMDB domain implicitly via keywords
-        # and explicitly via include_domains in the search call
-        search_query = f"{query} {media_type} tmdb"
+        # Policy: Try broad search "Query tmdb" first. 
+        # If that fails (or returns wrong type), try specific "Query MediaType tmdb".
+        queries = [f"{query} tmdb", f"{query} {media_type} tmdb"]
         
-        # Use simple search depth for speed, result is usually top 1
-        payload = {
-            "api_key": self._get_api_key(),
-            "query": search_query,
-            "search_depth": "basic",
-            "max_results": 5,
-            "include_domains": ["themoviedb.org"],
-        }
-        
-        try:
-            response = requests.post(
-                self.BASE_URL, 
-                json=payload, 
-                proxies=self.proxy, 
-                timeout=15
-            )
-            response.raise_for_status()
-            results = response.json().get("results", [])
-        except Exception as e:
-            if verbose: print(f"   Tavily Search failed: {e}")
-            return None
-        
-        if verbose:
-            print(f"   Tavily Search Results for '{search_query}': {len(results)} items")
+        for search_query in queries:
+            if verbose: print(f"   Trying Tavily Search: '{search_query}'")
             
-        return self._parse_tmdb_id_from_results(results, media_type)
+            payload = {
+                "api_key": self._get_api_key(),
+                "query": search_query,
+                "search_depth": "basic",
+                "max_results": 5,
+                "include_domains": ["themoviedb.org"],
+            }
+            
+            try:
+                response = requests.post(
+                    self.BASE_URL, 
+                    json=payload, 
+                    proxies=self.proxy, 
+                    timeout=15
+                )
+                response.raise_for_status()
+                results = response.json().get("results", [])
+                
+                if verbose:
+                     print(f"      Found {len(results)} results")
+
+                tmdb_id = self._parse_tmdb_id_from_results(results, media_type)
+                if tmdb_id:
+                    return tmdb_id
+                    
+            except Exception as e:
+                if verbose: print(f"   Tavily Search request failed for '{search_query}': {e}")
+                continue
+        
+        return None
 
     def _parse_tmdb_id_from_results(self, results: List[Dict[str, Any]], media_type: str) -> Optional[int]:
         """Extract TMDB ID from search results URLs."""

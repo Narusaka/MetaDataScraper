@@ -43,5 +43,5 @@ class LogBroadcaster(logging.Handler):
 
 # Global Instance
 log_broadcaster = LogBroadcaster()
-formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+formatter = logging.Formatter('%(asctime)s [%(threadName)s] %(levelname)s - %(message)s')
 log_broadcaster.setFormatter(formatter)

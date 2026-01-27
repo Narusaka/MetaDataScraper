@@ -23,20 +23,43 @@ class MediaScanner:
 
     def scan_multi(self, input_dir: Path) -> List[dict]:
         """Scan multi-directory mode."""
+        # Check if input_dir ITSELF is a TV Show root (contains "Season X" or "Specials")
+        # If so, treating it as a single task prevents loose files in this root from being processed separately.
+        try:
+            root_sub_dirs = [d.name.lower() for d in input_dir.iterdir() if d.is_dir()]
+            is_show_root = any(re.match(r'^season\s*\d+$', d) or d == 'specials' for d in root_sub_dirs)
+            
+            if is_show_root:
+                logger.info(f"Detected {input_dir.name} as Show Root (contains Season folders). Treating as single task.")
+                # We use scan_single logic basically, treating this folder as the media item
+                return [self._create_task_for_dir(input_dir, force_id=self.global_tmdb_id)]
+        except Exception as e:
+            logger.error(f"Error checking show root: {e}")
+
         tasks = []
         # Subdirectories
         for item in input_dir.iterdir():
-             if not item.is_dir() or item.name.startswith('.'): continue
-             
-             name_lower = item.name.lower()
-             if name_lower in self.exclude_dirs: continue
-             
-             # Exclude "Season XX" or "Specials" directories usually found inside shows
-             if re.match(r'^season\s*\d+$', name_lower) or name_lower == 'specials':
+            if not item.is_dir() or item.name.startswith('.'): continue
+            
+            name_lower = item.name.lower()
+            if name_lower in self.exclude_dirs: continue
+            
+            # Check if this directory itself should be a task
+            # If it contains "Season X" folders or "Specials", it's likely a TV show root
+            sub_dirs = [d.name.lower() for d in item.iterdir() if d.is_dir()]
+            has_seasons = any(re.match(r'^season\s*\d+$', d) or d == 'specials' for d in sub_dirs)
+            
+            if has_seasons:
+                 # Found a TV show root, do not scan its seasons as separate tasks
+                 tasks.append(self._create_task_for_dir(item, force_id=None))
                  continue
 
-             # In multi mode, global ID does not apply to subdirs
-             tasks.append(self._create_task_for_dir(item, force_id=None))
+            # Exclude "Season XX" or "Specials" if they were loose in the current level
+            if re.match(r'^season\s*\d+$', name_lower) or name_lower == 'specials':
+                continue
+
+            # Normal behavior: treat each subdirectory as a potential show/movie
+            tasks.append(self._create_task_for_dir(item, force_id=None))
         
         # Loose files
         loose = self._find_loose_files(input_dir)

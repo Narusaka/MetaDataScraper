@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 
 class JobManager:
     def __init__(self):
-        self.executor = ThreadPoolExecutor(max_workers=1)
+        self.executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix="JobManager")
         self.current_task = None
         self.is_running = False
         self.pipeline = None # Holds reference to active pipeline if needed
@@ -23,6 +23,7 @@ class JobManager:
                              copy: bool = False,
                              output_dir: Optional[str] = None,
                              use_local_nfo: bool = False,
+                             extra_images: bool = False,
                              media_type: Optional[str] = None,
                              tmdb_id: Optional[int] = None,
                              search_mode: str = "smart",
@@ -55,12 +56,19 @@ class JobManager:
         Synchronous wrapper to run BatchMediaScraper
         """
         try:
+            # If a TMDB ID is provided, we are definitely targeting a specific item, so multi_mode should be False.
+            should_multi = tmdb_id is None
+            
+            import time
+            from src.server.stats_manager import stats_manager
+            
+            start_time = time.time()
             scraper = BatchMediaScraper(
                 config_path=config_path,
                 copy_files=copy,
                 inplace_rename=inplace,
                 output_dir=output_dir,
-                multi_mode=True, # Always assume multi-mode for "Batch" unless specific ID overrides? Actually single mode logic is handled inside if needed, but BatchMediaScraper loop handles directories.
+                multi_mode=should_multi, 
                 media_type=media_type,
                 tmdb_id=tmdb_id,
                 search_mode=search_mode,
@@ -70,8 +78,17 @@ class JobManager:
                 use_local_nfo=use_local_nfo,
                 extra_images=extra_images
             )
-            # Store reference?
-            scraper.run(input_dir)
+            results = scraper.run(input_dir)
+            
+            duration = time.time() - start_time
+            if results and not dry_run:
+                stats_manager.record_task(
+                    input_dir=input_dir,
+                    total=results.get("total", 0),
+                    successful=results.get("completed", 0),
+                    failed=results.get("failed", 0),
+                    duration=duration
+                )
         except Exception as e:
             logger.error(f"Scraper Failed: {e}")
             import traceback

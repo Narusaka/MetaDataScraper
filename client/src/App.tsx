@@ -36,10 +36,11 @@ function App() {
       if (res.ok) {
         setIsRunning(true);
       } else {
-        console.error("Failed to start task");
+        const err = await res.json();
+        alert(`Failed to start task: ${err.detail || 'Unknown error'}`);
       }
     } catch (e) {
-      console.error(e);
+      alert(`Network error starting task: ${e}`);
     }
   };
 

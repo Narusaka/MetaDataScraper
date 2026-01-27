@@ -1,10 +1,14 @@
 
 import { useState, useEffect } from 'react';
-import { Play, ShieldAlert, Cpu, Eye, FolderInput, Copy, FileImage, FileText } from 'lucide-react';
+import {
+    Play, FolderInput, Copy,
+    FileImage, FileText, Search, Settings2, Database,
+    X, AlertCircle
+} from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useTranslation } from '../lib/language';
 import { FolderPicker } from './FolderPicker';
-import { TerminalView } from './TerminalView';
+import { TaskBoard } from './TaskBoard';
 
 interface DashboardProps {
     isRunning: boolean;
@@ -15,19 +19,25 @@ type Strategy = 'audit' | 'organize' | 'copy';
 
 export function Dashboard({ isRunning, onStart }: DashboardProps) {
     const { t } = useTranslation();
-    const [selectedPath, setSelectedPath] = useState("");
+
+    // --- State Management ---
+    const [selectedPath, setSelectedPath] = useState(() => localStorage.getItem('last_path') || "");
+    const [showPicker, setShowPicker] = useState<'input' | 'output' | null>(null);
+
     const [strategy, setStrategy] = useState<Strategy>(() => (localStorage.getItem('task_strategy') as Strategy) || 'audit');
     const [workers, setWorkers] = useState(() => parseInt(localStorage.getItem('task_workers') || "4"));
-
-    // Advanced Options
     const [useLocalNfo, setUseLocalNfo] = useState(() => localStorage.getItem('task_local_nfo') === 'true');
     const [extraImages, setExtraImages] = useState(() => localStorage.getItem('task_extra_images') === 'true');
     const [outputPath, setOutputPath] = useState(() => localStorage.getItem('task_output_path') || "");
     const [mediaType, setMediaType] = useState(() => localStorage.getItem('task_media_type') || "");
     const [tmdbId, setTmdbId] = useState(() => localStorage.getItem('task_tmdb_id') || "");
-    const [searchMode, setSearchMode] = useState<'smart' | 'tmdb_only'>(() => (localStorage.getItem('task_search_mode') as 'smart' | 'tmdb_only') || 'smart');
+    const [searchMode, setSearchMode] = useState<'smart' | 'tmdb_only' | 'tavily_only'>(() => (localStorage.getItem('task_search_mode') as 'smart' | 'tmdb_only' | 'tavily_only') || 'smart');
     const [enableFallback, setEnableFallback] = useState(() => localStorage.getItem('task_enable_fallback') !== 'false');
 
+    // --- Persistence ---
+    useEffect(() => {
+        if (selectedPath) localStorage.setItem('last_path', selectedPath);
+    }, [selectedPath]);
     useEffect(() => localStorage.setItem('task_strategy', strategy), [strategy]);
     useEffect(() => localStorage.setItem('task_workers', workers.toString()), [workers]);
     useEffect(() => localStorage.setItem('task_local_nfo', useLocalNfo.toString()), [useLocalNfo]);
@@ -56,239 +66,323 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
     };
 
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full pb-6">
-            {/* Left: Config & Files */}
-            <div className="flex flex-col gap-6 lg:col-span-1 min-w-0">
-                <div className="p-6 glass-panel rounded-xl space-y-6">
-                    <h3 className="font-semibold flex items-center gap-2 text-lg text-primary">
-                        <Cpu className="w-5 h-5" />
-                        {t('task_config')}
-                    </h3>
-
-                    {/* Path Selection Display */}
-                    <div className="text-sm font-medium text-secondary truncate">
-                        Target: <span className="font-mono text-foreground opacity-80">{selectedPath || "None"}</span>
+        <div className="flex flex-col h-full gap-6">
+            {/* Top Bar: Target Path Selection */}
+            <div className="glass-panel rounded-2xl p-4 flex flex-col md:flex-row items-center gap-4 border border-white/10 shadow-xl">
+                <div className="flex-1 min-w-0 w-full">
+                    <label className="text-[10px] font-bold text-primary uppercase tracking-[0.2em] mb-1.5 block px-1">
+                        {t('path_input')}
+                    </label>
+                    <div
+                        onClick={() => setShowPicker('input')}
+                        className="group flex items-center gap-3 bg-muted/50 hover:bg-muted/80 border border-border hover:border-primary/50 transition-all cursor-pointer rounded-xl px-4 py-3 min-h-[52px]"
+                    >
+                        <FolderInput className="w-5 h-5 text-primary/70 group-hover:text-primary shrink-0" />
+                        <span className={cn(
+                            "flex-1 truncate font-mono text-sm tracking-tight",
+                            selectedPath ? "text-foreground" : "text-muted-foreground italic"
+                        )}>
+                            {selectedPath || t('select_folder')}
+                        </span>
+                        <Search className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
                     </div>
+                </div>
 
-                    {/* Strategy Selector */}
+                <div className="w-full md:w-auto h-full pt-5">
+                    <button
+                        disabled={isRunning || !selectedPath || (strategy === 'copy' && !outputPath)}
+                        onClick={handleStart}
+                        className={cn(
+                            "h-[52px] px-8 rounded-xl font-bold flex items-center justify-center gap-2 transition-all transition-transform active:scale-95 shadow-lg",
+                            isRunning
+                                ? "bg-slate-700 text-slate-400 cursor-not-allowed"
+                                : "bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-blue-500/25 hover:from-blue-500 hover:to-indigo-500 shadow-blue-500/20"
+                        )}
+                    >
+                        {isRunning ? (
+                            <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        ) : (
+                            <Play className="w-5 h-5 fill-current" />
+                        )}
+                        <span className="uppercase tracking-widest text-sm">{isRunning ? t('running') : t('start_task')}</span>
+                    </button>
+                </div>
+            </div>
+
+            {/* Main Grid */}
+            <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-12 gap-6 pb-4">
+                {/* Left: Configuration Panel (4/12) */}
+                <div className="lg:col-span-4 flex flex-col gap-6 overflow-y-auto pr-1 scrollbar-thin">
+
+                    {/* Strategy Section */}
                     <div className="space-y-3">
-                        <label className="text-xs text-secondary font-medium uppercase tracking-wider pl-1">{t('strategy')}</label>
-                        <div className="grid grid-cols-1 gap-2">
-                            <StrategyCard
+                        <SectionHeader icon={<Database className="w-4 h-4" />} title={t('strategy')} />
+                        <div className="flex flex-col gap-2">
+                            <ModeCard
                                 active={strategy === 'audit'}
                                 onClick={() => setStrategy('audit')}
-                                icon={<Eye className="w-5 h-5" />}
-                                title={t('mode_audit')}
-                                desc={t('mode_audit_desc')}
+                                icon={<Search className="w-5 h-5" />} title={t('mode_audit')} desc={t('mode_audit_desc')}
                             />
-                            <StrategyCard
+                            <ModeCard
                                 active={strategy === 'organize'}
                                 onClick={() => setStrategy('organize')}
-                                icon={<FolderInput className="w-5 h-5" />}
-                                title={t('mode_organize')}
-                                desc={t('mode_organize_desc')}
-                                warn
+                                icon={<FolderInput />} title={t('mode_organize')} desc={t('mode_organize_desc')}
+                                accent="orange"
                             />
-                            <StrategyCard
+                            <ModeCard
                                 active={strategy === 'copy'}
                                 onClick={() => setStrategy('copy')}
-                                icon={<Copy className="w-5 h-5" />}
-                                title={t('mode_copy')}
-                                desc={t('mode_copy_desc')}
+                                icon={<Copy />} title={t('mode_copy')} desc={t('mode_copy_desc')}
+                                accent="blue"
                             />
                         </div>
                     </div>
 
-                    {/* Dynamic Output Path Input */}
+                    {/* Output Path (Dynamic) */}
                     {strategy === 'copy' && (
-                        <div className="animate-in fade-in slide-in-from-top-2">
-                            <label className="text-xs text-secondary font-medium uppercase tracking-wider pl-1 mb-1 block">{t('path_output')}</label>
-                            <input
-                                type="text"
-                                className="w-full glass-panel bg-black/10 px-3 py-2 rounded-lg border-border/30 focus:border-primary focus:ring-1 focus:ring-primary outline-none text-sm"
-                                placeholder="/path/to/output"
-                                value={outputPath}
-                                onChange={(e) => setOutputPath(e.target.value)}
-                            />
+                        <div className="glass-panel p-4 rounded-xl border-blue-500/30 bg-blue-500/5 animate-in slide-in-from-top-2">
+                            <label className="text-[10px] font-bold text-blue-400 uppercase tracking-widest mb-2 block">{t('path_output' as any) || "Destination"}</label>
+                            <div
+                                onClick={() => setShowPicker('output')}
+                                className="flex items-center gap-2 bg-black/20 border border-white/5 p-3 rounded-lg cursor-pointer hover:border-blue-500/50 transition-all font-mono text-xs truncate"
+                            >
+                                <FolderInput className="w-4 h-4 text-blue-400" />
+                                {outputPath || t('select_folder')}
+                            </div>
                         </div>
                     )}
 
-                    {/* Media Type & TMDB ID */}
-                    <div className="flex flex-col gap-6 py-6 border-t border-border/30">
-                        <div className="space-y-3">
-                            <label className="text-sm font-bold text-secondary px-1 uppercase tracking-wider">{t('media_settings')}</label>
-                            <div className="grid grid-cols-3 gap-3">
+                    {/* Media Filtering & Specific ID */}
+                    <div className="glass-panel rounded-2xl p-5 space-y-6">
+                        <SectionHeader icon={<Settings2 className="w-4 h-4" />} title={t('media_settings')} />
+
+                        <div className="space-y-4">
+                            <div className="grid grid-cols-3 gap-2">
                                 {['', 'movie', 'tv'].map(type => (
                                     <button
                                         key={type}
                                         onClick={() => setMediaType(type)}
                                         className={cn(
-                                            "py-3 px-4 rounded-xl text-sm font-bold border transition-all uppercase tracking-tight",
+                                            "py-2.5 rounded-lg text-[10px] font-black uppercase tracking-widest border transition-all",
                                             mediaType === type
-                                                ? "bg-primary text-white border-primary shadow-lg shadow-primary/30 scale-[1.02]"
-                                                : "bg-black/5 dark:bg-black/20 text-secondary border-border/20 hover:border-primary/50"
+                                                ? "bg-primary border-primary text-white shadow-lg shadow-primary/20"
+                                                : "bg-black/20 border-white/5 text-muted-foreground hover:border-white/20 hover:text-foreground"
                                         )}
                                     >
-                                        {type || "AUTO"}
+                                        {type || "Auto"}
                                     </button>
                                 ))}
                             </div>
+
+                            <div className="space-y-2">
+                                <label className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest px-1">
+                                    {t('tmdb_id_label' as any)}
+                                </label>
+                                <div className="relative">
+                                    <input
+                                        type="number"
+                                        placeholder="e.g. 550"
+                                        value={tmdbId}
+                                        onChange={(e) => setTmdbId(e.target.value)}
+                                        className="w-full bg-black/20 border border-white/5 focus:border-primary/50 focus:ring-1 focus:ring-primary/20 rounded-xl px-4 py-3 text-sm outline-none transition-all placeholder:text-white/10"
+                                    />
+                                    <div className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] font-bold text-primary/50 pointer-events-none">TMDB</div>
+                                </div>
+                            </div>
                         </div>
 
-                        <div className="flex flex-col gap-2">
-                            <label className="text-sm font-bold text-secondary px-1 uppercase tracking-wider">
-                                TMDB ID (Optional)
-                            </label>
+                        {/* Search Mode */}
+                        <div className="pt-4 border-t border-white/5 space-y-3">
+                            <div className="grid grid-cols-3 gap-2">
+                                <button
+                                    onClick={() => setSearchMode('smart')}
+                                    className={cn(
+                                        "py-3 rounded-xl border text-[9px] font-bold uppercase tracking-tighter transition-all",
+                                        searchMode === 'smart' ? "bg-primary/10 border-primary text-primary" : "bg-black/10 border-white/5 text-muted-foreground"
+                                    )}
+                                >
+                                    {t('search_mode_smart')}
+                                </button>
+                                <button
+                                    onClick={() => setSearchMode('tmdb_only')}
+                                    className={cn(
+                                        "py-3 rounded-xl border text-[9px] font-bold uppercase tracking-tighter transition-all",
+                                        searchMode === 'tmdb_only' ? "bg-primary/10 border-primary text-primary" : "bg-black/10 border-white/5 text-muted-foreground"
+                                    )}
+                                >
+                                    {t('search_mode_tmdb_only')}
+                                </button>
+                                <button
+                                    onClick={() => setSearchMode('tavily_only')}
+                                    className={cn(
+                                        "py-3 rounded-xl border text-[9px] font-bold uppercase tracking-tighter transition-all",
+                                        searchMode === 'tavily_only' ? "bg-primary/10 border-primary text-primary" : "bg-black/10 border-white/5 text-muted-foreground"
+                                    )}
+                                >
+                                    {t('search_mode_tavily_only')}
+                                </button>
+                            </div>
+
+                            <button
+                                onClick={() => setEnableFallback(!enableFallback)}
+                                className={cn(
+                                    "w-full flex items-center justify-between p-3 rounded-xl border transition-all",
+                                    enableFallback ? "bg-emerald-500/5 border-emerald-500/30 text-emerald-400" : "bg-black/10 border-white/5 text-muted-foreground"
+                                )}
+                            >
+                                <span className="text-[10px] font-bold uppercase tracking-widest">{t('opt_fallback')}</span>
+                                <div className={cn("w-2 h-2 rounded-full", enableFallback ? "bg-emerald-400 animate-pulse" : "bg-white/10")} />
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Advanced Advanced */}
+                    <div className="glass-panel rounded-2xl p-5 space-y-5">
+                        <div className="flex items-center gap-2 justify-between">
+                            <TogglePill active={useLocalNfo} onClick={() => setUseLocalNfo(!useLocalNfo)} label={t('opt_local_nfo')} icon={<FileText className="w-3 h-3" />} />
+                            <TogglePill active={extraImages} onClick={() => setExtraImages(!extraImages)} label={t('opt_extra_images')} icon={<FileImage className="w-3 h-3" />} />
+                        </div>
+
+                        <div className="space-y-2.5 pt-2">
+                            <div className="flex justify-between items-center px-1">
+                                <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">{t('concurrency')}</span>
+                                <span className="text-xs font-mono text-primary font-bold">{workers} {t('threads')}</span>
+                            </div>
                             <input
-                                type="number"
-                                placeholder="Force specific ID (Single Item)"
-                                value={tmdbId}
-                                onChange={(e) => setTmdbId(e.target.value)}
-                                className="w-full glass-panel bg-black/5 dark:bg-black/20 px-4 py-3.5 rounded-xl border-border/20 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-base placeholder:text-muted/50 transition-all shadow-inner"
+                                type="range" min="1" max="16" step="1"
+                                value={workers} onChange={(e) => setWorkers(parseInt(e.target.value))}
+                                className="w-full h-1.5 bg-black/40 rounded-lg appearance-none cursor-pointer accent-primary"
                             />
                         </div>
                     </div>
-
-                    {/* Search & Fallback Strategy */}
-                    <div className="flex flex-col gap-4 py-6 border-t border-border/30">
-                        <label className="text-sm font-bold text-secondary px-1 uppercase tracking-wider">{t('search_settings')}</label>
-                        <div className="grid grid-cols-1 gap-2.5">
-                            <button
-                                onClick={() => setSearchMode('smart')}
-                                className={cn(
-                                    "flex items-center justify-between p-4 rounded-xl border transition-all text-sm font-semibold",
-                                    searchMode === 'smart' ? "bg-primary/5 border-primary text-primary shadow-sm" : "bg-black/5 dark:bg-black/20 border-border/20 text-secondary hover:border-border/50"
-                                )}
-                            >
-                                <span>{t('search_mode_smart')}</span>
-                                <div className={cn("w-3 h-3 rounded-full shadow-inner transition-all", searchMode === 'smart' ? "bg-primary scale-110" : "bg-black/10 dark:bg-black/40")} />
-                            </button>
-                            <button
-                                onClick={() => setSearchMode('tmdb_only')}
-                                className={cn(
-                                    "flex items-center justify-between p-4 rounded-xl border transition-all text-sm font-semibold",
-                                    searchMode === 'tmdb_only' ? "bg-primary/5 border-primary text-primary shadow-sm" : "bg-black/5 dark:bg-black/20 border-border/20 text-secondary hover:border-border/50"
-                                )}
-                            >
-                                <span>{t('search_mode_tmdb')}</span>
-                                <div className={cn("w-3 h-3 rounded-full shadow-inner transition-all", searchMode === 'tmdb_only' ? "bg-primary scale-110" : "bg-black/10 dark:bg-black/40")} />
-                            </button>
-                        </div>
-
-                        <div
-                            onClick={() => setEnableFallback(!enableFallback)}
-                            className={cn(
-                                "flex items-center gap-4 p-4 rounded-xl border cursor-pointer transition-all",
-                                enableFallback ? "bg-primary/5 border-primary/40 text-primary shadow-sm" : "bg-black/5 dark:bg-black/20 border-border/20 text-secondary hover:border-border/50"
-                            )}
-                        >
-                            <div className={cn("w-5 h-5 rounded-lg border flex items-center justify-center transition-all", enableFallback ? "bg-primary border-primary shadow-md shadow-primary/20" : "border-border/50")}>
-                                {enableFallback && <div className="w-2 h-2 bg-white rounded-full shadow-sm" />}
-                            </div>
-                            <div className="flex-1">
-                                <div className="text-sm font-bold">{t('opt_fallback')}</div>
-                                <div className="text-xs opacity-60 font-medium">{t('opt_fallback_desc')}</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Advanced Options Toggles */}
-                    <div className="space-y-3 pt-4 border-t border-border/30">
-                        <div className="flex gap-2">
-                            <ToggleOption
-                                active={useLocalNfo}
-                                onClick={() => setUseLocalNfo(!useLocalNfo)}
-                                icon={<FileText className="w-4 h-4" />}
-                                label={t('opt_local_nfo')}
-                            />
-                            <ToggleOption
-                                active={extraImages}
-                                onClick={() => setExtraImages(!extraImages)}
-                                icon={<FileImage className="w-4 h-4" />}
-                                label={t('opt_extra_images')}
-                            />
-                        </div>
-                    </div>
-
-                    {/* Workers Slider */}
-                    <div className="flex flex-col gap-2 pt-4 border-t border-border/30">
-                        <label className="text-xs text-secondary font-medium uppercase tracking-wider pl-1 flex justify-between">
-                            <span>{t('concurrency')}</span>
-                            <span className="font-mono text-primary">{workers}</span>
-                        </label>
-                        <input
-                            type="range"
-                            min="1"
-                            max="16"
-                            step="1"
-                            value={workers}
-                            onChange={(e) => setWorkers(parseInt(e.target.value))}
-                            className="w-full h-1 bg-white/20 rounded-lg appearance-none cursor-pointer accent-primary"
-                        />
-                    </div>
-
-                    {/* Start Button */}
-                    <button
-                        disabled={isRunning || !selectedPath || (strategy === 'copy' && !outputPath)}
-                        onClick={handleStart}
-                        className="w-full py-4 bg-primary hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed text-white rounded-xl font-bold flex items-center justify-center gap-2 transition-all shadow-[0_0_20px_rgba(var(--accent-primary),0.3)] hover:shadow-[0_0_30px_rgba(var(--accent-primary),0.5)] active:scale-[0.98] mt-4"
-                    >
-                        <Play className="w-5 h-5 fill-current" />
-                        {t('start_task')}
-                    </button>
 
                     {strategy === 'organize' && (
-                        <div className="flex items-center gap-2 text-xs text-orange-400 justify-center">
-                            <ShieldAlert className="w-3 h-3" />
-                            {t('warning_inplace')}
+                        <div className="flex items-center gap-3 p-4 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-400 animate-pulse">
+                            <AlertCircle className="w-5 h-5 shrink-0" />
+                            <p className="text-[10px] font-bold leading-tight uppercase tracking-wider">{t('warning_inplace')}</p>
                         </div>
                     )}
                 </div>
 
-                <FolderPicker className="flex-1 glass-panel rounded-xl overflow-hidden min-h-[300px]" onSelect={setSelectedPath} />
+                {/* Right: Task Board Panel (8/12) */}
+                <div className="lg:col-span-8 flex flex-col h-full min-h-[500px]">
+                    <TaskBoard />
+                </div>
             </div>
 
-            {/* Right: Terminal */}
-            <div className="lg:col-span-2 h-full min-h-[500px]">
-                <TerminalView className="h-full glass-panel rounded-xl border border-border/50 shadow-2xl" />
-            </div>
+            {/* Folder Picker Modal */}
+            {showPicker && (
+                <div
+                    className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200"
+                    onClick={() => setShowPicker(null)}
+                >
+                    <div
+                        className="w-full max-w-2xl bg-[#0a0c10]/95 border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh] animate-in zoom-in-95 duration-200"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <div className="p-6 border-b border-white/5 flex items-center justify-between bg-gradient-to-r from-white/5 to-transparent">
+                            <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-2xl bg-primary/20 flex items-center justify-center text-primary">
+                                    <FolderInput className="w-6 h-6" />
+                                </div>
+                                <div>
+                                    <h3 className="font-bold text-lg leading-tight">{t('modal_title')}</h3>
+                                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider opacity-60">{t('modal_subtitle')}</p>
+                                </div>
+                            </div>
+                            <button
+                                onClick={() => setShowPicker(null)}
+                                className="p-2.5 hover:bg-white/5 rounded-xl transition-colors text-muted-foreground hover:text-foreground"
+                            >
+                                <X className="w-6 h-6" />
+                            </button>
+                        </div>
+
+                        <div className="flex-1 overflow-hidden min-h-[400px]">
+                            <FolderPicker
+                                onSelect={(path) => {
+                                    if (showPicker === 'input') setSelectedPath(path);
+                                    else setOutputPath(path);
+                                }}
+                            />
+                        </div>
+
+                        <div className="p-4 border-t border-white/5 bg-white/5 flex justify-end gap-3">
+                            <button
+                                onClick={() => setShowPicker(null)}
+                                className="px-6 py-2.5 rounded-xl text-sm font-bold bg-primary text-white hover:bg-primary/90 transition-all shadow-lg shadow-primary/20"
+                            >
+                                {t('confirm_selection')}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
 
-function StrategyCard({ active, onClick, icon, title, desc, warn }: any) {
+// --- Subcomponents ---
+
+function SectionHeader({ icon, title }: { icon: any, title: string }) {
     return (
-        <div
-            onClick={onClick}
-            className={cn(
-                "flex items-start gap-3.5 p-4 rounded-xl cursor-pointer border transition-all duration-300",
-                active
-                    ? (warn ? "bg-orange-500/10 border-orange-500/50 shadow-sm" : "bg-primary/10 border-primary/50 shadow-sm")
-                    : "bg-black/5 dark:bg-black/20 border-border/20 hover:bg-white/5 hover:border-border/50"
-            )}
-        >
-            <div className={cn("mt-0.5", active ? (warn ? "text-orange-400" : "text-primary") : "text-secondary")}>
-                {icon}
-            </div>
-            <div className="flex-1">
-                <div className={cn("text-base font-bold leading-none", active ? "text-foreground" : "text-secondary")}>{title}</div>
-                <div className="text-xs text-muted leading-relaxed mt-1.5 font-medium">{desc}</div>
-            </div>
+        <div className="flex items-center gap-2 px-1">
+            <div className="text-primary">{icon}</div>
+            <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">{title}</h4>
         </div>
-    )
+    );
 }
 
-function ToggleOption({ active, onClick, icon, label }: any) {
+function ModeCard({ active, onClick, icon, title, desc, accent = "primary" }: any) {
+    const accentClass = {
+        primary: active ? "border-primary bg-primary/10 text-primary" : "border-white/5 bg-black/20 text-muted-foreground",
+        orange: active ? "border-orange-500 bg-orange-500/10 text-orange-400" : "border-white/5 bg-black/20 text-muted-foreground",
+        blue: active ? "border-blue-500 bg-blue-500/10 text-blue-400" : "border-white/5 bg-black/20 text-muted-foreground"
+    }[accent as 'primary' | 'orange' | 'blue'];
+
     return (
         <div
             onClick={onClick}
             className={cn(
-                "flex-1 flex flex-col items-center justify-center gap-2.5 p-4 rounded-xl border cursor-pointer transition-all duration-300",
-                active ? "bg-primary/10 border-primary/40 text-primary shadow-sm" : "bg-black/5 dark:bg-black/20 border-border/20 text-secondary hover:bg-white/5"
+                "group relative flex items-start gap-4 p-4 rounded-2xl border transition-all duration-300 cursor-pointer overflow-hidden",
+                accentClass,
+                !active && "hover:border-white/20 hover:bg-white/5"
             )}
         >
-            <div className={active ? "scale-110 transition-transform" : ""}>{icon}</div>
-            <span className="text-sm font-bold text-center leading-tight">{label}</span>
+            <div className={cn(
+                "w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-transform duration-500 group-hover:scale-110",
+                active ? "bg-white/10" : "bg-black/20"
+            )}>
+                {icon}
+            </div>
+            <div className="flex-1 min-w-0">
+                <div className={cn("text-xs font-black uppercase tracking-widest", active ? "text-foreground" : "text-muted-foreground opacity-80")}>
+                    {title}
+                </div>
+                <p className="text-[10px] font-medium leading-relaxed mt-1 opacity-60 line-clamp-2">
+                    {desc}
+                </p>
+            </div>
+            {active && (
+                <div className="absolute top-0 right-0 p-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-current shadow-[0_0_8px_currentColor]" />
+                </div>
+            )}
         </div>
-    )
+    );
+}
+
+function TogglePill({ active, onClick, label, icon }: any) {
+    return (
+        <button
+            onClick={onClick}
+            className={cn(
+                "flex-1 flex items-center justify-center gap-2 py-3 px-2 rounded-xl border text-[10px] font-bold uppercase tracking-tighter transition-all",
+                active ? "bg-primary/10 border-primary text-primary" : "bg-black/20 border-white/5 text-muted-foreground hover:border-white/10"
+            )}
+        >
+            {icon}
+            <span>{label}</span>
+        </button>
+    );
 }

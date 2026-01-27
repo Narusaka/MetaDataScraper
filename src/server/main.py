@@ -14,19 +14,42 @@ from src.server.job_manager import job_manager
 from src.server.settings_manager import SettingsManager
 
 # --- Logging Setup ---
-# Attach the broadcaster to the root logger so it captures everything
+# Ensure logs directory exists
+log_dir = Path("logs")
+log_dir.mkdir(exist_ok=True)
+session_timestamp = logging.Formatter().converter(None) # just a placeholder
+from datetime import datetime
+timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+log_file = log_dir / f"web_session_{timestamp}.log"
+
+# Attach handlers to the root logger
 root_logger = logging.getLogger()
 root_logger.setLevel(logging.INFO)
+
+# 1. WebSocket Broadcaster
 root_logger.addHandler(log_broadcaster)
 
-# Also add console output for debugging the server itself
+# 2. Local File Logger for the web session
+file_handler = logging.FileHandler(log_file, encoding='utf-8')
+file_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+root_logger.addHandler(file_handler)
+
+# 3. Console Output
 console_handler = logging.StreamHandler()
-console_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+console_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
 root_logger.addHandler(console_handler)
+
+logging.info(f"📝 Logging session to {log_file}")
 
 settings_manager = SettingsManager()
 
 app = FastAPI(title="Media Metadata Scraper API")
+
+@app.on_event("startup")
+async def startup_event():
+    # Set the loop for the log broadcaster so it can send logs to WebSockets
+    log_broadcaster.set_loop(asyncio.get_running_loop())
+    logging.info("🚀 Server started, log broadcaster ready.")
 
 # Allow CORS for frontend dev
 app.add_middleware(
@@ -69,13 +92,15 @@ async def startup_event():
 
 @app.get("/api/status")
 async def get_status():
+    from src.server.stats_manager import stats_manager
     return {
         "running": job_manager.is_running,
-        "workers": job_manager.executor._max_workers
+        "workers": job_manager.executor._max_workers,
+        "stats": stats_manager.get_summary()
     }
 
 @app.get("/api/filesystem")
-async def browse_filesystem(path: str = "."):
+def browse_filesystem(path: str = "."):
     """
     Simple file browser to select directories.
     Defaults to current directory.
@@ -145,6 +170,32 @@ async def start_task(req: TaskStartRequest):
 async def stop_task():
     job_manager.stop_task()
     return {"status": "stopping", "message": "Stop signal sent (best effort)"}
+
+@app.get("/api/test_connectivity")
+async def test_connectivity():
+    import requests
+    results = {}
+    config = settings_manager.get_effective_config()
+    proxies = None
+    if config.get("proxy"):
+        p = config["proxy"]
+        proxies = {"http": p, "https": p}
+    
+    # Test TMDB
+    try:
+        r = await asyncio.to_thread(requests.get, "https://api.themoviedb.org/3/status", proxies=proxies, timeout=5)
+        results["tmdb"] = {"status": "ok" if r.ok else "failed", "code": r.status_code}
+    except Exception as e:
+        results["tmdb"] = {"status": "error", "message": str(e)}
+
+    # Test Google
+    try:
+        r = await asyncio.to_thread(requests.get, "https://www.google.com", proxies=proxies, timeout=5)
+        results["google"] = {"status": "ok" if r.ok else "failed", "code": r.status_code}
+    except Exception as e:
+        results["google"] = {"status": "error", "message": str(e)}
+        
+    return results
 
 @app.get("/api/settings")
 async def get_settings():

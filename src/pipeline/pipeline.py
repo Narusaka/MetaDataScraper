@@ -112,13 +112,54 @@ class MediaPipeline:
 
             tmdb_id = candidate["id"]
             media_type = candidate.get("media_type")
-            self._log(f"✅ Selected Candidate: TMDB ID {tmdb_id} (Type: {media_type})", verbose_only=False) # Changed to False to see in log
+
+            # Ensure we have the title for logging/UI update (even for direct ID runs)
+            if not (candidate.get("name") or candidate.get("title")):
+                try:
+                    if media_type == "movie":
+                        details = self.tmdb.get_movie_details(tmdb_id)
+                        candidate["title"] = details.get("title", "")
+                        candidate["name"] = details.get("title", "")
+                    else:
+                        details = self.tmdb.get_tv_details(tmdb_id)
+                        candidate["name"] = details.get("name", "")
+                        candidate["title"] = details.get("name", "")
+                except:
+                    pass # Ignore fetch error, just log what we have
+
+            self._log(f"✅ Selected Candidate: TMDB ID {tmdb_id} Title='{candidate.get('name') or candidate.get('title')}' (Type: {media_type})", verbose_only=False)
 
             if not media_type:
                  self._log("❌ Error: Candidate has no media_type!", verbose_only=False)
                  return {"status": "failed", "error": "Candidate missing media_type"}
 
             # 2. Fetch Data
+            if input_data.get("audit_only", False):
+                # Ensure we have the title for the audit log
+                if not (candidate.get("name") or candidate.get("title")):
+                    try:
+                        self._log(f"📥 Fetching basic details for Audit ID {tmdb_id}...", verbose_only=True)
+                        if media_type == "movie":
+                            details = self.tmdb.get_movie_details(tmdb_id)
+                            candidate["title"] = details.get("title", "")
+                            candidate["name"] = details.get("title", "")
+                        else:
+                            details = self.tmdb.get_tv_details(tmdb_id)
+                            candidate["name"] = details.get("name", "")
+                            candidate["title"] = details.get("name", "")
+                    except Exception as e:
+                        self._log(f"⚠️ Failed to fetch title for audit: {e}", verbose_only=True)
+
+                # Use source_path for audit logging so frontend can restart task correctly
+                path_log = input_data.get('source_path') or input_data.get('output_dir')
+                self._log(f"🕵️ AUDIT_HIT: Path='{path_log}' ID={tmdb_id} Title='{candidate.get('name') or candidate.get('title')}' Type='{media_type}'", verbose_only=False)
+                return {
+                    "status": "audit_completed",
+                    "candidate": candidate,
+                    "tmdb_id": tmdb_id,
+                    "media_type": media_type
+                }
+
             source_data = self._step_fetch(tmdb_id, media_type)
             
             # 3. Normalize

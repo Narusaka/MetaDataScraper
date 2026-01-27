@@ -15,6 +15,7 @@ export function FolderPicker({ onSelect, className, initialPath }: FolderPickerP
     const { t } = useTranslation();
     const [items, setItems] = useState<FileSystemItem[]>([]);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
     const [inputValue, setInputValue] = useState(initialPath || "");
     const [recentPaths, setRecentPaths] = useState<string[]>([]);
 
@@ -26,30 +27,71 @@ export function FolderPicker({ onSelect, className, initialPath }: FolderPickerP
         } catch (e) { }
 
         if (initialPath) {
-            fetchDir(initialPath);
+            initLoad(initialPath);
         } else if (history.length === 0) {
-            // If no saved path and no history, load root
             fetchDir(".");
         }
-        // Else: leave inputValue empty to show recent paths
     }, []);
 
-    const fetchDir = async (path: string) => {
-        if (!path) return; // Don't fetch empty path
+    const getParentPath = (path: string) => {
+        if (!path || path === "/") return path;
+        const clean = path.endsWith('/') && path.length > 1 ? path.slice(0, -1) : path;
+        const lastSlash = clean.lastIndexOf('/');
+        if (lastSlash <= 0) return "/";
+        return clean.substring(0, lastSlash);
+    };
+
+    // Initial load with recursive parent fallback
+    const initLoad = async (startPath: string) => {
         setLoading(true);
+        setError(null);
+        let current = startPath;
+        let attempts = 0;
+        const maxAttempts = 10; // Prevent infinite loops
+
+        while (current && attempts < maxAttempts) {
+            try {
+                const res = await fetch(`http://localhost:8000/api/filesystem?path=${encodeURIComponent(current)}`);
+                if (res.ok) {
+                    const data: FileSystemResponse = await res.json();
+                    setItems(data.items);
+                    setInputValue(data.current);
+                    onSelect(data.current);
+                    setLoading(false);
+                    return; // Success!
+                }
+            } catch (e) {
+                // Ignore network errors during fallback search, just try next
+            }
+
+            // Failed, try parent
+            const parent = getParentPath(current);
+            if (!parent || parent === current) break; // Reached root or stuck
+            current = parent;
+            attempts++;
+        }
+
+        // If we get here, all attempts failed
+        setLoading(false);
+        setInputValue(""); // Clear input to show Recent Paths
+        setError("Failed to load path or any parent directories.");
+    };
+
+    const fetchDir = async (path: string) => {
+        if (!path) return;
+        setLoading(true);
+        setError(null);
         try {
             const res = await fetch(`http://localhost:8000/api/filesystem?path=${encodeURIComponent(path)}`);
-            if (!res.ok) throw new Error("Failed to load dir");
+            if (!res.ok) throw new Error(`Failed to access directory: ${path}`);
             const data: FileSystemResponse = await res.json();
 
             setItems(data.items);
-            setInputValue(data.current); // Sync input with loaded path
-            // localStorage.setItem('last_path', data.current); // Removed: Parent manages persistence
-            onSelect(data.current); // Notify parent of selection
-        } catch (e) {
+            setInputValue(data.current);
+            onSelect(data.current);
+        } catch (e: any) {
             console.error(e);
-            // If failed to load a specific path (e.g. cached path deleted), fallback to root
-            if (path !== ".") fetchDir(".");
+            setError(e.message || "Unknown error occurred");
         } finally {
             setLoading(false);
         }
@@ -82,6 +124,16 @@ export function FolderPicker({ onSelect, className, initialPath }: FolderPickerP
             </div>
 
             <div className="flex-1 min-h-0 overflow-y-auto p-2 scrollbar-thin">
+                {error && (
+                    <div className="mx-2 my-2 p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-xs flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />
+                        {error}
+                        <button onClick={() => fetchDir(".")} className="ml-auto underline hover:text-red-300">
+                            Go Home
+                        </button>
+                    </div>
+                )}
+
                 {loading && (
                     <div className="flex items-center justify-center h-full text-secondary gap-2">
                         <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin" />

@@ -180,8 +180,8 @@ class BatchMediaScraper:
         show_name = dir_path.name
         
         if self.dry_run:
-            logger.info(f"[DRY RUN] Would process directory: {dir_path}")
-            return True
+            logger.info(f"[Audit Mode] Analyzing directory: {dir_path}")
+            # Do NOT return here, proceed to pipeline with audit_only=True
 
         query = "" if tmdb_id else FilenameParser.clean_show_name_for_search(show_name)
         
@@ -197,6 +197,7 @@ class BatchMediaScraper:
             "media_type_forced": self.media_type is not None, 
             "query": query,
             "output_dir": target_output_dir,
+            "source_path": str(dir_path), # Pass source path explicitly for audit logging
             "verbose": False,
             "quiet": True,
             "aid_search": True,
@@ -204,7 +205,8 @@ class BatchMediaScraper:
             "extra_images": self.extra_images,
             "search_mode": self.search_mode,
             "tmdb_only": self.search_mode == "tmdb_only",
-            "fallback_on_fail": self.enable_fallback
+            "fallback_on_fail": self.enable_fallback,
+            "audit_only": self.dry_run # Enable audit mode if dry_run is True
         }
         if tmdb_id:
             input_data["tmdb_id"] = tmdb_id
@@ -212,8 +214,14 @@ class BatchMediaScraper:
 
         try:
             result = self.pipeline.run(input_data)
-            if result.get("status") == "completed":
+            # Pipeline run is called above
+            status = result.get("status")
+            
+            if status == "completed":
                 self.organizer.organize(dir_path, result, configured_media_type=current_media_type)
+                return True
+            elif status == "audit_completed":
+                logger.info(f"Audit completed for {show_name}")
                 return True
             else:
                 logger.error(f"Metadata generation failed for {show_name}: {result.get('error')}")

@@ -1,9 +1,8 @@
-
 import { useState, useEffect, useRef } from 'react';
 import {
     CheckCircle2, AlertCircle, Loader2, Search,
     LayoutGrid, List, FileVideo,
-    Terminal as TerminalIcon
+    Terminal as TerminalIcon, Play
 } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useTranslation } from '../lib/language';
@@ -14,7 +13,8 @@ interface Task {
     name: string;
     tmdbId?: string;
     mediaType?: string;
-    status: 'idle' | 'searching' | 'fetching' | 'processing' | 'completed' | 'failed' | 'dry_run';
+    fullPath?: string; // Stored for execution
+    status: 'idle' | 'searching' | 'fetching' | 'processing' | 'completed' | 'failed' | 'dry_run' | 'audit_completed';
     step: string;
     lastLog: string;
     logs: string[];
@@ -28,6 +28,30 @@ export function TaskBoard() {
     const [showRaw, setShowRaw] = useState(false);
     const [rawLogs, setRawLogs] = useState<string[]>([]);
     const wsRef = useRef<WebSocket | null>(null);
+
+    // Consolidation Refs
+    const aliases = useRef<Record<string, string>>({}); // threadId -> primaryThreadId
+    const taskNames = useRef<Record<string, string>>({}); // Name -> primaryThreadId (for merging)
+
+    // Function to execute a task from audit state
+    const handleExecute = async (task: Task) => {
+        if (!task.fullPath || !task.tmdbId) return;
+
+        try {
+            await fetch('http://localhost:8000/api/tasks/start', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    input_dir: task.fullPath,
+                    tmdb_id: parseInt(task.tmdbId),
+                    media_type: task.mediaType,
+                    dry_run: false,
+                })
+            });
+        } catch (e) {
+            console.error("Failed to start task", e);
+        }
+    };
 
     useEffect(() => {
         const connect = () => {
@@ -53,12 +77,36 @@ export function TaskBoard() {
         const match = log.match(/\[(.*?)\]\s+(\w+)\s+-\s+(.*)/);
         if (!match) return;
 
-        const [, threadId, , message] = match;
-        if (threadId === 'MainThread' || threadId.startsWith('AnyIO') || threadId.startsWith('JobManager')) return;
+        const [, threadIdRaw, , message] = match;
+        // Ignore main thread logs unless necessary? For task tracking we usually ignore MainThread/JobManager
+        // But JobManager might log "Input: ..." which helps? For now, stick to worker threads.
+        if (threadIdRaw === 'MainThread' || threadIdRaw.startsWith('AnyIO') || threadIdRaw.startsWith('JobManager')) return;
+
+        // Resolve Alias
+        let primaryThreadId = aliases.current[threadIdRaw] || threadIdRaw;
+
+        // Task Name Extraction for Merging
+        let detectedName = '';
+        if (message.includes('Processing: ')) {
+            const parts = message.match(/Processing:\s+(.*?)\s+\(ID:/);
+            if (parts) detectedName = parts[1];
+        }
+
+        // Apply Merging Logic
+        if (detectedName) {
+            const existingId = taskNames.current[detectedName];
+            if (existingId && existingId !== primaryThreadId) {
+                // Merge detected! This thread is working on an existing task.
+                aliases.current[threadIdRaw] = existingId;
+                primaryThreadId = existingId;
+            } else if (!existingId) {
+                taskNames.current[detectedName] = primaryThreadId;
+            }
+        }
 
         setTasks(prev => {
-            const existing = prev[threadId] || {
-                threadId,
+            const existing = prev[primaryThreadId] || {
+                threadId: primaryThreadId,
                 name: t('initializing'),
                 status: 'idle',
                 step: t('preparing'),
@@ -81,15 +129,34 @@ export function TaskBoard() {
                     updated.status = 'processing';
                     updated.step = t('scanning');
                 }
+            } else if (message.includes('🕵️ AUDIT_HIT:')) {
+                // Parse Audit Hit
+                const pathMatch = message.match(/Path='(.*?)'/);
+                const idMatch = message.match(/ID=(\d+)/);
+                const titleMatch = message.match(/Title='(.*?)'/);
+                const typeMatch = message.match(/Type='(.*?)'/);
+
+                if (pathMatch) updated.fullPath = pathMatch[1];
+                if (idMatch) updated.tmdbId = idMatch[1];
+                // Ignore 'None' title
+                if (titleMatch && titleMatch[1] !== 'None') updated.name = titleMatch[1];
+                if (typeMatch) updated.mediaType = typeMatch[1];
+
+                updated.status = 'dry_run';
+                updated.step = t('audit_result');
+                updated.lastLog = `Audit: Found ${updated.name} (ID: ${updated.tmdbId})`;
             } else if (message.includes('🔍 TMDB failed')) {
                 updated.status = 'searching';
                 updated.step = t('extended_search');
             } else if (message.includes('✅ Selected Candidate:')) {
-                const parts = message.match(/TMDB ID (\d+) \(Type: (\w+)\)/);
-                if (parts) {
-                    updated.tmdbId = parts[1];
-                    updated.mediaType = parts[2];
-                }
+                const idMatch = message.match(/TMDB ID (\d+)/);
+                const titleMatch = message.match(/Title='(.*?)'/);
+                const typeMatch = message.match(/\(Type: (\w+)\)/);
+
+                if (idMatch) updated.tmdbId = idMatch[1];
+                if (titleMatch && titleMatch[1] !== 'None') updated.name = titleMatch[1];
+                if (typeMatch) updated.mediaType = typeMatch[1];
+
                 updated.status = 'fetching';
                 updated.step = t('metadata_match');
             } else if (message.includes('📡 Processing full metadata')) {
@@ -104,8 +171,9 @@ export function TaskBoard() {
             } else if (message.includes('Metadata generation failed')) {
                 updated.status = 'failed';
                 updated.step = t('error');
-            } else if (message.includes('Batch processing finished')) {
-                // Global message, but we can finalize all?
+            } else if (message.includes('Audit completed')) {
+                updated.step = t('status_audit_complete');
+                updated.status = 'audit_completed';
             }
 
             // Success detection
@@ -116,7 +184,7 @@ export function TaskBoard() {
                 updated.step = t('finished');
             }
 
-            return { ...prev, [threadId]: updated };
+            return { ...prev, [primaryThreadId]: updated };
         });
     };
 
@@ -174,7 +242,7 @@ export function TaskBoard() {
                     )}>
                         <AnimatePresence mode="popLayout">
                             {taskList.map(task => (
-                                <TaskCard key={task.threadId} task={task} mode={viewMode} />
+                                <TaskCard key={task.threadId} task={task} mode={viewMode} onExecute={handleExecute} />
                             ))}
                         </AnimatePresence>
                     </div>
@@ -200,7 +268,10 @@ export function TaskBoard() {
     );
 }
 
-function TaskCard({ task, mode }: { task: Task, mode: 'grid' | 'list' }) {
+function TaskCard({ task, mode, onExecute }: { task: Task, mode: 'grid' | 'list', onExecute: (t: Task) => void }) {
+    const { t } = useTranslation();
+
+    // Status color mapping with audit support
     const statusColor = {
         idle: 'text-slate-500 bg-slate-500/10',
         searching: 'text-amber-400 bg-amber-400/10',
@@ -208,89 +279,141 @@ function TaskCard({ task, mode }: { task: Task, mode: 'grid' | 'list' }) {
         processing: 'text-blue-400 bg-blue-400/10',
         completed: 'text-emerald-400 bg-emerald-400/10',
         failed: 'text-red-400 bg-red-400/10',
-        dry_run: 'text-purple-400 bg-purple-400/10'
-    }[task.status];
+        dry_run: 'text-cyan-400 bg-cyan-400/10 border-cyan-500/30',
+        audit_completed: 'text-cyan-400 bg-cyan-400/10 border-cyan-500/30'
+    }[task.status] || 'text-slate-400 bg-slate-400/10';
 
     const isCompact = mode === 'list';
+    const isAuditReady = (task.status === 'dry_run' || task.status === 'audit_completed') && task.fullPath && task.tmdbId;
+
+    // Helper to translate status safely
+    const getStatusLabel = (s: string) => {
+        if (s === 'completed') return t('status_completed');
+        if (s === 'failed') return t('status_failed');
+        if (s === 'audit_completed') return t('status_audit_complete');
+        // @ts-ignore
+        return t(s) || s;
+    };
 
     return (
         <motion.div
             layout
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            initial={{ opacity: 0, scale: 0.98, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: -20 }}
+            exit={{ opacity: 0, scale: 0.95, y: -10 }}
             className={cn(
-                "group relative bg-white/[0.03] hover:bg-white/[0.06] border border-white/5 hover:border-white/10 rounded-2xl p-4 transition-colors duration-300 overflow-hidden",
-                task.status === 'completed' && "border-emerald-500/20",
-                task.status === 'failed' && "border-red-500/20"
+                "group relative bg-white/[0.04] hover:bg-white/[0.08] border border-white/5 hover:border-white/10 rounded-xl p-4 transition-all duration-300 overflow-hidden shadow-sm hover:shadow-md",
+                task.status === 'completed' && "border-emerald-500/20 shadow-[0_0_20px_-10px_rgba(16,185,129,0.2)]",
+                task.status === 'failed' && "border-red-500/20 shadow-[0_0_20px_-10px_rgba(239,68,68,0.2)]",
+                isAuditReady && "border-cyan-500/30 shadow-[0_0_15px_-5px_var(--cyan-500)_inset]"
             )}
         >
-            {/* Status Indicator Bar */}
+            {/* Top Status Gradient Line */}
             <div className={cn(
-                "absolute top-0 left-0 w-full h-[2px] opacity-20",
+                "absolute top-0 left-0 w-full h-[3px] opacity-30",
                 statusColor?.split(' ')[0].replace('text-', 'bg-')
             )} />
 
-            <div className={cn("flex gap-4", isCompact ? "items-center" : "flex-col")}>
-                {/* Icon Section */}
+            {/* Absolute Status Badge (Top Right) - Re-positioned to be clean */}
+            {!isCompact && (
+                <div className="absolute top-3 right-3 z-20">
+                    <span className={cn(
+                        "px-2 py-0.5 rounded-md text-[9px] font-bold uppercase tracking-wider border border-white/5 transition-colors shadow-sm",
+                        statusColor
+                    )}>
+                        {getStatusLabel(task.status)}
+                    </span>
+                </div>
+            )}
+
+            <div className={cn("flex gap-4", isCompact ? "items-center" : "")}>
+                {/* 1. Icon Section (Left) */}
                 <div className={cn(
-                    "flex items-center justify-center rounded-xl shrink-0 transition-transform duration-500 group-hover:scale-110",
-                    task.mediaType === 'tv' ? "bg-indigo-500/10 text-indigo-400" : "bg-orange-500/10 text-orange-400",
-                    isCompact ? "w-10 h-10" : "w-12 h-12"
+                    "flex items-center justify-center rounded-lg shrink-0 transition-all duration-500 group-hover:scale-105 bg-black/20 border border-white/5",
+                    task.mediaType === 'tv' ? "text-indigo-400 group-hover:text-indigo-300" : "text-orange-400 group-hover:text-orange-300",
+                    isCompact ? "w-10 h-10" : "w-14 h-14"
                 )}>
                     {task.mediaType === 'tv' ? <LayoutGrid className="w-6 h-6" /> : <FileVideo className="w-6 h-6" />}
                 </div>
 
-                {/* Info Section */}
-                <div className="flex-1 min-w-0">
-                    <div className="flex items-start justify-between gap-2 mb-1">
-                        <h4 className="font-bold text-sm text-white/90 truncate group-hover:text-white transition-colors">
+                {/* 2. Main Content (Right) */}
+                <div className="flex-1 min-w-0 flex flex-col justify-center">
+
+                    {/* Header: Title */}
+                    <div className="flex items-start justify-between gap-4 mb-1">
+                        <h4 className={cn(
+                            "font-bold text-sm text-white/90 truncate group-hover:text-white transition-colors leading-tight",
+                            !isCompact && "pr-24" // Reserve space for the absolute status badge
+                        )} title={task.name}>
                             {task.name}
                         </h4>
-                        <span className={cn(
-                            "px-2 py-0.5 rounded-full text-[8px] font-black uppercase tracking-tighter shrink-0",
-                            statusColor
-                        )}>
-                            {task.status}
-                        </span>
+
+                        {/* List Mode Status (Inline) */}
+                        {isCompact && (
+                            <span className={cn(
+                                "px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wide shrink-0 border border-white/5",
+                                statusColor
+                            )}>
+                                {getStatusLabel(task.status)}
+                            </span>
+                        )}
                     </div>
 
-                    <div className="flex items-center gap-2 text-[10px] text-white/40 font-mono">
-                        <span className="bg-white/5 px-1.5 py-0.5 rounded uppercase tracking-tighter">{task.threadId}</span>
-                        {task.tmdbId && <span className="text-primary/60 font-bold tracking-widest">TMDB:{task.tmdbId}</span>}
+                    {/* Metadata Row */}
+                    <div className="flex items-center gap-3 text-[10px] text-white/40 font-mono mb-2">
+                        <span className="opacity-60">{task.threadId}</span>
+                        {task.tmdbId && <span className="text-primary/70 font-semibold tracking-wider">TMDB:{task.tmdbId}</span>}
                     </div>
 
+                    {/* Action & Progress Area (Grid Mode) */}
                     {!isCompact && (
-                        <div className="mt-4 space-y-3">
-                            {/* Inner Progress Visualization */}
-                            <div className="relative h-1 bg-white/5 rounded-full overflow-hidden">
-                                <motion.div
-                                    className={cn("absolute inset-y-0 left-0 bg-primary", task.status === 'completed' && "bg-emerald-500")}
-                                    animate={{
-                                        width: task.status === 'completed' ? '100%' :
-                                            task.status === 'fetching' ? '70%' :
-                                                task.status === 'processing' ? '40%' : '10%'
-                                    }}
-                                />
-                            </div>
+                        <div className="space-y-2.5">
 
-                            <div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-widest">
-                                <span className="text-white/30 flex items-center gap-1.5">
-                                    <Loader2 className={cn("w-3 h-3 animate-spin", task.status === 'completed' || task.status === 'failed' ? "hidden" : "block")} />
-                                    {task.step}
-                                </span>
-                                {task.status === 'completed' && <CheckCircle2 className="w-4 h-4 text-emerald-500" />}
-                                {task.status === 'failed' && <AlertCircle className="w-4 h-4 text-red-500" />}
-                            </div>
+                            {/* Execute Plan Button - Full Width if Ready */}
+                            {isAuditReady ? (
+                                <button
+                                    onClick={(e) => { e.stopPropagation(); onExecute(task); }}
+                                    className="w-full py-1.5 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 hover:from-cyan-500/30 hover:to-blue-500/30 text-cyan-300 hover:text-cyan-100 text-[11px] font-bold uppercase tracking-wider rounded-lg flex items-center justify-center gap-2 border border-cyan-500/30 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-cyan-900/20 cursor-pointer group/btn"
+                                >
+                                    <Play className="w-3 h-3 fill-current group-hover/btn:animate-pulse" />
+                                    {t('execute_plan')}
+                                </button>
+                            ) : (
+                                /* Progress Bar (Only when NOT audit ready) */
+                                <div className="space-y-1.5">
+                                    <div className="relative h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                                        <motion.div
+                                            className={cn("absolute inset-y-0 left-0 bg-primary/80",
+                                                task.status === 'completed' && "bg-emerald-500",
+                                                task.status === 'failed' && "bg-red-500"
+                                            )}
+                                            animate={{
+                                                width: task.status === 'completed' ? '100%' :
+                                                    task.status === 'fetching' ? '70%' :
+                                                        task.status === 'processing' ? '40%' : '10%'
+                                            }}
+                                            transition={{ duration: 0.5 }}
+                                        />
+                                    </div>
+                                    <div className="flex items-center justify-between text-[10px] text-white/30 truncate">
+                                        <span className="truncate">{task.step}</span>
+                                        {task.status === 'completed' && <CheckCircle2 className="w-3 h-3 text-emerald-500/80" />}
+                                    </div>
+                                </div>
+                            )}
 
-                            <p className="text-[10px] font-medium text-white/40 bg-black/20 p-2 rounded-lg truncate border border-white/5">
-                                &gt; {task.lastLog || 'Initializing sequence...'}
-                            </p>
+                            {/* Audit Result Log Preview */}
+                            {isAuditReady && task.lastLog && (
+                                <p className="text-[9px] text-cyan-400/60 font-mono truncate pl-1 border-l-2 border-cyan-500/20">
+                                    {task.lastLog.replace('🕵️ AUDIT_HIT:', '')}
+                                </p>
+                            )}
                         </div>
                     )}
                 </div>
             </div>
 
+            {/* List Mode Log */}
             {isCompact && (
                 <div className="ml-4 text-[10px] font-mono text-white/20 truncate italic flex-1">
                     {task.lastLog}
@@ -299,4 +422,3 @@ function TaskCard({ task, mode }: { task: Task, mode: 'grid' | 'list' }) {
         </motion.div>
     );
 }
-

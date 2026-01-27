@@ -27,7 +27,8 @@ class JobManager:
                              media_type: Optional[str] = None,
                              tmdb_id: Optional[int] = None,
                              search_mode: str = "smart",
-                             enable_fallback: bool = True):
+                             enable_fallback: bool = True,
+                             multi_mode: Optional[bool] = None):
         
         if self.is_running:
             raise Exception("A task is already running")
@@ -42,7 +43,7 @@ class JobManager:
             await loop.run_in_executor(
                 self.executor, 
                 self._run_scraper_sync,
-                input_dir, config_path, workers, dry_run, inplace, copy, output_dir, use_local_nfo, extra_images, media_type, tmdb_id, search_mode, enable_fallback
+                input_dir, config_path, workers, dry_run, inplace, copy, output_dir, use_local_nfo, extra_images, media_type, tmdb_id, search_mode, enable_fallback, multi_mode
             )
         except Exception as e:
             logger.error(f"JobManager Error: {e}")
@@ -51,13 +52,43 @@ class JobManager:
             self.current_task = None
             logger.info("JobManager: Task finished")
 
-    def _run_scraper_sync(self, input_dir: str, config_path: str, workers: int, dry_run: bool, inplace: bool, copy: bool, output_dir: Optional[str], use_local_nfo: bool, extra_images: bool, media_type: Optional[str], tmdb_id: Optional[int], search_mode: str, enable_fallback: bool):
+    def _run_scraper_sync(self, input_dir: str, config_path: str, workers: int, dry_run: bool, inplace: bool, copy: bool, output_dir: Optional[str], use_local_nfo: bool, extra_images: bool, media_type: Optional[str], tmdb_id: Optional[int], search_mode: str, enable_fallback: bool, multi_mode: Optional[bool]):
         """
         Synchronous wrapper to run BatchMediaScraper
         """
         try:
-            # If a TMDB ID is provided, we are definitely targeting a specific item, so multi_mode should be False.
-            should_multi = tmdb_id is None
+            should_multi = True
+            
+            if multi_mode is not None:
+                should_multi = multi_mode
+            elif tmdb_id is not None:
+                # If a TMDB ID is provided, we are definitely targeting a specific item
+                should_multi = False
+            else:
+                # Auto-detect based on directory content
+                try:
+                    p = Path(input_dir)
+                    has_video_files = False
+                    has_subdirs = False
+                    from src.core.filename_parser import FilenameParser
+                    
+                    if p.exists() and p.is_dir():
+                        for item in p.iterdir():
+                            if item.name.startswith('.'): continue
+                            if item.is_dir():
+                                has_subdirs = True
+                            elif item.is_file() and item.suffix.lower() in FilenameParser.VIDEO_EXTENSIONS:
+                                has_video_files = True
+                        
+                        if has_video_files and not has_subdirs:
+                            logger.info("Auto-detect: Video files found without subdirectories -> Using SINGLE Mode")
+                            should_multi = False
+                        else:
+                            logger.info(f"Auto-detect: Subdirs found ({has_subdirs}) or no videos ({not has_video_files}) -> Using MULTI Mode")
+                            should_multi = True
+                except Exception as e:
+                    logger.warning(f"Auto-detect failed, defaulting to Multi: {e}")
+                    should_multi = True
             
             import time
             from src.server.stats_manager import stats_manager

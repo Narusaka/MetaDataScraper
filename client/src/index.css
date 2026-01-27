@@ -23,6 +23,8 @@
   --accent-glow: rgba(79, 70, 229, 0.2);
 
   --sidebar-bg: rgba(255, 255, 255, 0.7);
+  /* Muted Backgrounds */
+  --bg-muted: rgba(0, 0, 0, 0.05);
 }
 
 .dark {
@@ -47,6 +49,9 @@
   --accent-glow: rgba(139, 92, 246, 0.3);
 
   --sidebar-bg: rgba(15, 23, 42, 0.6);
+
+  /* Muted Backgrounds */
+  --bg-muted: rgba(255, 255, 255, 0.1);
 }
 
 @theme {
@@ -59,7 +64,10 @@
 
   --color-primary: var(--accent-primary);
   --color-secondary: var(--text-secondary);
-  --color-muted: var(--text-muted);
+
+  /* Muted colors */
+  --color-muted: var(--bg-muted);
+  --color-muted-foreground: var(--text-muted);
 }
 
 body {

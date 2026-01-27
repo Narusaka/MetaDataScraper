@@ -32,7 +32,7 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
     const [mediaType, setMediaType] = useState(() => localStorage.getItem('task_media_type') || "");
     const [tmdbId, setTmdbId] = useState(() => localStorage.getItem('task_tmdb_id') || "");
     const [searchMode, setSearchMode] = useState<'smart' | 'tmdb_only' | 'tavily_only'>(() => (localStorage.getItem('task_search_mode') as 'smart' | 'tmdb_only' | 'tavily_only') || 'smart');
-    const [enableFallback, setEnableFallback] = useState(() => localStorage.getItem('task_enable_fallback') !== 'false');
+    const [multiMode, setMultiMode] = useState<'auto' | 'single' | 'batch'>(() => (localStorage.getItem('task_multi_mode') as 'auto' | 'single' | 'batch') || 'auto');
 
     // --- Persistence ---
     useEffect(() => {
@@ -46,9 +46,16 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
     useEffect(() => localStorage.setItem('task_media_type', mediaType), [mediaType]);
     useEffect(() => localStorage.setItem('task_tmdb_id', tmdbId), [tmdbId]);
     useEffect(() => localStorage.setItem('task_search_mode', searchMode), [searchMode]);
-    useEffect(() => localStorage.setItem('task_enable_fallback', enableFallback.toString()), [enableFallback]);
+    useEffect(() => localStorage.setItem('task_multi_mode', multiMode), [multiMode]);
 
     const handleStart = () => {
+        // Save to Recent Paths
+        if (selectedPath) {
+            const history = JSON.parse(localStorage.getItem('recent_paths') || '[]');
+            const newHistory = [selectedPath, ...history.filter((p: string) => p !== selectedPath)].slice(0, 5);
+            localStorage.setItem('recent_paths', JSON.stringify(newHistory));
+        }
+
         onStart({
             input_dir: selectedPath,
             workers,
@@ -61,7 +68,8 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
             media_type: mediaType || null,
             tmdb_id: tmdbId ? parseInt(tmdbId) : null,
             search_mode: searchMode,
-            enable_fallback: enableFallback
+            enable_fallback: true,
+            multi_mode: multiMode === 'auto' ? null : (multiMode === 'batch')
         });
     };
 
@@ -157,6 +165,29 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
                         <SectionHeader icon={<Settings2 className="w-4 h-4" />} title={t('media_settings')} />
 
                         <div className="space-y-4">
+                            {/* Mode Selection */}
+                            <div className="grid grid-cols-3 gap-2">
+                                {(['auto', 'single', 'batch'] as const).map(mode => (
+                                    <button
+                                        key={mode}
+                                        onClick={() => setMultiMode(mode)}
+                                        className={cn(
+                                            "py-2.5 rounded-lg text-[10px] font-black uppercase tracking-widest border transition-all",
+                                            multiMode === mode
+                                                ? "bg-primary border-primary text-white shadow-lg shadow-primary/20"
+                                                : "bg-black/20 border-white/5 text-muted-foreground hover:border-white/20 hover:text-foreground"
+                                        )}
+                                    >
+                                        {{
+                                            'auto': 'Auto Detect',
+                                            'single': 'Single Item',
+                                            'batch': 'Batch Mode'
+                                        }[mode]}
+                                    </button>
+                                ))}
+                            </div>
+                            <div className="h-px bg-white/5" />
+
                             <div className="grid grid-cols-3 gap-2">
                                 {['', 'movie', 'tv'].map(type => (
                                     <button
@@ -222,17 +253,6 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
                                     {t('search_mode_tavily_only')}
                                 </button>
                             </div>
-
-                            <button
-                                onClick={() => setEnableFallback(!enableFallback)}
-                                className={cn(
-                                    "w-full flex items-center justify-between p-3 rounded-xl border transition-all",
-                                    enableFallback ? "bg-emerald-500/5 border-emerald-500/30 text-emerald-400" : "bg-black/10 border-white/5 text-muted-foreground"
-                                )}
-                            >
-                                <span className="text-[10px] font-bold uppercase tracking-widest">{t('opt_fallback')}</span>
-                                <div className={cn("w-2 h-2 rounded-full", enableFallback ? "bg-emerald-400 animate-pulse" : "bg-white/10")} />
-                            </button>
                         </div>
                     </div>
 
@@ -304,6 +324,7 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
                                     if (showPicker === 'input') setSelectedPath(path);
                                     else setOutputPath(path);
                                 }}
+                                initialPath={showPicker === 'input' ? selectedPath : outputPath}
                             />
                         </div>
 

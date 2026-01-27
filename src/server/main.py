@@ -74,6 +74,7 @@ class TaskStartRequest(BaseModel):
     tmdb_id: Optional[int] = None
     search_mode: str = "smart" # smart, tmdb_only
     enable_fallback: bool = True
+    multi_mode: Optional[bool] = None  # None = Auto-detect
 
 class FileSystemNode(BaseModel):
     name: str
@@ -161,7 +162,8 @@ async def start_task(req: TaskStartRequest):
         media_type=req.media_type,
         tmdb_id=req.tmdb_id,
         search_mode=req.search_mode,
-        enable_fallback=req.enable_fallback
+        enable_fallback=req.enable_fallback,
+        multi_mode=req.multi_mode
     ))
     
     return {"status": "started", "message": f"Scanning {req.input_dir}"}

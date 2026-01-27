@@ -233,15 +233,42 @@ class MediaPipeline:
             for m_type in search_types:
                 results = self.tmdb.search_tv(query) if m_type == "tv" else self.tmdb.search_movie(query)
                 if results and results.get("results"):
-                    candidates = results["results"][:3]
+                    candidates = results["results"][:5] # Increase candidate pool slightly
                     self._log(f"   🔎 TMDB Candidates ({len(candidates)}/{results.get('total_results', '?')}):")
-                    for i, c in enumerate(candidates):
-                         self._log(f"      {i+1}. [{c.get('id')}] {c.get('name') or c.get('title')} ({c.get('first_air_date') or c.get('release_date')})")
                     
-                    candidate = candidates[0]
-                    candidate["media_type"] = m_type
-                    self._log(f"   ✅ Selected: {candidate.get('name') or candidate.get('title')} ({m_type})")
-                    break
+                    target_year = input_data.get("year")
+                    
+                    for i, c in enumerate(candidates):
+                         date_str = c.get('first_air_date') or c.get('release_date') or ""
+                         c_year = int(date_str[:4]) if date_str and len(date_str) >= 4 else 0
+                         
+                         match_info = ""
+                         if target_year:
+                             if c_year == target_year:
+                                 match_info = " [✅ YEAR MATCH]"
+                             else:
+                                 match_info = f" [❌ Year Mismatch: {c_year} vs {target_year}]"
+
+                         self._log(f"      {i+1}. [{c.get('id')}] {c.get('name') or c.get('title')} ({date_str}){match_info}")
+                         
+                         # Filter logic
+                         if target_year:
+                             if c_year == target_year:
+                                 candidate = c
+                                 candidate["media_type"] = m_type
+                                 self._log(f"   ✅ Selected by Year Match: {candidate.get('name') or candidate.get('title')} ({c_year})")
+                                 break
+                         else:
+                             # Default behavior: pick first one if no year constraint
+                             if i == 0:
+                                 candidate = c
+                                 candidate["media_type"] = m_type
+                                 break
+                    
+                    if candidate:
+                        break
+                    elif target_year:
+                         self._log(f"   ⚠️ No candidates matched year {target_year}")
 
         # 2. Tavily Search (If mode is smart AND TMDB failed, OR if mode is tavily_only)
         if not candidate and mode in ["smart", "tavily_only"] and self.tavily_search:

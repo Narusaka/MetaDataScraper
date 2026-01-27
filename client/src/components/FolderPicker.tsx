@@ -73,7 +73,10 @@ export function FolderPicker({ onSelect, className, initialPath }: FolderPickerP
 
         // If we get here, all attempts failed
         setLoading(false);
-        setInputValue(""); // Clear input to show Recent Paths
+        // If we get here, all attempts failed
+        setLoading(false);
+        // Do NOT clear input value, so user can correct it or keep the custom path
+        setInputValue(startPath || "");
         setError("Failed to load path or any parent directories.");
     };
 
@@ -116,7 +119,10 @@ export function FolderPicker({ onSelect, className, initialPath }: FolderPickerP
                 <input
                     type="text"
                     value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
+                    onChange={(e) => {
+                        setInputValue(e.target.value);
+                        onSelect(e.target.value);
+                    }}
                     onKeyDown={handleKeyDown}
                     placeholder={t('select_folder')}
                     className="flex-1 bg-muted/50 border border-border/30 hover:border-primary/50 focus:border-primary focus:ring-1 focus:ring-primary/50 rounded-md px-3 py-1.5 text-xs text-foreground font-mono outline-none transition-all placeholder:text-muted"

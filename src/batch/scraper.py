@@ -30,7 +30,8 @@ class BatchMediaScraper:
                  search_mode: str = "smart",
                  enable_fallback: bool = True,
                  max_workers: int = 4,
-                 dry_run: bool = False):
+                 dry_run: bool = False,
+                 fresh: bool = False):
         
         self.config = self._load_config(config_path)
         self.copy_files = copy_files
@@ -44,6 +45,7 @@ class BatchMediaScraper:
         self.enable_fallback = enable_fallback
         self.max_workers = int(os.getenv("MAX_WORKERS", str(max_workers)))
         self.dry_run = dry_run
+        self.fresh = fresh
         
         self.pipeline = None
         
@@ -184,6 +186,7 @@ class BatchMediaScraper:
             # Do NOT return here, proceed to pipeline with audit_only=True
 
         query = "" if tmdb_id else FilenameParser.clean_show_name_for_search(show_name)
+        extracted_year = FilenameParser.extract_year(show_name)
         
         # Detection logic
         current_media_type = self.media_type or MediaTypeDetector.detect(dir_path)
@@ -196,6 +199,7 @@ class BatchMediaScraper:
             "media_type": current_media_type,
             "media_type_forced": self.media_type is not None, 
             "query": query,
+            "year": extracted_year,
             "output_dir": target_output_dir,
             "source_path": str(dir_path), # Pass source path explicitly for audit logging
             "verbose": False,
@@ -208,9 +212,26 @@ class BatchMediaScraper:
             "fallback_on_fail": self.enable_fallback,
             "audit_only": self.dry_run # Enable audit mode if dry_run is True
         }
+        
+        # Override for inplace/dry_run dynamic behavior if this was triggered during a running batch
+        # But here self.dry_run is set at init. 
+        # Crucial Fix: If dry_run is False, input_data["audit_only"] MUST be False
+        if not self.dry_run:
+            input_data["audit_only"] = False
         if tmdb_id:
             input_data["tmdb_id"] = tmdb_id
             input_data["media_type_forced"] = True
+            
+            # SKIPPING LOGIC (If NFO exists and NOT fresh)
+            # Check for actual NFO file existence to avoid skipping clean folders where user manually input an ID
+            has_existing_nfo = (dir_path / "movie.nfo").exists() or (dir_path / "tvshow.nfo").exists()
+            
+            if has_existing_nfo and not self.fresh and not self.dry_run:
+                 logger.warning(f"Skipping {show_name}: Metadata already exists (use --fresh to overwrite)")
+                 return True
+            
+            if self.fresh and has_existing_nfo:
+                logger.info(f"Using Fresh Mode: Overwriting/Refreshing metadata for {show_name}")
 
         try:
             result = self.pipeline.run(input_data)

@@ -28,7 +28,8 @@ class JobManager:
                              tmdb_id: Optional[int] = None,
                              search_mode: str = "smart",
                              enable_fallback: bool = True,
-                             multi_mode: Optional[bool] = None):
+                             multi_mode: Optional[bool] = None,
+                             fresh: bool = False):
         
         if self.is_running:
             raise Exception("A task is already running")
@@ -43,7 +44,7 @@ class JobManager:
             await loop.run_in_executor(
                 self.executor, 
                 self._run_scraper_sync,
-                input_dir, config_path, workers, dry_run, inplace, copy, output_dir, use_local_nfo, extra_images, media_type, tmdb_id, search_mode, enable_fallback, multi_mode
+                input_dir, config_path, workers, dry_run, inplace, copy, output_dir, use_local_nfo, extra_images, media_type, tmdb_id, search_mode, enable_fallback, multi_mode, fresh
             )
         except Exception as e:
             logger.error(f"JobManager Error: {e}")
@@ -52,7 +53,7 @@ class JobManager:
             self.current_task = None
             logger.info("JobManager: Task finished")
 
-    def _run_scraper_sync(self, input_dir: str, config_path: str, workers: int, dry_run: bool, inplace: bool, copy: bool, output_dir: Optional[str], use_local_nfo: bool, extra_images: bool, media_type: Optional[str], tmdb_id: Optional[int], search_mode: str, enable_fallback: bool, multi_mode: Optional[bool]):
+    def _run_scraper_sync(self, input_dir: str, config_path: str, workers: int, dry_run: bool, inplace: bool, copy: bool, output_dir: Optional[str], use_local_nfo: bool, extra_images: bool, media_type: Optional[str], tmdb_id: Optional[int], search_mode: str, enable_fallback: bool, multi_mode: Optional[bool], fresh: bool):
         """
         Synchronous wrapper to run BatchMediaScraper
         """
@@ -70,21 +71,42 @@ class JobManager:
                     p = Path(input_dir)
                     has_video_files = False
                     has_subdirs = False
-                    from src.core.filename_parser import FilenameParser
+                    has_season_dirs = False
+                    import re
                     
                     if p.exists() and p.is_dir():
+                        # Smarter detection logic
+                        ignored_dirs = {'extras', 'specials', 'featurettes', 'metadata', 'images', 'subs', 'subtitles'}
+                        
                         for item in p.iterdir():
                             if item.name.startswith('.'): continue
+                            
                             if item.is_dir():
-                                has_subdirs = True
+                                name_lower = item.name.lower()
+                                if name_lower in ignored_dirs: continue
+                                
+                                # Check for Season folder pattern
+                                if re.match(r'^season\s*\d+$', name_lower):
+                                    has_season_dirs = True
+                                else:
+                                    has_subdirs = True # Potential other show folder
+                                    
                             elif item.is_file() and item.suffix.lower() in FilenameParser.VIDEO_EXTENSIONS:
                                 has_video_files = True
                         
-                        if has_video_files and not has_subdirs:
-                            logger.info("Auto-detect: Video files found without subdirectories -> Using SINGLE Mode")
+                        # Decision Matrix:
+                        # 1. If it has Season folders -> It's a Show Root -> SINGLE MODE
+                        # 2. If it has NO subdirs (only videos) -> It's a flattened Show/Movie -> SINGLE MODE
+                        # 3. If it has 'other' subdirs (likely multiple shows) -> MULTI MODE
+                        
+                        if has_season_dirs:
+                            logger.info("Auto-detect: Season folders found -> Using SINGLE Mode (Show Root)")
+                            should_multi = False
+                        elif has_video_files and not has_subdirs:
+                            logger.info("Auto-detect: Video files found without other show directories -> Using SINGLE Mode")
                             should_multi = False
                         else:
-                            logger.info(f"Auto-detect: Subdirs found ({has_subdirs}) or no videos ({not has_video_files}) -> Using MULTI Mode")
+                            logger.info(f"Auto-detect: Multiple show directories likely ({has_subdirs}) -> Using MULTI Mode")
                             should_multi = True
                 except Exception as e:
                     logger.warning(f"Auto-detect failed, defaulting to Multi: {e}")
@@ -107,7 +129,8 @@ class JobManager:
                 max_workers=workers,
                 dry_run=dry_run,
                 use_local_nfo=use_local_nfo,
-                extra_images=extra_images
+                extra_images=extra_images,
+                fresh=fresh
             )
             results = scraper.run(input_dir)
             

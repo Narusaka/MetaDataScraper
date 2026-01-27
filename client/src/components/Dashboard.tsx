@@ -1,9 +1,9 @@
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import {
     Play, FolderInput, Copy,
     FileImage, FileText, Search, Settings2, Database,
-    X, AlertCircle
+    X, AlertCircle, FolderOpen
 } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useTranslation } from '../lib/language';
@@ -33,6 +33,40 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
     const [tmdbId, setTmdbId] = useState(() => localStorage.getItem('task_tmdb_id') || "");
     const [searchMode, setSearchMode] = useState<'smart' | 'tmdb_only' | 'tavily_only'>(() => (localStorage.getItem('task_search_mode') as 'smart' | 'tmdb_only' | 'tavily_only') || 'smart');
     const [multiMode, setMultiMode] = useState<'auto' | 'single' | 'batch'>(() => (localStorage.getItem('task_multi_mode') as 'auto' | 'single' | 'batch') || 'auto');
+    const [forceFresh, setForceFresh] = useState(false);
+
+    // Layout State
+    const [sidebarWidth, setSidebarWidth] = useState(() => parseInt(localStorage.getItem('sidebar_width') || '350'));
+    const isResizingRef = useRef(false);
+
+    // --- Resizing Logic ---
+    useEffect(() => {
+        const handleMouseMove = (e: MouseEvent) => {
+            if (!isResizingRef.current) return;
+            const newWidth = Math.min(Math.max(e.clientX - 24, 280), 600); // 24 is padding/margin approx
+            setSidebarWidth(newWidth);
+        };
+        const handleMouseUp = () => {
+            if (isResizingRef.current) {
+                isResizingRef.current = false;
+                localStorage.setItem('sidebar_width', sidebarWidth.toString());
+                document.body.style.cursor = 'default';
+                document.body.style.userSelect = 'auto';
+            }
+        };
+        window.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('mouseup', handleMouseUp);
+        return () => {
+            window.removeEventListener('mousemove', handleMouseMove);
+            window.removeEventListener('mouseup', handleMouseUp);
+        };
+    }, [sidebarWidth]);
+
+    const startResizing = () => {
+        isResizingRef.current = true;
+        document.body.style.cursor = 'col-resize';
+        document.body.style.userSelect = 'none';
+    };
 
     // --- Persistence ---
     useEffect(() => {
@@ -69,7 +103,8 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
             tmdb_id: tmdbId ? parseInt(tmdbId) : null,
             search_mode: searchMode,
             enable_fallback: true,
-            multi_mode: multiMode === 'auto' ? null : (multiMode === 'batch')
+            multi_mode: multiMode === 'auto' ? null : (multiMode === 'batch'),
+            fresh: forceFresh // Pass the fresh param
         });
     };
 
@@ -117,48 +152,79 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
                 </div>
             </div>
 
-            {/* Main Grid */}
-            <div className="flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-12 gap-6 pb-4">
-                {/* Left: Configuration Panel (4/12) */}
-                <div className="lg:col-span-4 flex flex-col gap-6 overflow-y-auto pr-1 scrollbar-thin">
+            {/* Main Flex Layout */}
+            <div className="flex-1 min-h-0 flex gap-0 pb-4 relative">
 
-                    {/* Strategy Section */}
-                    <div className="space-y-3">
+                {/* Left: Configuration Panel (Resizable) */}
+                <div
+                    style={{ width: sidebarWidth }}
+                    className="flex flex-col gap-6 overflow-y-auto pr-3 scrollbar-thin shrink-0"
+                >
+
+                    {/* Strategy Section (Redesigned) */}
+                    <div className="glass-panel p-4 rounded-2xl space-y-4">
                         <SectionHeader icon={<Database className="w-4 h-4" />} title={t('strategy')} />
-                        <div className="flex flex-col gap-2">
-                            <ModeCard
-                                active={strategy === 'audit'}
-                                onClick={() => setStrategy('audit')}
-                                icon={<Search className="w-5 h-5" />} title={t('mode_audit')} desc={t('mode_audit_desc')}
-                            />
-                            <ModeCard
-                                active={strategy === 'organize'}
-                                onClick={() => setStrategy('organize')}
-                                icon={<FolderInput />} title={t('mode_organize')} desc={t('mode_organize_desc')}
-                                accent="orange"
-                            />
-                            <ModeCard
-                                active={strategy === 'copy'}
-                                onClick={() => setStrategy('copy')}
-                                icon={<Copy />} title={t('mode_copy')} desc={t('mode_copy_desc')}
-                                accent="blue"
-                            />
-                        </div>
-                    </div>
 
-                    {/* Output Path (Dynamic) */}
-                    {strategy === 'copy' && (
-                        <div className="glass-panel p-4 rounded-xl border-blue-500/30 bg-blue-500/5 animate-in slide-in-from-top-2">
-                            <label className="text-[10px] font-bold text-blue-400 uppercase tracking-widest mb-2 block">{t('path_output' as any) || "Destination"}</label>
-                            <div
-                                onClick={() => setShowPicker('output')}
-                                className="flex items-center gap-2 bg-black/20 border border-white/5 p-3 rounded-lg cursor-pointer hover:border-blue-500/50 transition-all font-mono text-xs truncate"
-                            >
-                                <FolderInput className="w-4 h-4 text-blue-400" />
-                                {outputPath || t('select_folder')}
-                            </div>
+                        {/* Compact Grid Selector */}
+                        <div className="grid grid-cols-3 gap-2">
+                            {[
+                                { id: 'audit', icon: Search, label: t('mode_audit'), color: 'text-white' },
+                                { id: 'organize', icon: FolderInput, label: t('mode_organize'), color: 'text-orange-400' },
+                                { id: 'copy', icon: Copy, label: t('mode_copy'), color: 'text-blue-400' }
+                            ].map((item) => {
+                                const isActive = strategy === item.id;
+                                const Icon = item.icon;
+                                return (
+                                    <button
+                                        key={item.id}
+                                        onClick={() => setStrategy(item.id as any)}
+                                        className={cn(
+                                            "flex flex-col items-center justify-center gap-2 py-3 rounded-xl border transition-all relative overflow-hidden",
+                                            isActive
+                                                ? "bg-white/10 border-white/20 shadow-lg scale-[1.02]"
+                                                : "bg-black/20 border-white/5 hover:bg-white/5 hover:border-white/10"
+                                        )}
+                                    >
+                                        <Icon className={cn("w-5 h-5", isActive ? item.color : "text-white/40")} />
+                                        <span className={cn("text-[9px] font-bold uppercase tracking-wider", isActive ? "text-white" : "text-white/40")}>
+                                            {item.label.split(' ')[0]} {/* Simplified Label */}
+                                        </span>
+                                        {isActive && <div className={cn("absolute inset-x-0 bottom-0 h-0.5",
+                                            item.id === 'organize' ? "bg-orange-500" : item.id === 'copy' ? "bg-blue-500" : "bg-white/50"
+                                        )} />}
+                                    </button>
+                                )
+                            })}
                         </div>
-                    )}
+
+                        {/* Description Box */}
+                        <div className="bg-black/20 rounded-lg p-3 border border-white/5 min-h-[60px] flex items-center">
+                            <p className="text-xs text-muted-foreground leading-relaxed">
+                                {strategy === 'audit' && t('mode_audit_desc')}
+                                {strategy === 'organize' && t('mode_organize_desc')}
+                                {strategy === 'copy' && t('mode_copy_desc')}
+                            </p>
+                        </div>
+
+                        {/* Output Path (Nested inside Strategy) */}
+                        {strategy === 'copy' && (
+                            <div className="pt-2 animate-in slide-in-from-top-1 fade-in">
+                                <label className="text-[9px] font-bold text-blue-400 uppercase tracking-widest mb-2 block flex items-center gap-2">
+                                    <div className="w-1 h-4 bg-blue-500 rounded-full" />
+                                    {t('path_output' as any) || "Destination"}
+                                </label>
+                                <div
+                                    onClick={() => setShowPicker('output')}
+                                    className="group flex items-center gap-3 bg-blue-500/5 hover:bg-blue-500/10 border border-blue-500/20 hover:border-blue-500/40 p-3 rounded-xl cursor-pointer transition-all"
+                                >
+                                    <FolderInput className="w-4 h-4 text-blue-400 group-hover:scale-110 transition-transform" />
+                                    <span className={cn("flex-1 text-xs font-mono truncate", outputPath ? "text-blue-100" : "text-blue-500/40 italic")}>
+                                        {outputPath || t('select_folder')}
+                                    </span>
+                                </div>
+                            </div>
+                        )}
+                    </div>
 
                     {/* Media Filtering & Specific ID */}
                     <div className="glass-panel rounded-2xl p-5 space-y-6">
@@ -186,6 +252,23 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
                                     </button>
                                 ))}
                             </div>
+
+                            {/* Force Refresh Toggle (Always visible) */}
+                            <div className="animate-in fade-in slide-in-from-top-1 mt-2">
+                                <button
+                                    onClick={() => setForceFresh(!forceFresh)}
+                                    className={cn(
+                                        "w-full py-2.5 rounded-lg text-[10px] font-black uppercase tracking-widest border transition-all flex items-center justify-center gap-2",
+                                        forceFresh
+                                            ? "bg-red-500/10 border-red-500 text-red-400 shadow-[0_0_10px_rgba(239,68,68,0.2)]"
+                                            : "bg-black/20 border-white/5 text-muted-foreground hover:border-white/20 hover:text-foreground"
+                                    )}
+                                >
+                                    <div className={cn("w-1.5 h-1.5 rounded-full", forceFresh ? "bg-red-500 animate-pulse" : "bg-white/20")} />
+                                    Force Refresh (Overwrite)
+                                </button>
+                            </div>
+
                             <div className="h-px bg-white/5" />
 
                             <div className="grid grid-cols-3 gap-2">
@@ -285,11 +368,20 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
                 </div>
 
                 {/* Right: Task Board Panel (8/12) */}
-                <div className="lg:col-span-8 flex flex-col h-full min-h-[500px]">
-                    <TaskBoard />
+
+                {/* Resizer Handle */}
+                <div
+                    onMouseDown={startResizing}
+                    className="w-4 flex items-center justify-center cursor-col-resize hover:bg-white/5 group transition-colors relative z-50 shrink-0 select-none"
+                >
+                    <div className="w-1 h-8 rounded-full bg-white/10 group-hover:bg-primary/50 transition-colors" />
+                </div>
+
+                {/* Right: Task Board Panel (Flexible) */}
+                <div className="flex-1 min-w-0 flex flex-col h-full overflow-hidden">
+                    <TaskBoard defaultConfig={{ strategy, outputPath }} />
                 </div>
             </div>
-
             {/* Folder Picker Modal */}
             {showPicker && (
                 <div
@@ -303,37 +395,36 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
                         <div className="p-6 border-b border-white/5 flex items-center justify-between bg-gradient-to-r from-white/5 to-transparent">
                             <div className="flex items-center gap-3">
                                 <div className="w-10 h-10 rounded-2xl bg-primary/20 flex items-center justify-center text-primary">
-                                    <FolderInput className="w-6 h-6" />
+                                    <FolderOpen className="w-5 h-5" />
                                 </div>
                                 <div>
-                                    <h3 className="font-bold text-lg leading-tight">{t('modal_title')}</h3>
-                                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider opacity-60">{t('modal_subtitle')}</p>
+                                    <h3 className="font-bold text-lg text-white/90">{t('modal_title')}</h3>
+                                    <p className="text-xs text-white/40 uppercase tracking-widest font-bold">{t('modal_subtitle')}</p>
                                 </div>
                             </div>
                             <button
                                 onClick={() => setShowPicker(null)}
-                                className="p-2.5 hover:bg-white/5 rounded-xl transition-colors text-muted-foreground hover:text-foreground"
+                                className="p-2 hover:bg-white/10 rounded-full text-white/40 hover:text-white transition-colors"
                             >
-                                <X className="w-6 h-6" />
+                                <X className="w-5 h-5" />
                             </button>
                         </div>
-
-                        <div className="flex-1 overflow-hidden min-h-[400px]">
+                        <div className="flex-1 overflow-auto p-2 scrollbar-thin">
                             <FolderPicker
+                                className="h-full"
+                                initialPath={showPicker === 'input' ? selectedPath : outputPath}
                                 onSelect={(path) => {
                                     if (showPicker === 'input') setSelectedPath(path);
                                     else setOutputPath(path);
                                 }}
-                                initialPath={showPicker === 'input' ? selectedPath : outputPath}
                             />
                         </div>
-
                         <div className="p-4 border-t border-white/5 bg-white/5 flex justify-end gap-3">
                             <button
                                 onClick={() => setShowPicker(null)}
                                 className="px-6 py-2.5 rounded-xl text-sm font-bold bg-primary text-white hover:bg-primary/90 transition-all shadow-lg shadow-primary/20"
                             >
-                                {t('confirm_selection')}
+                                {t('confirm_selection') || "Confirm"}
                             </button>
                         </div>
                     </div>

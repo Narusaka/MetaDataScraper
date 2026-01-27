@@ -32,6 +32,31 @@ class MediaOrganizer:
         meta_ep_map = {(e.get("season_number"), e.get("episode_number")): e for e in episodes_data}
         found_episodes = set()
         
+        # 0. Determine Mode (Rename Self vs Create Sibling)
+        # Check if current directory already has Season structure
+        has_seasons = False
+        try:
+             root_sub_dirs = [d.name.lower() for d in show_path.iterdir() if d.is_dir()]
+             has_seasons = any(re.match(r'^season\s*\d+$', d) for d in root_sub_dirs)
+        except: pass
+
+        # Logic: 
+        # - Mixed/Flat folder (No Seasons) -> Create Sibling Folder (Safe Mode)
+        # - Already Structured (Has Seasons) -> Rename In-Place (Scenario 1)
+        
+        target_root = show_path
+        
+        if self.inplace_rename and not self.dry_run and not has_seasons:
+             # Scenario 2: Create Sibling
+             show_year = normalized.get("year", 0)
+             show_title = normalized.get("title_zh") or normalized.get("title", show_path.name)
+             safe_title = re.sub(r'[\\/:"*?<>|]', '', show_title).strip()
+             new_dir_name = f"{safe_title} ({show_year})"
+             
+             target_root = show_path.parent / new_dir_name
+             target_root.mkdir(parents=True, exist_ok=True)
+             logger.info(f"Organize: Creating sibling directory: {target_root}")
+        
         # 1. Scan and Rename Existing Files
         scanned_files = []
         for file_path in show_path.rglob('*'):
@@ -49,7 +74,9 @@ class MediaOrganizer:
                 year = normalized.get("year")
                 new_name = f"{movie_title} ({year})"
                 new_filename = f"{new_name}{suffix}"
-                dest_path = show_path / new_filename
+                
+                # If Sibling Mode, use target_root, else show_path
+                dest_path = target_root / new_filename
                 
                 self._move_or_copy(file_path, dest_path)
                 continue
@@ -80,9 +107,9 @@ class MediaOrganizer:
 
                 # Destination
                 if detected_type == "tv":
-                    dest_dir = show_path / f"Season {season:02d}"
+                    dest_dir = target_root / f"Season {season:02d}"
                 else:
-                    dest_dir = show_path
+                    dest_dir = target_root
                     
                 dest_path = dest_dir / new_filename
                 
@@ -90,9 +117,9 @@ class MediaOrganizer:
                     dest_dir.mkdir(parents=True, exist_ok=True)
                     self._move_or_copy(file_path, dest_path)
                             
-        # 2. Rename Directory
-        final_show_path = show_path
-        if self.inplace_rename and not self.dry_run:
+        # 2. Rename Directory (Only if In-Place AND Has Seasons)
+        final_show_path = target_root
+        if self.inplace_rename and not self.dry_run and has_seasons:
              final_show_path = self._rename_directory(show_path, normalized)
 
         # 3. Full Metadata Download & Missing Check

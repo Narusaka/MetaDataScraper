@@ -168,6 +168,19 @@ class FilenameParser:
         return filename.split()[0] if filename.split() else filename
 
     @staticmethod
+    def extract_year(filename: str) -> Optional[int]:
+        """Extract year from filename (1800-2099)."""
+        match = re.search(r'\((\d{4})\)', filename)
+        if match:
+            year = int(match.group(1))
+            if 1800 <= year <= 2099:
+                return year
+        
+        # Try fallback without checking brackets if tight constraints needed anywhere
+        # But usually (YEAR) is the standard we look for validation.
+        return None
+
+    @staticmethod
     def clean_show_name_for_search(show_name: str) -> str:
         """Clean show name for search queries."""
         # Remove year in parentheses

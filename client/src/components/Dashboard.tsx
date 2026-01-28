@@ -1,14 +1,15 @@
-
 import { useState, useEffect } from 'react';
 import {
     Play, FolderInput, Copy,
-    Search, FolderOpen, X
+    Search, FolderOpen, X, Settings2,
+    Database, Layers, Cpu, Radio, ShieldCheck
 } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useTranslation } from '../lib/language';
 import { FolderPicker } from './FolderPicker';
 import { TaskBoard } from './TaskBoard';
 import { SystemMonitor } from './SystemMonitor';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface DashboardProps {
     isRunning: boolean;
@@ -68,121 +69,179 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
         });
     };
 
+    const ControlPanelSection = ({ title, icon: Icon, children }: any) => (
+        <div className="mb-6">
+            <div className="flex items-center gap-2 mb-3 text-text-muted/60">
+                <Icon size={14} />
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em]">{title}</span>
+                <div className="h-px flex-1 bg-gradient-to-r from-border-light to-transparent opacity-50" />
+            </div>
+            <div className="space-y-3">
+                {children}
+            </div>
+        </div>
+    );
+
     return (
-        <div className="flex flex-col h-full bg-slate-950 text-slate-100 overflow-hidden font-sans">
+        <div className="flex flex-col h-full overflow-hidden font-sans gap-4">
             {/* Top Bar: Target Selection & Actions */}
-            <div className="shrink-0 h-16 border-b border-slate-800 bg-slate-900/50 flex items-center px-4 gap-4 justify-between">
-                <div className="flex items-center gap-4 w-2/3">
-                    <div className="flex-1 flex items-center gap-2 bg-slate-900 border border-slate-800 rounded px-3 py-2 group focus-within:border-blue-500/50 transition-colors">
-                        <span className="text-xs font-mono font-bold text-blue-500 uppercase">TARGET:</span>
+            <div className="shrink-0 flex items-center justify-between gap-6 p-1">
+                {/* Target Input */}
+                <div className="flex-1 relative group">
+                    <div className="absolute inset-0 bg-primary/20 blur-xl rounded-lg opacity-0 group-focus-within:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                    <div className="flex items-center bg-panel border border-border-light rounded-xl overflow-hidden focus-within:border-primary/50 focus-within:ring-1 focus-within:ring-primary/20 transition-all shadow-sm">
+                        <div className="px-4 py-3 bg-surface/50 border-r border-border-light flex items-center gap-2 text-primary font-mono text-xs font-bold uppercase tracking-wider">
+                            <FolderOpen size={14} />
+                            <span>Target</span>
+                        </div>
                         <input
                             type="text"
                             value={selectedPath}
                             onChange={(e) => setSelectedPath(e.target.value)}
-                            placeholder="/path/to/media"
-                            className="flex-1 bg-transparent border-none text-sm text-slate-200 outline-none font-mono placeholder:text-slate-600"
+                            placeholder="/path/to/media/source"
+                            className="flex-1 bg-transparent border-none text-sm text-text-main px-4 py-3 outline-none font-mono placeholder:text-text-muted/40"
                         />
-                        <button onClick={() => setShowPicker('input')} className="text-slate-400 hover:text-white transition-colors">
-                            <FolderOpen size={16} />
+                        <button
+                            onClick={() => setShowPicker('input')}
+                            className="px-4 py-3 text-text-muted hover:text-text-main hover:bg-white/5 transition-colors border-l border-border-light/50"
+                        >
+                            <FolderInput size={18} />
                         </button>
                     </div>
                 </div>
 
-                <div className="flex items-center gap-4">
-                    <div className="h-8 w-px bg-slate-800" />
-                    <button
-                        onClick={handleStart}
-                        disabled={isRunning || !selectedPath}
-                        className={cn(
-                            "flex items-center gap-2 px-8 py-2 rounded bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm tracking-wide uppercase transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] transform hover:scale-105 active:scale-95 disabled:hover:scale-100 disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none",
-                            isRunning && "bg-slate-800 text-slate-400"
-                        )}
-                    >
-                        {isRunning ? <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" /> : <Play size={16} fill="currentColor" />}
-                        {isRunning ? t('running') : 'EXECUTE'}
-                    </button>
-                </div>
+                {/* Primary Action Button */}
+                <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={handleStart}
+                    disabled={isRunning || !selectedPath}
+                    className={cn(
+                        "relative flex items-center gap-3 px-8 py-3 rounded-xl font-bold text-sm tracking-wide uppercase transition-all overflow-hidden",
+                        isRunning
+                            ? "bg-surface border border-border-light text-text-muted cursor-not-allowed"
+                            : "text-white dark:text-black shadow-lg shadow-primary/40 hover:shadow-primary/60 hover:brightness-110 border border-white/20"
+                    )}
+                    style={!isRunning ? { backgroundColor: 'var(--primary)' } : undefined}
+                >
+                    {/* Button Glow for Active State */}
+                    {!isRunning && (
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] animate-[shimmer_2s_infinite]" />
+                    )}
+
+                    {isRunning ? (
+                        <div className="flex items-center gap-2">
+                            <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                            <span>{t('running')}</span>
+                        </div>
+                    ) : (
+                        <>
+                            <Play size={16} fill="currentColor" />
+                            <span>EXECUTE PROTOCOL</span>
+                        </>
+                    )}
+                </motion.button>
             </div>
 
             {/* System Monitor Area */}
             <SystemMonitor />
 
             {/* Main Content: Sidebar + TaskBoard */}
-            <div className="flex-1 flex overflow-hidden">
+            <div className="flex-1 flex gap-6 overflow-hidden min-h-0">
                 {/* Configuration Sidebar */}
-                <div className="w-80 shrink-0 bg-slate-900 border-r border-slate-800 flex flex-col overflow-y-auto">
-
-                    {/* Strategy */}
-                    <div className="p-4 border-b border-slate-800">
-                        <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">{t('strategy')}</div>
-                        <div className="grid grid-cols-1 gap-1 bg-slate-950 p-1 rounded border border-slate-800">
-                            {(['audit', 'organize', 'copy'] as const).map(s => (
-                                <button
-                                    key={s}
-                                    onClick={() => setStrategy(s)}
-                                    className={cn(
-                                        "flex items-center gap-3 px-3 py-2 rounded text-xs font-bold uppercase tracking-wider text-left transition-colors",
-                                        strategy === s ? "bg-slate-800 text-blue-400" : "text-slate-500 hover:text-slate-300 hover:bg-slate-900"
-                                    )}
-                                >
-                                    {s === 'audit' && <Search size={14} />}
-                                    {s === 'organize' && <FolderInput size={14} />}
-                                    {s === 'copy' && <Copy size={14} />}
-                                    {t(`mode_${s}` as any)}
-                                </button>
-                            ))}
+                <div className="w-80 shrink-0 flex flex-col glass-panel-pro rounded-2xl border border-glass-border overflow-hidden">
+                    <div className="p-4 border-b border-border-light/50 bg-black/20 backdrop-blur-md">
+                        <div className="flex items-center gap-2 text-text-main font-bold">
+                            <Settings2 size={16} className="text-primary" />
+                            <span className="tracking-tight uppercase text-xs">Mission Configuration</span>
                         </div>
-                        {strategy === 'copy' && (
-                            <div className="mt-2 pl-2 border-l-2 border-blue-900/50">
-                                <label className="text-[9px] text-blue-400 uppercase font-bold block mb-1">Destination:</label>
-                                <div className="flex items-center gap-2">
-                                    <input
-                                        type="text"
-                                        value={outputPath}
-                                        onChange={(e) => setOutputPath(e.target.value)}
-                                        className="w-full bg-slate-950 border border-slate-800 rounded px-2 py-1 text-xs text-slate-300 font-mono"
-                                        placeholder="/path/to/dest"
-                                    />
-                                    <button onClick={() => setShowPicker('output')} className="text-slate-500 hover:text-blue-400">
-                                        <FolderOpen size={14} />
-                                    </button>
-                                </div>
-                            </div>
-                        )}
                     </div>
 
-                    {/* Media Settings */}
-                    <div className="p-4 flex-1">
-                        <div className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">{t('media_settings')}</div>
-
-                        <div className="space-y-4">
-                            {/* Type */}
-                            <div className="flex gap-1">
-                                {['', 'movie', 'tv'].map(type => (
+                    <div className="flex-1 overflow-y-auto p-5 scrollbar-thin">
+                        <ControlPanelSection title={t('strategy')} icon={Layers}>
+                            <div className="grid grid-cols-3 gap-1 p-1 bg-black/20 rounded-lg border border-white/5">
+                                {(['audit', 'organize', 'copy'] as const).map(s => (
                                     <button
-                                        key={type}
-                                        onClick={() => setMediaType(type)}
+                                        key={s}
+                                        onClick={() => setStrategy(s)}
                                         className={cn(
-                                            "flex-1 py-1.5 border rounded text-[10px] font-bold uppercase tracking-wider transition-colors",
-                                            mediaType === type ? "border-blue-500/50 bg-blue-500/10 text-blue-400" : "border-slate-800 bg-slate-950 text-slate-500 hover:border-slate-700"
+                                            "flex flex-col items-center justify-center gap-1.5 py-2.5 rounded-md text-[10px] font-bold uppercase tracking-wider transition-all",
+                                            strategy === s
+                                                ? "bg-primary text-white shadow-lg shadow-primary/25 ring-1 ring-white/10"
+                                                : "text-text-muted hover:text-text-main hover:bg-white/5"
                                         )}
                                     >
-                                        {type || 'Auto'}
+                                        {s === 'audit' && <Search size={16} />}
+                                        {s === 'organize' && <FolderInput size={16} />}
+                                        {s === 'copy' && <Copy size={16} />}
+                                        <span>{t(`mode_${s}` as any)}</span>
                                     </button>
                                 ))}
                             </div>
 
-                            {/* Mode Selection */}
+                            <AnimatePresence>
+                                {strategy === 'copy' && (
+                                    <motion.div
+                                        initial={{ opacity: 0, height: 0 }}
+                                        animate={{ opacity: 1, height: 'auto' }}
+                                        exit={{ opacity: 0, height: 0 }}
+                                        className="mt-3 overflow-hidden"
+                                    >
+                                        <div className="relative group">
+                                            <input
+                                                type="text"
+                                                value={outputPath}
+                                                onChange={(e) => setOutputPath(e.target.value)}
+                                                className="w-full bg-surface/50 border border-border-light rounded-lg px-3 py-2 text-xs text-text-mono font-mono focus:border-primary/50 outline-none pr-8"
+                                                placeholder="/destination/path"
+                                            />
+                                            <button
+                                                onClick={() => setShowPicker('output')}
+                                                className="absolute right-2 top-1/2 -translate-y-1/2 text-text-muted hover:text-primary transition-colors"
+                                            >
+                                                <FolderOpen size={14} />
+                                            </button>
+                                        </div>
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </ControlPanelSection>
+
+                        <ControlPanelSection title={t('media_settings')} icon={Database}>
+                            {/* Type */}
                             <div className="space-y-1">
-                                <label className="text-[10px] text-slate-500 font-bold block">Processing Mode</label>
+                                <label className="text-[10px] text-text-muted font-bold block mb-1.5">Processing Mode</label>
+                                <div className="flex gap-1 p-0.5 bg-black/20 rounded-lg border border-white/5">
+                                    {['', 'movie', 'tv'].map(type => (
+                                        <button
+                                            key={type}
+                                            onClick={() => setMediaType(type)}
+                                            className={cn(
+                                                "flex-1 py-1.5 rounded-md text-[10px] font-bold uppercase tracking-wider transition-colors",
+                                                mediaType === type
+                                                    ? "bg-white/10 text-white shadow-sm border border-white/5"
+                                                    : "text-text-muted hover:text-text-main hover:bg-white/5"
+                                            )}
+                                        >
+                                            {type || 'Auto'}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Mode Selection */}
+                            <div className="space-y-1 mt-4">
+                                <label className="text-[10px] text-text-muted font-bold block mb-1.5">Concurrency Mode</label>
                                 <div className="grid grid-cols-3 gap-1">
                                     {(['auto', 'single', 'batch'] as const).map(m => (
                                         <button
                                             key={m}
                                             onClick={() => setMultiMode(m)}
                                             className={cn(
-                                                "py-1 rounded text-[9px] font-bold uppercase tracking-wider transition-colors border",
-                                                multiMode === m ? "bg-slate-800 border-blue-500/30 text-blue-400" : "bg-slate-950 border-slate-800 text-slate-600 hover:border-slate-700"
+                                                "py-1.5 rounded-md text-[9px] font-bold uppercase tracking-wider transition-all border",
+                                                multiMode === m
+                                                    ? "bg-primary/20 border-primary/30 text-primary-300"
+                                                    : "bg-transparent border-border-light text-text-muted/60 hover:bg-white/5"
                                             )}
                                         >
                                             {m}
@@ -191,88 +250,93 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
                                 </div>
                             </div>
 
-                            {/* Search Mode */}
-                            <div className="space-y-1">
-                                <label className="text-[10px] text-slate-500 font-bold block">Search Logic</label>
-                                <select
-                                    value={searchMode}
-                                    onChange={(e) => setSearchMode(e.target.value as any)}
-                                    className="w-full bg-slate-950 border border-slate-800 rounded px-2 py-1.5 text-xs text-slate-300 outline-none focus:border-blue-500/50"
-                                >
-                                    <option value="smart">Smart (Hybrid)</option>
-                                    <option value="tmdb_only">TMDB Only</option>
-                                    <option value="tavily_only">Tavily Only</option>
-                                </select>
-                            </div>
-
                             {/* TMDB ID */}
-                            <div>
-                                <label className="text-[10px] text-slate-500 font-bold block mb-1">TMDB ID (Optional)</label>
+                            <div className="mt-4">
+                                <label className="text-[10px] text-text-muted font-bold block mb-1.5 flex items-center justify-between">
+                                    <span>Override TMDB ID</span>
+                                    <span className="text-[9px] text-text-muted/40 font-mono">OPTIONAL</span>
+                                </label>
                                 <input
                                     type="number"
                                     value={tmdbId}
                                     onChange={(e) => setTmdbId(e.target.value)}
-                                    className="w-full bg-slate-950 border border-slate-800 rounded px-3 py-2 text-xs font-mono text-slate-300 focus:border-blue-500 outline-none placeholder:text-slate-700"
-                                    placeholder="e.g. 12345"
+                                    className="w-full bg-surface/50 border border-border-light rounded-lg px-3 py-2 text-xs font-mono text-text-main focus:border-primary/50 outline-none placholder:text-text-muted/20"
+                                    placeholder="e.g. 550"
                                 />
                             </div>
+                        </ControlPanelSection>
 
-                            {/* Options */}
-                            <div className="space-y-1 pt-2 border-t border-slate-800">
+                        <ControlPanelSection title="PARAMETERS" icon={Cpu}>
+                            <div className="space-y-2">
                                 <ToggleRow active={useLocalNfo} onClick={() => setUseLocalNfo(!useLocalNfo)} label={t('opt_local_nfo')} />
                                 <ToggleRow active={extraImages} onClick={() => setExtraImages(!extraImages)} label={t('opt_extra_images')} />
-                                <ToggleRow active={forceFresh} onClick={() => setForceFresh(!forceFresh)} label="Force Refresh" danger />
+                                <div className="pt-2 border-t border-white/5">
+                                    <ToggleRow active={forceFresh} onClick={() => setForceFresh(!forceFresh)} label="Force Refresh (Danger)" danger />
+                                </div>
                             </div>
 
                             {/* Threads */}
-                            <div className="pt-2">
+                            <div className="pt-4">
                                 <div className="flex justify-between items-center mb-2">
-                                    <span className="text-[10px] font-bold text-slate-500 uppercase">Concurrency</span>
-                                    <span className="text-xs font-mono text-blue-400">{workers}</span>
+                                    <span className="text-[10px] font-bold text-text-muted uppercase">Thread Allocation</span>
+                                    <span className="text-xs font-mono text-primary">{workers} CORES</span>
                                 </div>
                                 <input
                                     type="range" min="1" max="16"
                                     value={workers}
                                     onChange={(e) => setWorkers(parseInt(e.target.value))}
-                                    className="w-full accent-blue-500 h-1 bg-slate-800 rounded appearance-none cursor-pointer"
+                                    className="w-full accent-primary h-1 bg-surface rounded-full appearance-none cursor-pointer"
                                 />
                             </div>
-                        </div>
+                        </ControlPanelSection>
                     </div>
                 </div>
 
                 {/* Task Board */}
-                <div className="flex-1 bg-slate-950 flex flex-col overflow-hidden relative">
-                    <div className="absolute inset-0 z-0 bg-[url('/grid.svg')] opacity-5 pointer-events-none" />
+                <div className="flex-1 rounded-2xl overflow-hidden relative glass-panel-pro border border-glass-border flex flex-col">
                     <TaskBoard defaultConfig={{ strategy, outputPath, forceFresh }} />
                 </div>
             </div>
 
             {/* Folder Picker Modal */}
-            {showPicker && (
-                <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-8" onClick={() => setShowPicker(null)}>
-                    <div className="w-full max-w-3xl bg-slate-900 border border-slate-700 rounded-lg shadow-2xl flex flex-col max-h-full" onClick={e => e.stopPropagation()}>
-                        <div className="h-12 border-b border-slate-800 flex items-center px-4 justify-between bg-slate-800/50">
-                            <span className="text-sm font-bold text-slate-200 uppercase tracking-wider">{t('modal_title')}</span>
-                            <button onClick={() => setShowPicker(null)} className="text-slate-500 hover:text-white"><X size={18} /></button>
-                        </div>
-                        <div className="flex-1 overflow-auto p-4 bg-slate-950">
-                            <FolderPicker
-                                initialPath={showPicker === 'input' ? selectedPath : outputPath}
-                                onSelect={(path) => {
-                                    if (showPicker === 'input') setSelectedPath(path);
-                                    else setOutputPath(path);
-                                }}
-                            />
-                        </div>
-                        <div className="p-4 border-t border-slate-800 bg-slate-900 flex justify-end">
-                            <button onClick={() => setShowPicker(null)} className="px-6 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs uppercase rounded">
-                                {t('confirm_selection')}
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            )}
+            <AnimatePresence>
+                {showPicker && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-8"
+                        onClick={() => setShowPicker(null)}
+                    >
+                        <motion.div
+                            initial={{ scale: 0.9, y: 20 }}
+                            animate={{ scale: 1, y: 0 }}
+                            exit={{ scale: 0.9, y: 20 }}
+                            className="w-full max-w-3xl glass-panel-pro rounded-2xl shadow-2xl flex flex-col max-h-[80vh] overflow-hidden"
+                            onClick={e => e.stopPropagation()}
+                        >
+                            <div className="h-14 border-b border-white/10 flex items-center px-6 justify-between bg-white/5">
+                                <span className="text-sm font-bold text-text-main uppercase tracking-widest font-display">{t('modal_title')}</span>
+                                <button onClick={() => setShowPicker(null)} className="text-text-muted hover:text-white transition-colors"><X size={20} /></button>
+                            </div>
+                            <div className="flex-1 overflow-auto p-4 bg-black/40">
+                                <FolderPicker
+                                    initialPath={showPicker === 'input' ? selectedPath : outputPath}
+                                    onSelect={(path) => {
+                                        if (showPicker === 'input') setSelectedPath(path);
+                                        else setOutputPath(path);
+                                    }}
+                                />
+                            </div>
+                            <div className="p-4 border-t border-white/10 bg-white/5 flex justify-end">
+                                <button onClick={() => setShowPicker(null)} className="px-8 py-2.5 bg-primary hover:bg-primary-hover text-white font-bold text-xs uppercase rounded-lg shadow-lg shadow-primary/20 transition-all hover:scale-[1.02] active:scale-95">
+                                    {t('confirm_selection')}
+                                </button>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 }
@@ -282,14 +346,21 @@ function ToggleRow({ active, onClick, label, danger }: { active: boolean, onClic
         <button
             onClick={onClick}
             className={cn(
-                "w-full flex items-center justify-between px-3 py-2 rounded text-xs transition-colors border border-transparent",
+                "w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs transition-all border hover:border-white/10",
                 active
-                    ? (danger ? "bg-red-500/10 border-red-500/20 text-red-400" : "bg-blue-500/10 border-blue-500/20 text-blue-400")
-                    : "hover:bg-slate-800 text-slate-400"
+                    ? (danger
+                        ? "bg-red-500/10 border-red-500/20 text-red-400"
+                        : "bg-primary/10 border-primary/20 text-text-main shadow-[0_0_15px_-5px_var(--primary)]")
+                    : "bg-transparent border-transparent text-text-muted hover:bg-white/5"
             )}
         >
-            <span className="font-medium">{label}</span>
-            <div className={cn("w-2 h-2 rounded-full", active ? (danger ? "bg-red-500" : "bg-blue-500") : "bg-slate-700")} />
+            <span className="font-medium tracking-wide">{label}</span>
+            <div className={cn(
+                "w-2.5 h-2.5 rounded-full transition-all shadow-sm",
+                active
+                    ? (danger ? "bg-red-500 shadow-[0_0_8px_var(--accent-error)]" : "bg-primary shadow-[0_0_8px_var(--primary)]")
+                    : "bg-surface border border-text-muted/30"
+            )} />
         </button>
     )
 }

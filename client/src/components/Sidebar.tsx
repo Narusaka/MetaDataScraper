@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { LayoutDashboard, Settings, Activity, ChevronLeft, ChevronRight } from 'lucide-react';
+import { LayoutDashboard, Settings, Activity, ChevronLeft, ChevronRight, Hexagon, Command, Cpu } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useTranslation } from '../lib/language';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface SidebarProps {
     activeTab: string;
@@ -12,106 +13,166 @@ interface SidebarProps {
 
 export function Sidebar({ activeTab, onTabChange, mobileOpen = false, onMobileClose }: SidebarProps) {
     const { t } = useTranslation();
-    const [collapsed, setCollapsed] = useState(false);
+    const [collapsed, setCollapsed] = useState(true);
 
     const NavItem = ({ icon: Icon, label, id }: { icon: any, label: string, id: string }) => {
         const isActive = activeTab === id;
+
         return (
-            <button
+            <motion.button
+                layout
                 onClick={() => {
                     onTabChange(id);
                     if (window.innerWidth < 768) onMobileClose?.();
                 }}
                 className={cn(
-                    "group flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 relative mb-1",
+                    "group relative flex items-center gap-4 px-3 py-3 rounded-xl transition-all duration-300 overflow-hidden",
                     isActive
-                        ? "bg-primary text-white shadow-lg shadow-primary/25"
-                        : "text-text-muted hover:bg-surface hover:text-text-main",
-                    collapsed ? "justify-center px-0 w-12 h-12 mx-auto" : "w-full"
+                        ? "text-primary bg-primary/10 shadow-[0_0_20px_rgba(59,130,246,0.15)] border border-primary/20"
+                        : "text-text-muted hover:text-text-main hover:bg-white/5",
+                    collapsed ? "justify-center w-12 h-12 mx-auto px-0" : "w-full"
                 )}
-                title={collapsed ? label : undefined}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
             >
-                <Icon size={20} className={cn("shrink-0 transition-transform", !isActive && "group-hover:scale-110")} />
-                {!collapsed && (
-                    <span className="font-medium text-sm tracking-wide">{label}</span>
+                {/* Active Indicator Line (Left) */}
+                {isActive && (
+                    <motion.div
+                        layoutId="activeIndicator"
+                        className="absolute left-0 top-2 bottom-2 w-1 bg-primary rounded-r-full shadow-[0_0_10px_var(--primary)]"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                    />
                 )}
-                {/* Active Indicator for collapsed state */}
-                {isActive && collapsed && (
-                    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-white rounded-l opacity-20" />
-                )}
-            </button>
+
+                <div className="relative z-10 flex items-center gap-4">
+                    <Icon
+                        size={20}
+                        className={cn(
+                            "shrink-0 transition-colors duration-300",
+                            isActive ? "text-primary drop-shadow-[0_0_8px_rgba(59,130,246,0.5)]" : "group-hover:text-text-main"
+                        )}
+                    />
+
+                    <AnimatePresence mode="popLayout">
+                        {!collapsed && (
+                            <motion.span
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: -10 }}
+                                className="font-medium text-sm tracking-wide whitespace-nowrap"
+                            >
+                                {label}
+                            </motion.span>
+                        )}
+                    </AnimatePresence>
+                </div>
+
+                {/* Hover Glow Effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out pointer-events-none" />
+            </motion.button>
         )
     };
 
     return (
         <>
             {/* Mobile Overlay */}
-            <div
-                className={cn(
-                    "fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300",
-                    mobileOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+            <AnimatePresence>
+                {mobileOpen && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 md:hidden"
+                        onClick={onMobileClose}
+                    />
                 )}
-                onClick={onMobileClose}
-            />
+            </AnimatePresence>
 
             {/* Sidebar Container */}
-            <aside
+            <motion.aside
+                initial={false}
+                animate={{ width: collapsed ? 80 : 280 }}
                 className={cn(
-                    "fixed md:relative z-50 h-full bg-panel/80 backdrop-blur-xl border-r border-border-light flex flex-col transition-all duration-300 ease-in-out shadow-2xl md:shadow-none",
-                    collapsed ? "w-20" : "w-64",
-                    mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+                    "fixed md:relative z-50 h-full flex flex-col glass-panel-pro border-r border-border-light shadow-2xl overflow-hidden",
+                    // Mobile handling
+                    mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0",
+                    "transition-transform duration-300 md:transition-none"
                 )}
             >
+                {/* Tech Background Grid */}
+                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 pointer-events-none" />
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+
                 {/* Header */}
-                <div className="h-16 flex items-center px-4 border-b border-border-light/50">
-                    <div className={cn("flex items-center gap-3 overflow-hidden", collapsed ? "justify-center w-full" : "")}>
-                        <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center text-white font-bold text-lg shrink-0 shadow-lg shadow-primary/20">
-                            M
-                        </div>
-                        {!collapsed && (
-                            <div className="flex flex-col">
-                                <span className="font-bold text-text-main leading-tight">MediaAgent</span>
-                                <span className="text-[10px] text-text-muted font-mono bg-surface px-1.5 py-0.5 rounded-full w-fit">v2.0 PRO</span>
+                <div className="h-20 flex items-center px-6 border-b border-border-light/50 relative z-10">
+                    <div className={cn("flex items-center gap-4 w-full transition-all", collapsed ? "justify-center" : "")}>
+                        <div className="relative group">
+                            <div className="absolute inset-0 bg-primary/40 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gray-900 to-black border border-border-light flex items-center justify-center text-primary shadow-lg relative z-10">
+                                <Hexagon size={24} className="animate-pulse-glow" strokeWidth={2.5} />
                             </div>
+                        </div>
+
+                        {!collapsed && (
+                            <motion.div
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                className="flex flex-col"
+                            >
+                                <span className="font-bold text-lg text-text-main tracking-tight font-display">MEDIA<span className="text-primary">AGENT</span></span>
+                                <span className="text-[10px] text-text-muted font-mono tracking-widest uppercase flex items-center gap-1">
+                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                                    Online v2.0
+                                </span>
+                            </motion.div>
                         )}
                     </div>
                 </div>
 
                 {/* Nav Items */}
-                <div className="flex-1 py-6 px-3 flex flex-col gap-2 overflow-y-auto">
-                    <div className={cn("px-3 text-[10px] font-bold text-text-muted/60 uppercase tracking-widest mb-1", collapsed && "hidden")}>
-                        MODULES
+                <div className="flex-1 py-8 px-4 flex flex-col gap-2 overflow-y-auto relative z-10 scrollbar-hide">
+                    <div className={cn("px-2 text-[10px] font-bold text-text-muted/40 uppercase tracking-[0.2em] mb-2 font-mono", collapsed && "hidden")}>
+                        Core Modules
                     </div>
+
                     <NavItem icon={LayoutDashboard} label={t('dashboard')} id="dashboard" />
                     <NavItem icon={Activity} label={t('monitoring')} id="monitoring" />
 
-                    <div className="my-4 border-t border-border-light/50 mx-2" />
+                    <div className="my-6 border-t border-border-light/30 mx-2" />
 
-                    <div className={cn("px-3 text-[10px] font-bold text-text-muted/60 uppercase tracking-widest mb-1", collapsed && "hidden")}>
-                        SYSTEM
+                    <div className={cn("px-2 text-[10px] font-bold text-text-muted/40 uppercase tracking-[0.2em] mb-2 font-mono", collapsed && "hidden")}>
+                        System
                     </div>
                     <NavItem icon={Settings} label={t('settings')} id="settings" />
                 </div>
 
                 {/* Footer / Toggle */}
-                <div className="p-4 border-t border-border-light/50 flex flex-col gap-2">
+                <div className="p-4 border-t border-border-light/50 relative z-10 bg-panel/50 backdrop-blur-md">
                     <button
                         onClick={() => setCollapsed(!collapsed)}
                         className={cn(
-                            "hidden md:flex items-center justify-center w-full h-9 rounded-lg hover:bg-surface text-text-muted transition-colors",
+                            "flex items-center justify-center w-full h-10 rounded-lg hover:bg-white/5 text-text-muted hover:text-text-main transition-all duration-300 border border-transparent hover:border-white/10",
                             collapsed && "aspect-square"
                         )}
                     >
-                        {collapsed ? <ChevronRight size={18} /> : <div className="flex items-center gap-2 text-xs font-medium"><ChevronLeft size={16} /> <span className="uppercase">Collapse</span></div>}
+                        {collapsed ? <ChevronRight size={18} /> : (
+                            <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider">
+                                <ChevronLeft size={16} />
+                                <span>Collapse View</span>
+                            </div>
+                        )}
                     </button>
 
                     {!collapsed && (
-                        <div className="text-[10px] text-center text-text-muted/40 font-mono py-2">
-                            SYSTEM ONLINE • STABLE
+                        <div className="mt-4 flex items-center justify-between text-[10px] text-text-muted/30 font-mono">
+                            <span className="flex items-center gap-1"><Cpu size={10} /> 12%</span>
+                            <span>MEM: 1.2GB</span>
                         </div>
                     )}
                 </div>
-            </aside>
+            </motion.aside>
         </>
     );
 }

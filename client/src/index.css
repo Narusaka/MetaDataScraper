@@ -1,89 +1,119 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
 :root {
-  /* Light Mode - Clean Professional */
-  --bg-main: #f8fafc;
-  /* slate-50 */
+  /* --- LIGHT THEME (Industrial Clean) --- */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --bg-main: #f0f2f5;
   --bg-panel: #ffffff;
-  /* white */
-  --bg-surface: #f1f5f9;
-  /* slate-100 */
+  --bg-surface: #f8fafc;
 
   --primary: #2563eb;
-  /* blue-600 */
-  --primary-glow: rgba(37, 99, 235, 0.2);
+  /* Professional Blue */
+  --primary-dim: rgba(37, 99, 235, 0.2);
+  --primary-glow: rgba(37, 99, 235, 0.4);
 
-  --secondary: #64748b;
-  /* slate-500 */
+  --secondary: #475569;
+  /* Slate 600 */
+  --secondary-glow: rgba(71, 85, 105, 0.2);
+
   --text-main: #0f172a;
-  /* slate-900 */
+  /* Slate 900 */
   --text-muted: #64748b;
-  /* slate-500 */
+  /* Slate 500 */
+  --text-dim: #94a3b8;
+  /* Slate 400 */
 
-  --border-light: #e2e8f0;
-  /* slate-200 */
-  --border-active: #2563eb;
-  /* blue-600 */
+  --border-light: rgba(0, 0, 0, 0.1);
+  --border-active: var(--primary);
 
-  /* Accents */
-  --accent-success: #16a34a;
-  /* green-600 */
-  --accent-warning: #ea580c;
-  /* orange-600 */
-  --accent-error: #dc2626;
-  /* red-600 */
-  --accent-info: #0284c7;
-  /* sky-600 */
+  --accent-success: #10b981;
+  --accent-warning: #f59e0b;
+  --accent-error: #ef4444;
+  --accent-info: #06b6d4;
 
-  /* Fonts */
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-mono: 'Fira Code', monospace;
+  --glass-surface: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --glass-highlight: rgba(255, 255, 255, 0.8);
+
+  /* Usage: rgba(var(--grid-color), var(--grid-opacity)) */
+  --grid-opacity: 0.04;
+  --grid-color: 0, 0, 0;
 }
 
 .dark {
-  /* Dark Mode - Professional Deep Space (OLED) */
-  --bg-main: #020617;
-  /* slate-950 */
-  --bg-panel: #0f172a;
-  /* slate-900 */
-  --bg-surface: #1e293b;
-  /* slate-800 */
+  /* --- DARK THEME (Quantum HCI) --- */
+  --bg-main: #050505;
+  --bg-panel: #0a0a0c;
+  --bg-surface: #121214;
 
-  --primary: #3b82f6;
-  /* blue-500 */
-  --primary-glow: rgba(59, 130, 246, 0.4);
+  --primary: #00f0ff;
+  /* Electric Cyan */
+  --primary-dim: rgba(0, 240, 255, 0.5);
+  --primary-glow: rgba(0, 240, 255, 0.4);
 
-  --secondary: #94a3b8;
-  /* slate-400 */
-  --text-main: #f8fafc;
-  /* slate-50 */
-  --text-muted: #64748b;
-  /* slate-500 */
+  --secondary: #bd00ff;
+  /* Neon Purple */
+  --secondary-glow: rgba(189, 0, 255, 0.4);
 
-  --border-light: #1e293b;
-  /* slate-800 */
-  --border-active: #3b82f6;
-  /* blue-500 */
+  --text-main: #ffffff;
+  --text-muted: #8892b0;
+  --text-dim: #4a5568;
 
-  /* Dark Accents */
-  --accent-success: #22c55e;
-  --accent-warning: #f97316;
-  --accent-error: #ef4444;
-  --accent-info: #0ea5e9;
+  --border-light: rgba(255, 255, 255, 0.08);
+  --border-active: var(--primary);
+
+  --accent-success: #00ff9d;
+  --accent-warning: #ffb800;
+  --accent-error: #ff0055;
+  --accent-info: #00f0ff;
+
+  --glass-surface: rgba(10, 10, 12, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  /* Slightly stronger in dark for definition */
+  --glass-highlight: rgba(255, 255, 255, 0.05);
+
+  --grid-opacity: 0.05;
+  --grid-color: 0, 240, 255;
 }
 
+/* Base Styles */
 body {
   margin: 0;
   font-family: var(--font-sans);
   color: var(--text-main);
-  background: var(--bg-main);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: var(--bg-main);
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  /* --- ADAPTIVE GRID --- */
+  background-image:
+    linear-gradient(rgba(var(--grid-color), var(--grid-opacity)) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(var(--grid-color), var(--grid-opacity)) 1px, transparent 1px);
+  background-size: 50px 50px;
+  background-position: center top;
 }
 
-/* Scrollbar - Minimal */
+/* Light Mode Vignette (Subtle) */
+body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.02) 100%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Dark Mode Vignette (Stronger) */
+.dark body::after {
+  background: radial-gradient(circle at center, transparent 0%, #000000 120%);
+}
+
+/* --- SCROLLBARS --- */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -95,29 +125,107 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: var(--bg-surface);
-  border-radius: 99px;
+  border-radius: 4px;
+  border: 1px solid var(--border-light);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--secondary);
+  background: var(--primary);
+  box-shadow: 0 0 10px var(--primary-glow);
 }
 
-/* Base Components - Utility Classes should handle most, but these are for semantic consistency */
-.panel {
-  background: var(--bg-panel);
-  border: 1px solid var(--border-light);
+/* --- UTILITIES --- */
+@layer utilities {
+
+  /* The "Pro" Glass Panel */
+  .glass-panel-pro {
+    background: var(--glass-surface);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid var(--glass-border);
+    box-shadow:
+      0 0 0 1px inset var(--glass-highlight),
+      0 10px 40px -10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .dark .glass-panel-pro {
+    box-shadow:
+      0 0 0 1px inset var(--glass-highlight),
+      0 10px 40px -10px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Holographic Scanline Overlay */
+  .scanlines::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(to bottom,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0) 50%,
+        rgba(0, 0, 0, 0.05) 50%,
+        rgba(0, 0, 0, 0.05));
+    background-size: 100% 4px;
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0.1;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 10px var(--primary-glow);
+  }
+
+  /* Animated Borders */
+  .animate-border-glow {
+    animation: border-pulse 3s infinite ease-in-out;
+  }
 }
 
-.input-field {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-light);
-  color: var(--text-main);
-  font-family: var(--font-mono);
-  transition: all 0.2s ease;
+/* --- ANIMATIONS --- */
+@keyframes border-pulse {
+
+  0%,
+  100% {
+    border-color: var(--primary-dim);
+    box-shadow: 0 0 0 transparent;
+  }
+
+  50% {
+    border-color: var(--primary);
+    box-shadow: 0 0 15px var(--primary-dim);
+  }
 }
 
-.input-field:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 2px var(--primary-glow);
-  outline: none;
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 8s linear infinite;
+}
+
+/* Shimmer Effect for Buttons */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-150%);
+  }
+
+  50% {
+    transform: translateX(150%);
+  }
+
+  100% {
+    transform: translateX(150%);
+  }
 }

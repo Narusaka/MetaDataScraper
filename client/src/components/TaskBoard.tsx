@@ -345,9 +345,9 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
     const totalCount = sortedTaskList.length;
 
     return (
-        <div className="flex flex-col h-full bg-card/40 backdrop-blur-xl border border-white/5 rounded-2xl overflow-hidden shadow-sm">
+        <div className="flex flex-col h-full bg-card/95 border border-white/5 rounded-2xl overflow-hidden shadow-sm">
             {/* Toolbar */}
-            <div className="flex items-center justify-between px-6 py-4 bg-card/50 border-b border-border">
+            <div className="flex items-center justify-between px-6 py-4 bg-card/95 border-b border-border">
                 <div className="flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_var(--color-primary)]" />
                     <h3 className="font-bold text-sm uppercase tracking-widest text-foreground/80">
@@ -424,7 +424,7 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                         <p className="font-mono text-xs">{t('waiting_missions')}</p>
                     </div>
                 ) : viewMode === 'list' ? (
-                    <div className="rounded-xl border border-border overflow-hidden bg-panel/50 backdrop-blur-sm">
+                    <div className="rounded-xl border border-border overflow-hidden bg-panel/95">
                         <table className="w-full text-left border-collapse">
                             <thead className="bg-muted/30 border-b border-border text-[10px] uppercase font-bold text-secondary tracking-wider">
                                 <tr>
@@ -470,67 +470,104 @@ function TaskCard({ task, onExecute }: { task: Task, onExecute: (t: Task) => voi
     const isAuditReady = (task.status === 'dry_run' || task.status === 'audit_completed') && task.fullPath && task.tmdbId;
     const hasRun = task.hasExecuted;
 
-    const getStatusColor = (s: string) => {
+    // Helper to extract year if present
+    const yearMatch = task.name.match(/\((\d{4})\)/);
+    const displayYear = yearMatch ? yearMatch[1] : null;
+    const cleanTitle = task.name.replace(/\(\d{4}\)/, '').trim() || (t('unknown_title' as any) || "Unknown Title");
+
+    const getStatusInfo = (s: string) => {
         switch (s) {
-            case 'completed': return 'text-emerald-500 bg-emerald-500/10 border-emerald-500/20';
-            case 'failed': return 'text-red-500 bg-red-500/10 border-red-500/20';
-            case 'processing': return 'text-primary bg-primary/10 border-primary/20 animate-pulse';
-            case 'fetching': return 'text-indigo-400 bg-indigo-500/10 border-indigo-500/20';
-            case 'searching': return 'text-amber-400 bg-amber-500/10 border-amber-500/20';
+            case 'completed': return { color: 'bg-emerald-500', ring: 'shadow-[0_0_8px_rgba(16,185,129,0.5)]' };
+            case 'failed': return { color: 'bg-red-500', ring: 'shadow-[0_0_8px_rgba(239,68,68,0.5)]' };
+            case 'processing': return { color: 'bg-primary', ring: 'shadow-[0_0_8px_var(--primary-glow)] animate-pulse' };
+            case 'fetching': return { color: 'bg-indigo-500', ring: 'shadow-[0_0_8px_rgba(99,102,241,0.5)]' };
+            case 'searching': return { color: 'bg-amber-500', ring: 'shadow-[0_0_8px_rgba(245,158,11,0.5)]' };
             case 'dry_run':
-            case 'audit_completed': return 'text-sky-400 bg-sky-500/10 border-sky-500/20';
-            default: return 'text-secondary bg-secondary/10 border-secondary/20';
+            case 'audit_completed': return { color: 'bg-sky-500', ring: 'shadow-[0_0_8px_rgba(14,165,233,0.5)]' };
+            default: return { color: 'bg-slate-500', ring: '' };
         }
     };
 
+    const statusInfo = getStatusInfo(task.status);
+
     return (
-        <div className="bg-panel/40 backdrop-blur-sm rounded-xl p-4 flex flex-col gap-3 hover:bg-panel/60 transition-all group relative overflow-hidden border border-border/10 hover:border-border/20">
-            {/* Status Bar */}
-            <div className={cn("absolute top-0 left-0 w-1 bottom-0 transition-colors",
-                task.status === 'completed' ? "bg-emerald-500" :
-                    task.status === 'failed' ? "bg-red-500" :
-                        task.status === 'processing' ? "bg-primary animate-pulse" : "bg-border"
-            )} />
+        <div className="relative p-4 rounded-xl border border-white/5 bg-white/[0.05] hover:bg-white/[0.08] transition-all flex flex-col gap-3 group overflow-hidden shadow-sm">
+            {/* Hover Glow Effect */}
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
 
-            <div className="flex items-start justify-between gap-2 pl-2">
-                <div className="flex items-center gap-2 min-w-0">
-                    <div className={cn("p-1.5 rounded-lg shrink-0", task.mediaType === 'tv' ? "bg-purple-500/10 text-purple-400" : "bg-blue-500/10 text-blue-400")}>
-                        {task.mediaType === 'tv' ? <MonitorPlay size={16} /> : <FileVideo size={16} />}
+            {/* Header: Title & Status */}
+            <div className="flex items-start justify-between gap-3 relative z-10">
+                <div className="flex items-start gap-3 overflow-hidden">
+                    {/* Icon Box */}
+                    <div className={cn(
+                        "p-2 rounded-lg shrink-0 flex items-center justify-center border border-white/10",
+                        task.mediaType === 'tv' ? "bg-purple-500/10 text-purple-400" : "bg-blue-500/10 text-blue-400"
+                    )}>
+                        {task.mediaType === 'tv' ? <MonitorPlay size={18} /> : <FileVideo size={18} />}
                     </div>
-                    <div className="min-w-0">
-                        <h4 className="font-bold text-sm text-text truncate" title={task.name}>{task.name}</h4>
-                        <div className="text-[10px] text-muted font-mono truncate max-w-[150px]" title={task.fullPath}>{task.fullPath || task.threadId}</div>
+
+                    {/* Title & Badges */}
+                    <div className="min-w-0 flex-1">
+                        <h4 className="font-bold text-sm text-foreground line-clamp-2 leading-tight mb-1 min-h-[1.25rem]" title={task.name}>
+                            {cleanTitle}
+                        </h4>
+                        <div className="flex flex-wrap gap-1.5">
+                            {displayYear && (
+                                <span className="px-1.5 py-0.5 rounded-md bg-white/5 border border-white/5 text-[9px] font-mono text-muted-foreground font-bold">
+                                    {displayYear}
+                                </span>
+                            )}
+                            {task.tmdbId ? (
+                                <span className="px-1.5 py-0.5 rounded-md bg-[#0d253f] border border-[#01b4e4]/30 text-[9px] font-mono text-[#01b4e4] font-bold flex items-center gap-1">
+                                    TMDB {task.tmdbId}
+                                </span>
+                            ) : (
+                                <span className="px-1.5 py-0.5 rounded-md bg-white/5 border border-white/5 text-[9px] font-mono text-muted-foreground/50">
+                                    NO ID
+                                </span>
+                            )}
+                        </div>
                     </div>
                 </div>
-                <div className={cn("text-[10px] px-2 py-0.5 rounded font-bold uppercase tracking-wider border shrink-0", getStatusColor(task.status))}>
-                    {t(task.status as any) || task.status}
+
+                {/* Status Dot */}
+                <div className="flex flex-col items-end gap-1 shrink-0">
+                    <div className={cn("w-2.5 h-2.5 rounded-full", statusInfo.color, statusInfo.ring)} title={task.status} />
                 </div>
             </div>
 
-            <div className="pl-2">
-                <div className="text-[10px] uppercase font-bold text-secondary mb-1 tracking-wider">{t('current_step')}</div>
-                <div className="font-mono text-xs text-text/80 truncate bg-surface/50 p-1.5 rounded border border-border/50" title={task.lastLog}>
-                    {task.step}
+            {/* Path */}
+            <div className="relative z-10 bg-black/20 rounded-md px-2 py-1.5 border border-white/5">
+                <div className="text-[10px] font-mono text-muted-foreground/70 truncate" title={task.fullPath}>
+                    {task.fullPath || "—"}
                 </div>
             </div>
 
-            {isAuditReady && (
-                <div className="pl-2 pt-1 border-t border-border/50 flex justify-end">
+            {/* Footer: Step & Action */}
+            <div className="flex items-center justify-between mt-auto pt-2 border-t border-white/5 relative z-10">
+                <div className="flex-1 min-w-0 mr-4">
+                    <div className="text-[10px] uppercase font-bold text-muted-foreground/50 tracking-wider mb-0.5">STATUS</div>
+                    <div className="text-[10px] text-primary truncate font-mono" title={task.step}>
+                        {task.step}
+                    </div>
+                </div>
+
+                {isAuditReady && (
                     <button
                         onClick={(e) => { e.stopPropagation(); if (!hasRun) onExecute(task); }}
                         disabled={hasRun}
                         className={cn(
-                            "flex items-center gap-1.5 px-3 py-1.5 rounded text-[10px] font-bold uppercase tracking-wider transition-all w-full justify-center",
+                            "flex items-center gap-2 px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all",
                             hasRun
-                                ? "text-muted-foreground bg-muted/20 cursor-not-allowed"
-                                : "bg-primary text-white shadow-lg shadow-primary/20 hover:bg-primary/90 hover:scale-[1.02] active:scale-95"
+                                ? "text-muted-foreground/50 bg-white/5 cursor-not-allowed"
+                                : "bg-primary text-primary-foreground shadow-lg shadow-primary/20 hover:brightness-110 active:scale-95"
                         )}
                     >
-                        {hasRun ? <CheckCircle2 className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-                        {hasRun ? t('done') : t('run')}
+                        {hasRun ? <CheckCircle2 size={12} /> : <Play size={12} fill="currentColor" />}
+                        <span>{hasRun ? t('done') : t('run')}</span>
                     </button>
-                </div>
-            )}
+                )}
+            </div>
         </div>
     );
 }

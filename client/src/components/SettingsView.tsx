@@ -96,7 +96,7 @@ export function SettingsView() {
     if (!config) return <div>Error loading config.</div>;
 
     return (
-        <div className="p-8 glass-panel rounded-xl max-w-5xl mx-auto w-full mt-4 flex flex-col gap-8">
+        <div className="p-8 glass-panel-pro rounded-xl max-w-5xl mx-auto w-full mt-4 flex flex-col gap-8">
             <div className="flex justify-between items-center">
                 <div>
                     <h3 className="text-2xl font-bold flex items-center gap-3">
@@ -219,7 +219,7 @@ export function SettingsView() {
                                 <label className="text-xs text-secondary font-medium mb-1 block">Poster Limit</label>
                                 <input
                                     type="number"
-                                    className="w-full glass-panel bg-black/10 px-3 py-2 rounded-lg border-border/30 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                                    className="w-full glass-panel-pro bg-black/10 px-3 py-2 rounded-lg border-border/30 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
                                     value={config.output?.image_limit?.posters || 20}
                                     onChange={(e) => {
                                         const val = parseInt(e.target.value);
@@ -240,7 +240,7 @@ export function SettingsView() {
                                 <label className="text-xs text-secondary font-medium mb-1 block">Backdrop Limit</label>
                                 <input
                                     type="number"
-                                    className="w-full glass-panel bg-black/10 px-3 py-2 rounded-lg border-border/30 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+                                    className="w-full glass-panel-pro bg-black/10 px-3 py-2 rounded-lg border-border/30 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
                                     value={config.output?.image_limit?.backdrops || 5}
                                     onChange={(e) => {
                                         const val = parseInt(e.target.value);
@@ -290,7 +290,7 @@ function InputGroup({ label, value, onChange, placeholder, type = "text" }: {
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
                 placeholder={placeholder}
-                className="w-full glass-panel bg-black/10 px-4 py-2.5 rounded-lg border-border/30 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-muted/50"
+                className="w-full glass-panel-pro bg-black/10 px-4 py-2.5 rounded-lg border-border/30 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-muted/50"
             />
         </div>
     )

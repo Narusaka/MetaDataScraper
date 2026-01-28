@@ -1,50 +1,142 @@
-import { useTranslation } from "../lib/language";
-import { Languages, Activity } from "lucide-react";
-import { ThemeToggle } from "./ThemeToggle";
-import { motion } from "framer-motion";
+import { useEffect, useState } from 'react';
+import { BarChart3, Database, Cpu, Moon, Sun } from 'lucide-react';
+import { cn } from '../lib/utils';
+import { useTranslation, languageOptions } from '../lib/language';
+import { useTheme } from 'next-themes';
 
-export function Header({ title, isRunning }: { title: string, isRunning: boolean }) {
-    const { language, setLanguage, t } = useTranslation();
+interface SystemStats {
+    running: boolean;
+    workers: number;
+    stats: {
+        total_tasks: number;
+        total_media: number;
+        total_success: number;
+        total_failed: number;
+        total_duration: number;
+    };
+}
+
+export function Header({ title }: { title: string, isRunning?: boolean }) { // Keep optional isRunning in type just in case but remove from destructure if unused or remove entirely.
+    const { t, language, setLanguage } = useTranslation();
+    const { theme, setTheme } = useTheme();
+    const [stats, setStats] = useState<SystemStats | null>(null);
+
+    // Poll for stats
+    useEffect(() => {
+        const fetchStats = async () => {
+            // In a real app we might use react-query or swr, keeping it simple here
+            try {
+                const res = await fetch('http://localhost:8000/api/status');
+                // If connecting to generic stats, make sure the endpoint returns SystemStats structure
+                if (res.ok) setStats(await res.json());
+            } catch (e) { }
+        };
+        fetchStats();
+        const interval = setInterval(fetchStats, 2000);
+        return () => clearInterval(interval);
+    }, []);
+
+    const s = stats?.stats || { total_media: 0, total_success: 0, total_failed: 0 };
+    const successRate = s.total_media ? Math.round((s.total_success / s.total_media) * 100) : 100;
 
     return (
-        <motion.header
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            className="flex justify-between items-center bg-transparent h-16 shrink-0 z-30 transition-all"
-        >
-            <div className="flex items-center gap-6">
-                <div className="flex flex-col">
-                    <h2 className="text-2xl font-bold text-text-main tracking-tight font-display uppercase leading-none">
-                        {t(title as any) || title}
-                    </h2>
-                    <span className="text-[10px] text-primary/80 font-mono tracking-[0.3em] uppercase mt-1">
-                        Systems Operational
-                    </span>
-                </div>
-
-                {isRunning && (
-                    <div className="relative group">
-                        <div className="absolute inset-0 bg-accent-success/20 blur-md rounded-full animate-pulse" />
-                        <div className="relative flex items-center gap-2 px-3 py-1 bg-accent-success/10 text-accent-success border border-accent-success/20 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider backdrop-blur-md">
-                            <Activity size={12} className="animate-spin-slow" />
-                            <span>{t('running')}</span>
+        <header className="w-full flex items-center justify-between gap-6 px-0 py-2">
+            {/* Left: Logo & Title */}
+            <div className="flex items-center gap-4 min-w-0">
+                <div className="flex items-center gap-3">
+                    {/* Logo / Brand */}
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-primary to-blue-500 shadow-lg shadow-primary/20 flex items-center justify-center text-white font-bold text-lg select-none">
+                        M
+                    </div>
+                    <div className="flex flex-col justify-center">
+                        <div className="font-bold text-lg leading-none tracking-tight text-foreground">
+                            Media<span className="text-primary">Agent</span>
+                        </div>
+                        <div className="text-[10px] uppercase font-bold text-muted-foreground/60 tracking-widest mt-0.5">
+                            {t(title as any) || title}
                         </div>
                     </div>
+                </div>
+            </div>
+
+            {/* Middle: System Stats (Collapsed on mobile, expanded on desktop) */}
+            <div className="hidden lg:flex flex-1 items-center justify-center gap-8">
+                <StatItem
+                    label={t('system_status')}
+                    value={stats?.running ? t('status_online') : t('status_standby')}
+                    active={stats?.running}
+                    color={stats?.running ? "bg-emerald-500" : "bg-amber-500"}
+                />
+                <div className="w-px h-8 bg-border" />
+                <StatItem
+                    label={t('threads')}
+                    value={`${stats?.workers || '--'}`}
+                    icon={Cpu}
+                />
+                <div className="w-px h-8 bg-border" />
+                <StatItem
+                    label={t('processed')}
+                    value={`${s.total_media} ${t('items')}`}
+                    icon={Database}
+                />
+                {s.total_media > 0 && (
+                    <>
+                        <div className="w-px h-8 bg-border" />
+                        <StatItem
+                            label={t('success_rate')}
+                            value={`${successRate}%`}
+                            active={successRate > 90}
+                            color={successRate > 90 ? "bg-emerald-500" : "bg-red-500"}
+                            icon={BarChart3}
+                        />
+                    </>
                 )}
             </div>
 
-            <div className="flex items-center gap-3 bg-panel/30 border border-white/5 backdrop-blur-md px-2 py-1.5 rounded-full shadow-lg">
-                <ThemeToggle />
-                <div className="w-px h-4 bg-white/10" />
+            {/* Right: Actions (Theme, Lang) */}
+            <div className="flex items-center gap-2">
+                {/* Language Toggler */}
+                <div className="bg-slate-100 dark:bg-surface rounded-full p-1 border border-border flex items-center gap-1">
+                    {Object.keys(languageOptions).map((lang) => (
+                        <button
+                            key={lang}
+                            onClick={() => setLanguage(lang as any)}
+                            className={cn(
+                                "text-[10px] font-bold px-3 py-1.5 rounded-full transition-all uppercase",
+                                language === lang
+                                    ? "bg-primary text-white shadow-md shadow-primary/30 transform scale-105"
+                                    : "text-slate-500 dark:text-muted hover:text-slate-900 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5"
+                            )}
+                        >
+                            {lang === 'en' ? 'EN' : 'CN'}
+                        </button>
+                    ))}
+                </div>
+
+                {/* Theme Toggler */}
                 <button
-                    onClick={() => setLanguage(language === 'en' ? 'zh' : 'en')}
-                    className="flex items-center gap-2 px-3 py-1.5 rounded-full hover:bg-white/10 text-text-muted hover:text-text-main transition-all text-xs font-bold uppercase tracking-wider group relative overflow-hidden"
-                    title="Switch Language"
+                    onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                    className="p-2.5 rounded-full bg-slate-100 dark:bg-surface border border-border text-slate-500 dark:text-muted hover:text-primary hover:bg-slate-200 dark:hover:bg-white/5 transition-all"
+                    title={theme === 'dark' ? "Switch to Light Mode" : "Switch to Dark Mode"}
                 >
-                    <Languages className="w-3.5 h-3.5 text-primary group-hover:rotate-12 transition-transform" />
-                    <span>{language === 'en' ? 'EN' : 'CN'}</span>
+                    {theme === 'dark' ? <Moon size={18} /> : <Sun size={18} />}
                 </button>
             </div>
-        </motion.header>
+        </header>
+    );
+}
+
+function StatItem({ label, value, active, color, icon: Icon }: any) {
+    return (
+        <div className="flex flex-col items-center min-w-[80px]">
+            <div className="text-[9px] font-bold uppercase text-muted-foreground/60 tracking-wider mb-0.5 flex items-center gap-1.5">
+                {color && <div className={cn("w-1.5 h-1.5 rounded-full shadow-sm", color, active && "animate-pulse")} />}
+                {label}
+            </div>
+            <div className="font-mono text-xs font-bold text-foreground flex items-center gap-1.5">
+                {Icon && <Icon size={12} className="text-primary/70" />}
+                {value}
+            </div>
+        </div>
     );
 }

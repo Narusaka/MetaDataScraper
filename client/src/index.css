@@ -6,18 +6,22 @@
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  --bg-main: #f0f2f5;
+  --bg-main: #f8fafc;
+  /* Slate 50 */
   --bg-panel: #ffffff;
-  --bg-surface: #f8fafc;
+  --bg-surface: #f1f5f9;
+  /* Slate 100 */
 
   --primary: #2563eb;
-  /* Professional Blue */
-  --primary-dim: rgba(37, 99, 235, 0.2);
-  --primary-glow: rgba(37, 99, 235, 0.4);
+  /* Blue 600 */
+  --primary-rgb: 37, 99, 235;
+  --primary-dim: rgba(37, 99, 235, 0.1);
+  --primary-glow: rgba(37, 99, 235, 0.3);
+  --primary-foreground: #ffffff;
 
   --secondary: #475569;
   /* Slate 600 */
-  --secondary-glow: rgba(71, 85, 105, 0.2);
+  --secondary-glow: rgba(71, 85, 105, 0.1);
 
   --text-main: #0f172a;
   /* Slate 900 */
@@ -26,7 +30,8 @@
   --text-dim: #94a3b8;
   /* Slate 400 */
 
-  --border-light: rgba(0, 0, 0, 0.1);
+  --border-light: #e2e8f0;
+  /* Slate 200 - Solid over alpha for cleanliness */
   --border-active: var(--primary);
 
   --accent-success: #10b981;
@@ -34,49 +39,62 @@
   --accent-error: #ef4444;
   --accent-info: #06b6d4;
 
-  --glass-surface: rgba(255, 255, 255, 0.9);
-  --glass-border: rgba(0, 0, 0, 0.1);
-  --glass-highlight: rgba(255, 255, 255, 0.8);
+  --glass-surface: rgba(255, 255, 255, 0.95);
+  --glass-border: rgba(226, 232, 240, 0.8);
+  --glass-highlight: rgba(255, 255, 255, 1);
 
-  /* Usage: rgba(var(--grid-color), var(--grid-opacity)) */
-  --grid-opacity: 0.04;
+  --grid-opacity: 0.03;
   --grid-color: 0, 0, 0;
+
+  --text-on-active: var(--primary);
 }
 
 .dark {
-  /* --- DARK THEME (Quantum HCI) --- */
-  --bg-main: #050505;
-  --bg-panel: #0a0a0c;
-  --bg-surface: #121214;
+  /* --- DARK THEME (Deep Space OLED) --- */
+  --bg-main: #020617;
+  /* Slate 950 (Rich Black/Blue) */
+  --bg-panel: #0f172a;
+  /* Slate 900 */
+  --bg-surface: #1e293b;
+  /* Slate 800 */
 
-  --primary: #00f0ff;
-  /* Electric Cyan */
-  --primary-dim: rgba(0, 240, 255, 0.5);
-  --primary-glow: rgba(0, 240, 255, 0.4);
+  --primary: #38bdf8;
+  /* Sky 400 - Better contrast on dark */
+  --primary-rgb: 56, 189, 248;
+  --primary-dim: rgba(56, 189, 248, 0.15);
+  --primary-glow: rgba(56, 189, 248, 0.25);
+  --primary-foreground: #020617;
 
-  --secondary: #bd00ff;
-  /* Neon Purple */
-  --secondary-glow: rgba(189, 0, 255, 0.4);
+  --secondary: #a78bfa;
+  /* Violet 400 */
+  --secondary-glow: rgba(167, 139, 250, 0.2);
 
-  --text-main: #ffffff;
-  --text-muted: #8892b0;
-  --text-dim: #4a5568;
+  --text-main: #f8fafc;
+  /* Slate 50 */
+  --text-muted: #94a3b8;
+  /* Slate 400 */
+  --text-dim: #475569;
+  /* Slate 600 */
 
-  --border-light: rgba(255, 255, 255, 0.08);
+  --border-light: #1e293b;
+  /* Slate 800 - Subtle solid borders */
   --border-active: var(--primary);
 
-  --accent-success: #00ff9d;
-  --accent-warning: #ffb800;
-  --accent-error: #ff0055;
-  --accent-info: #00f0ff;
+  --accent-success: #34d399;
+  --accent-warning: #fbbf24;
+  --accent-error: #f87171;
+  --accent-info: #22d3ee;
 
-  --glass-surface: rgba(10, 10, 12, 0.6);
+  /* Glass variables tailored for dark mode to reduce noise */
+  --glass-surface: rgba(15, 23, 42, 0.95);
   --glass-border: rgba(255, 255, 255, 0.08);
-  /* Slightly stronger in dark for definition */
   --glass-highlight: rgba(255, 255, 255, 0.05);
 
-  --grid-opacity: 0.05;
-  --grid-color: 0, 240, 255;
+  --grid-opacity: 0.03;
+  /* Reduced from 0.05 to reduce noise */
+  --grid-color: 56, 189, 248;
+
+  --text-on-active: #000000;
 }
 
 /* Base Styles */

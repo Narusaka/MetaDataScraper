@@ -345,27 +345,27 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
     const totalCount = sortedTaskList.length;
 
     return (
-        <div className="flex flex-col h-full bg-card/95 border border-white/5 rounded-2xl overflow-hidden shadow-sm">
+        <div className="flex flex-col h-full bg-white/50 dark:bg-card/95 border border-slate-200 dark:border-white/5 rounded-2xl overflow-hidden shadow-sm">
             {/* Toolbar */}
-            <div className="flex items-center justify-between px-6 py-4 bg-card/95 border-b border-border">
+            <div className="flex items-center justify-between px-6 py-4 bg-white/80 dark:bg-card/95 border-b border-border backdrop-blur-sm">
                 <div className="flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_var(--color-primary)]" />
-                    <h3 className="font-bold text-sm uppercase tracking-widest text-foreground/80">
+                    <h3 className="font-bold text-sm uppercase tracking-widest text-slate-700 dark:text-foreground/80">
                         {t('mission_control')} <span className="opacity-50 ml-1 text-xs font-mono text-muted-foreground">({finishedCount}/{totalCount})</span>
                     </h3>
                 </div>
                 <div className="flex items-center gap-2">
                     {/* Sort Controls */}
-                    <div className="flex bg-muted rounded-lg p-1 border border-border mr-2">
+                    <div className="flex bg-slate-100 dark:bg-muted rounded-lg p-1 border border-border mr-2">
                         <button
                             onClick={() => setSortConfig(prev => ({ field: 'time', direction: prev.field === 'time' && prev.direction === 'desc' ? 'asc' : 'desc' }))}
                             className={cn(
                                 "flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all text-[10px] font-bold uppercase tracking-wider",
-                                sortConfig.field === 'time' ? "bg-primary/10 text-primary shadow-sm" : "text-muted-foreground hover:text-foreground hover:bg-background/50"
+                                sortConfig.field === 'time' ? "bg-white dark:bg-primary/10 text-primary shadow-sm" : "text-slate-500 dark:text-muted-foreground hover:text-slate-900 dark:hover:text-foreground hover:bg-black/5 dark:hover:bg-background/50"
                             )}
                         >
                             <Clock className="w-3.5 h-3.5" />
-                            <span>Time</span>
+                            <span>{t('time')}</span>
                             {sortConfig.field === 'time' && (
                                 <ChevronRight className={cn("w-3 h-3 transition-transform", sortConfig.direction === 'asc' ? "-rotate-90" : "rotate-90")} />
                             )}
@@ -375,11 +375,11 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                             onClick={() => setSortConfig(prev => ({ field: 'name', direction: prev.field === 'name' && prev.direction === 'asc' ? 'desc' : 'asc' }))}
                             className={cn(
                                 "flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all text-[10px] font-bold uppercase tracking-wider",
-                                sortConfig.field === 'name' ? "bg-primary/10 text-primary shadow-sm" : "text-muted-foreground hover:text-foreground hover:bg-background/50"
+                                sortConfig.field === 'name' ? "bg-white dark:bg-primary/10 text-primary shadow-sm" : "text-slate-500 dark:text-muted-foreground hover:text-slate-900 dark:hover:text-foreground hover:bg-black/5 dark:hover:bg-background/50"
                             )}
                         >
                             <ArrowDownAZ className="w-3.5 h-3.5" />
-                            <span>Name</span>
+                            <span>{t('name')}</span>
                             {sortConfig.field === 'name' && (
                                 <ChevronRight className={cn("w-3 h-3 transition-transform", sortConfig.direction === 'asc' ? "-rotate-90" : "rotate-90")} />
                             )}
@@ -389,39 +389,42 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                             onClick={() => setSortConfig(prev => ({ field: 'status', direction: prev.field === 'status' && prev.direction === 'asc' ? 'desc' : 'asc' }))}
                             className={cn(
                                 "flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all text-[10px] font-bold uppercase tracking-wider",
-                                sortConfig.field === 'status' ? "bg-primary/10 text-primary shadow-sm" : "text-muted-foreground hover:text-foreground hover:bg-background/50"
+                                sortConfig.field === 'status' ? "bg-white dark:bg-primary/10 text-primary shadow-sm" : "text-slate-500 dark:text-muted-foreground hover:text-slate-900 dark:hover:text-foreground hover:bg-black/5 dark:hover:bg-background/50"
                             )}
                         >
                             <Activity className="w-3.5 h-3.5" />
-                            <span>State</span>
+                            <span>{t('status')}</span>
                             {sortConfig.field === 'status' && (
                                 <ChevronRight className={cn("w-3 h-3 transition-transform", sortConfig.direction === 'asc' ? "-rotate-90" : "rotate-90")} />
                             )}
                         </button>
                     </div>
 
-                    <div className="flex bg-muted rounded-lg p-1 mr-4 border border-border">
-                        <button onClick={() => setViewMode('grid')} className={cn("p-1.5 rounded-md transition-all", viewMode === 'grid' ? "bg-primary/10 text-primary shadow-sm" : "text-muted-foreground hover:text-foreground hover:bg-background/50")}>
+                    <div className="flex bg-slate-100 dark:bg-muted rounded-lg p-1 mr-4 border border-border">
+                        <button onClick={() => setViewMode('grid')} className={cn("p-1.5 rounded-md transition-all", viewMode === 'grid' ? "bg-white dark:bg-primary/10 text-primary shadow-sm" : "text-slate-500 dark:text-muted-foreground hover:text-slate-900 dark:hover:text-foreground hover:bg-black/5 dark:hover:bg-background/50")}>
                             <LayoutGrid className="w-4 h-4" />
                         </button>
-                        <button onClick={() => setViewMode('list')} className={cn("p-1.5 rounded-md transition-all", viewMode === 'list' ? "bg-primary/10 text-primary shadow-sm" : "text-muted-foreground hover:text-foreground hover:bg-background/50")}>
+                        <button onClick={() => setViewMode('list')} className={cn("p-1.5 rounded-md transition-all", viewMode === 'list' ? "bg-white dark:bg-primary/10 text-primary shadow-sm" : "text-slate-500 dark:text-muted-foreground hover:text-slate-900 dark:hover:text-foreground hover:bg-black/5 dark:hover:bg-background/50")}>
                             <List className="w-4 h-4" />
                         </button>
                     </div>
-                    <button onClick={() => setShowRaw(!showRaw)} className={cn("flex items-center gap-2 px-3 py-1.5 rounded-lg border text-[10px] font-bold uppercase transition-all", showRaw ? "bg-primary border-primary text-primary-foreground" : "border-border text-muted-foreground hover:border-primary/50 hover:text-foreground")}>
+                    <button onClick={() => setShowRaw(!showRaw)} className={cn("flex items-center gap-2 px-3 py-1.5 rounded-lg border text-[10px] font-bold uppercase transition-all", showRaw ? "bg-primary border-primary text-primary-foreground" : "border-border text-slate-500 dark:text-muted-foreground hover:border-primary/50 hover:text-primary")}>
                         <Terminal className="w-3.5 h-3.5" />
                         {t('console')}
                     </button>
                 </div>
             </div>
             {/* Content Area */}
-            <div className="flex-1 overflow-auto bg-surface relative p-4">
+            <div className="flex-1 overflow-auto bg-slate-50 dark:bg-black/20 relative p-4">
                 {sortedTaskList.length === 0 ? (
-                    <div className="flex flex-col items-center justify-center h-full text-secondary opacity-50 gap-4">
-                        <div className="w-16 h-16 rounded-2xl bg-muted/20 flex items-center justify-center animate-pulse">
+                    <div className="flex flex-col items-center justify-center h-full text-slate-500 dark:text-muted-foreground gap-4">
+                        <div className="w-16 h-16 rounded-2xl bg-slate-200 dark:bg-white/5 flex items-center justify-center animate-pulse">
                             <MonitorPlay className="w-8 h-8 opacity-50" />
                         </div>
-                        <p className="font-mono text-xs">{t('waiting_missions')}</p>
+                        <div className="text-center space-y-1">
+                            <p className="font-mono text-xs font-bold uppercase tracking-wider">{t('waiting_missions')}</p>
+                            <p className="text-[10px] opacity-70 max-w-[200px] mx-auto leading-relaxed">{t('empty_state_help')}</p>
+                        </div>
                     </div>
                 ) : viewMode === 'list' ? (
                     <div className="rounded-xl border border-border overflow-hidden bg-panel/95">
@@ -429,7 +432,7 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                             <thead className="bg-muted/30 border-b border-border text-[10px] uppercase font-bold text-secondary tracking-wider">
                                 <tr>
                                     <th className="px-4 py-3 w-16 text-center">{t('type')}</th>
-                                    <th className="px-4 py-3">{t('task_path')}</th>
+                                    <th className="px-4 py-3 min-w-[120px]">{t('name')}</th>
                                     <th className="px-4 py-3 w-32">{t('status')}</th>
                                     <th className="px-4 py-3 w-48">{t('current_step')}</th>
                                     <th className="px-4 py-3 w-28 text-right">{t('actions')}</th>
@@ -477,21 +480,21 @@ function TaskCard({ task, onExecute }: { task: Task, onExecute: (t: Task) => voi
 
     const getStatusInfo = (s: string) => {
         switch (s) {
-            case 'completed': return { color: 'bg-emerald-500', ring: 'shadow-[0_0_8px_rgba(16,185,129,0.5)]' };
-            case 'failed': return { color: 'bg-red-500', ring: 'shadow-[0_0_8px_rgba(239,68,68,0.5)]' };
-            case 'processing': return { color: 'bg-primary', ring: 'shadow-[0_0_8px_var(--primary-glow)] animate-pulse' };
-            case 'fetching': return { color: 'bg-indigo-500', ring: 'shadow-[0_0_8px_rgba(99,102,241,0.5)]' };
-            case 'searching': return { color: 'bg-amber-500', ring: 'shadow-[0_0_8px_rgba(245,158,11,0.5)]' };
+            case 'completed': return { color: 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20', label: t('status_completed') };
+            case 'failed': return { color: 'bg-red-500/10 text-red-500 border-red-500/20', label: t('status_failed') };
+            case 'processing': return { color: 'bg-primary/10 text-primary border-primary/20 animate-pulse', label: 'Processing' };
+            case 'fetching': return { color: 'bg-indigo-500/10 text-indigo-500 border-indigo-500/20', label: 'Fetching' };
+            case 'searching': return { color: 'bg-amber-500/10 text-amber-500 border-amber-500/20', label: 'Searching' };
             case 'dry_run':
-            case 'audit_completed': return { color: 'bg-sky-500', ring: 'shadow-[0_0_8px_rgba(14,165,233,0.5)]' };
-            default: return { color: 'bg-slate-500', ring: '' };
+            case 'audit_completed': return { color: 'bg-sky-500/10 text-sky-500 border-sky-500/20', label: t('audit_result') };
+            default: return { color: 'bg-slate-500/10 text-slate-500 border-slate-500/20', label: t('idle') };
         }
     };
 
     const statusInfo = getStatusInfo(task.status);
 
     return (
-        <div className="relative p-4 rounded-xl border border-white/5 bg-white/[0.05] hover:bg-white/[0.08] transition-all flex flex-col gap-3 group overflow-hidden shadow-sm">
+        <div className="relative p-4 rounded-xl border border-slate-200 dark:border-white/5 bg-white dark:bg-white/[0.05] hover:bg-slate-50 dark:hover:bg-white/[0.08] transition-all flex flex-col gap-3 group overflow-hidden shadow-sm">
             {/* Hover Glow Effect */}
             <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
 
@@ -500,29 +503,29 @@ function TaskCard({ task, onExecute }: { task: Task, onExecute: (t: Task) => voi
                 <div className="flex items-start gap-3 overflow-hidden">
                     {/* Icon Box */}
                     <div className={cn(
-                        "p-2 rounded-lg shrink-0 flex items-center justify-center border border-white/10",
-                        task.mediaType === 'tv' ? "bg-purple-500/10 text-purple-400" : "bg-blue-500/10 text-blue-400"
+                        "p-2 rounded-lg shrink-0 flex items-center justify-center border border-slate-100 dark:border-white/10",
+                        task.mediaType === 'tv' ? "bg-purple-50 text-purple-600 dark:bg-purple-500/10 dark:text-purple-400" : "bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400"
                     )}>
                         {task.mediaType === 'tv' ? <MonitorPlay size={18} /> : <FileVideo size={18} />}
                     </div>
 
                     {/* Title & Badges */}
                     <div className="min-w-0 flex-1">
-                        <h4 className="font-bold text-sm text-foreground line-clamp-2 leading-tight mb-1 min-h-[1.25rem]" title={task.name}>
+                        <h4 className="font-bold text-sm text-slate-900 dark:text-foreground line-clamp-2 leading-tight mb-1 min-h-[1.25rem]" title={task.name}>
                             {cleanTitle}
                         </h4>
                         <div className="flex flex-wrap gap-1.5">
                             {displayYear && (
-                                <span className="px-1.5 py-0.5 rounded-md bg-white/5 border border-white/5 text-[9px] font-mono text-muted-foreground font-bold">
+                                <span className="px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/5 text-[9px] font-mono text-slate-500 dark:text-muted-foreground font-bold">
                                     {displayYear}
                                 </span>
                             )}
                             {task.tmdbId ? (
-                                <span className="px-1.5 py-0.5 rounded-md bg-[#0d253f] border border-[#01b4e4]/30 text-[9px] font-mono text-[#01b4e4] font-bold flex items-center gap-1">
+                                <span className="px-1.5 py-0.5 rounded-md bg-sky-50 dark:bg-[#0d253f] border border-sky-200 dark:border-[#01b4e4]/30 text-[9px] font-mono text-sky-600 dark:text-[#01b4e4] font-bold flex items-center gap-1">
                                     TMDB {task.tmdbId}
                                 </span>
                             ) : (
-                                <span className="px-1.5 py-0.5 rounded-md bg-white/5 border border-white/5 text-[9px] font-mono text-muted-foreground/50">
+                                <span className="px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/5 text-[9px] font-mono text-slate-400 dark:text-muted-foreground/50">
                                     NO ID
                                 </span>
                             )}
@@ -530,24 +533,29 @@ function TaskCard({ task, onExecute }: { task: Task, onExecute: (t: Task) => voi
                     </div>
                 </div>
 
-                {/* Status Dot */}
+                {/* Status Badge (Replaces Blue Dot) */}
                 <div className="flex flex-col items-end gap-1 shrink-0">
-                    <div className={cn("w-2.5 h-2.5 rounded-full", statusInfo.color, statusInfo.ring)} title={task.status} />
+                    <span className={cn(
+                        "text-[9px] font-bold uppercase tracking-wider px-2 py-1 rounded-md border",
+                        statusInfo.color
+                    )}>
+                        {statusInfo.label || task.status}
+                    </span>
                 </div>
             </div>
 
             {/* Path */}
-            <div className="relative z-10 bg-black/20 rounded-md px-2 py-1.5 border border-white/5">
-                <div className="text-[10px] font-mono text-muted-foreground/70 truncate" title={task.fullPath}>
+            <div className="relative z-10 bg-slate-50 dark:bg-black/20 rounded-md px-2 py-1.5 border border-slate-100 dark:border-white/5">
+                <div className="text-[10px] font-mono text-slate-500 dark:text-muted-foreground/70 truncate" title={task.fullPath}>
                     {task.fullPath || "—"}
                 </div>
             </div>
 
             {/* Footer: Step & Action */}
-            <div className="flex items-center justify-between mt-auto pt-2 border-t border-white/5 relative z-10">
+            <div className="flex items-center justify-between mt-auto pt-2 border-t border-slate-100 dark:border-white/5 relative z-10">
                 <div className="flex-1 min-w-0 mr-4">
-                    <div className="text-[10px] uppercase font-bold text-muted-foreground/50 tracking-wider mb-0.5">STATUS</div>
-                    <div className="text-[10px] text-primary truncate font-mono" title={task.step}>
+                    <div className="text-[10px] text-text-muted/70 truncate font-mono" title={task.step}>
+                        <span className="opacity-50 mr-1">Step:</span>
                         {task.step}
                     </div>
                 </div>
@@ -559,7 +567,7 @@ function TaskCard({ task, onExecute }: { task: Task, onExecute: (t: Task) => voi
                         className={cn(
                             "flex items-center gap-2 px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all",
                             hasRun
-                                ? "text-muted-foreground/50 bg-white/5 cursor-not-allowed"
+                                ? "text-slate-400 dark:text-muted-foreground/50 bg-slate-100 dark:bg-white/5 cursor-not-allowed"
                                 : "bg-primary text-primary-foreground shadow-lg shadow-primary/20 hover:brightness-110 active:scale-95"
                         )}
                     >
@@ -591,13 +599,13 @@ function TaskRow({ task, onExecute }: { task: Task, onExecute: (t: Task) => void
     };
 
     return (
-        <tr className="hover:bg-white/[0.02] group transition-colors">
-            <td className="px-4 py-3 text-secondary text-center">
+        <tr className="hover:bg-slate-50 dark:hover:bg-white/[0.02] group transition-colors">
+            <td className="px-4 py-3 text-slate-500 dark:text-secondary text-center">
                 {task.mediaType === 'tv' ? <MonitorPlay className="w-4 h-4 mx-auto" /> : <FileVideo className="w-4 h-4 mx-auto" />}
             </td>
             <td className="px-4 py-3 min-w-0 max-w-[300px]">
-                <div className="font-semibold text-text truncate" title={task.name}>{task.name}</div>
-                <div className="text-[10px] text-muted truncate opacity-50 font-mono" title={task.fullPath}>
+                <div className="font-semibold text-slate-900 dark:text-text truncate" title={task.name}>{task.name}</div>
+                <div className="text-[10px] text-slate-500 dark:text-muted truncate opacity-50 font-mono" title={task.fullPath}>
                     {task.fullPath || task.threadId}
                 </div>
             </td>
@@ -610,7 +618,7 @@ function TaskRow({ task, onExecute }: { task: Task, onExecute: (t: Task) => void
                 </span>
             </td>
             <td className="px-4 py-3">
-                <div className="text-muted truncate max-w-[200px]" title={task.lastLog}>
+                <div className="text-slate-600 dark:text-muted truncate max-w-[200px]" title={task.lastLog}>
                     {task.step}
                 </div>
             </td>
@@ -622,7 +630,7 @@ function TaskRow({ task, onExecute }: { task: Task, onExecute: (t: Task) => void
                         className={cn(
                             "inline-flex items-center gap-1.5 px-3 py-1 rounded text-[10px] font-bold uppercase tracking-wider transition-all",
                             hasRun
-                                ? "text-muted-foreground cursor-not-allowed"
+                                ? "text-slate-400 dark:text-muted-foreground cursor-not-allowed"
                                 : "bg-primary/10 text-primary hover:bg-primary/20 border border-primary/30"
                         )}
                     >

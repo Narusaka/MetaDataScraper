@@ -4,7 +4,6 @@ import { TerminalView } from './components/TerminalView';
 import { SettingsView } from './components/SettingsView';
 import { Dashboard } from './components/Dashboard';
 import { Header } from './components/Header';
-import { cn } from './lib/utils';
 import { Menu, Terminal } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 

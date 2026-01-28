@@ -113,19 +113,50 @@ class MediaPipeline:
             tmdb_id = candidate["id"]
             media_type = candidate.get("media_type")
 
-            # Ensure we have the title for logging/UI update (even for direct ID runs)
-            if not (candidate.get("name") or candidate.get("title")):
+            # Ensure we have the title/year for logging/UI update (even for direct ID runs)
+            # Fetch details if missing title OR if we need to validate year for a non-TMDB-search result
+            target_year = input_data.get("year")
+            
+            if not (candidate.get("name") or candidate.get("title")) or (target_year and "first_air_date" not in candidate and "release_date" not in candidate):
                 try:
                     if media_type == "movie":
                         details = self.tmdb.get_movie_details(tmdb_id)
                         candidate["title"] = details.get("title", "")
                         candidate["name"] = details.get("title", "")
+                        candidate["release_date"] = details.get("release_date", "")
                     else:
                         details = self.tmdb.get_tv_details(tmdb_id)
                         candidate["name"] = details.get("name", "")
                         candidate["title"] = details.get("name", "")
+                        candidate["first_air_date"] = details.get("first_air_date", "")
                 except:
                     pass # Ignore fetch error, just log what we have
+
+            # Strict Year Validation
+            candidate_date = candidate.get('first_air_date') or candidate.get('release_date') or ""
+            candidate_year = int(candidate_date[:4]) if candidate_date and len(candidate_date) >= 4 else 0
+            
+            # Skip validation if manual ID provided
+            is_manual_override = input_data.get("tmdb_id") is not None
+            
+            if target_year and candidate_year != 0 and not is_manual_override:
+                 if candidate_year != target_year:
+                     self._log(f"❌ STRICT MODE: Candidate Year {candidate_year} != Target {target_year}. Rejecting ID {tmdb_id}.", verbose_only=False)
+                     return {"status": "failed", "error": f"Year mismatch: {candidate_year} vs {target_year}"}
+
+            # Append Year to Title for UI Display and Sanitize for Logging
+            display_title = candidate.get('name') or candidate.get('title')
+            # Replace single quotes with typographic ones to avoid breaking frontend regex matching Title='...'
+            if display_title:
+                display_title = display_title.replace("'", "’")
+            
+            if candidate_year and display_title:
+                if str(candidate_year) not in display_title:
+                    candidate["name"] = f"{display_title} ({candidate_year})"
+                    candidate["title"] = f"{display_title} ({candidate_year})"
+            elif display_title:
+                 candidate["name"] = display_title
+                 candidate["title"] = display_title
 
             self._log(f"✅ Selected Candidate: TMDB ID {tmdb_id} Title='{candidate.get('name') or candidate.get('title')}' (Type: {media_type})", verbose_only=False)
 

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { LayoutDashboard, Settings, Activity, ChevronLeft, ChevronRight, Hexagon, Command, Cpu } from 'lucide-react';
+import { LayoutDashboard, Settings, Activity, ChevronLeft, ChevronRight, Hexagon, Cpu } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useTranslation } from '../lib/language';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -28,30 +28,22 @@ export function Sidebar({ activeTab, onTabChange, mobileOpen = false, onMobileCl
                 className={cn(
                     "group relative flex items-center gap-4 px-3 py-3 rounded-xl transition-all duration-300 overflow-hidden",
                     isActive
-                        ? "text-primary bg-primary/10 shadow-[0_0_20px_rgba(59,130,246,0.15)] border border-primary/20"
-                        : "text-text-muted hover:text-text-main hover:bg-white/5",
+                        ? "bg-primary text-primary-foreground shadow-lg shadow-primary/30"
+                        : "text-slate-500 dark:text-text-muted hover:text-slate-900 dark:hover:text-text-main hover:bg-slate-200/50 dark:hover:bg-white/5",
                     collapsed ? "justify-center w-12 h-12 mx-auto px-0" : "w-full"
                 )}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
             >
-                {/* Active Indicator Line (Left) */}
-                {isActive && (
-                    <motion.div
-                        layoutId="activeIndicator"
-                        className="absolute left-0 top-2 bottom-2 w-1 bg-primary rounded-r-full shadow-[0_0_10px_var(--primary)]"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                    />
-                )}
+                {/* Active Indicator Line (Left) - REMOVED for Block Style */}
+
 
                 <div className="relative z-10 flex items-center gap-4">
                     <Icon
                         size={20}
                         className={cn(
                             "shrink-0 transition-colors duration-300",
-                            isActive ? "text-primary drop-shadow-[0_0_8px_rgba(59,130,246,0.5)]" : "group-hover:text-text-main"
+                            isActive ? "text-primary-foreground" : "group-hover:text-slate-900 dark:group-hover:text-text-main"
                         )}
                     />
 

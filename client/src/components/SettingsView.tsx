@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from 'react';
-import { Save, Loader2, Key, Database, Image as ImageIcon, Monitor } from 'lucide-react';
+import { Save, Loader2, Key, Database, Image as ImageIcon, Monitor, Cpu } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useTranslation } from '../lib/language';
 import { useTheme } from 'next-themes';
@@ -32,6 +32,7 @@ export function SettingsView() {
     const [loading, setLoading] = useState(false);
     const [saving, setSaving] = useState(false);
     const [msg, setMsg] = useState<{ type: 'success' | 'error', text: string } | null>(null);
+    const [workers, setWorkers] = useState(() => parseInt(localStorage.getItem('task_workers') || "4"));
 
     useEffect(() => {
         fetchSettings();
@@ -92,6 +93,7 @@ export function SettingsView() {
     if (loading && !config) {
         return <div className="flex justify-center p-12"><Loader2 className="animate-spin" /></div>;
     }
+
 
     if (!config) return <div>Error loading config.</div>;
 
@@ -184,8 +186,37 @@ export function SettingsView() {
 
                 </div>
 
-                {/* Column 2: LLM & Output */}
+                {/* Column 2: LLM & Output & Execution */}
                 <div className="space-y-8">
+
+                    {/* Execution Settings (Client Side) */}
+                    <div className="space-y-6">
+                        <SectionLabel icon={<Cpu />} label="Task Execution" />
+                        <div className="space-y-4">
+                            <div className="glass-panel-pro bg-black/10 px-4 py-3 rounded-lg border border-border/30">
+                                <div className="flex justify-between items-center mb-2">
+                                    <label className="text-xs text-secondary font-medium uppercase">Thread Allocation</label>
+                                    <span className="text-xs font-mono font-bold text-primary">
+                                        {workers} CORES
+                                    </span>
+                                </div>
+                                <input
+                                    type="range" min="1" max="16"
+                                    value={workers}
+                                    onChange={(e) => {
+                                        const val = parseInt(e.target.value);
+                                        setWorkers(val);
+                                        localStorage.setItem('task_workers', val.toString());
+                                    }}
+                                    className="w-full accent-primary h-1 bg-surface rounded-full appearance-none cursor-pointer"
+                                />
+                                <p className="text-[10px] text-muted-foreground mt-2">
+                                    Determines how many concurrent scraping tasks run. Higher values require more CPU/RAM.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
                     <div className="space-y-6">
                         <SectionLabel icon={<Database />} label="LLM Configuration" />
                         <div className="space-y-4">

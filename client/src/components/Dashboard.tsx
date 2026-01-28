@@ -379,7 +379,7 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
 
                 {/* Right: Task Board Panel (Flexible) */}
                 <div className="flex-1 min-w-0 flex flex-col h-full overflow-hidden">
-                    <TaskBoard defaultConfig={{ strategy, outputPath }} />
+                    <TaskBoard defaultConfig={{ strategy, outputPath, forceFresh }} />
                 </div>
             </div>
             {/* Folder Picker Modal */}

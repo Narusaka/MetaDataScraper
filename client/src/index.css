@@ -1,126 +1,149 @@
 @import "tailwindcss";
 
 :root {
-  /* Light Mode - 更高的对比度 */
-  --bg-gradient: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 100%);
+  /* Light Mode - Ultra Readable & Professional */
+  --bg-gradient: #f8fafc;
+  /* Solid light gray, no gradient distraction */
   --fallback-bg: #f8fafc;
 
-  /* Increased opacity for better readability */
-  --glass-bg: rgba(255, 255, 255, 0.85);
-  --glass-border: rgba(30, 41, 59, 0.1);
-  /* Darker border for visibility */
-  --glass-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  /* Solid Backgrounds for Cards - No Transparency in Light Mode */
+  --glass-bg: #ffffff;
+  --glass-border: #e2e8f0;
+  /* Slate 200 - Clearly defined borders */
+  --glass-shadow: 0 1px 2px -1px rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.1);
 
+  /* Typography - Maximum Contrast */
   --text-primary: #0f172a;
-  /* Slate 900 - Darker */
+  /* Slate 900 - Nearly Black */
   --text-secondary: #334155;
-  /* Slate 700 - Darker */
+  /* Slate 700 - Dark Gray */
   --text-muted: #64748b;
-  /* Slate 500 */
+  /* Slate 500 - Medium Gray */
+  --text-inverse: #ffffff;
 
-  --accent-primary: #4f46e5;
-  /* Indigo 600 - Darker/Vibrant */
-  --accent-glow: rgba(79, 70, 229, 0.2);
+  /* Accents - Trustworthy Blue/Indigo */
+  --accent-primary: #2563eb;
+  /* Blue 600 */
+  --accent-secondary: #3b82f6;
+  /* Blue 500 */
+  --accent-glow: rgba(37, 99, 235, 0.1);
 
-  --sidebar-bg: rgba(255, 255, 255, 0.7);
-  /* Muted Backgrounds */
-  --bg-muted: rgba(0, 0, 0, 0.05);
+  /* Component Colors */
+  --bg-card: #ffffff;
+  --bg-input: #ffffff;
+  --bg-hover: #f1f5f9;
+  /* Slate 100 */
+  --bg-active: #e2e8f0;
+  /* Slate 200 */
+
+  --sidebar-bg: #ffffff;
 }
 
 .dark {
-  /* Dark Mode - 深色背景，高亮文字 */
-  --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  /* Dark Mode - Deep, Sleek, Low Eye Strain */
+  --bg-gradient: linear-gradient(180deg, #0f172a 0%, #020617 100%);
   --fallback-bg: #020617;
 
-  /* Increased opacity */
-  --glass-bg: rgba(15, 23, 42, 0.85);
-  --glass-border: rgba(255, 255, 255, 0.15);
-  --glass-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+  /* Glass/Dark Backgrounds with subtle transparency */
+  --glass-bg: rgba(30, 41, 59, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
 
-  --text-primary: #f8fafc;
-  /* Slate 50 */
+  /* Typography */
+  --text-primary: #f1f5f9;
+  /* Slate 100 */
   --text-secondary: #cbd5e1;
   /* Slate 300 */
   --text-muted: #94a3b8;
   /* Slate 400 */
+  --text-inverse: #020617;
 
-  --accent-primary: #8b5cf6;
-  /* Violet 500 */
-  --accent-glow: rgba(139, 92, 246, 0.3);
+  /* Accents */
+  --accent-primary: #6366f1;
+  /* Indigo 500 */
+  --accent-secondary: #818cf8;
+  /* Indigo 400 */
+  --accent-glow: rgba(99, 102, 241, 0.2);
 
-  --sidebar-bg: rgba(15, 23, 42, 0.6);
+  /* Component Colors */
+  --bg-card: rgba(255, 255, 255, 0.03);
+  --bg-input: rgba(0, 0, 0, 0.3);
+  --bg-hover: rgba(255, 255, 255, 0.05);
+  --bg-active: rgba(255, 255, 255, 0.1);
 
-  /* Muted Backgrounds */
-  --bg-muted: rgba(255, 255, 255, 0.1);
+  --sidebar-bg: rgba(15, 23, 42, 0.8);
 }
 
 @theme {
   --color-border: var(--glass-border);
-  --color-input: var(--glass-bg);
+  --color-input: var(--bg-input);
   --color-ring: var(--accent-primary);
   --color-background: var(--fallback-bg);
-  /* Fallback */
   --color-foreground: var(--text-primary);
 
   --color-primary: var(--accent-primary);
-  --color-secondary: var(--text-secondary);
+  --color-primary-foreground: var(--text-inverse);
 
-  /* Muted colors */
-  --color-muted: var(--bg-muted);
+  --color-secondary: var(--text-secondary);
+  --color-secondary-foreground: var(--text-inverse);
+
+  --color-muted: var(--bg-hover);
   --color-muted-foreground: var(--text-muted);
+
+  --color-card: var(--bg-card);
+  --color-card-foreground: var(--text-primary);
+
+  --color-popover: var(--bg-card);
+  --color-popover-foreground: var(--text-primary);
 }
 
 body {
   margin: 0;
   font-family: 'Outfit', 'Inter', system-ui, sans-serif;
   color: var(--text-primary);
-  background-color: var(--fallback-bg);
-  background-image: var(--bg-gradient);
-  background-size: cover;
+  background: var(--bg-gradient);
   background-attachment: fixed;
-  transition: color 0.3s ease, background-color 0.3s ease;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Glassmorphism Utilities */
+/* Utilities */
 .glass-panel {
   background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  /* Remove blur in light mode by default logic or keep it specific to dark mode? 
+     Actually if bg is solid white, blur does nothing, which is good for performance and crispness. 
+     In dark mode, it has opacity, so blur works. */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow);
 }
 
-.glass-button {
-  background: rgba(125, 125, 125, 0.1);
-  backdrop-filter: blur(4px);
-  border: 1px solid var(--glass-border);
-  transition: all 0.2s ease-in-out;
-  color: var(--text-primary);
+/* Scrollbar - Clean & Functional */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
 }
 
-.glass-button:hover {
-  background: var(--accent-primary);
-  border-color: var(--accent-primary);
-  color: white;
-  box-shadow: 0 0 15px var(--accent-glow);
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
+.scrollbar-thin::-webkit-scrollbar-track {
   background: transparent;
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--glass-border);
-  border-radius: 4px;
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  opacity: 0.3;
+  border-radius: 3px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--text-muted);
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

@@ -74,8 +74,8 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
                 {/* Target Input */}
                 <div className="flex-1 relative group">
                     <div className="absolute inset-0 bg-primary/20 blur-xl rounded-lg opacity-0 group-focus-within:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                    <div className="flex items-center border border-border-light rounded-xl overflow-hidden focus-within:border-primary/50 focus-within:ring-1 focus-within:ring-primary/20 transition-all shadow-sm bg-[var(--bg-panel)]">
-                        <div className="px-4 py-3 bg-slate-50 dark:bg-white/5 border-r border-border-light flex items-center gap-2 text-primary font-mono text-xs font-bold uppercase tracking-wider">
+                    <div className="flex items-center border border-border-light dark:border-white/10 rounded-xl overflow-hidden focus-within:border-primary/50 focus-within:ring-1 focus-within:ring-primary/20 transition-all shadow-sm bg-[var(--bg-panel)]">
+                        <div className="px-4 py-3 bg-slate-50 dark:bg-white/5 border-r border-border-light dark:border-white/10 flex items-center gap-2 text-primary font-mono text-xs font-bold uppercase tracking-wider">
                             <FolderOpen size={14} />
                             <span>{t('target_path')}</span>
                         </div>
@@ -296,8 +296,8 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
 
 function SectionHeader({ icon: Icon, title }: any) {
     return (
-        <div className="flex items-center gap-2 mb-2 text-text-muted/60">
-            <Icon size={14} />
+        <div className="flex items-center gap-2 mb-2 text-text-muted">
+            <Icon size={14} className="text-primary/80" />
             <span className="text-[10px] font-bold uppercase tracking-[0.2em]">{title}</span>
             <div className="h-px flex-1 bg-gradient-to-r from-border-light to-transparent opacity-50" />
         </div>
@@ -306,7 +306,7 @@ function SectionHeader({ icon: Icon, title }: any) {
 
 function SegmentedControl({ options, value, onChange }: any) {
     return (
-        <div className="grid grid-cols-3 gap-1 p-1 bg-slate-200/50 dark:bg-black/20 rounded-lg border border-transparent dark:border-white/5 relative">
+        <div className="grid grid-cols-3 gap-1 p-1 bg-slate-200/50 dark:bg-black/40 rounded-lg border border-transparent dark:border-white/10 relative">
             {options.map((opt: any) => {
                 const isActive = value === opt.value;
                 return (
@@ -347,7 +347,7 @@ function Switch({ checked, onChange, label, danger }: any) {
                     "w-9 h-5 rounded-full transition-colors duration-300 relative focus:outline-none",
                     checked
                         ? (danger ? "bg-red-500" : "bg-primary")
-                        : "bg-slate-300/80 dark:bg-white/10"
+                        : "bg-slate-300/80 dark:bg-slate-700"
                 )}
             >
                 <motion.div

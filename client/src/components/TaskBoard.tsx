@@ -345,77 +345,77 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
     const totalCount = sortedTaskList.length;
 
     return (
-        <div className="flex flex-col h-full bg-white/50 dark:bg-card/95 border border-slate-200 dark:border-white/5 rounded-2xl overflow-hidden shadow-sm">
+        <div className="flex flex-col h-full bg-transparent rounded-2xl overflow-hidden">
             {/* Toolbar */}
-            <div className="flex items-center justify-between px-6 py-4 bg-white/80 dark:bg-card/95 border-b border-border backdrop-blur-sm">
+            <div className="flex items-center justify-between px-6 py-4 bg-[var(--bg-panel)]/80 border-b border-border backdrop-blur-sm">
                 <div className="flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_var(--color-primary)]" />
-                    <h3 className="font-bold text-sm uppercase tracking-widest text-slate-700 dark:text-foreground/80">
+                    <h3 className="font-bold text-sm uppercase tracking-widest text-slate-800 dark:text-white">
                         {t('mission_control')} <span className="opacity-50 ml-1 text-xs font-mono text-muted-foreground">({finishedCount}/{totalCount})</span>
                     </h3>
                 </div>
                 <div className="flex items-center gap-2">
                     {/* Sort Controls */}
-                    <div className="flex bg-slate-100 dark:bg-muted rounded-lg p-1 border border-border mr-2">
+                    <div className="flex bg-slate-100/50 dark:bg-white/5 rounded-lg p-0.5 border border-border/50 mr-2">
                         <button
                             onClick={() => setSortConfig(prev => ({ field: 'time', direction: prev.field === 'time' && prev.direction === 'desc' ? 'asc' : 'desc' }))}
                             className={cn(
                                 "flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all text-[10px] font-bold uppercase tracking-wider",
-                                sortConfig.field === 'time' ? "bg-white dark:bg-primary/10 text-primary shadow-sm" : "text-slate-500 dark:text-muted-foreground hover:text-slate-900 dark:hover:text-foreground hover:bg-black/5 dark:hover:bg-background/50"
+                                sortConfig.field === 'time' ? "bg-white dark:bg-white/10 text-slate-900 dark:text-white shadow-sm border border-black/5 dark:border-white/5" : "text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white"
                             )}
                         >
                             <Clock className="w-3.5 h-3.5" />
                             <span>{t('time')}</span>
                             {sortConfig.field === 'time' && (
-                                <ChevronRight className={cn("w-3 h-3 transition-transform", sortConfig.direction === 'asc' ? "-rotate-90" : "rotate-90")} />
+                                <ChevronRight className={cn("w-3 h-3 transition-transform opacity-50", sortConfig.direction === 'asc' ? "-rotate-90" : "rotate-90")} />
                             )}
                         </button>
-                        <div className="w-px bg-border my-1" />
+                        <div className="w-px bg-border/50 my-1 mx-0.5" />
                         <button
                             onClick={() => setSortConfig(prev => ({ field: 'name', direction: prev.field === 'name' && prev.direction === 'asc' ? 'desc' : 'asc' }))}
                             className={cn(
                                 "flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all text-[10px] font-bold uppercase tracking-wider",
-                                sortConfig.field === 'name' ? "bg-white dark:bg-primary/10 text-primary shadow-sm" : "text-slate-500 dark:text-muted-foreground hover:text-slate-900 dark:hover:text-foreground hover:bg-black/5 dark:hover:bg-background/50"
+                                sortConfig.field === 'name' ? "bg-white dark:bg-white/10 text-slate-900 dark:text-white shadow-sm border border-black/5 dark:border-white/5" : "text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white"
                             )}
                         >
                             <ArrowDownAZ className="w-3.5 h-3.5" />
                             <span>{t('name')}</span>
                             {sortConfig.field === 'name' && (
-                                <ChevronRight className={cn("w-3 h-3 transition-transform", sortConfig.direction === 'asc' ? "-rotate-90" : "rotate-90")} />
+                                <ChevronRight className={cn("w-3 h-3 transition-transform opacity-50", sortConfig.direction === 'asc' ? "-rotate-90" : "rotate-90")} />
                             )}
                         </button>
-                        <div className="w-px bg-border my-1" />
+                        <div className="w-px bg-border/50 my-1 mx-0.5" />
                         <button
                             onClick={() => setSortConfig(prev => ({ field: 'status', direction: prev.field === 'status' && prev.direction === 'asc' ? 'desc' : 'asc' }))}
                             className={cn(
                                 "flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all text-[10px] font-bold uppercase tracking-wider",
-                                sortConfig.field === 'status' ? "bg-white dark:bg-primary/10 text-primary shadow-sm" : "text-slate-500 dark:text-muted-foreground hover:text-slate-900 dark:hover:text-foreground hover:bg-black/5 dark:hover:bg-background/50"
+                                sortConfig.field === 'status' ? "bg-white dark:bg-white/10 text-slate-900 dark:text-white shadow-sm border border-black/5 dark:border-white/5" : "text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white"
                             )}
                         >
                             <Activity className="w-3.5 h-3.5" />
                             <span>{t('status')}</span>
                             {sortConfig.field === 'status' && (
-                                <ChevronRight className={cn("w-3 h-3 transition-transform", sortConfig.direction === 'asc' ? "-rotate-90" : "rotate-90")} />
+                                <ChevronRight className={cn("w-3 h-3 transition-transform opacity-50", sortConfig.direction === 'asc' ? "-rotate-90" : "rotate-90")} />
                             )}
                         </button>
                     </div>
 
-                    <div className="flex bg-slate-100 dark:bg-muted rounded-lg p-1 mr-4 border border-border">
-                        <button onClick={() => setViewMode('grid')} className={cn("p-1.5 rounded-md transition-all", viewMode === 'grid' ? "bg-white dark:bg-primary/10 text-primary shadow-sm" : "text-slate-500 dark:text-muted-foreground hover:text-slate-900 dark:hover:text-foreground hover:bg-black/5 dark:hover:bg-background/50")}>
+                    <div className="flex bg-slate-100/50 dark:bg-white/5 rounded-lg p-0.5 mr-4 border border-border/50">
+                        <button onClick={() => setViewMode('grid')} className={cn("p-1.5 rounded-md transition-all", viewMode === 'grid' ? "bg-white dark:bg-white/10 text-slate-900 dark:text-white shadow-sm" : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white")}>
                             <LayoutGrid className="w-4 h-4" />
                         </button>
-                        <button onClick={() => setViewMode('list')} className={cn("p-1.5 rounded-md transition-all", viewMode === 'list' ? "bg-white dark:bg-primary/10 text-primary shadow-sm" : "text-slate-500 dark:text-muted-foreground hover:text-slate-900 dark:hover:text-foreground hover:bg-black/5 dark:hover:bg-background/50")}>
+                        <button onClick={() => setViewMode('list')} className={cn("p-1.5 rounded-md transition-all", viewMode === 'list' ? "bg-white dark:bg-white/10 text-slate-900 dark:text-white shadow-sm" : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white")}>
                             <List className="w-4 h-4" />
                         </button>
                     </div>
-                    <button onClick={() => setShowRaw(!showRaw)} className={cn("flex items-center gap-2 px-3 py-1.5 rounded-lg border text-[10px] font-bold uppercase transition-all", showRaw ? "bg-primary border-primary text-primary-foreground" : "border-border text-slate-500 dark:text-muted-foreground hover:border-primary/50 hover:text-primary")}>
+                    <button onClick={() => setShowRaw(!showRaw)} className={cn("flex items-center gap-2 px-3 py-1.5 rounded-lg border text-[10px] font-bold uppercase transition-all", showRaw ? "bg-primary border-primary text-primary-foreground" : "border-border/50 text-slate-500 dark:text-muted-foreground hover:border-primary/50 hover:text-primary")}>
                         <Terminal className="w-3.5 h-3.5" />
                         {t('console')}
                     </button>
                 </div>
             </div>
             {/* Content Area */}
-            <div className="flex-1 overflow-auto bg-slate-50 dark:bg-black/20 relative p-4">
+            <div className="flex-1 overflow-auto relative p-4 scrollbar-thin">
                 {sortedTaskList.length === 0 ? (
                     <div className="flex flex-col items-center justify-center h-full text-slate-500 dark:text-muted-foreground gap-4">
                         <div className="w-16 h-16 rounded-2xl bg-slate-200 dark:bg-white/5 flex items-center justify-center animate-pulse">
@@ -423,7 +423,7 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                         </div>
                         <div className="text-center space-y-1">
                             <p className="font-mono text-xs font-bold uppercase tracking-wider">{t('waiting_missions')}</p>
-                            <p className="text-[10px] opacity-70 max-w-[200px] mx-auto leading-relaxed">{t('empty_state_help')}</p>
+                            <p className="text-[10px] opacity-70 max-w-sm mx-auto leading-relaxed">{t('empty_state_help')}</p>
                         </div>
                     </div>
                 ) : viewMode === 'list' ? (
@@ -480,84 +480,77 @@ function TaskCard({ task, onExecute }: { task: Task, onExecute: (t: Task) => voi
 
     const getStatusInfo = (s: string) => {
         switch (s) {
-            case 'completed': return { color: 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20', label: t('status_completed') };
-            case 'failed': return { color: 'bg-red-500/10 text-red-500 border-red-500/20', label: t('status_failed') };
-            case 'processing': return { color: 'bg-primary/10 text-primary border-primary/20 animate-pulse', label: 'Processing' };
-            case 'fetching': return { color: 'bg-indigo-500/10 text-indigo-500 border-indigo-500/20', label: 'Fetching' };
-            case 'searching': return { color: 'bg-amber-500/10 text-amber-500 border-amber-500/20', label: 'Searching' };
+            case 'completed': return { color: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400', label: t('status_completed') };
+            case 'failed': return { color: 'bg-red-500/10 text-red-600 dark:text-red-400', label: t('status_failed') };
+            case 'processing': return { color: 'bg-primary/10 text-primary animate-pulse', label: 'Processing' };
+            case 'fetching': return { color: 'bg-indigo-500/10 text-indigo-600 dark:text-indigo-400', label: 'Fetching' };
+            case 'searching': return { color: 'bg-amber-500/10 text-amber-600 dark:text-amber-400', label: 'Searching' };
             case 'dry_run':
-            case 'audit_completed': return { color: 'bg-sky-500/10 text-sky-500 border-sky-500/20', label: t('audit_result') };
-            default: return { color: 'bg-slate-500/10 text-slate-500 border-slate-500/20', label: t('idle') };
+            case 'audit_completed': return { color: 'bg-sky-500/10 text-sky-600 dark:text-sky-400', label: t('audit_result') };
+            default: return { color: 'bg-slate-500/10 text-slate-500', label: t('idle') };
         }
     };
 
     const statusInfo = getStatusInfo(task.status);
 
     return (
-        <div className="relative p-4 rounded-xl border border-slate-200 dark:border-white/5 bg-white dark:bg-white/[0.05] hover:bg-slate-50 dark:hover:bg-white/[0.08] transition-all flex flex-col gap-3 group overflow-hidden shadow-sm">
-            {/* Hover Glow Effect */}
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+        <div className="relative group p-3 rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] hover:bg-slate-50 dark:hover:bg-white/[0.05] transition-all flex flex-col gap-3 shadow-sm hover:shadow-md hover:border-primary/20">
 
-            {/* Header: Title & Status */}
-            <div className="flex items-start justify-between gap-3 relative z-10">
-                <div className="flex items-start gap-3 overflow-hidden">
-                    {/* Icon Box */}
-                    <div className={cn(
-                        "p-2 rounded-lg shrink-0 flex items-center justify-center border border-slate-100 dark:border-white/10",
-                        task.mediaType === 'tv' ? "bg-purple-50 text-purple-600 dark:bg-purple-500/10 dark:text-purple-400" : "bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400"
-                    )}>
-                        {task.mediaType === 'tv' ? <MonitorPlay size={18} /> : <FileVideo size={18} />}
-                    </div>
+            {/* 1. Header Row: Icon | Title | Status */}
+            <div className="flex items-start gap-3">
+                {/* Icon */}
+                <div className={cn(
+                    "shrink-0 p-2 rounded-lg flex items-center justify-center border border-slate-100 dark:border-white/10",
+                    task.mediaType === 'tv' ? "bg-purple-50 text-purple-600 dark:bg-purple-900/20 dark:text-purple-400" : "bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400"
+                )}>
+                    {task.mediaType === 'tv' ? <MonitorPlay size={16} /> : <FileVideo size={16} />}
+                </div>
 
-                    {/* Title & Badges */}
-                    <div className="min-w-0 flex-1">
-                        <h4 className="font-bold text-sm text-slate-900 dark:text-foreground line-clamp-2 leading-tight mb-1 min-h-[1.25rem]" title={task.name}>
+                {/* Main Content */}
+                <div className="min-w-0 flex-1 flex flex-col gap-1">
+                    <div className="flex items-start justify-between gap-2">
+                        <h4 className="font-bold text-sm text-slate-900 dark:text-gray-100 line-clamp-1 leading-tight" title={task.name}>
                             {cleanTitle}
                         </h4>
-                        <div className="flex flex-wrap gap-1.5">
-                            {displayYear && (
-                                <span className="px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/5 text-[9px] font-mono text-slate-500 dark:text-muted-foreground font-bold">
-                                    {displayYear}
-                                </span>
-                            )}
-                            {task.tmdbId ? (
-                                <span className="px-1.5 py-0.5 rounded-md bg-sky-50 dark:bg-[#0d253f] border border-sky-200 dark:border-[#01b4e4]/30 text-[9px] font-mono text-sky-600 dark:text-[#01b4e4] font-bold flex items-center gap-1">
-                                    TMDB {task.tmdbId}
-                                </span>
-                            ) : (
-                                <span className="px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/5 text-[9px] font-mono text-slate-400 dark:text-muted-foreground/50">
-                                    NO ID
-                                </span>
-                            )}
+
+                        {/* Status Badge */}
+                        <span className={cn(
+                            "shrink-0 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full",
+                            statusInfo.color
+                        )}>
+                            {statusInfo.label}
+                        </span>
+                    </div>
+
+                    {/* Metadata Row */}
+                    <div className="flex flex-wrap items-center gap-2">
+                        {displayYear && (
+                            <span className="text-[10px] font-mono font-medium text-slate-500 dark:text-slate-400">
+                                {displayYear}
+                            </span>
+                        )}
+                        {task.tmdbId && (
+                            <span className="text-[10px] font-mono text-slate-400 dark:text-slate-500 flex items-center gap-1">
+                                <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600" />
+                                TMDB {task.tmdbId}
+                            </span>
+                        )}
+                    </div>
+                </div>
+            </div>
+
+            {/* 2. Footer Row: Path (Hidden/Truncated) | Action */}
+            <div className="flex items-center justify-between pt-2 border-t border-slate-100 dark:border-white/5 gap-4">
+                <div className="min-w-0 flex-1 group/path relative">
+                    <div className="text-[10px] font-mono text-slate-400 dark:text-slate-600 truncate transition-colors group-hover/path:text-slate-600 dark:group-hover/path:text-slate-400 cursor-help">
+                        {task.fullPath ? `.../${task.fullPath.split('/').slice(-2).join('/')}` : "—"}
+                    </div>
+                    {/* Hover tooltip for full path */}
+                    {task.fullPath && (
+                        <div className="absolute bottom-full left-0 mb-2 w-max max-w-[200px] p-2 rounded bg-slate-800 text-white text-[10px] break-all opacity-0 group-hover/path:opacity-100 pointer-events-none transition-opacity z-50 shadow-xl">
+                            {task.fullPath}
                         </div>
-                    </div>
-                </div>
-
-                {/* Status Badge (Replaces Blue Dot) */}
-                <div className="flex flex-col items-end gap-1 shrink-0">
-                    <span className={cn(
-                        "text-[9px] font-bold uppercase tracking-wider px-2 py-1 rounded-md border",
-                        statusInfo.color
-                    )}>
-                        {statusInfo.label || task.status}
-                    </span>
-                </div>
-            </div>
-
-            {/* Path */}
-            <div className="relative z-10 bg-slate-50 dark:bg-black/20 rounded-md px-2 py-1.5 border border-slate-100 dark:border-white/5">
-                <div className="text-[10px] font-mono text-slate-500 dark:text-muted-foreground/70 truncate" title={task.fullPath}>
-                    {task.fullPath || "—"}
-                </div>
-            </div>
-
-            {/* Footer: Step & Action */}
-            <div className="flex items-center justify-between mt-auto pt-2 border-t border-slate-100 dark:border-white/5 relative z-10">
-                <div className="flex-1 min-w-0 mr-4">
-                    <div className="text-[10px] text-text-muted/70 truncate font-mono" title={task.step}>
-                        <span className="opacity-50 mr-1">Step:</span>
-                        {task.step}
-                    </div>
+                    )}
                 </div>
 
                 {isAuditReady && (
@@ -565,10 +558,10 @@ function TaskCard({ task, onExecute }: { task: Task, onExecute: (t: Task) => voi
                         onClick={(e) => { e.stopPropagation(); if (!hasRun) onExecute(task); }}
                         disabled={hasRun}
                         className={cn(
-                            "flex items-center gap-2 px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all",
+                            "shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[10px] font-bold uppercase tracking-wider transition-all",
                             hasRun
-                                ? "text-slate-400 dark:text-muted-foreground/50 bg-slate-100 dark:bg-white/5 cursor-not-allowed"
-                                : "bg-primary text-primary-foreground shadow-lg shadow-primary/20 hover:brightness-110 active:scale-95"
+                                ? "text-slate-400 dark:text-slate-600 cursor-not-allowed"
+                                : "bg-primary text-white hover:bg-primary-hover shadow-lg shadow-primary/20 hover:scale-105 active:scale-95"
                         )}
                     >
                         {hasRun ? <CheckCircle2 size={12} /> : <Play size={12} fill="currentColor" />}
@@ -576,6 +569,13 @@ function TaskCard({ task, onExecute }: { task: Task, onExecute: (t: Task) => voi
                     </button>
                 )}
             </div>
+
+            {/* Visual Flair: Step Indicator if busy */}
+            {task.status === 'processing' && (
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary/20 overflow-hidden rounded-b-xl">
+                    <div className="h-full bg-primary/50 animate-progress origin-left" />
+                </div>
+            )}
         </div>
     );
 }

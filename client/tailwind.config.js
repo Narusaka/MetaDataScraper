@@ -8,22 +8,32 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#020617", // Slate 950 (OLED Deep)
-        surface: "#0F172A",    // Slate 900
-        panel: "#1E293B",      // Slate 800 (Card/Panel bg)
-        primary: "#38BDF8",    // Sky 400 (Active/Focus)
-        secondary: "#94A3B8",  // Slate 400 (Muted Text)
-        accent: "#0EA5E9",     // Sky 500
-        success: "#10B981",    // Emerald 500
-        warning: "#F59E0B",    // Amber 500
-        error: "#EF4444",      // Red 500
-        text: "#F8FAFC",       // Slate 50 (High Contrast)
-        muted: "#64748B",      // Slate 500
-        border: "#334155",     // Slate 700
+        background: "var(--bg-main)",
+        panel: "var(--bg-panel)",
+        surface: "var(--bg-surface)",
+
+        primary: {
+          DEFAULT: "var(--primary)",
+          glow: "var(--primary-glow)",
+        },
+        secondary: "var(--secondary)",
+
+        text: {
+          DEFAULT: "var(--text-main)",
+          muted: "var(--text-muted)",
+        },
+
+        border: "var(--border-light)",
+        active: "var(--border-active)",
+
+        success: "var(--accent-success)",
+        warning: "var(--accent-warning)",
+        error: "var(--accent-error)",
+        info: "var(--accent-info)",
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['Fira Code', 'monospace'],
+        sans: "var(--font-sans)",
+        mono: "var(--font-mono)",
       }
     },
   },

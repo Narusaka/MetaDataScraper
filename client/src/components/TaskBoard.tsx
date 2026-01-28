@@ -2,7 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import {
     CheckCircle2,
     LayoutGrid, List, FileVideo, Terminal, Play,
-    Clock, MonitorPlay, ArrowDownAZ, ChevronRight
+    Clock, MonitorPlay, ArrowDownAZ, ChevronRight,
+    Activity
 } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useTranslation } from '../lib/language';
@@ -33,7 +34,7 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
     const { t } = useTranslation();
     const [tasks, setTasks] = useState<Record<string, Task>>({});
     const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-    const [sortConfig, setSortConfig] = useState<{ field: 'time' | 'name'; direction: 'desc' | 'asc' }>({ field: 'time', direction: 'desc' });
+    const [sortConfig, setSortConfig] = useState<{ field: 'time' | 'name' | 'status'; direction: 'desc' | 'asc' }>({ field: 'time', direction: 'desc' });
     const [showRaw, setShowRaw] = useState(false);
     const [rawLogs, setRawLogs] = useState<string[]>([]);
     const wsRef = useRef<WebSocket | null>(null);
@@ -317,6 +318,20 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
 
             if (field === 'time') {
                 comparison = (a.createdAt || 0) - (b.createdAt || 0);
+            } else if (field === 'status') {
+                const priority: Record<string, number> = {
+                    failed: 0,
+                    processing: 1,
+                    searching: 2,
+                    fetching: 3,
+                    dry_run: 4,
+                    audit_completed: 5,
+                    completed: 6,
+                    idle: 7
+                };
+                const pA = priority[a.status] ?? 99;
+                const pB = priority[b.status] ?? 99;
+                comparison = pA - pB;
             } else {
                 comparison = (a.name || '').localeCompare(b.name || '');
             }
@@ -330,7 +345,7 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
     const totalCount = sortedTaskList.length;
 
     return (
-        <div className="flex flex-col h-full bg-card/60 backdrop-blur-md border border-border rounded-2xl overflow-hidden shadow-2xl">
+        <div className="flex flex-col h-full bg-card/40 backdrop-blur-xl border border-white/5 rounded-2xl overflow-hidden shadow-sm">
             {/* Toolbar */}
             <div className="flex items-center justify-between px-6 py-4 bg-card/50 border-b border-border">
                 <div className="flex items-center gap-3">
@@ -346,7 +361,7 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                             onClick={() => setSortConfig(prev => ({ field: 'time', direction: prev.field === 'time' && prev.direction === 'desc' ? 'asc' : 'desc' }))}
                             className={cn(
                                 "flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all text-[10px] font-bold uppercase tracking-wider",
-                                sortConfig.field === 'time' ? "bg-primary/10 text-primary shadow-sm border border-primary/20" : "text-muted-foreground hover:text-foreground hover:bg-background/50"
+                                sortConfig.field === 'time' ? "bg-primary/10 text-primary shadow-sm" : "text-muted-foreground hover:text-foreground hover:bg-background/50"
                             )}
                         >
                             <Clock className="w-3.5 h-3.5" />
@@ -360,7 +375,7 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                             onClick={() => setSortConfig(prev => ({ field: 'name', direction: prev.field === 'name' && prev.direction === 'asc' ? 'desc' : 'asc' }))}
                             className={cn(
                                 "flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all text-[10px] font-bold uppercase tracking-wider",
-                                sortConfig.field === 'name' ? "bg-primary/10 text-primary shadow-sm border border-primary/20" : "text-muted-foreground hover:text-foreground hover:bg-background/50"
+                                sortConfig.field === 'name' ? "bg-primary/10 text-primary shadow-sm" : "text-muted-foreground hover:text-foreground hover:bg-background/50"
                             )}
                         >
                             <ArrowDownAZ className="w-3.5 h-3.5" />
@@ -369,13 +384,27 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                                 <ChevronRight className={cn("w-3 h-3 transition-transform", sortConfig.direction === 'asc' ? "-rotate-90" : "rotate-90")} />
                             )}
                         </button>
+                        <div className="w-px bg-border my-1" />
+                        <button
+                            onClick={() => setSortConfig(prev => ({ field: 'status', direction: prev.field === 'status' && prev.direction === 'asc' ? 'desc' : 'asc' }))}
+                            className={cn(
+                                "flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all text-[10px] font-bold uppercase tracking-wider",
+                                sortConfig.field === 'status' ? "bg-primary/10 text-primary shadow-sm" : "text-muted-foreground hover:text-foreground hover:bg-background/50"
+                            )}
+                        >
+                            <Activity className="w-3.5 h-3.5" />
+                            <span>State</span>
+                            {sortConfig.field === 'status' && (
+                                <ChevronRight className={cn("w-3 h-3 transition-transform", sortConfig.direction === 'asc' ? "-rotate-90" : "rotate-90")} />
+                            )}
+                        </button>
                     </div>
 
                     <div className="flex bg-muted rounded-lg p-1 mr-4 border border-border">
-                        <button onClick={() => setViewMode('grid')} className={cn("p-1.5 rounded-md transition-all", viewMode === 'grid' ? "bg-primary/10 text-primary shadow-sm border border-primary/20" : "text-muted-foreground hover:text-foreground hover:bg-background/50")}>
+                        <button onClick={() => setViewMode('grid')} className={cn("p-1.5 rounded-md transition-all", viewMode === 'grid' ? "bg-primary/10 text-primary shadow-sm" : "text-muted-foreground hover:text-foreground hover:bg-background/50")}>
                             <LayoutGrid className="w-4 h-4" />
                         </button>
-                        <button onClick={() => setViewMode('list')} className={cn("p-1.5 rounded-md transition-all", viewMode === 'list' ? "bg-primary/10 text-primary shadow-sm border border-primary/20" : "text-muted-foreground hover:text-foreground hover:bg-background/50")}>
+                        <button onClick={() => setViewMode('list')} className={cn("p-1.5 rounded-md transition-all", viewMode === 'list' ? "bg-primary/10 text-primary shadow-sm" : "text-muted-foreground hover:text-foreground hover:bg-background/50")}>
                             <List className="w-4 h-4" />
                         </button>
                     </div>
@@ -455,7 +484,7 @@ function TaskCard({ task, onExecute }: { task: Task, onExecute: (t: Task) => voi
     };
 
     return (
-        <div className="bg-panel rounded-xl border border-border p-4 flex flex-col gap-3 shadow-sm hover:shadow-md transition-all group relative overflow-hidden">
+        <div className="bg-panel/40 backdrop-blur-sm rounded-xl p-4 flex flex-col gap-3 hover:bg-panel/60 transition-all group relative overflow-hidden border border-border/10 hover:border-border/20">
             {/* Status Bar */}
             <div className={cn("absolute top-0 left-0 w-1 bottom-0 transition-colors",
                 task.status === 'completed' ? "bg-emerald-500" :

@@ -1,164 +1,117 @@
-import { useState, useEffect, useCallback } from 'react';
-import { LayoutDashboard, Settings, Activity } from 'lucide-react';
+import { useState } from 'react';
+import { LayoutDashboard, Settings, Activity, ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useTranslation } from '../lib/language';
 
 interface SidebarProps {
     activeTab: string;
     onTabChange: (tab: string) => void;
+    mobileOpen?: boolean;
+    onMobileClose?: () => void;
 }
 
-export function Sidebar({ activeTab, onTabChange }: SidebarProps) {
+export function Sidebar({ activeTab, onTabChange, mobileOpen = false, onMobileClose }: SidebarProps) {
     const { t } = useTranslation();
-    const [width, setWidth] = useState(260);
-    const [isResizing, setIsResizing] = useState(false);
+    const [collapsed, setCollapsed] = useState(false);
 
-    // Auto-collapse if width is small
-    const isCollapsed = width < 180;
-
-    const startResizing = useCallback(() => setIsResizing(true), []);
-    const stopResizing = useCallback(() => setIsResizing(false), []);
-
-    const resize = useCallback((mouseMoveEvent: MouseEvent) => {
-        if (isResizing) {
-            // Limits: Min 80px (icon only), Max 600px
-            const newWidth = Math.max(80, Math.min(mouseMoveEvent.clientX, 600));
-            setWidth(newWidth);
-        }
-    }, [isResizing]);
-
-    useEffect(() => {
-        if (isResizing) {
-            window.addEventListener("mousemove", resize);
-            window.addEventListener("mouseup", stopResizing);
-            document.body.style.cursor = 'col-resize';
-            document.body.style.userSelect = 'none';
-        } else {
-            document.body.style.cursor = '';
-            document.body.style.userSelect = '';
-        }
-
-        return () => {
-            window.removeEventListener("mousemove", resize);
-            window.removeEventListener("mouseup", stopResizing);
-            document.body.style.cursor = '';
-            document.body.style.userSelect = '';
-        };
-    }, [isResizing, resize, stopResizing]);
-
-    return (
-        <div
-            className="h-screen bg-surface border-r border-border flex flex-col z-20 transition-all duration-300 relative shadow-2xl"
-            style={{ width }}
-        >
-            {/* Header Area */}
-            <div className={cn(
-                "h-14 flex items-center border-b border-border transition-all overflow-hidden bg-background/50",
-                isCollapsed ? "justify-center px-0 bg-primary/5" : "px-5"
-            )}>
-                <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded bg-primary flex items-center justify-center text-background font-black shrink-0 shadow-[0_0_15px_rgba(56,189,248,0.3)]">
-                        MA
-                    </div>
-                    <div className={cn("transition-opacity duration-200", isCollapsed ? "hidden" : "block")}>
-                        <h1 className="text-sm font-bold text-text tracking-wide uppercase">MediaAgent</h1>
-                        <p className="text-[10px] text-secondary font-mono">v2.0 Console</p>
-                    </div>
-                </div>
-            </div>
-
-            {/* Navigation */}
-            <div className="flex-1 py-4 flex flex-col gap-1 px-2">
-                <p className={cn("px-3 text-[10px] font-bold text-secondary uppercase tracking-widest mb-2", isCollapsed && "hidden")}>
-                    Main Modules
-                </p>
-
-                <NavItem
-                    icon={<LayoutDashboard size={18} />}
-                    label={t('dashboard')}
-                    active={activeTab === 'dashboard'}
-                    onClick={() => onTabChange('dashboard')}
-                    collapsed={isCollapsed}
-                />
-                <NavItem
-                    icon={<Activity size={18} />}
-                    label={t('monitoring')}
-                    active={activeTab === 'monitoring'}
-                    onClick={() => onTabChange('monitoring')}
-                    collapsed={isCollapsed}
-                />
-
-                <div className="my-4 border-t border-border/50 mx-2" />
-
-                <p className={cn("px-3 text-[10px] font-bold text-secondary uppercase tracking-widest mb-2", isCollapsed && "hidden")}>
-                    System
-                </p>
-
-                <NavItem
-                    icon={<Settings size={18} />}
-                    label={t('settings')}
-                    active={activeTab === 'settings'}
-                    onClick={() => onTabChange('settings')}
-                    collapsed={isCollapsed}
-                />
-            </div>
-
-            {/* Footer / Status Summary */}
-            <div className="p-2 border-t border-border bg-background/50">
-                <div className={cn(
-                    "rounded bg-background border border-border p-2 flex items-center gap-3",
-                    isCollapsed ? "justify-center aspect-square p-0 bg-transparent border-none" : ""
-                )}>
-                    <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0 shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
-                    {!isCollapsed && <span className="text-xs font-mono text-secondary">System Online</span>}
-                </div>
-            </div>
-
-            {/* Resizer Handle */}
-            <div
-                onMouseDown={startResizing}
-                onDoubleClick={() => setWidth(260)}
+    const NavItem = ({ icon: Icon, label, id }: { icon: any, label: string, id: string }) => {
+        const isActive = activeTab === id;
+        return (
+            <button
+                onClick={() => {
+                    onTabChange(id);
+                    if (window.innerWidth < 768) onMobileClose?.();
+                }}
                 className={cn(
-                    "absolute top-0 right-[-1px] bottom-0 w-1 cursor-col-resize z-50 transition-colors hover:bg-primary",
-                    isResizing && "bg-primary"
+                    "group flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 relative mb-1",
+                    isActive
+                        ? "bg-primary text-white shadow-lg shadow-primary/25"
+                        : "text-text-muted hover:bg-surface hover:text-text-main",
+                    collapsed ? "justify-center px-0 w-12 h-12 mx-auto" : "w-full"
                 )}
-            />
-        </div>
-    );
-}
+                title={collapsed ? label : undefined}
+            >
+                <Icon size={20} className={cn("shrink-0 transition-transform", !isActive && "group-hover:scale-110")} />
+                {!collapsed && (
+                    <span className="font-medium text-sm tracking-wide">{label}</span>
+                )}
+                {/* Active Indicator for collapsed state */}
+                {isActive && collapsed && (
+                    <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-white rounded-l opacity-20" />
+                )}
+            </button>
+        )
+    };
 
-interface NavItemProps {
-    icon: React.ReactNode;
-    label: string;
-    active?: boolean;
-    onClick?: () => void;
-    collapsed?: boolean;
-}
-
-function NavItem({ icon, label, active = false, onClick, collapsed = false }: NavItemProps) {
     return (
-        <button
-            onClick={onClick}
-            className={cn(
-                "flex items-center gap-3 px-3 py-2 rounded-md transition-all duration-150 group relative w-full text-left",
-                active
-                    ? "bg-primary/10 text-primary border border-primary/20 shadow-inner"
-                    : "text-secondary hover:bg-white/5 hover:text-text",
-                collapsed && "justify-center px-0 aspect-square"
-            )}
-            title={collapsed ? label : undefined}
-        >
-            <div className={cn("shrink-0 transition-transform group-hover:scale-110", active && "text-primary")}>
-                {icon}
-            </div>
-            {!collapsed && (
-                <span className="text-xs font-medium tracking-wide truncated">
-                    {label}
-                </span>
-            )}
-            {active && !collapsed && (
-                <div className="absolute right-2 w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_5px_currentColor]" />
-            )}
-        </button>
+        <>
+            {/* Mobile Overlay */}
+            <div
+                className={cn(
+                    "fixed inset-0 bg-black/60 backdrop-blur-sm z-40 md:hidden transition-opacity duration-300",
+                    mobileOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+                )}
+                onClick={onMobileClose}
+            />
+
+            {/* Sidebar Container */}
+            <aside
+                className={cn(
+                    "fixed md:relative z-50 h-full bg-panel/80 backdrop-blur-xl border-r border-border-light flex flex-col transition-all duration-300 ease-in-out shadow-2xl md:shadow-none",
+                    collapsed ? "w-20" : "w-64",
+                    mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+                )}
+            >
+                {/* Header */}
+                <div className="h-16 flex items-center px-4 border-b border-border-light/50">
+                    <div className={cn("flex items-center gap-3 overflow-hidden", collapsed ? "justify-center w-full" : "")}>
+                        <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center text-white font-bold text-lg shrink-0 shadow-lg shadow-primary/20">
+                            M
+                        </div>
+                        {!collapsed && (
+                            <div className="flex flex-col">
+                                <span className="font-bold text-text-main leading-tight">MediaAgent</span>
+                                <span className="text-[10px] text-text-muted font-mono bg-surface px-1.5 py-0.5 rounded-full w-fit">v2.0 PRO</span>
+                            </div>
+                        )}
+                    </div>
+                </div>
+
+                {/* Nav Items */}
+                <div className="flex-1 py-6 px-3 flex flex-col gap-2 overflow-y-auto">
+                    <div className={cn("px-3 text-[10px] font-bold text-text-muted/60 uppercase tracking-widest mb-1", collapsed && "hidden")}>
+                        MODULES
+                    </div>
+                    <NavItem icon={LayoutDashboard} label={t('dashboard')} id="dashboard" />
+                    <NavItem icon={Activity} label={t('monitoring')} id="monitoring" />
+
+                    <div className="my-4 border-t border-border-light/50 mx-2" />
+
+                    <div className={cn("px-3 text-[10px] font-bold text-text-muted/60 uppercase tracking-widest mb-1", collapsed && "hidden")}>
+                        SYSTEM
+                    </div>
+                    <NavItem icon={Settings} label={t('settings')} id="settings" />
+                </div>
+
+                {/* Footer / Toggle */}
+                <div className="p-4 border-t border-border-light/50 flex flex-col gap-2">
+                    <button
+                        onClick={() => setCollapsed(!collapsed)}
+                        className={cn(
+                            "hidden md:flex items-center justify-center w-full h-9 rounded-lg hover:bg-surface text-text-muted transition-colors",
+                            collapsed && "aspect-square"
+                        )}
+                    >
+                        {collapsed ? <ChevronRight size={18} /> : <div className="flex items-center gap-2 text-xs font-medium"><ChevronLeft size={16} /> <span className="uppercase">Collapse</span></div>}
+                    </button>
+
+                    {!collapsed && (
+                        <div className="text-[10px] text-center text-text-muted/40 font-mono py-2">
+                            SYSTEM ONLINE • STABLE
+                        </div>
+                    )}
+                </div>
+            </aside>
+        </>
     );
 }

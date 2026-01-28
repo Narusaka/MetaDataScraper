@@ -42,13 +42,18 @@ class MetadataLogger:
         self.logger.handlers.clear()
 
         # File handler - logs everything
-        file_handler = logging.FileHandler(self.log_file, encoding='utf-8')
-        file_handler.setLevel(logging.DEBUG)
-        file_formatter = logging.Formatter(
-            '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-        )
-        file_handler.setFormatter(file_formatter)
-        self.logger.addHandler(file_handler)
+        try:
+            file_handler = logging.FileHandler(self.log_file, encoding='utf-8')
+            file_handler.setLevel(logging.DEBUG)
+            file_formatter = logging.Formatter(
+                '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+            )
+            file_handler.setFormatter(file_formatter)
+            self.logger.addHandler(file_handler)
+        except OSError as e:
+            if not self.quiet:
+                print(f"⚠️ WARNING: Could not create log file due to disk error: {e}. Proceeding with console output only.")
+            self.log_file = None
 
         # Store processing data for comprehensive logging
         self.processing_data = {

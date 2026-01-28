@@ -272,20 +272,24 @@ class MediaPipeline:
 
         # 2. Tavily Search (If mode is smart AND TMDB failed, OR if mode is tavily_only)
         if not candidate and mode in ["smart", "tavily_only"] and self.tavily_search:
-            self._log(f"🔍 Trying Tavily Search for ID: '{query}' ({media_type}) ...")
-            fallback_type = media_type
-            tavily_id = self.tavily_search.search_tmdb_id(query, fallback_type, verbose=self.verbose)
-            if tavily_id:
-                candidate = {"id": tavily_id, "media_type": fallback_type}
-                self._log(f"   ✅ Tavily Found ID: {tavily_id}")
+            self._log(f"🔍 Trying Tavily Search for ID: '{query}' ...")
+            
+            for m_type in search_types:
+                tavily_id = self.tavily_search.search_tmdb_id(query, m_type, verbose=self.verbose)
+                if tavily_id:
+                    candidate = {"id": tavily_id, "media_type": m_type}
+                    self._log(f"   ✅ Tavily Found ID: {tavily_id} (Type: {m_type})")
+                    break
         
         # 3. Google Search (Final Fallback if enabled and others failed)
         if not candidate and mode == "smart" and self.google_search and not self.tavily_search:
              self._log(f"🔍 Trying Google Search Fallback...")
-             google_id = self.google_search.search_tmdb_id(query, media_type, verbose=self.verbose)
-             if google_id:
-                 candidate = {"id": google_id, "media_type": media_type}
-                 self._log(f"   ✅ Google Found ID: {google_id}")
+             for m_type in search_types:
+                 google_id = self.google_search.search_tmdb_id(query, m_type, verbose=self.verbose)
+                 if google_id:
+                     candidate = {"id": google_id, "media_type": m_type}
+                     self._log(f"   ✅ Google Found ID: {google_id} (Type: {m_type})")
+                     break
 
         return {"selected": candidate}
 

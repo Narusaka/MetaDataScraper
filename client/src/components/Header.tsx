@@ -1,5 +1,3 @@
-
-import { ThemeToggle } from "./ThemeToggle";
 import { useTranslation } from "../lib/language";
 import { Languages } from "lucide-react";
 
@@ -7,28 +5,31 @@ export function Header({ title, isRunning }: { title: string, isRunning: boolean
     const { language, setLanguage, t } = useTranslation();
 
     return (
-        <header className="flex justify-between items-center glass-panel px-6 py-4 rounded-xl z-10 sticky top-0 shrink-0 mb-6">
+        <header className="flex justify-between items-center bg-surface border-b border-border px-6 h-14 shrink-0 transition-all">
             <div className="flex items-center gap-4">
-                <h2 className="text-2xl font-bold bg-gradient-to-r from-primary to-violet-400 bg-clip-text text-transparent capitalize">
-                    {t(title as any) || title}
-                </h2>
+                <div className="flex items-center gap-2">
+                    <span className="text-secondary text-xs font-mono uppercase tracking-widest">Context:</span>
+                    <h2 className="text-sm font-bold text-text uppercase tracking-wide">
+                        {t(title as any) || title}
+                    </h2>
+                </div>
+
                 {isRunning && (
-                    <div className="flex items-center gap-2 px-3 py-1 bg-green-500/20 text-green-400 border border-green-500/30 rounded-full text-xs font-medium animate-pulse">
-                        <span className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e]"></span>
+                    <div className="flex items-center gap-2 px-2 py-0.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded text-[10px] font-mono font-bold uppercase tracking-wider">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
                         {t('running')}
                     </div>
                 )}
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
                 <button
                     onClick={() => setLanguage(language === 'en' ? 'zh' : 'en')}
-                    className="p-2 glass-button rounded-full hover:bg-white/10"
+                    className="p-1.5 rounded hover:bg-white/5 text-secondary hover:text-text transition-colors"
                     title="Switch Language"
                 >
-                    <Languages className="w-5 h-5 text-secondary" />
+                    <Languages className="w-4 h-4" />
                 </button>
-                <ThemeToggle />
             </div>
         </header>
     );

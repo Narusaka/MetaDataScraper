@@ -1,149 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
 :root {
-  /* Light Mode - Ultra Readable & Professional */
-  --bg-gradient: #f8fafc;
-  /* Solid light gray, no gradient distraction */
-  --fallback-bg: #f8fafc;
+  /* Mission Control - Deep Slate Theme */
+  --bg-main: #020617;
+  /* slate-950 */
+  --bg-panel: #0f172a;
+  /* slate-900 */
+  --bg-surface: #1e293b;
+  /* slate-800 */
 
-  /* Solid Backgrounds for Cards - No Transparency in Light Mode */
-  --glass-bg: #ffffff;
-  --glass-border: #e2e8f0;
-  /* Slate 200 - Clearly defined borders */
-  --glass-shadow: 0 1px 2px -1px rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  --primary: #3b82f6;
+  /* blue-500 */
+  --primary-glow: rgba(59, 130, 246, 0.5);
+  --secondary: #64748b;
+  /* slate-500 */
 
-  /* Typography - Maximum Contrast */
-  --text-primary: #0f172a;
-  /* Slate 900 - Nearly Black */
-  --text-secondary: #334155;
-  /* Slate 700 - Dark Gray */
-  --text-muted: #64748b;
-  /* Slate 500 - Medium Gray */
-  --text-inverse: #ffffff;
-
-  /* Accents - Trustworthy Blue/Indigo */
-  --accent-primary: #2563eb;
-  /* Blue 600 */
-  --accent-secondary: #3b82f6;
-  /* Blue 500 */
-  --accent-glow: rgba(37, 99, 235, 0.1);
-
-  /* Component Colors */
-  --bg-card: #ffffff;
-  --bg-input: #ffffff;
-  --bg-hover: #f1f5f9;
-  /* Slate 100 */
-  --bg-active: #e2e8f0;
-  /* Slate 200 */
-
-  --sidebar-bg: #ffffff;
-}
-
-.dark {
-  /* Dark Mode - Deep, Sleek, Low Eye Strain */
-  --bg-gradient: linear-gradient(180deg, #0f172a 0%, #020617 100%);
-  --fallback-bg: #020617;
-
-  /* Glass/Dark Backgrounds with subtle transparency */
-  --glass-bg: rgba(30, 41, 59, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
-
-  /* Typography */
-  --text-primary: #f1f5f9;
-  /* Slate 100 */
-  --text-secondary: #cbd5e1;
-  /* Slate 300 */
+  --text-main: #f8fafc;
+  /* slate-50 */
   --text-muted: #94a3b8;
-  /* Slate 400 */
-  --text-inverse: #020617;
+  /* slate-400 */
 
-  /* Accents */
-  --accent-primary: #6366f1;
-  /* Indigo 500 */
-  --accent-secondary: #818cf8;
-  /* Indigo 400 */
-  --accent-glow: rgba(99, 102, 241, 0.2);
+  --accent-success: #10b981;
+  /* emerald-500 */
+  --accent-warning: #f59e0b;
+  /* amber-500 */
+  --accent-error: #ef4444;
+  /* red-500 */
+  --accent-info: #0ea5e9;
+  /* sky-500 */
 
-  /* Component Colors */
-  --bg-card: rgba(255, 255, 255, 0.03);
-  --bg-input: rgba(0, 0, 0, 0.3);
-  --bg-hover: rgba(255, 255, 255, 0.05);
-  --bg-active: rgba(255, 255, 255, 0.1);
+  --border-light: rgba(255, 255, 255, 0.1);
+  --border-active: rgba(59, 130, 246, 0.3);
 
-  --sidebar-bg: rgba(15, 23, 42, 0.8);
-}
-
-@theme {
-  --color-border: var(--glass-border);
-  --color-input: var(--bg-input);
-  --color-ring: var(--accent-primary);
-  --color-background: var(--fallback-bg);
-  --color-foreground: var(--text-primary);
-
-  --color-primary: var(--accent-primary);
-  --color-primary-foreground: var(--text-inverse);
-
-  --color-secondary: var(--text-secondary);
-  --color-secondary-foreground: var(--text-inverse);
-
-  --color-muted: var(--bg-hover);
-  --color-muted-foreground: var(--text-muted);
-
-  --color-card: var(--bg-card);
-  --color-card-foreground: var(--text-primary);
-
-  --color-popover: var(--bg-card);
-  --color-popover-foreground: var(--text-primary);
+  /* Fonts */
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'Fira Code', monospace;
 }
 
 body {
   margin: 0;
-  font-family: 'Outfit', 'Inter', system-ui, sans-serif;
-  color: var(--text-primary);
-  background: var(--bg-gradient);
-  background-attachment: fixed;
-  min-height: 100vh;
+  font-family: var(--font-sans);
+  color: var(--text-main);
+  background: var(--bg-main);
+  overflow: hidden;
+  /* App-like feel */
   -webkit-font-smoothing: antialiased;
 }
 
-/* Utilities */
-.glass-panel {
-  background: var(--glass-bg);
-  /* Remove blur in light mode by default logic or keep it specific to dark mode? 
-     Actually if bg is solid white, blur does nothing, which is good for performance and crispness. 
-     In dark mode, it has opacity, so blur works. */
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--glass-shadow);
-}
-
-/* Scrollbar - Clean & Functional */
-.scrollbar-thin::-webkit-scrollbar {
+/* Scrollbar - Thin & Sleek */
+::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
-.scrollbar-thin::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.scrollbar-thin::-webkit-scrollbar-thumb {
-  background: var(--text-muted);
-  opacity: 0.3;
+::-webkit-scrollbar-thumb {
+  background: var(--bg-surface);
   border-radius: 3px;
 }
 
-.scrollbar-thin::-webkit-scrollbar-thumb:hover {
-  background: var(--text-secondary);
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
 }
 
-.scrollbar-none::-webkit-scrollbar {
-  display: none;
+/* Utilities */
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-light);
 }
 
-.scrollbar-none {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+.panel-hover:hover {
+  border-color: var(--border-active);
+}
+
+.input-field {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  color: var(--text-main);
+  font-family: var(--font-mono);
+}
+
+.input-field:focus {
+  border-color: var(--primary);
+  outline: none;
 }

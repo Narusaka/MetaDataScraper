@@ -30,9 +30,12 @@ root_logger.setLevel(logging.INFO)
 root_logger.addHandler(log_broadcaster)
 
 # 2. Local File Logger for the web session
-file_handler = logging.FileHandler(log_file, encoding='utf-8')
-file_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
-root_logger.addHandler(file_handler)
+try:
+    file_handler = logging.FileHandler(log_file, encoding='utf-8')
+    file_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+    root_logger.addHandler(file_handler)
+except OSError:
+    print(f"⚠️ Server Log File creation failed (Disk Full likely). Continuing without file logs.")
 
 # 3. Console Output
 console_handler = logging.StreamHandler()

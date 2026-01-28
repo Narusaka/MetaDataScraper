@@ -1,9 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import {
-    CheckCircle2, AlertCircle, Loader2, Search,
+    CheckCircle2,
     LayoutGrid, List, FileVideo, Terminal, Play,
-    Clock, Activity, Hash, FolderOpen, ChevronRight,
-    MonitorPlay, ArrowDownAZ
+    Clock, MonitorPlay, ArrowDownAZ, ChevronRight
 } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useTranslation } from '../lib/language';
@@ -81,7 +80,7 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
         // We know setTasks needs the KEY. 
         // Let's modify onExecute signature or find the key.
         // Actually, we can just search:
-        const entry = Object.entries(tasks).find(([k, v]) => v === t);
+        const entry = Object.entries(tasks).find(([_, v]) => v === t);
         return entry ? entry[0] : t.threadId;
     };
 
@@ -384,25 +383,32 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                     </button>
                 </div>
             </div>
-            {/* Content Area */}
-            <div className="flex-1 overflow-y-auto p-6 scrollbar-thin">
-                {sortedTaskList.length === 0 ? (
-                    <div className="h-full flex flex-col items-center justify-center text-muted-foreground/30 space-y-4">
-                        <Search className="w-12 h-12 stroke-[1]" />
-                        <p className="text-sm font-medium uppercase tracking-widest italic">{t('waiting_missions')}</p>
-                    </div>
-                ) : (
-                    <div className={cn(
-                        "grid gap-4 transition-all duration-500",
-                        viewMode === 'grid' ? "grid-cols-1 md:grid-cols-2 xl:grid-cols-3 auto-rows-fr" : "grid-cols-1"
-                    )}>
-                        <AnimatePresence mode="popLayout">
-                            {sortedTaskList.map(task => (
-                                <TaskCard key={task.status === 'idle' ? task.threadId : (task.fullPath || task.name)} task={task} mode={viewMode} onExecute={handleExecute} />
-                            ))}
-                        </AnimatePresence>
-                    </div>
-                )}
+            {/* Content Area - Data Grid */}
+            <div className="flex-1 overflow-auto bg-surface relative">
+                <table className="w-full text-left border-collapse">
+                    <thead className="sticky top-0 z-10 bg-surface border-b border-border text-[10px] uppercase font-bold text-secondary tracking-wider">
+                        <tr>
+                            <th className="px-4 py-3 w-16">Type</th>
+                            <th className="px-4 py-3">Task / Path</th>
+                            <th className="px-4 py-3 w-32">Status</th>
+                            <th className="px-4 py-3 w-48">Current Step</th>
+                            <th className="px-4 py-3 w-28 text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody className="divide-y divide-border/50 text-xs font-mono">
+                        {sortedTaskList.length === 0 ? (
+                            <tr>
+                                <td colSpan={5} className="py-20 text-center text-muted-foreground/40 italic">
+                                    {t('waiting_missions')}
+                                </td>
+                            </tr>
+                        ) : (
+                            sortedTaskList.map(task => (
+                                <TaskRow key={task.status === 'idle' ? task.threadId : (task.fullPath || task.name)} task={task} onExecute={handleExecute} />
+                            ))
+                        )}
+                    </tbody>
+                </table>
             </div>
 
             {/* Raw Log Overlay */}
@@ -419,185 +425,65 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
     );
 }
 
-function TaskCard({ task, mode, onExecute }: { task: Task, mode: 'grid' | 'list', onExecute: (t: Task) => void }) {
+function TaskRow({ task, onExecute }: { task: Task, onExecute: (t: Task) => void }) {
     const { t } = useTranslation();
-    const isCompact = mode === 'list';
     const isAuditReady = (task.status === 'dry_run' || task.status === 'audit_completed') && task.fullPath && task.tmdbId;
     const hasRun = task.hasExecuted;
 
-    const getStatusConfig = (s: string) => {
+    const getStatusColor = (s: string) => {
         switch (s) {
-            case 'completed': return { color: 'text-emerald-400', border: 'border-l-emerald-500', bg: 'bg-emerald-500/5', icon: CheckCircle2 };
-            case 'failed': return { color: 'text-red-400', border: 'border-l-red-500', bg: 'bg-red-500/5', icon: AlertCircle };
-            case 'processing': return { color: 'text-blue-400', border: 'border-l-blue-500', bg: 'bg-blue-500/5', icon: Activity };
-            case 'fetching': return { color: 'text-indigo-400', border: 'border-l-indigo-500', bg: 'bg-indigo-500/5', icon: Loader2 };
-            case 'searching': return { color: 'text-amber-400', border: 'border-l-amber-500', bg: 'bg-amber-500/5', icon: Search };
+            case 'completed': return 'text-emerald-500';
+            case 'failed': return 'text-red-500';
+            case 'processing': return 'text-blue-400 animate-pulse';
+            case 'fetching': return 'text-indigo-400';
+            case 'searching': return 'text-amber-400';
             case 'dry_run':
-            case 'audit_completed': return { color: 'text-cyan-400', border: 'border-l-cyan-500', bg: 'bg-cyan-500/5', icon: Hash };
-            default: return { color: 'text-slate-400', border: 'border-l-slate-700', bg: 'bg-white/[0.02]', icon: Clock };
+            case 'audit_completed': return 'text-sky-400';
+            default: return 'text-slate-500';
         }
     };
 
-    const statusConfig = getStatusConfig(task.status);
-    const StatusIcon = statusConfig.icon;
-
-    // Helper to translate status safely
-    const getStatusLabel = (s: string) => {
-        if (s === 'completed') return t('status_completed');
-        if (s === 'failed') return t('status_failed');
-        if (s === 'audit_completed') return t('status_audit_complete');
-        // @ts-ignore
-        return t(s) || s;
-    };
-
-    if (isCompact) {
-        // List View: Compact Row
-        return (
-            <motion.div
-                initial={{ opacity: 0, y: 5 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className={cn(
-                    "group flex items-center gap-4 p-3 rounded-lg border border-border bg-card/50 hover:bg-card transition-all border-l-2 shadow-sm",
-                    statusConfig.border
-                )}
-            >
-                {/* Icon */}
-                <div className={cn("p-2 rounded-md bg-muted", statusConfig.color)}>
-                    {task.mediaType === 'tv' ? <MonitorPlay className="w-4 h-4" /> : <FileVideo className="w-4 h-4" />}
-                </div>
-
-                {/* Main Info */}
-                <div className="flex-1 min-w-0 grid grid-cols-12 gap-4 items-center">
-                    <div className="col-span-4 min-w-0">
-                        <h4 className="font-bold text-xs text-foreground truncate" title={task.name}>{task.name}</h4>
-                        <div className="flex items-center gap-2 text-[10px] text-muted-foreground/70 font-mono">
-                            <span className="truncate">{task.threadId}</span>
-                        </div>
-                    </div>
-
-                    {/* Status & Step */}
-                    <div className="col-span-3 flex items-center gap-2 min-w-0">
-                        <span className={cn("text-[10px] font-mono font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-background/50 border border-border/50", statusConfig.color)}>
-                            {getStatusLabel(task.status)}
-                        </span>
-                    </div>
-
-                    {/* Log */}
-                    <div className="col-span-5 text-[10px] font-mono text-muted-foreground truncate opacity-70">
-                        {task.lastLog}
-                    </div>
-                </div>
-
-                {/* Actions */}
-                <div className="flex items-center gap-2 shrink-0">
-                    {isAuditReady && (
-                        <button
-                            onClick={(e) => { e.stopPropagation(); if (!hasRun) onExecute(task); }}
-                            disabled={hasRun}
-                            className={cn(
-                                "p-1.5 rounded transition-colors group/btn",
-                                hasRun ? "text-slate-500 cursor-not-allowed" : "hover:bg-cyan-500/20 text-cyan-400"
-                            )}
-                            title={hasRun ? t('task_started') : t('execute_plan')}
-                        >
-                            {hasRun ? <CheckCircle2 className="w-4 h-4" /> : <Play className="w-4 h-4 fill-current group-hover/btn:animate-pulse" />}
-                        </button>
-                    )}
-                </div>
-            </motion.div>
-        );
-    }
-
-    // Grid View: Professional Card
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.98 }}
-            transition={{ duration: 0.2 }}
-            className={cn(
-                "group flex flex-col rounded-xl border border-border bg-card hover:border-primary/20 transition-all overflow-hidden shadow-sm hover:shadow-md h-full min-h-[160px]",
-                statusConfig.border && `border-l-4 ${statusConfig.border}`
-            )}
-        >
-            {/* Header Area */}
-            <div className="p-4 pb-2 flex gap-3">
-                <div className={cn("p-2.5 rounded-lg bg-muted shrink-0 h-fit", statusConfig.color)}>
-                    {task.mediaType === 'tv' ? <MonitorPlay className="w-5 h-5" /> : <FileVideo className="w-5 h-5" />}
+        <tr className="hover:bg-white/[0.02] group transition-colors">
+            <td className="px-4 py-3 text-secondary text-center">
+                {task.mediaType === 'tv' ? <MonitorPlay className="w-4 h-4 mx-auto" /> : <FileVideo className="w-4 h-4 mx-auto" />}
+            </td>
+            <td className="px-4 py-3 min-w-0 max-w-[300px]">
+                <div className="font-semibold text-text truncate" title={task.name}>{task.name}</div>
+                <div className="text-[10px] text-muted truncate opacity-50 font-mono" title={task.fullPath}>
+                    {task.fullPath || task.threadId}
                 </div>
-
-                <div className="flex-1 min-w-0">
-                    <div className="flex items-start justify-between gap-2">
-                        <h4 className="font-bold text-sm text-foreground line-clamp-2 leading-tight min-h-[1.25rem] group-hover:text-primary transition-colors" title={task.name}>
-                            {task.name}
-                        </h4>
-                        {/* Status Indicator */}
-                        <div className={cn("flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-muted border border-border shrink-0", statusConfig.color)}>
-                            <StatusIcon className={cn("w-3 h-3", task.status === 'processing' && "animate-spin")} />
-                        </div>
-                    </div>
-
-                    <div className="flex items-center gap-2 mt-2 text-[10px] text-muted-foreground font-mono">
-                        <span className="flex items-center gap-1 bg-muted px-1.5 py-0.5 rounded border border-border/50">
-                            <Hash className="w-2.5 h-2.5" />
-                            {task.tmdbId || '---'}
-                        </span>
-                        <span className="truncate opacity-50">{task.threadId}</span>
-                    </div>
+            </td>
+            <td className="px-4 py-3">
+                <span className={cn(
+                    "text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border border-current/20 bg-current/5",
+                    getStatusColor(task.status)
+                )}>
+                    {t(task.status as any) || task.status}
+                </span>
+            </td>
+            <td className="px-4 py-3">
+                <div className="text-muted truncate max-w-[200px]" title={task.lastLog}>
+                    {task.step}
                 </div>
-            </div>
-
-            {/* Body / Logs */}
-            <div className="px-4 py-2 flex-1 min-h-0 flex flex-col justify-end">
-                <div className="bg-muted/50 rounded border border-border/50 p-2 mb-2 font-mono text-[10px] text-muted-foreground h-14 overflow-hidden relative">
-                    <div className="absolute top-0 left-0 w-full h-full pointer-events-none bg-gradient-to-b from-transparent to-muted/10" />
-                    <p className="truncate opacity-70 mb-0.5 text-[9px] uppercase tracking-widest">{task.step}</p>
-                    <p className="line-clamp-2 text-foreground/80" title={task.lastLog}>{task.lastLog}</p>
-                </div>
-            </div>
-
-            {/* Footer / Actions */}
-            <div className="px-4 pb-4 mt-auto">
-                {isAuditReady ? (
+            </td>
+            <td className="px-4 py-3 text-right">
+                {isAuditReady && (
                     <button
                         onClick={(e) => { e.stopPropagation(); if (!hasRun) onExecute(task); }}
                         disabled={hasRun}
                         className={cn(
-                            "w-full py-2 rounded-lg font-bold text-[11px] uppercase tracking-widest flex items-center justify-center gap-2 transition-all shadow-sm",
+                            "inline-flex items-center gap-1.5 px-3 py-1 rounded text-[10px] font-bold uppercase tracking-wider transition-all",
                             hasRun
-                                ? "bg-muted text-muted-foreground cursor-not-allowed border border-border"
-                                : "bg-gradient-to-r from-cyan-500/10 to-blue-500/10 hover:from-cyan-500/20 hover:to-blue-500/20 border border-cyan-500/20 text-cyan-600 dark:text-cyan-400"
+                                ? "text-muted-foreground cursor-not-allowed"
+                                : "bg-primary/10 text-primary hover:bg-primary/20 border border-primary/30"
                         )}
                     >
-                        {hasRun ? (
-                            <>
-                                <CheckCircle2 className="w-3.5 h-3.5" />
-                                {t('task_started') || 'Started'}
-                            </>
-                        ) : (
-                            <>
-                                <Play className="w-3.5 h-3.5 fill-current group-hover/btn:animate-pulse" />
-                                {t('execute_plan')}
-                            </>
-                        )}
+                        {hasRun ? <CheckCircle2 className="w-3 h-3" /> : <Play className="w-3 h-3" />}
+                        {hasRun ? 'Done' : 'Run'}
                     </button>
-                ) : (
-                    /* Progress or Status Bar */
-                    <div className="w-full h-1 bg-muted rounded-full overflow-hidden">
-                        <motion.div
-                            className={cn("h-full", statusConfig.bg.replace('/5', '/50'))}
-                            initial={{ width: 0 }}
-                            animate={{
-                                width: task.status === 'completed' ? '100%' :
-                                    task.status === 'fetching' ? '60%' :
-                                        task.status === 'processing' ? '40%' : '10%'
-                            }}
-                        />
-                    </div>
                 )}
-            </div>
-        </motion.div>
+            </td>
+        </tr>
     );
 }

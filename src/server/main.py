@@ -93,6 +93,32 @@ async def startup_event():
     # Pass the running loop to the logger so it can schedule broadcasts
     loop = asyncio.get_running_loop()
     log_broadcaster.set_loop(loop)
+    
+    # --- System Cleanup ---
+    try:
+        logging.info("🧹 Performing System Cleanup...")
+        # Clean Cache
+        from src.core.cache import CacheManager
+        cm = CacheManager()
+        cleared = cm.clear_expired(48) # 48 hours
+        logging.info(f"   - Cleared {cleared} expired cache files.")
+        
+        # Clean Logs
+        log_path = Path("logs")
+        if log_path.exists():
+             import time
+             now = time.time()
+             cutoff = now - (7 * 86400) # 7 days
+             deleted_logs = 0
+             for f in log_path.iterdir():
+                 if f.is_file() and f.suffix == ".log" and f.stat().st_mtime < cutoff:
+                     try:
+                        f.unlink()
+                        deleted_logs += 1
+                     except: pass
+             logging.info(f"   - Deleted {deleted_logs} old log files.")
+    except Exception as e:
+        logging.error(f"Cleanup failed: {e}")
 
 # --- Endpoints ---
 

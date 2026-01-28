@@ -1,5 +1,6 @@
 import { useTranslation } from "../lib/language";
 import { Languages } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function Header({ title, isRunning }: { title: string, isRunning: boolean }) {
     const { language, setLanguage, t } = useTranslation();
@@ -23,6 +24,9 @@ export function Header({ title, isRunning }: { title: string, isRunning: boolean
             </div>
 
             <div className="flex items-center gap-2">
+                <div className="mr-2">
+                    <ThemeToggle />
+                </div>
                 <button
                     onClick={() => setLanguage(language === 'en' ? 'zh' : 'en')}
                     className="p-1.5 rounded hover:bg-white/5 text-secondary hover:text-text transition-colors"

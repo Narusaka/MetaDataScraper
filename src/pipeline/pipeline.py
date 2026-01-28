@@ -229,12 +229,12 @@ class MediaPipeline:
 
         # 1. TMDB Search (If mode is smart or tmdb_only)
         if mode in ["smart", "tmdb_only"]:
-            self._log(f"🔍 Searching TMDB: '{query}' ({'Forced ' if force_type else ''}{media_type}) ...")
             for m_type in search_types:
+                self._log(f"🔍 Searching TMDB as {m_type}: '{query}' ...")
                 results = self.tmdb.search_tv(query) if m_type == "tv" else self.tmdb.search_movie(query)
                 if results and results.get("results"):
                     candidates = results["results"][:5] # Increase candidate pool slightly
-                    self._log(f"   🔎 TMDB Candidates ({len(candidates)}/{results.get('total_results', '?')}):")
+                    self._log(f"   🔎 Found {len(candidates)} candidates:")
                     
                     target_year = input_data.get("year")
                     

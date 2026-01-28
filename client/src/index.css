@@ -2,7 +2,43 @@
 @import "tailwindcss";
 
 :root {
-  /* Mission Control - Deep Slate Theme */
+  /* Light Mode Defaults */
+  --bg-main: #f8fafc;
+  /* slate-50 */
+  --bg-panel: #ffffff;
+  /* white */
+  --bg-surface: #f1f5f9;
+  /* slate-100 */
+
+  --primary: #3b82f6;
+  /* blue-500 */
+  --primary-glow: rgba(59, 130, 246, 0.3);
+  --secondary: #64748b;
+  /* slate-500 */
+  --text-main: #0f172a;
+  /* slate-900 */
+  --text-muted: #64748b;
+  /* slate-500 */
+
+  --border-light: #e2e8f0;
+  /* slate-200 */
+  --border-active: #bfdbfe;
+  /* blue-200 */
+
+  /* Accents */
+  --accent-success: #10b981;
+  --accent-warning: #f59e0b;
+  --accent-error: #ef4444;
+  --accent-info: #0ea5e9;
+
+  /* Fonts */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'Fira Code', monospace;
+  --font-zh: 'Noto Sans SC', system-ui, sans-serif;
+}
+
+.dark {
+  /* Dark Mode Overrides */
   --bg-main: #020617;
   /* slate-950 */
   --bg-panel: #0f172a;
@@ -13,29 +49,16 @@
   --primary: #3b82f6;
   /* blue-500 */
   --primary-glow: rgba(59, 130, 246, 0.5);
-  --secondary: #64748b;
-  /* slate-500 */
+  --secondary: #94a3b8;
+  /* slate-400 */
 
   --text-main: #f8fafc;
   /* slate-50 */
   --text-muted: #94a3b8;
   /* slate-400 */
 
-  --accent-success: #10b981;
-  /* emerald-500 */
-  --accent-warning: #f59e0b;
-  /* amber-500 */
-  --accent-error: #ef4444;
-  /* red-500 */
-  --accent-info: #0ea5e9;
-  /* sky-500 */
-
-  --border-light: rgba(255, 255, 255, 0.1);
+  --border-light: rgba(255, 255, 255, 0.08);
   --border-active: rgba(59, 130, 246, 0.3);
-
-  /* Fonts */
-  --font-sans: 'Inter', sans-serif;
-  --font-mono: 'Fira Code', monospace;
 }
 
 body {
@@ -43,6 +66,7 @@ body {
   font-family: var(--font-sans);
   color: var(--text-main);
   background: var(--bg-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
   overflow: hidden;
   /* App-like feel */
   -webkit-font-smoothing: antialiased;

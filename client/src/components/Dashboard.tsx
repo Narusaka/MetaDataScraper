@@ -8,6 +8,7 @@ import { cn } from '../lib/utils';
 import { useTranslation } from '../lib/language';
 import { FolderPicker } from './FolderPicker';
 import { TaskBoard } from './TaskBoard';
+import { SystemMonitor } from './SystemMonitor';
 
 interface DashboardProps {
     isRunning: boolean;
@@ -70,35 +71,41 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
     return (
         <div className="flex flex-col h-full bg-slate-950 text-slate-100 overflow-hidden font-sans">
             {/* Top Bar: Target Selection & Actions */}
-            <div className="shrink-0 h-16 border-b border-slate-800 bg-slate-900/50 flex items-center px-4 gap-4">
-                <div className="flex-1 flex items-center gap-2 bg-slate-900 border border-slate-800 rounded px-3 py-2">
-                    <span className="text-xs font-mono font-bold text-blue-500 uppercase">TARGET:</span>
-                    <input
-                        type="text"
-                        value={selectedPath}
-                        onChange={(e) => setSelectedPath(e.target.value)}
-                        placeholder="/path/to/media"
-                        className="flex-1 bg-transparent border-none text-sm text-slate-200 outline-none font-mono placeholder:text-slate-600"
-                    />
-                    <button onClick={() => setShowPicker('input')} className="text-slate-400 hover:text-white">
-                        <FolderOpen size={16} />
-                    </button>
+            <div className="shrink-0 h-16 border-b border-slate-800 bg-slate-900/50 flex items-center px-4 gap-4 justify-between">
+                <div className="flex items-center gap-4 w-2/3">
+                    <div className="flex-1 flex items-center gap-2 bg-slate-900 border border-slate-800 rounded px-3 py-2 group focus-within:border-blue-500/50 transition-colors">
+                        <span className="text-xs font-mono font-bold text-blue-500 uppercase">TARGET:</span>
+                        <input
+                            type="text"
+                            value={selectedPath}
+                            onChange={(e) => setSelectedPath(e.target.value)}
+                            placeholder="/path/to/media"
+                            className="flex-1 bg-transparent border-none text-sm text-slate-200 outline-none font-mono placeholder:text-slate-600"
+                        />
+                        <button onClick={() => setShowPicker('input')} className="text-slate-400 hover:text-white transition-colors">
+                            <FolderOpen size={16} />
+                        </button>
+                    </div>
                 </div>
 
-                <div className="w-px h-8 bg-slate-800" />
-
-                <button
-                    onClick={handleStart}
-                    disabled={isRunning || !selectedPath}
-                    className={cn(
-                        "flex items-center gap-2 px-6 py-2 rounded bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm tracking-wide uppercase transition-all shadow-lg shadow-blue-900/20",
-                        isRunning && "opacity-50 cursor-not-allowed bg-slate-800 text-slate-400"
-                    )}
-                >
-                    {isRunning ? <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" /> : <Play size={16} fill="currentColor" />}
-                    {isRunning ? t('running') : 'EXECUTE'}
-                </button>
+                <div className="flex items-center gap-4">
+                    <div className="h-8 w-px bg-slate-800" />
+                    <button
+                        onClick={handleStart}
+                        disabled={isRunning || !selectedPath}
+                        className={cn(
+                            "flex items-center gap-2 px-8 py-2 rounded bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm tracking-wide uppercase transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] transform hover:scale-105 active:scale-95 disabled:hover:scale-100 disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none",
+                            isRunning && "bg-slate-800 text-slate-400"
+                        )}
+                    >
+                        {isRunning ? <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" /> : <Play size={16} fill="currentColor" />}
+                        {isRunning ? t('running') : 'EXECUTE'}
+                    </button>
+                </div>
             </div>
+
+            {/* System Monitor Area */}
+            <SystemMonitor />
 
             {/* Main Content: Sidebar + TaskBoard */}
             <div className="flex-1 flex overflow-hidden">

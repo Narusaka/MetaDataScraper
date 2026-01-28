@@ -176,9 +176,9 @@ class ArtworkDownloader:
             # Download all posters to Extra folder
             if images_data and 'posters' in images_data:
                 downloaded_images['poster_extra'] = []
-                posters = images_data['posters']
-                if verbose and len(posters) > 1:
-                    print(f"   下载额外 {len(posters)-1} 张海报")
+                posters = images_data['posters'][:5] # Limit to top 5 to save disk space
+                if verbose and len(images_data['posters']) > 1:
+                    print(f"   下载额外 {len(posters)} 张海报 (Limits applied)")
 
                 for i, poster in enumerate(posters):
                     if i == 0:  # Skip first poster (already downloaded)
@@ -202,9 +202,9 @@ class ArtworkDownloader:
             if images_data and 'backdrops' in images_data:
                 downloaded_images['fanart_extra'] = []
                 downloaded_images['backdrop_extra'] = []
-                backdrops = images_data['backdrops']
-                if verbose and len(backdrops) > 1:
-                    print(f"   下载额外 {len(backdrops)-1} 张背景图")
+                backdrops = images_data['backdrops'][:5] # Limit to top 5
+                if verbose and len(images_data['backdrops']) > 1:
+                    print(f"   下载额外 {len(backdrops)} 张背景图 (Limits applied)")
 
                 for i, backdrop in enumerate(backdrops):
                     if i == 0:  # Skip first backdrop (already downloaded)
@@ -236,9 +236,9 @@ class ArtworkDownloader:
             # Download all logos to Extra folder
             if images_data and 'logos' in images_data:
                 downloaded_images['logo_extra'] = []
-                logos = images_data['logos']
-                if verbose and len(logos) > 1:
-                    print(f"   下载额外 {len(logos)-1} 张标志")
+                logos = images_data['logos'][:5] # Limit to top 5
+                if verbose and len(images_data['logos']) > 1:
+                    print(f"   下载额外 {len(logos)} 张标志 (Limits applied)")
 
                 for i, logo in enumerate(logos):
                     if i == 0:  # Skip first logo (already downloaded)

@@ -219,6 +219,8 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                 updated.status = 'dry_run';
                 updated.step = t('audit_result');
                 updated.lastLog = `Audit: Found ${updated.name} (ID: ${updated.tmdbId})`;
+                // Reset hasExecuted so the user can run the plan again if they re-scan
+                updated.hasExecuted = false;
             } else if (message.includes('🔍 TMDB failed')) {
                 updated.status = 'searching';
                 updated.step = t('extended_search');
@@ -383,32 +385,41 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                     </button>
                 </div>
             </div>
-            {/* Content Area - Data Grid */}
-            <div className="flex-1 overflow-auto bg-surface relative">
-                <table className="w-full text-left border-collapse">
-                    <thead className="sticky top-0 z-10 bg-surface border-b border-border text-[10px] uppercase font-bold text-secondary tracking-wider">
-                        <tr>
-                            <th className="px-4 py-3 w-16">Type</th>
-                            <th className="px-4 py-3">Task / Path</th>
-                            <th className="px-4 py-3 w-32">Status</th>
-                            <th className="px-4 py-3 w-48">Current Step</th>
-                            <th className="px-4 py-3 w-28 text-right">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody className="divide-y divide-border/50 text-xs font-mono">
-                        {sortedTaskList.length === 0 ? (
-                            <tr>
-                                <td colSpan={5} className="py-20 text-center text-muted-foreground/40 italic">
-                                    {t('waiting_missions')}
-                                </td>
-                            </tr>
-                        ) : (
-                            sortedTaskList.map(task => (
-                                <TaskRow key={task.status === 'idle' ? task.threadId : (task.fullPath || task.name)} task={task} onExecute={handleExecute} />
-                            ))
-                        )}
-                    </tbody>
-                </table>
+            {/* Content Area */}
+            <div className="flex-1 overflow-auto bg-surface relative p-4">
+                {sortedTaskList.length === 0 ? (
+                    <div className="flex flex-col items-center justify-center h-full text-secondary opacity-50 gap-4">
+                        <div className="w-16 h-16 rounded-2xl bg-muted/20 flex items-center justify-center animate-pulse">
+                            <MonitorPlay className="w-8 h-8 opacity-50" />
+                        </div>
+                        <p className="font-mono text-xs">{t('waiting_missions')}</p>
+                    </div>
+                ) : viewMode === 'list' ? (
+                    <div className="rounded-xl border border-border overflow-hidden bg-panel/50 backdrop-blur-sm">
+                        <table className="w-full text-left border-collapse">
+                            <thead className="bg-muted/30 border-b border-border text-[10px] uppercase font-bold text-secondary tracking-wider">
+                                <tr>
+                                    <th className="px-4 py-3 w-16 text-center">{t('type')}</th>
+                                    <th className="px-4 py-3">{t('task_path')}</th>
+                                    <th className="px-4 py-3 w-32">{t('status')}</th>
+                                    <th className="px-4 py-3 w-48">{t('current_step')}</th>
+                                    <th className="px-4 py-3 w-28 text-right">{t('actions')}</th>
+                                </tr>
+                            </thead>
+                            <tbody className="divide-y divide-border/30 text-xs font-mono">
+                                {sortedTaskList.map(task => (
+                                    <TaskRow key={task.status === 'idle' ? task.threadId : (task.fullPath || task.name)} task={task} onExecute={handleExecute} />
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                        {sortedTaskList.map(task => (
+                            <TaskCard key={task.status === 'idle' ? task.threadId : (task.fullPath || task.name)} task={task} onExecute={handleExecute} />
+                        ))}
+                    </div>
+                )}
             </div>
 
             {/* Raw Log Overlay */}
@@ -421,6 +432,76 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                     </motion.div>
                 )}
             </AnimatePresence>
+        </div>
+    );
+}
+
+function TaskCard({ task, onExecute }: { task: Task, onExecute: (t: Task) => void }) {
+    const { t } = useTranslation();
+    const isAuditReady = (task.status === 'dry_run' || task.status === 'audit_completed') && task.fullPath && task.tmdbId;
+    const hasRun = task.hasExecuted;
+
+    const getStatusColor = (s: string) => {
+        switch (s) {
+            case 'completed': return 'text-emerald-500 bg-emerald-500/10 border-emerald-500/20';
+            case 'failed': return 'text-red-500 bg-red-500/10 border-red-500/20';
+            case 'processing': return 'text-primary bg-primary/10 border-primary/20 animate-pulse';
+            case 'fetching': return 'text-indigo-400 bg-indigo-500/10 border-indigo-500/20';
+            case 'searching': return 'text-amber-400 bg-amber-500/10 border-amber-500/20';
+            case 'dry_run':
+            case 'audit_completed': return 'text-sky-400 bg-sky-500/10 border-sky-500/20';
+            default: return 'text-secondary bg-secondary/10 border-secondary/20';
+        }
+    };
+
+    return (
+        <div className="bg-panel rounded-xl border border-border p-4 flex flex-col gap-3 shadow-sm hover:shadow-md transition-all group relative overflow-hidden">
+            {/* Status Bar */}
+            <div className={cn("absolute top-0 left-0 w-1 bottom-0 transition-colors",
+                task.status === 'completed' ? "bg-emerald-500" :
+                    task.status === 'failed' ? "bg-red-500" :
+                        task.status === 'processing' ? "bg-primary animate-pulse" : "bg-border"
+            )} />
+
+            <div className="flex items-start justify-between gap-2 pl-2">
+                <div className="flex items-center gap-2 min-w-0">
+                    <div className={cn("p-1.5 rounded-lg shrink-0", task.mediaType === 'tv' ? "bg-purple-500/10 text-purple-400" : "bg-blue-500/10 text-blue-400")}>
+                        {task.mediaType === 'tv' ? <MonitorPlay size={16} /> : <FileVideo size={16} />}
+                    </div>
+                    <div className="min-w-0">
+                        <h4 className="font-bold text-sm text-text truncate" title={task.name}>{task.name}</h4>
+                        <div className="text-[10px] text-muted font-mono truncate max-w-[150px]" title={task.fullPath}>{task.fullPath || task.threadId}</div>
+                    </div>
+                </div>
+                <div className={cn("text-[10px] px-2 py-0.5 rounded font-bold uppercase tracking-wider border shrink-0", getStatusColor(task.status))}>
+                    {t(task.status as any) || task.status}
+                </div>
+            </div>
+
+            <div className="pl-2">
+                <div className="text-[10px] uppercase font-bold text-secondary mb-1 tracking-wider">{t('current_step')}</div>
+                <div className="font-mono text-xs text-text/80 truncate bg-surface/50 p-1.5 rounded border border-border/50" title={task.lastLog}>
+                    {task.step}
+                </div>
+            </div>
+
+            {isAuditReady && (
+                <div className="pl-2 pt-1 border-t border-border/50 flex justify-end">
+                    <button
+                        onClick={(e) => { e.stopPropagation(); if (!hasRun) onExecute(task); }}
+                        disabled={hasRun}
+                        className={cn(
+                            "flex items-center gap-1.5 px-3 py-1.5 rounded text-[10px] font-bold uppercase tracking-wider transition-all w-full justify-center",
+                            hasRun
+                                ? "text-muted-foreground bg-muted/20 cursor-not-allowed"
+                                : "bg-primary text-white shadow-lg shadow-primary/20 hover:bg-primary/90 hover:scale-[1.02] active:scale-95"
+                        )}
+                    >
+                        {hasRun ? <CheckCircle2 className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
+                        {hasRun ? t('done') : t('run')}
+                    </button>
+                </div>
+            )}
         </div>
     );
 }

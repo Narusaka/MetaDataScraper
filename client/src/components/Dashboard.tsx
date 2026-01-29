@@ -73,10 +73,9 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
             <div className="shrink-0 flex items-center justify-between gap-6 p-1">
                 {/* Target Input */}
                 <div className="flex-1 relative group">
-                    <div className="absolute inset-0 bg-primary/20 blur-xl rounded-lg opacity-0 group-focus-within:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                    <div className="flex items-center border border-border-light dark:border-white/10 rounded-xl overflow-hidden focus-within:border-primary/50 focus-within:ring-1 focus-within:ring-primary/20 transition-all shadow-sm bg-[var(--bg-panel)]">
-                        <div className="px-4 py-3 bg-slate-50 dark:bg-white/5 border-r border-border-light dark:border-white/10 flex items-center gap-2 text-primary font-mono text-xs font-bold uppercase tracking-wider">
-                            <FolderOpen size={14} />
+                    <div className="flex items-center bg-bg-surface rounded-2xl overflow-hidden shadow-sm transition-all focus-within:ring-2 focus-within:ring-primary/20">
+                        <div className="px-4 py-3 bg-bg-surface border-r border-border-light/20 flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-wider">
+                            <FolderOpen size={16} />
                             <span>{t('target_path')}</span>
                         </div>
                         <input
@@ -84,13 +83,13 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
                             value={selectedPath}
                             onChange={(e) => setSelectedPath(e.target.value)}
                             placeholder="/path/to/media/source"
-                            className="flex-1 bg-transparent border-none text-sm text-text-main px-4 py-3 outline-none font-mono placeholder:text-slate-400 dark:placeholder:text-text-muted/40"
+                            className="flex-1 bg-transparent border-none text-sm text-text-main px-4 py-3 outline-none font-medium placeholder:text-text-muted/40"
                         />
                         <button
                             onClick={() => setShowPicker('input')}
-                            className="px-4 py-3 text-text-muted hover:text-text-main hover:bg-slate-100 dark:hover:bg-white/5 transition-colors border-l border-border-light/50"
+                            className="px-4 py-3 text-text-muted hover:text-text-main transition-colors"
                         >
-                            <FolderInput size={18} />
+                            <FolderInput size={20} />
                         </button>
                     </div>
                 </div>
@@ -102,23 +101,22 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
                     onClick={handleStart}
                     disabled={isRunning || !selectedPath}
                     className={cn(
-                        "relative flex items-center gap-3 px-8 py-3 rounded-xl font-bold text-sm tracking-wide uppercase transition-all overflow-hidden",
+                        "relative flex items-center gap-3 px-8 py-3 rounded-2xl font-bold text-sm tracking-wide uppercase transition-all overflow-hidden shadow-lg shadow-primary/30",
                         isRunning
-                            ? "bg-surface border border-border-light text-text-muted cursor-not-allowed"
+                            ? "bg-bg-surface text-text-muted cursor-not-allowed shadow-none"
                             : !selectedPath
-                                ? "bg-slate-200 dark:bg-white/10 text-slate-400 dark:text-muted-foreground/50 border border-transparent cursor-not-allowed"
-                                : "text-white dark:text-black shadow-lg shadow-primary/40 hover:shadow-primary/60 hover:brightness-110 border border-white/20"
+                                ? "bg-bg-surface text-text-muted cursor-not-allowed shadow-none"
+                                : "bg-primary text-white hover:brightness-110"
                     )}
-                    style={(!isRunning && selectedPath) ? { backgroundColor: 'var(--primary)' } : undefined}
                 >
                     {/* Button Glow for Active State */}
                     {!isRunning && selectedPath && (
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-100%] animate-[shimmer_2s_infinite]" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] animate-[shimmer_2s_infinite]" />
                     )}
 
                     {isRunning ? (
                         <div className="flex items-center gap-2">
-                            <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                            <div className="w-4 h-4 border-2 border-white/50 border-t-white rounded-full animate-spin" />
                             <span>{t('running')}</span>
                         </div>
                     ) : (
@@ -135,8 +133,8 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
             {/* Main Content: Sidebar + TaskBoard */}
             <div className="flex-1 flex gap-6 overflow-hidden min-h-0">
                 {/* Configuration Sidebar */}
-                <div className="w-80 shrink-0 flex flex-col glass-panel-pro rounded-2xl border border-glass-border overflow-hidden">
-                    <div className="p-4 border-b border-border-light/50 bg-slate-50/50 dark:bg-black/20 backdrop-blur-md">
+                <div className="w-80 shrink-0 flex flex-col glass-panel-pro rounded-3xl border border-glass-border overflow-hidden shadow-xl">
+                    <div className="p-4 border-b border-border-light/20 bg-bg-surface/50 backdrop-blur-md">
                         <div className="flex items-center gap-2 text-text-main font-bold">
                             <Settings2 size={16} className="text-primary" />
                             <span className="tracking-tight uppercase text-xs">{t('mission_configuration')}</span>
@@ -166,19 +164,19 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
                                         exit={{ opacity: 0, height: 0 }}
                                         className="overflow-hidden pt-2"
                                     >
-                                        <div className="relative group">
+                                        <div className="relative group flex items-center bg-bg-surface rounded-xl p-1">
                                             <input
                                                 type="text"
                                                 value={outputPath}
                                                 onChange={(e) => setOutputPath(e.target.value)}
-                                                className="w-full bg-[var(--bg-panel)] border border-border-light rounded-lg px-3 py-2 text-xs text-text-mono font-mono focus:border-primary/50 outline-none pr-8 text-text-main"
+                                                className="w-full bg-transparent border-none text-xs text-text-main px-3 py-2 outline-none font-medium placeholder:text-text-muted/40"
                                                 placeholder={t('output_placeholder')}
                                             />
                                             <button
                                                 onClick={() => setShowPicker('output')}
-                                                className="absolute right-2 top-1/2 -translate-y-1/2 text-text-muted hover:text-primary transition-colors"
+                                                className="p-2 text-text-muted hover:text-primary transition-colors"
                                             >
-                                                <FolderOpen size={14} />
+                                                <FolderOpen size={16} />
                                             </button>
                                         </div>
                                     </motion.div>
@@ -192,7 +190,7 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
 
                             <div className="space-y-4">
                                 <div className="space-y-1.5">
-                                    <label className="text-[10px] uppercase font-bold text-slate-500 dark:text-text-muted/60 tracking-wider ml-1">{t('process_mode')}</label>
+                                    <label className="text-[10px] uppercase font-bold text-text-muted tracking-wider ml-1">{t('process_mode')}</label>
                                     <SegmentedControl
                                         options={[
                                             { value: '', label: t('auto') },
@@ -205,7 +203,7 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
                                 </div>
 
                                 <div className="space-y-1.5">
-                                    <label className="text-[10px] uppercase font-bold text-slate-500 dark:text-text-muted/60 tracking-wider ml-1">{t('concurrency')}</label>
+                                    <label className="text-[10px] uppercase font-bold text-text-muted tracking-wider ml-1">{t('concurrency')}</label>
                                     <SegmentedControl
                                         options={[
                                             { value: 'auto', label: t('auto') },
@@ -218,17 +216,19 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
                                 </div>
 
                                 <div className="space-y-1.5">
-                                    <label className="text-[10px] uppercase font-bold text-slate-500 dark:text-text-muted/60 tracking-wider ml-1 flex justify-between">
+                                    <label className="text-[10px] uppercase font-bold text-text-muted tracking-wider ml-1 flex justify-between">
                                         <span>{t('tmdb_override')}</span>
                                         <span className="text-[9px] opacity-50">{t('optional')}</span>
                                     </label>
-                                    <input
-                                        type="number"
-                                        value={tmdbId}
-                                        onChange={(e) => setTmdbId(e.target.value)}
-                                        className="w-full bg-[var(--bg-panel)] border border-border-light rounded-lg px-3 py-2 text-xs font-mono text-text-main focus:border-primary/50 outline-none placeholder:text-text-muted/40 transition-all focus:ring-1 focus:ring-primary/20"
-                                        placeholder={t('tmdb_placeholder')}
-                                    />
+                                    <div className="bg-bg-surface rounded-xl px-3 py-2">
+                                        <input
+                                            type="number"
+                                            value={tmdbId}
+                                            onChange={(e) => setTmdbId(e.target.value)}
+                                            className="w-full bg-transparent border-none text-xs text-text-main outline-none placeholder:text-text-muted/40 p-0"
+                                            placeholder={t('tmdb_placeholder')}
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -236,9 +236,10 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
                         {/* Parameters */}
                         <div className="space-y-3">
                             <SectionHeader icon={Cpu} title={t('parameters')} />
-                            <div className="bg-slate-50 dark:bg-white/5 rounded-xl p-1 border border-black/5 dark:border-white/5 space-y-0 divide-y divide-black/5 dark:divide-white/5">
+                            <div className="bg-bg-surface rounded-xl p-3 space-y-1">
                                 <Switch label={t('opt_local_nfo')} checked={useLocalNfo} onChange={setUseLocalNfo} />
                                 <Switch label={t('opt_extra_images')} checked={extraImages} onChange={setExtraImages} />
+                                <div className="h-px bg-border-light/10 my-1" />
                                 <Switch label={t('force_refresh_danger')} checked={forceFresh} onChange={setForceFresh} danger />
                             </div>
                         </div>
@@ -340,19 +341,19 @@ function SegmentedControl({ options, value, onChange }: any) {
 function Switch({ checked, onChange, label, danger }: any) {
     return (
         <div className="flex items-center justify-between py-2.5 px-2">
-            <span className="text-[11px] font-bold text-slate-500 dark:text-text-muted uppercase tracking-wide">{label}</span>
+            <span className="text-[11px] font-medium text-text-main/90">{label}</span>
             <button
                 onClick={() => onChange(!checked)}
                 className={cn(
-                    "w-9 h-5 rounded-full transition-colors duration-300 relative focus:outline-none",
+                    "w-11 h-6 rounded-full transition-colors duration-300 relative focus:outline-none",
                     checked
-                        ? (danger ? "bg-red-500" : "bg-primary")
-                        : "bg-slate-300/80 dark:bg-slate-700"
+                        ? (danger ? "bg-red-500" : "bg-[var(--ios-green)]") // Use new iOS green variable
+                        : "bg-stone-300 dark:bg-stone-700"
                 )}
             >
                 <motion.div
-                    className="absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full shadow-sm"
-                    animate={{ x: checked ? 16 : 0 }}
+                    className="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow-sm"
+                    animate={{ x: checked ? 20 : 0 }}
                     transition={{ type: "spring", stiffness: 500, damping: 30 }}
                 />
             </button>

@@ -52,6 +52,7 @@ export default {
         warning: "var(--accent-warning)",
         error: "var(--accent-error)",
         info: "var(--accent-info)",
+        "ios-green": "var(--ios-green)",
       },
       fontFamily: {
         display: "var(--font-display)",

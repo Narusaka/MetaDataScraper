@@ -1,4 +1,40 @@
-# React + TypeScript + Vite
+# MediaAgent Frontend (React + TypeScript + Vite)
+
+## 开发与联调
+
+1) 安装依赖
+
+```bash
+npm install
+```
+
+2) 启动前端
+
+```bash
+npm run dev
+```
+
+默认情况下，前端会通过 Vite 的 dev proxy 访问后端：
+
+- `/api/*` 代理到 `http://localhost:8000`
+- `/ws/*` 代理到 `ws://localhost:8000`
+
+所以前端代码统一使用相对路径：`/api/...` 与 `/ws/...`，避免硬编码 host/port。
+
+如需自定义后端地址，可在 `.env` 中设置：
+
+```bash
+VITE_API_BASE_URL=http://localhost:8000
+VITE_WS_BASE_URL=ws://localhost:8000
+```
+
+## 生产构建
+
+```bash
+npm run build
+```
+
+建议由目标运行环境自行 `npm install`，不要打包/提交 `node_modules`。
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 

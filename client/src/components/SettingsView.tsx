@@ -4,6 +4,7 @@ import { Save, Loader2, Key, Database, Image as ImageIcon, Monitor, Cpu } from '
 import { cn } from '../lib/utils';
 import { useTranslation } from '../lib/language';
 import { useTheme } from 'next-themes';
+import { apiUrl } from '../lib/api';
 
 // Loose typing for the config 
 interface Config {
@@ -41,7 +42,7 @@ export function SettingsView() {
     const fetchSettings = async () => {
         setLoading(true);
         try {
-            const res = await fetch("http://localhost:8000/api/settings");
+            const res = await fetch(apiUrl('/api/settings'));
             if (res.ok) {
                 const data = await res.json();
                 setConfig(data);
@@ -58,7 +59,7 @@ export function SettingsView() {
         setSaving(true);
         setMsg(null);
         try {
-            const res = await fetch("http://localhost:8000/api/settings", {
+            const res = await fetch(apiUrl('/api/settings'), {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(config)
@@ -335,7 +336,7 @@ function ProxyTester() {
         setLoading(true);
         setStatus(null);
         try {
-            const res = await fetch("http://localhost:8000/api/test_connectivity");
+            const res = await fetch(apiUrl('/api/test_connectivity'));
             if (res.ok) {
                 const data = await res.json();
                 setStatus(data);

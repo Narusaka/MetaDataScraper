@@ -1,102 +1,5 @@
 @import "tailwindcss";
 
-:root {
-  /* --- LIGHT THEME (Industrial Clean) --- */
-  --font-display: 'Space Grotesk', system-ui, sans-serif;
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
-
-  --bg-main: #f8fafc;
-  /* Slate 50 */
-  --bg-panel: #ffffff;
-  --bg-surface: #f1f5f9;
-  /* Slate 100 */
-
-  --primary: #2563eb;
-  /* Blue 600 */
-  --primary-rgb: 37, 99, 235;
-  --primary-dim: rgba(37, 99, 235, 0.1);
-  --primary-glow: rgba(37, 99, 235, 0.3);
-  --primary-foreground: #ffffff;
-
-  --secondary: #475569;
-  /* Slate 600 */
-  --secondary-glow: rgba(71, 85, 105, 0.1);
-
-  --text-main: #0f172a;
-  /* Slate 900 */
-  --text-muted: #64748b;
-  /* Slate 500 */
-  --text-dim: #94a3b8;
-  /* Slate 400 */
-
-  --border-light: #e2e8f0;
-  /* Slate 200 - Solid over alpha for cleanliness */
-  --border-active: var(--primary);
-
-  --accent-success: #10b981;
-  --accent-warning: #f59e0b;
-  --accent-error: #ef4444;
-  --accent-info: #06b6d4;
-
-  --glass-surface: rgba(255, 255, 255, 0.95);
-  --glass-border: rgba(226, 232, 240, 0.8);
-  --glass-highlight: rgba(255, 255, 255, 1);
-
-  --grid-opacity: 0.03;
-  --grid-color: 0, 0, 0;
-
-  --text-on-active: var(--primary);
-}
-
-.dark {
-  /* --- DARK THEME (Deep Space OLED) --- */
-  --bg-main: #020617;
-  /* Slate 950 (Rich Black/Blue) */
-  --bg-panel: #0f172a;
-  /* Slate 900 */
-  --bg-surface: #1e293b;
-  /* Slate 800 */
-
-  --primary: #38bdf8;
-  /* Sky 400 - Better contrast on dark */
-  --primary-rgb: 56, 189, 248;
-  --primary-dim: rgba(56, 189, 248, 0.15);
-  --primary-glow: rgba(56, 189, 248, 0.25);
-  --primary-foreground: #020617;
-
-  --secondary: #a78bfa;
-  /* Violet 400 */
-  --secondary-glow: rgba(167, 139, 250, 0.2);
-
-  --text-main: #f8fafc;
-  /* Slate 50 */
-  --text-muted: #94a3b8;
-  /* Slate 400 */
-  --text-dim: #475569;
-  /* Slate 600 */
-
-  --border-light: #1e293b;
-  /* Slate 800 - Subtle solid borders */
-  --border-active: var(--primary);
-
-  --accent-success: #34d399;
-  --accent-warning: #fbbf24;
-  --accent-error: #f87171;
-  --accent-info: #22d3ee;
-
-  /* Glass variables tailored for dark mode to reduce noise */
-  --glass-surface: rgba(15, 23, 42, 0.95);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-highlight: rgba(255, 255, 255, 0.05);
-
-  --grid-opacity: 0.03;
-  /* Reduced from 0.05 to reduce noise */
-  --grid-color: 56, 189, 248;
-
-  --text-on-active: #000000;
-}
-
 /* Base Styles */
 body {
   margin: 0;
@@ -107,13 +10,119 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
 
-  /* --- ADAPTIVE GRID --- */
-  background-image:
-    linear-gradient(rgba(var(--grid-color), var(--grid-opacity)) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(var(--grid-color), var(--grid-opacity)) 1px, transparent 1px);
-  background-size: 50px 50px;
-  background-position: center top;
+:root {
+  /* --- LIGHT THEME (iOS 16 Inspired) --- */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* iOS Light Backgrounds */
+  --bg-main: #F2F2F7;
+  /* System Grouped Background */
+  --bg-panel: #FFFFFF;
+  /* Secondary System Grouped Background (Cards) */
+  --bg-surface: #E5E5EA;
+  /* System Fill / Input Background */
+  --bg-hover: #F2F2F7;
+
+  /* iOS Blue */
+  --primary: #007AFF;
+  --primary-rgb: 0, 122, 255;
+  --primary-dim: rgba(0, 122, 255, 0.1);
+  --primary-glow: rgba(0, 122, 255, 0.2);
+  --primary-foreground: #FFFFFF;
+
+  /* iOS Green (Switch On) */
+  --ios-green: #34C759;
+
+  --secondary: #8E8E93;
+  /* System Gray */
+  --secondary-glow: rgba(142, 142, 147, 0.1);
+
+  --text-main: #000000;
+  /* Label Color */
+  --text-muted: #8E8E93;
+  /* Secondary Label Color */
+  --text-dim: #C7C7CC;
+  /* Tertiary Label Color */
+
+  --border-light: rgba(60, 60, 67, 0.106);
+  /* Separator Color (Non-Opaque) */
+  --border-active: var(--primary);
+
+  --accent-success: #34C759;
+  --accent-warning: #FF9500;
+  --accent-error: #FF3B30;
+  --accent-info: #5AC8FA;
+
+  --glass-surface: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-highlight: rgba(255, 255, 255, 0.5);
+
+  --grid-opacity: 0.02;
+  --grid-color: 0, 0, 0;
+
+  --text-on-active: #FFFFFF;
+
+  --sidebar-w: 68px;
+  --sidebar-w-expanded: 260px;
+
+  --sidebar-active: #007AFF;
+}
+
+.dark {
+  /* --- DARK THEME (iOS 16 Dark Mode) --- */
+  --bg-main: #000000;
+  /* System Background */
+  --bg-panel: #1C1C1E;
+  /* Secondary System Background */
+  --bg-surface: #2C2C2E;
+  /* Tertiary System Background */
+  --bg-hover: #3A3A3C;
+
+  /* iOS Dark Blue */
+  --primary: #0A84FF;
+  --primary-rgb: 10, 132, 255;
+  --primary-dim: rgba(10, 132, 255, 0.15);
+  --primary-glow: rgba(10, 132, 255, 0.25);
+  --primary-foreground: #FFFFFF;
+
+  /* iOS Green (Switch On) */
+  --ios-green: #30D158;
+
+  --secondary: #98989D;
+  /* System Gray */
+  --secondary-glow: rgba(152, 152, 157, 0.2);
+
+  --text-main: #FFFFFF;
+  /* Label Color */
+  --text-muted: #8E8E93;
+  /* Secondary Label Color */
+  --text-dim: #48484A;
+  /* Tertiary Label Color */
+
+  --border-light: rgba(84, 84, 88, 0.35);
+  /* Separator Color (Non-Opaque) */
+  --border-active: var(--primary);
+
+  --accent-success: #32D74B;
+  --accent-warning: #FFD60A;
+  --accent-error: #FF453A;
+  --accent-info: #64D2FF;
+
+  /* Glass variables tailored for dark mode */
+  --glass-surface: rgba(28, 28, 30, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-highlight: rgba(255, 255, 255, 0.08);
+
+  --grid-opacity: 0.03;
+  --grid-color: 10, 132, 255;
+
+  --text-on-active: #FFFFFF;
+
+  --sidebar-active: var(--ios-green);
 }
 
 /* Light Mode Vignette (Subtle) */
@@ -154,6 +163,17 @@ body::after {
 
 /* --- UTILITIES --- */
 @layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
 
   /* The "Pro" Glass Panel */
   .glass-panel-pro {

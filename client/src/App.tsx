@@ -6,6 +6,7 @@ import { Dashboard } from './components/Dashboard';
 import { Header } from './components/Header';
 import { Menu, Terminal } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { apiUrl } from './lib/api';
 
 function App() {
   const [activeTab, setActiveTab] = useState("dashboard");
@@ -16,7 +17,7 @@ function App() {
   useEffect(() => {
     const interval = setInterval(async () => {
       try {
-        const res = await fetch("http://localhost:8000/api/status");
+        const res = await fetch(apiUrl('/api/status'));
         if (res.ok) {
           const data = await res.json();
           setIsRunning(data.running);
@@ -28,7 +29,7 @@ function App() {
 
   const handleStartTask = async (taskConfig: any) => {
     try {
-      const res = await fetch("http://localhost:8000/api/tasks/start", {
+      const res = await fetch(apiUrl('/api/tasks/start'), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(taskConfig)

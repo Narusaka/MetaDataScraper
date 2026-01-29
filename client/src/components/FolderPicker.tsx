@@ -4,6 +4,7 @@ import { Folder, HardDrive, ChevronRight, Clock } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useTranslation } from '../lib/language';
 import type { FileSystemItem, FileSystemResponse } from '../lib/types';
+import { apiUrl } from '../lib/api';
 
 interface FolderPickerProps {
     onSelect: (path: string) => void;
@@ -51,7 +52,7 @@ export function FolderPicker({ onSelect, className, initialPath }: FolderPickerP
 
         while (current && attempts < maxAttempts) {
             try {
-                const res = await fetch(`http://localhost:8000/api/filesystem?path=${encodeURIComponent(current)}`);
+                const res = await fetch(apiUrl(`/api/filesystem?path=${encodeURIComponent(current)}`));
                 if (res.ok) {
                     const data: FileSystemResponse = await res.json();
                     setItems(data.items);
@@ -73,8 +74,6 @@ export function FolderPicker({ onSelect, className, initialPath }: FolderPickerP
 
         // If we get here, all attempts failed
         setLoading(false);
-        // If we get here, all attempts failed
-        setLoading(false);
         // Do NOT clear input value, so user can correct it or keep the custom path
         setInputValue(startPath || "");
         setError("Failed to load path or any parent directories.");
@@ -85,7 +84,7 @@ export function FolderPicker({ onSelect, className, initialPath }: FolderPickerP
         setLoading(true);
         setError(null);
         try {
-            const res = await fetch(`http://localhost:8000/api/filesystem?path=${encodeURIComponent(path)}`);
+            const res = await fetch(apiUrl(`/api/filesystem?path=${encodeURIComponent(path)}`));
             if (!res.ok) throw new Error(`Failed to access directory: ${path}`);
             const data: FileSystemResponse = await res.json();
 

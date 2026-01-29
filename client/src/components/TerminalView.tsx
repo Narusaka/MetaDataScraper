@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { cn } from '../lib/utils';
 import { Terminal as TerminalIcon } from 'lucide-react';
 import { useTranslation } from '../lib/language';
+import { wsUrl } from '../lib/api';
 
 interface TerminalViewProps {
     className?: string;
@@ -18,10 +19,7 @@ export function TerminalView({ className }: TerminalViewProps) {
         let reconnectTimer: any;
 
         const connect = () => {
-            const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const wsUrl = `${protocol}//localhost:8000/ws/logs`;
-
-            const ws = new WebSocket(wsUrl);
+            const ws = new WebSocket(wsUrl('/ws/logs'));
             wsRef.current = ws;
 
             ws.onopen = () => {

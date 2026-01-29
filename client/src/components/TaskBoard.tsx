@@ -8,6 +8,7 @@ import {
 import { cn } from '../lib/utils';
 import { useTranslation } from '../lib/language';
 import { motion, AnimatePresence } from 'framer-motion';
+import { apiUrl, wsUrl } from '../lib/api';
 
 interface Task {
     threadId: string;
@@ -53,7 +54,7 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
         }));
 
         try {
-            await fetch('http://localhost:8000/api/tasks/start', {
+            await fetch(apiUrl('/api/tasks/start'), {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -86,9 +87,12 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
     };
 
     useEffect(() => {
+        let closed = false;
+        let reconnectTimer: number | undefined;
+
         const connect = () => {
-            const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-            const ws = new WebSocket(`${protocol}//localhost:8000/ws/logs`);
+            if (closed) return;
+            const ws = new WebSocket(wsUrl('/ws/logs'));
             wsRef.current = ws;
 
             ws.onmessage = (event) => {
@@ -97,10 +101,17 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                 parseLog(msg);
             };
 
-            ws.onclose = () => setTimeout(connect, 3000);
+            ws.onclose = () => {
+                if (closed) return;
+                reconnectTimer = window.setTimeout(connect, 3000);
+            };
         };
         connect();
-        return () => wsRef.current?.close();
+        return () => {
+            closed = true;
+            if (reconnectTimer) window.clearTimeout(reconnectTimer);
+            wsRef.current?.close();
+        };
     }, []);
 
     const parseLog = (log: string) => {

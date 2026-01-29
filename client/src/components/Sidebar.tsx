@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { LayoutDashboard, Settings, Activity, ChevronLeft, ChevronRight, Hexagon, Cpu } from 'lucide-react';
+import { LayoutDashboard, Settings, Activity, ChevronRight } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useTranslation } from '../lib/language';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -19,51 +19,45 @@ export function Sidebar({ activeTab, onTabChange, mobileOpen = false, onMobileCl
         const isActive = activeTab === id;
 
         return (
-            <motion.button
-                layout
+            <button
                 onClick={() => {
                     onTabChange(id);
                     if (window.innerWidth < 768) onMobileClose?.();
                 }}
-                className={cn(
-                    "group relative flex items-center gap-4 px-3 py-3 rounded-xl transition-all duration-300 overflow-hidden",
-                    isActive
-                        ? "bg-primary text-primary-foreground shadow-lg shadow-primary/30"
-                        : "text-slate-500 dark:text-text-muted hover:text-slate-900 dark:hover:text-text-main hover:bg-slate-200/50 dark:hover:bg-white/5",
-                    collapsed ? "justify-center w-12 h-12 mx-auto px-0" : "w-full"
-                )}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                className="group flex items-center w-full outline-none"
             >
-                {/* Active Indicator Line (Left) - REMOVED for Block Style */}
+                <div className="h-12 w-full flex items-center px-0">
+                    {/* Fixed Width Icon Container for Stability (84px to match Header/Footer) */}
+                    <div className="w-[84px] shrink-0 flex items-center justify-center">
+                        <div className={cn(
+                            "w-10 h-10 rounded-xl flex items-center justify-center transition-[transform,colors] duration-300",
+                            isActive
+                                ? "scale-110 text-primary dark:text-ios-green"
+                                : "text-text-muted group-hover:text-text-main group-hover:scale-105"
+                        )}>
+                            <Icon
+                                size={20}
+                                strokeWidth={isActive ? 2.5 : 2}
+                            />
+                        </div>
+                    </div>
 
-
-                <div className="relative z-10 flex items-center gap-4">
-                    <Icon
-                        size={20}
-                        className={cn(
-                            "shrink-0 transition-colors duration-300",
-                            isActive ? "text-primary-foreground" : "group-hover:text-slate-900 dark:group-hover:text-text-main"
-                        )}
-                    />
-
-                    <AnimatePresence mode="popLayout">
-                        {!collapsed && (
-                            <motion.span
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: -10 }}
-                                className="font-medium text-sm tracking-wide whitespace-nowrap"
-                            >
-                                {label}
-                            </motion.span>
-                        )}
-                    </AnimatePresence>
+                    {/* Text Label Container */}
+                    <div className={cn(
+                        "flex-1 overflow-hidden whitespace-nowrap transition-opacity duration-300 flex items-center",
+                        collapsed ? "opacity-0 w-0 pointer-events-none" : "opacity-100"
+                    )}>
+                        <span className={cn(
+                            "font-medium text-sm tracking-wide pl-2 transition-colors duration-300",
+                            isActive
+                                ? "text-primary dark:text-ios-green font-bold"
+                                : "text-text-muted group-hover:text-text-main"
+                        )}>
+                            {label}
+                        </span>
+                    </div>
                 </div>
-
-                {/* Hover Glow Effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out pointer-events-none" />
-            </motion.button>
+            </button>
         )
     };
 
@@ -76,7 +70,7 @@ export function Sidebar({ activeTab, onTabChange, mobileOpen = false, onMobileCl
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 bg-black/80 backdrop-blur-sm z-40 md:hidden"
+                        className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 md:hidden"
                         onClick={onMobileClose}
                     />
                 )}
@@ -85,84 +79,79 @@ export function Sidebar({ activeTab, onTabChange, mobileOpen = false, onMobileCl
             {/* Sidebar Container */}
             <motion.aside
                 initial={false}
-                animate={{ width: collapsed ? 80 : 280 }}
+                animate={{ width: collapsed ? 84 : 260 }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 className={cn(
-                    "fixed md:relative z-50 h-full flex flex-col glass-panel-pro border-r border-border-light shadow-2xl overflow-hidden",
-                    // Mobile handling
-                    mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0",
-                    "transition-transform duration-300 md:transition-none"
+                    "fixed md:relative z-50 flex flex-col glass-panel-pro shadow-2xl overflow-hidden",
+                    // Floating logic
+                    "h-[calc(100vh-2rem)] my-4 ml-4 rounded-3xl border border-glass-border",
+                    mobileOpen ? "translate-x-0" : "-translate-x-[120%] md:translate-x-0"
                 )}
             >
-                {/* Tech Background Grid */}
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 pointer-events-none" />
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
+                {/* Tech Background Grid (Subtle) */}
+                <div className="absolute inset-0 bg-noise opacity-[0.02] pointer-events-none" />
 
-                {/* Header */}
-                <div className="h-20 flex items-center px-6 border-b border-border-light/50 relative z-10">
-                    <div className={cn("flex items-center gap-4 w-full transition-all", collapsed ? "justify-center" : "")}>
-                        <div className="relative group">
-                            <div className="absolute inset-0 bg-primary/40 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gray-900 to-black border border-border-light flex items-center justify-center text-primary shadow-lg relative z-10">
-                                <Hexagon size={24} className="animate-pulse-glow" strokeWidth={2.5} />
+                {/* Header - Fixed Height & Centered Content - Adjusted to match Top Bar center alignment */}
+                <div className="h-[88px] shrink-0 flex items-center relative z-10 w-full mb-2">
+                    <div className="flex items-center w-full px-0">
+                        {/* Icon centered in the 84px column */}
+                        <div className="w-[84px] shrink-0 flex justify-center items-center">
+                            <div className="relative group cursor-pointer">
+                                <div className="absolute inset-0 bg-primary/40 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#007AFF] to-[#5856D6] dark:from-[#34C759] dark:to-[#30B0C7] flex items-center justify-center text-white shadow-lg shadow-primary/20 relative z-10 ring-1 ring-white/20 group-hover:scale-105 transition-transform duration-300">
+                                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-tr from-white/20 to-transparent opacity-50" />
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="relative z-20">
+                                        <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                        <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                        <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                </div>
                             </div>
                         </div>
 
-                        {!collapsed && (
-                            <motion.div
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                className="flex flex-col"
-                            >
-                                <span className="font-bold text-lg text-text-main tracking-tight font-display">MEDIA<span className="text-primary">AGENT</span></span>
-                                <span className="text-[10px] text-text-muted font-mono tracking-widest uppercase flex items-center gap-1">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                                    Online v2.0
-                                </span>
-                            </motion.div>
-                        )}
+                        {/* Title Text */}
+                        <div className={cn(
+                            "flex-1 overflow-hidden whitespace-nowrap transition-opacity duration-300",
+                            collapsed ? "opacity-0 w-0" : "opacity-100"
+                        )}>
+                            <span className="font-bold text-lg text-text-main tracking-tight font-display whitespace-nowrap pl-2">
+                                Media<span className="text-primary">Agent</span>
+                            </span>
+                        </div>
                     </div>
                 </div>
 
-                {/* Nav Items */}
-                <div className="flex-1 py-8 px-4 flex flex-col gap-2 overflow-y-auto relative z-10 scrollbar-hide">
-                    <div className={cn("px-2 text-[10px] font-bold text-text-muted/40 uppercase tracking-[0.2em] mb-2 font-mono", collapsed && "hidden")}>
-                        Core Modules
-                    </div>
 
+
+                {/* Nav Items */}
+                <div className="flex-1 py-2 flex flex-col gap-2 overflow-y-auto overflow-x-hidden relative z-10 scrollbar-hide items-center">
                     <NavItem icon={LayoutDashboard} label={t('dashboard')} id="dashboard" />
                     <NavItem icon={Activity} label={t('monitoring')} id="monitoring" />
 
-                    <div className="my-6 border-t border-border-light/30 mx-2" />
+                    <div className="h-4" /> {/* Spacer instead of divider */}
 
-                    <div className={cn("px-2 text-[10px] font-bold text-text-muted/40 uppercase tracking-[0.2em] mb-2 font-mono", collapsed && "hidden")}>
-                        System
-                    </div>
                     <NavItem icon={Settings} label={t('settings')} id="settings" />
                 </div>
 
-                {/* Footer / Toggle */}
-                <div className="p-4 border-t border-border-light/50 relative z-10 bg-panel/50 backdrop-blur-md">
-                    <button
-                        onClick={() => setCollapsed(!collapsed)}
-                        className={cn(
-                            "flex items-center justify-center w-full h-10 rounded-lg hover:bg-white/5 text-text-muted hover:text-text-main transition-all duration-300 border border-transparent hover:border-white/10",
-                            collapsed && "aspect-square"
-                        )}
-                    >
-                        {collapsed ? <ChevronRight size={18} /> : (
-                            <div className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider">
-                                <ChevronLeft size={16} />
-                                <span>Collapse View</span>
-                            </div>
-                        )}
-                    </button>
 
-                    {!collapsed && (
-                        <div className="mt-4 flex items-center justify-between text-[10px] text-text-muted/30 font-mono">
-                            <span className="flex items-center gap-1"><Cpu size={10} /> 12%</span>
-                            <span>MEM: 1.2GB</span>
+                {/* Footer / Toggle */}
+                <div className="h-20 shrink-0 flex items-center relative z-10 w-full">
+                    <div className="flex items-center w-full px-0">
+                        {/* Toggle Button centered in 84px column */}
+                        <div className="w-[84px] shrink-0 flex justify-center">
+                            <button
+                                onClick={() => setCollapsed(!collapsed)}
+                                className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-black/5 dark:hover:bg-white/10 text-text-muted hover:text-primary transition-all duration-300"
+                            >
+                                <motion.div
+                                    animate={{ rotate: collapsed ? 0 : 180 }}
+                                    transition={{ duration: 0.3 }}
+                                >
+                                    <ChevronRight size={20} />
+                                </motion.div>
+                            </button>
                         </div>
-                    )}
+                    </div>
                 </div>
             </motion.aside>
         </>

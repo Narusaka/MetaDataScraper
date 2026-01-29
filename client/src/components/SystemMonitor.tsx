@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Activity, BarChart3, Database, Cpu } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useTranslation } from '../lib/language';
+import { apiUrl } from '../lib/api';
 
 interface SystemStats {
     running: boolean;
@@ -22,7 +23,7 @@ export function SystemMonitor() {
     useEffect(() => {
         const fetchStats = async () => {
             try {
-                const res = await fetch('http://localhost:8000/api/status');
+                const res = await fetch(apiUrl('/api/status'));
                 const data = await res.json();
                 setStats(data);
             } catch (e) {

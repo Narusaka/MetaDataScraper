@@ -57,6 +57,16 @@ body {
   --accent-error: #FF3B30;
   --accent-info: #5AC8FA;
 
+  --bg-input-target: #F1F5F9;
+
+  --bg-toggle-wrapper: rgba(226, 232, 240, 0.5);
+  --bg-toggle-pill: #FFFFFF;
+  --text-toggle-active: #000000;
+  --text-toggle-inactive: #64748B;
+  --bg-button-secondary: rgba(241, 245, 249, 0.5);
+  --bg-button-secondary-active: #FFFFFF;
+  --bg-inner-panel: rgba(241, 245, 249, 0.6);
+
   --glass-surface: rgba(255, 255, 255, 0.75);
   --glass-border: rgba(255, 255, 255, 0.4);
   --glass-highlight: rgba(255, 255, 255, 0.5);
@@ -116,6 +126,16 @@ body {
   --glass-surface: rgba(28, 28, 30, 0.75);
   --glass-border: rgba(255, 255, 255, 0.1);
   --glass-highlight: rgba(255, 255, 255, 0.08);
+
+  --bg-input-target: #292524;
+
+  --bg-toggle-wrapper: rgba(0, 0, 0, 0.3);
+  --bg-toggle-pill: rgba(255, 255, 255, 0.1);
+  --text-toggle-active: #FFFFFF;
+  --text-toggle-inactive: #94A3B8;
+  --bg-button-secondary: rgba(255, 255, 255, 0.05);
+  --bg-button-secondary-active: rgba(255, 255, 255, 0.1);
+  --bg-inner-panel: rgba(0, 0, 0, 0.2);
 
   --grid-opacity: 0.03;
   --grid-color: 10, 132, 255;

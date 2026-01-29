@@ -112,23 +112,27 @@ export function FolderPicker({ onSelect, className, initialPath }: FolderPickerP
     const showRecent = !inputValue && recentPaths.length > 0;
 
     return (
-        <div className={cn("flex flex-col", className)}>
-            <div className="p-4 border-b border-border/50 bg-black/5 flex items-center gap-3">
-                <HardDrive className="w-5 h-5 text-primary shrink-0" />
-                <input
-                    type="text"
-                    value={inputValue}
-                    onChange={(e) => {
-                        setInputValue(e.target.value);
-                        onSelect(e.target.value);
-                    }}
-                    onKeyDown={handleKeyDown}
-                    placeholder={t('select_folder')}
-                    className="flex-1 bg-muted/50 border border-border/30 hover:border-primary/50 focus:border-primary focus:ring-1 focus:ring-primary/50 rounded-md px-3 py-1.5 text-xs text-foreground font-mono outline-none transition-all placeholder:text-muted"
-                />
+        <div className={cn("flex flex-col h-full", className)}>
+            {/* Top Bar: Path Input (Target-style) */}
+            <div className="shrink-0 p-6 pb-2">
+                <div className="flex items-center gap-3 bg-[var(--bg-input-target)] rounded-2xl px-4 py-2 transition-all focus-within:ring-2 focus-within:ring-primary/20">
+                    <HardDrive className="w-5 h-5 text-primary shrink-0" />
+                    <input
+                        type="text"
+                        value={inputValue}
+                        onChange={(e) => {
+                            setInputValue(e.target.value);
+                            onSelect(e.target.value);
+                        }}
+                        onKeyDown={handleKeyDown}
+                        placeholder={t('select_folder')}
+                        className="flex-1 bg-transparent border-none text-sm text-foreground font-mono outline-none placeholder:text-muted/50"
+                    />
+                </div>
             </div>
 
-            <div className="flex-1 min-h-0 overflow-y-auto p-2 scrollbar-thin">
+            {/* Folder List */}
+            <div className="flex-1 min-h-0 overflow-y-auto px-4 pb-4 scrollbar-thin">
                 {error && (
                     <div className="mx-2 my-2 p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-xs flex items-center gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0" />
@@ -140,25 +144,25 @@ export function FolderPicker({ onSelect, className, initialPath }: FolderPickerP
                 )}
 
                 {loading && (
-                    <div className="flex items-center justify-center h-full text-secondary gap-2">
+                    <div className="flex items-center justify-center h-full text-muted-foreground gap-2">
                         <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-                        {t('loading')}
+                        <span className="text-xs uppercase tracking-widest">{t('loading')}</span>
                     </div>
                 )}
 
                 {!loading && showRecent && (
-                    <div className="space-y-1">
-                        <div className="px-3 py-2 text-[10px] font-bold uppercase tracking-widest text-muted-foreground opacity-70">
+                    <div className="space-y-1 mt-2">
+                        <div className="px-3 py-2 text-[10px] font-bold uppercase tracking-widest text-muted-foreground/60">
                             Recent Paths
                         </div>
                         {recentPaths.map((path) => (
                             <div
                                 key={path}
-                                className="flex items-center gap-3 p-3 hover:bg-white/10 dark:hover:bg-white/5 rounded-lg cursor-pointer group transition-all duration-200"
+                                className="flex items-center gap-3 p-3 hover:bg-[var(--bg-toggle-wrapper)] rounded-xl cursor-pointer group transition-all duration-200"
                                 onClick={() => handleNavigate(path)}
                             >
                                 <Clock className="w-4 h-4 text-primary/60 group-hover:text-primary transition-colors shrink-0" />
-                                <span className="text-sm text-secondary group-hover:text-foreground transition-colors truncate font-mono opacity-80">
+                                <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors truncate font-mono opacity-80">
                                     {path}
                                 </span>
                             </div>
@@ -166,27 +170,34 @@ export function FolderPicker({ onSelect, className, initialPath }: FolderPickerP
                     </div>
                 )}
 
-                {!loading && !showRecent && items.map((item) => (
-                    <div
-                        key={item.path}
-                        className="flex items-center gap-3 p-3 hover:bg-white/10 dark:hover:bg-white/5 rounded-lg cursor-pointer group transition-all duration-200"
-                        onClick={() => handleNavigate(item.path)}
-                    >
-                        {item.name === ".." ? (
-                            <div className="flex items-center gap-2 text-primary font-medium">
-                                <ChevronRight className="w-4 h-4 rotate-180" />
-                                <span>{t('back')}</span>
+                {!loading && !showRecent && (
+                    <div className="mt-2 space-y-0.5">
+                        {items.map((item) => (
+                            <div
+                                key={item.path}
+                                className="flex items-center gap-3 p-3 hover:bg-[var(--bg-toggle-wrapper)] rounded-xl cursor-pointer group transition-all duration-200"
+                                onClick={() => handleNavigate(item.path)}
+                            >
+                                {item.name === ".." ? (
+                                    <div className="flex items-center gap-2 text-primary font-bold text-sm">
+                                        <ChevronRight className="w-4 h-4 rotate-180" />
+                                        <span>{t('back')}</span>
+                                    </div>
+                                ) : (
+                                    <>
+                                        <Folder className={cn(
+                                            "w-5 h-5 transition-colors shrink-0",
+                                            item.name.startsWith('.') ? "text-muted-foreground/40" : "text-blue-500/80 group-hover:text-blue-400"
+                                        )} />
+                                        <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors truncate font-medium">
+                                            {item.name}
+                                        </span>
+                                    </>
+                                )}
                             </div>
-                        ) : (
-                            <>
-                                <Folder className="w-5 h-5 text-primary/80 group-hover:text-primary transition-colors shrink-0" />
-                                <span className="text-sm text-secondary group-hover:text-foreground transition-colors truncate">
-                                    {item.name}
-                                </span>
-                            </>
-                        )}
+                        ))}
                     </div>
-                ))}
+                )}
             </div>
         </div>
     );

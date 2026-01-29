@@ -5,14 +5,20 @@ from typing import Optional, Dict, Any
 from pathlib import Path
 from src.batch.scraper import BatchMediaScraper
 
+import threading
+
 logger = logging.getLogger(__name__)
+
+from src.core.filename_parser import FilenameParser
 
 class JobManager:
     def __init__(self):
         self.executor = ThreadPoolExecutor(max_workers=1, thread_name_prefix="JobManager")
         self.current_task = None
         self.is_running = False
-        self.pipeline = None # Holds reference to active pipeline if needed
+        self.pipeline = None 
+        self.scraper = None
+        self.stop_signal = threading.Event()
 
     async def start_batch_scan(self, 
                              input_dir: str, 
@@ -35,11 +41,11 @@ class JobManager:
             raise Exception("A task is already running")
 
         self.is_running = True
+        self.stop_signal.clear() # Reset stop signal
         logger.info(f"JobManager: Starting batch scan for {input_dir}")
         
         loop = asyncio.get_running_loop()
         
-        # Run in a separate thread to avoid blocking the async loop
         try:
             await loop.run_in_executor(
                 self.executor, 
@@ -51,6 +57,7 @@ class JobManager:
         finally:
             self.is_running = False
             self.current_task = None
+            self.stop_signal.clear()
             logger.info("JobManager: Task finished")
 
     def _run_scraper_sync(self, input_dir: str, config_path: str, workers: int, dry_run: bool, inplace: bool, copy: bool, output_dir: Optional[str], use_local_nfo: bool, extra_images: bool, media_type: Optional[str], tmdb_id: Optional[int], search_mode: str, enable_fallback: bool, multi_mode: Optional[bool], fresh: bool):
@@ -58,15 +65,18 @@ class JobManager:
         Synchronous wrapper to run BatchMediaScraper
         """
         try:
+            if self.stop_signal.is_set():
+                 logger.warning("JobManager: Task aborted before start.")
+                 return
+
             should_multi = True
             
+            # --- Auto-Detection Logic ---
             if multi_mode is not None:
                 should_multi = multi_mode
             elif tmdb_id is not None:
-                # If a TMDB ID is provided, we are definitely targeting a specific item
                 should_multi = False
             else:
-                # Auto-detect based on directory content
                 try:
                     p = Path(input_dir)
                     has_video_files = False
@@ -75,43 +85,41 @@ class JobManager:
                     import re
                     
                     if p.exists() and p.is_dir():
-                        # Smarter detection logic
                         ignored_dirs = {'extras', 'specials', 'featurettes', 'metadata', 'images', 'subs', 'subtitles'}
                         
                         for item in p.iterdir():
+                            if self.stop_signal.is_set(): # Early exit during scan
+                                logger.warning("JobManager: Task aborted during pre-scan.")
+                                return
+
                             if item.name.startswith('.'): continue
                             
                             if item.is_dir():
                                 name_lower = item.name.lower()
                                 if name_lower in ignored_dirs: continue
-                                
-                                # Check for Season folder pattern
                                 if re.match(r'^season\s*\d+$', name_lower):
                                     has_season_dirs = True
                                 else:
-                                    has_subdirs = True # Potential other show folder
-                                    
+                                    has_subdirs = True
                             elif item.is_file() and item.suffix.lower() in FilenameParser.VIDEO_EXTENSIONS:
                                 has_video_files = True
                         
-                        # Decision Matrix:
-                        # 1. If it has Season folders -> It's a Show Root -> SINGLE MODE
-                        # 2. If it has NO subdirs (only videos) -> It's a flattened Show/Movie -> SINGLE MODE
-                        # 3. If it has 'other' subdirs (likely multiple shows) -> MULTI MODE
-                        
                         if has_season_dirs:
-                            logger.info("Auto-detect: Season folders found -> Using SINGLE Mode (Show Root)")
+                            logger.info("Auto-detect: Season folders found -> Using SINGLE Mode")
                             should_multi = False
                         elif has_video_files and not has_subdirs:
-                            logger.info("Auto-detect: Video files found without other show directories -> Using SINGLE Mode")
+                            logger.info("Auto-detect: Single Video folder -> Using SINGLE Mode")
                             should_multi = False
                         else:
-                            logger.info(f"Auto-detect: Multiple show directories likely ({has_subdirs}) -> Using MULTI Mode")
                             should_multi = True
                 except Exception as e:
                     logger.warning(f"Auto-detect failed, defaulting to Multi: {e}")
                     should_multi = True
             
+            if self.stop_signal.is_set():
+                 logger.warning("JobManager: Task aborted before scraper init.")
+                 return
+
             import time
             from src.server.stats_manager import stats_manager
             
@@ -132,7 +140,16 @@ class JobManager:
                 extra_images=extra_images,
                 fresh=fresh
             )
+            self.scraper = scraper 
+            
+            # Check signal again just in case Stop was pressed during init
+            if self.stop_signal.is_set():
+                logger.warning("JobManager: Task aborted immediately after init.")
+                scraper.stop() # Ensure internal cleanup if needed
+                return
+
             results = scraper.run(input_dir)
+            self.scraper = None
             
             duration = time.time() - start_time
             if results and not dry_run:
@@ -149,9 +166,14 @@ class JobManager:
             traceback.print_exc()
 
     def stop_task(self):
-        # Implementation depends on how we can kill the thread or signal the scraper
-        # For now, simplistic not-supported, or we rely on scraper checking a flag
-        logger.warning("Stop task not fully implemented yet")
-        pass
+        """Signals the active scraper to stop."""
+        logger.warning("JobManager: Stop signal received.")
+        self.stop_signal.set() # Set the flag immediately
+        
+        if self.scraper:
+            logger.warning("JobManager: Stopping active scraper instance...")
+            self.scraper.stop()
+        else:
+            logger.warning("JobManager: No active scraper instance yet (maybe initializing). Signal set.")
 
 job_manager = JobManager()

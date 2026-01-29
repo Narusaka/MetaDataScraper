@@ -13,12 +13,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 interface DashboardProps {
     isRunning: boolean;
     onStart: (config: any) => void;
+    onStop: () => void;
 }
 
 type Strategy = 'audit' | 'organize' | 'copy';
 
-export function Dashboard({ isRunning, onStart }: DashboardProps) {
-    const { t } = useTranslation();
+export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
+    const { t, language } = useTranslation();
 
     // --- State Management ---
     const [selectedPath, setSelectedPath] = useState(() => localStorage.getItem('last_path') || "");
@@ -49,6 +50,10 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
     useEffect(() => localStorage.setItem('task_multi_mode', multiMode), [multiMode]);
 
     const handleStart = () => {
+        if (isRunning) {
+            onStop();
+            return;
+        }
         onStart({
             input_dir: selectedPath,
             workers,
@@ -69,27 +74,27 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
 
     return (
         <div className="flex flex-col h-full overflow-hidden font-sans gap-4">
-            {/* Top Bar: Target Selection & Actions */}
-            <div className="shrink-0 flex items-center justify-between gap-6 p-1">
+            {/* Top Bar: Target Selection & Actions (Floating Island) */}
+            <div className="shrink-0 glass-panel-pro rounded-3xl border border-glass-border shadow-sm px-6 py-3 flex items-center justify-between gap-6 text-sm">
                 {/* Target Input */}
                 <div className="flex-1 relative group">
-                    <div className="flex items-center bg-bg-surface rounded-2xl overflow-hidden shadow-sm transition-all focus-within:ring-2 focus-within:ring-primary/20">
-                        <div className="px-4 py-3 bg-bg-surface border-r border-border-light/20 flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-wider">
+                    <div className="flex items-center bg-[var(--bg-input-target)] rounded-2xl overflow-hidden transition-all focus-within:ring-2 focus-within:ring-primary/20 p-1">
+                        <div className="px-3 flex items-center gap-2 text-text-muted font-bold text-xs uppercase tracking-wider">
                             <FolderOpen size={16} />
-                            <span>{t('target_path')}</span>
+                            <span className="opacity-70">{t('target_path')}</span>
                         </div>
                         <input
                             type="text"
                             value={selectedPath}
                             onChange={(e) => setSelectedPath(e.target.value)}
                             placeholder="/path/to/media/source"
-                            className="flex-1 bg-transparent border-none text-sm text-text-main px-4 py-3 outline-none font-medium placeholder:text-text-muted/40"
+                            className="flex-1 bg-transparent border-none text-sm text-text-main px-2 outline-none font-medium placeholder:text-text-muted/30"
                         />
                         <button
                             onClick={() => setShowPicker('input')}
-                            className="px-4 py-3 text-text-muted hover:text-text-main transition-colors"
+                            className="w-8 h-8 rounded-full bg-[var(--bg-toggle-pill)] flex items-center justify-center text-text-muted hover:text-primary transition-all hover:scale-105 shadow-sm"
                         >
-                            <FolderInput size={20} />
+                            <FolderInput size={16} />
                         </button>
                     </div>
                 </div>
@@ -99,14 +104,14 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={handleStart}
-                    disabled={isRunning || !selectedPath}
+                    disabled={!selectedPath}
                     className={cn(
-                        "relative flex items-center gap-3 px-8 py-3 rounded-2xl font-bold text-sm tracking-wide uppercase transition-all overflow-hidden shadow-lg shadow-primary/30",
+                        "relative flex items-center justify-center gap-3 px-8 py-2.5 rounded-xl font-bold text-sm tracking-wide uppercase transition-all overflow-hidden shadow-lg w-[140px]",
                         isRunning
-                            ? "bg-bg-surface text-text-muted cursor-not-allowed shadow-none"
+                            ? "bg-red-600 text-white shadow-red-500/20 hover:bg-red-700 cursor-pointer"
                             : !selectedPath
                                 ? "bg-bg-surface text-text-muted cursor-not-allowed shadow-none"
-                                : "bg-primary text-white hover:brightness-110"
+                                : "bg-yellow-400 text-black hover:bg-yellow-300 shadow-yellow-400/20"
                     )}
                 >
                     {/* Button Glow for Active State */}
@@ -116,14 +121,17 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
 
                     {isRunning ? (
                         <div className="flex items-center gap-2">
-                            <div className="w-4 h-4 border-2 border-white/50 border-t-white rounded-full animate-spin" />
-                            <span>{t('running')}</span>
+                            {/* Keep it simpler, User asked for 'Force Stop' */}
+                            <div className="w-3 h-3 bg-white rounded-sm" />
+                            <span>
+                                {language === 'en' ? 'STOP' : '停止'}
+                            </span>
                         </div>
                     ) : (
                         <>
                             <Play size={16} fill="currentColor" />
                             <span>
-                                {!selectedPath ? t('execute_protocol_disabled_path') : t('execute_protocol')}
+                                {language === 'en' ? 'START' : '开始'}
                             </span>
                         </>
                     )}
@@ -132,122 +140,124 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
 
             {/* Main Content: Sidebar + TaskBoard */}
             <div className="flex-1 flex gap-6 overflow-hidden min-h-0">
-                {/* Configuration Sidebar */}
+                {/* Configuration Sidebar - Already Floating Island */}
                 <div className="w-80 shrink-0 flex flex-col glass-panel-pro rounded-3xl border border-glass-border overflow-hidden shadow-xl">
-                    <div className="p-4 border-b border-border-light/20 bg-bg-surface/50 backdrop-blur-md">
+                    <div className="px-6 py-4 flex items-center justify-between shrink-0">
                         <div className="flex items-center gap-2 text-text-main font-bold">
                             <Settings2 size={16} className="text-primary" />
-                            <span className="tracking-tight uppercase text-xs">{t('mission_configuration')}</span>
+                            <span className="tracking-widest uppercase text-xs font-bold font-display opacity-80">{t('mission_configuration')}</span>
                         </div>
                     </div>
 
-                    <div className="flex-1 overflow-y-auto p-5 scrollbar-thin space-y-6">
+                    <div className="flex-1 overflow-hidden px-4 pb-4">
+                        <div className="bg-[var(--bg-inner-panel)] rounded-2xl p-4 h-full overflow-y-auto scrollbar-thin space-y-6">
 
-                        {/* Strategy Selector */}
-                        <div className="space-y-3">
-                            <SectionHeader icon={Layers} title={t('strategy')} />
-                            <SegmentedControl
-                                options={[
-                                    { value: 'audit', label: t('mode_audit'), icon: Search },
-                                    { value: 'organize', label: t('mode_organize'), icon: FolderInput },
-                                    { value: 'copy', label: t('mode_copy'), icon: Copy },
-                                ]}
-                                value={strategy}
-                                onChange={(v: any) => setStrategy(v as Strategy)}
-                            />
+                            {/* Strategy Selector */}
+                            <div className="space-y-3">
+                                <SectionHeader icon={Layers} title={t('strategy')} />
+                                <SegmentedControl
+                                    options={[
+                                        { value: 'audit', label: t('mode_audit'), icon: Search },
+                                        { value: 'organize', label: t('mode_organize'), icon: FolderInput },
+                                        { value: 'copy', label: t('mode_copy'), icon: Copy },
+                                    ]}
+                                    value={strategy}
+                                    onChange={(v: any) => setStrategy(v as Strategy)}
+                                />
 
-                            <AnimatePresence>
-                                {strategy === 'copy' && (
-                                    <motion.div
-                                        initial={{ opacity: 0, height: 0 }}
-                                        animate={{ opacity: 1, height: 'auto' }}
-                                        exit={{ opacity: 0, height: 0 }}
-                                        className="overflow-hidden pt-2"
-                                    >
-                                        <div className="relative group flex items-center bg-bg-surface rounded-xl p-1">
-                                            <input
-                                                type="text"
-                                                value={outputPath}
-                                                onChange={(e) => setOutputPath(e.target.value)}
-                                                className="w-full bg-transparent border-none text-xs text-text-main px-3 py-2 outline-none font-medium placeholder:text-text-muted/40"
-                                                placeholder={t('output_placeholder')}
-                                            />
-                                            <button
-                                                onClick={() => setShowPicker('output')}
-                                                className="p-2 text-text-muted hover:text-primary transition-colors"
-                                            >
-                                                <FolderOpen size={16} />
-                                            </button>
-                                        </div>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
-                        </div>
+                                <AnimatePresence>
+                                    {strategy === 'copy' && (
+                                        <motion.div
+                                            initial={{ opacity: 0, height: 0 }}
+                                            animate={{ opacity: 1, height: 'auto' }}
+                                            exit={{ opacity: 0, height: 0 }}
+                                            className="overflow-hidden pt-2"
+                                        >
+                                            <div className="relative group flex items-center bg-bg-surface rounded-xl p-1">
+                                                <input
+                                                    type="text"
+                                                    value={outputPath}
+                                                    onChange={(e) => setOutputPath(e.target.value)}
+                                                    className="w-full bg-transparent border-none text-xs text-text-main px-3 py-2 outline-none font-medium placeholder:text-text-muted/40"
+                                                    placeholder={t('output_placeholder')}
+                                                />
+                                                <button
+                                                    onClick={() => setShowPicker('output')}
+                                                    className="p-2 text-text-muted hover:text-primary transition-colors"
+                                                >
+                                                    <FolderOpen size={16} />
+                                                </button>
+                                            </div>
+                                        </motion.div>
+                                    )}
+                                </AnimatePresence>
+                            </div>
 
-                        {/* Media Settings */}
-                        <div className="space-y-3">
-                            <SectionHeader icon={Database} title={t('media_settings')} />
+                            {/* Media Settings */}
+                            <div className="space-y-3">
+                                <SectionHeader icon={Database} title={t('media_settings')} />
 
-                            <div className="space-y-4">
-                                <div className="space-y-1.5">
-                                    <label className="text-[10px] uppercase font-bold text-text-muted tracking-wider ml-1">{t('process_mode')}</label>
-                                    <SegmentedControl
-                                        options={[
-                                            { value: '', label: t('auto') },
-                                            { value: 'movie', label: t('movie') },
-                                            { value: 'tv', label: t('tv') },
-                                        ]}
-                                        value={mediaType}
-                                        onChange={setMediaType}
-                                    />
-                                </div>
-
-                                <div className="space-y-1.5">
-                                    <label className="text-[10px] uppercase font-bold text-text-muted tracking-wider ml-1">{t('concurrency')}</label>
-                                    <SegmentedControl
-                                        options={[
-                                            { value: 'auto', label: t('auto') },
-                                            { value: 'single', label: t('mode_single') },
-                                            { value: 'batch', label: t('mode_batch') },
-                                        ]}
-                                        value={multiMode}
-                                        onChange={(v: any) => setMultiMode(v as any)}
-                                    />
-                                </div>
-
-                                <div className="space-y-1.5">
-                                    <label className="text-[10px] uppercase font-bold text-text-muted tracking-wider ml-1 flex justify-between">
-                                        <span>{t('tmdb_override')}</span>
-                                        <span className="text-[9px] opacity-50">{t('optional')}</span>
-                                    </label>
-                                    <div className="bg-bg-surface rounded-xl px-3 py-2">
-                                        <input
-                                            type="number"
-                                            value={tmdbId}
-                                            onChange={(e) => setTmdbId(e.target.value)}
-                                            className="w-full bg-transparent border-none text-xs text-text-main outline-none placeholder:text-text-muted/40 p-0"
-                                            placeholder={t('tmdb_placeholder')}
+                                <div className="space-y-4">
+                                    <div className="space-y-1.5">
+                                        <label className="text-[10px] uppercase font-bold text-text-muted tracking-wider ml-1">{t('process_mode')}</label>
+                                        <SegmentedControl
+                                            options={[
+                                                { value: '', label: t('auto') },
+                                                { value: 'movie', label: t('movie') },
+                                                { value: 'tv', label: t('tv') },
+                                            ]}
+                                            value={mediaType}
+                                            onChange={setMediaType}
                                         />
+                                    </div>
+
+                                    <div className="space-y-1.5">
+                                        <label className="text-[10px] uppercase font-bold text-text-muted tracking-wider ml-1">{t('concurrency')}</label>
+                                        <SegmentedControl
+                                            options={[
+                                                { value: 'auto', label: t('auto') },
+                                                { value: 'single', label: t('mode_single') },
+                                                { value: 'batch', label: t('mode_batch') },
+                                            ]}
+                                            value={multiMode}
+                                            onChange={(v: any) => setMultiMode(v as any)}
+                                        />
+                                    </div>
+
+                                    <div className="space-y-1.5">
+                                        <label className="text-[10px] uppercase font-bold text-text-muted tracking-wider ml-1 flex justify-between">
+                                            <span>{t('tmdb_override')}</span>
+                                            <span className="text-[9px] opacity-50">{t('optional')}</span>
+                                        </label>
+                                        <div className="bg-bg-surface rounded-xl px-3 py-2">
+                                            <input
+                                                type="number"
+                                                value={tmdbId}
+                                                onChange={(e) => setTmdbId(e.target.value)}
+                                                className="w-full bg-transparent border-none text-xs text-text-main outline-none placeholder:text-text-muted/40 p-0"
+                                                placeholder={t('tmdb_placeholder')}
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        {/* Parameters */}
-                        <div className="space-y-3">
-                            <SectionHeader icon={Cpu} title={t('parameters')} />
-                            <div className="bg-bg-surface rounded-xl p-3 space-y-1">
-                                <Switch label={t('opt_local_nfo')} checked={useLocalNfo} onChange={setUseLocalNfo} />
-                                <Switch label={t('opt_extra_images')} checked={extraImages} onChange={setExtraImages} />
-                                <div className="h-px bg-border-light/10 my-1" />
-                                <Switch label={t('force_refresh_danger')} checked={forceFresh} onChange={setForceFresh} danger />
+                            {/* Parameters */}
+                            <div className="space-y-3">
+                                <SectionHeader icon={Cpu} title={t('parameters')} />
+                                <div className="bg-bg-surface rounded-xl p-3 space-y-1">
+                                    <Switch label={t('opt_local_nfo')} checked={useLocalNfo} onChange={setUseLocalNfo} />
+                                    <Switch label={t('opt_extra_images')} checked={extraImages} onChange={setExtraImages} />
+                                    <div className="h-px bg-border-light/10 my-1" />
+                                    <Switch label={t('force_refresh_danger')} checked={forceFresh} onChange={setForceFresh} danger />
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 {/* Task Board */}
-                <div className="flex-1 rounded-2xl overflow-hidden relative glass-panel-pro border border-glass-border flex flex-col">
+                <div className="flex-1 rounded-3xl overflow-hidden relative glass-panel-pro border border-glass-border flex flex-col shadow-xl">
                     <TaskBoard defaultConfig={{ strategy, outputPath, forceFresh }} />
                 </div>
             </div>
@@ -266,14 +276,14 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
                             initial={{ scale: 0.9, y: 20 }}
                             animate={{ scale: 1, y: 0 }}
                             exit={{ scale: 0.9, y: 20 }}
-                            className="w-full max-w-3xl glass-panel-pro rounded-2xl shadow-2xl flex flex-col max-h-[80vh] overflow-hidden"
+                            className="w-full max-w-3xl glass-panel-pro rounded-3xl border border-glass-border shadow-2xl flex flex-col max-h-[80vh] overflow-hidden"
                             onClick={e => e.stopPropagation()}
                         >
-                            <div className="h-14 border-b border-white/10 flex items-center px-6 justify-between bg-white/5">
+                            <div className="h-16 border-b border-white/10 flex items-center px-8 justify-between bg-white/5 backdrop-blur-md">
                                 <span className="text-sm font-bold text-text-main uppercase tracking-widest font-display">{t('modal_title')}</span>
-                                <button onClick={() => setShowPicker(null)} className="text-text-muted hover:text-white transition-colors"><X size={20} /></button>
+                                <button onClick={() => setShowPicker(null)} className="w-8 h-8 rounded-full bg-black/20 flex items-center justify-center text-text-muted hover:text-white transition-colors hover:bg-red-500 hover:rotate-90"><X size={18} /></button>
                             </div>
-                            <div className="flex-1 overflow-auto p-4 bg-black/40">
+                            <div className="flex-1 overflow-auto p-6 bg-black/20 dark:bg-black/40">
                                 <FolderPicker
                                     initialPath={showPicker === 'input' ? selectedPath : outputPath}
                                     onSelect={(path) => {
@@ -282,8 +292,8 @@ export function Dashboard({ isRunning, onStart }: DashboardProps) {
                                     }}
                                 />
                             </div>
-                            <div className="p-4 border-t border-white/10 bg-white/5 flex justify-end">
-                                <button onClick={() => setShowPicker(null)} className="px-8 py-2.5 bg-primary hover:bg-primary-hover text-white font-bold text-xs uppercase rounded-lg shadow-lg shadow-primary/20 transition-all hover:scale-[1.02] active:scale-95">
+                            <div className="p-6 border-t border-white/10 bg-white/5 backdrop-blur-md flex justify-end">
+                                <button onClick={() => setShowPicker(null)} className="px-8 py-2.5 bg-primary hover:bg-primary-hover text-white font-bold text-xs uppercase rounded-xl shadow-lg shadow-primary/20 transition-all hover:scale-[1.02] active:scale-95">
                                     {t('confirm_selection')}
                                 </button>
                             </div>
@@ -307,7 +317,7 @@ function SectionHeader({ icon: Icon, title }: any) {
 
 function SegmentedControl({ options, value, onChange }: any) {
     return (
-        <div className="grid grid-cols-3 gap-1 p-1 bg-slate-200/50 dark:bg-black/40 rounded-lg border border-transparent dark:border-white/10 relative">
+        <div className="grid grid-cols-3 gap-1 p-1 bg-[var(--bg-toggle-wrapper)] rounded-lg border border-transparent dark:border-white/10 relative">
             {options.map((opt: any) => {
                 const isActive = value === opt.value;
                 return (

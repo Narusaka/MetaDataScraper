@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react';
-import { Save, Loader2, Key, Database, Image as ImageIcon, Monitor, Cpu } from 'lucide-react';
+import { Save, Loader2, Key, Database, Image as ImageIcon, Monitor, Cpu, Bell, CheckCircle2, XCircle } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '../lib/utils';
 import { useTranslation } from '../lib/language';
 import { useTheme } from 'next-themes';
@@ -57,7 +58,9 @@ export function SettingsView() {
     const handleSave = async () => {
         if (!config) return;
         setSaving(true);
+        // Clear previous msg to force re-render if needed or just update
         setMsg(null);
+
         try {
             const res = await fetch(apiUrl('/api/settings'), {
                 method: "POST",
@@ -69,9 +72,11 @@ export function SettingsView() {
                 setTimeout(() => setMsg(null), 3000);
             } else {
                 setMsg({ type: 'error', text: 'Failed to save settings.' });
+                setTimeout(() => setMsg(null), 3000);
             }
         } catch (e) {
             setMsg({ type: 'error', text: 'Network error saving settings.' });
+            setTimeout(() => setMsg(null), 3000);
         } finally {
             setSaving(false);
         }
@@ -99,7 +104,25 @@ export function SettingsView() {
     if (!config) return <div>Error loading config.</div>;
 
     return (
-        <div className="p-8 glass-panel-pro rounded-xl max-w-5xl mx-auto w-full mt-4 flex flex-col gap-8">
+        <div className="p-6 glass-panel-pro rounded-3xl w-full h-full flex flex-col gap-8 relative overflow-hidden">
+            {/* Toast Notification Layer */}
+            <AnimatePresence>
+                {msg && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -50, x: '-50%' }}
+                        animate={{ opacity: 1, y: 20, x: '-50%' }}
+                        exit={{ opacity: 0, y: -50, x: '-50%' }}
+                        className={cn(
+                            "absolute top-0 left-1/2 z-50 flex items-center gap-3 px-6 py-3 rounded-full shadow-2xl backdrop-blur-md border",
+                            msg.type === 'success' ? "bg-white/90 dark:bg-zinc-800/90 text-green-600 border-green-500/20" : "bg-white/90 dark:bg-zinc-800/90 text-red-500 border-red-500/20"
+                        )}
+                    >
+                        {msg.type === 'success' ? <CheckCircle2 size={18} /> : <XCircle size={18} />}
+                        <span className="text-sm font-bold tracking-wide text-zinc-800 dark:text-zinc-100">{msg.text}</span>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
             <div className="flex justify-between items-center">
                 <div>
                     <h3 className="text-2xl font-bold flex items-center gap-3">
@@ -117,14 +140,7 @@ export function SettingsView() {
                 </button>
             </div>
 
-            {msg && (
-                <div className={cn(
-                    "p-3 rounded-lg text-sm font-medium",
-                    msg.type === 'success' ? "bg-green-500/10 text-green-400 border border-green-500/20" : "bg-red-500/10 text-red-400 border border-red-500/20"
-                )}>
-                    {msg.text}
-                </div>
-            )}
+
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
@@ -194,25 +210,27 @@ export function SettingsView() {
                     <div className="space-y-6">
                         <SectionLabel icon={<Cpu />} label="Task Execution" />
                         <div className="space-y-4">
-                            <div className="glass-panel-pro bg-black/10 px-4 py-3 rounded-lg border border-border/30">
-                                <div className="flex justify-between items-center mb-2">
-                                    <label className="text-xs text-secondary font-medium uppercase">Thread Allocation</label>
-                                    <span className="text-xs font-mono font-bold text-primary">
+                            <div className="glass-panel-pro bg-black/5 dark:bg-black/20 px-6 py-5 rounded-2xl border border-white/10">
+                                <div className="flex justify-between items-center mb-4">
+                                    <label className="text-xs text-secondary font-bold uppercase tracking-wider">Thread Allocation</label>
+                                    <span className="text-sm font-mono font-bold text-primary bg-primary/10 px-2 py-0.5 rounded">
                                         {workers} CORES
                                     </span>
                                 </div>
-                                <input
-                                    type="range" min="1" max="16"
+
+                                <MacOsSlider
+                                    min={1}
+                                    max={16}
                                     value={workers}
-                                    onChange={(e) => {
-                                        const val = parseInt(e.target.value);
+                                    onChange={(val: number) => {
                                         setWorkers(val);
                                         localStorage.setItem('task_workers', val.toString());
                                     }}
-                                    className="w-full accent-primary h-1 bg-surface rounded-full appearance-none cursor-pointer"
+                                    icon={<Cpu size={14} className="text-secondary" />}
                                 />
-                                <p className="text-[10px] text-muted-foreground mt-2">
-                                    Determines how many concurrent scraping tasks run. Higher values require more CPU/RAM.
+
+                                <p className="text-[10px] text-muted-foreground mt-4 leading-relaxed opacity-70">
+                                    Determines how many concurrent scraping tasks run. Higher values speed up processing but require more CPU/RAM.
                                 </p>
                             </div>
                         </div>
@@ -377,5 +395,46 @@ function ProxyTester() {
             )}
         </div>
     );
+}
+
+
+function MacOsSlider({ min, max, value, onChange, icon }: any) {
+    const percentage = ((value - min) / (max - min)) * 100;
+
+    return (
+        <div className="relative h-7 w-full flex items-center select-none group">
+            {/* Icon Label (Optional) */}
+            {icon && <div className="absolute -left-6">{icon}</div>}
+
+            {/* Background Track (Gray) */}
+            <div className="absolute inset-0 bg-stone-200 dark:bg-stone-700/50 rounded-full overflow-hidden border border-black/5 dark:border-white/5">
+                {/* Active Track (Blue) */}
+                <div
+                    className="h-full bg-blue-500 transition-all duration-150 ease-out"
+                    style={{ width: `${percentage}%` }}
+                />
+            </div>
+
+            {/* Slider Input (Invisible but interactive) */}
+            <input
+                type="range"
+                min={min}
+                max={max}
+                value={value}
+                onChange={(e) => onChange(parseInt(e.target.value))}
+                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+            />
+
+            {/* Knob (Visual only, follows percentage) */}
+            <div
+                className="absolute h-7 w-7 bg-white rounded-full shadow-[0_2px_5px_rgba(0,0,0,0.2)] border border-stone-100 dark:border-stone-500 transition-all duration-150 ease-out pointer-events-none flex items-center justify-center"
+                style={{ left: `calc(${percentage}% - 14px)` }}
+            >
+                {/* Mini grip lines */}
+                <div className="w-0.5 h-2 bg-stone-300 rounded-full mx-[1px]" />
+                <div className="w-0.5 h-2 bg-stone-300 rounded-full mx-[1px]" />
+            </div>
+        </div>
+    )
 }
 

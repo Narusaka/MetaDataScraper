@@ -45,13 +45,22 @@ function App() {
     }
   };
 
+  const handleStopTask = async () => {
+    try {
+      await fetch(apiUrl('/api/tasks/stop'), { method: "POST" });
+      // We don't verify response strictly, assuming best effort stop
+    } catch (e) {
+      console.error("Failed to stop task:", e);
+    }
+  };
+
   // Render content with entry animations
   const renderContent = () => {
     // Determine which component to render
     let ContentComponent;
     switch (activeTab) {
       case 'dashboard':
-        ContentComponent = <Dashboard isRunning={isRunning} onStart={handleStartTask} />;
+        ContentComponent = <Dashboard isRunning={isRunning} onStart={handleStartTask} onStop={handleStopTask} />;
         break;
       case 'monitoring':
         ContentComponent = (
@@ -116,7 +125,7 @@ function App() {
         </div>
 
         {/* Content Area */}
-        <div className="flex-1 p-4 md:p-6 pt-0 overflow-y-auto overflow-x-hidden relative z-10 scrollbar-thin">
+        <div className="flex-1 px-4 pb-4 md:px-6 md:pb-4 pt-0 overflow-y-auto overflow-x-hidden relative z-10 scrollbar-thin">
           {renderContent()}
         </div>
       </main>

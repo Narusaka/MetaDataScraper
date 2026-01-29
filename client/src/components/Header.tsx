@@ -88,10 +88,10 @@ export function Header({ title }: { title: string, isRunning?: boolean }) { // K
                 {/* Right: Actions (Theme, Lang) */}
                 <div className="flex items-center gap-4">
                     {/* Language Toggler (Animated Pill) */}
-                    <div className="bg-slate-200/50 dark:bg-black/20 p-1 rounded-full flex relative">
+                    <div className="bg-[var(--bg-toggle-wrapper)] p-1 rounded-full flex relative">
                         {/* Sliding Background */}
                         <motion.div
-                            className="absolute top-1 bottom-1 w-[34px] bg-white dark:bg-white/10 rounded-full shadow-sm z-0"
+                            className="absolute top-1 bottom-1 w-[34px] bg-[var(--bg-toggle-pill)] rounded-full shadow-sm z-0"
                             animate={{ x: language === 'en' ? 0 : 34 }}
                             transition={{ type: "spring", stiffness: 300, damping: 30 }}
                         />
@@ -102,8 +102,8 @@ export function Header({ title }: { title: string, isRunning?: boolean }) { // K
                                 className={cn(
                                     "relative z-10 w-[34px] h-[22px] flex items-center justify-center text-[10px] font-bold transition-colors duration-300",
                                     language === lang
-                                        ? "text-black dark:text-white"
-                                        : "text-slate-500 dark:text-slate-400 hover:text-slate-700"
+                                        ? "text-[var(--text-toggle-active)]"
+                                        : "text-[var(--text-toggle-inactive)] hover:text-[var(--text-toggle-active)]"
                                 )}
                             >
                                 {lang === 'en' ? 'EN' : 'CN'}
@@ -114,7 +114,7 @@ export function Header({ title }: { title: string, isRunning?: boolean }) { // K
                     {/* Theme Toggler (Animated) */}
                     <button
                         onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                        className="w-9 h-9 rounded-full bg-slate-200/50 dark:bg-white/10 flex items-center justify-center text-slate-600 dark:text-white hover:bg-slate-300/50 dark:hover:bg-white/20 transition-all active:scale-95"
+                        className="w-9 h-9 rounded-full bg-[var(--bg-toggle-wrapper)] flex items-center justify-center text-[var(--text-toggle-inactive)] hover:bg-[var(--bg-button-secondary-active)] transition-all active:scale-95"
                     >
                         <motion.div
                             initial={false}

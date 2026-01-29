@@ -6,7 +6,8 @@ import yaml
 import traceback
 from pathlib import Path
 from typing import Optional, List
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor, as_completed, CancelledError
+import threading
 
 from src.pipeline.pipeline import MediaPipeline
 from src.core.filename_parser import FilenameParser
@@ -60,6 +61,17 @@ class BatchMediaScraper:
             inplace_rename=inplace_rename, 
             copy_files=copy_files
         )
+        
+        self.stop_event = threading.Event()
+        self.executor = None
+
+    def stop(self):
+        """Signal the scraper to stop processing."""
+        logger.warning("🛑 Stop signal received in Scraper")
+        self.stop_event.set()
+        if self.executor:
+            # Cancel all pending futures
+            self.executor.shutdown(wait=False, cancel_futures=True)
 
     def _load_config(self, path: str) -> dict:
         p = Path(path)
@@ -135,13 +147,39 @@ class BatchMediaScraper:
 
         logger.info(f"Found {len(tasks)} tasks to process with {self.max_workers} workers")
 
-        with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
-            future_to_task = {executor.submit(self._process_task, task): task for task in tasks}
+        logger.info(f"Found {len(tasks)} tasks to process with {self.max_workers} workers")
+
+        if self.stop_event.is_set():
+            logger.warning("Scraper stop event detected before execution. Aborting.")
+            return
+
+        # self.stop_event.clear() - DO NOT CLEAR here, it might have been set by stop() already
+        self.executor = ThreadPoolExecutor(max_workers=self.max_workers)
+        
+        try:
+            future_to_task = {self.executor.submit(self._process_task, task): task for task in tasks}
             
-            try:
-                completed_count = 0
-                failed_tasks = []
-                for future in as_completed(future_to_task):
+            completed_count = 0
+            failed_tasks = []
+            
+            # Process results as they complete
+            # We explicitly catch CancelledError for stopped tasks
+            from concurrent.futures import wait, FIRST_COMPLETED
+            
+            futures_set = set(future_to_task.keys())
+            
+            while futures_set:
+                if self.stop_event.is_set():
+                    logger.warning("🛑 Stop event detected in loop. Cancelling remaining tasks...")
+                    for f in futures_set:
+                        f.cancel()
+                    break
+                
+                # Wait for at least one future to complete, or timeout to check stop_event
+                done, not_done = wait(futures_set, timeout=0.5, return_when=FIRST_COMPLETED)
+                
+                for future in done:
+                    futures_set.remove(future)
                     task = future_to_task[future]
                     task_name = "Loose Files"
                     if task["type"] == "directory":
@@ -151,27 +189,39 @@ class BatchMediaScraper:
                         success = future.result()
                         if success: completed_count += 1
                         else: failed_tasks.append(task_name)
+                    except CancelledError:
+                        logger.info(f"Task {task_name} was cancelled.")
                     except Exception as e:
                         logger.error(f"Task {task_name} raised exception: {e}")
                         failed_tasks.append(task_name)
 
-                msg = f"Batch processing finished: {completed_count}/{len(tasks)} successful, {len(failed_tasks)} failed"
-                if failed_tasks:
-                    msg += f"\n❌ Failed items: {', '.join(failed_tasks)}"
-                logger.info(msg)
+            msg = f"Batch processing finished: {completed_count}/{len(tasks)} successful, {len(failed_tasks)} failed"
+            if self.stop_event.is_set():
+                 msg += " (STOPPED)"
+            
+            if failed_tasks:
+                msg += f"\n❌ Failed items: {', '.join(failed_tasks)}"
+            logger.info(msg)
 
-                return {
-                    "completed": completed_count,
-                    "failed": len(failed_tasks),
-                    "total": len(tasks),
-                    "failed_names": failed_tasks
-                }
-            except KeyboardInterrupt:
-                logger.warning("\n🛑 Stopping workers... (Ctrl+C pressed)")
-                executor.shutdown(wait=False, cancel_futures=True)
-                return {"completed": 0, "failed": 0, "total": len(tasks), "failed_names": []}
+            return {
+                "completed": completed_count,
+                "failed": len(failed_tasks),
+                "total": len(tasks),
+                "failed_names": failed_tasks
+            }
+        except KeyboardInterrupt:
+            logger.warning("\n🛑 Stopping workers... (Ctrl+C pressed)")
+            self.stop()
+            return {"completed": 0, "failed": 0, "total": len(tasks), "failed_names": []}
+        finally:
+            if self.executor:
+                self.executor.shutdown(wait=False)
+                self.executor = None
 
     def _process_task(self, task: dict) -> bool:
+        if self.stop_event.is_set():
+            return False
+            
         if task["type"] == "directory":
             return self._process_directory(task["path"], task["tmdb_id"])
         elif task["type"] == "loose_files":

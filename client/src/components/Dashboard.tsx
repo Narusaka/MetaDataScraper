@@ -49,11 +49,14 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
     useEffect(() => localStorage.setItem('task_tmdb_id', tmdbId), [tmdbId]);
     useEffect(() => localStorage.setItem('task_multi_mode', multiMode), [multiMode]);
 
-    const handleStart = () => {
+    const handleStart = async () => {
         if (isRunning) {
             onStop();
             return;
         }
+
+
+
         onStart({
             input_dir: selectedPath,
             workers,

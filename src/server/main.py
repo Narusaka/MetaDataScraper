@@ -213,12 +213,19 @@ async def test_connectivity():
     proxies = None
     if config.get("proxy"):
         p = config["proxy"]
-        proxies = {"http": p, "https": p}
+        if isinstance(p, dict):
+             proxies = p
+        else:
+             proxies = {"http": p, "https": p}
     
     # Test TMDB
     try:
-        r = await asyncio.to_thread(requests.get, "https://api.themoviedb.org/3/status", proxies=proxies, timeout=5)
+        api_key = config.get("tmdb", {}).get("api_key")
+        r = await asyncio.to_thread(requests.get, f"https://api.themoviedb.org/3/configuration?api_key={api_key}", proxies=proxies, timeout=5)
         results["tmdb"] = {"status": "ok" if r.ok else "failed", "code": r.status_code}
+        if not r.ok:
+             try: results["tmdb"]["message"] = r.json().get("status_message", "Unknown error")
+             except: results["tmdb"]["message"] = r.text
     except Exception as e:
         results["tmdb"] = {"status": "error", "message": str(e)}
 
@@ -228,6 +235,45 @@ async def test_connectivity():
         results["google"] = {"status": "ok" if r.ok else "failed", "code": r.status_code}
     except Exception as e:
         results["google"] = {"status": "error", "message": str(e)}
+
+    # Test Tavily
+    try:
+        # Collect all potential keys
+        t_keys = []
+        if config.get("tavily", {}).get("api_key"): t_keys.append(config.get("tavily", {}).get("api_key"))
+        if os.getenv("TAVILY_API_KEY"): t_keys.append(os.getenv("TAVILY_API_KEY"))
+        if os.getenv("TAVILY_API_KEY_2"): t_keys.append(os.getenv("TAVILY_API_KEY_2"))
+        if os.getenv("TAVILY_API_KEY_3"): t_keys.append(os.getenv("TAVILY_API_KEY_3"))
+        
+        # Deduplicate
+        t_keys = list(set([k for k in t_keys if k]))
+        
+        if t_keys:
+            any_valid = False
+            last_error = "Unknown"
+            
+            for key in t_keys:
+                try:
+                    payload = {"api_key": key, "query": "test", "max_results": 1}
+                    r = await asyncio.to_thread(requests.post, "https://api.tavily.com/search", json=payload, proxies=proxies, timeout=5)
+                    if r.status_code == 200:
+                        any_valid = True
+                        break # Found a working key
+                    else:
+                        try: last_error = r.json().get("detail", {}).get("error", r.text)
+                        except: last_error = f"Status {r.status_code}"
+                except Exception as ex:
+                    last_error = str(ex)
+            
+            if any_valid:
+                results["tavily"] = {"status": "ok", "code": 200}
+            else:
+                results["tavily"] = {"status": "failed", "message": f"All {len(t_keys)} keys failed. Last error: {last_error}"}
+        else:
+            results["tavily"] = {"status": "skipped", "message": "No API Keys found"}
+            
+    except Exception as e:
+        results["tavily"] = {"status": "error", "message": str(e)}
         
     return results
 

@@ -67,6 +67,7 @@ class MediaPipeline:
         
         if os.getenv("TAVILY_API_KEY"): tavily_keys.append(os.getenv("TAVILY_API_KEY"))
         if os.getenv("TAVILY_API_KEY_2"): tavily_keys.append(os.getenv("TAVILY_API_KEY_2"))
+        if os.getenv("TAVILY_API_KEY_3"): tavily_keys.append(os.getenv("TAVILY_API_KEY_3"))
         
         # Remove duplicates and empties
         tavily_keys = list(set([k for k in tavily_keys if k]))

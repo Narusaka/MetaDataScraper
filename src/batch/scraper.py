@@ -186,14 +186,28 @@ class BatchMediaScraper:
                         task_name = task["path"].name
                     
                     try:
-                        success = future.result()
-                        if success: completed_count += 1
-                        else: failed_tasks.append(task_name)
+                        result = future.result()
+                        
+                        # Handle Tuple (success, reason) or Bool
+                        success = False
+                        failure_reason = task_name # Default
+                        
+                        if isinstance(result, tuple):
+                            success = result[0]
+                            failure_reason = result[1]
+                        else:
+                            success = result
+                            
+                        if success: 
+                            completed_count += 1
+                        else: 
+                            failed_tasks.append(failure_reason)
+                            
                     except CancelledError:
                         logger.info(f"Task {task_name} was cancelled.")
                     except Exception as e:
                         logger.error(f"Task {task_name} raised exception: {e}")
-                        failed_tasks.append(task_name)
+                        failed_tasks.append(f"{task_name} (Worker Exception: {e})")
 
             msg = f"Batch processing finished: {completed_count}/{len(tasks)} successful, {len(failed_tasks)} failed"
             if self.stop_event.is_set():
@@ -218,15 +232,16 @@ class BatchMediaScraper:
                 self.executor.shutdown(wait=False)
                 self.executor = None
 
-    def _process_task(self, task: dict) -> bool:
+    def _process_task(self, task: dict):
+        # Returns True, (False, Reason), or False
         if self.stop_event.is_set():
-            return False
+            return (False, "Scraper Stopped")
             
         if task["type"] == "directory":
             return self._process_directory(task["path"], task["tmdb_id"])
         elif task["type"] == "loose_files":
             return self._process_loose_files(task["files"], task["base_dir"])
-        return False
+        return (False, "Unknown Task Type")
 
     def _process_directory(self, dir_path: Path, tmdb_id: Optional[int]) -> bool:
         show_name = dir_path.name
@@ -295,12 +310,23 @@ class BatchMediaScraper:
                 logger.info(f"Audit completed for {show_name}")
                 return True
             else:
-                logger.error(f"Metadata generation failed for {show_name}: {result.get('error')}")
-                return False
+                # Error message already logged by pipeline, but we summarize here
+                error_detail = result.get('error', 'Unknown error')
+                error_code = result.get('code', '')
+                
+                # Format a more descriptive error message for the summary
+                failure_reason = f"{show_name} ({error_detail})"
+                if error_code:
+                     failure_reason += f" [Code: {error_code}]"
+
+                logger.error(f"Metadata generation failed for {show_name}: {error_detail} {f'({error_code})' if error_code else ''}")
+                return (False, failure_reason)
+
         except Exception as e:
-            logger.error(f"Error processing {show_name}: {e}")
-            logger.error(traceback.format_exc())
-            return False
+            logger.error(f"Scraper Error for {show_name}: {e}")
+            import traceback
+            traceback.print_exc()
+            return (False, f"{show_name} (System Error: {str(e)})")
 
     def _process_loose_files(self, files: List[Path], base_dir: Path) -> bool:
         # Grouping logic... 

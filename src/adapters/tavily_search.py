@@ -48,37 +48,54 @@ class TavilySearchAdapter:
         # If that fails (or returns wrong type), try specific "Query MediaType tmdb".
         queries = [f"{query} tmdb", f"{query} {media_type} tmdb"]
         
+        # Shuffle keys initially to distribute load, but try ALL of them if needed
+        available_keys = list(self.api_keys)
+        random.shuffle(available_keys)
+
         for search_query in queries:
             if verbose: print(f"   Trying Tavily Search: '{search_query}'")
             
-            payload = {
-                "api_key": self._get_api_key(),
-                "query": search_query,
-                "search_depth": "basic",
-                "max_results": 5,
-                "include_domains": ["themoviedb.org"],
-            }
-            
-            try:
-                response = requests.post(
-                    self.BASE_URL, 
-                    json=payload, 
-                    proxies=self.proxy, 
-                    timeout=15
-                )
-                response.raise_for_status()
-                results = response.json().get("results", [])
+            # Try each key until one works or all fail
+            for key in available_keys:
+                payload = {
+                    "api_key": key,
+                    "query": search_query,
+                    "search_depth": "basic",
+                    "max_results": 5,
+                    "include_domains": ["themoviedb.org"],
+                }
                 
-                if verbose:
-                     print(f"      Found {len(results)} results")
-
-                tmdb_id = self._parse_tmdb_id_from_results(results, media_type)
-                if tmdb_id:
-                    return tmdb_id
+                try:
+                    response = requests.post(
+                        self.BASE_URL, 
+                        json=payload, 
+                        proxies=self.proxy, 
+                        timeout=15
+                    )
                     
-            except Exception as e:
-                if verbose: print(f"   Tavily Search request failed for '{search_query}': {e}")
-                continue
+                    # Handle 429/432 explicitly
+                    if response.status_code in [429, 432]:
+                        if verbose: print(f"      Key ...{key[-4:]} exhausted/limited ({response.status_code}). Trying next key...")
+                        continue # Try next key
+
+                    response.raise_for_status()
+                    results = response.json().get("results", [])
+                    
+                    if verbose:
+                         print(f"      Found {len(results)} results")
+
+                    tmdb_id = self._parse_tmdb_id_from_results(results, media_type)
+                    if tmdb_id:
+                        return tmdb_id
+                    
+                    # If request succeeded but no ID found, maybe query is bad, but key is good. 
+                    # We break the key loop to try next query with THIS (or random) key?
+                    # No, if request suceeded, we are done with this query search attempt.
+                    break 
+
+                except Exception as e:
+                    if verbose: print(f"   Tavily Search request failed for '{search_query}' with key ...{key[-4:]}: {e}")
+                    continue
         
         return None
 

@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { BarChart3, Database, Cpu, Moon, Sun } from 'lucide-react';
+import { BarChart3, Database, Cpu, Moon, Sun, MonitorCheck, Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { cn } from '../lib/utils';
 import { useTranslation, languageOptions } from '../lib/language';
 import { useTheme } from 'next-themes';
+import { toast } from 'sonner';
 
 interface SystemStats {
     running: boolean;
@@ -21,6 +22,52 @@ export function Header({ title }: { title: string, isRunning?: boolean }) { // K
     const { t, language, setLanguage } = useTranslation();
     const { theme, setTheme } = useTheme();
     const [stats, setStats] = useState<SystemStats | null>(null);
+    const [isChecking, setIsChecking] = useState(false);
+
+    const handleConnectivityTest = async () => {
+        if (isChecking) return;
+        setIsChecking(true);
+        const toastId = toast.loading('Checking connectivity...');
+
+        try {
+            const res = await fetch('http://localhost:8000/api/test_connectivity');
+            const data = await res.json();
+
+            // Format result for toast
+            const tmdbOk = data.tmdb?.status === 'ok';
+            const googleOk = data.google?.status === 'ok';
+            const tavilyOk = data.tavily?.status === 'ok';
+
+            const msg = (
+                <div className="text-xs space-y-1">
+                    <div className="font-bold mb-2 text-sm">System Connectivity</div>
+                    <div className={cn("flex items-center gap-2", tmdbOk ? "text-green-500" : "text-red-500")}>
+                        <div className={cn("w-2 h-2 rounded-full", tmdbOk ? "bg-green-500" : "bg-red-500")} />
+                        TMDB: {data.tmdb?.message || 'OK'}
+                    </div>
+                    <div className={cn("flex items-center gap-2", googleOk ? "text-green-500" : "text-red-500")}>
+                        <div className={cn("w-2 h-2 rounded-full", googleOk ? "bg-green-500" : "bg-red-500")} />
+                        Google: {data.google?.message || 'OK'}
+                    </div>
+                    <div className={cn("flex items-center gap-2", tavilyOk ? "text-green-500" : "text-amber-500")}>
+                        <div className={cn("w-2 h-2 rounded-full", tavilyOk ? "bg-green-500" : "bg-amber-500")} />
+                        Tavily: {data.tavily?.message || 'OK'}
+                    </div>
+                </div>
+            );
+
+            toast.dismiss(toastId);
+            if (tmdbOk && googleOk && tavilyOk) toast.success(msg, { duration: 3000 });
+            else if (tmdbOk) toast.warning(msg, { duration: 5000 }); // Partial success
+            else toast.error(msg, { duration: 5000 });
+
+        } catch (e) {
+            toast.dismiss(toastId);
+            toast.error("Failed to connect to backend server.");
+        } finally {
+            setIsChecking(false);
+        }
+    };
 
     // Poll for stats
     useEffect(() => {
@@ -110,6 +157,23 @@ export function Header({ title }: { title: string, isRunning?: boolean }) { // K
                             </button>
                         ))}
                     </div>
+
+                    {/* Connectivity Test Button (Animated) */}
+                    <button
+                        onClick={handleConnectivityTest}
+                        disabled={isChecking}
+                        className={cn(
+                            "w-9 h-9 rounded-full bg-[var(--bg-toggle-wrapper)] flex items-center justify-center transition-all active:scale-95",
+                            isChecking ? "cursor-wait opacity-80" : "text-[var(--text-toggle-inactive)] hover:text-emerald-500 hover:bg-[var(--bg-button-secondary-active)]"
+                        )}
+                        title="Test Server Connectivity"
+                    >
+                        {isChecking ? (
+                            <Loader2 size={18} className="animate-spin text-primary" />
+                        ) : (
+                            <MonitorCheck size={18} className="fill-current" />
+                        )}
+                    </button>
 
                     {/* Theme Toggler (Animated) */}
                     <button

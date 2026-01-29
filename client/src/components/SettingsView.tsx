@@ -402,38 +402,36 @@ function MacOsSlider({ min, max, value, onChange, icon }: any) {
     const percentage = ((value - min) / (max - min)) * 100;
 
     return (
-        <div className="relative h-7 w-full flex items-center select-none group">
+        <div className="relative h-6 w-full flex items-center select-none group">
             {/* Icon Label (Optional) */}
             {icon && <div className="absolute -left-6">{icon}</div>}
 
-            {/* Background Track (Gray) */}
-            <div className="absolute inset-0 bg-stone-200 dark:bg-stone-700/50 rounded-full overflow-hidden border border-black/5 dark:border-white/5">
-                {/* Active Track (Blue) */}
-                <div
-                    className="h-full bg-blue-500 transition-all duration-150 ease-out"
-                    style={{ width: `${percentage}%` }}
-                />
-            </div>
-
-            {/* Slider Input (Invisible but interactive) */}
+            {/* Slider Input (Invisible but interactive, full hit area) */}
             <input
                 type="range"
                 min={min}
                 max={max}
                 value={value}
                 onChange={(e) => onChange(parseInt(e.target.value))}
-                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-20"
             />
+
+            {/* Track Background (Gray Line) */}
+            <div className="absolute w-full h-1 bg-gray-300 dark:bg-gray-600 rounded-full overflow-hidden pointer-events-none">
+                {/* Active Track (Blue Line) - Only fills up to the percentage */}
+                <div
+                    className="h-full bg-blue-500"
+                    style={{ width: `${percentage}%` }}
+                />
+            </div>
 
             {/* Knob (Visual only, follows percentage) */}
             <div
-                className="absolute h-7 w-7 bg-white rounded-full shadow-[0_2px_5px_rgba(0,0,0,0.2)] border border-stone-100 dark:border-stone-500 transition-all duration-150 ease-out pointer-events-none flex items-center justify-center"
-                style={{ left: `calc(${percentage}% - 14px)` }}
-            >
-                {/* Mini grip lines */}
-                <div className="w-0.5 h-2 bg-stone-300 rounded-full mx-[1px]" />
-                <div className="w-0.5 h-2 bg-stone-300 rounded-full mx-[1px]" />
-            </div>
+                className="absolute w-5 h-5 bg-white rounded-full shadow-[0_1px_3px_rgba(0,0,0,0.3)] border border-gray-200 pointer-events-none z-10 transition-transform active:scale-110"
+                style={{
+                    left: `calc(${percentage}% - 10px)`
+                }}
+            />
         </div>
     )
 }

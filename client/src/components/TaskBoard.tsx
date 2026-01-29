@@ -418,8 +418,8 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
 
             {/* Content Area */}
             <div className="flex-1 overflow-hidden px-4 pb-4">
-                <div className="bg-[var(--bg-inner-panel)] rounded-2xl h-full relative overflow-hidden flex flex-col">
-                    <div className="flex-1 p-4 overflow-y-auto scrollbar-thin">
+                <div className="h-full relative overflow-hidden flex flex-col">
+                    <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-autohide">
                         {sortedTaskList.length === 0 ? (
                             <div className="flex flex-col items-center justify-center h-full text-slate-500 dark:text-muted-foreground gap-4">
                                 <div className="w-16 h-16 rounded-2xl bg-slate-200 dark:bg-white/5 flex items-center justify-center animate-pulse">
@@ -431,18 +431,18 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                                 </div>
                             </div>
                         ) : viewMode === 'list' ? (
-                            <div className="rounded-xl border border-border overflow-hidden bg-panel/95">
+                            <div className="">
                                 <table className="w-full text-left border-collapse">
-                                    <thead className="bg-muted/30 border-b border-border text-[10px] uppercase font-bold text-secondary tracking-wider">
-                                        <tr>
-                                            <th className="px-4 py-3 w-16 text-center">{t('type')}</th>
-                                            <th className="px-4 py-3 min-w-[120px]">{t('name')}</th>
-                                            <th className="px-4 py-3 w-32">{t('status')}</th>
-                                            <th className="px-4 py-3 w-48">{t('current_step')}</th>
-                                            <th className="px-4 py-3 w-28 text-right">{t('actions')}</th>
+                                    <thead>
+                                        <tr className="text-[10px] uppercase font-bold text-slate-500 dark:text-slate-400 tracking-wider">
+                                            <th className="sticky top-0 z-20 bg-[#F9F9F9]/95 dark:bg-[#1C1C1E]/95 backdrop-blur-md border-b-4 border-gray-200 dark:border-white/10 px-6 py-3 w-16 text-center">{t('type')}</th>
+                                            <th className="sticky top-0 z-20 bg-[#F9F9F9]/95 dark:bg-[#1C1C1E]/95 backdrop-blur-md border-b-4 border-gray-200 dark:border-white/10 px-6 py-3 min-w-[120px]">{t('name')}</th>
+                                            <th className="sticky top-0 z-20 bg-[#F9F9F9]/95 dark:bg-[#1C1C1E]/95 backdrop-blur-md border-b-4 border-gray-200 dark:border-white/10 px-6 py-3 w-32">{t('status')}</th>
+                                            <th className="sticky top-0 z-20 bg-[#F9F9F9]/95 dark:bg-[#1C1C1E]/95 backdrop-blur-md border-b-4 border-gray-200 dark:border-white/10 px-6 py-3 w-48">{t('current_step')}</th>
+                                            <th className="sticky top-0 z-20 bg-[#F9F9F9]/95 dark:bg-[#1C1C1E]/95 backdrop-blur-md border-b-4 border-gray-200 dark:border-white/10 px-6 py-3 w-28 text-right">{t('actions')}</th>
                                         </tr>
                                     </thead>
-                                    <tbody className="divide-y divide-border/30 text-xs font-mono">
+                                    <tbody className="divide-y-2 divide-gray-200 dark:divide-white/10 text-xs font-sans">
                                         {sortedTaskList.map(task => (
                                             <TaskRow key={task.status === 'idle' ? task.threadId : (task.fullPath || task.name)} task={task} onExecute={handleExecute} />
                                         ))}
@@ -580,57 +580,79 @@ function TaskRow({ task, onExecute }: { task: Task, onExecute: (t: Task) => void
     const isAuditReady = (task.status === 'dry_run' || task.status === 'audit_completed') && task.fullPath && task.tmdbId;
     const hasRun = task.hasExecuted;
 
-    const getStatusColor = (s: string) => {
-        switch (s) {
-            case 'completed': return 'text-emerald-500';
-            case 'failed': return 'text-red-500';
-            case 'processing': return 'text-blue-400 animate-pulse';
-            case 'fetching': return 'text-indigo-400';
-            case 'searching': return 'text-amber-400';
-            case 'dry_run':
-            case 'audit_completed': return 'text-sky-400';
-            default: return 'text-slate-500';
-        }
-    };
-
     return (
-        <tr className="hover:bg-slate-50 dark:hover:bg-white/[0.02] group transition-colors">
-            <td className="px-4 py-3 text-slate-500 dark:text-secondary text-center">
-                {task.mediaType === 'tv' ? <MonitorPlay className="w-4 h-4 mx-auto" /> : <FileVideo className="w-4 h-4 mx-auto" />}
-            </td>
-            <td className="px-4 py-3 min-w-0 max-w-[300px]">
-                <div className="font-semibold text-slate-900 dark:text-text truncate" title={task.name}>{task.name}</div>
-                <div className="text-[10px] text-slate-500 dark:text-muted truncate opacity-50 font-mono" title={task.fullPath}>
-                    {task.fullPath || task.threadId}
+        <tr className="hover:bg-slate-50 dark:hover:bg-white/[0.02] group transition-colors border-b border-gray-100 dark:border-white/5 last:border-0">
+            {/* 1. Media Identity (Icon + Title) */}
+            <td className="px-6 py-4">
+                <div className="flex items-center gap-4">
+                    {/* Icon Box */}
+                    <div className={cn(
+                        "w-10 h-10 rounded-lg flex items-center justify-center shrink-0 shadow-sm",
+                        task.mediaType === 'tv'
+                            ? "bg-purple-100 text-purple-600 dark:bg-purple-500/20 dark:text-purple-300"
+                            : "bg-blue-100 text-blue-600 dark:bg-blue-500/20 dark:text-blue-300"
+                    )}>
+                        {task.mediaType === 'tv' ? <MonitorPlay size={20} /> : <FileVideo size={20} />}
+                    </div>
+
+                    {/* Title Info */}
+                    <div className="flex flex-col">
+                        <span className="font-bold text-sm text-slate-800 dark:text-slate-100 line-clamp-1" title={task.name}>
+                            {task.name}
+                        </span>
+                        {(task.tmdbId || task.threadId) && (
+                            <span className="text-[10px] font-mono text-slate-400 dark:text-slate-500">
+                                {task.tmdbId ? `TMDB: ${task.tmdbId}` : `ID: ${task.threadId.substring(0, 8)}`}
+                            </span>
+                        )}
+                    </div>
                 </div>
             </td>
-            <td className="px-4 py-3">
+
+            {/* 2. Path / Location (Members equiv) */}
+            <td className="px-6 py-4 align-middle">
+                <div className="flex -space-x-2 overflow-hidden items-center group/path">
+                    {/* We treat "Path" as the 'Members' section - displaying it subtly */}
+                    <span className="text-xs text-slate-500 dark:text-slate-400 font-medium truncate max-w-[200px]" title={task.fullPath}>
+                        {task.fullPath ? `.../${task.fullPath.split('/').slice(-2).join('/')}` : "—"}
+                    </span>
+                </div>
+            </td>
+
+            {/* 3. Status (Budget equiv) */}
+            <td className="px-6 py-4 align-middle">
                 <span className={cn(
-                    "text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border border-current/20 bg-current/5",
-                    getStatusColor(task.status)
+                    "text-xs font-bold",
+                    task.status === 'completed' || task.status === 'audit_completed' ? "text-emerald-600 dark:text-emerald-400" :
+                        task.status === 'failed' ? "text-red-500" :
+                            task.status === 'processing' ? "text-blue-500 animate-pulse" :
+                                "text-slate-500"
                 )}>
-                    {t(task.status as any) || task.status}
+                    {task.status === 'audit_completed' ? 'Audit Done' :
+                        task.status === 'dry_run' ? 'Dry Run' :
+                            t(task.status as any) || task.status}
                 </span>
             </td>
-            <td className="px-4 py-3">
-                <div className="text-slate-600 dark:text-muted truncate max-w-[200px]" title={task.lastLog}>
+
+            {/* 4. Current Step (Text) */}
+            <td className="px-6 py-4 align-middle">
+                <div className="text-xs text-slate-500 dark:text-muted truncate max-w-[200px]" title={task.lastLog}>
                     {task.step}
                 </div>
             </td>
-            <td className="px-4 py-3 text-right">
+
+            {/* 5. Actions (Optional, kept for functionality) */}
+            <td className="px-6 py-4 text-right">
                 {isAuditReady && (
                     <button
                         onClick={(e) => { e.stopPropagation(); if (!hasRun) onExecute(task); }}
                         disabled={hasRun}
                         className={cn(
-                            "inline-flex items-center gap-1.5 px-3 py-1 rounded text-[10px] font-bold uppercase tracking-wider transition-all",
-                            hasRun
-                                ? "text-slate-400 dark:text-muted-foreground cursor-not-allowed"
-                                : "bg-primary/10 text-primary hover:bg-primary/20 border border-primary/30"
+                            "text-[10px] uppercase font-bold tracking-wider hover:text-primary transition-colors disabled:opacity-30",
+                            hasRun ? "text-slate-300" : "text-slate-500"
                         )}
                     >
-                        {hasRun ? <CheckCircle2 className="w-3 h-3" /> : <Play className="w-3 h-3" />}
-                        {hasRun ? 'Done' : 'Run'}
+                        {hasRun ? "Done" : "Run Now"}
                     </button>
                 )}
             </td>

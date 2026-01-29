@@ -194,6 +194,26 @@ body::after {
     display: none;
   }
 
+  /* Auto-hide Scrollbar Utility */
+  .scrollbar-autohide::-webkit-scrollbar {
+    width: 6px;
+    background-color: transparent;
+  }
+
+  .scrollbar-autohide::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  .scrollbar-autohide::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 4px;
+  }
+
+  .scrollbar-autohide:hover::-webkit-scrollbar-thumb {
+    background-color: var(--secondary);
+    /* More visible on hover */
+    opacity: 0.8;
+  }
 
   /* The "Pro" Glass Panel */
   .glass-panel-pro {

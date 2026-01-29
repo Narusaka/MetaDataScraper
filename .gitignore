@@ -132,7 +132,8 @@ config/config.yaml
 *.swp
 *.bak
 *.orig
-
+tests/
+test_media_env/
 # LLM or AI related caches if any
 .model_artifacts/
 
@@ -149,3 +150,6 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 .npm/
+
+# build artifacts
+*.zip

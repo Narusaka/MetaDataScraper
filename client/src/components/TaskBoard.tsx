@@ -43,7 +43,15 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
     // Removed activeTaskMeta as we now use stable IDs directly
 
     const handleExecute = async (task: Task) => {
-        if (!task.fullPath || !task.tmdbId || task.hasExecuted) return;
+        console.log("handleExecute called for:", task.name, "Path:", task.fullPath, "ID:", task.tmdbId);
+
+        if (!task.fullPath) {
+            console.warn("Task missing fullPath, cannot execute.");
+            return;
+        }
+
+        // Removed ID check because Audit/Loose file tasks might validly have no ID yet.
+        // Removed hasExecuted check to allow Retrying/Running again.
 
         // Optimistically mark as executed to disable button immediately
         setTasks(prev => ({
@@ -57,13 +65,14 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     input_dir: task.fullPath,
-                    tmdb_id: parseInt(task.tmdbId),
+                    tmdb_id: task.tmdbId ? parseInt(task.tmdbId) : 0,
                     media_type: task.mediaType,
                     dry_run: false,
                     inplace: defaultConfig.strategy !== 'copy',
                     copy_mode: defaultConfig.strategy === 'copy',
                     output_dir: defaultConfig.strategy === 'copy' ? defaultConfig.outputPath : undefined,
-                    fresh: defaultConfig.forceFresh
+                    fresh: defaultConfig.forceFresh,
+                    search_mode: 'smart'
                 })
             });
         } catch (e) {

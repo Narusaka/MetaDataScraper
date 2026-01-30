@@ -252,6 +252,8 @@ class MediaPipeline:
         force_type = input_data.get("media_type_forced", False)
         mode = input_data.get("search_mode", "smart") # smart, tmdb_only, tavily_only
         
+        self._log(f"🕵️‍♂️ DEBUG: Search Mode='{mode}' Query='{query}' Type='{media_type}' ForceType={force_type}")
+        
         # Extract year from query if not already provided
         target_year = input_data.get("year")
         import re

@@ -108,8 +108,44 @@ class BatchMediaScraper:
             
         root_path = Path(input_dir)
         if not root_path.exists():
-            logger.error(f"Input directory does not exist: {input_dir}")
-            return
+            # Feature: JIT Loose File Extraction
+            # If the specific task directory doesn't exist, it might be a "Virtual" task representing loose files 
+            # in the parent directory that haven't been moved yet.
+            parent_dir = root_path.parent
+            if parent_dir.exists():
+                 logger.info(f"Target directory {root_path} not found. Checking parent {parent_dir} for loose files to organize...")
+                 # Temporarily use scanner to find loose files in parent
+                 loose_files = self.scanner._find_loose_files(parent_dir)
+                 if loose_files:
+                     # Filter files that match this specific show/task name
+                     target_name = root_path.name
+                     # Re-use process_loose_files logic but forced to ONLY process this target
+                     # We create a temporary group for just this show
+                     relevant_files = []
+                     for f in loose_files:
+                         extracted = FilenameParser.extract_show_name(f.name)
+                         if extracted and FilenameParser.clean_show_name_for_search(extracted) == target_name:
+                             relevant_files.append(f)
+                    
+                     if relevant_files:
+                         logger.info(f"Found {len(relevant_files)} loose files for '{target_name}'. Auto-organizing now...")
+                         # Create dir
+                         root_path.mkdir(exist_ok=True)
+                         # Move files
+                         import shutil
+                         for f in relevant_files:
+                             if f.parent != root_path:
+                                 shutil.move(str(f), str(root_path / f.name))
+                         logger.info(f"✅ Auto-organized files into {root_path}")
+                     else:
+                         logger.error(f"Input directory does not exist and no matching loose files found: {input_dir}")
+                         return
+                 else:
+                     logger.error(f"Input directory does not exist: {input_dir}")
+                     return
+            else:
+                 logger.error(f"Input directory does not exist: {input_dir}")
+                 return
             
         logger.info("🚀 Starting Batch Scraper")
         logger.info(f"   Input: {input_dir}")
@@ -341,7 +377,70 @@ class BatchMediaScraper:
             
         logger.info(f"Processing split files: found {len(groups)} groups")
         
-        if self.dry_run: return True
+        if self.dry_run:
+            logger.info(f"[Dry Run] Identified {len(groups)} groups of loose files to organize:")
+            for show_name, group_files in groups.items():
+                 safe_name = FilenameParser.clean_show_name_for_search(show_name)
+                 target_path = base_dir / safe_name
+                 
+                 # Determine media type: User Override > Auto Detect
+                 if self.media_type:
+                     media_type = self.media_type
+                 else:
+                     # Detect media type from first file or name
+                     # Enhanced: Check for #Number pattern too
+                     import re
+                     has_episode_marker = any(re.search(r'[#＃]\s*\d+', f.name) for f in group_files)
+                     is_tv = any(FilenameParser.parse_episode_info(str(f)) for f in group_files) or has_episode_marker
+                     media_type = "tv" if is_tv else "movie"
+                 
+                 logger.info(f"   - Group: {safe_name} ({len(group_files)} files) -> Type: {media_type} (Source: {'User' if self.media_type else 'Auto-Enhanced'})")
+                 
+                 # Prepare Pipeline Input for AUDIT
+                 input_data = {
+                    "media_type": media_type,
+                    "media_type_forced": True, 
+                    "query": safe_name,
+                    "year": FilenameParser.extract_year(show_name) or FilenameParser.extract_year(str(group_files[0])),
+                    "output_dir": str(base_dir), # Not used in audit
+                    "source_path": str(target_path), 
+                    "verbose": False,
+                    "quiet": True,
+                    "aid_search": True,
+                    "search_mode": self.search_mode,
+                    "tmdb_only": self.search_mode == "tmdb_only",
+                    "fallback_on_fail": self.enable_fallback,
+                    "audit_only": True
+                }
+                 
+                 # Run Pipeline in Audit Mode to get real metadata status
+                 try:
+                     logger.info(f"Processing: {safe_name} (ID: None, Query: {safe_name}, Type: {media_type})")
+                     result = self.pipeline.run(input_data)
+                     
+                     # Result logging is handled by Pipeline (AUDIT_HIT etc.)
+                     # But we should log completion
+                     status = result.get("status")
+                     if status == "audit_completed" or status == "completed":
+                         logger.info(f"Audit completed for {safe_name}")
+                     else:
+                         logger.warning(f"Audit failed for {safe_name}: {result.get('error')}")
+                         
+                 except Exception as e:
+                     logger.error(f"Audit scan error for {safe_name}: {e}")
+            return True
+        
+        for show_name, group_files in groups.items():
+             safe_name = FilenameParser.clean_show_name_for_search(show_name)
+             new_dir = base_dir / safe_name
+             if not new_dir.exists(): new_dir.mkdir(exist_ok=True)
+             
+             for f in group_files:
+                 if f.parent != new_dir:
+                     shutil.move(str(f), str(new_dir / f.name))
+             
+             self._process_directory(new_dir, None)
+        return True
         
         for show_name, group_files in groups.items():
              safe_name = FilenameParser.clean_show_name_for_search(show_name)

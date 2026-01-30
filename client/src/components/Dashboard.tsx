@@ -28,13 +28,20 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
     const [showPicker, setShowPicker] = useState<'input' | 'output' | null>(null);
 
     const [strategy, setStrategy] = useState<Strategy>(() => (localStorage.getItem('task_strategy') as Strategy) || 'audit');
-    const [workers] = useState(() => parseInt(localStorage.getItem('task_workers') || "4"));
+    const [workers, setWorkers] = useState(() => parseInt(localStorage.getItem('task_workers') || "4"));
     const [useLocalNfo, setUseLocalNfo] = useState(() => localStorage.getItem('task_local_nfo') === 'true');
     const [extraImages, setExtraImages] = useState(() => localStorage.getItem('task_extra_images') === 'true');
     const [outputPath, setOutputPath] = useState(() => localStorage.getItem('task_output_path') || "");
     const [mediaType, setMediaType] = useState(() => localStorage.getItem('task_media_type') || "");
     const [tmdbId, setTmdbId] = useState(() => localStorage.getItem('task_tmdb_id') || "");
-    const [searchMode] = useState<'smart' | 'tmdb_only' | 'tavily_only'>(() => (localStorage.getItem('task_search_mode') as 'smart' | 'tmdb_only' | 'tavily_only') || 'smart');
+    // Fixed: searchMode removed to prevent being stuck in tavily_only from stale localStorage
+    // Re-introducing searchMode but with default 'smart' if localStorage value is invalid, and exposing it to UI
+    const [searchMode, setSearchMode] = useState<'smart' | 'tmdb_only' | 'tavily_only'>(() => {
+        const stored = localStorage.getItem('task_search_mode');
+        // Validate stored value
+        if (stored === 'smart' || stored === 'tmdb_only' || stored === 'tavily_only') return stored;
+        return 'smart';
+    });
     const [multiMode, setMultiMode] = useState<'auto' | 'single' | 'batch'>(() => (localStorage.getItem('task_multi_mode') as 'auto' | 'single' | 'batch') || 'auto');
     const [forceFresh, setForceFresh] = useState(false);
 
@@ -43,12 +50,13 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
         if (selectedPath) localStorage.setItem('last_path', selectedPath);
     }, [selectedPath]);
     useEffect(() => localStorage.setItem('task_strategy', strategy), [strategy]);
-    // Workers persistence removed from setter but state kept for API
+    useEffect(() => localStorage.setItem('task_workers', workers.toString()), [workers]);
     useEffect(() => localStorage.setItem('task_local_nfo', useLocalNfo.toString()), [useLocalNfo]);
     useEffect(() => localStorage.setItem('task_extra_images', extraImages.toString()), [extraImages]);
     useEffect(() => localStorage.setItem('task_output_path', outputPath), [outputPath]);
     useEffect(() => localStorage.setItem('task_media_type', mediaType), [mediaType]);
     useEffect(() => localStorage.setItem('task_tmdb_id', tmdbId), [tmdbId]);
+    useEffect(() => localStorage.setItem('task_search_mode', searchMode), [searchMode]);
     useEffect(() => localStorage.setItem('task_multi_mode', multiMode), [multiMode]);
 
     const handleStart = async () => {
@@ -69,7 +77,7 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
             use_local_nfo: useLocalNfo,
             extra_images: extraImages,
             media_type: mediaType || null,
-            tmdb_id: tmdbId ? parseInt(tmdbId) : null,
+            tmdb_id: (multiMode === 'single' && tmdbId) ? parseInt(tmdbId) : null,
             search_mode: searchMode,
             enable_fallback: true,
             multi_mode: multiMode === 'auto' ? null : (multiMode === 'batch'),
@@ -257,6 +265,21 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
                                         />
                                     </div>
 
+                                    {/* Search Mode */}
+                                    <div className="space-y-1.5">
+                                        <label className="text-[10px] uppercase font-bold text-text-muted tracking-wider ml-1">搜索模式 / Search Mode</label>
+                                        <SegmentedControl
+                                            options={[
+                                                { value: 'smart', label: t('smart' as any) || 'Smart' },
+                                                { value: 'tmdb_only', label: 'TMDB' },
+                                                { value: 'tavily_only', label: 'Web' },
+                                            ]}
+                                            value={searchMode}
+                                            onChange={(v: any) => setSearchMode(v as any)}
+                                        />
+                                    </div>
+
+                                    {/* Concurrency */}
                                     <div className="space-y-1.5">
                                         <label className="text-[10px] uppercase font-bold text-text-muted tracking-wider ml-1">{t('concurrency')}</label>
                                         <SegmentedControl
@@ -270,21 +293,47 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
                                         />
                                     </div>
 
+                                    {/* Threads */}
                                     <div className="space-y-1.5">
-                                        <label className="text-[10px] uppercase font-bold text-text-muted tracking-wider ml-1 flex justify-between">
-                                            <span>{t('tmdb_override')}</span>
-                                            <span className="text-[9px] opacity-50">{t('optional')}</span>
-                                        </label>
-                                        <div className="bg-bg-surface rounded-xl px-3 py-2">
+                                        <label className="text-[10px] uppercase font-bold text-text-muted tracking-wider ml-1">Threads (Workers)</label>
+                                        <div className="flex items-center gap-2 bg-bg-surface rounded-xl px-3 py-2">
+                                            <Cpu size={14} className="text-text-muted" />
                                             <input
                                                 type="number"
-                                                value={tmdbId}
-                                                onChange={(e) => setTmdbId(e.target.value)}
-                                                className="w-full bg-transparent border-none text-xs text-text-main outline-none placeholder:text-text-muted/40 p-0"
-                                                placeholder={t('tmdb_placeholder')}
+                                                min="1"
+                                                max="16"
+                                                value={workers}
+                                                onChange={(e) => setWorkers(parseInt(e.target.value) || 1)}
+                                                className="w-full bg-transparent border-none text-xs text-text-main outline-none font-mono"
                                             />
                                         </div>
                                     </div>
+
+                                    {/* TMDB Override - ONly shown in single mode */}
+                                    <AnimatePresence>
+                                        {multiMode === 'single' && (
+                                            <motion.div
+                                                initial={{ opacity: 0, height: 0 }}
+                                                animate={{ opacity: 1, height: 'auto' }}
+                                                exit={{ opacity: 0, height: 0 }}
+                                                className="space-y-1.5 overflow-hidden"
+                                            >
+                                                <label className="text-[10px] uppercase font-bold text-text-muted tracking-wider ml-1 flex justify-between">
+                                                    <span>{t('tmdb_override')}</span>
+                                                    <span className="text-[9px] opacity-50">{t('optional')}</span>
+                                                </label>
+                                                <div className="bg-bg-surface rounded-xl px-3 py-2">
+                                                    <input
+                                                        type="number"
+                                                        value={tmdbId}
+                                                        onChange={(e) => setTmdbId(e.target.value)}
+                                                        className="w-full bg-transparent border-none text-xs text-text-main outline-none placeholder:text-text-muted/40 p-0"
+                                                        placeholder={t('tmdb_placeholder')}
+                                                    />
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
                                 </div>
                             </div>
 
@@ -347,7 +396,7 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </div>
+        </div >
     );
 }
 

@@ -139,16 +139,29 @@ class FilenameParser:
                 match = re.search(r'\s-\s\d+', no_brackets)
                 if match:
                      return no_brackets[:match.start()].strip()
-                return no_brackets.split()[0] # Very rough fallback
+            
+            # Fallthrough to standard parsers (Episode numbers, #, etc.) if bracket logic wasn't definitive
+             
 
         # Try to find episode info and extract name before it (Standard TV)
         match = re.search(r'S\d{1,2}E\d{1,2}', filename, re.IGNORECASE)
         if match:
-            name = filename[:match.start()].strip()
+            raw_name = filename[:match.start()].strip()
+            name = re.sub(r'\[.*?\]', '', raw_name).strip()
             name = re.sub(r'\s*\(\d{4}\)\s*', '', name)
             name = re.sub(r'[._\s]+$', '', name).strip()
             if len(name) > 1:
                 return name
+        
+        # Support for # or ＃ (Full-width) followed by digits (Episode number)
+        # Example: ShowName #01.mp4 or ShowName＃1.mp4
+        match = re.search(r'[#＃]\s*\d+', filename)
+        if match:
+             raw_name = filename[:match.start()].strip()
+             name = re.sub(r'\[.*?\]', '', raw_name).strip()
+             name = re.sub(r'\s*\(\d{4}\)\s*', '', name) # Clean year if before #
+             if len(name) > 0:
+                 return name
         
         # Fallback: extract from the beginning
         # Split by dots or spaces

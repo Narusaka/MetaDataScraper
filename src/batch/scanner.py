@@ -72,9 +72,10 @@ class MediaScanner:
         return tasks
 
     def _find_loose_files(self, dir_path: Path) -> List[Path]:
+        sub_exts = {'.ass', '.srt', '.ssa', '.vtt', '.sub'}
         return [
             f for f in dir_path.iterdir() 
-            if f.is_file() and f.suffix.lower() in FilenameParser.VIDEO_EXTENSIONS
+            if f.is_file() and (f.suffix.lower() in FilenameParser.VIDEO_EXTENSIONS or f.suffix.lower() in sub_exts)
         ]
 
     def _create_task_for_dir(self, dir_path: Path, force_id: Optional[int] = None) -> dict:

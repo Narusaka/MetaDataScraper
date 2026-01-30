@@ -1,7 +1,10 @@
 
+import logging
 import requests
 import random
 from typing import List, Optional, Dict, Any
+
+logger = logging.getLogger(__name__)
 
 class TavilySearchAdapter:
     """Adapter for Tavily Search API with multi-key support."""
@@ -37,9 +40,11 @@ class TavilySearchAdapter:
             )
             response.raise_for_status()
             data = response.json()
-            return data.get("results", [])
+            results = data.get("results", [])
+            logger.info(f"Tavily generic search for '{query}' returned {len(results)} results")
+            return results
         except Exception as e:
-            print(f"Directory Tavily Search failed: {e}")
+            logger.error(f"Directory Tavily Search failed: {e}")
             return []
 
     def search_tmdb_id(self, query: str, media_type: str = "tv", year: Optional[int] = None, verbose: bool = False) -> Optional[int]:
@@ -50,7 +55,7 @@ class TavilySearchAdapter:
         # 2. Query: "{Title} ({Year}) tmdb" -> Filter by Year/Type
         
         steps = [
-            {"q": f"{query} tmdb", "desc": "Attempt 1 (Basic)"},
+            {"q": f"{query} tv tmdb" if media_type == "tv" else f"{query} tmdb", "desc": "Attempt 1 (Basic)"},
         ]
         
         if year:
@@ -62,7 +67,7 @@ class TavilySearchAdapter:
 
         for step in steps:
             search_query = step["q"]
-            if verbose: print(f"   Trying Tavily Search [{step['desc']}]: '{search_query}'")
+            logger.info(f"🔍 [Tavily] Trying Search [{step['desc']}]: '{search_query}'")
             
             # Simple retry logic across keys
             for key in available_keys:
@@ -83,12 +88,15 @@ class TavilySearchAdapter:
                     )
                     
                     if response.status_code in [429, 432]:
+                        logger.warning(f"Tavily Rate Limit hit for key ending in ...{key[-4:]}, trying next.")
                         continue
                         
                     response.raise_for_status()
                     results = response.json().get("results", [])
                     
-                    if verbose: print(f"      Found {len(results)} raw results")
+                    logger.info(f"    👉 Found {len(results)} raw results for query '{search_query}'")
+                    for i, res in enumerate(results):
+                        logger.info(f"       [{i+1}] {res.get('title', 'No Title')} ({res.get('url', 'No URL')})")
                     
                     # Filter/Parse Results
                     candidate_id = self._parse_and_filter_results(results, media_type, year)
@@ -100,7 +108,7 @@ class TavilySearchAdapter:
                     break 
 
                 except Exception as e:
-                    if verbose: print(f"      Key failed: {e}")
+                    logger.error(f"      Key failed: {e}")
                     continue
         
         return None
@@ -119,6 +127,7 @@ class TavilySearchAdapter:
             # 1. URL/Type Match
             match = url_pattern.search(url)
             if not match:
+                # logger.debug(f"      [Skip] URL not matching {media_type}: {url}")
                 continue
                 
             tmdb_id = int(match.group(1))
@@ -132,10 +141,10 @@ class TavilySearchAdapter:
                 # Check for strict year presence
                 if str(target_year) not in title:
                     # Debug log
-                    print(f"      [Filter] Rejecting {tmdb_id} ('{title}'): Year {target_year} not found in title.")
+                    logger.info(f"      ❌ [Filter] Rejecting {tmdb_id} ('{title}'): Year {target_year} not found in title.")
                     continue
                 else:
-                    print(f"      [Filter] Accepting {tmdb_id} ('{title}'): Matched year {target_year}.")
+                    logger.info(f"      ✅ [Filter] Accepting {tmdb_id} ('{title}'): Matched year {target_year}.")
             
             return tmdb_id
             

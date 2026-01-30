@@ -284,7 +284,8 @@ class BatchMediaScraper:
         
         if self.dry_run:
             logger.info(f"[Audit Mode] Analyzing directory: {dir_path}")
-            # Do NOT return here, proceed to pipeline with audit_only=True
+        else:
+            logger.info(f"Analyzing directory: {dir_path}")
 
         query = "" if tmdb_id else FilenameParser.clean_show_name_for_search(show_name)
         extracted_year = FilenameParser.extract_year(show_name)
@@ -415,6 +416,7 @@ class BatchMediaScraper:
                  
                  # Run Pipeline in Audit Mode to get real metadata status
                  try:
+                     logger.info(f"[Audit Mode] Analyzing directory: {target_path}")
                      logger.info(f"Processing: {safe_name} (ID: None, Query: {safe_name}, Type: {media_type})")
                      result = self.pipeline.run(input_data)
                      
@@ -428,19 +430,8 @@ class BatchMediaScraper:
                          
                  except Exception as e:
                      logger.error(f"Audit scan error for {safe_name}: {e}")
+                 
             return True
-        
-        for show_name, group_files in groups.items():
-             safe_name = FilenameParser.clean_show_name_for_search(show_name)
-             new_dir = base_dir / safe_name
-             if not new_dir.exists(): new_dir.mkdir(exist_ok=True)
-             
-             for f in group_files:
-                 if f.parent != new_dir:
-                     shutil.move(str(f), str(new_dir / f.name))
-             
-             self._process_directory(new_dir, None)
-        return True
         
         for show_name, group_files in groups.items():
              safe_name = FilenameParser.clean_show_name_for_search(show_name)

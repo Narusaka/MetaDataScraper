@@ -434,11 +434,11 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
             </div>
 
             {/* Content Area */}
-            <div className="flex-1 overflow-hidden px-4 pb-4">
+            <div className="flex-1 overflow-hidden pb-4">
                 <div className="h-full relative overflow-hidden flex flex-col">
-                    <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-autohide">
+                    <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-hover-right scroll-smooth">
                         {sortedTaskList.length === 0 ? (
-                            <div className="flex flex-col items-center justify-center h-full text-slate-500 dark:text-muted-foreground gap-4">
+                            <div className="flex flex-col items-center justify-center h-full text-slate-500 dark:text-muted-foreground gap-4 px-4">
                                 <div className="w-16 h-16 rounded-2xl bg-slate-200 dark:bg-white/5 flex items-center justify-center animate-pulse">
                                     <MonitorPlay className="w-8 h-8 opacity-50" />
                                 </div>
@@ -452,13 +452,14 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                                 <table className="w-full text-left border-collapse">
                                     <thead>
                                         <tr className="text-[10px] uppercase font-bold text-slate-500 dark:text-slate-400 tracking-wider">
-                                            <th className="sticky top-0 z-20 bg-[#F9F9F9]/95 dark:bg-[#1C1C1E]/95 backdrop-blur-md border-b-2 border-slate-200 dark:border-white/10 px-4 py-3 w-16 text-center">类型/Type</th>
-                                            <th className="sticky top-0 z-20 bg-[#F9F9F9]/95 dark:bg-[#1C1C1E]/95 backdrop-blur-md border-b-2 border-slate-200 dark:border-white/10 px-4 py-3 min-w-[120px]">文件/File</th>
-                                            <th className="sticky top-0 z-20 bg-[#F9F9F9]/95 dark:bg-[#1C1C1E]/95 backdrop-blur-md border-b-2 border-slate-200 dark:border-white/10 px-4 py-3 min-w-[150px]">元数据名/TMDB Name</th>
-                                            <th className="sticky top-0 z-20 bg-[#F9F9F9]/95 dark:bg-[#1C1C1E]/95 backdrop-blur-md border-b-2 border-slate-200 dark:border-white/10 px-4 py-3 w-20">年份/Year</th>
-                                            <th className="sticky top-0 z-20 bg-[#F9F9F9]/95 dark:bg-[#1C1C1E]/95 backdrop-blur-md border-b-2 border-slate-200 dark:border-white/10 px-4 py-3 w-28">TMDB ID</th>
-                                            <th className="sticky top-0 z-20 bg-[#F9F9F9]/95 dark:bg-[#1C1C1E]/95 backdrop-blur-md border-b-2 border-slate-200 dark:border-white/10 px-4 py-3 w-32 text-center">状态/Status</th>
-                                            <th className="sticky top-0 z-20 bg-[#F9F9F9]/95 dark:bg-[#1C1C1E]/95 backdrop-blur-md border-b-2 border-slate-200 dark:border-white/10 px-4 py-3 w-28 text-right">操作/Actions</th>
+                                            <th className="sticky top-0 z-20 border-b border-slate-200 dark:border-white/10 px-6 py-3 w-16 text-center bg-[var(--bg-panel)]">{t('col_type')}</th>
+                                            <th className="sticky top-0 z-20 border-b border-slate-200 dark:border-white/10 px-4 py-3 min-w-[200px] text-center bg-[var(--bg-panel)]">{t('col_file')}</th>
+                                            <th className="sticky top-0 z-20 border-b border-slate-200 dark:border-white/10 px-4 py-3 min-w-[200px] text-center bg-[var(--bg-panel)]">{t('col_metadata_name')}</th>
+                                            <th className="sticky top-0 z-20 border-b border-slate-200 dark:border-white/10 px-4 py-3 w-20 text-center bg-[var(--bg-panel)]">{t('col_year')}</th>
+                                            <th className="sticky top-0 z-20 border-b border-slate-200 dark:border-white/10 px-4 py-3 w-24 text-center bg-[var(--bg-panel)]">{t('col_tmdb_id')}</th>
+                                            <th className="sticky top-0 z-20 border-b border-slate-200 dark:border-white/10 px-4 py-3 w-24 text-center bg-[var(--bg-panel)]">{t('col_status')}</th>
+                                            <th className="sticky top-0 z-20 border-b border-slate-200 dark:border-white/10 px-4 py-3 min-w-[250px] text-center bg-[var(--bg-panel)]">{t('col_result')}</th>
+                                            <th className="sticky top-0 z-20 border-b border-slate-200 dark:border-white/10 px-6 py-3 w-32 text-center bg-[var(--bg-panel)]">{t('col_actions')}</th>
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-slate-200 dark:divide-white/10 text-xs font-sans">
@@ -469,7 +470,7 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                                 </table>
                             </div>
                         ) : (
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-4">
                                 {sortedTaskList.map(task => (
                                     <TaskCard key={task.status === 'idle' ? task.threadId : (task.fullPath || task.name)} task={task} onExecute={handleExecute} onStop={handleStop} />
                                 ))}
@@ -495,14 +496,14 @@ function TaskCard({ task, onExecute, onStop }: { task: Task, onExecute: (t: Task
     const getStatusInfo = (s: string) => {
         switch (s) {
             case 'completed': return { color: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400', label: 'Done' };
-            case 'failed': return { color: 'bg-red-500/10 text-red-600 dark:text-red-400', label: 'Failed' };
-            case 'stopped': return { color: 'bg-slate-500/10 text-slate-500', label: 'Stopped' };
+            case 'failed':
+            case 'stopped': return { color: 'bg-red-500/10 text-red-500', label: task.status === 'stopped' ? 'Stopped' : 'Failed' };
             case 'processing':
             case 'fetching':
-            case 'searching': return { color: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 animate-pulse', label: 'Running' };
+            case 'searching': return { color: 'bg-blue-500/10 text-blue-600 dark:text-blue-300 animate-pulse', label: 'Running' };
             case 'dry_run':
-            case 'audit_completed': return { color: 'bg-sky-500/10 text-sky-600 dark:text-sky-400', label: 'PASS' };
-            default: return { color: 'bg-slate-500/10 text-slate-500', label: 'Idle' };
+            case 'audit_completed': return { color: 'bg-primary-dim text-primary dark:text-primary-glow', label: 'PASS' };
+            default: return { color: 'bg-slate-500/10 text-slate-500/80', label: 'Idle' };
         }
     };
 
@@ -510,13 +511,13 @@ function TaskCard({ task, onExecute, onStop }: { task: Task, onExecute: (t: Task
     const fileName = task.fullPath ? task.fullPath.split('/').pop() : task.name;
 
     return (
-        <div className="relative group p-3 rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/[0.02] hover:bg-slate-50 dark:hover:bg-white/[0.05] transition-all flex flex-col gap-3 shadow-sm hover:shadow-md hover:border-primary/20 text-slate-900 dark:text-gray-100">
-            <div className="flex items-start gap-3">
+        <div className="relative group p-4 rounded-2xl border border-border-light dark:border-white/10 bg-white dark:bg-white/[0.03] hover:shadow-xl hover:shadow-black/[0.03] dark:hover:shadow-primary/5 transition-all flex flex-col gap-4 text-slate-900 dark:text-gray-100">
+            <div className="flex items-start gap-4">
                 <div className={cn(
-                    "shrink-0 p-2 rounded-lg flex items-center justify-center border border-slate-100 dark:border-white/10",
-                    task.mediaType === 'tv' ? "bg-purple-50 text-purple-600 dark:bg-purple-900/20 dark:text-purple-400" : "bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400"
+                    "shrink-0 w-11 h-11 rounded-xl flex items-center justify-center border border-border-light dark:border-white/5 shadow-sm",
+                    task.mediaType === 'tv' ? "bg-purple-50 text-purple-600 dark:bg-purple-900/30 dark:text-purple-300" : "bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-300"
                 )}>
-                    {task.mediaType === 'tv' ? <MonitorPlay size={16} /> : <FileVideo size={16} />}
+                    {task.mediaType === 'tv' ? <MonitorPlay size={20} /> : <FileVideo size={20} />}
                 </div>
 
                 <div className="min-w-0 flex-1 flex flex-col gap-1">
@@ -536,10 +537,10 @@ function TaskCard({ task, onExecute, onStop }: { task: Task, onExecute: (t: Task
                 </div>
             </div>
 
-            <div className="flex flex-col gap-2 pt-2 border-t border-slate-100 dark:border-white/5">
+            <div className="flex flex-col gap-3 pt-3 border-t border-border-light dark:border-white/5">
                 <div className="flex items-center justify-between gap-4">
                     <div className="min-w-0 flex-1">
-                        <div className="text-[10px] font-mono text-slate-400 dark:text-slate-500 truncate" title={task.fullPath}>
+                        <div className="text-[10px] font-mono text-text-muted/60 dark:text-slate-500 truncate" title={task.fullPath}>
                             {fileName}
                         </div>
                     </div>
@@ -582,14 +583,7 @@ function TaskCard({ task, onExecute, onStop }: { task: Task, onExecute: (t: Task
                     )}
                 </div>
 
-                {(task.resultSummary || (isFinished || isFailed)) && (
-                    <div className={cn("text-[9px] font-medium py-1 px-2 rounded bg-opacity-10 flex items-center gap-2",
-                        isFinished ? "bg-emerald-500 text-emerald-600 dark:text-emerald-400" : "bg-red-500 text-red-600 dark:text-red-400"
-                    )}>
-                        {isFinished ? <CheckCircle2 size={10} /> : <AlertCircle size={10} />}
-                        {task.resultSummary || (isFinished ? "完成" : "失败")}
-                    </div>
-                )}
+
             </div>
         </div>
     );
@@ -606,25 +600,25 @@ function TaskRow({ task, onExecute, onStop }: { task: Task, onExecute: (t: Task)
     const fileName = task.fullPath ? task.fullPath.split('/').pop() : task.name;
 
     return (
-        <tr className="hover:bg-slate-50 dark:hover:bg-white/[0.02] group transition-colors border-b border-slate-100 dark:border-white/5 last:border-0 text-slate-900 dark:text-gray-100">
-            <td className="px-4 py-4 text-center">
+        <tr className="hover:bg-black/[0.015] dark:hover:bg-white/[0.02] group transition-colors border-b border-border-light dark:border-white/5 last:border-0 text-slate-900 dark:text-gray-100">
+            <td className="px-6 py-5 text-center">
                 <div className={cn(
-                    "w-10 h-10 mx-auto rounded-lg flex items-center justify-center shrink-0 shadow-sm border border-slate-100 dark:border-white/5",
-                    task.mediaType === 'tv' ? "bg-purple-100 text-purple-600 dark:bg-purple-500/20 dark:text-purple-300" : "bg-blue-100 text-blue-600 dark:bg-blue-500/20 dark:text-blue-300"
+                    "w-11 h-11 mx-auto rounded-xl flex items-center justify-center shrink-0 shadow-sm border border-border-light dark:border-white/5",
+                    task.mediaType === 'tv' ? "bg-purple-50 text-purple-600 dark:bg-purple-500/20 dark:text-purple-300" : "bg-blue-50 text-blue-600 dark:bg-blue-500/20 dark:text-blue-300"
                 )}>
-                    {task.mediaType === 'tv' ? <MonitorPlay size={18} /> : <FileVideo size={18} />}
+                    {task.mediaType === 'tv' ? <MonitorPlay size={20} /> : <FileVideo size={20} />}
                 </div>
             </td>
-            <td className="px-4 py-4 font-mono text-[10px] text-slate-500 dark:text-slate-400 truncate max-w-[150px]" title={task.fullPath}>
+            <td className="px-4 py-4 font-mono text-[10px] text-slate-500 dark:text-slate-400 truncate max-w-[200px] text-center" title={task.fullPath}>
                 {fileName}
             </td>
-            <td className="px-4 py-4 font-bold text-sm min-w-[150px]">
+            <td className="px-4 py-4 font-mono text-[10px] text-slate-500 dark:text-slate-400 truncate max-w-[200px] text-center" title={task.name}>
                 {task.name}
             </td>
-            <td className="px-4 py-4 font-mono text-[10px] text-slate-500 dark:text-slate-400">
+            <td className="px-4 py-4 font-mono text-[10px] text-slate-500 dark:text-slate-400 text-center">
                 {displayYear}
             </td>
-            <td className="px-4 py-4 font-mono text-[10px] text-slate-500 dark:text-slate-400">
+            <td className="px-4 py-4 font-mono text-[10px] text-slate-500 dark:text-slate-400 text-center">
                 {task.tmdbId || "—"}
             </td>
             <td className="px-4 py-4 text-center">
@@ -633,7 +627,7 @@ function TaskRow({ task, onExecute, onStop }: { task: Task, onExecute: (t: Task)
                     task.status === 'completed' ? "bg-emerald-100 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400" :
                         isFailed ? "bg-red-100 text-red-500 dark:bg-red-500/10" :
                             isRunning ? "bg-blue-100 text-blue-500 dark:bg-blue-500/10 animate-pulse" :
-                                isAuditReady ? "bg-sky-100 text-sky-600 dark:bg-sky-500/10 dark:text-sky-400" :
+                                isAuditReady ? "bg-primary-dim text-primary dark:text-primary-glow" :
                                     "bg-slate-100 text-slate-500 dark:bg-slate-800"
                 )}>
                     {task.status === 'dry_run' || task.status === 'audit_completed' ? 'PASS' :
@@ -642,16 +636,53 @@ function TaskRow({ task, onExecute, onStop }: { task: Task, onExecute: (t: Task)
                                 isRunning ? 'Running' : task.status}
                 </span>
             </td>
-            <td className="px-4 py-4 text-right">
-                <div className="flex justify-end gap-2">
+            <td className="px-4 py-5 text-xs max-w-[250px] text-center">
+                {(task.resultSummary || (isFinished || isFailed || isAuditReady)) && (
+                    <div className={cn("flex items-center justify-center gap-1.5 font-medium truncate",
+                        (isFinished || isAuditReady) ? "text-emerald-600 dark:text-emerald-400" :
+                            isFailed ? "text-red-500 dark:text-red-400" : "text-text-muted/60"
+                    )} title={task.resultSummary || ""}>
+                        {(isFinished || isAuditReady) ? <CheckCircle2 size={12} className="shrink-0" /> : isFailed ? <AlertCircle size={12} className="shrink-0" /> : null}
+                        <span className="truncate">
+                            {task.resultSummary || (isFinished ? "完成" : (isAuditReady ? "匹配到元数据" : (isFailed ? "失败" : "-")))}
+                        </span>
+                    </div>
+                )}
+            </td>
+            <td className="px-6 py-4 text-center">
+                <div className="flex justify-center gap-2">
                     {isAuditReady && !isRunning && !isFinished && (
-                        <button onClick={() => onExecute(task)} className="text-yellow-500 hover:text-yellow-600 font-bold text-[10px] uppercase">RUN</button>
+                        <button
+                            onClick={() => onExecute(task)}
+                            className="shrink-0 flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider transition-all bg-yellow-400 text-black hover:bg-yellow-300 shadow-sm"
+                        >
+                            <Play size={10} fill="currentColor" className="text-white" />
+                            <span className="text-white">RUN</span>
+                        </button>
                     )}
                     {isRunning && (
-                        <button onClick={() => onStop()} className="text-red-500 hover:text-red-600 font-bold text-[10px] uppercase">STOP</button>
+                        <button
+                            onClick={() => onStop()}
+                            className="shrink-0 flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider transition-all bg-red-500 text-white hover:bg-red-600 shadow-sm"
+                        >
+                            <Square size={10} fill="currentColor" />
+                            <span>STOP</span>
+                        </button>
                     )}
                     {(isFailed || (isFinished && !task.resultSummary?.includes('成功'))) && (
-                        <button onClick={() => onExecute(task)} className="text-blue-500 hover:text-blue-600 font-bold text-[10px] uppercase">RETRY</button>
+                        <button
+                            onClick={() => onExecute(task)}
+                            className="shrink-0 flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider transition-all bg-blue-500 text-white hover:bg-blue-600 shadow-sm"
+                        >
+                            <RotateCcw size={10} />
+                            <span>RETRY</span>
+                        </button>
+                    )}
+                    {isFinished && task.resultSummary?.includes('成功') && (
+                        <button disabled className="shrink-0 flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-white/5 text-slate-400 dark:text-slate-600 cursor-not-allowed">
+                            <CheckCircle2 size={10} />
+                            <span>Done</span>
+                        </button>
                     )}
                 </div>
             </td>

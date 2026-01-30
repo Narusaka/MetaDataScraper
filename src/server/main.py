@@ -48,12 +48,6 @@ settings_manager = SettingsManager()
 
 app = FastAPI(title="Media Metadata Scraper API")
 
-@app.on_event("startup")
-async def startup_event():
-    # Set the loop for the log broadcaster so it can send logs to WebSockets
-    log_broadcaster.set_loop(asyncio.get_running_loop())
-    logging.info("🚀 Server started, log broadcaster ready.")
-
 # Allow CORS for frontend dev
 app.add_middleware(
     CORSMiddleware,
@@ -76,7 +70,6 @@ class TaskStartRequest(BaseModel):
     media_type: Optional[str] = None
     tmdb_id: Optional[int] = None
     search_mode: str = "smart" # smart, tmdb_only
-    enable_fallback: bool = True
     enable_fallback: bool = True
     multi_mode: Optional[bool] = None  # None = Auto-detect
     fresh: bool = False # If True, overwrite existing metadata. If False, skip if exists.
@@ -174,6 +167,11 @@ def browse_filesystem(path: str = "."):
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/fs/check")
+async def check_path(path: str):
+    logging.info(f"🔍 Path check request: {path}")
+    return {"exists": os.path.exists(path), "path": path}
 
 @app.post("/api/tasks/start")
 async def start_task(req: TaskStartRequest):

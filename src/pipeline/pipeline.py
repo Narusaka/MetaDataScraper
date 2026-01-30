@@ -252,12 +252,25 @@ class MediaPipeline:
         force_type = input_data.get("media_type_forced", False)
         mode = input_data.get("search_mode", "smart") # smart, tmdb_only, tavily_only
         
+        # Extract year from query if not already provided
+        target_year = input_data.get("year")
+        import re
+        year_match = re.search(r'\((\d{4})\)', query)
+        if year_match and not target_year:
+            target_year = int(year_match.group(1))
+            self._log(f"📅 Extracted Year from query: {target_year}")
+
         # Direct ID
         if tmdb_id:
             return {"selected": {"id": int(tmdb_id), "media_type": media_type}}
             
         candidate = None
-        search_types = [media_type] if force_type else (["tv", "movie"] if media_type == "tv" else ["movie", "tv"])
+        
+        # User defined priority: Smart Mode (Auto) -> Prioritize Movie
+        if force_type:
+            search_types = [media_type]
+        else:
+            search_types = ["movie", "tv"]
 
         # 1. TMDB Search (If mode is smart or tmdb_only)
         if mode in ["smart", "tmdb_only"]:
@@ -267,8 +280,6 @@ class MediaPipeline:
                 if results and results.get("results"):
                     candidates = results["results"][:5] # Increase candidate pool slightly
                     self._log(f"   🔎 Found {len(candidates)} candidates:")
-                    
-                    target_year = input_data.get("year")
                     
                     for i, c in enumerate(candidates):
                          date_str = c.get('first_air_date') or c.get('release_date') or ""
@@ -283,7 +294,7 @@ class MediaPipeline:
 
                          self._log(f"      {i+1}. [{c.get('id')}] {c.get('name') or c.get('title')} ({date_str}){match_info}")
                          
-                         # Filter logic
+                         # Filter logic: If target_year is provided, STRICT MATCH is required.
                          if target_year:
                              if c_year == target_year:
                                  candidate = c
@@ -307,7 +318,7 @@ class MediaPipeline:
             self._log(f"🔍 Trying Tavily Search for ID: '{query}' ...")
             
             for m_type in search_types:
-                tavily_id = self.tavily_search.search_tmdb_id(query, m_type, verbose=self.verbose)
+                tavily_id = self.tavily_search.search_tmdb_id(query, m_type, year=target_year, verbose=self.verbose)
                 if tavily_id:
                     candidate = {"id": tavily_id, "media_type": m_type}
                     self._log(f"   ✅ Tavily Found ID: {tavily_id} (Type: {m_type})")

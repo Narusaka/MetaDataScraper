@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react';
 import {
     Play, FolderInput, Copy,
     Search, FolderOpen, X, Settings2,
-    Database, Layers, Cpu
+    Database, Layers, Cpu, Square
 } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useTranslation } from '../lib/language';
 import { FolderPicker } from './FolderPicker';
 import { TaskBoard } from './TaskBoard';
+import { apiUrl } from '../lib/api';
+import { toast } from 'sonner';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface DashboardProps {
@@ -19,7 +21,7 @@ interface DashboardProps {
 type Strategy = 'audit' | 'organize' | 'copy';
 
 export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
-    const { t, language } = useTranslation();
+    const { t } = useTranslation();
 
     // --- State Management ---
     const [selectedPath, setSelectedPath] = useState(() => localStorage.getItem('last_path') || "");
@@ -79,26 +81,31 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
         <div className="flex flex-col h-full overflow-hidden font-sans gap-4">
             {/* Top Bar: Target Selection & Actions (Floating Island) */}
             <div className="shrink-0 glass-panel-pro rounded-3xl border border-glass-border shadow-sm px-6 py-3 flex items-center justify-between gap-6 text-sm">
-                {/* Target Input */}
-                <div className="flex-1 relative group">
-                    <div className="flex items-center bg-[var(--bg-input-target)] rounded-2xl overflow-hidden transition-all focus-within:ring-2 focus-within:ring-primary/20 p-1">
-                        <div className="px-3 flex items-center gap-2 text-text-muted font-bold text-xs uppercase tracking-wider">
-                            <FolderOpen size={16} />
-                            <span className="opacity-70">{t('target_path')}</span>
+                {/* Target Selection Group */}
+                <div className="flex-1 flex items-center gap-4">
+                    {/* Fixed Label Outside */}
+                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-muted whitespace-nowrap">
+                        {t('target_path')}
+                    </span>
+
+                    {/* Target Input */}
+                    <div className="flex-1 relative group">
+                        <div className="flex items-center bg-[var(--bg-input-target)] rounded-2xl overflow-hidden transition-all focus-within:ring-2 focus-within:ring-primary/20 p-1">
+                            <input
+                                type="text"
+                                id="target-path-input"
+                                value={selectedPath}
+                                onChange={(e) => setSelectedPath(e.target.value)}
+                                placeholder="/path/to/media/source"
+                                className="flex-1 bg-transparent border-none text-sm text-text-main px-4 py-1.5 outline-none font-medium placeholder:text-text-muted/30"
+                            />
+                            <button
+                                onClick={() => setShowPicker('input')}
+                                className="w-8 h-8 rounded-full bg-[var(--bg-toggle-pill)] flex items-center justify-center text-text-muted hover:text-primary transition-all hover:scale-105 shadow-sm"
+                            >
+                                <FolderInput size={16} />
+                            </button>
                         </div>
-                        <input
-                            type="text"
-                            value={selectedPath}
-                            onChange={(e) => setSelectedPath(e.target.value)}
-                            placeholder="/path/to/media/source"
-                            className="flex-1 bg-transparent border-none text-sm text-text-main px-2 outline-none font-medium placeholder:text-text-muted/30"
-                        />
-                        <button
-                            onClick={() => setShowPicker('input')}
-                            className="w-8 h-8 rounded-full bg-[var(--bg-toggle-pill)] flex items-center justify-center text-text-muted hover:text-primary transition-all hover:scale-105 shadow-sm"
-                        >
-                            <FolderInput size={16} />
-                        </button>
                     </div>
                 </div>
 
@@ -106,12 +113,51 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
                 <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    onClick={handleStart}
-                    disabled={!selectedPath}
+                    onClick={async () => {
+                        console.log("RUN button clicked. isRunning:", isRunning, "selectedPath:", selectedPath);
+                        if (isRunning) {
+                            console.log("Stopping task...");
+                            onStop();
+                            return;
+                        }
+
+                        // Check if path exists via API before starting
+                        if (!selectedPath) {
+                            console.log("No path selected, ignoring click.");
+                            return;
+                        }
+
+                        try {
+                            console.log("Checking path existence...");
+                            const checkUrl = apiUrl(`/api/fs/check?path=${encodeURIComponent(selectedPath)}`);
+                            console.log("Check URL:", checkUrl);
+                            const checkRes = await fetch(checkUrl);
+                            if (checkRes.ok) {
+                                const checkData = await checkRes.json();
+                                console.log("Path check result:", checkData);
+                                if (!checkData.exists) {
+                                    toast.error(`${t('path_not_found' as any) || 'Path not found'}: ${selectedPath}`, {
+                                        position: 'top-center'
+                                    });
+                                    return;
+                                }
+                            } else {
+                                const errText = await checkRes.text();
+                                console.warn("Path check API returned non-OK status:", checkRes.status, errText);
+                                toast.error(`Server Error (${checkRes.status}): ${errText}`);
+                            }
+                        } catch (e) {
+                            console.error("Path check failed", e);
+                            toast.error(`Network Error: ${e}`);
+                        }
+                        console.log("Invoking handleStart()...");
+                        handleStart();
+                    }}
+                    disabled={!selectedPath && !isRunning}
                     className={cn(
-                        "relative flex items-center justify-center gap-3 px-8 py-2.5 rounded-xl font-bold text-sm tracking-wide uppercase transition-all overflow-hidden shadow-lg w-[140px]",
+                        "relative flex items-center justify-center gap-3 px-8 py-2.5 rounded-xl font-bold text-sm tracking-wide uppercase transition-all overflow-hidden shadow-lg min-w-[140px]",
                         isRunning
-                            ? "bg-red-600 text-white shadow-red-500/20 hover:bg-red-700 cursor-pointer"
+                            ? "bg-red-500 text-white shadow-red-500/20 hover:bg-red-600"
                             : !selectedPath
                                 ? "bg-bg-surface text-text-muted cursor-not-allowed shadow-none"
                                 : "bg-yellow-400 text-black hover:bg-yellow-300 shadow-yellow-400/20"
@@ -122,22 +168,19 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] animate-[shimmer_2s_infinite]" />
                     )}
 
-                    {isRunning ? (
-                        <div className="flex items-center gap-2">
-                            {/* Keep it simpler, User asked for 'Force Stop' */}
-                            <div className="w-3 h-3 bg-white rounded-sm" />
-                            <span>
-                                {language === 'en' ? 'STOP' : '停止'}
-                            </span>
-                        </div>
-                    ) : (
-                        <>
-                            <Play size={16} fill="currentColor" />
-                            <span>
-                                {language === 'en' ? 'START' : '开始'}
-                            </span>
-                        </>
-                    )}
+                    <div className="flex items-center gap-2">
+                        {isRunning ? (
+                            <>
+                                <Square size={16} fill="currentColor" />
+                                <span>STOP</span>
+                            </>
+                        ) : (
+                            <>
+                                <Play size={16} fill="currentColor" className="text-white" />
+                                <span className="text-white">RUN</span>
+                            </>
+                        )}
+                    </div>
                 </motion.button>
             </div>
 

@@ -293,26 +293,28 @@ class BatchMediaScraper:
             
             if has_existing_nfo and not self.fresh and not self.dry_run:
                  logger.warning(f"Skipping {show_name}: Metadata already exists (use --fresh to overwrite)")
-                 return True
+                 return (True, "任务成功，元数据已存在")
             
             if self.fresh and has_existing_nfo:
                 logger.info(f"Using Fresh Mode: Overwriting/Refreshing metadata for {show_name}")
 
         try:
             result = self.pipeline.run(input_data)
-            # Pipeline run is called above
             status = result.get("status")
             
             if status == "completed":
                 self.organizer.organize(dir_path, result, configured_media_type=current_media_type)
-                return True
+                logger.info(f"🏆 Task Successfully Finished: {show_name}")
+                return (True, "任务成功，媒体文件数量完整。")
             elif status == "audit_completed":
                 logger.info(f"Audit completed for {show_name}")
-                return True
+                return (True, "检测通过/PASS")
             else:
-                # Error message already logged by pipeline, but we summarize here
-                error_detail = result.get('error', 'Unknown error')
-                error_code = result.get('code', '')
+                error_detail = result.get('error', 'Unknown error').lower()
+                if "no candidates" in error_detail or "not found" in error_detail:
+                    return (False, "任务失败，找不到相关信息")
+                return (False, f"任务失败: {result.get('error')}")
+
                 
                 # Format a more descriptive error message for the summary
                 failure_reason = f"{show_name} ({error_detail})"

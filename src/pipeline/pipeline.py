@@ -1,6 +1,7 @@
-
 import os
 import shutil
+import difflib
+import re
 from typing import Dict, Any, List, Optional
 
 from ..adapters.tmdb import TMDBAdapter
@@ -130,6 +131,7 @@ class MediaPipeline:
                         candidate["name"] = details.get("name", "")
                         candidate["title"] = details.get("name", "")
                         candidate["first_air_date"] = details.get("first_air_date", "")
+                        candidate["poster_path"] = details.get("poster_path")
                 except:
                     pass # Ignore fetch error, just log what we have
 
@@ -184,7 +186,9 @@ class MediaPipeline:
 
                 # Use source_path for audit logging so frontend can restart task correctly
                 path_log = input_data.get('source_path') or input_data.get('output_dir')
-                self._log(f"🕵️ AUDIT_HIT: Path='{path_log}' ID={tmdb_id} Title='{candidate.get('name') or candidate.get('title')}' Type='{media_type}'", verbose_only=False)
+                poster_suffix = candidate.get('poster_path')
+                poster_url = f"https://image.tmdb.org/t/p/w200{poster_suffix}" if poster_suffix else ""
+                self._log(f"🕵️ AUDIT_HIT: Path='{path_log}' ID={tmdb_id} Title='{candidate.get('name') or candidate.get('title')}' Type='{media_type}' [Poster={poster_url}]", verbose_only=False)
                 return {
                     "status": "audit_completed",
                     "candidate": candidate,
@@ -220,7 +224,10 @@ class MediaPipeline:
             if not self.skip_images:
                 self._step_download_images(normalized, output_result["media_dir"], input_data)
 
-            self._log(f"🏆 Task Successfully Finished: {normalized.get('title')}")
+            poster_suffix = normalized.get('poster_path')
+            poster_url = f"https://image.tmdb.org/t/p/w200{poster_suffix}" if poster_suffix else ""
+            self._log(f"🐛 DEBUG: Poster Suffix='{poster_suffix}' URL='{poster_url}'")
+            self._log(f"🏆 Task Successfully Finished: {normalized.get('title')} [Poster={poster_url}]")
             return {
                 "status": "completed",
                 "normalized": normalized,
@@ -274,46 +281,73 @@ class MediaPipeline:
         else:
             search_types = ["movie", "tv"]
 
-        # 1. TMDB Search (If mode is smart or tmdb_only)
+        # 1. TMDB Search (Search both types if not forced)
         if mode in ["smart", "tmdb_only"]:
+            all_candidates = []
             for m_type in search_types:
                 self._log(f"🔍 Searching TMDB as {m_type}: '{query}' ...")
                 results = self.tmdb.search_tv(query) if m_type == "tv" else self.tmdb.search_movie(query)
                 if results and results.get("results"):
-                    candidates = results["results"][:5] # Increase candidate pool slightly
-                    self._log(f"   🔎 Found {len(candidates)} candidates:")
-                    
-                    for i, c in enumerate(candidates):
-                         date_str = c.get('first_air_date') or c.get('release_date') or ""
-                         c_year = int(date_str[:4]) if date_str and len(date_str) >= 4 else 0
-                         
-                         match_info = ""
-                         if target_year:
-                             if c_year == target_year:
-                                 match_info = " [✅ YEAR MATCH]"
-                             else:
-                                 match_info = f" [❌ Year Mismatch: {c_year} vs {target_year}]"
-
-                         self._log(f"      {i+1}. [{c.get('id')}] {c.get('name') or c.get('title')} ({date_str}){match_info}")
-                         
-                         # Filter logic: If target_year is provided, STRICT MATCH is required.
-                         if target_year:
-                             if c_year == target_year:
-                                 candidate = c
-                                 candidate["media_type"] = m_type
-                                 self._log(f"   ✅ Selected by Year Match: {candidate.get('name') or candidate.get('title')} ({c_year})")
-                                 break
+                    for c in results["results"][:10]:
+                        c["_search_type"] = m_type
+                        all_candidates.append(c)
+            
+            if all_candidates:
+                self._log(f"   🔎 Found {len(all_candidates)} total candidates, analyzing similarity...")
+                best_match = None
+                best_score = -1.0
+                
+                # Clean query for similarity check (remove year)
+                clean_query = re.sub(r'\s*\(\d{4}\)', '', query).strip().lower()
+                
+                for i, c in enumerate(all_candidates):
+                     date_str = c.get('first_air_date') or c.get('release_date') or ""
+                     c_year = int(date_str[:4]) if date_str and len(date_str) >= 4 else 0
+                     c_title = (c.get('name') or c.get('title') or "").strip()
+                     c_orig_title = (c.get('original_name') or c.get('original_title') or "").strip()
+                     
+                     # Calculate similarity score
+                     s1 = difflib.SequenceMatcher(None, clean_query, c_title.lower()).ratio()
+                     s2 = difflib.SequenceMatcher(None, clean_query, c_orig_title.lower()).ratio()
+                     current_score = max(s1, s2)
+                     
+                     match_info = f" [Score: {current_score:.2f}]"
+                     if target_year:
+                         if c_year == target_year:
+                             match_info += " [✅ YEAR MATCH]"
                          else:
-                             # Default behavior: pick first one if no year constraint
-                             if i == 0:
-                                 candidate = c
-                                 candidate["media_type"] = m_type
-                                 break
-                    
-                    if candidate:
-                        break
-                    elif target_year:
-                         self._log(f"   ⚠️ No candidates matched year {target_year}")
+                             match_info += f" [❌ Year Mismatch: {c_year}]"
+
+                     if self.verbose:
+                         self._log(f"      {i+1}. [{c.get('id')}] {c_title} ({date_str}){match_info}")
+                     
+                     # Selection Logic:
+                     if target_year:
+                         # 1. Prioritize YEAR matches first. 
+                         # Among year matches, pick highest score.
+                         if c_year == target_year:
+                             # We use a weighted score for year match to favor it, 
+                             # but title similarity still matters.
+                             if current_score > best_score:
+                                 best_score = current_score
+                                 best_match = c
+                     else:
+                         # 2. No year provided, pick highest similarity
+                         if current_score > best_score:
+                             best_score = current_score
+                             best_match = c
+                
+                # Final filter: Minimum similarity threshold
+                threshold = 0.25 
+                if best_match:
+                    if best_score >= threshold:
+                        candidate = best_match
+                        candidate["media_type"] = candidate["_search_type"]
+                        self._log(f"   ✅ Selected Best Match: {candidate.get('name') or candidate.get('title')} (ID: {candidate.get('id')}, Score: {best_score:.2f}, Type: {candidate['media_type']})")
+                    else:
+                        self._log(f"   ⚠️ Best match '{best_match.get('name') or best_match.get('title')}' rejected due to low similarity ({best_score:.2f} < {threshold})")
+                elif target_year:
+                     self._log(f"   ⚠️ No candidates matched year {target_year}")
 
         # 2. Tavily Search (If mode is smart AND TMDB failed, OR if mode is tavily_only)
         if not candidate and mode in ["smart", "tavily_only"] and self.tavily_search:
@@ -438,6 +472,7 @@ class MediaPipeline:
     def _step_generate_nfo(self, normalized: Dict, media_type: str, source_data: Dict) -> Dict:
         """Step 6: Generate NFO struct."""
         episode_nfos = {}
+        season_nfos = {}
         
         if media_type == "movie":
             nfo_obj = self.mapper.map_to_movie_nfo(normalized)
@@ -458,7 +493,18 @@ class MediaPipeline:
                         episode_nfos[(s_num, e_num)] = ep_xml
                     except: pass
             
-        return {"data": nfo_obj.model_dump(), "xml": xml, "episode_nfos": episode_nfos}
+            # Generate season NFOs
+            seasons = source_data.get("seasons", [])
+            for s_data in seasons:
+                s_num = s_data.get("season_number", 0)
+                if s_num > 0:
+                     try:
+                         s_nfo = self.mapper.map_to_season_nfo(s_data, normalized)
+                         s_xml = NfoRenderer.render_season_nfo(s_nfo)
+                         season_nfos[s_num] = s_xml
+                     except: pass
+            
+        return {"data": nfo_obj.model_dump(), "xml": xml, "episode_nfos": episode_nfos, "season_nfos": season_nfos}
 
     def _step_write_output(self, normalized: Dict, nfo_data: Dict, source_data: Dict, input_data: Dict) -> Dict:
         """Step 7: Write NFO and structure."""
@@ -482,8 +528,15 @@ class MediaPipeline:
                 e_num = ep.get("episode_number", 0)
                 if s_num == 0: continue
                 
+                
                 s_dir = FileSystemManager.create_season_directory(media_dir, s_num)
                 
+                # Season NFO
+                # Write season.nfo into the season folder if we have it
+                s_xml = nfo_data.get("season_nfos", {}).get(s_num)
+                if s_xml:
+                    FileSystemManager.write_nfo_file(s_dir, "season.nfo", s_xml)
+
                 # Episode NFO
                 ep_nfo_obj = self.mapper.map_to_episode_nfo(normalized, ep, normalized)
                 ep_xml = NfoRenderer.render_episode_nfo(ep_nfo_obj)

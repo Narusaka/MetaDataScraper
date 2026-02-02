@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import {
     Play, FolderInput, Copy,
     Search, FolderOpen, X, Settings2,
@@ -44,6 +44,16 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
     });
     const [multiMode, setMultiMode] = useState<'auto' | 'single' | 'batch'>(() => (localStorage.getItem('task_multi_mode') as 'auto' | 'single' | 'batch') || 'auto');
     const [forceFresh, setForceFresh] = useState(false);
+    const [isScrolling, setIsScrolling] = useState(false);
+    const scrollTimer = useRef<any>(null);
+
+    const handleScroll = () => {
+        setIsScrolling(true);
+        if (scrollTimer.current) clearTimeout(scrollTimer.current);
+        scrollTimer.current = setTimeout(() => {
+            setIsScrolling(false);
+        }, 2000);
+    };
 
     // --- Persistence ---
     useEffect(() => {
@@ -204,7 +214,13 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
                     </div>
 
                     <div className="flex-1 overflow-hidden px-4 pb-4">
-                        <div className="bg-[var(--bg-inner-panel)] rounded-2xl p-4 h-full overflow-y-auto scrollbar-thin space-y-6">
+                        <div
+                            onScroll={handleScroll}
+                            className={cn(
+                                "bg-[var(--bg-inner-panel)] rounded-2xl p-4 h-full overflow-y-auto scrollbar-thin space-y-6",
+                                isScrolling && "scrollbar-active"
+                            )}
+                        >
 
                             {/* Strategy Selector */}
                             <div className="space-y-3">

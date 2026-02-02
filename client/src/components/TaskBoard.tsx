@@ -2,9 +2,10 @@ import { useState, useEffect, useRef } from 'react';
 import {
     CheckCircle2, AlertCircle, RotateCcw,
     LayoutGrid, List, FileVideo, Play, Square,
-    Clock, MonitorPlay, ArrowDownAZ, ChevronRight,
+    Clock, MonitorPlay, ArrowDownAZ,
     Activity
 } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { cn } from '../lib/utils';
 import { useTranslation } from '../lib/language';
 import { apiUrl, wsUrl } from '../lib/api';
@@ -16,6 +17,7 @@ interface Task {
     tmdbId?: string;
     mediaType?: string;
     fullPath?: string;
+    posterPath?: string;
     status: 'idle' | 'searching' | 'fetching' | 'processing' | 'completed' | 'failed' | 'dry_run' | 'audit_completed' | 'stopped';
     step: string;
     lastLog: string;
@@ -37,6 +39,16 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
     const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
     const [sortConfig, setSortConfig] = useState<{ field: 'time' | 'name' | 'status'; direction: 'desc' | 'asc' }>({ field: 'time', direction: 'desc' });
     const wsRef = useRef<WebSocket | null>(null);
+    const [isScrolling, setIsScrolling] = useState(false);
+    const scrollTimer = useRef<any>(null);
+
+    const handleScroll = () => {
+        setIsScrolling(true);
+        if (scrollTimer.current) clearTimeout(scrollTimer.current);
+        scrollTimer.current = setTimeout(() => {
+            setIsScrolling(false);
+        }, 2000);
+    };
 
     // Track active TaskID per Thread and its metadata for deduplication
     const activeTaskIds = useRef<Record<string, string>>({});
@@ -215,6 +227,12 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
             updated.lastLog = message;
             updated.logs = [...updated.logs.slice(-50), message];
 
+            // Global Poster Extraction
+            const posterMatch = message.match(/\[Poster=(.*?)\]/);
+            if (posterMatch && posterMatch[1]) {
+                updated.posterPath = posterMatch[1];
+            }
+
             if (message.includes('Processing: ')) {
                 const parts = message.match(/Processing:\s+(.*?)\s+\(ID:\s+(.*?),\s+Query:\s+(.*?),\s+Type:\s+(.*?)\)/);
                 if (parts) {
@@ -266,12 +284,17 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
             } else if (message.includes('Would process directory:')) {
                 updated.status = 'dry_run';
                 updated.step = t('audit_result');
-            } else if (message.includes('Metadata generation failed')) {
+            } else if (message.includes('Metadata generation failed') || message.includes('❌ No candidate found') || message.includes('任务失败')) {
                 updated.status = 'failed';
                 updated.step = t('error');
+                updated.resultSummary = message.includes('❌') ? message.split('❌').pop()?.trim() : message;
             } else if (message.includes('Audit completed')) {
                 updated.step = t('status_audit_complete');
                 updated.status = 'audit_completed';
+            } else if (message.includes('🏆 Task Successfully Finished') || message.includes('✅ Batch Scraper finished task')) {
+                updated.status = 'completed';
+                updated.step = t('finished');
+                updated.resultSummary = "任务成功";
             } else if (message.includes('Skipping') && message.includes('Metadata already exists')) {
                 updated.status = 'completed';
                 updated.step = t('skipped_exists') || "Skipped (Exists)";
@@ -280,9 +303,24 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
             } else if (message.includes('🛑 Stop event detected')) {
                 updated.status = 'stopped';
                 updated.step = 'Stopped';
+            } else if (message.includes('Pipeline Error') || message.includes('Failed items')) {
+                updated.status = 'failed';
+                updated.step = t('error');
+                // Try to extract error details
+                const errMatch = message.match(/Error: (.*)/) || message.match(/Failed items: (.*)/);
+                if (errMatch) {
+                    updated.resultSummary = errMatch[1].substring(0, 50) + "...";
+                } else {
+                    updated.resultSummary = "任务执行出错";
+                }
+                updated.lastLog = message;
             }
 
             if (message.includes('🏆 Task Successfully Finished:')) {
+                const posterMatch = message.match(/\[Poster=(.*?)\]/);
+                if (posterMatch && posterMatch[1]) {
+                    updated.posterPath = posterMatch[1];
+                }
                 updated.status = 'completed';
                 updated.step = t('finished');
                 // Detect specific success types from logs? For now based on status
@@ -364,79 +402,68 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
         });
 
     // Stats for Display
-    // We include 'dry_run' as finished because in Audit Mode, getting a result IS the finish state.
     const finishedCount = sortedTaskList.filter(t => ['completed', 'failed', 'audit_completed', 'dry_run'].includes(t.status)).length;
-    const totalCount = sortedTaskList.length;
+
 
     return (
         <div className="flex flex-col h-full bg-transparent rounded-2xl overflow-hidden">
-            {/* Toolbar */}
-            <div className="flex items-center justify-between px-6 py-4 shrink-0">
-                <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-primary animate-pulse shadow-[0_0_10px_var(--color-primary)]" />
-                    <h3 className="tracking-widest uppercase text-xs font-bold font-display opacity-80 text-slate-800 dark:text-white">
-                        {t('mission_control')} <span className="opacity-50 ml-1 text-[10px] font-mono">({finishedCount}/{totalCount})</span>
-                    </h3>
+            {/* Header / Stats - Set to solid background to match table headers */}
+            <div className="px-6 py-4 flex items-center justify-between shrink-0 z-20 bg-[var(--bg-panel)] border-b border-[var(--border-light)]">
+                <div className="flex items-center gap-4">
+                    <h2 className="text-sm font-bold uppercase tracking-widest text-[var(--text-main)] font-display">
+                        {t('mission_control')}
+                    </h2>
+                    <div className="h-3 w-px bg-[var(--border-light)] hidden sm:block" />
+                    <div className="flex items-center gap-4 text-[10px] font-mono mt-0.5">
+                        <span className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+                            <span className="text-[var(--text-muted)] uppercase tracking-tight">{t('running')}</span>
+                            <span className="text-[var(--text-main)] font-bold">{sortedTaskList.filter(t => ['processing', 'searching', 'fetching'].includes(t.status)).length}</span>
+                        </span>
+                        <span className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                            <span className="text-[var(--text-muted)] uppercase tracking-tight">{t('done')}</span>
+                            <span className="text-[var(--text-main)] font-bold">{finishedCount}</span>
+                        </span>
+                    </div>
                 </div>
-                <div className="flex items-center gap-2">
-                    {/* Sort Controls */}
-                    <div className="flex bg-[var(--bg-toggle-wrapper)] rounded-lg p-1 border border-transparent dark:border-white/10 mr-2 gap-1">
-                        <button
-                            onClick={() => setSortConfig(prev => ({ field: 'time', direction: prev.field === 'time' && prev.direction === 'desc' ? 'asc' : 'desc' }))}
-                            className={cn(
-                                "flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all text-[10px] font-bold uppercase tracking-wider relative",
-                                sortConfig.field === 'time' ? "bg-[var(--bg-panel)] dark:bg-primary text-[var(--text-on-active)] shadow-sm" : "text-muted-foreground hover:text-foreground"
-                            )}
-                        >
-                            <Clock className="w-3.5 h-3.5" />
-                            <span>{t('time')}</span>
-                            {sortConfig.field === 'time' && (
-                                <ChevronRight className={cn("w-3 h-3 transition-transform opacity-50", sortConfig.direction === 'asc' ? "-rotate-90" : "rotate-90")} />
-                            )}
-                        </button>
-                        <button
-                            onClick={() => setSortConfig(prev => ({ field: 'name', direction: prev.field === 'name' && prev.direction === 'asc' ? 'desc' : 'asc' }))}
-                            className={cn(
-                                "flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all text-[10px] font-bold uppercase tracking-wider relative",
-                                sortConfig.field === 'name' ? "bg-[var(--bg-panel)] dark:bg-primary text-[var(--text-on-active)] shadow-sm" : "text-muted-foreground hover:text-foreground"
-                            )}
-                        >
-                            <ArrowDownAZ className="w-3.5 h-3.5" />
-                            <span>{t('name')}</span>
-                            {sortConfig.field === 'name' && (
-                                <ChevronRight className={cn("w-3 h-3 transition-transform opacity-50", sortConfig.direction === 'asc' ? "-rotate-90" : "rotate-90")} />
-                            )}
-                        </button>
-                        <button
-                            onClick={() => setSortConfig(prev => ({ field: 'status', direction: prev.field === 'status' && prev.direction === 'asc' ? 'desc' : 'asc' }))}
-                            className={cn(
-                                "flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all text-[10px] font-bold uppercase tracking-wider relative",
-                                sortConfig.field === 'status' ? "bg-[var(--bg-panel)] dark:bg-primary text-[var(--text-on-active)] shadow-sm" : "text-muted-foreground hover:text-foreground"
-                            )}
-                        >
-                            <Activity className="w-3.5 h-3.5" />
-                            <span>{t('status')}</span>
-                            {sortConfig.field === 'status' && (
-                                <ChevronRight className={cn("w-3 h-3 transition-transform opacity-50", sortConfig.direction === 'asc' ? "-rotate-90" : "rotate-90")} />
-                            )}
-                        </button>
-                    </div>
 
-                    <div className="flex bg-[var(--bg-toggle-wrapper)] rounded-lg p-1 mr-4 border border-transparent dark:border-white/10 gap-1">
-                        <button onClick={() => setViewMode('grid')} className={cn("p-1.5 rounded-md transition-all", viewMode === 'grid' ? "bg-[var(--bg-panel)] dark:bg-primary text-[var(--text-on-active)] shadow-sm" : "text-muted-foreground hover:text-foreground")}>
-                            <LayoutGrid className="w-4 h-4" />
-                        </button>
-                        <button onClick={() => setViewMode('list')} className={cn("p-1.5 rounded-md transition-all", viewMode === 'list' ? "bg-[var(--bg-panel)] dark:bg-primary text-[var(--text-on-active)] shadow-sm" : "text-muted-foreground hover:text-foreground")}>
-                            <List className="w-4 h-4" />
-                        </button>
-                    </div>
+                <div className="flex items-center gap-4">
+                    {/* View Toggle */}
+                    <SegmentedControl
+                        options={[
+                            { value: 'grid', icon: LayoutGrid, label: '' },
+                            { value: 'list', icon: List, label: '' },
+                        ]}
+                        value={viewMode}
+                        onChange={setViewMode}
+                    />
+
+                    <div className="h-8 w-px bg-border-light/50" />
+
+                    {/* Sort Toggle */}
+                    <SegmentedControl
+                        options={[
+                            { value: 'time', icon: Clock, label: t('time') },
+                            { value: 'name', icon: ArrowDownAZ, label: t('name') },
+                            { value: 'status', icon: Activity, label: t('status') },
+                        ]}
+                        value={sortConfig.field}
+                        onChange={(v: any) => setSortConfig(p => ({ ...p, field: v }))}
+                    />
                 </div>
             </div>
 
             {/* Content Area */}
             <div className="flex-1 overflow-hidden pb-4">
                 <div className="h-full relative overflow-hidden flex flex-col">
-                    <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-hover-right scroll-smooth">
+                    <div
+                        onScroll={handleScroll}
+                        className={cn(
+                            "flex-1 overflow-y-auto scrollbar-thin scrollbar-hover-right scroll-smooth",
+                            isScrolling && "scrollbar-active"
+                        )}
+                    >
                         {sortedTaskList.length === 0 ? (
                             <div className="flex flex-col items-center justify-center h-full text-slate-500 dark:text-muted-foreground gap-4 px-4">
                                 <div className="w-16 h-16 rounded-2xl bg-slate-200 dark:bg-white/5 flex items-center justify-center animate-pulse">
@@ -452,14 +479,14 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                                 <table className="w-full text-left border-collapse">
                                     <thead>
                                         <tr className="text-[10px] uppercase font-bold text-slate-500 dark:text-slate-400 tracking-wider">
-                                            <th className="sticky top-0 z-20 border-b border-slate-200 dark:border-white/10 px-6 py-3 w-16 text-center bg-[var(--bg-panel)]">{t('col_type')}</th>
-                                            <th className="sticky top-0 z-20 border-b border-slate-200 dark:border-white/10 px-4 py-3 min-w-[200px] text-center bg-[var(--bg-panel)]">{t('col_file')}</th>
-                                            <th className="sticky top-0 z-20 border-b border-slate-200 dark:border-white/10 px-4 py-3 min-w-[200px] text-center bg-[var(--bg-panel)]">{t('col_metadata_name')}</th>
-                                            <th className="sticky top-0 z-20 border-b border-slate-200 dark:border-white/10 px-4 py-3 w-20 text-center bg-[var(--bg-panel)]">{t('col_year')}</th>
-                                            <th className="sticky top-0 z-20 border-b border-slate-200 dark:border-white/10 px-4 py-3 w-24 text-center bg-[var(--bg-panel)]">{t('col_tmdb_id')}</th>
-                                            <th className="sticky top-0 z-20 border-b border-slate-200 dark:border-white/10 px-4 py-3 w-24 text-center bg-[var(--bg-panel)]">{t('col_status')}</th>
-                                            <th className="sticky top-0 z-20 border-b border-slate-200 dark:border-white/10 px-4 py-3 min-w-[250px] text-center bg-[var(--bg-panel)]">{t('col_result')}</th>
-                                            <th className="sticky top-0 z-20 border-b border-slate-200 dark:border-white/10 px-6 py-3 w-32 text-center bg-[var(--bg-panel)]">{t('col_actions')}</th>
+                                            <th className="sticky top-0 z-50 border-b border-[var(--border-light)] px-2 py-3 w-20 text-center bg-[var(--bg-panel)]">{t('col_type')}</th>
+                                            <th className="sticky top-0 z-50 border-b border-[var(--border-light)] px-4 py-3 min-w-[200px] text-center bg-[var(--bg-panel)]">{t('col_file')}</th>
+                                            <th className="sticky top-0 z-50 border-b border-[var(--border-light)] px-4 py-3 min-w-[200px] text-center bg-[var(--bg-panel)]">{t('col_metadata_name')}</th>
+                                            <th className="sticky top-0 z-50 border-b border-[var(--border-light)] px-4 py-3 w-20 text-center bg-[var(--bg-panel)]">{t('col_year')}</th>
+                                            <th className="sticky top-0 z-50 border-b border-[var(--border-light)] px-4 py-3 w-24 text-center bg-[var(--bg-panel)]">{t('col_tmdb_id')}</th>
+                                            <th className="sticky top-0 z-50 border-b border-[var(--border-light)] px-4 py-3 w-24 text-center bg-[var(--bg-panel)]">{t('col_status')}</th>
+                                            <th className="sticky top-0 z-50 border-b border-[var(--border-light)] px-4 py-3 w-32 text-center bg-[var(--bg-panel)]">{t('col_result')}</th>
+                                            <th className="sticky top-0 z-50 border-b border-[var(--border-light)] px-6 py-3 w-32 text-center bg-[var(--bg-panel)]">{t('col_actions')}</th>
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-slate-200 dark:divide-white/10 text-xs font-sans">
@@ -470,7 +497,7 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                                 </table>
                             </div>
                         ) : (
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 px-4">
+                            <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 px-4">
                                 {sortedTaskList.map(task => (
                                     <TaskCard key={task.status === 'idle' ? task.threadId : (task.fullPath || task.name)} task={task} onExecute={handleExecute} onStop={handleStop} />
                                 ))}
@@ -496,14 +523,14 @@ function TaskCard({ task, onExecute, onStop }: { task: Task, onExecute: (t: Task
     const getStatusInfo = (s: string) => {
         switch (s) {
             case 'completed': return { color: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400', label: 'Done' };
-            case 'failed':
-            case 'stopped': return { color: 'bg-red-500/10 text-red-500', label: task.status === 'stopped' ? 'Stopped' : 'Failed' };
+            case 'failed': return { color: 'bg-red-500/10 text-red-600 dark:text-red-400', label: 'Failed' };
+            case 'stopped': return { color: 'bg-slate-500/10 text-slate-500', label: 'Stopped' };
             case 'processing':
             case 'fetching':
-            case 'searching': return { color: 'bg-blue-500/10 text-blue-600 dark:text-blue-300 animate-pulse', label: 'Running' };
+            case 'searching': return { color: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 animate-pulse', label: 'Running' };
             case 'dry_run':
-            case 'audit_completed': return { color: 'bg-primary-dim text-primary dark:text-primary-glow', label: 'PASS' };
-            default: return { color: 'bg-slate-500/10 text-slate-500/80', label: 'Idle' };
+            case 'audit_completed': return { color: 'bg-sky-500/10 text-sky-600 dark:text-sky-400', label: 'PASS' };
+            default: return { color: 'bg-slate-500/10 text-slate-500', label: 'Idle' };
         }
     };
 
@@ -511,36 +538,41 @@ function TaskCard({ task, onExecute, onStop }: { task: Task, onExecute: (t: Task
     const fileName = task.fullPath ? task.fullPath.split('/').pop() : task.name;
 
     return (
-        <div className="relative group p-4 rounded-2xl border border-border-light dark:border-white/10 bg-white dark:bg-white/[0.03] hover:shadow-xl hover:shadow-black/[0.03] dark:hover:shadow-primary/5 transition-all flex flex-col gap-4 text-slate-900 dark:text-gray-100">
-            <div className="flex items-start gap-4">
+        <div className="relative group p-3 rounded-2xl border border-[var(--border-light)] bg-[var(--bg-panel)] hover:bg-[var(--bg-hover)] transition-all flex flex-col gap-3 shadow-sm hover:shadow-lg hover:border-primary/30 text-[var(--text-main)] overflow-hidden">
+            <div className="flex items-start gap-3">
+                {/* Poster / Icon Area */}
                 <div className={cn(
-                    "shrink-0 w-11 h-11 rounded-xl flex items-center justify-center border border-border-light dark:border-white/5 shadow-sm",
-                    task.mediaType === 'tv' ? "bg-purple-50 text-purple-600 dark:bg-purple-900/30 dark:text-purple-300" : "bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-300"
+                    "shrink-0 w-[50px] aspect-[2/3] rounded-lg flex items-center justify-center border border-[var(--border-light)] overflow-hidden relative shadow-sm transition-all duration-300 ease-out group-hover:scale-110 group-hover:shadow-xl group-hover:border-primary/50",
+                    !task.posterPath && (task.mediaType === 'tv' ? "bg-purple-50 dark:bg-purple-900/40" : "bg-blue-50 dark:bg-blue-900/40")
                 )}>
-                    {task.mediaType === 'tv' ? <MonitorPlay size={20} /> : <FileVideo size={20} />}
+                    {task.posterPath ? (
+                        <img src={task.posterPath} alt={task.name} className="w-full h-full object-cover" />
+                    ) : (
+                        task.mediaType === 'tv' ? <MonitorPlay size={20} className="text-purple-600 dark:text-purple-300 opacity-90" /> : <FileVideo size={20} className="text-blue-600 dark:text-blue-300 opacity-90" />
+                    )}
                 </div>
 
-                <div className="min-w-0 flex-1 flex flex-col gap-1">
+                <div className="min-w-0 flex-1 flex flex-col gap-1.5 pt-1">
                     <div className="flex items-start justify-between gap-2">
-                        <h4 className="font-bold text-sm line-clamp-1 leading-tight" title={task.name}>
+                        <h4 className="font-bold text-sm line-clamp-2 leading-snug text-[var(--text-main)]" title={task.name}>
                             {(isFinished || isFailed || isAuditReady) ? task.name : cleanTitle}
                         </h4>
-                        <span className={cn("shrink-0 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full", statusInfo.color)}>
-                            {statusInfo.label}
-                        </span>
                     </div>
 
                     <div className="flex flex-wrap items-center gap-2">
-                        {displayYear && <span className="text-[10px] font-mono text-slate-500 dark:text-slate-400">{displayYear}</span>}
-                        {task.tmdbId && <span className="text-[10px] font-mono text-slate-400 dark:text-slate-500">{task.tmdbId}</span>}
+                        <span className={cn("shrink-0 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border border-current/10", statusInfo.color)}>
+                            {statusInfo.label}
+                        </span>
+                        {displayYear && <span className="text-[10px] font-mono text-[var(--text-muted)] border border-[var(--border-light)] px-1.5 rounded-md">{displayYear}</span>}
+                        {task.tmdbId && <span className="text-[10px] font-mono text-[var(--text-dim)]">ID:{task.tmdbId}</span>}
                     </div>
                 </div>
             </div>
 
-            <div className="flex flex-col gap-3 pt-3 border-t border-border-light dark:border-white/5">
-                <div className="flex items-center justify-between gap-4">
+            <div className="flex flex-col gap-2 pt-2 border-t border-slate-100 dark:border-white/5 mt-auto">
+                <div className="flex items-center justify-between gap-2">
                     <div className="min-w-0 flex-1">
-                        <div className="text-[10px] font-mono text-text-muted/60 dark:text-slate-500 truncate" title={task.fullPath}>
+                        <div className="text-[10px] font-mono text-[var(--text-muted)] truncate opacity-70 group-hover:opacity-100 transition-opacity" title={task.fullPath}>
                             {fileName}
                         </div>
                     </div>
@@ -548,9 +580,9 @@ function TaskCard({ task, onExecute, onStop }: { task: Task, onExecute: (t: Task
                     {isAuditReady && !isRunning && !isFinished && (
                         <button
                             onClick={(e) => { e.stopPropagation(); onExecute(task); }}
-                            className="shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[10px] font-bold uppercase tracking-wider transition-all bg-yellow-400 text-black hover:bg-yellow-300 shadow-sm"
+                            className="relative z-10 shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[10px] font-bold uppercase tracking-wider transition-all bg-yellow-400 text-black hover:bg-yellow-300 shadow-sm hover:scale-105 active:scale-95"
                         >
-                            <Play size={12} fill="currentColor" className="text-white" />
+                            <Play size={10} fill="currentColor" className="text-white" />
                             <span className="text-white">RUN</span>
                         </button>
                     )}
@@ -558,9 +590,9 @@ function TaskCard({ task, onExecute, onStop }: { task: Task, onExecute: (t: Task
                     {isRunning && (
                         <button
                             onClick={(e) => { e.stopPropagation(); onStop(); }}
-                            className="shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[10px] font-bold uppercase tracking-wider transition-all bg-red-500 text-white hover:bg-red-600 shadow-sm"
+                            className="relative z-10 shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[10px] font-bold uppercase tracking-wider transition-all bg-red-500 text-white hover:bg-red-600 shadow-sm hover:scale-105 active:scale-95 animate-pulse"
                         >
-                            <Square size={12} fill="currentColor" />
+                            <Square size={10} fill="currentColor" />
                             <span>STOP</span>
                         </button>
                     )}
@@ -568,25 +600,57 @@ function TaskCard({ task, onExecute, onStop }: { task: Task, onExecute: (t: Task
                     {(isFailed || (isFinished && !task.resultSummary?.includes('成功'))) && (
                         <button
                             onClick={(e) => { e.stopPropagation(); onExecute(task); }}
-                            className="shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[10px] font-bold uppercase tracking-wider transition-all bg-blue-500 text-white hover:bg-blue-600 shadow-sm"
+                            className="relative z-10 shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[10px] font-bold uppercase tracking-wider transition-all bg-blue-500 text-white hover:bg-blue-600 shadow-sm hover:scale-105 active:scale-95"
                         >
-                            <RotateCcw size={12} />
+                            <RotateCcw size={10} />
                             <span>RETRY</span>
                         </button>
                     )}
 
                     {isFinished && task.resultSummary?.includes('成功') && (
                         <button disabled className="shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-white/5 text-slate-400 dark:text-slate-600 cursor-not-allowed">
-                            <CheckCircle2 size={12} />
+                            <CheckCircle2 size={10} />
                             <span>Done</span>
                         </button>
                     )}
                 </div>
-
-
             </div>
         </div>
     );
+}
+
+function SegmentedControl({ options, value, onChange }: any) {
+    return (
+        <div className="grid auto-cols-fr grid-flow-col gap-1 p-1 bg-[var(--bg-toggle-wrapper)] rounded-lg border border-transparent dark:border-white/10 relative">
+            {options.map((opt: any) => {
+                const isActive = value === opt.value;
+                return (
+                    <button
+                        key={opt.value}
+                        onClick={() => onChange(opt.value)}
+                        className={cn(
+                            "relative z-10 flex flex-col items-center justify-center gap-1.5 py-1.5 px-3 rounded-md text-[10px] font-bold uppercase tracking-wider transition-all",
+                            isActive ? "text-[var(--text-on-active)]" : "text-text-muted hover:text-text-main"
+                        )}
+                        title={opt.label}
+                    >
+                        {isActive && (
+                            <motion.div
+                                layoutId={`segment-board-${options[0].value}`}
+                                className="absolute inset-0 shadow-sm border border-border-light dark:border-primary/50 rounded-md bg-[var(--bg-panel)] dark:bg-[var(--primary)]"
+                                initial={false}
+                                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                            />
+                        )}
+                        <span className="relative z-10 flex items-center gap-1.5">
+                            {opt.icon && <opt.icon size={14} />}
+                            {opt.label}
+                        </span>
+                    </button>
+                )
+            })}
+        </div>
+    )
 }
 
 function TaskRow({ task, onExecute, onStop }: { task: Task, onExecute: (t: Task) => void, onStop: () => void }) {
@@ -600,25 +664,20 @@ function TaskRow({ task, onExecute, onStop }: { task: Task, onExecute: (t: Task)
     const fileName = task.fullPath ? task.fullPath.split('/').pop() : task.name;
 
     return (
-        <tr className="hover:bg-black/[0.015] dark:hover:bg-white/[0.02] group transition-colors border-b border-border-light dark:border-white/5 last:border-0 text-slate-900 dark:text-gray-100">
-            <td className="px-6 py-5 text-center">
-                <div className={cn(
-                    "w-11 h-11 mx-auto rounded-xl flex items-center justify-center shrink-0 shadow-sm border border-border-light dark:border-white/5",
-                    task.mediaType === 'tv' ? "bg-purple-50 text-purple-600 dark:bg-purple-500/20 dark:text-purple-300" : "bg-blue-50 text-blue-600 dark:bg-blue-500/20 dark:text-blue-300"
-                )}>
-                    {task.mediaType === 'tv' ? <MonitorPlay size={20} /> : <FileVideo size={20} />}
-                </div>
+        <tr className="hover:bg-[var(--bg-hover)] group transition-colors border-b border-[var(--border-light)] last:border-0 text-[var(--text-main)]">
+            <td className="px-6 py-4 text-center font-mono text-[10px] text-[var(--text-muted)]">
+                {task.mediaType === 'tv' ? 'TV' : 'Movie'}
             </td>
-            <td className="px-4 py-4 font-mono text-[10px] text-slate-500 dark:text-slate-400 truncate max-w-[200px] text-center" title={task.fullPath}>
+            <td className="px-4 py-4 font-mono text-[10px] text-[var(--text-muted)] truncate max-w-[200px] text-center" title={task.fullPath}>
                 {fileName}
             </td>
-            <td className="px-4 py-4 font-mono text-[10px] text-slate-500 dark:text-slate-400 truncate max-w-[200px] text-center" title={task.name}>
+            <td className="px-4 py-4 font-mono text-[10px] text-[var(--text-muted)] truncate max-w-[200px] text-center" title={task.name}>
                 {task.name}
             </td>
-            <td className="px-4 py-4 font-mono text-[10px] text-slate-500 dark:text-slate-400 text-center">
+            <td className="px-4 py-4 font-mono text-[10px] text-[var(--text-muted)] text-center">
                 {displayYear}
             </td>
-            <td className="px-4 py-4 font-mono text-[10px] text-slate-500 dark:text-slate-400 text-center">
+            <td className="px-4 py-4 font-mono text-[10px] text-[var(--text-muted)] text-center">
                 {task.tmdbId || "—"}
             </td>
             <td className="px-4 py-4 text-center">
@@ -627,7 +686,7 @@ function TaskRow({ task, onExecute, onStop }: { task: Task, onExecute: (t: Task)
                     task.status === 'completed' ? "bg-emerald-100 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400" :
                         isFailed ? "bg-red-100 text-red-500 dark:bg-red-500/10" :
                             isRunning ? "bg-blue-100 text-blue-500 dark:bg-blue-500/10 animate-pulse" :
-                                isAuditReady ? "bg-primary-dim text-primary dark:text-primary-glow" :
+                                isAuditReady ? "bg-sky-100 text-sky-600 dark:bg-sky-500/10 dark:text-sky-400" :
                                     "bg-slate-100 text-slate-500 dark:bg-slate-800"
                 )}>
                     {task.status === 'dry_run' || task.status === 'audit_completed' ? 'PASS' :
@@ -636,11 +695,11 @@ function TaskRow({ task, onExecute, onStop }: { task: Task, onExecute: (t: Task)
                                 isRunning ? 'Running' : task.status}
                 </span>
             </td>
-            <td className="px-4 py-5 text-xs max-w-[250px] text-center">
+            <td className="px-4 py-4 text-xs max-w-[250px] text-center">
                 {(task.resultSummary || (isFinished || isFailed || isAuditReady)) && (
                     <div className={cn("flex items-center justify-center gap-1.5 font-medium truncate",
                         (isFinished || isAuditReady) ? "text-emerald-600 dark:text-emerald-400" :
-                            isFailed ? "text-red-500 dark:text-red-400" : "text-text-muted/60"
+                            isFailed ? "text-red-500 dark:text-red-400" : "text-slate-500"
                     )} title={task.resultSummary || ""}>
                         {(isFinished || isAuditReady) ? <CheckCircle2 size={12} className="shrink-0" /> : isFailed ? <AlertCircle size={12} className="shrink-0" /> : null}
                         <span className="truncate">

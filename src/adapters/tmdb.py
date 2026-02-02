@@ -4,6 +4,9 @@ import os
 import time
 
 
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
 class TMDBAdapter:
     def __init__(self, api_key: str, proxy: Optional[Dict[str, str]] = None, preferred_language: str = "zh-CN"):
         self.base_url = "https://api.themoviedb.org/3"
@@ -20,6 +23,9 @@ class TMDBAdapter:
         self.session = requests.Session()
         if proxy:
             self.session.proxies.update(proxy)
+            print(f"DEBUG: TMDBAdapter initialized with proxy: {self.session.proxies}")
+        else:
+             print("DEBUG: TMDBAdapter initialized WITHOUT proxy (Check your config/env if this is wrong)")
 
     def _make_request(self, endpoint: str, params: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """Make API request with retries and timeout."""
@@ -29,11 +35,13 @@ class TMDBAdapter:
 
         for attempt in range(3):
             try:
-                response = self.session.get(url, params=params, timeout=30)
+                # verify=False to bypass SSL errors commonly found with local proxies
+                response = self.session.get(url, params=params, timeout=30, verify=False)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:
                 if attempt == 2:
+                    print(f"ERROR: TMDB Request Failed: {e}")
                     raise e
                 time.sleep(1)
 

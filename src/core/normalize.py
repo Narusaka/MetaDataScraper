@@ -9,6 +9,7 @@ class DataNormalizer:
         normalized = {
             "media_type": "movie",
             "tmdb_id": data.get("id"),
+            "poster_path": data.get("poster_path"),
             "title": data.get("title", ""),
             "original_title": data.get("original_title"),
             "year": int(data.get("release_date", "0000-00-00")[:4]) if data.get("release_date") else 0,
@@ -62,6 +63,7 @@ class DataNormalizer:
         normalized = {
             "media_type": "tv",
             "tmdb_id": data.get("id"),
+            "poster_path": data.get("poster_path"),
             "title": data.get("name", ""),
             "original_title": data.get("original_name"),
             "year": int(data.get("first_air_date", "0000-00-00")[:4]) if data.get("first_air_date") else 0,

@@ -61,14 +61,23 @@ class MediaScanner:
             # Normal behavior: treat each subdirectory as a potential show/movie
             tasks.append(self._create_task_for_dir(item, force_id=None))
         
-        # Loose files
+        # Loose files - Grouped by show name for parallelism
         loose = self._find_loose_files(input_dir)
         if loose:
-             tasks.append({
-                 "type": "loose_files",
-                 "files": loose,
-                 "base_dir": input_dir
-             })
+            groups = {}
+            for f in loose:
+                name = FilenameParser.extract_show_name(f.name)
+                if not name: continue
+                if name not in groups: groups[name] = []
+                groups[name].append(f)
+            
+            for show_name, group_files in groups.items():
+                tasks.append({
+                    "type": "loose_files",
+                    "files": group_files,
+                    "show_name": show_name,
+                    "base_dir": input_dir
+                })
         return tasks
 
     def _find_loose_files(self, dir_path: Path) -> List[Path]:

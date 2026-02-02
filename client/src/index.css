@@ -57,19 +57,19 @@ body {
   --accent-error: #FF3B30;
   --accent-info: #5AC8FA;
 
-  --bg-input-target: rgba(0, 0, 0, 0.04);
-  --bg-toggle-wrapper: rgba(0, 0, 0, 0.05);
+  --bg-input-target: #F1F5F9;
+
+  --bg-toggle-wrapper: rgba(226, 232, 240, 0.5);
   --bg-toggle-pill: #FFFFFF;
   --text-toggle-active: #000000;
   --text-toggle-inactive: #64748B;
   --bg-button-secondary: rgba(241, 245, 249, 0.5);
   --bg-button-secondary-active: #FFFFFF;
-  --bg-inner-panel: rgba(0, 0, 0, 0.03);
-  --bg-button-secondary: rgba(0, 0, 0, 0.05);
+  --bg-inner-panel: rgba(241, 245, 249, 0.6);
 
-  --glass-surface: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.5);
-  --glass-highlight: rgba(255, 255, 255, 0.8);
+  --glass-surface: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-highlight: rgba(255, 255, 255, 0.5);
 
   --grid-opacity: 0.02;
   --grid-color: 0, 0, 0;
@@ -172,12 +172,13 @@ body::after {
 
 ::-webkit-scrollbar-thumb {
   background: var(--bg-surface);
-  border-radius: 20px;
+  border-radius: 4px;
   border: 1px solid var(--border-light);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--secondary);
+  background: var(--primary);
+  box-shadow: 0 0 10px var(--primary-glow);
 }
 
 /* --- UTILITIES --- */
@@ -193,54 +194,57 @@ body::after {
     display: none;
   }
 
-  /* Auto-hide Scrollbar Utility */
-  .scrollbar-autohide::-webkit-scrollbar {
-    width: 6px;
-    background-color: transparent;
-  }
-
-  .scrollbar-autohide::-webkit-scrollbar-track {
-    background-color: transparent;
-  }
-
-  .scrollbar-autohide::-webkit-scrollbar-thumb {
-    background-color: transparent;
-    border-radius: 4px;
-  }
-
-  .scrollbar-autohide:hover::-webkit-scrollbar-thumb {
-    background-color: var(--secondary);
-    /* More visible on hover */
-    opacity: 0.8;
-  }
-
-  /* Right-side Triggered Scrollbar */
+  /* Shared Scrollbar Logic for Auto-hide */
+  .scrollbar-thin::-webkit-scrollbar,
+  .scrollbar-autohide::-webkit-scrollbar,
   .scrollbar-hover-right::-webkit-scrollbar {
-    width: 5px;
+    width: 6px;
   }
 
+  .scrollbar-thin::-webkit-scrollbar-track,
+  .scrollbar-autohide::-webkit-scrollbar-track,
+  .scrollbar-hover-right::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb,
+  .scrollbar-autohide::-webkit-scrollbar-thumb,
   .scrollbar-hover-right::-webkit-scrollbar-thumb {
-    background-color: transparent;
+    background: transparent;
     border-radius: 10px;
-    transition: background-color 0.4s ease;
+    transition: background 0.3s ease;
   }
 
-  /* When hovering the container, show a very faint hint of the scrollbar */
+  /* Show on scroll activity (.scrollbar-active) OR direct container hover */
+  .scrollbar-thin.scrollbar-active::-webkit-scrollbar-thumb,
+  .scrollbar-autohide.scrollbar-active::-webkit-scrollbar-thumb,
+  .scrollbar-hover-right.scrollbar-active::-webkit-scrollbar-thumb,
+  .scrollbar-thin:hover::-webkit-scrollbar-thumb,
+  .scrollbar-autohide:hover::-webkit-scrollbar-thumb,
   .scrollbar-hover-right:hover::-webkit-scrollbar-thumb {
-    background-color: rgba(142, 142, 147, 0.1);
+    background: rgba(142, 142, 147, 0.25);
   }
 
-  /* When the mouse is actually over the scrollbar area (right edge), make it visible */
-  .scrollbar-hover-right::-webkit-scrollbar-thumb:hover {
-    background-color: var(--secondary) !important;
-  }
-
+  .dark .scrollbar-thin.scrollbar-active::-webkit-scrollbar-thumb,
+  .dark .scrollbar-autohide.scrollbar-active::-webkit-scrollbar-thumb,
+  .dark .scrollbar-hover-right.scrollbar-active::-webkit-scrollbar-thumb,
+  .dark .scrollbar-thin:hover::-webkit-scrollbar-thumb,
+  .dark .scrollbar-autohide:hover::-webkit-scrollbar-thumb,
   .dark .scrollbar-hover-right:hover::-webkit-scrollbar-thumb {
-    background-color: rgba(152, 152, 157, 0.1);
+    background: rgba(152, 152, 157, 0.3);
   }
 
+  /* Active/Hovered Thumb - more prominent */
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover,
+  .scrollbar-autohide::-webkit-scrollbar-thumb:hover,
+  .scrollbar-hover-right::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary) !important;
+  }
+
+  .dark .scrollbar-thin::-webkit-scrollbar-thumb:hover,
+  .dark .scrollbar-autohide::-webkit-scrollbar-thumb:hover,
   .dark .scrollbar-hover-right::-webkit-scrollbar-thumb:hover {
-    background-color: var(--primary) !important;
+    background: var(--primary) !important;
   }
 
   /* The "Pro" Glass Panel */

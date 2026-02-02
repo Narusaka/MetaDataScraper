@@ -21,6 +21,7 @@ class MediaOrganizer:
         episodes_data = metadata_result.get("source_data", {}).get("translated_episodes", [])
         nfo_data = metadata_result.get("nfo", {})
         episode_nfos = nfo_data.get("episode_nfos", {})
+        season_nfos = nfo_data.get("season_nfos", {})
         
         detected_type = normalized.get("media_type") or configured_media_type
         
@@ -124,7 +125,7 @@ class MediaOrganizer:
 
         # 3. Full Metadata Download & Missing Check
         if detected_type == "tv":
-            self._process_full_metadata(final_show_path, meta_ep_map, found_episodes, normalized, episode_nfos)
+            self._process_full_metadata(final_show_path, meta_ep_map, found_episodes, normalized, episode_nfos, season_nfos)
 
     def _move_or_copy(self, src: Path, dest: Path):
         if self.dry_run: return
@@ -156,7 +157,7 @@ class MediaOrganizer:
              logger.error(f"Failed to rename directory: {e}")
         return show_path
 
-    def _process_full_metadata(self, show_path: Path, meta_ep_map, found_episodes, normalized, episode_nfos):
+    def _process_full_metadata(self, show_path: Path, meta_ep_map, found_episodes, normalized, episode_nfos, season_nfos=None):
         missing_eps = []
         logger.info("📡 Processing full metadata for all episodes...")
         
@@ -176,6 +177,15 @@ class MediaOrganizer:
             if not self.dry_run:
                 dest_dir.mkdir(parents=True, exist_ok=True)
                 
+                # Write Season NFO if not exists
+                if season_nfos and season in season_nfos:
+                    s_xml = season_nfos[season]
+                    s_nfo_dest = dest_dir / "season.nfo"
+                    if not s_nfo_dest.exists():
+                        try:
+                            s_nfo_dest.write_text(s_xml, encoding="utf-8")
+                        except: pass
+
                 # Write NFO
                 ep_xml = episode_nfos.get((season, episode))
                 nfo_dest = dest_dir / f"{base_name}.nfo"

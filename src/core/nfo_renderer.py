@@ -1,7 +1,7 @@
 import xml.etree.ElementTree as ET
 from typing import Dict, Any, Union, Optional
 from xml.dom import minidom
-from .schema_nfo import MovieNfo, TvShowNfo, EpisodeNfo
+from .schema_nfo import MovieNfo, TvShowNfo, EpisodeNfo, SeasonNfo
 
 
 class NfoRenderer:
@@ -272,6 +272,61 @@ class NfoRenderer:
                             line = line.replace(f'CDATA_PLACEHOLDER_{content_len}_{content_hash}', f'<![CDATA[{cdata_content}]]>')
                             break
 
+            new_lines.append(line)
+
+        return '\n'.join(new_lines)
+
+    @staticmethod
+    def render_season_nfo(nfo: SeasonNfo) -> str:
+        """Render SeasonNfo to XML string using season format."""
+        root = ET.Element("season")
+
+        NfoRenderer._create_element(root, "title", nfo.title)
+        NfoRenderer._create_element(root, "year", nfo.year)
+        if nfo.premiered:
+            NfoRenderer._create_element(root, "premiered", nfo.premiered)
+        if nfo.plot:
+            NfoRenderer._create_cdata_element(root, "plot", nfo.plot)
+        if nfo.outline:
+            NfoRenderer._create_cdata_element(root, "outline", nfo.outline)
+        if nfo.rating:
+            NfoRenderer._create_element(root, "rating", nfo.rating)
+        if nfo.votes:
+            NfoRenderer._create_element(root, "votes", nfo.votes)
+
+        NfoRenderer._add_list_elements(root, "genre", nfo.genre)
+        NfoRenderer._add_list_elements(root, "country", nfo.country)
+        NfoRenderer._add_list_elements(root, "studio", nfo.studio)
+
+        # Standard relative paths for season thumb/fanart
+        NfoRenderer._create_element(root, "thumb", nfo.thumb)
+        NfoRenderer._create_element(root, "fanart", nfo.fanart)
+
+        if nfo.tmdb_id:
+             NfoRenderer._create_element(root, "tmdbid", str(nfo.tmdb_id))
+
+        # Pretty print XML and fix CDATA
+        rough_string = ET.tostring(root, encoding='unicode')
+        reparsed = minidom.parseString(rough_string)
+        xml_string = reparsed.toprettyxml(indent="  ")
+
+        # Replace CDATA placeholders with actual CDATA sections and remove cdata_content attributes
+        import re
+        lines = xml_string.split('\n')
+        new_lines = []
+
+        for line in lines:
+            line = re.sub(r'\s+cdata_content="[^"]*"', '', line)
+            cdata_match = re.search(r'CDATA_PLACEHOLDER_(\d+)_(-?\d+)', line)
+            if cdata_match:
+                for elem in root.iter():
+                    cdata_content = elem.get("cdata_content")
+                    if cdata_content:
+                        content_len = len(cdata_content)
+                        content_hash = hash(cdata_content)
+                        if str(content_len) == cdata_match.group(1) and str(content_hash) == cdata_match.group(2):
+                            line = line.replace(f'CDATA_PLACEHOLDER_{content_len}_{content_hash}', f'<![CDATA[{cdata_content}]]>')
+                            break
             new_lines.append(line)
 
         return '\n'.join(new_lines)

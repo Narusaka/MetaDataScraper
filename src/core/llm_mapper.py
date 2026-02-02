@@ -1,5 +1,5 @@
 from typing import Dict, Any, List
-from .schema_nfo import MovieNfo, TvShowNfo, EpisodeNfo
+from .schema_nfo import MovieNfo, TvShowNfo, EpisodeNfo, SeasonNfo
 
 
 class DirectMapper:
@@ -153,6 +153,33 @@ class DirectMapper:
         episode_nfo.tags = show_data.get("keywords_zh", show_data.get("keywords", []))
 
         return episode_nfo
+
+    @staticmethod
+    def map_to_season_nfo(season_data: Dict[str, Any], show_data: Dict[str, Any]) -> SeasonNfo:
+        """Direct mapping from internal schema to SeasonNfo."""
+        season_number = season_data.get("season_number", 0)
+        # Use season name from TMDB or fallback to "Season X"
+        season_name = season_data.get("name") or f"Season {season_number}"
+        
+        # Use primary show year as default if air_date missing
+        year_str = season_data.get("air_date", "")[:4] if season_data.get("air_date") else str(show_data.get("year", 0))
+        year = int(year_str) if year_str.isdigit() else 0
+        
+        return SeasonNfo(
+            title=season_name,
+            year=year,
+            premiered=season_data.get("air_date", ""),
+            plot=season_data.get("overview", ""),
+            outline=season_data.get("overview", ""),
+            rating=season_data.get("vote_average", 0.0),
+            votes=show_data.get("rating_count", 0), # TMDB often lacks season-level vote count
+            genre=show_data.get('genres_zh', show_data.get('genres', [])),
+            country=show_data.get('countries', []),
+            studio=show_data.get('studios', []),
+            thumb="poster.jpg", # Path relative to season folder
+            fanart="../fanart.jpg",
+            tmdb_id=season_data.get("id")
+        )
 
     @staticmethod
     def _format_cast(cast_list: List[Dict[str, Any]]) -> List[Dict[str, Any]]:

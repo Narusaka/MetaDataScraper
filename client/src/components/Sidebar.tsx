@@ -81,6 +81,7 @@ export function Sidebar({ activeTab, onTabChange, mobileOpen = false, onMobileCl
                 initial={false}
                 animate={{ width: collapsed ? 84 : 260 }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                onMouseLeave={() => setCollapsed(true)}
                 className={cn(
                     "fixed md:relative z-50 flex flex-col glass-panel-pro shadow-2xl overflow-hidden",
                     // Floating logic

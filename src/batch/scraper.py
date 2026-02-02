@@ -32,7 +32,10 @@ class BatchMediaScraper:
                  enable_fallback: bool = True,
                  max_workers: int = 4,
                  dry_run: bool = False,
-                 fresh: bool = False):
+                 fresh: bool = False,
+                 enable_organize: bool = False,
+                 overwrite_images: bool = False,
+                 rename_parent_dir: bool = False):
         
         self.config = self._load_config(config_path)
         self.copy_files = copy_files
@@ -49,6 +52,9 @@ class BatchMediaScraper:
         self.max_workers = int(max_workers if max_workers is not None else (env_workers if env_workers else 4))
         self.dry_run = dry_run
         self.fresh = fresh
+        self.enable_organize = enable_organize
+        self.overwrite_images = overwrite_images
+        self.rename_parent_dir = rename_parent_dir
         
         self.pipeline = None
         
@@ -61,7 +67,10 @@ class BatchMediaScraper:
         self.organizer = MediaOrganizer(
             dry_run=dry_run, 
             inplace_rename=inplace_rename, 
-            copy_files=copy_files
+            copy_files=copy_files,
+            enable_organize=enable_organize,
+            overwrite_images=overwrite_images,
+            rename_parent_dir=rename_parent_dir
         )
         
         self.stop_event = threading.Event()
@@ -278,12 +287,12 @@ class BatchMediaScraper:
             return (False, "Scraper Stopped")
             
         if task["type"] == "directory":
-            return self._process_directory(task["path"], task["tmdb_id"])
+            return self._process_directory(task["path"], task["tmdb_id"], task.get("media_type"), is_group_folder=task.get("is_group_folder", False))
         elif task["type"] == "loose_files":
             return self._process_loose_files(task["files"], task["base_dir"], task.get("show_name"))
         return (False, "Unknown Task Type")
 
-    def _process_directory(self, dir_path: Path, tmdb_id: Optional[int]) -> bool:
+    def _process_directory(self, dir_path: Path, tmdb_id: Optional[int], task_media_type: Optional[str] = None, is_group_folder: bool = False) -> bool:
         show_name = dir_path.name
         
         if self.dry_run:
@@ -294,8 +303,8 @@ class BatchMediaScraper:
         query = "" if tmdb_id else FilenameParser.clean_show_name_for_search(show_name)
         extracted_year = FilenameParser.extract_year(show_name)
         
-        # Detection logic
-        current_media_type = self.media_type or MediaTypeDetector.detect(dir_path)
+        # Detection logic: Task-level (from NFO) > Global (from UI) > Auto-detect
+        current_media_type = task_media_type or self.media_type or MediaTypeDetector.detect(dir_path)
         
         logger.info(f"Processing: {show_name} (ID: {tmdb_id}, Query: {query}, Type: {current_media_type})")
 
@@ -303,7 +312,7 @@ class BatchMediaScraper:
 
         input_data = {
             "media_type": current_media_type,
-            "media_type_forced": self.media_type is not None, 
+            "media_type_forced": (self.media_type is not None) or (task_media_type is not None), 
             "query": query,
             "year": extracted_year,
             "output_dir": target_output_dir,
@@ -344,7 +353,7 @@ class BatchMediaScraper:
             status = result.get("status")
             
             if status == "completed":
-                self.organizer.organize(dir_path, result, configured_media_type=current_media_type)
+                self.organizer.organize(dir_path, result, configured_media_type=current_media_type, is_group_folder=is_group_folder)
                 logger.info(f"✅ Batch Scraper finished task: {show_name}")
                 return (True, "任务成功，媒体文件数量完整。")
             elif status == "audit_completed":
@@ -441,4 +450,4 @@ class BatchMediaScraper:
             if f.parent != target_path:
                 shutil.move(str(f), str(target_path / f.name))
         
-        return self._process_directory(target_path, None)
+        return self._process_directory(target_path, None, is_group_folder=True)

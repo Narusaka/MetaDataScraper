@@ -89,15 +89,25 @@ class MediaScanner:
 
     def _create_task_for_dir(self, dir_path: Path, force_id: Optional[int] = None) -> dict:
         tmdb_id = force_id
+        media_type = self.media_type
         
-        if not tmdb_id and self.use_local_nfo:
+        if self.use_local_nfo:
              # Strict matching for movies to avoid false positives
              strict = (self.media_type == "movie")
-             # Try parse NFO
-             tmdb_id = NfoParser.extract_tmdb_id_from_directory(str(dir_path), dir_path.name, strict_match=strict)
+             # Try parse NFO metadata
+             meta = NfoParser.extract_metadata_from_directory(str(dir_path), dir_path.name, strict_match=strict)
+             
+             # NFO takes HIGHEST priority if enabled
+             if meta.get("tmdb_id"):
+                 tmdb_id = meta["tmdb_id"]
+                 logger.info(f"NFO: Found TMDB ID {tmdb_id} in {dir_path.name}")
+             if meta.get("media_type"):
+                 media_type = meta["media_type"]
+                 logger.info(f"NFO: Detected media type '{media_type}' in {dir_path.name}")
         
         return {
             "type": "directory",
             "path": dir_path,
-            "tmdb_id": tmdb_id
+            "tmdb_id": tmdb_id,
+            "media_type": media_type
         }

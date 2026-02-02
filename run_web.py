@@ -13,7 +13,8 @@ if __name__ == "__main__":
     import src
     print(f"DEBUG: src package path: {src.__path__}")
     print("🚀 Starting Media Metadata Scraper Web Server...")
-    print("   URL: http://localhost:8000")
+    print("   Local:    http://localhost:8000")
+    print("   Network:  http://0.0.0.0:8000 (Check your IP)")
     print("   API Docs: http://localhost:8000/docs")
     
     # Load .env

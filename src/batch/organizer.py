@@ -9,13 +9,16 @@ from src.core.filename_parser import FilenameParser
 logger = logging.getLogger(__name__)
 
 class MediaOrganizer:
-    def __init__(self, dry_run: bool = False, inplace_rename: bool = False, copy_files: bool = False, pipeline=None):
+    def __init__(self, dry_run: bool = False, inplace_rename: bool = False, copy_files: bool = False, pipeline=None, enable_organize: bool = False, overwrite_images: bool = False, rename_parent_dir: bool = False):
         self.dry_run = dry_run
         self.inplace_rename = inplace_rename
         self.copy_files = copy_files
         self.pipeline = pipeline 
+        self.enable_organize = enable_organize
+        self.overwrite_images = overwrite_images
+        self.rename_parent_dir = rename_parent_dir
 
-    def organize(self, show_path: Path, metadata_result: dict, configured_media_type: Optional[str] = None):
+    def organize(self, show_path: Path, metadata_result: dict, configured_media_type: Optional[str] = None, is_group_folder: bool = False):
         """Organize files, download full metadata, and report missing episodes."""
         normalized = metadata_result.get("normalized", {})
         episodes_data = metadata_result.get("source_data", {}).get("translated_episodes", [])
@@ -47,7 +50,7 @@ class MediaOrganizer:
         
         target_root = show_path
         
-        if self.inplace_rename and not self.dry_run and not has_seasons:
+        if self.inplace_rename and not self.dry_run and not has_seasons and self.enable_organize:
              # Scenario 2: Create Sibling
              show_year = normalized.get("year", 0)
              show_title = normalized.get("title_zh") or normalized.get("title", show_path.name)
@@ -58,69 +61,77 @@ class MediaOrganizer:
              target_root.mkdir(parents=True, exist_ok=True)
              logger.info(f"Organize: Creating sibling directory: {target_root}")
         
-        # 1. Scan and Rename Existing Files
-        scanned_files = []
-        for file_path in show_path.rglob('*'):
-            if file_path.is_file() and (file_path.suffix.lower() in FilenameParser.VIDEO_EXTENSIONS or file_path.suffix.lower() in FilenameParser.SUBTITLE_EXTENSIONS):
-                scanned_files.append(file_path)
+        if not self.enable_organize:
+             logger.info(f"Organize: File movement is DISABLED. Skipping rename/move for video/subtitle files.")
+             final_show_path = show_path 
+        else:
+             # 1. Scan and Rename Existing Files
+             scanned_files = []
+             for file_path in show_path.rglob('*'):
+                 if file_path.is_file() and (file_path.suffix.lower() in FilenameParser.VIDEO_EXTENSIONS or file_path.suffix.lower() in FilenameParser.SUBTITLE_EXTENSIONS):
+                     scanned_files.append(file_path)
+    
+             for file_path in scanned_files:
+                 if file_path.name.endswith('.nfo') or 'images' in str(file_path): continue
+                 
+                 suffix = file_path.suffix
+                 
+                 # Movie Logic
+                 if detected_type == "movie":
+                     movie_title = normalized.get("title_zh") or normalized.get("title")
+                     year = normalized.get("year")
+                     new_name = f"{movie_title} ({year})"
+                     new_filename = f"{new_name}{suffix}"
+                     
+                     # If Sibling Mode, use target_root, else show_path
+                     dest_path = target_root / new_filename
+                     
+                     self._move_or_copy(file_path, dest_path)
+                     continue
+    
+                 # TV Logic
+                 ep_info = FilenameParser.parse_episode_info(file_path.name)
+                 if not ep_info: continue
+                 
+                 season, episode = ep_info
+                 ep_data = meta_ep_map.get((season, episode))
+                 
+                 if ep_data:
+                     found_episodes.add((season, episode))
+                     
+                     show_title = normalized.get("title_zh") or normalized.get("title", show_path.name)
+                     ep_title = ep_data.get("name_zh") or ep_data.get("name", "")
+                     safe_ep_title = "".join(c for c in ep_title if c not in '/\\:*?"<>|').strip()
+                     
+                     new_name = f"{show_title} - S{season:02d}E{episode:02d} - {safe_ep_title}"
+                     
+                     # Subtitle language handling
+                     is_subtitle = suffix.lower() in FilenameParser.SUBTITLE_EXTENSIONS
+                     if is_subtitle:
+                         lang_suffix = FilenameParser.get_subtitle_language_suffix(file_path.name)
+                         new_filename = f"{new_name}{lang_suffix}{suffix}"
+                     else:
+                         new_filename = f"{new_name}{suffix}"
+    
+                     # Destination
+                     if detected_type == "tv":
+                         dest_dir = target_root / f"Season {season:02d}"
+                     else:
+                         dest_dir = target_root
+                         
+                     dest_path = dest_dir / new_filename
+                     
+                     if not self.dry_run:
+                         dest_dir.mkdir(parents=True, exist_ok=True)
+                         self._move_or_copy(file_path, dest_path)
 
-        for file_path in scanned_files:
-            if file_path.name.endswith('.nfo') or 'images' in str(file_path): continue
-            
-            suffix = file_path.suffix
-            
-            # Movie Logic
-            if detected_type == "movie":
-                movie_title = normalized.get("title_zh") or normalized.get("title")
-                year = normalized.get("year")
-                new_name = f"{movie_title} ({year})"
-                new_filename = f"{new_name}{suffix}"
-                
-                # If Sibling Mode, use target_root, else show_path
-                dest_path = target_root / new_filename
-                
-                self._move_or_copy(file_path, dest_path)
-                continue
-
-            # TV Logic
-            ep_info = FilenameParser.parse_episode_info(file_path.name)
-            if not ep_info: continue
-            
-            season, episode = ep_info
-            ep_data = meta_ep_map.get((season, episode))
-            
-            if ep_data:
-                found_episodes.add((season, episode))
-                
-                show_title = normalized.get("title_zh") or normalized.get("title", show_path.name)
-                ep_title = ep_data.get("name_zh") or ep_data.get("name", "")
-                safe_ep_title = "".join(c for c in ep_title if c not in '/\\:*?"<>|').strip()
-                
-                new_name = f"{show_title} - S{season:02d}E{episode:02d} - {safe_ep_title}"
-                
-                # Subtitle language handling
-                is_subtitle = suffix.lower() in FilenameParser.SUBTITLE_EXTENSIONS
-                if is_subtitle:
-                    lang_suffix = FilenameParser.get_subtitle_language_suffix(file_path.name)
-                    new_filename = f"{new_name}{lang_suffix}{suffix}"
-                else:
-                    new_filename = f"{new_name}{suffix}"
-
-                # Destination
-                if detected_type == "tv":
-                    dest_dir = target_root / f"Season {season:02d}"
-                else:
-                    dest_dir = target_root
-                    
-                dest_path = dest_dir / new_filename
-                
-                if not self.dry_run:
-                    dest_dir.mkdir(parents=True, exist_ok=True)
-                    self._move_or_copy(file_path, dest_path)
-                            
-        # 2. Rename Directory (Only if In-Place AND Has Seasons)
+        # 2. Rename Directory
+        # Condition: 
+        # - In-place rename enabled AND (Rename Parent toggle is ON OR it's a folder we just created for loose files OR it has Season structure)
         final_show_path = target_root
-        if self.inplace_rename and not self.dry_run and has_seasons:
+        should_rename = (self.rename_parent_dir or is_group_folder or has_seasons)
+        
+        if self.inplace_rename and not self.dry_run and self.enable_organize and should_rename:
              final_show_path = self._rename_directory(show_path, normalized)
 
         # 3. Full Metadata Download & Missing Check
@@ -132,6 +143,10 @@ class MediaOrganizer:
         if src.resolve() == dest.resolve(): return
         
         try:
+            if dest.exists():
+                logger.warning(f"⚠️ Skip move: Destination already exists: {dest.name}")
+                return
+
             if self.copy_files:
                 shutil.copy2(str(src), str(dest))
                 logger.info(f"Copied: {src.name} -> {dest.name}")
@@ -199,7 +214,7 @@ class MediaOrganizer:
                 still_path = ep_data.get("still_path")
                 if still_path and self.pipeline and self.pipeline.artwork:
                     thumb_dest = dest_dir / f"{base_name}-thumb.jpg"
-                    if not thumb_dest.exists():
+                    if self.overwrite_images or not thumb_dest.exists():
                          full_url = f"https://image.tmdb.org/t/p/original{still_path}"
                          try:
                             self.pipeline.artwork.download_image(str(thumb_dest), full_url)

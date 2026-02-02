@@ -44,6 +44,9 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
     });
     const [multiMode, setMultiMode] = useState<'auto' | 'single' | 'batch'>(() => (localStorage.getItem('task_multi_mode') as 'auto' | 'single' | 'batch') || 'auto');
     const [forceFresh, setForceFresh] = useState(false);
+    const [enableOrganize, setEnableOrganize] = useState(() => localStorage.getItem('task_enable_organize') === 'true');
+    const [overwriteImages, setOverwriteImages] = useState(() => localStorage.getItem('task_overwrite_images') === 'true');
+    const [renameParentDir, setRenameParentDir] = useState(() => localStorage.getItem('task_rename_parent') === 'true');
     const [isScrolling, setIsScrolling] = useState(false);
     const scrollTimer = useRef<any>(null);
 
@@ -68,6 +71,9 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
     useEffect(() => localStorage.setItem('task_tmdb_id', tmdbId), [tmdbId]);
     useEffect(() => localStorage.setItem('task_search_mode', searchMode), [searchMode]);
     useEffect(() => localStorage.setItem('task_multi_mode', multiMode), [multiMode]);
+    useEffect(() => localStorage.setItem('task_enable_organize', enableOrganize.toString()), [enableOrganize]);
+    useEffect(() => localStorage.setItem('task_overwrite_images', overwriteImages.toString()), [overwriteImages]);
+    useEffect(() => localStorage.setItem('task_rename_parent', renameParentDir.toString()), [renameParentDir]);
 
     const handleStart = async () => {
         if (isRunning) {
@@ -91,7 +97,10 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
             search_mode: searchMode,
             enable_fallback: true,
             multi_mode: multiMode === 'auto' ? null : (multiMode === 'batch'),
-            fresh: forceFresh
+            fresh: forceFresh,
+            enable_organize: enableOrganize,
+            overwrite_images: overwriteImages,
+            rename_parent_dir: renameParentDir
         });
     };
 
@@ -359,6 +368,9 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
                                 <div className="bg-bg-surface rounded-xl p-3 space-y-1">
                                     <Switch label={t('opt_local_nfo')} checked={useLocalNfo} onChange={setUseLocalNfo} />
                                     <Switch label={t('opt_extra_images')} checked={extraImages} onChange={setExtraImages} />
+                                    <Switch label={t('opt_enable_organize')} checked={enableOrganize} onChange={setEnableOrganize} />
+                                    <Switch label={t('opt_overwrite_images')} checked={overwriteImages} onChange={setOverwriteImages} />
+                                    <Switch label={t('opt_rename_parent')} checked={renameParentDir} onChange={setRenameParentDir} />
                                     <div className="h-px bg-border-light/10 my-1" />
                                     <Switch label={t('force_refresh_danger')} checked={forceFresh} onChange={setForceFresh} danger />
                                 </div>
@@ -369,7 +381,7 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
 
                 {/* Task Board */}
                 <div className="flex-1 rounded-3xl overflow-hidden relative glass-panel-pro border border-glass-border flex flex-col shadow-xl">
-                    <TaskBoard defaultConfig={{ strategy, outputPath, forceFresh }} />
+                    <TaskBoard defaultConfig={{ strategy, outputPath, forceFresh, enableOrganize, overwriteImages, renameParentDir }} />
                 </div>
             </div>
 

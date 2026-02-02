@@ -126,6 +126,7 @@ class MediaPipeline:
                         candidate["title"] = details.get("title", "")
                         candidate["name"] = details.get("title", "")
                         candidate["release_date"] = details.get("release_date", "")
+                        candidate["poster_path"] = details.get("poster_path")
                     else:
                         details = self.tmdb.get_tv_details(tmdb_id)
                         candidate["name"] = details.get("name", "")
@@ -177,10 +178,12 @@ class MediaPipeline:
                             details = self.tmdb.get_movie_details(tmdb_id)
                             candidate["title"] = details.get("title", "")
                             candidate["name"] = details.get("title", "")
+                            candidate["poster_path"] = details.get("poster_path")
                         else:
                             details = self.tmdb.get_tv_details(tmdb_id)
                             candidate["name"] = details.get("name", "")
                             candidate["title"] = details.get("name", "")
+                            candidate["poster_path"] = details.get("poster_path")
                     except Exception as e:
                         self._log(f"⚠️ Failed to fetch title for audit: {e}", verbose_only=True)
 

@@ -73,6 +73,9 @@ class TaskStartRequest(BaseModel):
     enable_fallback: bool = True
     multi_mode: Optional[bool] = None  # None = Auto-detect
     fresh: bool = False # If True, overwrite existing metadata. If False, skip if exists.
+    enable_organize: bool = False # If True, allow moving/renaming files.
+    overwrite_images: bool = False # If True, redownload images even if exist.
+    rename_parent_dir: bool = False # If True, rename parent directory to Title (Year).
 
 class FileSystemNode(BaseModel):
     name: str
@@ -193,7 +196,10 @@ async def start_task(req: TaskStartRequest):
         search_mode=req.search_mode,
         enable_fallback=req.enable_fallback,
         multi_mode=req.multi_mode,
-        fresh=req.fresh
+        fresh=req.fresh,
+        enable_organize=req.enable_organize,
+        overwrite_images=req.overwrite_images,
+        rename_parent_dir=req.rename_parent_dir
     ))
     
     return {"status": "started", "message": f"Scanning {req.input_dir}"}

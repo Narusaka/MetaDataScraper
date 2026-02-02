@@ -35,7 +35,10 @@ class JobManager:
                              search_mode: str = "smart",
                              enable_fallback: bool = True,
                              multi_mode: Optional[bool] = None,
-                             fresh: bool = False):
+                             fresh: bool = False,
+                             enable_organize: bool = False,
+                             overwrite_images: bool = False,
+                             rename_parent_dir: bool = False):
         
         if self.is_running:
             raise Exception("A task is already running")
@@ -50,7 +53,7 @@ class JobManager:
             await loop.run_in_executor(
                 self.executor, 
                 self._run_scraper_sync,
-                input_dir, config_path, workers, dry_run, inplace, copy, output_dir, use_local_nfo, extra_images, media_type, tmdb_id, search_mode, enable_fallback, multi_mode, fresh
+                input_dir, config_path, workers, dry_run, inplace, copy, output_dir, use_local_nfo, extra_images, media_type, tmdb_id, search_mode, enable_fallback, multi_mode, fresh, enable_organize, overwrite_images, rename_parent_dir
             )
         except Exception as e:
             logger.error(f"JobManager Error: {e}")
@@ -60,7 +63,7 @@ class JobManager:
             self.stop_signal.clear()
             logger.info("JobManager: Task finished")
 
-    def _run_scraper_sync(self, input_dir: str, config_path: str, workers: int, dry_run: bool, inplace: bool, copy: bool, output_dir: Optional[str], use_local_nfo: bool, extra_images: bool, media_type: Optional[str], tmdb_id: Optional[int], search_mode: str, enable_fallback: bool, multi_mode: Optional[bool], fresh: bool):
+    def _run_scraper_sync(self, input_dir: str, config_path: str, workers: int, dry_run: bool, inplace: bool, copy: bool, output_dir: Optional[str], use_local_nfo: bool, extra_images: bool, media_type: Optional[str], tmdb_id: Optional[int], search_mode: str, enable_fallback: bool, multi_mode: Optional[bool], fresh: bool, enable_organize: bool, overwrite_images: bool, rename_parent_dir: bool):
         """
         Synchronous wrapper to run BatchMediaScraper
         """
@@ -138,7 +141,10 @@ class JobManager:
                 dry_run=dry_run,
                 use_local_nfo=use_local_nfo,
                 extra_images=extra_images,
-                fresh=fresh
+                fresh=fresh,
+                enable_organize=enable_organize,
+                overwrite_images=overwrite_images,
+                rename_parent_dir=rename_parent_dir
             )
             self.scraper = scraper 
             

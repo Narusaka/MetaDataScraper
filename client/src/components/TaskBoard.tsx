@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import {
     CheckCircle2, AlertCircle, RotateCcw,
     LayoutGrid, List, FileVideo, Play, Square,
-    Clock, MonitorPlay, ArrowDownAZ,
+    Clock, MonitorPlay, ArrowDownAZ, ArrowUp, ArrowDown,
     Activity
 } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -31,6 +31,9 @@ export interface TaskBoardConfig {
     strategy: 'audit' | 'organize' | 'copy';
     outputPath?: string;
     forceFresh?: boolean;
+    enableOrganize?: boolean;
+    overwriteImages?: boolean;
+    renameParentDir?: boolean;
 }
 
 export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig }) {
@@ -84,6 +87,9 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                     copy_mode: defaultConfig.strategy === 'copy',
                     output_dir: defaultConfig.strategy === 'copy' ? defaultConfig.outputPath : undefined,
                     fresh: defaultConfig.forceFresh,
+                    enable_organize: defaultConfig.enableOrganize,
+                    overwrite_images: defaultConfig.overwriteImages,
+                    rename_parent_dir: defaultConfig.renameParentDir,
                     search_mode: 'smart'
                 })
             });
@@ -444,12 +450,15 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                     {/* Sort Toggle */}
                     <SegmentedControl
                         options={[
-                            { value: 'time', icon: Clock, label: t('time') },
-                            { value: 'name', icon: ArrowDownAZ, label: t('name') },
-                            { value: 'status', icon: Activity, label: t('status') },
+                            { value: 'time', icon: Clock, label: `${t('time')} ${sortConfig.field === 'time' ? (sortConfig.direction === 'asc' ? '↑' : '↓') : ''}` },
+                            { value: 'name', icon: ArrowDownAZ, label: `${t('name')} ${sortConfig.field === 'name' ? (sortConfig.direction === 'asc' ? '↑' : '↓') : ''}` },
+                            { value: 'status', icon: Activity, label: `${t('status')} ${sortConfig.field === 'status' ? (sortConfig.direction === 'asc' ? '↑' : '↓') : ''}` },
                         ]}
                         value={sortConfig.field}
-                        onChange={(v: any) => setSortConfig(p => ({ ...p, field: v }))}
+                        onChange={(v: any) => setSortConfig(p => ({
+                            field: v,
+                            direction: p.field === v ? (p.direction === 'asc' ? 'desc' : 'asc') : p.direction
+                        }))}
                     />
                 </div>
             </div>
@@ -481,10 +490,20 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                                         <tr className="text-[10px] uppercase font-bold text-slate-500 dark:text-slate-400 tracking-wider">
                                             <th className="sticky top-0 z-50 border-b border-[var(--border-light)] px-2 py-3 w-20 text-center bg-[var(--bg-panel)]">{t('col_type')}</th>
                                             <th className="sticky top-0 z-50 border-b border-[var(--border-light)] px-4 py-3 min-w-[200px] text-center bg-[var(--bg-panel)]">{t('col_file')}</th>
-                                            <th className="sticky top-0 z-50 border-b border-[var(--border-light)] px-4 py-3 min-w-[200px] text-center bg-[var(--bg-panel)]">{t('col_metadata_name')}</th>
+                                            <th className="sticky top-0 z-50 border-b border-[var(--border-light)] px-4 py-3 min-w-[200px] text-center bg-[var(--bg-panel)] cursor-pointer hover:text-text-main transition-colors" onClick={() => setSortConfig(p => ({ field: 'name', direction: p.field === 'name' ? (p.direction === 'asc' ? 'desc' : 'asc') : 'asc' }))}>
+                                                <div className="flex items-center justify-center gap-1">
+                                                    {t('col_metadata_name')}
+                                                    {sortConfig.field === 'name' && (sortConfig.direction === 'asc' ? <ArrowUp size={10} /> : <ArrowDown size={10} />)}
+                                                </div>
+                                            </th>
                                             <th className="sticky top-0 z-50 border-b border-[var(--border-light)] px-4 py-3 w-20 text-center bg-[var(--bg-panel)]">{t('col_year')}</th>
                                             <th className="sticky top-0 z-50 border-b border-[var(--border-light)] px-4 py-3 w-24 text-center bg-[var(--bg-panel)]">{t('col_tmdb_id')}</th>
-                                            <th className="sticky top-0 z-50 border-b border-[var(--border-light)] px-4 py-3 w-24 text-center bg-[var(--bg-panel)]">{t('col_status')}</th>
+                                            <th className="sticky top-0 z-50 border-b border-[var(--border-light)] px-4 py-3 w-24 text-center bg-[var(--bg-panel)] cursor-pointer hover:text-text-main transition-colors" onClick={() => setSortConfig(p => ({ field: 'status', direction: p.field === 'status' ? (p.direction === 'asc' ? 'desc' : 'asc') : 'asc' }))}>
+                                                <div className="flex items-center justify-center gap-1">
+                                                    {t('col_status')}
+                                                    {sortConfig.field === 'status' && (sortConfig.direction === 'asc' ? <ArrowUp size={10} /> : <ArrowDown size={10} />)}
+                                                </div>
+                                            </th>
                                             <th className="sticky top-0 z-50 border-b border-[var(--border-light)] px-4 py-3 w-32 text-center bg-[var(--bg-panel)]">{t('col_result')}</th>
                                             <th className="sticky top-0 z-50 border-b border-[var(--border-light)] px-6 py-3 w-32 text-center bg-[var(--bg-panel)]">{t('col_actions')}</th>
                                         </tr>

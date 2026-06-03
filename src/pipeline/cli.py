@@ -127,7 +127,7 @@ def main():
     parser.add_argument(
         "--aid-search",
         action="store_true",
-        help="Enable auxiliary search using Google when TMDB search fails"
+        help="Enable auxiliary search when TMDB search fails"
     )
     parser.add_argument(
         "--lang",
@@ -177,7 +177,6 @@ def main():
         # Create pipeline
         pipeline = MediaPipeline(
             config,
-            quiet_google=has_direct_id,
             preferred_language=args.lang,
             verbose=args.verbose,
             quiet=args.quiet,

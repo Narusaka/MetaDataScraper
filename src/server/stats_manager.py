@@ -46,7 +46,14 @@ class StatsManager:
                         SUM(duration_seconds) as total_duration
                     FROM task_stats
                 """)
-                return dict(cursor.fetchone())
+                row = dict(cursor.fetchone())
+                return {
+                    "total_tasks": row.get("total_tasks") or 0,
+                    "total_media": row.get("total_media") or 0,
+                    "total_success": row.get("total_success") or 0,
+                    "total_failed": row.get("total_failed") or 0,
+                    "total_duration": row.get("total_duration") or 0,
+                }
         except Exception as e:
             print(f"Error reading stats: {e}")
             return {}

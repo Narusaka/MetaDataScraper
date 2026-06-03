@@ -29,6 +29,11 @@ class ArtworkDownloader:
             self.session.proxies.update(proxy)
         self.base_image_url = "https://image.tmdb.org/t/p/original"
 
+    def _tmdb_request_kwargs(self) -> Dict[str, Any]:
+        if self.tmdb_api_key and self.tmdb_api_key.startswith("eyJ") and self.tmdb_api_key.count(".") == 2:
+            return {"headers": {"Authorization": f"Bearer {self.tmdb_api_key}"}}
+        return {"params": {"api_key": self.tmdb_api_key}}
+
     def download_image(self, image_path: str, url: str, max_retries: int = 3) -> bool:
         """Download a single image with retry logic."""
         for attempt in range(max_retries):
@@ -72,12 +77,12 @@ class ArtworkDownloader:
         """Download all available images for a media item with robust error handling and Emby standard naming."""
         # Get images from TMDB with retry logic
         images_url = f"https://api.themoviedb.org/3/{media_type}/{tmdb_id}/images"
-        params = {"api_key": self.tmdb_api_key}
+        request_kwargs = self._tmdb_request_kwargs()
 
         images_data = None
         for attempt in range(3):
             try:
-                response = self.session.get(images_url, params=params, timeout=30)
+                response = self.session.get(images_url, timeout=30, **request_kwargs)
                 response.raise_for_status()
                 images_data = response.json()
                 # Only show total images count if extra_images is enabled, since we only use extra images in that case
@@ -269,7 +274,7 @@ class ArtworkDownloader:
             # Get episode stills for the first season
             try:
                 episodes_url = f"https://api.themoviedb.org/3/tv/{tmdb_id}/season/1"
-                response = self.session.get(episodes_url, params={"api_key": self.tmdb_api_key}, timeout=30)
+                response = self.session.get(episodes_url, timeout=30, **request_kwargs)
                 response.raise_for_status()
                 season_data = response.json()
 
@@ -305,7 +310,7 @@ class ArtworkDownloader:
             # Get credits data to find actor profile paths
             try:
                 credits_url = f"https://api.themoviedb.org/3/{media_type}/{tmdb_id}/credits"
-                response = self.session.get(credits_url, params={"api_key": self.tmdb_api_key}, timeout=30)
+                response = self.session.get(credits_url, timeout=30, **request_kwargs)
                 response.raise_for_status()
                 credits_data = response.json()
 

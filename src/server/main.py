@@ -225,20 +225,18 @@ async def test_connectivity():
     # Test TMDB
     try:
         api_key = config.get("tmdb", {}).get("api_key")
-        r = await asyncio.to_thread(requests.get, f"https://api.themoviedb.org/3/configuration?api_key={api_key}", proxies=proxies, timeout=5)
+        request_kwargs = {"proxies": proxies, "timeout": 5}
+        if api_key and api_key.startswith("eyJ") and api_key.count(".") == 2:
+            request_kwargs["headers"] = {"Authorization": f"Bearer {api_key}"}
+        else:
+            request_kwargs["params"] = {"api_key": api_key}
+        r = await asyncio.to_thread(requests.get, "https://api.themoviedb.org/3/configuration", **request_kwargs)
         results["tmdb"] = {"status": "ok" if r.ok else "failed", "code": r.status_code}
         if not r.ok:
              try: results["tmdb"]["message"] = r.json().get("status_message", "Unknown error")
              except: results["tmdb"]["message"] = r.text
     except Exception as e:
         results["tmdb"] = {"status": "error", "message": str(e)}
-
-    # Test Google
-    try:
-        r = await asyncio.to_thread(requests.get, "https://www.google.com", proxies=proxies, timeout=5)
-        results["google"] = {"status": "ok" if r.ok else "failed", "code": r.status_code}
-    except Exception as e:
-        results["google"] = {"status": "error", "message": str(e)}
 
     # Test Tavily
     try:

@@ -115,6 +115,19 @@ class FilenameParser:
     @staticmethod
     def extract_show_name(filename: str) -> str:
         """Extract potential show name from filename."""
+        filename = re.sub(r'\.(mkv|mp4|avi|mov|wmv|flv|webm|rmvb|m4v|ts)$', '', filename, flags=re.IGNORECASE)
+
+        def is_technical_block(value: str) -> bool:
+            technical_patterns = [
+                r'\d{3,4}p',
+                r'\b(?:bd|bdrip|web|webrip|web-dl|hdtv|bluray|dvdrip)\b',
+                r'\b(?:hevc|avc|x264|x265|h264|h265|10bit|8bit)\b',
+                r'\b(?:aac|opus|flac|dts|ac3)\b',
+                r'\b(?:chs|cht|jpn|eng|srt|ass|uncensored)\b',
+            ]
+            text = value.lower()
+            return any(re.search(pattern, text, re.IGNORECASE) for pattern in technical_patterns)
+
         # Anime Pattern: [Group] Show Name [Ep]
         if filename.startswith('['):
             # Find the first bracket block that is NOT digits (Group) and NOT resolution
@@ -129,7 +142,7 @@ class FilenameParser:
                 # Potential show name in second bracket?
                 candidate = matches[1]
                 # Filter out pure numbers or resolution
-                if not candidate.isdigit() and not re.match(r'^\d+p$', candidate):
+                if not candidate.isdigit() and not re.match(r'^\d+p$', candidate, re.IGNORECASE) and not is_technical_block(candidate):
                     return candidate
             
             # Fallback for [Group] Show Name - 01
@@ -139,6 +152,13 @@ class FilenameParser:
                 match = re.search(r'\s-\s\d+', no_brackets)
                 if match:
                      return no_brackets[:match.start()].strip()
+                match = re.search(r'\s\[\d{1,3}\]', filename)
+                if match:
+                    title = re.sub(r'\[.*?\]', '', filename[:match.start()]).strip()
+                    if title:
+                        return title
+                if len(no_brackets) > 1:
+                    return re.sub(r'\s{2,}', ' ', no_brackets).strip()
             
             # Fallthrough to standard parsers (Episode numbers, #, etc.) if bracket logic wasn't definitive
              

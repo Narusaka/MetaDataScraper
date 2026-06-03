@@ -17,7 +17,12 @@ fi
 
 echo "Starting Backend"
 export PYTHONPATH=$(pwd)
-python run_web.py &
+if [ -x ".venv/bin/python" ]; then
+    PYTHON=".venv/bin/python"
+else
+    PYTHON="python3"
+fi
+"$PYTHON" run_web.py &
 
 echo "Starting Frontend"
 cd client

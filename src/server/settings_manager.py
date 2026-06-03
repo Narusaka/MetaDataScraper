@@ -11,12 +11,34 @@ class SettingsManager:
         self.config_data = {}
         self._load()
 
+    def _defaults(self) -> Dict[str, Any]:
+        return {
+            "tmdb": {"api_key": ""},
+            "omdb": {"api_key": ""},
+            "tavily": {"api_key": ""},
+            "model": {
+                "base_url": "http://127.0.0.1:8045/v1",
+                "api_key": "EMPTY",
+                "model": "gemini-3-flash",
+                "temperature": 0.1,
+            },
+            "output": {"image_limit": {"posters": 20, "backdrops": 5}},
+        }
+
+    def _deep_update(self, target: Dict[str, Any], updates: Dict[str, Any]) -> Dict[str, Any]:
+        for key, value in updates.items():
+            if isinstance(value, dict) and isinstance(target.get(key), dict):
+                self._deep_update(target[key], value)
+            else:
+                target[key] = value
+        return target
+
     def _load(self):
+        data = {}
         if self.config_path.exists():
             with open(self.config_path, 'r') as f:
-                self.config_data = yaml.safe_load(f) or {}
-        else:
-            self.config_data = {}
+                data = yaml.safe_load(f) or {}
+        self.config_data = self._deep_update(self._defaults(), data)
 
     def get_settings(self) -> Dict[str, Any]:
         """
@@ -40,16 +62,7 @@ class SettingsManager:
             # Deep merge or selective update
             # For simplicity, we assume new_settings contains the relevant sections
             
-            # Helper to update nested dicts
-            def update(d, u):
-                for k, v in u.items():
-                    if isinstance(v, dict):
-                        d[k] = update(d.get(k, {}), v)
-                    else:
-                        d[k] = v
-                return d
-
-            update(self.config_data, new_settings)
+            self._deep_update(self.config_data, new_settings)
             
             # Ensure directory exists
             self.config_path.parent.mkdir(parents=True, exist_ok=True)
@@ -80,8 +93,6 @@ class SettingsManager:
         
         inject("tmdb.api_key", "TMDB_API_KEY")
         inject("omdb.api_key", "OMDB_API_KEY")
-        inject("google.api_key", "GOOGLE_API_KEY")
-        inject("google.search_engine_id", "GOOGLE_SEARCH_ENGINE_ID")
         inject("model.api_key", "MODEL_API_KEY")
         inject("model.base_url", "MODEL_BASE_URL")
         

@@ -39,10 +39,10 @@ function App() {
         setIsRunning(true);
       } else {
         const err = await res.json();
-        alert(`Failed to start task: ${err.detail || 'Unknown error'}`);
+        throw new Error(err.detail || 'Unknown error');
       }
     } catch (e) {
-      alert(`Network error starting task: ${e}`);
+      throw e instanceof Error ? e : new Error(String(e));
     }
   };
 

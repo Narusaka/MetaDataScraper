@@ -82,7 +82,7 @@ class JobManager:
             else:
                 try:
                     p = Path(input_dir)
-                    has_video_files = False
+                    video_file_count = 0
                     has_subdirs = False
                     has_season_dirs = False
                     import re
@@ -105,14 +105,17 @@ class JobManager:
                                 else:
                                     has_subdirs = True
                             elif item.is_file() and item.suffix.lower() in FilenameParser.VIDEO_EXTENSIONS:
-                                has_video_files = True
+                                video_file_count += 1
                         
                         if has_season_dirs:
                             logger.info("Auto-detect: Season folders found -> Using SINGLE Mode")
                             should_multi = False
-                        elif has_video_files and not has_subdirs:
-                            logger.info("Auto-detect: Single Video folder -> Using SINGLE Mode")
+                        elif video_file_count == 1 and not has_subdirs:
+                            logger.info("Auto-detect: One loose video file -> Using SINGLE Mode")
                             should_multi = False
+                        elif video_file_count > 1 and not has_subdirs:
+                            logger.info(f"Auto-detect: {video_file_count} loose video files found -> Using BATCH loose-file mode")
+                            should_multi = True
                         else:
                             should_multi = True
                 except Exception as e:
@@ -167,7 +170,7 @@ class JobManager:
                     duration=duration
                 )
         except Exception as e:
-            logger.error(f"Scraper Failed: {e}")
+            logger.exception(f"Scraper Failed: {e}")
             import traceback
             traceback.print_exc()
 

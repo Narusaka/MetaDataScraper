@@ -27,16 +27,23 @@ class TMDBAdapter:
         else:
              print("DEBUG: TMDBAdapter initialized WITHOUT proxy (Check your config/env if this is wrong)")
 
+    def _uses_bearer_token(self) -> bool:
+        return bool(self.api_key and self.api_key.startswith("eyJ") and self.api_key.count(".") == 2)
+
     def _make_request(self, endpoint: str, params: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """Make API request with retries and timeout."""
         url = f"{self.base_url}{endpoint}"
         params = params.copy() if params else {}
-        params['api_key'] = self.api_key
+        headers = {}
+        if self._uses_bearer_token():
+            headers["Authorization"] = f"Bearer {self.api_key}"
+        else:
+            params['api_key'] = self.api_key
 
         for attempt in range(3):
             try:
                 # verify=False to bypass SSL errors commonly found with local proxies
-                response = self.session.get(url, params=params, timeout=30, verify=False)
+                response = self.session.get(url, params=params, headers=headers, timeout=30, verify=False)
                 response.raise_for_status()
                 return response.json()
             except requests.RequestException as e:

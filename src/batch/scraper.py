@@ -86,22 +86,40 @@ class BatchMediaScraper:
 
     def _load_config(self, path: str) -> dict:
         p = Path(path)
-        c = {}
+        c = {
+            "tmdb": {"api_key": ""},
+            "omdb": {"api_key": ""},
+            "tavily": {"api_key": ""},
+            "model": {
+                "base_url": "http://127.0.0.1:8045/v1",
+                "api_key": "EMPTY",
+                "model": "gemini-3-flash",
+                "temperature": 0.1,
+            },
+            "output": {"image_limit": {"posters": 20, "backdrops": 5}},
+        }
         if p.exists():
             with open(p, 'r') as f:
-                c = yaml.safe_load(f)
+                loaded = yaml.safe_load(f) or {}
+                self._deep_update(c, loaded)
                 logger.info(f"Loaded config from {path}")
         
         # Inject Secrets from Environment
         self._inject_env(c, "TMDB_API_KEY", ["tmdb", "api_key"])
         self._inject_env(c, "OMDB_API_KEY", ["omdb", "api_key"])
-        self._inject_env(c, "GOOGLE_API_KEY", ["google", "api_key"])
-        self._inject_env(c, "GOOGLE_SEARCH_ENGINE_ID", ["google", "search_engine_id"])
         self._inject_env(c, "MODEL_API_KEY", ["model", "api_key"])
         self._inject_env(c, "MODEL_BASE_URL", ["model", "base_url"])
         self._inject_env(c, "TAVILY_API_KEY", ["tavily", "api_key"])
         
         return c
+
+    def _deep_update(self, target: dict, updates: dict) -> dict:
+        for key, value in updates.items():
+            if isinstance(value, dict) and isinstance(target.get(key), dict):
+                self._deep_update(target[key], value)
+            else:
+                target[key] = value
+        return target
 
     def _inject_env(self, config: dict, env_key: str, config_path: List[str]):
         val = os.getenv(env_key)
@@ -166,7 +184,6 @@ class BatchMediaScraper:
         if not self.pipeline:
              self.pipeline = MediaPipeline(
                  self.config, 
-                 quiet_google=True, 
                  verbose=False,
                  quiet=True, # Batch mode quiet
                  inplace=self.inplace_rename,

@@ -6,7 +6,6 @@ from typing import Dict, Any, List, Optional
 
 from ..adapters.tmdb import TMDBAdapter
 from ..adapters.OMDB import OMDBAdapter
-from ..adapters.google_search import GoogleSearchAdapter
 from ..adapters.tavily_search import TavilySearchAdapter
 
 from ..core.normalize import DataNormalizer
@@ -21,7 +20,7 @@ from ..core.logger import MetadataLogger
 class MediaPipeline:
     """Linearly process media metadata without LangGraph overhead."""
 
-    def __init__(self, config: Dict[str, Any], quiet_google: bool = False, skip_images: bool = False, preferred_language: str = "zh-CN", verbose: bool = False, quiet: bool = False, inplace: bool = False, extra_images: bool = False):
+    def __init__(self, config: Dict[str, Any], skip_images: bool = False, preferred_language: str = "zh-CN", verbose: bool = False, quiet: bool = False, inplace: bool = False, extra_images: bool = False):
         self.config = config
         self.skip_images = skip_images
         self.preferred_language = preferred_language
@@ -49,15 +48,6 @@ class MediaPipeline:
             proxy=config.get("proxy")
         )
         
-        # Google Search
-        google_config = config.get("google", {})
-        self.google_search = GoogleSearchAdapter(
-            proxy=config.get("proxy"),
-            api_key=google_config.get("api_key"),
-            search_engine_id=google_config.get("search_engine_id"),
-            quiet=quiet_google
-        )
-
         # Tavily Search
         tavily_config = config.get("tavily", {})
         tavily_keys = tavily_config.get("api_keys", [])
@@ -340,15 +330,48 @@ class MediaPipeline:
                              best_score = current_score
                              best_match = c
                 
-                # Final filter: Minimum similarity threshold
-                threshold = 0.25 
+                def has_cjk(text: str) -> bool:
+                    return bool(re.search(r'[\u3040-\u30ff\u3400-\u9fff]', text))
+
+                def token_overlap(a: str, b: str) -> float:
+                    a_tokens = set(re.findall(r'[a-z0-9]+', a.lower()))
+                    b_tokens = set(re.findall(r'[a-z0-9]+', b.lower()))
+                    if not a_tokens or not b_tokens:
+                        return 0.0
+                    return len(a_tokens & b_tokens) / len(a_tokens)
+
+                # Final filter: Romanized anime searches often return localized CJK titles.
+                # Be strict for Latin-to-Latin matches to avoid false positives like
+                # "Front Innocent" -> "Steven Avery: Innocent or Guilty?", but allow
+                # low text similarity when TMDB returns a localized CJK candidate.
+                threshold = 0.25
                 if best_match:
-                    if best_score >= threshold:
+                    title_for_filter = f"{best_match.get('name') or best_match.get('title') or ''} {best_match.get('original_name') or best_match.get('original_title') or ''}"
+                    query_has_cjk = has_cjk(clean_query)
+                    candidate_has_cjk = has_cjk(title_for_filter)
+                    latin_overlap = token_overlap(clean_query, title_for_filter)
+
+                    accepts_localized_title = (
+                        not target_year
+                        and not query_has_cjk
+                        and candidate_has_cjk
+                        and len(all_candidates) <= 2
+                    )
+                    accepts_latin_title = best_score >= 0.55 or latin_overlap >= 0.75
+
+                    accepts_candidate = (
+                        accepts_latin_title
+                        if not candidate_has_cjk
+                        else (best_score >= threshold or accepts_localized_title)
+                    )
+
+                    if accepts_candidate:
                         candidate = best_match
                         candidate["media_type"] = candidate["_search_type"]
-                        self._log(f"   ✅ Selected Best Match: {candidate.get('name') or candidate.get('title')} (ID: {candidate.get('id')}, Score: {best_score:.2f}, Type: {candidate['media_type']})")
+                        reason = "localized title" if accepts_localized_title and best_score < threshold else "similarity"
+                        self._log(f"   ✅ Selected Best Match: {candidate.get('name') or candidate.get('title')} (ID: {candidate.get('id')}, Score: {best_score:.2f}, Type: {candidate['media_type']}, Reason: {reason})")
                     else:
-                        self._log(f"   ⚠️ Best match '{best_match.get('name') or best_match.get('title')}' rejected due to low similarity ({best_score:.2f} < {threshold})")
+                        self._log(f"   ⚠️ Best match '{best_match.get('name') or best_match.get('title')}' rejected due to low confidence (score={best_score:.2f}, token_overlap={latin_overlap:.2f})")
                 elif target_year:
                      self._log(f"   ⚠️ No candidates matched year {target_year}")
 
@@ -363,16 +386,6 @@ class MediaPipeline:
                     self._log(f"   ✅ Tavily Found ID: {tavily_id} (Type: {m_type})")
                     break
         
-        # 3. Google Search (Final Fallback if enabled and others failed)
-        if not candidate and mode == "smart" and self.google_search and not self.tavily_search:
-             self._log(f"🔍 Trying Google Search Fallback...")
-             for m_type in search_types:
-                 google_id = self.google_search.search_tmdb_id(query, m_type, verbose=self.verbose)
-                 if google_id:
-                     candidate = {"id": google_id, "media_type": m_type}
-                     self._log(f"   ✅ Google Found ID: {google_id} (Type: {m_type})")
-                     break
-
         return {"selected": candidate}
 
     def _step_fetch(self, tmdb_id: int, media_type: str) -> Dict[str, Any]:

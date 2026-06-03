@@ -35,7 +35,6 @@ export function Header({ title }: { title: string, isRunning?: boolean }) { // K
 
             // Format result for toast
             const tmdbOk = data.tmdb?.status === 'ok';
-            const googleOk = data.google?.status === 'ok';
             const tavilyOk = data.tavily?.status === 'ok';
 
             const msg = (
@@ -45,10 +44,6 @@ export function Header({ title }: { title: string, isRunning?: boolean }) { // K
                         <div className={cn("w-2 h-2 rounded-full", tmdbOk ? "bg-green-500" : "bg-red-500")} />
                         TMDB: {data.tmdb?.message || 'OK'}
                     </div>
-                    <div className={cn("flex items-center gap-2", googleOk ? "text-green-500" : "text-red-500")}>
-                        <div className={cn("w-2 h-2 rounded-full", googleOk ? "bg-green-500" : "bg-red-500")} />
-                        Google: {data.google?.message || 'OK'}
-                    </div>
                     <div className={cn("flex items-center gap-2", tavilyOk ? "text-green-500" : "text-amber-500")}>
                         <div className={cn("w-2 h-2 rounded-full", tavilyOk ? "bg-green-500" : "bg-amber-500")} />
                         Tavily: {data.tavily?.message || 'OK'}
@@ -57,7 +52,7 @@ export function Header({ title }: { title: string, isRunning?: boolean }) { // K
             );
 
             toast.dismiss(toastId);
-            if (tmdbOk && googleOk && tavilyOk) toast.success(msg, { duration: 3000 });
+            if (tmdbOk && tavilyOk) toast.success(msg, { duration: 3000 });
             else if (tmdbOk) toast.warning(msg, { duration: 5000 }); // Partial success
             else toast.error(msg, { duration: 5000 });
 

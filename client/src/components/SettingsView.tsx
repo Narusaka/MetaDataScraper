@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from 'react';
-import { Save, Loader2, Key, Database, Image as ImageIcon, Monitor, Cpu, Bell, CheckCircle2, XCircle } from 'lucide-react';
+import { Save, Loader2, Key, Database, Image as ImageIcon, Monitor, Cpu, CheckCircle2, XCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '../lib/utils';
 import { useTranslation } from '../lib/language';
@@ -11,7 +11,7 @@ import { apiUrl } from '../lib/api';
 interface Config {
     tmdb?: { api_key: string };
     omdb?: { api_key: string };
-    google?: { api_key: string; search_engine_id: string };
+    tavily?: { api_key: string };
     model?: {
         base_url: string;
         api_key: string;
@@ -198,6 +198,12 @@ export function SettingsView() {
                                 onChange={(v) => updateConfig('omdb', 'api_key', v)}
                                 type="password"
                             />
+                            <InputGroup
+                                label="Tavily API Key"
+                                value={config.tavily?.api_key || ""}
+                                onChange={(v) => updateConfig('tavily', 'api_key', v)}
+                                type="password"
+                            />
                         </div>
                     </div>
 
@@ -380,7 +386,7 @@ function ProxyTester() {
             </button>
             {status && (
                 <div className="flex gap-2">
-                    {['tmdb', 'google'].map(service => (
+                    {['tmdb', 'tavily'].map(service => (
                         <div key={service} className={cn(
                             "px-2 py-0.5 rounded text-[8px] font-bold uppercase tracking-tighter border",
                             status[service]?.status === 'ok'
@@ -435,4 +441,3 @@ function MacOsSlider({ min, max, value, onChange, icon }: any) {
         </div>
     )
 }
-

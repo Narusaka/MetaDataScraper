@@ -78,30 +78,37 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
     const handleStart = async () => {
         if (isRunning) {
             onStop();
-            return;
+            return false;
         }
 
+        const toastId = toast.loading('Starting task...');
 
-
-        onStart({
-            input_dir: selectedPath,
-            workers,
-            dry_run: strategy === 'audit',
-            inplace: strategy === 'organize',
-            copy_mode: strategy === 'copy',
-            output_dir: strategy === 'copy' ? outputPath : null,
-            use_local_nfo: useLocalNfo,
-            extra_images: extraImages,
-            media_type: mediaType || null,
-            tmdb_id: (multiMode === 'single' && tmdbId) ? parseInt(tmdbId) : null,
-            search_mode: searchMode,
-            enable_fallback: true,
-            multi_mode: multiMode === 'auto' ? null : (multiMode === 'batch'),
-            fresh: forceFresh,
-            enable_organize: enableOrganize,
-            overwrite_images: overwriteImages,
-            rename_parent_dir: renameParentDir
-        });
+        try {
+            await onStart({
+                input_dir: selectedPath,
+                workers,
+                dry_run: strategy === 'audit',
+                inplace: strategy === 'organize',
+                copy_mode: strategy === 'copy',
+                output_dir: strategy === 'copy' ? outputPath : null,
+                use_local_nfo: useLocalNfo,
+                extra_images: extraImages,
+                media_type: mediaType || null,
+                tmdb_id: (multiMode === 'single' && tmdbId) ? parseInt(tmdbId) : null,
+                search_mode: searchMode,
+                enable_fallback: true,
+                multi_mode: multiMode === 'auto' ? null : (multiMode === 'batch'),
+                fresh: forceFresh,
+                enable_organize: enableOrganize,
+                overwrite_images: overwriteImages,
+                rename_parent_dir: renameParentDir
+            });
+            toast.success('Task started', { id: toastId });
+            return true;
+        } catch (e) {
+            toast.error(`Failed to start task: ${e instanceof Error ? e.message : String(e)}`, { id: toastId });
+            return false;
+        }
     };
 
     return (
@@ -172,13 +179,15 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
                                 const errText = await checkRes.text();
                                 console.warn("Path check API returned non-OK status:", checkRes.status, errText);
                                 toast.error(`Server Error (${checkRes.status}): ${errText}`);
+                                return;
                             }
                         } catch (e) {
                             console.error("Path check failed", e);
                             toast.error(`Network Error: ${e}`);
+                            return;
                         }
                         console.log("Invoking handleStart()...");
-                        handleStart();
+                        await handleStart();
                     }}
                     disabled={!selectedPath && !isRunning}
                     className={cn(
@@ -297,7 +306,7 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
                                             options={[
                                                 { value: 'smart', label: t('smart' as any) || 'Smart' },
                                                 { value: 'tmdb_only', label: 'TMDB' },
-                                                { value: 'tavily_only', label: 'Web' },
+                                                { value: 'tavily_only', label: 'Tavily' },
                                             ]}
                                             value={searchMode}
                                             onChange={(v: any) => setSearchMode(v as any)}

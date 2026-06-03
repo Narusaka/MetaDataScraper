@@ -1,4 +1,15 @@
 tmdb:
-  api_key: db74d5ac6632ff226c53520f309cbd1e
+  api_key: eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2MWU4YmZmNTA2Mzc1YmZiOTU4ZDNmYWFhNTYxYTM1OSIsIm5iZiI6MTcyNjQ4NjgyNC44NDUsInN1YiI6IjY2ZTgxOTI4ZTgyMTFlY2QyMmIxMDA0ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.S45U6PXcK0kLk5y0ftX6vCSlp_lljVjucMZ882fJISw
 omdb:
   api_key: 330effac
+tavily:
+  api_key: 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
+model:
+  base_url: http://127.0.0.1:8045/v1
+  api_key: EMPTY
+  model: gemini-3-flash
+  temperature: 0.1
+output:
+  image_limit:
+    posters: 20
+    backdrops: 5

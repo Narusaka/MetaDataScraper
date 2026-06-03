@@ -97,6 +97,7 @@ class MediaPipeline:
             # 1. Input & Search
             search_result = self._step_search(input_data)
             candidate = search_result.get("selected")
+            match_explanation = search_result.get("match", {})
             
             if not candidate:
                 self._log("❌ No candidate found.", verbose_only=False)
@@ -185,6 +186,7 @@ class MediaPipeline:
                 return {
                     "status": "audit_completed",
                     "candidate": candidate,
+                    "match": match_explanation,
                     "tmdb_id": tmdb_id,
                     "media_type": media_type
                 }
@@ -224,6 +226,8 @@ class MediaPipeline:
             return {
                 "status": "completed",
                 "normalized": normalized,
+                "candidate": candidate,
+                "match": match_explanation,
                 "nfo": nfo_data,
                 "source_data": source_data,
                 "output": output_result
@@ -264,9 +268,26 @@ class MediaPipeline:
 
         # Direct ID
         if tmdb_id:
-            return {"selected": {"id": int(tmdb_id), "media_type": media_type}}
+            return {
+                "selected": {"id": int(tmdb_id), "media_type": media_type},
+                "match": {
+                    "provider": "manual",
+                    "confidence": "manual",
+                    "reason": "tmdb_id_override",
+                    "score": 1.0,
+                    "candidates": [],
+                },
+            }
             
         candidate = None
+        match_explanation: Dict[str, Any] = {
+            "provider": None,
+            "confidence": "none",
+            "reason": "no_candidate",
+            "score": 0.0,
+            "token_overlap": 0.0,
+            "candidates": [],
+        }
         
         # User defined priority: Smart Mode (Auto) -> Prioritize Movie
         if force_type:
@@ -303,6 +324,8 @@ class MediaPipeline:
                      s1 = difflib.SequenceMatcher(None, clean_query, c_title.lower()).ratio()
                      s2 = difflib.SequenceMatcher(None, clean_query, c_orig_title.lower()).ratio()
                      current_score = max(s1, s2)
+                     c["_match_score"] = current_score
+                     c["_match_year"] = c_year
                      
                      match_info = f" [Score: {current_score:.2f}]"
                      if target_year:
@@ -364,11 +387,38 @@ class MediaPipeline:
                         if not candidate_has_cjk
                         else (best_score >= threshold or accepts_localized_title)
                     )
+                    top_candidates = sorted(all_candidates, key=lambda item: item.get("_match_score", 0), reverse=True)[:5]
+                    match_explanation = {
+                        "provider": "tmdb",
+                        "confidence": "none",
+                        "reason": "low_confidence",
+                        "score": round(best_score, 4),
+                        "token_overlap": round(latin_overlap, 4),
+                        "target_year": target_year,
+                        "candidates": [
+                            {
+                                "id": item.get("id"),
+                                "title": item.get("name") or item.get("title"),
+                                "original_title": item.get("original_name") or item.get("original_title"),
+                                "media_type": item.get("_search_type"),
+                                "year": item.get("_match_year"),
+                                "score": round(item.get("_match_score", 0), 4),
+                            }
+                            for item in top_candidates
+                        ],
+                    }
 
                     if accepts_candidate:
                         candidate = best_match
                         candidate["media_type"] = candidate["_search_type"]
                         reason = "localized title" if accepts_localized_title and best_score < threshold else "similarity"
+                        confidence = "high" if best_score >= 0.75 or latin_overlap >= 0.85 else ("medium" if best_score >= 0.55 or latin_overlap >= 0.75 else "low")
+                        match_explanation.update({
+                            "confidence": confidence,
+                            "reason": reason,
+                            "selected_id": candidate.get("id"),
+                            "selected_title": candidate.get("name") or candidate.get("title"),
+                        })
                         self._log(f"   ✅ Selected Best Match: {candidate.get('name') or candidate.get('title')} (ID: {candidate.get('id')}, Score: {best_score:.2f}, Type: {candidate['media_type']}, Reason: {reason})")
                     else:
                         self._log(f"   ⚠️ Best match '{best_match.get('name') or best_match.get('title')}' rejected due to low confidence (score={best_score:.2f}, token_overlap={latin_overlap:.2f})")
@@ -383,10 +433,19 @@ class MediaPipeline:
                 tavily_id = self.tavily_search.search_tmdb_id(query, m_type, year=target_year, verbose=self.verbose)
                 if tavily_id:
                     candidate = {"id": tavily_id, "media_type": m_type}
+                    match_explanation = {
+                        "provider": "tavily",
+                        "confidence": "external",
+                        "reason": "tavily_tmdb_id_result",
+                        "score": None,
+                        "selected_id": tavily_id,
+                        "selected_title": None,
+                        "candidates": [],
+                    }
                     self._log(f"   ✅ Tavily Found ID: {tavily_id} (Type: {m_type})")
                     break
         
-        return {"selected": candidate}
+        return {"selected": candidate, "match": match_explanation}
 
     def _step_fetch(self, tmdb_id: int, media_type: str) -> Dict[str, Any]:
         """Step 2: Fetch metadata."""
@@ -587,5 +646,7 @@ class MediaPipeline:
             self.artwork.download_all_images(
                 media_type, tmdb_id, media_dir, 
                 verbose=self.verbose, 
-                extra_images=input_data.get("extra_images", False)
+                extra_images=input_data.get("extra_images", False),
+                image_limits=self.config.get("output", {}).get("image_limit", {}),
+                overwrite=input_data.get("overwrite_images", False)
             )

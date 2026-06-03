@@ -13,3 +13,6 @@ output:
   image_limit:
     posters: 20
     backdrops: 5
+    logos: 5
+    stills: 10
+    actors: 10

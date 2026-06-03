@@ -17,6 +17,9 @@ class MediaScanner:
 
     def scan_single(self, input_dir: Path) -> List[dict]:
         """Scan single directory mode."""
+        if not self.has_processable_media(input_dir):
+            logger.info(f"No media or NFO files found in {input_dir}. Skipping single-directory task.")
+            return []
         # For single mode, we apply global ID if exists
         task = self._create_task_for_dir(input_dir, force_id=self.global_tmdb_id)
         return [task]
@@ -86,6 +89,17 @@ class MediaScanner:
             f for f in dir_path.iterdir() 
             if f.is_file() and (f.suffix.lower() in FilenameParser.VIDEO_EXTENSIONS or f.suffix.lower() in sub_exts)
         ]
+
+    def has_processable_media(self, dir_path: Path) -> bool:
+        media_exts = set(FilenameParser.VIDEO_EXTENSIONS) | {'.nfo'}
+        try:
+            return any(
+                item.is_file() and item.suffix.lower() in media_exts
+                for item in dir_path.rglob("*")
+            )
+        except OSError as e:
+            logger.warning(f"Could not scan {dir_path} for media files: {e}")
+            return False
 
     def _create_task_for_dir(self, dir_path: Path, force_id: Optional[int] = None) -> dict:
         tmdb_id = force_id

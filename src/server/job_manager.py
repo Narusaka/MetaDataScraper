@@ -4,6 +4,7 @@ from concurrent.futures import ThreadPoolExecutor
 from typing import Optional, Dict, Any
 from pathlib import Path
 from src.batch.scraper import BatchMediaScraper
+from src.server.task_events import task_event_store
 
 import threading
 
@@ -38,7 +39,8 @@ class JobManager:
                              fresh: bool = False,
                              enable_organize: bool = False,
                              overwrite_images: bool = False,
-                             rename_parent_dir: bool = False):
+                             rename_parent_dir: bool = False,
+                             task_id: Optional[str] = None):
         
         if self.is_running:
             raise Exception("A task is already running")
@@ -46,6 +48,7 @@ class JobManager:
         self.is_running = True
         self.stop_signal.clear() # Reset stop signal
         logger.info(f"JobManager: Starting batch scan for {input_dir}")
+        task_event_store.emit(task_id, "task.started", {"input_dir": input_dir})
         
         loop = asyncio.get_running_loop()
         
@@ -53,23 +56,25 @@ class JobManager:
             await loop.run_in_executor(
                 self.executor, 
                 self._run_scraper_sync,
-                input_dir, config_path, workers, dry_run, inplace, copy, output_dir, use_local_nfo, extra_images, media_type, tmdb_id, search_mode, enable_fallback, multi_mode, fresh, enable_organize, overwrite_images, rename_parent_dir
+                input_dir, config_path, workers, dry_run, inplace, copy, output_dir, use_local_nfo, extra_images, media_type, tmdb_id, search_mode, enable_fallback, multi_mode, fresh, enable_organize, overwrite_images, rename_parent_dir, task_id
             )
         except Exception as e:
             logger.error(f"JobManager Error: {e}")
+            task_event_store.emit(task_id, "task.failed", {"error": str(e)})
         finally:
             self.is_running = False
             self.current_task = None
             self.stop_signal.clear()
             logger.info("JobManager: Task finished")
 
-    def _run_scraper_sync(self, input_dir: str, config_path: str, workers: int, dry_run: bool, inplace: bool, copy: bool, output_dir: Optional[str], use_local_nfo: bool, extra_images: bool, media_type: Optional[str], tmdb_id: Optional[int], search_mode: str, enable_fallback: bool, multi_mode: Optional[bool], fresh: bool, enable_organize: bool, overwrite_images: bool, rename_parent_dir: bool):
+    def _run_scraper_sync(self, input_dir: str, config_path: str, workers: int, dry_run: bool, inplace: bool, copy: bool, output_dir: Optional[str], use_local_nfo: bool, extra_images: bool, media_type: Optional[str], tmdb_id: Optional[int], search_mode: str, enable_fallback: bool, multi_mode: Optional[bool], fresh: bool, enable_organize: bool, overwrite_images: bool, rename_parent_dir: bool, task_id: Optional[str]):
         """
         Synchronous wrapper to run BatchMediaScraper
         """
         try:
             if self.stop_signal.is_set():
                  logger.warning("JobManager: Task aborted before start.")
+                 task_event_store.emit(task_id, "task.stopped", {"stage": "before_start"})
                  return
 
             should_multi = True
@@ -122,8 +127,15 @@ class JobManager:
                     logger.warning(f"Auto-detect failed, defaulting to Multi: {e}")
                     should_multi = True
             
+            task_event_store.emit(
+                task_id,
+                "task.mode_detected",
+                {"mode": "multi" if should_multi else "single", "multi_mode": should_multi},
+            )
+            
             if self.stop_signal.is_set():
                  logger.warning("JobManager: Task aborted before scraper init.")
+                 task_event_store.emit(task_id, "task.stopped", {"stage": "before_scraper_init"})
                  return
 
             import time
@@ -147,7 +159,8 @@ class JobManager:
                 fresh=fresh,
                 enable_organize=enable_organize,
                 overwrite_images=overwrite_images,
-                rename_parent_dir=rename_parent_dir
+                rename_parent_dir=rename_parent_dir,
+                task_id=task_id
             )
             self.scraper = scraper 
             
@@ -155,10 +168,15 @@ class JobManager:
             if self.stop_signal.is_set():
                 logger.warning("JobManager: Task aborted immediately after init.")
                 scraper.stop() # Ensure internal cleanup if needed
+                task_event_store.emit(task_id, "task.stopped", {"stage": "after_scraper_init"})
                 return
 
             results = scraper.run(input_dir)
             self.scraper = None
+            if self.stop_signal.is_set() or (results and results.get("stopped")):
+                task_event_store.emit(task_id, "task.stopped", {"summary": results or {}})
+            else:
+                task_event_store.emit(task_id, "task.completed", {"summary": results or {}})
             
             duration = time.time() - start_time
             if results and not dry_run:
@@ -171,6 +189,7 @@ class JobManager:
                 )
         except Exception as e:
             logger.exception(f"Scraper Failed: {e}")
+            task_event_store.emit(task_id, "task.failed", {"error": str(e)})
             import traceback
             traceback.print_exc()
 

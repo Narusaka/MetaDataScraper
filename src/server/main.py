@@ -10,6 +10,7 @@ from pathlib import Path
 
 # Import our customized modules
 from src.server.logger_handler import log_broadcaster
+from src.server.task_events import task_event_store
 from src.server.job_manager import job_manager
 from src.server.settings_manager import SettingsManager
 
@@ -89,6 +90,7 @@ async def startup_event():
     # Pass the running loop to the logger so it can schedule broadcasts
     loop = asyncio.get_running_loop()
     log_broadcaster.set_loop(loop)
+    task_event_store.set_loop(loop)
     
     # --- System Cleanup ---
     try:
@@ -180,6 +182,23 @@ async def check_path(path: str):
 async def start_task(req: TaskStartRequest):
     if job_manager.is_running:
          raise HTTPException(status_code=400, detail="Task already running")
+
+    task = task_event_store.create_task(
+        req.input_dir,
+        {
+            "dry_run": req.dry_run,
+            "strategy": "copy" if req.copy_mode else "inplace",
+            "workers": req.workers,
+            "media_type": req.media_type,
+            "tmdb_id": req.tmdb_id,
+            "search_mode": req.search_mode,
+            "multi_mode": req.multi_mode,
+            "extra_images": req.extra_images,
+            "enable_organize": req.enable_organize,
+            "overwrite_images": req.overwrite_images,
+            "rename_parent_dir": req.rename_parent_dir,
+        },
+    )
     
     # Fire and forget (task runs in background)
     asyncio.create_task(job_manager.start_batch_scan(
@@ -199,10 +218,41 @@ async def start_task(req: TaskStartRequest):
         fresh=req.fresh,
         enable_organize=req.enable_organize,
         overwrite_images=req.overwrite_images,
-        rename_parent_dir=req.rename_parent_dir
+        rename_parent_dir=req.rename_parent_dir,
+        task_id=task["id"]
     ))
     
-    return {"status": "started", "message": f"Scanning {req.input_dir}"}
+    return {"status": "started", "task_id": task["id"], "message": f"Scanning {req.input_dir}"}
+
+@app.get("/api/tasks")
+async def list_tasks():
+    return {"tasks": task_event_store.list_tasks()}
+
+@app.get("/api/tasks/{task_id}")
+async def get_task(task_id: str):
+    task = task_event_store.get_task(task_id)
+    if not task:
+        raise HTTPException(status_code=404, detail="Task not found")
+    return task
+
+@app.get("/api/tasks/{task_id}/manifest")
+async def get_task_manifest(task_id: str):
+    from src.core.operation_manifest import get_manifest
+
+    manifest = get_manifest(task_id)
+    if not manifest:
+        raise HTTPException(status_code=404, detail="Manifest not found")
+    return manifest
+
+@app.post("/api/tasks/{task_id}/rollback")
+async def rollback_task(task_id: str):
+    from src.core.operation_manifest import rollback_manifest
+
+    result = rollback_manifest(task_id)
+    if result["status"] == "not_found":
+        raise HTTPException(status_code=404, detail="Manifest not found")
+    task_event_store.emit(task_id, "task.rollback_completed", result)
+    return result
 
 @app.post("/api/tasks/stop")
 async def stop_task():
@@ -304,3 +354,16 @@ async def websocket_logs(websocket: WebSocket):
             await websocket.send_text(message)
     except WebSocketDisconnect:
         log_broadcaster.unsubscribe(queue)
+
+@app.websocket("/ws/events")
+async def websocket_events(websocket: WebSocket):
+    await websocket.accept()
+    queue = await task_event_store.subscribe()
+    
+    try:
+        import json
+        while True:
+            event = await queue.get()
+            await websocket.send_text(json.dumps(event, ensure_ascii=False))
+    except WebSocketDisconnect:
+        task_event_store.unsubscribe(queue)

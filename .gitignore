@@ -134,7 +134,6 @@ config/config.yaml
 *.swp
 *.bak
 *.orig
-tests/
 test_media_env/
 # LLM or AI related caches if any
 .model_artifacts/

@@ -101,10 +101,6 @@ function App() {
       />
 
       <main className="flex-1 flex flex-col relative w-full h-full overflow-hidden">
-        {/* Background Ambient Glow */}
-        <div className="fixed top-[-20%] right-[-10%] w-[600px] h-[600px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
-        <div className="fixed bottom-[-20%] left-[-10%] w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-[100px] pointer-events-none" />
-
         {/* Mobile Header */}
         <div className="md:hidden h-16 shrink-0 border-b border-border-light flex items-center px-4 bg-panel/80 backdrop-blur-md cursor-pointer z-30" onClick={() => setMobileMenuOpen(true)}>
           <Menu className="mr-3 text-text-muted transition-colors hover:text-white" />

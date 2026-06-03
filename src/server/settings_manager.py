@@ -22,7 +22,7 @@ class SettingsManager:
                 "model": "gemini-3-flash",
                 "temperature": 0.1,
             },
-            "output": {"image_limit": {"posters": 20, "backdrops": 5}},
+            "output": {"image_limit": {"posters": 20, "backdrops": 5, "logos": 5, "stills": 10, "actors": 10}},
         }
 
     def _deep_update(self, target: Dict[str, Any], updates: Dict[str, Any]) -> Dict[str, Any]:

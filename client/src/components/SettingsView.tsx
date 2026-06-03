@@ -22,6 +22,9 @@ interface Config {
         image_limit?: {
             posters: number;
             backdrops: number;
+            logos: number;
+            stills: number;
+            actors: number;
         }
     }
     [key: string]: any;
@@ -94,6 +97,19 @@ export function SettingsView() {
                 }
             };
         });
+    };
+
+    const updateImageLimit = (key: 'posters' | 'backdrops' | 'logos' | 'stills' | 'actors', value: number) => {
+        setConfig(prev => ({
+            ...prev!,
+            output: {
+                ...prev?.output,
+                image_limit: {
+                    ...prev?.output?.image_limit,
+                    [key]: value,
+                },
+            },
+        }));
     };
 
     if (loading && !config) {
@@ -270,49 +286,12 @@ export function SettingsView() {
                     <div className="space-y-6">
                         <SectionLabel icon={<ImageIcon />} label="Output Settings" />
 
-                        <div className="flex gap-4">
-                            <div className="flex-1">
-                                <label className="text-xs text-secondary font-medium mb-1 block">Poster Limit</label>
-                                <input
-                                    type="number"
-                                    className="w-full glass-panel-pro bg-black/10 px-3 py-2 rounded-lg border-border/30 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
-                                    value={config.output?.image_limit?.posters || 20}
-                                    onChange={(e) => {
-                                        const val = parseInt(e.target.value);
-                                        setConfig(prev => ({
-                                            ...prev!,
-                                            output: {
-                                                ...prev?.output,
-                                                image_limit: {
-                                                    ...prev?.output?.image_limit,
-                                                    posters: val
-                                                }
-                                            }
-                                        }))
-                                    }}
-                                />
-                            </div>
-                            <div className="flex-1">
-                                <label className="text-xs text-secondary font-medium mb-1 block">Backdrop Limit</label>
-                                <input
-                                    type="number"
-                                    className="w-full glass-panel-pro bg-black/10 px-3 py-2 rounded-lg border-border/30 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
-                                    value={config.output?.image_limit?.backdrops || 5}
-                                    onChange={(e) => {
-                                        const val = parseInt(e.target.value);
-                                        setConfig(prev => ({
-                                            ...prev!,
-                                            output: {
-                                                ...prev?.output,
-                                                image_limit: {
-                                                    ...prev?.output?.image_limit,
-                                                    backdrops: val
-                                                }
-                                            }
-                                        }))
-                                    }}
-                                />
-                            </div>
+                        <div className="grid grid-cols-2 gap-4">
+                            <NumberInputGroup label="Poster Limit" value={config.output?.image_limit?.posters || 20} onChange={(v) => updateImageLimit('posters', v)} />
+                            <NumberInputGroup label="Backdrop Limit" value={config.output?.image_limit?.backdrops || 5} onChange={(v) => updateImageLimit('backdrops', v)} />
+                            <NumberInputGroup label="Logo Limit" value={config.output?.image_limit?.logos || 5} onChange={(v) => updateImageLimit('logos', v)} />
+                            <NumberInputGroup label="Still Limit" value={config.output?.image_limit?.stills || 10} onChange={(v) => updateImageLimit('stills', v)} />
+                            <NumberInputGroup label="Actor Limit" value={config.output?.image_limit?.actors || 10} onChange={(v) => updateImageLimit('actors', v)} />
                         </div>
                     </div>
                 </div>
@@ -350,6 +329,25 @@ function InputGroup({ label, value, onChange, placeholder, type = "text" }: {
             />
         </div>
     )
+}
+
+function NumberInputGroup({ label, value, onChange }: {
+    label: string,
+    value: number,
+    onChange: (val: number) => void,
+}) {
+    return (
+        <div>
+            <label className="text-xs text-secondary font-medium mb-1 block">{label}</label>
+            <input
+                type="number"
+                min={0}
+                value={value}
+                onChange={(e) => onChange(parseInt(e.target.value) || 0)}
+                className="w-full glass-panel-pro bg-black/10 px-3 py-2 rounded-lg border-border/30 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+            />
+        </div>
+    );
 }
 
 function ProxyTester() {

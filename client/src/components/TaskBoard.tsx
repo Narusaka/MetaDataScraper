@@ -3,14 +3,16 @@ import {
     CheckCircle2, AlertCircle, RotateCcw,
     LayoutGrid, List, FileVideo, Play, Square,
     Clock, MonitorPlay, ArrowDownAZ, ArrowUp, ArrowDown,
-    Activity
+    Activity, Undo2, ChevronDown
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { cn } from '../lib/utils';
 import { useTranslation } from '../lib/language';
 import { apiUrl, wsUrl } from '../lib/api';
+import { toast } from 'sonner';
 
 interface Task {
+    taskId?: string;
     threadId: string;
     createdAt: number;
     name: string;
@@ -25,6 +27,58 @@ interface Task {
     isExpanded: boolean;
     hasExecuted?: boolean;
     resultSummary?: string; // Sentence summary of result
+    plan?: ExecutionPlan;
+    planSummary?: PlanSummary;
+    match?: MatchExplanation;
+}
+
+interface MatchExplanation {
+    provider?: string | null;
+    confidence?: string;
+    reason?: string;
+    score?: number | null;
+    token_overlap?: number;
+    selected_id?: number;
+    selected_title?: string;
+    candidates?: Array<Record<string, any>>;
+}
+
+interface PlanSummary {
+    actions?: number;
+    ready?: number;
+    blocked?: number;
+    conflicts?: number;
+    risks?: number;
+    media_files?: number;
+    missing_episodes?: number;
+}
+
+interface ExecutionPlan {
+    mode?: string;
+    rollback_available?: boolean;
+    target_root?: string;
+    summary?: PlanSummary;
+    actions?: Array<Record<string, any>>;
+    risks?: Array<Record<string, any>>;
+    conflicts?: Array<Record<string, any>>;
+    missing_episodes?: string[];
+    artwork?: Record<string, any>;
+}
+
+interface TaskEvent {
+    task_id: string;
+    item_id?: string;
+    type: string;
+    timestamp: string;
+    payload: Record<string, any>;
+}
+
+interface TaskSnapshot {
+    id: string;
+    status: string;
+    input_dir: string;
+    created_at: string;
+    items?: Record<string, Record<string, any>>;
 }
 
 export interface TaskBoardConfig {
@@ -42,7 +96,9 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
     const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
     const [sortConfig, setSortConfig] = useState<{ field: 'time' | 'name' | 'status'; direction: 'desc' | 'asc' }>({ field: 'time', direction: 'desc' });
     const wsRef = useRef<WebSocket | null>(null);
+    const eventsWsRef = useRef<WebSocket | null>(null);
     const [isScrolling, setIsScrolling] = useState(false);
+    const [expandedPlans, setExpandedPlans] = useState<Record<string, boolean>>({});
     const scrollTimer = useRef<any>(null);
 
     const handleScroll = () => {
@@ -62,6 +118,11 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
 
         if (!task.fullPath) {
             console.warn("Task missing fullPath, cannot execute.");
+            return;
+        }
+        if ((task.planSummary?.conflicts || 0) > 0 || (task.planSummary?.blocked || 0) > 0) {
+            toast.error('Plan has conflicts');
+            setExpandedPlans(prev => ({ ...prev, [task.fullPath || task.threadId]: true }));
             return;
         }
 
@@ -119,6 +180,191 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
         }
     };
 
+    const handleRollback = async (task: Task) => {
+        if (!task.taskId) return;
+        try {
+            const response = await fetch(apiUrl(`/api/tasks/${task.taskId}/rollback`), { method: 'POST' });
+            if (!response.ok) {
+                const error = await response.json().catch(() => ({}));
+                throw new Error(error.detail || 'Rollback failed');
+            }
+            const result = await response.json();
+            toast.success(`Rollback ${result.status}`);
+            setTasks(prev => {
+                const key = Object.entries(prev).find(([_, value]) => value === task)?.[0] || task.fullPath || task.threadId;
+                const existing = prev[key];
+                if (!existing) return prev;
+                return {
+                    ...prev,
+                    [key]: {
+                        ...existing,
+                        status: 'stopped',
+                        step: 'Rolled back',
+                        resultSummary: '已回滚',
+                    },
+                };
+            });
+        } catch (error) {
+            toast.error(error instanceof Error ? error.message : 'Rollback failed');
+        }
+    };
+
+    const togglePlan = (task: Task) => {
+        const key = task.fullPath || task.threadId;
+        setExpandedPlans(prev => ({ ...prev, [key]: !prev[key] }));
+    };
+
+    const posterUrl = (poster?: string) => {
+        if (!poster) return undefined;
+        if (poster.startsWith('http')) return poster;
+        return `https://image.tmdb.org/t/p/w200${poster}`;
+    };
+
+    const statusStep = (status: Task['status']) => {
+        if (status === 'processing') return t('scanning');
+        if (status === 'searching') return t('extended_search');
+        if (status === 'fetching') return t('metadata_match');
+        if (status === 'completed') return t('finished');
+        if (status === 'failed') return t('error');
+        if (status === 'audit_completed' || status === 'dry_run') return t('status_audit_complete');
+        if (status === 'stopped') return 'Stopped';
+        return t('preparing');
+    };
+
+    const normalizeStatus = (status?: string): Task['status'] => {
+        if (status === 'completed') return 'completed';
+        if (status === 'failed') return 'failed';
+        if (status === 'audit_completed') return 'audit_completed';
+        if (status === 'skipped') return 'completed';
+        if (status === 'stopped') return 'stopped';
+        if (status === 'fetching') return 'fetching';
+        if (status === 'processing') return 'processing';
+        if (status === 'planned') return 'idle';
+        return 'idle';
+    };
+
+    const taskFromSnapshotItem = (snapshot: TaskSnapshot, itemId: string, item: Record<string, any>): Task => {
+        const candidate = item.candidate || {};
+        const plan = item.plan as ExecutionPlan | undefined;
+        const match = item.match as MatchExplanation | undefined;
+        const planSummary = item.plan_summary || plan?.summary;
+        const status = normalizeStatus(item.status);
+        const name = candidate.title || item.name || itemId.split('/').pop() || t('initializing');
+        const poster = posterUrl(candidate.poster_url || candidate.poster_path || item.poster_path);
+        return {
+            threadId: itemId,
+            taskId: snapshot.id,
+            createdAt: item.created_at ? Date.parse(item.created_at) : Date.parse(snapshot.created_at),
+            name,
+            tmdbId: candidate.tmdb_id ? String(candidate.tmdb_id) : (item.tmdb_id ? String(item.tmdb_id) : undefined),
+            mediaType: candidate.media_type || item.media_type,
+            fullPath: item.path || itemId,
+            posterPath: poster,
+            status,
+            step: statusStep(status),
+            lastLog: item.error || item.result || '',
+            logs: item.logs || [],
+            isExpanded: false,
+            hasExecuted: status === 'completed',
+            resultSummary: planSummary ? `${planSummary.actions || 0} actions · ${planSummary.risks || 0} risks` : item.error || item.result,
+            plan,
+            planSummary,
+            match,
+        };
+    };
+
+    const upsertFromEvent = (event: TaskEvent) => {
+        const payload = event.payload || {};
+
+        setTasks(prev => {
+            const next = { ...prev };
+            if (!event.item_id) {
+                if (event.type === 'task.stopped') {
+                    Object.entries(next).forEach(([key, task]) => {
+                        if (task.status === 'processing' || task.status === 'searching' || task.status === 'fetching') {
+                            next[key] = { ...task, status: 'stopped', step: 'Stopped', lastLog: 'Task stopped' };
+                        }
+                    });
+                }
+                return next;
+            }
+
+            const key = event.item_id;
+            const existing = next[key] || {
+                threadId: key,
+                taskId: event.task_id,
+                createdAt: Date.parse(event.timestamp),
+                name: payload.name || key.split('/').pop() || t('initializing'),
+                status: 'idle',
+                step: t('preparing'),
+                lastLog: '',
+                logs: [],
+                isExpanded: false,
+                fullPath: payload.path || key,
+            } as Task;
+
+            const updated: Task = {
+                ...existing,
+                taskId: event.task_id,
+                name: payload.title || payload.name || existing.name,
+                fullPath: payload.path || existing.fullPath || key,
+                mediaType: payload.media_type || existing.mediaType,
+                tmdbId: payload.tmdb_id ? String(payload.tmdb_id) : existing.tmdbId,
+                posterPath: posterUrl(payload.poster_url || payload.poster_path) || existing.posterPath,
+                lastLog: payload.error || payload.result || existing.lastLog,
+                logs: [...existing.logs.slice(-50), `${event.type}: ${payload.error || payload.result || payload.name || payload.title || ''}`],
+                plan: existing.plan,
+                planSummary: existing.planSummary,
+                match: existing.match,
+            };
+
+            if (event.type === 'item.started') updated.status = 'processing';
+            if (event.type === 'item.planned') {
+                updated.status = 'idle';
+                updated.resultSummary = payload.video_count || payload.file_count
+                    ? `${payload.video_count || payload.file_count} files`
+                    : undefined;
+            }
+            if (event.type === 'item.plan_ready') {
+                updated.plan = payload.plan || payload;
+                updated.planSummary = updated.plan?.summary;
+                updated.resultSummary = updated.planSummary
+                    ? `${updated.planSummary.actions || 0} actions · ${updated.planSummary.risks || 0} risks`
+                    : updated.resultSummary;
+            }
+            if (event.type === 'candidate.selected') updated.status = 'fetching';
+            if (event.type === 'candidate.selected' && payload.match) {
+                updated.match = payload.match;
+            }
+            if (event.type === 'item.audit_completed') {
+                updated.status = 'audit_completed';
+                updated.hasExecuted = false;
+                updated.planSummary = payload.plan_summary || updated.planSummary;
+                updated.resultSummary = updated.planSummary
+                    ? `${updated.planSummary.actions || 0} actions · ${updated.planSummary.risks || 0} risks`
+                    : payload.result || '检测通过/PASS';
+            }
+            if (event.type === 'item.completed') {
+                updated.status = 'completed';
+                updated.hasExecuted = true;
+                updated.resultSummary = payload.result || '任务成功';
+            }
+            if (event.type === 'item.skipped') {
+                updated.status = 'completed';
+                updated.hasExecuted = true;
+                updated.resultSummary = '任务成功，元数据已存在';
+            }
+            if (event.type === 'item.failed') {
+                updated.status = 'failed';
+                updated.resultSummary = payload.error || '任务失败';
+            }
+
+            updated.step = statusStep(updated.status);
+            next[key] = updated;
+            return next;
+        });
+    };
+
     useEffect(() => {
         let closed = false;
         let reconnectTimer: number | undefined;
@@ -145,6 +391,55 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
             wsRef.current?.close();
         };
     }, []);
+
+    useEffect(() => {
+        let closed = false;
+        let reconnectTimer: number | undefined;
+
+        const loadSnapshots = async () => {
+            try {
+                const response = await fetch(apiUrl('/api/tasks'));
+                if (!response.ok) return;
+                const data = await response.json();
+                const next: Record<string, Task> = {};
+                (data.tasks || []).forEach((snapshot: TaskSnapshot) => {
+                    Object.entries(snapshot.items || {}).forEach(([itemId, item]) => {
+                        next[itemId] = taskFromSnapshotItem(snapshot, itemId, item);
+                    });
+                });
+                setTasks(prev => ({ ...prev, ...next }));
+            } catch (error) {
+                console.warn('Failed to load task snapshots', error);
+            }
+        };
+
+        const connect = () => {
+            if (closed) return;
+            const ws = new WebSocket(wsUrl('/ws/events'));
+            eventsWsRef.current = ws;
+
+            ws.onmessage = (event) => {
+                try {
+                    upsertFromEvent(JSON.parse(event.data));
+                } catch (error) {
+                    console.warn('Invalid task event', error);
+                }
+            };
+
+            ws.onclose = () => {
+                if (closed) return;
+                reconnectTimer = window.setTimeout(connect, 3000);
+            };
+        };
+
+        loadSnapshots();
+        connect();
+        return () => {
+            closed = true;
+            if (reconnectTimer) window.clearTimeout(reconnectTimer);
+            eventsWsRef.current?.close();
+        };
+    }, [t]);
 
     const parseLog = (log: string) => {
         const match = log.match(/\[(.*?)\]\s+(\w+)\s+-\s+(.*)/);
@@ -346,27 +641,33 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
 
     const taskList = Object.values(tasks)
         .reduce((acc, task) => {
-            // Deduplication Strategy:
-            // We might have a "Real" task (long ID) and a "Placeholder" task (short thread ID) 
-            // describing the SAME work (same name).
-            // We want to keep the "Real" one, or the most advanced one.
-
-            const key = `${task.threadId}-${task.name}`;
+            const key = task.fullPath || `${task.mediaType || 'media'}:${task.tmdbId || task.name}`;
             if (!acc[key]) {
                 acc[key] = task;
             } else {
                 const existing = acc[key];
-                // Prefer "Completed/Failed/Audit" over "Processing/Idle"
-                const existingDone = ['completed', 'failed', 'audit_completed'].includes(existing.status);
-                const newDone = ['completed', 'failed', 'audit_completed'].includes(task.status);
+                const score = (candidate: Task) => {
+                    let value = 0;
+                    if (candidate.fullPath) value += 4;
+                    if (candidate.tmdbId) value += 3;
+                    if (candidate.posterPath) value += 2;
+                    if (candidate.resultSummary) value += 1;
+                    if (['completed', 'failed', 'audit_completed'].includes(candidate.status)) value += 6;
+                    if (['processing', 'searching', 'fetching'].includes(candidate.status)) value += 3;
+                    return value;
+                };
 
-                if (newDone && !existingDone) {
+                if (score(task) > score(existing)) {
                     acc[key] = task;
-                } else if (newDone === existingDone) {
-                    // If both are done or both active, prefer the one with a "Real" ID (longer)
-                    if (task.threadId.length > existing.threadId.length) acc[key] = task;
-                    // Or prefer the one with more logs?
-                    else if (task.logs.length > existing.logs.length) acc[key] = task;
+                } else {
+                    acc[key] = {
+                        ...existing,
+                        logs: [...existing.logs, ...task.logs].slice(-50),
+                        posterPath: existing.posterPath || task.posterPath,
+                        tmdbId: existing.tmdbId || task.tmdbId,
+                        mediaType: existing.mediaType || task.mediaType,
+                        resultSummary: existing.resultSummary || task.resultSummary,
+                    };
                 }
             }
             return acc;
@@ -409,32 +710,45 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
 
     // Stats for Display
     const finishedCount = sortedTaskList.filter(t => ['completed', 'failed', 'audit_completed', 'dry_run'].includes(t.status)).length;
+    const runningCount = sortedTaskList.filter(t => ['processing', 'searching', 'fetching'].includes(t.status)).length;
+    const failedCount = sortedTaskList.filter(t => ['failed', 'stopped'].includes(t.status)).length;
+    const plannedCount = sortedTaskList.filter(t => t.status === 'idle').length;
 
 
     return (
-        <div className="flex flex-col h-full bg-transparent rounded-2xl overflow-hidden">
+        <div className="flex flex-col h-full bg-transparent rounded-lg overflow-hidden">
             {/* Header / Stats - Set to solid background to match table headers */}
-            <div className="px-6 py-4 flex items-center justify-between shrink-0 z-20 bg-[var(--bg-panel)] border-b border-[var(--border-light)]">
-                <div className="flex items-center gap-4">
+            <div className="px-5 py-3 flex flex-wrap items-center justify-between gap-3 shrink-0 z-20 bg-[var(--bg-panel)] border-b border-[var(--border-light)]">
+                <div className="flex flex-wrap items-center gap-4">
                     <h2 className="text-sm font-bold uppercase tracking-widest text-[var(--text-main)] font-display">
                         {t('mission_control')}
                     </h2>
                     <div className="h-3 w-px bg-[var(--border-light)] hidden sm:block" />
-                    <div className="flex items-center gap-4 text-[10px] font-mono mt-0.5">
+                    <div className="flex flex-wrap items-center gap-3 text-[10px] font-mono mt-0.5">
+                        <span className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-slate-400" />
+                            <span className="text-[var(--text-muted)] uppercase tracking-tight">Queued</span>
+                            <span className="text-[var(--text-main)] font-bold">{plannedCount}</span>
+                        </span>
                         <span className="flex items-center gap-1.5">
                             <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
                             <span className="text-[var(--text-muted)] uppercase tracking-tight">{t('running')}</span>
-                            <span className="text-[var(--text-main)] font-bold">{sortedTaskList.filter(t => ['processing', 'searching', 'fetching'].includes(t.status)).length}</span>
+                            <span className="text-[var(--text-main)] font-bold">{runningCount}</span>
                         </span>
                         <span className="flex items-center gap-1.5">
                             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                             <span className="text-[var(--text-muted)] uppercase tracking-tight">{t('done')}</span>
                             <span className="text-[var(--text-main)] font-bold">{finishedCount}</span>
                         </span>
+                        <span className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                            <span className="text-[var(--text-muted)] uppercase tracking-tight">Failed</span>
+                            <span className="text-[var(--text-main)] font-bold">{failedCount}</span>
+                        </span>
                     </div>
                 </div>
 
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3">
                     {/* View Toggle */}
                     <SegmentedControl
                         options={[
@@ -445,7 +759,7 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                         onChange={setViewMode}
                     />
 
-                    <div className="h-8 w-px bg-border-light/50" />
+                    <div className="h-8 w-px bg-border-light/50 hidden sm:block" />
 
                     {/* Sort Toggle */}
                     <SegmentedControl
@@ -509,16 +823,27 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-slate-200 dark:divide-white/10 text-xs font-sans">
-                                        {sortedTaskList.map(task => (
-                                            <TaskRow key={task.status === 'idle' ? task.threadId : (task.fullPath || task.name)} task={task} onExecute={handleExecute} onStop={handleStop} />
-                                        ))}
+                                        {sortedTaskList.map(task => {
+                                            const key = task.fullPath || task.threadId;
+                                            return (
+                                                <TaskRow
+                                                    key={task.status === 'idle' ? task.threadId : (task.fullPath || task.name)}
+                                                    task={task}
+                                                    isPlanOpen={!!expandedPlans[key]}
+                                                    onExecute={handleExecute}
+                                                    onStop={handleStop}
+                                                    onRollback={handleRollback}
+                                                    onTogglePlan={togglePlan}
+                                                />
+                                            );
+                                        })}
                                     </tbody>
                                 </table>
                             </div>
                         ) : (
-                            <div className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4 px-4">
+                            <div className="grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-3 px-4">
                                 {sortedTaskList.map(task => (
-                                    <TaskCard key={task.status === 'idle' ? task.threadId : (task.fullPath || task.name)} task={task} onExecute={handleExecute} onStop={handleStop} />
+                                    <TaskCard key={task.status === 'idle' ? task.threadId : (task.fullPath || task.name)} task={task} onExecute={handleExecute} onStop={handleStop} onRollback={handleRollback} isPlanOpen={!!expandedPlans[task.fullPath || task.threadId]} onTogglePlan={togglePlan} />
                                 ))}
                             </div>
                         )}
@@ -529,7 +854,7 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
     );
 }
 
-function TaskCard({ task, onExecute, onStop }: { task: Task, onExecute: (t: Task) => void, onStop: () => void }) {
+function TaskCard({ task, onExecute, onStop, onRollback, isPlanOpen, onTogglePlan }: { task: Task, onExecute: (t: Task) => void, onStop: () => void, onRollback: (t: Task) => void, isPlanOpen: boolean, onTogglePlan: (t: Task) => void }) {
     const isAuditReady = (task.status === 'dry_run' || task.status === 'audit_completed');
     const isRunning = task.status === 'processing' || task.status === 'searching' || task.status === 'fetching';
     const isFinished = task.status === 'completed';
@@ -555,13 +880,17 @@ function TaskCard({ task, onExecute, onStop }: { task: Task, onExecute: (t: Task
 
     const statusInfo = getStatusInfo(task.status);
     const fileName = task.fullPath ? task.fullPath.split('/').pop() : task.name;
+    const plan = task.plan;
+    const planSummary = task.planSummary || plan?.summary;
+    const hasPlanBlockers = (planSummary?.conflicts || 0) > 0 || (planSummary?.blocked || 0) > 0;
+    const match = task.match;
 
     return (
-        <div className="relative group p-3 rounded-2xl border border-[var(--border-light)] bg-[var(--bg-panel)] hover:bg-[var(--bg-hover)] transition-all flex flex-col gap-3 shadow-sm hover:shadow-lg hover:border-primary/30 text-[var(--text-main)] overflow-hidden">
+        <div className="relative group p-3 rounded-lg border border-[var(--border-light)] bg-[var(--bg-panel)] hover:bg-[var(--bg-hover)] transition-colors flex flex-col gap-3 shadow-sm text-[var(--text-main)] overflow-hidden">
             <div className="flex items-start gap-3">
                 {/* Poster / Icon Area */}
                 <div className={cn(
-                    "shrink-0 w-[50px] aspect-[2/3] rounded-lg flex items-center justify-center border border-[var(--border-light)] overflow-hidden relative shadow-sm transition-all duration-300 ease-out group-hover:scale-110 group-hover:shadow-xl group-hover:border-primary/50",
+                    "shrink-0 w-[50px] aspect-[2/3] rounded-md flex items-center justify-center border border-[var(--border-light)] overflow-hidden relative shadow-sm",
                     !task.posterPath && (task.mediaType === 'tv' ? "bg-purple-50 dark:bg-purple-900/40" : "bg-blue-50 dark:bg-blue-900/40")
                 )}>
                     {task.posterPath ? (
@@ -585,8 +914,42 @@ function TaskCard({ task, onExecute, onStop }: { task: Task, onExecute: (t: Task
                         {displayYear && <span className="text-[10px] font-mono text-[var(--text-muted)] border border-[var(--border-light)] px-1.5 rounded-md">{displayYear}</span>}
                         {task.tmdbId && <span className="text-[10px] font-mono text-[var(--text-dim)]">ID:{task.tmdbId}</span>}
                     </div>
+                    {match && <MatchBadge match={match} />}
                 </div>
             </div>
+
+            {(planSummary || match) && (
+                <div className="rounded-md border border-[var(--border-light)] bg-[var(--bg-inner-panel)]">
+                    <button
+                        onClick={(e) => { e.stopPropagation(); onTogglePlan(task); }}
+                        className="w-full grid grid-cols-[1fr_auto] items-center gap-2 px-2 py-2 text-left"
+                        title="Details"
+                    >
+                        {planSummary ? (
+                            <div className="grid grid-cols-4 gap-2">
+                                <PlanMetric label="Actions" value={planSummary.actions || 0} />
+                                <PlanMetric label="Conflicts" value={planSummary.conflicts || 0} tone={(planSummary.conflicts || 0) > 0 ? 'danger' : 'normal'} />
+                                <PlanMetric label="Risks" value={planSummary.risks || 0} tone={(planSummary.risks || 0) > 0 ? 'warn' : 'normal'} />
+                                <PlanMetric label="Missing" value={planSummary.missing_episodes || 0} tone={(planSummary.missing_episodes || 0) > 0 ? 'warn' : 'normal'} />
+                            </div>
+                        ) : (
+                            <div className="min-w-0">
+                                {match && <MatchBadge match={match} />}
+                            </div>
+                        )}
+                        <ChevronDown size={14} className={cn("text-[var(--text-muted)] transition-transform", isPlanOpen && "rotate-180")} />
+                    </button>
+                    {isPlanOpen && (
+                        <DetailsPanel match={match} plan={plan} />
+                    )}
+                </div>
+            )}
+
+            {plan?.target_root && (
+                <div className="text-[10px] font-mono text-[var(--text-muted)] truncate rounded-md bg-black/[0.03] dark:bg-white/[0.04] px-2 py-1.5" title={plan.target_root}>
+                    {plan.mode || 'plan'} → {plan.target_root.split('/').pop() || plan.target_root}
+                </div>
+            )}
 
             <div className="flex flex-col gap-2 pt-2 border-t border-slate-100 dark:border-white/5 mt-auto">
                 <div className="flex items-center justify-between gap-2">
@@ -599,17 +962,20 @@ function TaskCard({ task, onExecute, onStop }: { task: Task, onExecute: (t: Task
                     {isAuditReady && !isRunning && !isFinished && (
                         <button
                             onClick={(e) => { e.stopPropagation(); onExecute(task); }}
-                            className="relative z-10 shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[10px] font-bold uppercase tracking-wider transition-all bg-yellow-400 text-black hover:bg-yellow-300 shadow-sm hover:scale-105 active:scale-95"
+                            className={cn(
+                                "relative z-10 shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[10px] font-bold uppercase tracking-wider transition-colors shadow-sm",
+                                hasPlanBlockers ? "bg-red-500/10 text-red-500 cursor-not-allowed" : "bg-yellow-400 text-black hover:bg-yellow-300"
+                            )}
                         >
                             <Play size={10} fill="currentColor" className="text-white" />
-                            <span className="text-white">RUN</span>
+                            <span className={hasPlanBlockers ? "text-red-500" : "text-white"}>{hasPlanBlockers ? "BLOCKED" : "RUN"}</span>
                         </button>
                     )}
 
                     {isRunning && (
                         <button
                             onClick={(e) => { e.stopPropagation(); onStop(); }}
-                            className="relative z-10 shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[10px] font-bold uppercase tracking-wider transition-all bg-red-500 text-white hover:bg-red-600 shadow-sm hover:scale-105 active:scale-95 animate-pulse"
+                            className="relative z-10 shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[10px] font-bold uppercase tracking-wider transition-colors bg-red-500 text-white hover:bg-red-600 shadow-sm animate-pulse"
                         >
                             <Square size={10} fill="currentColor" />
                             <span>STOP</span>
@@ -619,7 +985,7 @@ function TaskCard({ task, onExecute, onStop }: { task: Task, onExecute: (t: Task
                     {(isFailed || (isFinished && !task.resultSummary?.includes('成功'))) && (
                         <button
                             onClick={(e) => { e.stopPropagation(); onExecute(task); }}
-                            className="relative z-10 shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[10px] font-bold uppercase tracking-wider transition-all bg-blue-500 text-white hover:bg-blue-600 shadow-sm hover:scale-105 active:scale-95"
+                            className="relative z-10 shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[10px] font-bold uppercase tracking-wider transition-colors bg-blue-500 text-white hover:bg-blue-600 shadow-sm"
                         >
                             <RotateCcw size={10} />
                             <span>RETRY</span>
@@ -630,6 +996,17 @@ function TaskCard({ task, onExecute, onStop }: { task: Task, onExecute: (t: Task
                         <button disabled className="shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-white/5 text-slate-400 dark:text-slate-600 cursor-not-allowed">
                             <CheckCircle2 size={10} />
                             <span>Done</span>
+                        </button>
+                    )}
+
+                    {task.taskId && (isFinished || isFailed) && (
+                        <button
+                            onClick={(e) => { e.stopPropagation(); onRollback(task); }}
+                            className="relative z-10 shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[10px] font-bold uppercase tracking-wider transition-colors bg-slate-100 dark:bg-white/10 text-[var(--text-main)] hover:bg-slate-200 dark:hover:bg-white/15 shadow-sm"
+                            title="Rollback"
+                        >
+                            <Undo2 size={10} />
+                            <span>ROLLBACK</span>
                         </button>
                     )}
                 </div>
@@ -672,7 +1049,132 @@ function SegmentedControl({ options, value, onChange }: any) {
     )
 }
 
-function TaskRow({ task, onExecute, onStop }: { task: Task, onExecute: (t: Task) => void, onStop: () => void }) {
+function PlanMetric({ label, value, tone = 'normal' }: { label: string, value: number, tone?: 'normal' | 'warn' | 'danger' }) {
+    return (
+        <div className="min-w-0 text-center">
+            <div className={cn(
+                "text-xs font-bold font-mono",
+                tone === 'danger' ? "text-red-500" : tone === 'warn' ? "text-amber-500" : "text-[var(--text-main)]"
+            )}>
+                {value}
+            </div>
+            <div className="text-[8px] uppercase tracking-wider text-[var(--text-muted)] truncate">
+                {label}
+            </div>
+        </div>
+    );
+}
+
+function MatchBadge({ match }: { match: MatchExplanation }) {
+    const confidence = match.confidence || 'none';
+    const score = typeof match.score === 'number' ? match.score : undefined;
+    const tone = confidence === 'high' || confidence === 'manual'
+        ? 'ok'
+        : confidence === 'medium' || confidence === 'external'
+            ? 'warn'
+            : confidence === 'low'
+                ? 'low'
+                : 'none';
+    return (
+        <div className={cn(
+            "inline-flex max-w-full items-center gap-1.5 rounded-md border px-1.5 py-0.5 text-[9px] font-mono uppercase tracking-wider",
+            tone === 'ok' ? "border-emerald-500/20 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400" :
+                tone === 'warn' ? "border-amber-500/20 bg-amber-500/10 text-amber-600 dark:text-amber-400" :
+                    tone === 'low' ? "border-red-500/20 bg-red-500/10 text-red-500" :
+                        "border-[var(--border-light)] bg-slate-500/10 text-[var(--text-muted)]"
+        )}>
+            <span>{match.provider || 'match'}</span>
+            <span>{confidence}</span>
+            {score !== undefined && <span>{score.toFixed(2)}</span>}
+        </div>
+    );
+}
+
+function DetailsPanel({ match, plan }: { match?: MatchExplanation, plan?: ExecutionPlan }) {
+    return (
+        <div className="border-t border-[var(--border-light)] px-2 py-2 space-y-3">
+            {match && <MatchDetails match={match} />}
+            {plan && <PlanDetails plan={plan} />}
+        </div>
+    );
+}
+
+function MatchDetails({ match }: { match: MatchExplanation }) {
+    const candidates = (match.candidates || []).slice(0, 5);
+    return (
+        <div className="space-y-1">
+            <PlanLine
+                label={match.provider || 'match'}
+                value={`${match.reason || 'selected'}${typeof match.score === 'number' ? ` · ${match.score.toFixed(2)}` : ''}`}
+                tone={match.confidence === 'none' || match.confidence === 'low' ? 'danger' : match.confidence === 'medium' || match.confidence === 'external' ? 'warn' : 'normal'}
+            />
+            {candidates.map((item, index) => (
+                <PlanLine
+                    key={`candidate-${index}`}
+                    label={`${item.media_type || 'media'} ${item.score !== undefined ? Number(item.score).toFixed(2) : ''}`}
+                    value={`${item.title || item.original_title || 'Untitled'}${item.year ? ` (${item.year})` : ''}${item.id ? ` · ${item.id}` : ''}`}
+                    tone={item.id === match.selected_id ? 'normal' : 'muted'}
+                />
+            ))}
+        </div>
+    );
+}
+
+function PlanDetails({ plan }: { plan: ExecutionPlan }) {
+    const actions = (plan.actions || []).slice(0, 5);
+    const conflicts = (plan.conflicts || []).slice(0, 3);
+    const risks = (plan.risks || []).slice(0, 3);
+
+    return (
+        <div className="space-y-2">
+            {conflicts.length > 0 && (
+                <div className="space-y-1">
+                    {conflicts.map((item, index) => (
+                        <PlanLine key={`conflict-${index}`} tone="danger" label={item.reason || 'conflict'} value={item.destination || item.source || ''} />
+                    ))}
+                </div>
+            )}
+            {risks.length > 0 && (
+                <div className="space-y-1">
+                    {risks.map((item, index) => (
+                        <PlanLine key={`risk-${index}`} tone={item.level === 'warning' ? 'warn' : 'normal'} label={item.code || item.level || 'risk'} value={item.message || ''} />
+                    ))}
+                </div>
+            )}
+            {actions.length > 0 && (
+                <div className="space-y-1">
+                    {actions.map((item, index) => (
+                        <PlanLine key={`action-${index}`} label={item.type || 'action'} value={compactPath(item.destination || item.source || '')} />
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+}
+
+function PlanLine({ label, value, tone = 'normal' }: { label: string, value: string, tone?: 'normal' | 'warn' | 'danger' | 'muted' }) {
+    return (
+        <div className="grid grid-cols-[74px_1fr] gap-2 text-[10px] font-mono">
+            <span className={cn(
+                "truncate uppercase",
+                tone === 'danger' ? "text-red-500" : tone === 'warn' ? "text-amber-500" : tone === 'muted' ? "text-[var(--text-dim)]" : "text-[var(--text-muted)]"
+            )}>
+                {label}
+            </span>
+            <span className="truncate text-[var(--text-muted)]" title={value}>
+                {value}
+            </span>
+        </div>
+    );
+}
+
+function compactPath(path: string) {
+    const parts = path.split('/').filter(Boolean);
+    if (parts.length <= 2) return path;
+    return `${parts[parts.length - 2]}/${parts[parts.length - 1]}`;
+}
+
+function TaskRow({ task, isPlanOpen, onExecute, onStop, onRollback, onTogglePlan }: { task: Task, isPlanOpen: boolean, onExecute: (t: Task) => void, onStop: () => void, onRollback: (t: Task) => void, onTogglePlan: (t: Task) => void }) {
     const isAuditReady = (task.status === 'dry_run' || task.status === 'audit_completed');
     const isRunning = task.status === 'processing' || task.status === 'searching' || task.status === 'fetching';
     const isFinished = task.status === 'completed';
@@ -681,8 +1183,10 @@ function TaskRow({ task, onExecute, onStop }: { task: Task, onExecute: (t: Task)
     const yearMatch = task.name.match(/\((\d{4})\)/);
     const displayYear = yearMatch ? yearMatch[1] : "—";
     const fileName = task.fullPath ? task.fullPath.split('/').pop() : task.name;
+    const planSummary = task.planSummary || task.plan?.summary;
 
     return (
+        <>
         <tr className="hover:bg-[var(--bg-hover)] group transition-colors border-b border-[var(--border-light)] last:border-0 text-[var(--text-main)]">
             <td className="px-6 py-4 text-center font-mono text-[10px] text-[var(--text-muted)]">
                 {task.mediaType === 'tv' ? 'TV' : 'Movie'}
@@ -715,7 +1219,18 @@ function TaskRow({ task, onExecute, onStop }: { task: Task, onExecute: (t: Task)
                 </span>
             </td>
             <td className="px-4 py-4 text-xs max-w-[250px] text-center">
-                {(task.resultSummary || (isFinished || isFailed || isAuditReady)) && (
+                {task.match ? (
+                    <div className="flex justify-center">
+                        <MatchBadge match={task.match} />
+                    </div>
+                ) : planSummary ? (
+                    <div className="grid grid-cols-4 gap-1 text-[9px] font-mono">
+                        <span>{planSummary.actions || 0} act</span>
+                        <span className={(planSummary.conflicts || 0) > 0 ? "text-red-500" : "text-[var(--text-muted)]"}>{planSummary.conflicts || 0} cf</span>
+                        <span className={(planSummary.risks || 0) > 0 ? "text-amber-500" : "text-[var(--text-muted)]"}>{planSummary.risks || 0} risk</span>
+                        <span className={(planSummary.missing_episodes || 0) > 0 ? "text-amber-500" : "text-[var(--text-muted)]"}>{planSummary.missing_episodes || 0} miss</span>
+                    </div>
+                ) : (task.resultSummary || (isFinished || isFailed || isAuditReady)) && (
                     <div className={cn("flex items-center justify-center gap-1.5 font-medium truncate",
                         (isFinished || isAuditReady) ? "text-emerald-600 dark:text-emerald-400" :
                             isFailed ? "text-red-500 dark:text-red-400" : "text-slate-500"
@@ -732,10 +1247,27 @@ function TaskRow({ task, onExecute, onStop }: { task: Task, onExecute: (t: Task)
                     {isAuditReady && !isRunning && !isFinished && (
                         <button
                             onClick={() => onExecute(task)}
-                            className="shrink-0 flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider transition-all bg-yellow-400 text-black hover:bg-yellow-300 shadow-sm"
+                            className={cn(
+                                "shrink-0 flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider transition-colors shadow-sm",
+                                ((planSummary?.conflicts || 0) > 0 || (planSummary?.blocked || 0) > 0)
+                                    ? "bg-red-500/10 text-red-500 cursor-not-allowed"
+                                    : "bg-yellow-400 text-black hover:bg-yellow-300"
+                            )}
                         >
                             <Play size={10} fill="currentColor" className="text-white" />
-                            <span className="text-white">RUN</span>
+                            <span className={((planSummary?.conflicts || 0) > 0 || (planSummary?.blocked || 0) > 0) ? "text-red-500" : "text-white"}>
+                                {((planSummary?.conflicts || 0) > 0 || (planSummary?.blocked || 0) > 0) ? "BLOCKED" : "RUN"}
+                            </span>
+                        </button>
+                    )}
+                    {(task.plan || task.match) && (
+                        <button
+                            onClick={() => onTogglePlan(task)}
+                            className="shrink-0 flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider transition-colors bg-slate-100 dark:bg-white/10 text-[var(--text-main)] hover:bg-slate-200 dark:hover:bg-white/15 shadow-sm"
+                            title="Details"
+                        >
+                            <List size={10} />
+                            <span>DETAILS</span>
                         </button>
                     )}
                     {isRunning && (
@@ -762,8 +1294,26 @@ function TaskRow({ task, onExecute, onStop }: { task: Task, onExecute: (t: Task)
                             <span>Done</span>
                         </button>
                     )}
+                    {task.taskId && (isFinished || isFailed) && (
+                        <button
+                            onClick={() => onRollback(task)}
+                            className="shrink-0 flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider transition-colors bg-slate-100 dark:bg-white/10 text-[var(--text-main)] hover:bg-slate-200 dark:hover:bg-white/15 shadow-sm"
+                            title="Rollback"
+                        >
+                            <Undo2 size={10} />
+                            <span>ROLLBACK</span>
+                        </button>
+                    )}
                 </div>
             </td>
         </tr>
+        {isPlanOpen && (task.plan || task.match) && (
+            <tr className="border-b border-[var(--border-light)] bg-[var(--bg-inner-panel)]">
+                <td colSpan={8} className="px-6 py-3">
+                    <DetailsPanel match={task.match} plan={task.plan} />
+                </td>
+            </tr>
+        )}
+        </>
     );
 }

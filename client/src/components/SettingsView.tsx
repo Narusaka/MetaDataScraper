@@ -3,9 +3,10 @@ import { useEffect, useState } from 'react';
 import { Save, Loader2, Key, Database, Image as ImageIcon, Monitor, Cpu, CheckCircle2, XCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '../lib/utils';
-import { useTranslation } from '../lib/language';
+import { useTranslation } from '../lib/languageContext';
 import { useTheme } from 'next-themes';
-import { apiUrl } from '../lib/api';
+import { apiJson } from '../lib/api';
+import type { ReactNode } from 'react';
 
 // Loose typing for the config 
 interface Config {
@@ -20,14 +21,31 @@ interface Config {
     };
     output?: {
         image_limit?: {
-            posters: number;
-            backdrops: number;
-            logos: number;
-            stills: number;
-            actors: number;
+            posters?: number;
+            backdrops?: number;
+            logos?: number;
+            stills?: number;
+            actors?: number;
         }
     }
-    [key: string]: any;
+    [key: string]: unknown;
+}
+
+type ConfigValue = string | number | boolean | null;
+
+interface ConnectivityServiceStatus {
+    status?: string;
+    message?: string;
+}
+
+interface ConnectivityStatus {
+    tmdb?: ConnectivityServiceStatus;
+    tavily?: ConnectivityServiceStatus;
+    error?: string;
+}
+
+interface SettingsSaveResponse {
+    config?: Config;
 }
 
 export function SettingsView() {
@@ -46,13 +64,11 @@ export function SettingsView() {
     const fetchSettings = async () => {
         setLoading(true);
         try {
-            const res = await fetch(apiUrl('/api/settings'));
-            if (res.ok) {
-                const data = await res.json();
-                setConfig(data);
-            }
+            const data = await apiJson<Config>('/api/settings', undefined, 'Failed to load settings');
+            setConfig(data);
         } catch (e) {
             console.error("Failed to load settings", e);
+            setMsg({ type: 'error', text: e instanceof Error ? e.message : 'Failed to load settings.' });
         } finally {
             setLoading(false);
         }
@@ -65,34 +81,31 @@ export function SettingsView() {
         setMsg(null);
 
         try {
-            const res = await fetch(apiUrl('/api/settings'), {
+            const data = await apiJson<SettingsSaveResponse>('/api/settings', {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(config)
-            });
-            if (res.ok) {
-                setMsg({ type: 'success', text: 'Settings saved successfully!' });
-                setTimeout(() => setMsg(null), 3000);
-            } else {
-                setMsg({ type: 'error', text: 'Failed to save settings.' });
-                setTimeout(() => setMsg(null), 3000);
-            }
-        } catch (e) {
-            setMsg({ type: 'error', text: 'Network error saving settings.' });
+            }, 'Failed to save settings.');
+            if (data.config) setConfig(data.config);
+            setMsg({ type: 'success', text: 'Settings saved successfully!' });
+            setTimeout(() => setMsg(null), 3000);
+        } catch (error) {
+            setMsg({ type: 'error', text: error instanceof Error ? error.message : 'Network error saving settings.' });
             setTimeout(() => setMsg(null), 3000);
         } finally {
             setSaving(false);
         }
     };
 
-    const updateConfig = (section: string, key: string, value: any) => {
+    const updateConfig = (section: string, key: string, value: ConfigValue) => {
         if (!config) return;
         setConfig(prev => {
             if (!prev) return null;
+            const existingSection = prev[section];
             return {
                 ...prev,
                 [section]: {
-                    ...prev[section],
+                    ...(typeof existingSection === 'object' && existingSection !== null ? existingSection : {}),
                     [key]: value
                 }
             };
@@ -207,18 +220,21 @@ export function SettingsView() {
                                 value={config.tmdb?.api_key || ""}
                                 onChange={(v) => updateConfig('tmdb', 'api_key', v)}
                                 type="password"
+                                secret
                             />
                             <InputGroup
                                 label="OMDB API Key"
                                 value={config.omdb?.api_key || ""}
                                 onChange={(v) => updateConfig('omdb', 'api_key', v)}
                                 type="password"
+                                secret
                             />
                             <InputGroup
                                 label="Tavily API Key"
                                 value={config.tavily?.api_key || ""}
                                 onChange={(v) => updateConfig('tavily', 'api_key', v)}
                                 type="password"
+                                secret
                             />
                         </div>
                     </div>
@@ -273,6 +289,7 @@ export function SettingsView() {
                                 onChange={(v) => updateConfig('model', 'api_key', v)}
                                 placeholder="EMPTY"
                                 type="password"
+                                secret
                             />
                             <InputGroup
                                 label="Model Name"
@@ -301,7 +318,7 @@ export function SettingsView() {
     );
 }
 
-function SectionLabel({ icon, label }: { icon: any, label: string }) {
+function SectionLabel({ icon, label }: { icon: ReactNode, label: string }) {
     return (
         <div className="flex items-center gap-2 text-primary border-b border-border/30 pb-2">
             <span className="w-5 h-5">{icon}</span>
@@ -310,12 +327,13 @@ function SectionLabel({ icon, label }: { icon: any, label: string }) {
     );
 }
 
-function InputGroup({ label, value, onChange, placeholder, type = "text" }: {
+function InputGroup({ label, value, onChange, placeholder, type = "text", secret = false }: {
     label: string,
     value: string,
     onChange: (val: string) => void,
     placeholder?: string,
-    type?: string
+    type?: string,
+    secret?: boolean,
 }) {
     return (
         <div className="space-y-1">
@@ -327,6 +345,9 @@ function InputGroup({ label, value, onChange, placeholder, type = "text" }: {
                 placeholder={placeholder}
                 className="w-full glass-panel-pro bg-black/10 px-4 py-2.5 rounded-lg border-border/30 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-muted/50"
             />
+            {secret && value.includes('********') && (
+                <p className="text-[10px] text-secondary/70 ml-1">Masked value will be kept unless replaced.</p>
+            )}
         </div>
     )
 }
@@ -351,22 +372,17 @@ function NumberInputGroup({ label, value, onChange }: {
 }
 
 function ProxyTester() {
-    const [status, setStatus] = useState<any>(null);
+    const [status, setStatus] = useState<ConnectivityStatus | null>(null);
     const [loading, setLoading] = useState(false);
 
     const check = async () => {
         setLoading(true);
         setStatus(null);
         try {
-            const res = await fetch(apiUrl('/api/test_connectivity'));
-            if (res.ok) {
-                const data = await res.json();
-                setStatus(data);
-            } else {
-                setStatus({ error: "API failed" });
-            }
-        } catch (e) {
-            setStatus({ error: "Network error" });
+            const data = await apiJson<ConnectivityStatus>('/api/test_connectivity', undefined, 'Connectivity test failed');
+            setStatus(data);
+        } catch (error) {
+            setStatus({ error: error instanceof Error ? error.message : "Network error" });
         } finally {
             setLoading(false);
         }
@@ -384,7 +400,7 @@ function ProxyTester() {
             </button>
             {status && (
                 <div className="flex gap-2">
-                    {['tmdb', 'tavily'].map(service => (
+                    {(['tmdb', 'tavily'] as const).map(service => (
                         <div key={service} className={cn(
                             "px-2 py-0.5 rounded text-[8px] font-bold uppercase tracking-tighter border",
                             status[service]?.status === 'ok'
@@ -402,7 +418,13 @@ function ProxyTester() {
 }
 
 
-function MacOsSlider({ min, max, value, onChange, icon }: any) {
+function MacOsSlider({ min, max, value, onChange, icon }: {
+    min: number;
+    max: number;
+    value: number;
+    onChange: (value: number) => void;
+    icon?: ReactNode;
+}) {
     const percentage = ((value - min) / (max - min)) * 100;
 
     return (

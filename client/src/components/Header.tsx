@@ -1,27 +1,27 @@
-import { useEffect, useState } from 'react';
-import { BarChart3, Database, Cpu, Moon, Sun, MonitorCheck, Loader2 } from 'lucide-react';
+import { useState } from 'react';
+import { BarChart3, Database, Cpu, Moon, Sun, MonitorCheck, Loader2, type LucideIcon } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { cn } from '../lib/utils';
-import { useTranslation, languageOptions } from '../lib/language';
+import { useTranslation, languageOptions } from '../lib/languageContext';
 import { useTheme } from 'next-themes';
 import { toast } from 'sonner';
+import { apiJson } from '../lib/api';
+import { useSystemStatus } from '../lib/systemStatusContext';
 
-interface SystemStats {
-    running: boolean;
-    workers: number;
-    stats: {
-        total_tasks: number;
-        total_media: number;
-        total_success: number;
-        total_failed: number;
-        total_duration: number;
-    };
+interface ConnectivityServiceStatus {
+    status?: string;
+    message?: string;
 }
 
-export function Header({ title }: { title: string, isRunning?: boolean }) { // Keep optional isRunning in type just in case but remove from destructure if unused or remove entirely.
+interface ConnectivityStatus {
+    tmdb?: ConnectivityServiceStatus;
+    tavily?: ConnectivityServiceStatus;
+}
+
+export function Header({ title }: { title: string }) {
     const { t, language, setLanguage } = useTranslation();
     const { theme, setTheme } = useTheme();
-    const [stats, setStats] = useState<SystemStats | null>(null);
+    const { status, online } = useSystemStatus();
     const [isChecking, setIsChecking] = useState(false);
 
     const handleConnectivityTest = async () => {
@@ -30,8 +30,7 @@ export function Header({ title }: { title: string, isRunning?: boolean }) { // K
         const toastId = toast.loading('Checking connectivity...');
 
         try {
-            const res = await fetch('http://localhost:8000/api/test_connectivity');
-            const data = await res.json();
+            const data = await apiJson<ConnectivityStatus>('/api/test_connectivity', undefined, 'Connectivity test failed');
 
             // Format result for toast
             const tmdbOk = data.tmdb?.status === 'ok';
@@ -56,30 +55,15 @@ export function Header({ title }: { title: string, isRunning?: boolean }) { // K
             else if (tmdbOk) toast.warning(msg, { duration: 5000 }); // Partial success
             else toast.error(msg, { duration: 5000 });
 
-        } catch (e) {
+        } catch (error) {
             toast.dismiss(toastId);
-            toast.error("Failed to connect to backend server.");
+            toast.error(error instanceof Error ? error.message : "Failed to connect to backend server.");
         } finally {
             setIsChecking(false);
         }
     };
 
-    // Poll for stats
-    useEffect(() => {
-        const fetchStats = async () => {
-            // In a real app we might use react-query or swr, keeping it simple here
-            try {
-                const res = await fetch('http://localhost:8000/api/status');
-                // If connecting to generic stats, make sure the endpoint returns SystemStats structure
-                if (res.ok) setStats(await res.json());
-            } catch (e) { }
-        };
-        fetchStats();
-        const interval = setInterval(fetchStats, 2000);
-        return () => clearInterval(interval);
-    }, []);
-
-    const s = stats?.stats || { total_media: 0, total_success: 0, total_failed: 0 };
+    const s = status?.stats || { total_media: 0, total_success: 0, total_failed: 0 };
     const successRate = s.total_media ? Math.round((s.total_success / s.total_media) * 100) : 100;
 
     return (
@@ -89,7 +73,7 @@ export function Header({ title }: { title: string, isRunning?: boolean }) { // K
                 <div className="flex items-center gap-4 min-w-0">
                     {/* Spacer or Breadcrumb could go here */}
                     <div className="text-[10px] uppercase font-bold text-muted-foreground/60 tracking-widest mt-0.5">
-                        {t(title as any) || title}
+                        {t(title) || title}
                     </div>
                 </div>
 
@@ -97,14 +81,14 @@ export function Header({ title }: { title: string, isRunning?: boolean }) { // K
                 <div className="hidden lg:flex flex-1 items-center justify-center gap-8">
                     <StatItem
                         label={t('system_status')}
-                        value={stats?.running ? t('status_online') : t('status_standby')}
-                        active={stats?.running}
-                        color={stats?.running ? "bg-emerald-500" : "bg-amber-500"}
+                        value={!online ? 'OFFLINE' : status?.running ? t('status_online') : t('status_standby')}
+                        active={!!status?.running}
+                        color={!online ? "bg-red-500" : status?.running ? "bg-emerald-500" : "bg-amber-500"}
                     />
                     <div className="w-px h-8 bg-border" />
                     <StatItem
                         label={t('threads')}
-                        value={`${stats?.workers || '--'}`}
+                        value={`${status?.workers || '--'}`}
                         icon={Cpu}
                     />
                     <div className="w-px h-8 bg-border" />
@@ -137,10 +121,10 @@ export function Header({ title }: { title: string, isRunning?: boolean }) { // K
                             animate={{ x: language === 'en' ? 0 : 34 }}
                             transition={{ type: "spring", stiffness: 300, damping: 30 }}
                         />
-                        {Object.keys(languageOptions).map((lang) => (
+                        {(Object.keys(languageOptions) as Array<keyof typeof languageOptions>).map((lang) => (
                             <button
                                 key={lang}
-                                onClick={() => setLanguage(lang as any)}
+                                onClick={() => setLanguage(lang)}
                                 className={cn(
                                     "relative z-10 w-[34px] h-[22px] flex items-center justify-center text-[10px] font-bold transition-colors duration-300",
                                     language === lang
@@ -193,7 +177,15 @@ export function Header({ title }: { title: string, isRunning?: boolean }) { // K
     );
 }
 
-function StatItem({ label, value, active, color, icon: Icon }: any) {
+interface StatItemProps {
+    label: string;
+    value: string;
+    active?: boolean;
+    color?: string;
+    icon?: LucideIcon;
+}
+
+function StatItem({ label, value, active, color, icon: Icon }: StatItemProps) {
     return (
         <div className="flex flex-col items-center min-w-[80px]">
             <div className="text-xs font-bold uppercase text-muted-foreground/60 tracking-wider mb-0.5 flex items-center gap-1.5">

@@ -3,126 +3,87 @@ import {
     CheckCircle2, AlertCircle, RotateCcw,
     LayoutGrid, List, FileVideo, Play, Square,
     Clock, MonitorPlay, ArrowDownAZ, ArrowUp, ArrowDown,
-    Activity, Undo2, ChevronDown
+    Activity, Undo2, ChevronDown, FileJson,
+    type LucideIcon
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { cn } from '../lib/utils';
-import { useTranslation } from '../lib/language';
-import { apiUrl, wsUrl } from '../lib/api';
+import { useTranslation } from '../lib/languageContext';
 import { toast } from 'sonner';
+import { fetchPlanArtifact, fetchTaskSnapshots, openTaskEventSocket, rollbackTask, startTask, stopTasks } from '../lib/taskApi';
+import type { ExecutionPlan, MatchExplanation, MetadataRecord, TaskEvent, TaskSnapshot } from '../lib/types';
+import {
+    asRecord,
+    asString,
+    asStringArray,
+    applyTaskEvent,
+    buildTaskStartPayload,
+    deriveTaskBoardState,
+    getTaskViewKey,
+    taskFromSnapshot,
+    taskFromSnapshotItem,
+    type TaskExecutionConfig,
+    type TaskFilter,
+    type TaskSortConfig,
+    type TaskViewLabels,
+    type TaskViewModel,
+} from '../lib/taskViewModel';
 
-interface Task {
-    taskId?: string;
-    threadId: string;
-    createdAt: number;
-    name: string;
-    tmdbId?: string;
-    mediaType?: string;
-    fullPath?: string;
-    posterPath?: string;
-    status: 'idle' | 'searching' | 'fetching' | 'processing' | 'completed' | 'failed' | 'dry_run' | 'audit_completed' | 'stopped';
-    step: string;
-    lastLog: string;
-    logs: string[];
-    isExpanded: boolean;
-    hasExecuted?: boolean;
-    resultSummary?: string; // Sentence summary of result
-    plan?: ExecutionPlan;
-    planSummary?: PlanSummary;
-    match?: MatchExplanation;
-}
-
-interface MatchExplanation {
-    provider?: string | null;
-    confidence?: string;
-    reason?: string;
-    score?: number | null;
-    token_overlap?: number;
-    selected_id?: number;
-    selected_title?: string;
-    candidates?: Array<Record<string, any>>;
-}
-
-interface PlanSummary {
-    actions?: number;
-    ready?: number;
-    blocked?: number;
-    conflicts?: number;
-    risks?: number;
-    media_files?: number;
-    missing_episodes?: number;
-}
-
-interface ExecutionPlan {
-    mode?: string;
-    rollback_available?: boolean;
-    target_root?: string;
-    summary?: PlanSummary;
-    actions?: Array<Record<string, any>>;
-    risks?: Array<Record<string, any>>;
-    conflicts?: Array<Record<string, any>>;
-    missing_episodes?: string[];
-    artwork?: Record<string, any>;
-}
-
-interface TaskEvent {
-    task_id: string;
-    item_id?: string;
-    type: string;
-    timestamp: string;
-    payload: Record<string, any>;
-}
-
-interface TaskSnapshot {
-    id: string;
-    status: string;
-    input_dir: string;
-    created_at: string;
-    items?: Record<string, Record<string, any>>;
-}
-
-export interface TaskBoardConfig {
-    strategy: 'audit' | 'organize' | 'copy';
-    outputPath?: string;
-    forceFresh?: boolean;
-    enableOrganize?: boolean;
-    overwriteImages?: boolean;
-    renameParentDir?: boolean;
-}
+type Task = TaskViewModel;
+export type TaskBoardConfig = TaskExecutionConfig;
 
 export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig }) {
     const { t } = useTranslation();
+    const taskLabels: TaskViewLabels = {
+        scanning: t('scanning'),
+        extendedSearch: t('extended_search'),
+        metadataMatch: t('metadata_match'),
+        finished: t('finished'),
+        error: t('error'),
+        auditComplete: t('status_audit_complete'),
+        preparing: t('preparing'),
+        initializing: t('initializing'),
+    };
     const [tasks, setTasks] = useState<Record<string, Task>>({});
     const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
-    const [sortConfig, setSortConfig] = useState<{ field: 'time' | 'name' | 'status'; direction: 'desc' | 'asc' }>({ field: 'time', direction: 'desc' });
-    const wsRef = useRef<WebSocket | null>(null);
+    const [taskFilter, setTaskFilter] = useState<TaskFilter>('focus');
+    const [sortConfig, setSortConfig] = useState<TaskSortConfig>({ field: 'time', direction: 'desc' });
     const eventsWsRef = useRef<WebSocket | null>(null);
     const [isScrolling, setIsScrolling] = useState(false);
     const [expandedPlans, setExpandedPlans] = useState<Record<string, boolean>>({});
-    const scrollTimer = useRef<any>(null);
+    const scrollTimer = useRef<number | null>(null);
+
+    const resolveTaskStateKey = (state: Record<string, Task>, task: Task) => {
+        const viewKey = getTaskViewKey(task);
+        return Object.entries(state).find(([key, value]) => (
+            key === viewKey ||
+            getTaskViewKey(value) === viewKey ||
+            value.threadId === task.threadId ||
+            (!!task.taskId && value.taskId === task.taskId && value.fullPath === task.fullPath)
+        ))?.[0] || viewKey;
+    };
 
     const handleScroll = () => {
         setIsScrolling(true);
-        if (scrollTimer.current) clearTimeout(scrollTimer.current);
-        scrollTimer.current = setTimeout(() => {
+        if (scrollTimer.current) window.clearTimeout(scrollTimer.current);
+        scrollTimer.current = window.setTimeout(() => {
             setIsScrolling(false);
         }, 2000);
     };
 
-    // Track active TaskID per Thread and its metadata for deduplication
-    const activeTaskIds = useRef<Record<string, string>>({});
-    // Removed activeTaskMeta as we now use stable IDs directly
-
-    const handleExecute = async (task: Task) => {
-        console.log("handleExecute called for:", task.name, "Path:", task.fullPath, "ID:", task.tmdbId);
-
+    const handleExecute = async (task: Task, overrides: Partial<Pick<Task, 'tmdbId' | 'mediaType'>> = {}) => {
         if (!task.fullPath) {
-            console.warn("Task missing fullPath, cannot execute.");
+            toast.error('Task is missing a source path');
+            return;
+        }
+        const nextTmdbId = overrides.tmdbId ?? task.tmdbId;
+        if (nextTmdbId && Number.isNaN(parseInt(nextTmdbId))) {
+            toast.error('TMDB ID must be numeric');
             return;
         }
         if ((task.planSummary?.conflicts || 0) > 0 || (task.planSummary?.blocked || 0) > 0) {
             toast.error('Plan has conflicts');
-            setExpandedPlans(prev => ({ ...prev, [task.fullPath || task.threadId]: true }));
+            setExpandedPlans(prev => ({ ...prev, [getTaskViewKey(task)]: true }));
             return;
         }
 
@@ -130,51 +91,38 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
         // Removed hasExecuted check to allow Retrying/Running again.
 
         // Optimistically mark as executed to disable button immediately
-        setTasks(prev => ({
-            ...prev,
-            [getActiveTaskId(task)]: { ...task, hasExecuted: true }
-        }));
+        setTasks(prev => {
+            const activeKey = resolveTaskStateKey(prev, task);
+            return {
+                ...prev,
+                [activeKey]: { ...(prev[activeKey] || task), hasExecuted: true }
+            };
+        });
 
         try {
-            await fetch(apiUrl('/api/tasks/start'), {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    input_dir: task.fullPath,
-                    tmdb_id: task.tmdbId ? parseInt(task.tmdbId) : 0,
-                    media_type: task.mediaType,
-                    dry_run: false,
-                    inplace: defaultConfig.strategy !== 'copy',
-                    copy_mode: defaultConfig.strategy === 'copy',
-                    output_dir: defaultConfig.strategy === 'copy' ? defaultConfig.outputPath : undefined,
-                    fresh: defaultConfig.forceFresh,
-                    enable_organize: defaultConfig.enableOrganize,
-                    overwrite_images: defaultConfig.overwriteImages,
-                    rename_parent_dir: defaultConfig.renameParentDir,
-                    search_mode: 'smart'
-                })
-            });
+            await startTask(buildTaskStartPayload(task, defaultConfig, overrides));
+            toast.success('Task started');
         } catch (e) {
-            console.error("Failed to start task", e);
-            // Revert on failure if needed, or leave as is to prevent spam
+            setTasks(prev => {
+                const activeKey = resolveTaskStateKey(prev, task);
+                const existing = prev[activeKey];
+                if (!existing) return prev;
+                return {
+                    ...prev,
+                    [activeKey]: {
+                        ...existing,
+                        hasExecuted: false,
+                        resultSummary: e instanceof Error ? e.message : 'Failed to start task',
+                    },
+                };
+            });
+            toast.error(e instanceof Error ? e.message : 'Failed to start task');
         }
-    };
-
-    // Helper to find the correct key for the task
-    const getActiveTaskId = (t: Task) => {
-        // If the task is in the list, its key is likely its ID or threadID depending on how it was stored
-        // But since we have the task object from the map value, we can search for the key or pass the key in onExecute
-        // A simpler way: TaskCard logic iterates sortedTaskList.
-        // We know setTasks needs the KEY. 
-        // Let's modify onExecute signature or find the key.
-        // Actually, we can just search:
-        const entry = Object.entries(tasks).find(([_, v]) => v === t);
-        return entry ? entry[0] : t.threadId;
     };
 
     const handleStop = async () => {
         try {
-            await fetch(apiUrl('/api/tasks/stop'), { method: 'POST' });
+            await stopTasks();
         } catch (e) {
             console.error("Failed to stop tasks", e);
         }
@@ -183,15 +131,10 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
     const handleRollback = async (task: Task) => {
         if (!task.taskId) return;
         try {
-            const response = await fetch(apiUrl(`/api/tasks/${task.taskId}/rollback`), { method: 'POST' });
-            if (!response.ok) {
-                const error = await response.json().catch(() => ({}));
-                throw new Error(error.detail || 'Rollback failed');
-            }
-            const result = await response.json();
+            const result = await rollbackTask(task.taskId);
             toast.success(`Rollback ${result.status}`);
             setTasks(prev => {
-                const key = Object.entries(prev).find(([_, value]) => value === task)?.[0] || task.fullPath || task.threadId;
+                const key = resolveTaskStateKey(prev, task);
                 const existing = prev[key];
                 if (!existing) return prev;
                 return {
@@ -200,7 +143,8 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                         ...existing,
                         status: 'stopped',
                         step: 'Rolled back',
-                        resultSummary: '已回滚',
+                        rollback: result,
+                        resultSummary: result.status === 'completed' ? '已回滚' : `回滚${result.status}`,
                     },
                 };
             });
@@ -210,187 +154,13 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
     };
 
     const togglePlan = (task: Task) => {
-        const key = task.fullPath || task.threadId;
+        const key = getTaskViewKey(task);
         setExpandedPlans(prev => ({ ...prev, [key]: !prev[key] }));
     };
 
-    const posterUrl = (poster?: string) => {
-        if (!poster) return undefined;
-        if (poster.startsWith('http')) return poster;
-        return `https://image.tmdb.org/t/p/w200${poster}`;
-    };
-
-    const statusStep = (status: Task['status']) => {
-        if (status === 'processing') return t('scanning');
-        if (status === 'searching') return t('extended_search');
-        if (status === 'fetching') return t('metadata_match');
-        if (status === 'completed') return t('finished');
-        if (status === 'failed') return t('error');
-        if (status === 'audit_completed' || status === 'dry_run') return t('status_audit_complete');
-        if (status === 'stopped') return 'Stopped';
-        return t('preparing');
-    };
-
-    const normalizeStatus = (status?: string): Task['status'] => {
-        if (status === 'completed') return 'completed';
-        if (status === 'failed') return 'failed';
-        if (status === 'audit_completed') return 'audit_completed';
-        if (status === 'skipped') return 'completed';
-        if (status === 'stopped') return 'stopped';
-        if (status === 'fetching') return 'fetching';
-        if (status === 'processing') return 'processing';
-        if (status === 'planned') return 'idle';
-        return 'idle';
-    };
-
-    const taskFromSnapshotItem = (snapshot: TaskSnapshot, itemId: string, item: Record<string, any>): Task => {
-        const candidate = item.candidate || {};
-        const plan = item.plan as ExecutionPlan | undefined;
-        const match = item.match as MatchExplanation | undefined;
-        const planSummary = item.plan_summary || plan?.summary;
-        const status = normalizeStatus(item.status);
-        const name = candidate.title || item.name || itemId.split('/').pop() || t('initializing');
-        const poster = posterUrl(candidate.poster_url || candidate.poster_path || item.poster_path);
-        return {
-            threadId: itemId,
-            taskId: snapshot.id,
-            createdAt: item.created_at ? Date.parse(item.created_at) : Date.parse(snapshot.created_at),
-            name,
-            tmdbId: candidate.tmdb_id ? String(candidate.tmdb_id) : (item.tmdb_id ? String(item.tmdb_id) : undefined),
-            mediaType: candidate.media_type || item.media_type,
-            fullPath: item.path || itemId,
-            posterPath: poster,
-            status,
-            step: statusStep(status),
-            lastLog: item.error || item.result || '',
-            logs: item.logs || [],
-            isExpanded: false,
-            hasExecuted: status === 'completed',
-            resultSummary: planSummary ? `${planSummary.actions || 0} actions · ${planSummary.risks || 0} risks` : item.error || item.result,
-            plan,
-            planSummary,
-            match,
-        };
-    };
-
     const upsertFromEvent = (event: TaskEvent) => {
-        const payload = event.payload || {};
-
-        setTasks(prev => {
-            const next = { ...prev };
-            if (!event.item_id) {
-                if (event.type === 'task.stopped') {
-                    Object.entries(next).forEach(([key, task]) => {
-                        if (task.status === 'processing' || task.status === 'searching' || task.status === 'fetching') {
-                            next[key] = { ...task, status: 'stopped', step: 'Stopped', lastLog: 'Task stopped' };
-                        }
-                    });
-                }
-                return next;
-            }
-
-            const key = event.item_id;
-            const existing = next[key] || {
-                threadId: key,
-                taskId: event.task_id,
-                createdAt: Date.parse(event.timestamp),
-                name: payload.name || key.split('/').pop() || t('initializing'),
-                status: 'idle',
-                step: t('preparing'),
-                lastLog: '',
-                logs: [],
-                isExpanded: false,
-                fullPath: payload.path || key,
-            } as Task;
-
-            const updated: Task = {
-                ...existing,
-                taskId: event.task_id,
-                name: payload.title || payload.name || existing.name,
-                fullPath: payload.path || existing.fullPath || key,
-                mediaType: payload.media_type || existing.mediaType,
-                tmdbId: payload.tmdb_id ? String(payload.tmdb_id) : existing.tmdbId,
-                posterPath: posterUrl(payload.poster_url || payload.poster_path) || existing.posterPath,
-                lastLog: payload.error || payload.result || existing.lastLog,
-                logs: [...existing.logs.slice(-50), `${event.type}: ${payload.error || payload.result || payload.name || payload.title || ''}`],
-                plan: existing.plan,
-                planSummary: existing.planSummary,
-                match: existing.match,
-            };
-
-            if (event.type === 'item.started') updated.status = 'processing';
-            if (event.type === 'item.planned') {
-                updated.status = 'idle';
-                updated.resultSummary = payload.video_count || payload.file_count
-                    ? `${payload.video_count || payload.file_count} files`
-                    : undefined;
-            }
-            if (event.type === 'item.plan_ready') {
-                updated.plan = payload.plan || payload;
-                updated.planSummary = updated.plan?.summary;
-                updated.resultSummary = updated.planSummary
-                    ? `${updated.planSummary.actions || 0} actions · ${updated.planSummary.risks || 0} risks`
-                    : updated.resultSummary;
-            }
-            if (event.type === 'candidate.selected') updated.status = 'fetching';
-            if (event.type === 'candidate.selected' && payload.match) {
-                updated.match = payload.match;
-            }
-            if (event.type === 'item.audit_completed') {
-                updated.status = 'audit_completed';
-                updated.hasExecuted = false;
-                updated.planSummary = payload.plan_summary || updated.planSummary;
-                updated.resultSummary = updated.planSummary
-                    ? `${updated.planSummary.actions || 0} actions · ${updated.planSummary.risks || 0} risks`
-                    : payload.result || '检测通过/PASS';
-            }
-            if (event.type === 'item.completed') {
-                updated.status = 'completed';
-                updated.hasExecuted = true;
-                updated.resultSummary = payload.result || '任务成功';
-            }
-            if (event.type === 'item.skipped') {
-                updated.status = 'completed';
-                updated.hasExecuted = true;
-                updated.resultSummary = '任务成功，元数据已存在';
-            }
-            if (event.type === 'item.failed') {
-                updated.status = 'failed';
-                updated.resultSummary = payload.error || '任务失败';
-            }
-
-            updated.step = statusStep(updated.status);
-            next[key] = updated;
-            return next;
-        });
+        setTasks(prev => applyTaskEvent(prev, event, taskLabels));
     };
-
-    useEffect(() => {
-        let closed = false;
-        let reconnectTimer: number | undefined;
-
-        const connect = () => {
-            if (closed) return;
-            const ws = new WebSocket(wsUrl('/ws/logs'));
-            wsRef.current = ws;
-
-            ws.onmessage = (event) => {
-                const msg = event.data;
-                parseLog(msg);
-            };
-
-            ws.onclose = () => {
-                if (closed) return;
-                reconnectTimer = window.setTimeout(connect, 3000);
-            };
-        };
-        connect();
-        return () => {
-            closed = true;
-            if (reconnectTimer) window.clearTimeout(reconnectTimer);
-            wsRef.current?.close();
-        };
-    }, []);
 
     useEffect(() => {
         let closed = false;
@@ -398,14 +168,17 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
 
         const loadSnapshots = async () => {
             try {
-                const response = await fetch(apiUrl('/api/tasks'));
-                if (!response.ok) return;
-                const data = await response.json();
+                const data = await fetchTaskSnapshots();
                 const next: Record<string, Task> = {};
                 (data.tasks || []).forEach((snapshot: TaskSnapshot) => {
-                    Object.entries(snapshot.items || {}).forEach(([itemId, item]) => {
-                        next[itemId] = taskFromSnapshotItem(snapshot, itemId, item);
-                    });
+                    const items = Object.entries(snapshot.items || {});
+                    if (items.length === 0) {
+                        next[snapshot.id] = taskFromSnapshot(snapshot, taskLabels);
+                    } else {
+                        items.forEach(([itemId, item]) => {
+                            next[itemId] = taskFromSnapshotItem(snapshot, itemId, item, taskLabels);
+                        });
+                    }
                 });
                 setTasks(prev => ({ ...prev, ...next }));
             } catch (error) {
@@ -415,16 +188,10 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
 
         const connect = () => {
             if (closed) return;
-            const ws = new WebSocket(wsUrl('/ws/events'));
+            const ws = openTaskEventSocket(upsertFromEvent, (error) => {
+                console.warn('Invalid task event', error);
+            });
             eventsWsRef.current = ws;
-
-            ws.onmessage = (event) => {
-                try {
-                    upsertFromEvent(JSON.parse(event.data));
-                } catch (error) {
-                    console.warn('Invalid task event', error);
-                }
-            };
 
             ws.onclose = () => {
                 if (closed) return;
@@ -439,280 +206,12 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
             if (reconnectTimer) window.clearTimeout(reconnectTimer);
             eventsWsRef.current?.close();
         };
-    }, [t]);
+    // Keep the task event socket stable for the component lifetime; reconnecting on render-derived helpers causes duplicate streams.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
-    const parseLog = (log: string) => {
-        const match = log.match(/\[(.*?)\]\s+(\w+)\s+-\s+(.*)/);
-        if (!match) return;
-
-        const [, threadIdRaw, , message] = match;
-        if (threadIdRaw === 'MainThread' || threadIdRaw.startsWith('AnyIO') || threadIdRaw.startsWith('JobManager')) return;
-
-        // Detect "Start of Detection/Task" signals to spawn new Task IDs
-        let isTaskStart = false;
-        let detectedName = '';
-        let detectedPath = '';
-
-        if (message.includes('Analyzing directory:')) {
-            // [Audit Mode] Analyzing directory: /path/to/Series/Season 1
-            const m = message.match(/Analyzing directory:\s+(.*)/);
-            if (m) {
-                detectedPath = m[1];
-                detectedName = detectedPath.split('/').pop() || 'Unknown';
-                isTaskStart = true;
-            }
-        } else if (message.includes('Processing: ')) {
-            // Processing: Name (ID: ...)
-            const parts = message.match(/Processing:\s+(.*?)\s+\(ID:/);
-            if (parts) detectedName = parts[1];
-            isTaskStart = true;
-        } else if (message.includes('Would process directory:')) {
-            const m = message.match(/Would process directory:\s+(.*)/);
-            if (m) detectedName = m[1].split('/').pop() || 'Unknown';
-            isTaskStart = true;
-        }
-
-        // Logic: Map Thread -> TaskID with Deduplication
-        // We use a STABLE ID based on the content (Path or Name) to prevent duplicates on re-runs.
-        let stableKey = '';
-        if (detectedPath) stableKey = detectedPath;
-        else if (detectedName && detectedName !== 'Unknown') stableKey = detectedName;
-
-        if (isTaskStart) {
-            // If we have a stable key (Path/Name), use it as the TaskID
-            if (stableKey) {
-                const currentMappedId = activeTaskIds.current[threadIdRaw];
-                // CRITICAL FIX: Prevent splitting "Analyzing" (Path) and "Processing" (Name) into two tasks.
-                // If we already have a Path-based ID for this thread that MATCHES the Name we just found,
-                // keep the Path-based ID (it's more specific).
-                let skipOverride = false;
-                if (currentMappedId && currentMappedId.includes('/') && detectedName) {
-                    // Check if the existing path ends with the name (normal folder structure)
-                    if (currentMappedId.endsWith(detectedName) || currentMappedId.includes(detectedName)) {
-                        skipOverride = true;
-                    }
-                }
-
-                if (!skipOverride) {
-                    activeTaskIds.current[threadIdRaw] = stableKey;
-                }
-            }
-            // If NO stable key (only thread info?), we wait or rely on threadID placeholder.
-        }
-
-        // If no active task for this thread, use threadId as placeholder (Initializing state)
-        // But logs from previous runs might arrive here? 
-        // We assume valid flow: Worker starts -> Emits "Analyzing" -> We create Task.
-        const currentTaskId = activeTaskIds.current[threadIdRaw] || threadIdRaw;
-
-        setTasks(prev => {
-            // Cleanup Placeholder: If we just defined a Real Task (Stable Key), remove the thread placeholder
-            let newState = { ...prev };
-
-            if (activeTaskIds.current[threadIdRaw] && newState[threadIdRaw]) {
-                delete newState[threadIdRaw];
-            }
-
-            const existing = newState[currentTaskId] || {
-                threadId: threadIdRaw,
-                createdAt: Date.now(),
-                name: detectedName || t('initializing'),
-                status: 'idle',
-                step: t('preparing'),
-                lastLog: '',
-                logs: [],
-                isExpanded: false,
-                fullPath: detectedPath
-            };
-            const updated = { ...existing };
-            updated.lastLog = message;
-            updated.logs = [...updated.logs.slice(-50), message];
-
-            // Global Poster Extraction
-            const posterMatch = message.match(/\[Poster=(.*?)\]/);
-            if (posterMatch && posterMatch[1]) {
-                updated.posterPath = posterMatch[1];
-            }
-
-            if (message.includes('Processing: ')) {
-                const parts = message.match(/Processing:\s+(.*?)\s+\(ID:\s+(.*?),\s+Query:\s+(.*?),\s+Type:\s+(.*?)\)/);
-                if (parts) {
-                    updated.name = parts[1];
-                    updated.tmdbId = parts[2] !== 'None' ? parts[2] : undefined;
-                    updated.mediaType = parts[4];
-                    updated.status = 'processing';
-                    updated.step = t('scanning');
-
-                    // Force update the active mapping IF it was just a thread placeholder
-                    if (!activeTaskIds.current[threadIdRaw]) {
-                        // It's the first time we see a name, but we might have had a path before?
-                        // If we have a stable key, use it.
-                        if (stableKey) activeTaskIds.current[threadIdRaw] = stableKey;
-                    }
-                }
-            } else if (message.includes('🕵️ AUDIT_HIT:')) {
-                const pathMatch = message.match(/Path='(.*?)'/);
-                const idMatch = message.match(/ID=(\d+)/);
-                const titleMatch = message.match(/Title='(.*?)'/);
-                const typeMatch = message.match(/Type='(.*?)'/);
-
-                if (pathMatch) updated.fullPath = pathMatch[1];
-                if (idMatch) updated.tmdbId = idMatch[1];
-                if (titleMatch && titleMatch[1] !== 'None') updated.name = titleMatch[1];
-                if (typeMatch) updated.mediaType = typeMatch[1];
-
-                updated.status = 'dry_run';
-                updated.step = t('audit_result');
-                updated.lastLog = `Audit: Found ${updated.name} (ID: ${updated.tmdbId})`;
-                // Reset hasExecuted so the user can run the plan again if they re-scan
-                updated.hasExecuted = false;
-            } else if (message.includes('🔍 TMDB failed')) {
-                updated.status = 'searching';
-                updated.step = t('extended_search');
-            } else if (message.includes('✅ Selected Candidate:')) {
-                const idMatch = message.match(/TMDB ID (\d+)/);
-                const titleMatch = message.match(/Title='(.*?)'/);
-                const typeMatch = message.match(/\(Type: (\w+)\)/);
-                if (idMatch) updated.tmdbId = idMatch[1];
-                if (titleMatch && titleMatch[1] !== 'None') updated.name = titleMatch[1];
-                if (typeMatch) updated.mediaType = typeMatch[1];
-                updated.status = 'fetching';
-                updated.step = t('metadata_match');
-            } else if (message.includes('📡 Processing full metadata')) {
-                updated.step = t('episodes_details');
-            } else if (message.includes('Renamed:')) {
-                updated.step = t('organizing');
-            } else if (message.includes('Would process directory:')) {
-                updated.status = 'dry_run';
-                updated.step = t('audit_result');
-            } else if (message.includes('Metadata generation failed') || message.includes('❌ No candidate found') || message.includes('任务失败')) {
-                updated.status = 'failed';
-                updated.step = t('error');
-                updated.resultSummary = message.includes('❌') ? message.split('❌').pop()?.trim() : message;
-            } else if (message.includes('Audit completed')) {
-                updated.step = t('status_audit_complete');
-                updated.status = 'audit_completed';
-            } else if (message.includes('🏆 Task Successfully Finished') || message.includes('✅ Batch Scraper finished task')) {
-                updated.status = 'completed';
-                updated.step = t('finished');
-                updated.resultSummary = "任务成功";
-            } else if (message.includes('Skipping') && message.includes('Metadata already exists')) {
-                updated.status = 'completed';
-                updated.step = t('skipped_exists') || "Skipped (Exists)";
-                updated.resultSummary = "任务成功，元数据已存在";
-                updated.lastLog = message;
-            } else if (message.includes('🛑 Stop event detected')) {
-                updated.status = 'stopped';
-                updated.step = 'Stopped';
-            } else if (message.includes('Pipeline Error') || message.includes('Failed items')) {
-                updated.status = 'failed';
-                updated.step = t('error');
-                // Try to extract error details
-                const errMatch = message.match(/Error: (.*)/) || message.match(/Failed items: (.*)/);
-                if (errMatch) {
-                    updated.resultSummary = errMatch[1].substring(0, 50) + "...";
-                } else {
-                    updated.resultSummary = "任务执行出错";
-                }
-                updated.lastLog = message;
-            }
-
-            if (message.includes('🏆 Task Successfully Finished:')) {
-                const posterMatch = message.match(/\[Poster=(.*?)\]/);
-                if (posterMatch && posterMatch[1]) {
-                    updated.posterPath = posterMatch[1];
-                }
-                updated.status = 'completed';
-                updated.step = t('finished');
-                // Detect specific success types from logs? For now based on status
-                if (!updated.resultSummary) {
-                    updated.resultSummary = "任务成功，媒体文件数量完整。";
-                }
-            } else if (message.includes('Renamed Directory:')) {
-                updated.status = 'completed';
-                updated.resultSummary = "任务成功，媒体文件数量完整。";
-            } else if (updated.status === 'failed') {
-                updated.resultSummary = "任务失败，找不到相关信息";
-            }
-
-            return { ...newState, [currentTaskId]: updated };
-        });
-    };
-
-    const taskList = Object.values(tasks)
-        .reduce((acc, task) => {
-            const key = task.fullPath || `${task.mediaType || 'media'}:${task.tmdbId || task.name}`;
-            if (!acc[key]) {
-                acc[key] = task;
-            } else {
-                const existing = acc[key];
-                const score = (candidate: Task) => {
-                    let value = 0;
-                    if (candidate.fullPath) value += 4;
-                    if (candidate.tmdbId) value += 3;
-                    if (candidate.posterPath) value += 2;
-                    if (candidate.resultSummary) value += 1;
-                    if (['completed', 'failed', 'audit_completed'].includes(candidate.status)) value += 6;
-                    if (['processing', 'searching', 'fetching'].includes(candidate.status)) value += 3;
-                    return value;
-                };
-
-                if (score(task) > score(existing)) {
-                    acc[key] = task;
-                } else {
-                    acc[key] = {
-                        ...existing,
-                        logs: [...existing.logs, ...task.logs].slice(-50),
-                        posterPath: existing.posterPath || task.posterPath,
-                        tmdbId: existing.tmdbId || task.tmdbId,
-                        mediaType: existing.mediaType || task.mediaType,
-                        resultSummary: existing.resultSummary || task.resultSummary,
-                    };
-                }
-            }
-            return acc;
-        }, {} as Record<string, Task>);
-
-    const sortedTaskList = Object.values(taskList)
-        .filter(t => {
-            // Filter out zombie placeholders: 
-            // If a task is 'idle' (Initializing) and has NO path, it is likely a stray log 
-            // from before detailed processing started. We hide it to keep the count accurate.
-            if (t.status === 'idle' && !t.fullPath) return false;
-            return true;
-        })
-        .sort((a, b) => {
-            const { field, direction } = sortConfig;
-            let comparison = 0;
-
-            if (field === 'time') {
-                comparison = (a.createdAt || 0) - (b.createdAt || 0);
-            } else if (field === 'status') {
-                const priority: Record<string, number> = {
-                    failed: 0,
-                    processing: 1,
-                    searching: 2,
-                    fetching: 3,
-                    dry_run: 4,
-                    audit_completed: 5,
-                    completed: 6,
-                    idle: 7
-                };
-                const pA = priority[a.status] ?? 99;
-                const pB = priority[b.status] ?? 99;
-                comparison = pA - pB;
-            } else {
-                comparison = (a.name || '').localeCompare(b.name || '');
-            }
-
-            return direction === 'asc' ? comparison : -comparison;
-        });
-
-    // Stats for Display
-    const finishedCount = sortedTaskList.filter(t => ['completed', 'failed', 'audit_completed', 'dry_run'].includes(t.status)).length;
-    const runningCount = sortedTaskList.filter(t => ['processing', 'searching', 'fetching'].includes(t.status)).length;
-    const failedCount = sortedTaskList.filter(t => ['failed', 'stopped'].includes(t.status)).length;
-    const plannedCount = sortedTaskList.filter(t => t.status === 'idle').length;
+    const { allVisibleTasks, filteredTasks: filteredTaskList, stats } = deriveTaskBoardState(tasks, sortConfig, taskFilter);
+    const { finishedCount, runningCount, failedCount, plannedCount, readyCount, issueCount, doneOnlyCount } = stats;
 
 
     return (
@@ -748,7 +247,21 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                     </div>
                 </div>
 
-                <div className="flex items-center gap-3">
+                <div className="flex flex-wrap items-center justify-end gap-2">
+                    <SegmentedControl
+                        options={[
+                            { value: 'focus', icon: Activity, label: `Focus ${runningCount + readyCount + issueCount}` },
+                            { value: 'ready', icon: Play, label: `Ready ${readyCount}` },
+                            { value: 'issues', icon: AlertCircle, label: `Issues ${issueCount}` },
+                            { value: 'done', icon: CheckCircle2, label: `Done ${doneOnlyCount}` },
+                            { value: 'all', icon: List, label: `All ${allVisibleTasks.length}` },
+                        ]}
+                        value={taskFilter}
+                        onChange={setTaskFilter}
+                    />
+
+                    <div className="h-8 w-px bg-border-light/50 hidden xl:block" />
+
                     {/* View Toggle */}
                     <SegmentedControl
                         options={[
@@ -769,7 +282,7 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                             { value: 'status', icon: Activity, label: `${t('status')} ${sortConfig.field === 'status' ? (sortConfig.direction === 'asc' ? '↑' : '↓') : ''}` },
                         ]}
                         value={sortConfig.field}
-                        onChange={(v: any) => setSortConfig(p => ({
+                        onChange={(v) => setSortConfig(p => ({
                             field: v,
                             direction: p.field === v ? (p.direction === 'asc' ? 'desc' : 'asc') : p.direction
                         }))}
@@ -787,7 +300,7 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                             isScrolling && "scrollbar-active"
                         )}
                     >
-                        {sortedTaskList.length === 0 ? (
+                        {filteredTaskList.length === 0 ? (
                             <div className="flex flex-col items-center justify-center h-full text-slate-500 dark:text-muted-foreground gap-4 px-4">
                                 <div className="w-16 h-16 rounded-2xl bg-slate-200 dark:bg-white/5 flex items-center justify-center animate-pulse">
                                     <MonitorPlay className="w-8 h-8 opacity-50" />
@@ -823,11 +336,11 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-slate-200 dark:divide-white/10 text-xs font-sans">
-                                        {sortedTaskList.map(task => {
-                                            const key = task.fullPath || task.threadId;
+                                        {filteredTaskList.map(task => {
+                                            const key = getTaskViewKey(task);
                                             return (
                                                 <TaskRow
-                                                    key={task.status === 'idle' ? task.threadId : (task.fullPath || task.name)}
+                                                    key={key}
                                                     task={task}
                                                     isPlanOpen={!!expandedPlans[key]}
                                                     onExecute={handleExecute}
@@ -842,8 +355,8 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
                             </div>
                         ) : (
                             <div className="grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-3 px-4">
-                                {sortedTaskList.map(task => (
-                                    <TaskCard key={task.status === 'idle' ? task.threadId : (task.fullPath || task.name)} task={task} onExecute={handleExecute} onStop={handleStop} onRollback={handleRollback} isPlanOpen={!!expandedPlans[task.fullPath || task.threadId]} onTogglePlan={togglePlan} />
+                                {filteredTaskList.map(task => (
+                                    <TaskCard key={getTaskViewKey(task)} task={task} onExecute={handleExecute} onStop={handleStop} onRollback={handleRollback} isPlanOpen={!!expandedPlans[getTaskViewKey(task)]} onTogglePlan={togglePlan} />
                                 ))}
                             </div>
                         )}
@@ -854,11 +367,11 @@ export function TaskBoard({ defaultConfig }: { defaultConfig: TaskBoardConfig })
     );
 }
 
-function TaskCard({ task, onExecute, onStop, onRollback, isPlanOpen, onTogglePlan }: { task: Task, onExecute: (t: Task) => void, onStop: () => void, onRollback: (t: Task) => void, isPlanOpen: boolean, onTogglePlan: (t: Task) => void }) {
+function TaskCard({ task, onExecute, onStop, onRollback, isPlanOpen, onTogglePlan }: { task: Task, onExecute: (t: Task, overrides?: Partial<Pick<Task, 'tmdbId' | 'mediaType'>>) => void, onStop: () => void, onRollback: (t: Task) => void, isPlanOpen: boolean, onTogglePlan: (t: Task) => void }) {
     const isAuditReady = (task.status === 'dry_run' || task.status === 'audit_completed');
     const isRunning = task.status === 'processing' || task.status === 'searching' || task.status === 'fetching';
     const isFinished = task.status === 'completed';
-    const isFailed = task.status === 'failed' || task.status === 'stopped';
+    const isFailed = task.status === 'failed' || task.status === 'partial' || task.status === 'stopped';
 
     const yearMatch = task.name.match(/\((\d{4})\)/);
     const displayYear = yearMatch ? yearMatch[1] : null;
@@ -867,6 +380,7 @@ function TaskCard({ task, onExecute, onStop, onRollback, isPlanOpen, onTogglePla
     const getStatusInfo = (s: string) => {
         switch (s) {
             case 'completed': return { color: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400', label: 'Done' };
+            case 'partial': return { color: 'bg-amber-500/10 text-amber-600 dark:text-amber-400', label: 'Partial' };
             case 'failed': return { color: 'bg-red-500/10 text-red-600 dark:text-red-400', label: 'Failed' };
             case 'stopped': return { color: 'bg-slate-500/10 text-slate-500', label: 'Stopped' };
             case 'processing':
@@ -884,6 +398,7 @@ function TaskCard({ task, onExecute, onStop, onRollback, isPlanOpen, onTogglePla
     const planSummary = task.planSummary || plan?.summary;
     const hasPlanBlockers = (planSummary?.conflicts || 0) > 0 || (planSummary?.blocked || 0) > 0;
     const match = task.match;
+    const canRollback = !!task.taskId && !!task.rollbackAvailable && (isFinished || isFailed) && task.rollback?.status !== 'completed';
 
     return (
         <div className="relative group p-3 rounded-lg border border-[var(--border-light)] bg-[var(--bg-panel)] hover:bg-[var(--bg-hover)] transition-colors flex flex-col gap-3 shadow-sm text-[var(--text-main)] overflow-hidden">
@@ -918,7 +433,7 @@ function TaskCard({ task, onExecute, onStop, onRollback, isPlanOpen, onTogglePla
                 </div>
             </div>
 
-            {(planSummary || match) && (
+            {(planSummary || match || task.artwork || task.issue || task.lock || task.rollback) && (
                 <div className="rounded-md border border-[var(--border-light)] bg-[var(--bg-inner-panel)]">
                     <button
                         onClick={(e) => { e.stopPropagation(); onTogglePlan(task); }}
@@ -926,11 +441,12 @@ function TaskCard({ task, onExecute, onStop, onRollback, isPlanOpen, onTogglePla
                         title="Details"
                     >
                         {planSummary ? (
-                            <div className="grid grid-cols-4 gap-2">
+                            <div className="grid grid-cols-[repeat(auto-fit,minmax(58px,1fr))] gap-2">
                                 <PlanMetric label="Actions" value={planSummary.actions || 0} />
                                 <PlanMetric label="Conflicts" value={planSummary.conflicts || 0} tone={(planSummary.conflicts || 0) > 0 ? 'danger' : 'normal'} />
                                 <PlanMetric label="Risks" value={planSummary.risks || 0} tone={(planSummary.risks || 0) > 0 ? 'warn' : 'normal'} />
                                 <PlanMetric label="Missing" value={planSummary.missing_episodes || 0} tone={(planSummary.missing_episodes || 0) > 0 ? 'warn' : 'normal'} />
+                                <PlanMetric label="Meta" value={planSummary.metadata_writes || 0} />
                             </div>
                         ) : (
                             <div className="min-w-0">
@@ -940,7 +456,7 @@ function TaskCard({ task, onExecute, onStop, onRollback, isPlanOpen, onTogglePla
                         <ChevronDown size={14} className={cn("text-[var(--text-muted)] transition-transform", isPlanOpen && "rotate-180")} />
                     </button>
                     {isPlanOpen && (
-                        <DetailsPanel match={match} plan={plan} />
+                        <DetailsPanel taskId={task.taskId} itemId={task.threadId} config={task.config} issue={task.issue} match={match} plan={plan} planPath={task.planPath} artwork={task.artwork} rollback={task.rollback} lock={task.lock} />
                     )}
                 </div>
             )}
@@ -949,6 +465,10 @@ function TaskCard({ task, onExecute, onStop, onRollback, isPlanOpen, onTogglePla
                 <div className="text-[10px] font-mono text-[var(--text-muted)] truncate rounded-md bg-black/[0.03] dark:bg-white/[0.04] px-2 py-1.5" title={plan.target_root}>
                     {plan.mode || 'plan'} → {plan.target_root.split('/').pop() || plan.target_root}
                 </div>
+            )}
+
+            {isFailed && (
+                <ManualRetryPanel task={task} onExecute={onExecute} />
             )}
 
             <div className="flex flex-col gap-2 pt-2 border-t border-slate-100 dark:border-white/5 mt-auto">
@@ -961,6 +481,7 @@ function TaskCard({ task, onExecute, onStop, onRollback, isPlanOpen, onTogglePla
 
                     {isAuditReady && !isRunning && !isFinished && (
                         <button
+                            disabled={hasPlanBlockers}
                             onClick={(e) => { e.stopPropagation(); onExecute(task); }}
                             className={cn(
                                 "relative z-10 shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[10px] font-bold uppercase tracking-wider transition-colors shadow-sm",
@@ -982,7 +503,7 @@ function TaskCard({ task, onExecute, onStop, onRollback, isPlanOpen, onTogglePla
                         </button>
                     )}
 
-                    {(isFailed || (isFinished && !task.resultSummary?.includes('成功'))) && (
+                    {isFailed && (
                         <button
                             onClick={(e) => { e.stopPropagation(); onExecute(task); }}
                             className="relative z-10 shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[10px] font-bold uppercase tracking-wider transition-colors bg-blue-500 text-white hover:bg-blue-600 shadow-sm"
@@ -992,14 +513,14 @@ function TaskCard({ task, onExecute, onStop, onRollback, isPlanOpen, onTogglePla
                         </button>
                     )}
 
-                    {isFinished && task.resultSummary?.includes('成功') && (
+                    {isFinished && (
                         <button disabled className="shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-white/5 text-slate-400 dark:text-slate-600 cursor-not-allowed">
                             <CheckCircle2 size={10} />
                             <span>Done</span>
                         </button>
                     )}
 
-                    {task.taskId && (isFinished || isFailed) && (
+                    {canRollback && (
                         <button
                             onClick={(e) => { e.stopPropagation(); onRollback(task); }}
                             className="relative z-10 shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[10px] font-bold uppercase tracking-wider transition-colors bg-slate-100 dark:bg-white/10 text-[var(--text-main)] hover:bg-slate-200 dark:hover:bg-white/15 shadow-sm"
@@ -1009,23 +530,97 @@ function TaskCard({ task, onExecute, onStop, onRollback, isPlanOpen, onTogglePla
                             <span>ROLLBACK</span>
                         </button>
                     )}
+                    {task.rollback?.status === 'completed' && (
+                        <span className="shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                            <Undo2 size={10} />
+                            <span>ROLLED BACK</span>
+                        </span>
+                    )}
                 </div>
             </div>
         </div>
     );
 }
 
-function SegmentedControl({ options, value, onChange }: any) {
+function ManualRetryPanel({ task, onExecute, compact = false }: { task: Task, onExecute: (t: Task, overrides?: Partial<Pick<Task, 'tmdbId' | 'mediaType'>>) => void, compact?: boolean }) {
+    const [manualTmdbId, setManualTmdbId] = useState(task.tmdbId || '');
+    const [manualMediaType, setManualMediaType] = useState<'movie' | 'tv'>((task.mediaType === 'movie' || task.mediaType === 'tv') ? task.mediaType : 'movie');
+    const canRun = !manualTmdbId || /^\d+$/.test(manualTmdbId.trim());
+
     return (
-        <div className="grid auto-cols-fr grid-flow-col gap-1 p-1 bg-[var(--bg-toggle-wrapper)] rounded-lg border border-transparent dark:border-white/10 relative">
-            {options.map((opt: any) => {
+        <div className={cn(
+            "rounded-md border border-red-500/15 bg-red-500/[0.04] p-2",
+            compact ? "flex flex-wrap items-center justify-end gap-2" : "space-y-2"
+        )}>
+            <div className={cn("flex items-center gap-1", compact ? "order-2" : "")}>
+                <button
+                    onClick={() => setManualMediaType('movie')}
+                    className={cn(
+                        "h-7 px-2 rounded-md text-[10px] font-bold uppercase tracking-wider border transition-colors",
+                        manualMediaType === 'movie' ? "border-blue-500/40 bg-blue-500/10 text-blue-500" : "border-[var(--border-light)] text-[var(--text-muted)]"
+                    )}
+                >
+                    Movie
+                </button>
+                <button
+                    onClick={() => setManualMediaType('tv')}
+                    className={cn(
+                        "h-7 px-2 rounded-md text-[10px] font-bold uppercase tracking-wider border transition-colors",
+                        manualMediaType === 'tv' ? "border-purple-500/40 bg-purple-500/10 text-purple-500" : "border-[var(--border-light)] text-[var(--text-muted)]"
+                    )}
+                >
+                    TV
+                </button>
+            </div>
+            <div className={cn("flex items-center gap-2", compact ? "order-1" : "")}>
+                <input
+                    value={manualTmdbId}
+                    onChange={(event) => setManualTmdbId(event.target.value)}
+                    placeholder="TMDB ID"
+                    className={cn(
+                        "h-7 min-w-0 rounded-md border bg-[var(--bg-panel)] px-2 text-[10px] font-mono outline-none transition-colors",
+                        canRun ? "border-[var(--border-light)] text-[var(--text-main)] focus:border-blue-500/50" : "border-red-500/50 text-red-500"
+                    )}
+                />
+                <button
+                    disabled={!canRun}
+                    onClick={() => onExecute(task, { tmdbId: manualTmdbId.trim() || undefined, mediaType: manualMediaType })}
+                    className={cn(
+                        "h-7 shrink-0 rounded-md px-2 text-[10px] font-bold uppercase tracking-wider transition-colors",
+                        canRun ? "bg-blue-500 text-white hover:bg-blue-600" : "bg-red-500/10 text-red-500 cursor-not-allowed"
+                    )}
+                    title="Retry with manual match"
+                >
+                    Fix Retry
+                </button>
+            </div>
+        </div>
+    );
+}
+
+interface SegmentOption<T extends string> {
+    value: T;
+    icon?: LucideIcon;
+    label: string;
+}
+
+interface SegmentedControlProps<T extends string> {
+    options: Array<SegmentOption<T>>;
+    value: T;
+    onChange: (value: T) => void;
+}
+
+function SegmentedControl<T extends string>({ options, value, onChange }: SegmentedControlProps<T>) {
+    return (
+        <div className="grid shrink-0 auto-cols-fr grid-flow-col gap-1 p-1 bg-[var(--bg-toggle-wrapper)] rounded-lg border border-transparent dark:border-white/10 relative">
+            {options.map((opt) => {
                 const isActive = value === opt.value;
                 return (
                     <button
                         key={opt.value}
                         onClick={() => onChange(opt.value)}
                         className={cn(
-                            "relative z-10 flex flex-col items-center justify-center gap-1.5 py-1.5 px-3 rounded-md text-[10px] font-bold uppercase tracking-wider transition-all",
+                            "relative z-10 flex h-8 min-w-[42px] items-center justify-center gap-1.5 whitespace-nowrap py-1.5 px-3 rounded-md text-[10px] font-bold uppercase tracking-wider transition-all",
                             isActive ? "text-[var(--text-on-active)]" : "text-text-muted hover:text-text-main"
                         )}
                         title={opt.label}
@@ -1038,7 +633,7 @@ function SegmentedControl({ options, value, onChange }: any) {
                                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
                             />
                         )}
-                        <span className="relative z-10 flex items-center gap-1.5">
+                        <span className="relative z-10 flex items-center gap-1.5 whitespace-nowrap">
                             {opt.icon && <opt.icon size={14} />}
                             {opt.label}
                         </span>
@@ -1090,11 +685,42 @@ function MatchBadge({ match }: { match: MatchExplanation }) {
     );
 }
 
-function DetailsPanel({ match, plan }: { match?: MatchExplanation, plan?: ExecutionPlan }) {
+function DetailsPanel({ taskId, itemId, config, issue, match, plan, planPath, artwork, rollback, lock }: { taskId?: string, itemId?: string, config?: MetadataRecord, issue?: MetadataRecord, match?: MatchExplanation, plan?: ExecutionPlan, planPath?: string, artwork?: MetadataRecord, rollback?: MetadataRecord, lock?: MetadataRecord }) {
     return (
         <div className="border-t border-[var(--border-light)] px-2 py-2 space-y-3">
+            {issue && <IssueDetails issue={issue} />}
+            {config && <TaskConfigDetails config={config} />}
             {match && <MatchDetails match={match} />}
-            {plan && <PlanDetails plan={plan} />}
+            {plan && <PlanDetails plan={plan} planPath={planPath} taskId={taskId} itemId={itemId} />}
+            {lock && <LockDetails lock={lock} />}
+            {artwork && <ArtworkDetails artwork={artwork} />}
+            {rollback && <RollbackDetails rollback={rollback} />}
+        </div>
+    );
+}
+
+function IssueDetails({ issue }: { issue: MetadataRecord }) {
+    const status = asString(issue.status) || 'issue';
+    const error = asString(issue.error);
+    const result = asString(issue.result);
+    const path = asString(issue.path);
+    const name = asString(issue.name);
+    return (
+        <div className="space-y-1">
+            <PlanLine label={status} value={error || result || name || 'Needs attention'} tone={error ? 'danger' : 'warn'} />
+            {path && <PlanLine label="path" value={compactPath(path)} tone="muted" />}
+        </div>
+    );
+}
+
+function TaskConfigDetails({ config }: { config: MetadataRecord }) {
+    const strategy = asString(config.strategy) || (config.dry_run ? 'audit' : 'organize');
+    const mediaType = asString(config.media_type) || 'auto';
+    const multiMode = config.multi_mode === undefined || config.multi_mode === null ? 'auto' : (config.multi_mode ? 'batch' : 'single');
+    return (
+        <div className="space-y-1">
+            <PlanLine label="config" value={`${strategy} · ${asString(config.search_mode) || 'smart'} · ${mediaType} · ${multiMode}`} tone="muted" />
+            <PlanLine label="options" value={`${Number(config.workers || 1)} workers · extra ${config.extra_images ? 'on' : 'off'} · organize ${config.enable_organize ? 'on' : 'off'}`} tone="muted" />
         </div>
     );
 }
@@ -1111,43 +737,161 @@ function MatchDetails({ match }: { match: MatchExplanation }) {
             {candidates.map((item, index) => (
                 <PlanLine
                     key={`candidate-${index}`}
-                    label={`${item.media_type || 'media'} ${item.score !== undefined ? Number(item.score).toFixed(2) : ''}`}
-                    value={`${item.title || item.original_title || 'Untitled'}${item.year ? ` (${item.year})` : ''}${item.id ? ` · ${item.id}` : ''}`}
-                    tone={item.id === match.selected_id ? 'normal' : 'muted'}
+                    label={`${asString(item.decision) || (item.id === match.selected_id ? 'selected' : 'candidate')} · ${asString(item.media_type) || 'media'} ${item.score !== undefined ? Number(item.score).toFixed(2) : ''}`}
+                    value={`${asString(item.title) || asString(item.original_title) || 'Untitled'}${item.year ? ` (${item.year})` : ''}${item.id ? ` · ${item.id}` : ''}${item.token_overlap !== undefined ? ` · overlap ${Number(item.token_overlap).toFixed(2)}` : ''}`}
+                    tone={item.decision === 'selected' || item.id === match.selected_id ? 'normal' : item.decision === 'year_mismatch' || item.decision === 'low_similarity' ? 'danger' : 'muted'}
                 />
             ))}
         </div>
     );
 }
 
-function PlanDetails({ plan }: { plan: ExecutionPlan }) {
+function PlanDetails({ plan, planPath, taskId, itemId }: { plan: ExecutionPlan, planPath?: string, taskId?: string, itemId?: string }) {
     const actions = (plan.actions || []).slice(0, 5);
     const conflicts = (plan.conflicts || []).slice(0, 3);
     const risks = (plan.risks || []).slice(0, 3);
 
     return (
         <div className="space-y-2">
+            {planPath && (
+                <PlanArtifactLine planPath={planPath} taskId={taskId} itemId={itemId} />
+            )}
             {conflicts.length > 0 && (
                 <div className="space-y-1">
                     {conflicts.map((item, index) => (
-                        <PlanLine key={`conflict-${index}`} tone="danger" label={item.reason || 'conflict'} value={item.destination || item.source || ''} />
+                        <PlanLine key={`conflict-${index}`} tone="danger" label={asString(item.reason) || 'conflict'} value={asString(item.destination) || asString(item.source) || ''} />
                     ))}
                 </div>
             )}
             {risks.length > 0 && (
                 <div className="space-y-1">
                     {risks.map((item, index) => (
-                        <PlanLine key={`risk-${index}`} tone={item.level === 'warning' ? 'warn' : 'normal'} label={item.code || item.level || 'risk'} value={item.message || ''} />
+                        <PlanLine key={`risk-${index}`} tone={item.level === 'warning' ? 'warn' : 'normal'} label={asString(item.code) || asString(item.level) || 'risk'} value={asString(item.message) || ''} />
                     ))}
                 </div>
             )}
             {actions.length > 0 && (
                 <div className="space-y-1">
                     {actions.map((item, index) => (
-                        <PlanLine key={`action-${index}`} label={item.type || 'action'} value={compactPath(item.destination || item.source || '')} />
+                        <PlanLine key={`action-${index}`} label={`${asString(item.type) || 'action'}${item.kind ? ` · ${item.kind}` : ''}`} value={compactPath(asString(item.destination) || asString(item.source) || '')} />
                     ))}
                 </div>
             )}
+        </div>
+    );
+}
+
+function PlanArtifactLine({ planPath, taskId, itemId }: { planPath: string, taskId?: string, itemId?: string }) {
+    const [summary, setSummary] = useState<string | null>(null);
+    const [loading, setLoading] = useState(false);
+    const canLoad = !!taskId && !!itemId;
+
+    const loadArtifact = async () => {
+        if (!canLoad || loading) return;
+        setLoading(true);
+        try {
+            const artifact = await fetchPlanArtifact(taskId, itemId);
+            const actionCount = artifact?.plan?.summary?.actions ?? artifact?.plan?.actions?.length ?? 0;
+            const generated = artifact?.generated_at ? new Date(artifact.generated_at).toLocaleString() : 'loaded';
+            setSummary(`${actionCount} actions · ${generated}`);
+            toast.success('Plan artifact loaded');
+        } catch (error) {
+            toast.error(error instanceof Error ? error.message : 'Plan artifact unavailable');
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <div className="grid grid-cols-[74px_1fr_auto] gap-2 text-[10px] font-mono items-center">
+            <span className="truncate uppercase text-[var(--text-dim)]">artifact</span>
+            <span className="truncate text-[var(--text-muted)]" title={summary || planPath}>
+                {summary || planPath}
+            </span>
+            <button
+                type="button"
+                disabled={!canLoad || loading}
+                onClick={loadArtifact}
+                className={cn(
+                    "inline-flex h-6 w-6 items-center justify-center rounded-md border border-[var(--border-light)] text-[var(--text-muted)] hover:text-[var(--text-main)] hover:bg-[var(--bg-hover)] disabled:opacity-40 disabled:cursor-not-allowed"
+                )}
+                title="Load plan artifact"
+            >
+                <FileJson size={12} />
+            </button>
+        </div>
+    );
+}
+
+function LockDetails({ lock }: { lock: MetadataRecord }) {
+    const owner = lock.owner;
+    const ownerRecord = asRecord(owner);
+    const ownerLabel = typeof owner === 'string' ? owner : (ownerRecord.owner || ownerRecord.task_id || ownerRecord.pid || 'unknown');
+    return (
+        <div className="space-y-1">
+            <PlanLine label="lock" value={compactPath(String(lock.target_path || 'target locked'))} tone="danger" />
+            <PlanLine label="owner" value={String(ownerLabel)} tone="warn" />
+        </div>
+    );
+}
+
+function RollbackDetails({ rollback }: { rollback: MetadataRecord }) {
+    const operations = Array.isArray(rollback.operations) ? rollback.operations.slice(0, 5) : [];
+    const rollbackStatus = asString(rollback.status) || 'unknown';
+    return (
+        <div className="space-y-1">
+            <PlanLine
+                label="rollback"
+                value={`${rollbackStatus}${operations.length ? ` · ${operations.length} ops` : ''}`}
+                tone={rollbackStatus === 'completed' ? 'normal' : rollbackStatus === 'failed' ? 'danger' : 'warn'}
+            />
+            {operations.map((item, index: number) => {
+                const operation = asRecord(item);
+                const operationStatus = asString(operation.status);
+                const warningStatuses = new Set(['missing_destination', 'dir_not_empty', 'missing_backup', 'current_modified']);
+                return (
+                <PlanLine
+                    key={`rollback-${index}`}
+                    label={operationStatus || asString(operation.action) || 'op'}
+                    value={compactPath(asString(operation.source) || asString(operation.destination) || '')}
+                    tone={operationStatus === 'failed' ? 'danger' : warningStatuses.has(operationStatus || '') ? 'warn' : 'muted'}
+                />
+                );
+            })}
+        </div>
+    );
+}
+
+function ArtworkDetails({ artwork }: { artwork: MetadataRecord }) {
+    const counts = asRecord(artwork.counts);
+    const missing = asStringArray(artwork.missing_core);
+    const artworkStatus = asString(artwork.status) || 'unknown';
+    const artworkError = asString(artwork.error);
+    const entries = Object.entries(counts)
+        .filter(([, value]) => Number(value) > 0)
+        .slice(0, 8);
+    const tone = artworkStatus === 'failed'
+        ? 'danger'
+        : missing.length > 0 || artworkStatus === 'empty'
+            ? 'warn'
+            : 'normal';
+
+    return (
+        <div className="space-y-1">
+            <PlanLine
+                label="artwork"
+                value={`${artworkStatus} · ${Number(artwork.total || 0)} files`}
+                tone={tone}
+            />
+            {missing.length > 0 && (
+                <PlanLine label="missing" value={missing.join(', ')} tone="warn" />
+            )}
+            {artworkError && (
+                <PlanLine label="error" value={artworkError} tone="danger" />
+            )}
+            {entries.map(([key, value]) => (
+                <PlanLine key={`artwork-${key}`} label={key} value={`${Number(value)} files`} tone="muted" />
+            ))}
         </div>
     );
 }
@@ -1174,16 +918,17 @@ function compactPath(path: string) {
     return `${parts[parts.length - 2]}/${parts[parts.length - 1]}`;
 }
 
-function TaskRow({ task, isPlanOpen, onExecute, onStop, onRollback, onTogglePlan }: { task: Task, isPlanOpen: boolean, onExecute: (t: Task) => void, onStop: () => void, onRollback: (t: Task) => void, onTogglePlan: (t: Task) => void }) {
+function TaskRow({ task, isPlanOpen, onExecute, onStop, onRollback, onTogglePlan }: { task: Task, isPlanOpen: boolean, onExecute: (t: Task, overrides?: Partial<Pick<Task, 'tmdbId' | 'mediaType'>>) => void, onStop: () => void, onRollback: (t: Task) => void, onTogglePlan: (t: Task) => void }) {
     const isAuditReady = (task.status === 'dry_run' || task.status === 'audit_completed');
     const isRunning = task.status === 'processing' || task.status === 'searching' || task.status === 'fetching';
     const isFinished = task.status === 'completed';
-    const isFailed = task.status === 'failed' || task.status === 'stopped';
+    const isFailed = task.status === 'failed' || task.status === 'partial' || task.status === 'stopped';
 
     const yearMatch = task.name.match(/\((\d{4})\)/);
     const displayYear = yearMatch ? yearMatch[1] : "—";
     const fileName = task.fullPath ? task.fullPath.split('/').pop() : task.name;
     const planSummary = task.planSummary || task.plan?.summary;
+    const canRollback = !!task.taskId && !!task.rollbackAvailable && (isFinished || isFailed) && task.rollback?.status !== 'completed';
 
     return (
         <>
@@ -1207,6 +952,7 @@ function TaskRow({ task, isPlanOpen, onExecute, onStop, onRollback, onTogglePlan
                 <span className={cn(
                     "text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full inline-block",
                     task.status === 'completed' ? "bg-emerald-100 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400" :
+                    task.status === 'partial' ? "bg-amber-100 text-amber-700 dark:bg-amber-500/10 dark:text-amber-400" :
                         isFailed ? "bg-red-100 text-red-500 dark:bg-red-500/10" :
                             isRunning ? "bg-blue-100 text-blue-500 dark:bg-blue-500/10 animate-pulse" :
                                 isAuditReady ? "bg-sky-100 text-sky-600 dark:bg-sky-500/10 dark:text-sky-400" :
@@ -1214,6 +960,7 @@ function TaskRow({ task, isPlanOpen, onExecute, onStop, onRollback, onTogglePlan
                 )}>
                     {task.status === 'dry_run' || task.status === 'audit_completed' ? 'PASS' :
                         task.status === 'completed' ? 'Done' :
+                            task.status === 'partial' ? 'Partial' :
                             task.status === 'stopped' ? 'Stopped' :
                                 isRunning ? 'Running' : task.status}
                 </span>
@@ -1224,11 +971,12 @@ function TaskRow({ task, isPlanOpen, onExecute, onStop, onRollback, onTogglePlan
                         <MatchBadge match={task.match} />
                     </div>
                 ) : planSummary ? (
-                    <div className="grid grid-cols-4 gap-1 text-[9px] font-mono">
+                    <div className="grid grid-cols-5 gap-1 text-[9px] font-mono">
                         <span>{planSummary.actions || 0} act</span>
                         <span className={(planSummary.conflicts || 0) > 0 ? "text-red-500" : "text-[var(--text-muted)]"}>{planSummary.conflicts || 0} cf</span>
                         <span className={(planSummary.risks || 0) > 0 ? "text-amber-500" : "text-[var(--text-muted)]"}>{planSummary.risks || 0} risk</span>
                         <span className={(planSummary.missing_episodes || 0) > 0 ? "text-amber-500" : "text-[var(--text-muted)]"}>{planSummary.missing_episodes || 0} miss</span>
+                        <span>{planSummary.metadata_writes || 0} meta</span>
                     </div>
                 ) : (task.resultSummary || (isFinished || isFailed || isAuditReady)) && (
                     <div className={cn("flex items-center justify-center gap-1.5 font-medium truncate",
@@ -1246,6 +994,7 @@ function TaskRow({ task, isPlanOpen, onExecute, onStop, onRollback, onTogglePlan
                 <div className="flex justify-center gap-2">
                     {isAuditReady && !isRunning && !isFinished && (
                         <button
+                            disabled={(planSummary?.conflicts || 0) > 0 || (planSummary?.blocked || 0) > 0}
                             onClick={() => onExecute(task)}
                             className={cn(
                                 "shrink-0 flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider transition-colors shadow-sm",
@@ -1260,7 +1009,7 @@ function TaskRow({ task, isPlanOpen, onExecute, onStop, onRollback, onTogglePlan
                             </span>
                         </button>
                     )}
-                    {(task.plan || task.match) && (
+                    {(task.plan || task.match || task.artwork || task.issue || task.lock || task.rollback) && (
                         <button
                             onClick={() => onTogglePlan(task)}
                             className="shrink-0 flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider transition-colors bg-slate-100 dark:bg-white/10 text-[var(--text-main)] hover:bg-slate-200 dark:hover:bg-white/15 shadow-sm"
@@ -1279,7 +1028,7 @@ function TaskRow({ task, isPlanOpen, onExecute, onStop, onRollback, onTogglePlan
                             <span>STOP</span>
                         </button>
                     )}
-                    {(isFailed || (isFinished && !task.resultSummary?.includes('成功'))) && (
+                    {isFailed && (
                         <button
                             onClick={() => onExecute(task)}
                             className="shrink-0 flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider transition-all bg-blue-500 text-white hover:bg-blue-600 shadow-sm"
@@ -1288,13 +1037,13 @@ function TaskRow({ task, isPlanOpen, onExecute, onStop, onRollback, onTogglePlan
                             <span>RETRY</span>
                         </button>
                     )}
-                    {isFinished && task.resultSummary?.includes('成功') && (
+                    {isFinished && (
                         <button disabled className="shrink-0 flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-white/5 text-slate-400 dark:text-slate-600 cursor-not-allowed">
                             <CheckCircle2 size={10} />
                             <span>Done</span>
                         </button>
                     )}
-                    {task.taskId && (isFinished || isFailed) && (
+                    {canRollback && (
                         <button
                             onClick={() => onRollback(task)}
                             className="shrink-0 flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider transition-colors bg-slate-100 dark:bg-white/10 text-[var(--text-main)] hover:bg-slate-200 dark:hover:bg-white/15 shadow-sm"
@@ -1304,13 +1053,26 @@ function TaskRow({ task, isPlanOpen, onExecute, onStop, onRollback, onTogglePlan
                             <span>ROLLBACK</span>
                         </button>
                     )}
+                    {task.rollback?.status === 'completed' && (
+                        <span className="shrink-0 flex items-center gap-1 px-2 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                            <Undo2 size={10} />
+                            <span>ROLLED BACK</span>
+                        </span>
+                    )}
                 </div>
             </td>
         </tr>
-        {isPlanOpen && (task.plan || task.match) && (
+        {isPlanOpen && (task.plan || task.match || task.artwork || task.issue || task.lock || task.rollback) && (
             <tr className="border-b border-[var(--border-light)] bg-[var(--bg-inner-panel)]">
                 <td colSpan={8} className="px-6 py-3">
-                    <DetailsPanel match={task.match} plan={task.plan} />
+                    <DetailsPanel taskId={task.taskId} itemId={task.threadId} config={task.config} issue={task.issue} match={task.match} plan={task.plan} planPath={task.planPath} artwork={task.artwork} rollback={task.rollback} lock={task.lock} />
+                </td>
+            </tr>
+        )}
+        {isFailed && (
+            <tr className="border-b border-[var(--border-light)] bg-red-500/[0.03]">
+                <td colSpan={8} className="px-6 py-3">
+                    <ManualRetryPanel task={task} onExecute={onExecute} compact />
                 </td>
             </tr>
         )}

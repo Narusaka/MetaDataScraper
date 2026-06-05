@@ -1,156 +1,138 @@
+# MetaDataScraper
 
-# Media Metadata Scraper
+MetaDataScraper is a local media metadata manager for auditing, matching, scraping, and organizing movie and TV folders. It is designed for cautious library work: scan first, explain every match, generate an execution plan, then write NFO/artwork/files with rollback records.
 
-**Media Metadata Scraper** is a powerful, autonomous tool for standardizing media libraries.
-**Media Metadata Scraper** 是一个强大的自动化媒体库整理工具，支持智能化元数据获取与重命名。
+MetaDataScraper 是一个本地媒体元数据管理器，用于审计、匹配、刮削和整理电影/电视剧目录。它的默认思路是保守的：先扫描和解释匹配，再生成执行计划，最后才写入 NFO、图片和整理文件，并保留回滚记录。
 
-[🇺🇸 English](#english) | [🇨🇳 中文指南](#中文指南)
+## Current Capabilities
 
----
+- **Web dashboard**: Start jobs, watch structured task events, inspect match/plan/artwork details, retry failed items with manual TMDB IDs, and trigger rollback.
+- **Strict matching**: TMDB is the primary metadata source. Tavily is used only as a search fallback and any Tavily-found TMDB ID is re-verified against TMDB before acceptance.
+- **Execution plans**: Audit mode produces a plan with file moves, conflicts, risks, missing episodes, metadata writes, and artwork writes.
+- **Safer writes**: NFO, artwork, manifests, and file operations use atomic writes where possible. Overwrites are backed up for rollback.
+- **Artwork scraping**: Downloads `poster.jpg`, `fanart.jpg`, `banner.jpg`, `clearlogo.png`, `clearart.png`, extra posters/backdrops/logos/stills/actors, and writes `artwork-manifest.json`.
+- **Directory locks**: Concurrent jobs targeting the same media directory are blocked to avoid racing file operations.
+- **Task ledger**: Jobs are persisted under `logs/task_events.json`; plan artifacts are stored under `logs/plans/`.
 
-<a id="english"></a>
+## Quick Start
 
-## English
+Use the project launcher from the repository root:
 
-### Features
-- 🧠 **Smart Detection**: Automatically distinguishes between Movies and TV Shows.
-- 🔍 **Robust Search**: Uses TMDB as primary source, with Tavily AI fallbacks for hard-to-find content.
-- 🈯 **Localization**: AI-powered translation for metadata (Optional).
-- 📂 **Organization**: Renames files and reorganizes directories (In-place or Copy).
-- 🖼️ **Artwork**: Downloads Posters, Fanart, Logos, and Actor images.
-
-### Structure
-```
-media-metadata-scraper/
-├── config/             # Configuration files
-├── logs/               # Runtime logs
-├── src/                # Source code
-├── .env                # API Keys (Create from .env.example)
-├── main.py             # Entry point
-└── requirements.txt    # Dependencies
-```
-
-### Setup
-
-1. **Install Dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-2. **Configure Secrets**:
-   Copy `.env.example` to `.env` and fill in your API keys:
-   ```bash
-   cp .env.example .env
-   # Edit .env:
-   # TMDB_API_KEY=...
-   ```
-
-3. **Configure Settings** (Optional):
-   Modify `config/config.yaml` for proxies, language preferences, etc.
-
-### Usage
-
-#### 1. Process a Single Directory (Single Mode)
-**Best for**: A specific movie folder or a single TV show folder (e.g., `Inception (2010)` or `Breaking Bad`).
 ```bash
-# Basic usage
-python main.py single /path/to/media/Inception
-
-# If path contains spaces, use quotes!
-python main.py single "/path/to/My TV Show"
-
-# Force specific TMDB ID (if search fails)
-python main.py single "/path/to/Show" --tmdb-id 27205
+bash start.sh
 ```
 
-#### 2. Process Multiple Directories (Batch Mode)
-**Best for**: A library root folder containing many subfolders (e.g., `Movies/` or `TV Shows/`).
-*Note: Do NOT use this on a single show folder, or it might mistake Season folders for different shows.*
+`start.sh` will:
+
+- create `.venv` with `python3` if needed;
+- install Python requirements;
+- install frontend dependencies if `client/node_modules` is missing;
+- start the backend on `127.0.0.1:8000`;
+- start the frontend on `127.0.0.1:5173`;
+- stop both services together when you press `Ctrl+C`.
+
+Backend runtime overrides:
+
 ```bash
-python main.py batch /path/to/media_library --workers 8
+WEB_HOST=0.0.0.0 WEB_PORT=8000 WEB_RELOAD=1 bash start.sh
 ```
 
-#### Options
-- `--dry-run`: Preview changes without applying them (Highly Recommended for first run).
-- `--inplace`: **Rename files and folders directly in the source.**
-- `--copy`: Copy files to Output Directory instead of renaming in-place.
-- `--output /path/to/output`: Specify output directory.
-- `--no-confirm`: Skip confirmation prompts.
-- `--use-local-nfo`: Parse existing NFO files for TMDB ID to skip search.
-- `--extra-images`: Download extended artwork (posters/backdrops/logos).
+By default, reload is disabled so the launcher can monitor one stable backend process.
 
----
+Open:
 
-<a id="中文指南"></a>
-
-## 中文指南
-
-### 功能特性
-- 🧠 **智能检测**: 自动区分电影和电视剧。
-- 🔍 **强力搜索**: 以 TMDB 为主数据源，利用 AI (Tavily) 解决搜索难题。
-- 🈯 **本地化**: 支持通过 LLM 将元数据翻译为中文（可选）。
-- 📂 **自动化整理**: 标准化重命名文件和目录（支持原地修改或复制）。
-- 🖼️ **刮削增强**: 自动下载海报、背景图、Logo 以及演员头像。
-
-### 目录结构
-```
-media-metadata-scraper/
-├── config/             # 配置文件
-├── logs/               # 运行日志
-├── src/                # 源代码
-├── .env                # API 密钥 (从 .env.example 复制)
-├── main.py             # 程序入口
-└── requirements.txt    # 依赖库
+```text
+http://127.0.0.1:5173
 ```
 
-### 安装配置
+## Configuration
 
-1. **安装依赖**:
-   ```bash
-   pip install -r requirements.txt
-   ```
+The backend source of truth is:
 
-2. **配置密钥**:
-   复制 `.env.example` 为 `.env` 并填入您的 API Key：
-   ```bash
-   cp .env.example .env
-   # 编辑 .env:
-   # TMDB_API_KEY=...
-   ```
+```text
+config/config.yaml
+```
 
-3. **系统设置** (可选):
-   修改 `config/config.yaml` 来配置代理、语言偏好等。
+The frontend Settings page reads and writes this backend config through `/api/settings`. Secret values are masked when returned to the UI; leaving a masked value unchanged keeps the existing key.
 
-### 使用方法
+For local environment overrides, copy `.env.example` to `.env`:
 
-#### 1. 处理单个目录 (Single 模式)
-**适用于**: 单独的一部电影文件夹或一部剧集文件夹（例如 `盗梦空间` 或 `绝命毒师`）。
 ```bash
-# 基本用法
-python main.py single /path/to/media/Inception
-
-# 如果路径包含空格，请务必加上引号！
-python main.py single "/path/to/My TV Show"
-
-# 强制指定 TMDB ID (如果搜索不准)
-python main.py single "/path/to/Show" --tmdb-id 27205
+cp .env.example .env
 ```
 
-#### 2. 批量处理 (Batch 模式)
-**适用于**: 包含多个子文件夹的媒体库根目录（例如 `Movies/` 或 `TV Shows/`）。
-*注意：请勿在单部剧集文件夹上使用此模式，否则可能会错误地将 `Season` 文件夹识别为别的剧。*
+Required:
+
+- `TMDB_API_KEY`: TMDB API read token or key.
+
+Recommended:
+
+- `TAVILY_API_KEY`: fallback search for difficult titles. It does not replace TMDB; IDs found through Tavily are verified by TMDB before use.
+
+Optional:
+
+- `OMDB_API_KEY`: reserved auxiliary metadata source.
+- `HTTP_PROXY` / `HTTPS_PROXY`: proxy for TMDB/Tavily if your network needs it.
+- `MODEL_*`: OpenAI-compatible endpoint for optional metadata translation.
+
+Do not put real production secrets in `.env.example`.
+
+## Web Workflow
+
+1. Enter a target path, for example `/Volumes/WorkStation/本地文件`.
+2. Choose strategy:
+   - **Audit**: scan and generate plans only.
+   - **Organize**: execute in place when the plan is clear.
+   - **Copy**: copy to the configured output location.
+3. Choose media/search settings:
+   - **Auto / Movie / TV** controls media type inference.
+   - **Smart** uses TMDB first, then Tavily fallback.
+   - **TMDB** disables Tavily fallback.
+   - **Tavily** forces fallback search, then still verifies through TMDB.
+4. Click `RUN`.
+5. Inspect each task card:
+   - match provider, confidence, rejected candidates;
+   - plan conflicts/risks/metadata writes;
+   - artwork counts and missing core images;
+   - lock/rollback status.
+6. Failed items can be retried with a manual TMDB ID and media type.
+
+## CLI Usage
+
+The CLI remains available for direct scripting:
+
 ```bash
-python main.py batch /path/to/media_library --workers 8
+.venv/bin/python main.py single "/path/to/My Movie" --dry-run
+.venv/bin/python main.py single "/path/to/My Show" --tmdb-id 27205 --inplace
+.venv/bin/python main.py batch "/path/to/media_library" --workers 4 --dry-run
 ```
 
-#### 常用选项
-- `--dry-run`: 仅预览变更，不实际修改文件（**强烈推荐**首次运行时开启）。
-- `--inplace`: **直接在原目录原地重命名及整理**。
-- `--copy`: 将文件**复制**到输出目录，而不是原地重命名。
-- `--output /path/to/output`: 指定输出目录。
-- `--no-confirm`: 跳过确认提示（适用于无人值守脚本）。
-- `--use-local-nfo`: 优先读取目录下已有的 NFO 文件中的 TMDB ID，跳过搜索步骤（适用于已刮削过的库）。
-- `--extra-images`: 下载额外的图片资源（多张海报、Logo、背景图）。
+Common options:
+
+- `--dry-run`: preview without modifying files.
+- `--inplace`: organize the source directory directly.
+- `--copy`: copy files to the output directory.
+- `--output /path/to/output`: set output directory.
+- `--no-confirm`: skip prompts.
+- `--use-local-nfo`: read existing NFO files for TMDB IDs.
+- `--extra-images`: download extended artwork.
+
+## Runtime Files
+
+- `logs/web_session_*.log`: backend session logs.
+- `logs/task_events.json`: persisted task snapshots.
+- `logs/plans/<task_id>/*.json`: immutable execution-plan artifacts.
+- `<media>/.metadata-scraper-*.json`: operation manifests used for rollback.
+- `<media>/artwork-manifest.json`: downloaded artwork metadata.
+
+## Development Checks
+
+```bash
+npm --prefix client run build
+env PYTHONPYCACHEPREFIX=/private/tmp/metadata-pycache .venv/bin/python -m unittest tests.test_settings tests.test_reliability tests.test_matching
+env PYTHONPYCACHEPREFIX=/private/tmp/metadata-pycache .venv/bin/python -m compileall src/server src/batch src/core src/pipeline tests
+```
 
 ## License
+
 MIT

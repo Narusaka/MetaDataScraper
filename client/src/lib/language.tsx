@@ -1,11 +1,5 @@
-import { createContext, useContext, useMemo, useState, type ReactNode } from 'react';
-
-export const languageOptions = {
-  en: 'English',
-  zh: '中文',
-} as const;
-
-export type Language = keyof typeof languageOptions;
+import { useMemo, useState, type ReactNode } from 'react';
+import { LanguageContext, type Language } from './languageContext';
 
 type TranslationKey =
   | 'audit_result'
@@ -235,27 +229,19 @@ const zh: TranslationTable = {
 
 const translations: Record<Language, TranslationTable> = { en, zh };
 
-interface LanguageContextValue {
-  language: Language;
-  setLanguage: (language: Language) => void;
-  t: (key: TranslationKey | string) => string;
-}
-
-const LanguageContext = createContext<LanguageContextValue | null>(null);
-
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>(() => {
     const saved = localStorage.getItem('language');
     return saved === 'zh' || saved === 'en' ? saved : 'en';
   });
 
-  const value = useMemo<LanguageContextValue>(() => ({
+  const value = useMemo(() => ({
     language,
-    setLanguage: (nextLanguage) => {
+    setLanguage: (nextLanguage: Language) => {
       localStorage.setItem('language', nextLanguage);
       setLanguageState(nextLanguage);
     },
-    t: (key) => translations[language][key as TranslationKey] ?? key,
+    t: (key: string) => translations[language][key as TranslationKey] ?? key,
   }), [language]);
 
   return (
@@ -263,12 +249,4 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       {children}
     </LanguageContext.Provider>
   );
-}
-
-export function useTranslation() {
-  const context = useContext(LanguageContext);
-  if (!context) {
-    throw new Error('useTranslation must be used within LanguageProvider');
-  }
-  return context;
 }

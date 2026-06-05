@@ -2,7 +2,7 @@ import os
 import shutil
 import difflib
 import re
-from typing import Dict, Any, List, Optional
+from typing import Dict, Any, List, Optional, Tuple
 
 from ..adapters.tmdb import TMDBAdapter
 from ..adapters.OMDB import OMDBAdapter
@@ -20,7 +20,7 @@ from ..core.logger import MetadataLogger
 class MediaPipeline:
     """Linearly process media metadata without LangGraph overhead."""
 
-    def __init__(self, config: Dict[str, Any], skip_images: bool = False, preferred_language: str = "zh-CN", verbose: bool = False, quiet: bool = False, inplace: bool = False, extra_images: bool = False):
+    def __init__(self, config: Dict[str, Any], skip_images: bool = False, preferred_language: str = "zh-CN", verbose: bool = False, quiet: bool = False, inplace: bool = False, extra_images: bool = False, manifest: Optional[Any] = None):
         self.config = config
         self.skip_images = skip_images
         self.preferred_language = preferred_language
@@ -28,6 +28,7 @@ class MediaPipeline:
         self.extra_images = extra_images
         self.verbose = verbose
         self.quiet = quiet
+        self.manifest = manifest
 
         # Initialize logger
         self.logger = MetadataLogger(
@@ -75,7 +76,7 @@ class MediaPipeline:
         self.translator = Translator(config["model"])
         self.tag_translator = TagTranslator(config["model"], config.get("proxy"))
         self.mapper = DirectMapper()
-        self.artwork = ArtworkDownloader(config["tmdb"]["api_key"], config.get("proxy"))
+        self.artwork = ArtworkDownloader(config["tmdb"]["api_key"], config.get("proxy"), manifest=manifest)
 
     def _log(self, msg: str, verbose_only: bool = False):
         import logging
@@ -90,6 +91,183 @@ class MediaPipeline:
         # Strip emojis for cleaner system logs if preferred, or keep them
         logging.info(msg)
 
+    def _clean_query_for_match(self, query: str) -> str:
+        return re.sub(r'\s*\(\d{4}\)', '', query or "").strip().lower()
+
+    def _has_cjk(self, text: str) -> bool:
+        return bool(re.search(r'[\u3040-\u30ff\u3400-\u9fff]', text or ""))
+
+    def _token_overlap(self, a: str, b: str) -> float:
+        a_tokens = set(re.findall(r'[a-z0-9]+', (a or "").lower()))
+        b_tokens = set(re.findall(r'[a-z0-9]+', (b or "").lower()))
+        if not a_tokens or not b_tokens:
+            return 0.0
+        return len(a_tokens & b_tokens) / len(a_tokens)
+
+    def _candidate_title_text(self, candidate: Dict[str, Any]) -> str:
+        return " ".join(
+            value
+            for value in [
+                candidate.get("name"),
+                candidate.get("title"),
+                candidate.get("original_name"),
+                candidate.get("original_title"),
+                *self._candidate_aliases(candidate),
+            ]
+            if value
+        )
+
+    def _candidate_aliases(self, candidate: Dict[str, Any]) -> List[str]:
+        if isinstance(candidate, dict) and ("titles" in candidate or "results" in candidate):
+            aliases = candidate.get("titles") or candidate.get("results") or []
+        else:
+            aliases = candidate.get("alternative_titles") or candidate.get("_aliases") or []
+        if isinstance(aliases, dict):
+            aliases = aliases.get("titles") or aliases.get("results") or []
+        result = []
+        for item in aliases:
+            if isinstance(item, str):
+                title = item
+            elif isinstance(item, dict):
+                title = item.get("title") or item.get("name")
+            else:
+                title = None
+            if title and title not in result:
+                result.append(title)
+        return result
+
+    def _candidate_title_values(self, candidate: Dict[str, Any]) -> List[Tuple[str, str]]:
+        values: List[Tuple[str, str]] = []
+        for field in ["name", "title", "original_name", "original_title"]:
+            value = (candidate.get(field) or "").strip()
+            if value:
+                values.append((field, value))
+        values.extend(("alias", value) for value in self._candidate_aliases(candidate))
+        return values
+
+    def _candidate_year(self, candidate: Dict[str, Any]) -> int:
+        date_str = candidate.get('first_air_date') or candidate.get('release_date') or ""
+        return int(date_str[:4]) if date_str and len(date_str) >= 4 and date_str[:4].isdigit() else 0
+
+    def _candidate_similarity(self, clean_query: str, candidate: Dict[str, Any]) -> float:
+        return self._candidate_best_title_match(clean_query, candidate)["score"]
+
+    def _candidate_best_title_match(self, clean_query: str, candidate: Dict[str, Any]) -> Dict[str, Any]:
+        best = {"score": 0.0, "field": None, "title": None}
+        for field, title in self._candidate_title_values(candidate):
+            score = difflib.SequenceMatcher(None, clean_query, title.lower()).ratio()
+            if score > best["score"]:
+                best = {"score": score, "field": field, "title": title}
+        return best
+
+    def _enrich_candidate_aliases(self, candidate: Dict[str, Any], media_type: str) -> None:
+        if candidate.get("_aliases_loaded"):
+            return
+        candidate["_aliases_loaded"] = True
+        getter = getattr(self.tmdb, "get_alternative_titles", None)
+        if not getter or not candidate.get("id"):
+            return
+        try:
+            aliases_data = getter(media_type, candidate.get("id"))
+        except Exception as exc:
+            candidate["_aliases_error"] = str(exc)
+            return
+        candidate["_aliases"] = self._candidate_aliases(aliases_data)
+
+    def _candidate_rejection_reason(self, candidate: Dict[str, Any], target_year: Optional[int] = None, selected_id: Optional[int] = None) -> str:
+        if selected_id and candidate.get("id") == selected_id:
+            return "selected"
+        candidate_year = candidate.get("_match_year") or self._candidate_year(candidate)
+        if target_year and candidate_year and candidate_year != target_year:
+            return "year_mismatch"
+        score = candidate.get("_match_score", 0) or 0
+        overlap = candidate.get("_token_overlap", 0) or 0
+        if score < 0.55 and overlap < 0.75:
+            return "low_similarity"
+        return "not_best_match"
+
+    def _summarize_candidates(
+        self,
+        candidates: List[Dict[str, Any]],
+        limit: int = 5,
+        target_year: Optional[int] = None,
+        selected_id: Optional[int] = None,
+    ) -> List[Dict[str, Any]]:
+        top_candidates = sorted(candidates, key=lambda item: item.get("_match_score", 0), reverse=True)[:limit]
+        return [
+            {
+                "id": item.get("id"),
+                "title": item.get("name") or item.get("title"),
+                "original_title": item.get("original_name") or item.get("original_title"),
+                "media_type": item.get("_search_type") or item.get("media_type"),
+                "year": item.get("_match_year") or self._candidate_year(item),
+                "score": round(item.get("_match_score", 0), 4),
+                "token_overlap": round(item.get("_token_overlap", 0), 4),
+                "matched_title": item.get("_matched_title"),
+                "matched_field": item.get("_matched_field"),
+                "decision": self._candidate_rejection_reason(item, target_year=target_year, selected_id=selected_id),
+                "alias_error": item.get("_aliases_error"),
+            }
+            for item in top_candidates
+        ]
+
+    def _verify_external_candidate(self, query: str, target_year: Optional[int], media_type: str, tmdb_id: int) -> Dict[str, Any]:
+        """Fetch and score an external TMDB id before trusting it."""
+        try:
+            details = self.tmdb.get_movie_details(tmdb_id) if media_type == "movie" else self.tmdb.get_tv_details(tmdb_id)
+        except Exception as exc:
+            return {
+                "accepted": False,
+                "reason": "external_details_failed",
+                "error": str(exc),
+                "score": 0.0,
+                "token_overlap": 0.0,
+            }
+
+        candidate = dict(details or {})
+        candidate["id"] = tmdb_id
+        candidate["media_type"] = media_type
+        if media_type == "movie":
+            candidate.setdefault("name", candidate.get("title"))
+            candidate.setdefault("original_name", candidate.get("original_title"))
+        else:
+            candidate.setdefault("title", candidate.get("name"))
+            candidate.setdefault("original_title", candidate.get("original_name"))
+
+        self._enrich_candidate_aliases(candidate, media_type)
+        clean_query = self._clean_query_for_match(query)
+        best_title = self._candidate_best_title_match(clean_query, candidate)
+        score = best_title["score"]
+        overlap = self._token_overlap(clean_query, self._candidate_title_text(candidate))
+        candidate_year = self._candidate_year(candidate)
+        query_has_cjk = self._has_cjk(clean_query)
+        title_text = self._candidate_title_text(candidate)
+        candidate_has_cjk = self._has_cjk(title_text)
+        year_conflicts = bool(target_year and candidate_year and candidate_year != target_year)
+
+        accepts_title = score >= 0.55 or overlap >= 0.75
+        accepts_localized = not query_has_cjk and candidate_has_cjk and score >= 0.25
+        accepted = not year_conflicts and (accepts_title or accepts_localized)
+        confidence = "high" if score >= 0.75 or overlap >= 0.85 else ("medium" if accepted else "none")
+
+        candidate["_match_score"] = score
+        candidate["_match_year"] = candidate_year
+        candidate["_matched_title"] = best_title.get("title")
+        candidate["_matched_field"] = best_title.get("field")
+        candidate["_token_overlap"] = overlap
+
+        return {
+            "accepted": accepted,
+            "reason": "external_verified" if accepted else ("year_mismatch" if year_conflicts else "external_low_confidence"),
+            "confidence": confidence,
+            "score": score,
+            "token_overlap": overlap,
+            "candidate": candidate,
+            "candidate_year": candidate_year,
+            "matched_title": best_title.get("title"),
+            "matched_field": best_title.get("field"),
+        }
+
     def run(self, input_data: Dict[str, Any]) -> Dict[str, Any]:
         """Execute the pipeline linearly."""
         try:
@@ -101,7 +279,7 @@ class MediaPipeline:
             
             if not candidate:
                 self._log("❌ No candidate found.", verbose_only=False)
-                return {"status": "failed", "error": "No candidate found"}
+                return {"status": "failed", "error": "No candidate found", "match": match_explanation}
 
             tmdb_id = candidate["id"]
             media_type = candidate.get("media_type")
@@ -137,7 +315,13 @@ class MediaPipeline:
             if target_year and candidate_year != 0 and not is_manual_override:
                  if candidate_year != target_year:
                      self._log(f"❌ STRICT MODE: Candidate Year {candidate_year} != Target {target_year}. Rejecting ID {tmdb_id}.", verbose_only=False)
-                     return {"status": "failed", "error": f"Year mismatch: {candidate_year} vs {target_year}"}
+                     match_explanation.update({
+                         "confidence": "none",
+                         "reason": "year_mismatch",
+                         "candidate_year": candidate_year,
+                         "selected_id": None,
+                     })
+                     return {"status": "failed", "error": f"Year mismatch: {candidate_year} vs {target_year}", "match": match_explanation}
 
             # Append Year to Title for UI Display and Sanitize for Logging
             display_title = candidate.get('name') or candidate.get('title')
@@ -183,12 +367,25 @@ class MediaPipeline:
                 poster_suffix = candidate.get('poster_path')
                 poster_url = f"https://image.tmdb.org/t/p/w200{poster_suffix}" if poster_suffix else ""
                 self._log(f"🕵️ AUDIT_HIT: Path='{path_log}' ID={tmdb_id} Title='{candidate.get('name') or candidate.get('title')}' Type='{media_type}' [Poster={poster_url}]", verbose_only=False)
+                audit_title = candidate.get("name") or candidate.get("title") or ""
+                audit_date = candidate.get("first_air_date") or candidate.get("release_date") or ""
+                audit_year = int(audit_date[:4]) if audit_date and len(audit_date) >= 4 and audit_date[:4].isdigit() else candidate_year
                 return {
                     "status": "audit_completed",
                     "candidate": candidate,
                     "match": match_explanation,
                     "tmdb_id": tmdb_id,
-                    "media_type": media_type
+                    "media_type": media_type,
+                    "artwork": {"status": "skipped", "reason": "audit_only"},
+                    "normalized": {
+                        "tmdb_id": tmdb_id,
+                        "media_type": media_type,
+                        "title": audit_title,
+                        "title_zh": audit_title,
+                        "year": audit_year,
+                        "poster_path": candidate.get("poster_path"),
+                    },
+                    "source_data": {},
                 }
 
             source_data = self._step_fetch(tmdb_id, media_type)
@@ -211,13 +408,35 @@ class MediaPipeline:
             
             # 6. Artwork & NFO
             nfo_data = self._step_generate_nfo(normalized, media_type, source_data)
+
+            if input_data.get("plan_only", False):
+                output_dir = input_data.get("output_dir") or "./output"
+                planned_media_dir = self._planned_media_directory(
+                    output_dir,
+                    normalized.get("title"),
+                    normalized.get("year"),
+                    media_type,
+                )
+                return {
+                    "status": "plan_ready",
+                    "normalized": normalized,
+                    "candidate": candidate,
+                    "match": match_explanation,
+                    "nfo": nfo_data,
+                    "source_data": source_data,
+                    "output": {"media_dir": planned_media_dir},
+                    "artwork": {"status": "skipped", "reason": "plan_only"},
+                }
             
             # 7. Write Output
             output_result = self._step_write_output(normalized, nfo_data, source_data, input_data)
             
             # 8. Download Images (post-writing, or during)
-            if not self.skip_images:
-                self._step_download_images(normalized, output_result["media_dir"], input_data)
+            artwork_result = (
+                {"status": "skipped", "reason": "skip_images"}
+                if self.skip_images
+                else self._step_download_images(normalized, output_result["media_dir"], input_data)
+            )
 
             poster_suffix = normalized.get('poster_path')
             poster_url = f"https://image.tmdb.org/t/p/w200{poster_suffix}" if poster_suffix else ""
@@ -230,7 +449,8 @@ class MediaPipeline:
                 "match": match_explanation,
                 "nfo": nfo_data,
                 "source_data": source_data,
-                "output": output_result
+                "output": output_result,
+                "artwork": artwork_result,
             }
 
         except Exception as e:
@@ -312,20 +532,23 @@ class MediaPipeline:
                 best_score = -1.0
                 
                 # Clean query for similarity check (remove year)
-                clean_query = re.sub(r'\s*\(\d{4}\)', '', query).strip().lower()
+                clean_query = self._clean_query_for_match(query)
                 
                 for i, c in enumerate(all_candidates):
                      date_str = c.get('first_air_date') or c.get('release_date') or ""
-                     c_year = int(date_str[:4]) if date_str and len(date_str) >= 4 else 0
+                     c_year = self._candidate_year(c)
                      c_title = (c.get('name') or c.get('title') or "").strip()
-                     c_orig_title = (c.get('original_name') or c.get('original_title') or "").strip()
+                     self._enrich_candidate_aliases(c, c.get("_search_type") or media_type)
                      
                      # Calculate similarity score
-                     s1 = difflib.SequenceMatcher(None, clean_query, c_title.lower()).ratio()
-                     s2 = difflib.SequenceMatcher(None, clean_query, c_orig_title.lower()).ratio()
-                     current_score = max(s1, s2)
+                     best_title = self._candidate_best_title_match(clean_query, c)
+                     current_score = best_title["score"]
+                     token_overlap = self._token_overlap(clean_query, self._candidate_title_text(c))
                      c["_match_score"] = current_score
                      c["_match_year"] = c_year
+                     c["_matched_title"] = best_title.get("title")
+                     c["_matched_field"] = best_title.get("field")
+                     c["_token_overlap"] = token_overlap
                      
                      match_info = f" [Score: {current_score:.2f}]"
                      if target_year:
@@ -353,26 +576,16 @@ class MediaPipeline:
                              best_score = current_score
                              best_match = c
                 
-                def has_cjk(text: str) -> bool:
-                    return bool(re.search(r'[\u3040-\u30ff\u3400-\u9fff]', text))
-
-                def token_overlap(a: str, b: str) -> float:
-                    a_tokens = set(re.findall(r'[a-z0-9]+', a.lower()))
-                    b_tokens = set(re.findall(r'[a-z0-9]+', b.lower()))
-                    if not a_tokens or not b_tokens:
-                        return 0.0
-                    return len(a_tokens & b_tokens) / len(a_tokens)
-
                 # Final filter: Romanized anime searches often return localized CJK titles.
                 # Be strict for Latin-to-Latin matches to avoid false positives like
                 # "Front Innocent" -> "Steven Avery: Innocent or Guilty?", but allow
                 # low text similarity when TMDB returns a localized CJK candidate.
                 threshold = 0.25
                 if best_match:
-                    title_for_filter = f"{best_match.get('name') or best_match.get('title') or ''} {best_match.get('original_name') or best_match.get('original_title') or ''}"
-                    query_has_cjk = has_cjk(clean_query)
-                    candidate_has_cjk = has_cjk(title_for_filter)
-                    latin_overlap = token_overlap(clean_query, title_for_filter)
+                    title_for_filter = self._candidate_title_text(best_match)
+                    query_has_cjk = self._has_cjk(clean_query)
+                    candidate_has_cjk = self._has_cjk(title_for_filter)
+                    latin_overlap = self._token_overlap(clean_query, title_for_filter)
 
                     accepts_localized_title = (
                         not target_year
@@ -387,7 +600,6 @@ class MediaPipeline:
                         if not candidate_has_cjk
                         else (best_score >= threshold or accepts_localized_title)
                     )
-                    top_candidates = sorted(all_candidates, key=lambda item: item.get("_match_score", 0), reverse=True)[:5]
                     match_explanation = {
                         "provider": "tmdb",
                         "confidence": "none",
@@ -395,29 +607,28 @@ class MediaPipeline:
                         "score": round(best_score, 4),
                         "token_overlap": round(latin_overlap, 4),
                         "target_year": target_year,
-                        "candidates": [
-                            {
-                                "id": item.get("id"),
-                                "title": item.get("name") or item.get("title"),
-                                "original_title": item.get("original_name") or item.get("original_title"),
-                                "media_type": item.get("_search_type"),
-                                "year": item.get("_match_year"),
-                                "score": round(item.get("_match_score", 0), 4),
-                            }
-                            for item in top_candidates
-                        ],
+                        "candidates": self._summarize_candidates(
+                            all_candidates,
+                            target_year=target_year,
+                            selected_id=best_match.get("id") if accepts_candidate else None,
+                        ),
                     }
 
                     if accepts_candidate:
                         candidate = best_match
                         candidate["media_type"] = candidate["_search_type"]
-                        reason = "localized title" if accepts_localized_title and best_score < threshold else "similarity"
+                        if candidate.get("_matched_field") == "alias":
+                            reason = "alias"
+                        else:
+                            reason = "localized title" if accepts_localized_title and best_score < threshold else "similarity"
                         confidence = "high" if best_score >= 0.75 or latin_overlap >= 0.85 else ("medium" if best_score >= 0.55 or latin_overlap >= 0.75 else "low")
                         match_explanation.update({
                             "confidence": confidence,
                             "reason": reason,
                             "selected_id": candidate.get("id"),
                             "selected_title": candidate.get("name") or candidate.get("title"),
+                            "matched_title": candidate.get("_matched_title"),
+                            "matched_field": candidate.get("_matched_field"),
                         })
                         self._log(f"   ✅ Selected Best Match: {candidate.get('name') or candidate.get('title')} (ID: {candidate.get('id')}, Score: {best_score:.2f}, Type: {candidate['media_type']}, Reason: {reason})")
                     else:
@@ -432,18 +643,31 @@ class MediaPipeline:
             for m_type in search_types:
                 tavily_id = self.tavily_search.search_tmdb_id(query, m_type, year=target_year, verbose=self.verbose)
                 if tavily_id:
-                    candidate = {"id": tavily_id, "media_type": m_type}
+                    verification = self._verify_external_candidate(query, target_year, m_type, tavily_id)
                     match_explanation = {
                         "provider": "tavily",
-                        "confidence": "external",
-                        "reason": "tavily_tmdb_id_result",
-                        "score": None,
-                        "selected_id": tavily_id,
-                        "selected_title": None,
-                        "candidates": [],
+                        "confidence": verification.get("confidence", "none"),
+                        "reason": verification.get("reason", "external_low_confidence"),
+                        "score": round(verification.get("score", 0.0), 4),
+                        "token_overlap": round(verification.get("token_overlap", 0.0), 4),
+                        "target_year": target_year,
+                        "external_id": tavily_id,
+                        "selected_title": (verification.get("candidate") or {}).get("name") or (verification.get("candidate") or {}).get("title"),
+                        "matched_title": verification.get("matched_title"),
+                        "matched_field": verification.get("matched_field"),
+                        "candidates": self._summarize_candidates(
+                            [verification.get("candidate", {})],
+                            target_year=target_year,
+                            selected_id=tavily_id if verification.get("accepted") else None,
+                        ) if verification.get("candidate") else [],
                     }
-                    self._log(f"   ✅ Tavily Found ID: {tavily_id} (Type: {m_type})")
-                    break
+                    if verification.get("accepted"):
+                        candidate = verification.get("candidate") or {"id": tavily_id, "media_type": m_type}
+                        candidate["media_type"] = m_type
+                        match_explanation["selected_id"] = tavily_id
+                        self._log(f"   ✅ Tavily Found Verified ID: {tavily_id} (Type: {m_type}, Score: {verification.get('score', 0.0):.2f})")
+                        break
+                    self._log(f"   ⚠️ Tavily ID {tavily_id} rejected ({verification.get('reason')}, score={verification.get('score', 0.0):.2f})")
         
         return {"selected": candidate, "match": match_explanation}
 
@@ -589,11 +813,14 @@ class MediaPipeline:
         year = normalized.get("year")
         
         # Create Directory
+        planned_media_dir = self._planned_media_directory(output_dir, title, year, media_type)
+        media_dir_existed = os.path.exists(planned_media_dir)
         media_dir = FileSystemManager.create_media_directory(output_dir, title, year, media_type, inplace=self.inplace)
+        self._record_created_dir(media_dir, media_dir_existed)
         
         # Write Main NFO
         nfo_filename = f"{title} ({year}).nfo" if media_type == "movie" else "tvshow.nfo"
-        FileSystemManager.write_nfo_file(media_dir, nfo_filename, nfo_data["xml"])
+        self._write_manifested_nfo(media_dir, nfo_filename, nfo_data["xml"], kind="main_nfo")
         
         # Handle Seasons/Episodes NFO
         if media_type == "tv":
@@ -604,13 +831,16 @@ class MediaPipeline:
                 if s_num == 0: continue
                 
                 
+                planned_s_dir = os.path.join(media_dir, f"Season {s_num:02d}")
+                s_dir_existed = os.path.exists(planned_s_dir)
                 s_dir = FileSystemManager.create_season_directory(media_dir, s_num)
+                self._record_created_dir(s_dir, s_dir_existed)
                 
                 # Season NFO
                 # Write season.nfo into the season folder if we have it
                 s_xml = nfo_data.get("season_nfos", {}).get(s_num)
                 if s_xml:
-                    FileSystemManager.write_nfo_file(s_dir, "season.nfo", s_xml)
+                    self._write_manifested_nfo(s_dir, "season.nfo", s_xml, kind="season_nfo")
 
                 # Episode NFO
                 ep_nfo_obj = self.mapper.map_to_episode_nfo(normalized, ep, normalized)
@@ -633,20 +863,74 @@ class MediaPipeline:
                 # unless we are sure about the structure, OR write to standard name.
                 
                 base_name = f"{title} - S{s_num:02d}E{e_num:02d} - {e_title}".replace("/", "-") 
-                FileSystemManager.write_nfo_file(s_dir, f"{base_name}.nfo", ep_xml)
+                self._write_manifested_nfo(s_dir, f"{base_name}.nfo", ep_xml, kind="episode_nfo")
 
         return {"media_dir": media_dir}
 
-    def _step_download_images(self, normalized: Dict, media_dir: str, input_data: Dict):
+    def _planned_media_directory(self, output_dir: str, title: str, year: int, media_type: str) -> str:
+        if self.inplace:
+            return output_dir
+        safe_title = re.sub(r'[\\/:"*?<>|]', '', title or "").strip()
+        return os.path.join(output_dir, "Movies" if media_type == "movie" else "TV", f"{safe_title} ({year})")
+
+    def _record_created_dir(self, directory: str, existed_before: bool) -> None:
+        if self.manifest and not existed_before:
+            self.manifest.record("create_dir", None, directory, extra={"kind": "pipeline_output"})
+
+    def _write_manifested_nfo(self, directory: str, filename: str, content: str, kind: str) -> str:
+        path = os.path.join(directory, filename)
+        existed_before = os.path.exists(path)
+        backup_path = self.manifest.backup_file(path) if self.manifest and existed_before else None
+        written_path = FileSystemManager.write_nfo_file(directory, filename, content)
+        if self.manifest:
+            extra = {"kind": kind}
+            if backup_path:
+                extra["backup_path"] = str(backup_path)
+            self.manifest.record(
+                "overwrite_file" if existed_before else "create_file",
+                None,
+                written_path,
+                extra=extra,
+            )
+        return written_path
+
+    def _summarize_artwork_downloads(self, downloaded_images: Dict[str, Any]) -> Dict[str, Any]:
+        files = {
+            key: value
+            for key, value in (downloaded_images or {}).items()
+            if isinstance(value, list)
+        }
+        counts = {key: len(value) for key, value in files.items()}
+        total = sum(counts.values())
+        core_keys = ["poster", "fanart", "banner", "logo", "clearart"]
+        missing_core = [key for key in core_keys if counts.get(key, 0) == 0]
+        return {
+            "status": "downloaded" if total else "empty",
+            "total": total,
+            "counts": counts,
+            "files": files,
+            "missing_core": missing_core,
+        }
+
+    def _step_download_images(self, normalized: Dict, media_dir: str, input_data: Dict) -> Dict[str, Any]:
         """Step 8: Download."""
         tmdb_id = normalized.get("tmdb_id")
         media_type = normalized.get("media_type")
-        if tmdb_id:
-            self._log("🖼️ Downloading images...", verbose_only=True)
-            self.artwork.download_all_images(
+        if not tmdb_id or not media_type:
+            return {"status": "skipped", "reason": "missing_tmdb_id_or_media_type"}
+        if not self.artwork:
+            return {"status": "skipped", "reason": "artwork_downloader_unavailable"}
+
+        self._log("🖼️ Downloading images...", verbose_only=True)
+        try:
+            downloaded_images = self.artwork.download_all_images(
                 media_type, tmdb_id, media_dir, 
                 verbose=self.verbose, 
                 extra_images=input_data.get("extra_images", False),
                 image_limits=self.config.get("output", {}).get("image_limit", {}),
                 overwrite=input_data.get("overwrite_images", False)
             )
+        except Exception as exc:
+            return {"status": "failed", "error": str(exc), "total": 0, "counts": {}, "files": {}, "missing_core": []}
+
+        return self._summarize_artwork_downloads(downloaded_images)

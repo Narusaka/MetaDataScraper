@@ -11,11 +11,16 @@ os.environ["PYTHONPATH"] = project_root + os.pathsep + os.environ.get("PYTHONPAT
 
 if __name__ == "__main__":
     import src
+    host = os.getenv("WEB_HOST", "127.0.0.1")
+    port = int(os.getenv("WEB_PORT", "8000"))
+    reload_enabled = os.getenv("WEB_RELOAD", "0").lower() in {"1", "true", "yes", "on"}
+
     print(f"DEBUG: src package path: {src.__path__}")
     print("🚀 Starting Media Metadata Scraper Web Server...")
-    print("   Local:    http://localhost:8000")
-    print("   Network:  http://0.0.0.0:8000 (Check your IP)")
-    print("   API Docs: http://localhost:8000/docs")
+    print(f"   Local:    http://{host}:{port}")
+    print(f"   API Docs: http://{host}:{port}/docs")
+    if host in {"0.0.0.0", "::"}:
+        print(f"   Network:  http://{host}:{port} (Check your IP)")
     
     # Load .env
     try:
@@ -25,4 +30,4 @@ if __name__ == "__main__":
         pass
         
     # Run uvicorn
-    uvicorn.run("src.server.main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("src.server.main:app", host=host, port=port, reload=reload_enabled)

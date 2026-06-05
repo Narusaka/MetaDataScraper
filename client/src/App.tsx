@@ -1,46 +1,26 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Sidebar } from './components/Sidebar';
 import { TerminalView } from './components/TerminalView';
 import { SettingsView } from './components/SettingsView';
 import { Dashboard } from './components/Dashboard';
 import { Header } from './components/Header';
 import { Menu, Terminal } from 'lucide-react';
-import { apiUrl } from './lib/api';
+import { startTask, stopTasks } from './lib/taskApi';
+import { SystemStatusProvider } from './lib/systemStatus';
+import { useSystemStatus } from './lib/systemStatusContext';
+import type { TaskStartPayload } from './lib/types';
 import { cn } from './lib/utils';
 import { Toaster } from 'sonner';
 
-function App() {
+function AppShell() {
   const [activeTab, setActiveTab] = useState("dashboard");
-  const [isRunning, setIsRunning] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { running: isRunning, refresh: refreshStatus } = useSystemStatus();
 
-  // Status Check (Global)
-  useEffect(() => {
-    const interval = setInterval(async () => {
-      try {
-        const res = await fetch(apiUrl('/api/status'));
-        if (res.ok) {
-          const data = await res.json();
-          setIsRunning(data.running);
-        }
-      } catch (e) { }
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const handleStartTask = async (taskConfig: any) => {
+  const handleStartTask = async (taskConfig: TaskStartPayload) => {
     try {
-      const res = await fetch(apiUrl('/api/tasks/start'), {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(taskConfig)
-      });
-      if (res.ok) {
-        setIsRunning(true);
-      } else {
-        const err = await res.json();
-        throw new Error(err.detail || 'Unknown error');
-      }
+      await startTask(taskConfig);
+      await refreshStatus();
     } catch (e) {
       throw e instanceof Error ? e : new Error(String(e));
     }
@@ -48,8 +28,8 @@ function App() {
 
   const handleStopTask = async () => {
     try {
-      await fetch(apiUrl('/api/tasks/stop'), { method: "POST" });
-      // We don't verify response strictly, assuming best effort stop
+      await stopTasks();
+      await refreshStatus();
     } catch (e) {
       console.error("Failed to stop task:", e);
     }
@@ -76,7 +56,7 @@ function App() {
             <Terminal size={14} className="text-secondary" />
             <span className="text-xs font-mono text-text-muted uppercase tracking-widest">System Output Logs</span>
           </div>
-          <TerminalView className="flex-1" />
+          <TerminalView className="flex-1" active={activeTab === 'monitoring'} />
         </div>
       </div>
     </div>
@@ -110,7 +90,7 @@ function App() {
         {/* Desktop Header area if needed, otherwise clean look */}
         <div className="hidden md:block shrink-0 px-6 py-4">
           {/* We can put breadcrumbs or global status here if needed, keeping it clean for now */}
-          <Header title={activeTab} isRunning={isRunning} />
+          <Header title={activeTab} />
         </div>
 
         {/* Content Area - Mounted but hidden based on activeTab to preserve state */}
@@ -133,6 +113,14 @@ function App() {
       />
     </div>
   )
+}
+
+function App() {
+  return (
+    <SystemStatusProvider>
+      <AppShell />
+    </SystemStatusProvider>
+  );
 }
 
 export default App

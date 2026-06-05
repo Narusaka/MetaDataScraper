@@ -1,42 +1,12 @@
-import { useEffect, useState } from 'react';
-import { Activity, BarChart3, Database, Cpu } from 'lucide-react';
+import { Activity, BarChart3, Database, Cpu, type LucideIcon } from 'lucide-react';
 import { cn } from '../lib/utils';
-import { useTranslation } from '../lib/language';
-import { apiUrl } from '../lib/api';
-
-interface SystemStats {
-    running: boolean;
-    workers: number;
-    stats: {
-        total_tasks: number;
-        total_media: number;
-        total_success: number;
-        total_failed: number;
-        total_duration: number;
-    };
-}
+import { useTranslation } from '../lib/languageContext';
+import { useSystemStatus } from '../lib/systemStatusContext';
 
 export function SystemMonitor() {
     const { t } = useTranslation();
-    const [stats, setStats] = useState<SystemStats | null>(null);
-
-    useEffect(() => {
-        const fetchStats = async () => {
-            try {
-                const res = await fetch(apiUrl('/api/status'));
-                const data = await res.json();
-                setStats(data);
-            } catch (e) {
-                setStats(null);
-            }
-        };
-
-        fetchStats();
-        const interval = setInterval(fetchStats, 2000);
-        return () => clearInterval(interval);
-    }, []);
-
-    const s = stats?.stats || { total_tasks: 0, total_media: 0, total_success: 0, total_failed: 0, total_duration: 0 };
+    const { status, online } = useSystemStatus();
+    const s = status?.stats || { total_tasks: 0, total_media: 0, total_success: 0, total_failed: 0, total_duration: 0 };
     const successRate = s.total_media ? Math.round((s.total_success / s.total_media) * 100) : 100;
 
     return (
@@ -44,16 +14,16 @@ export function SystemMonitor() {
             <MetricCard
                 icon={Activity}
                 label={t('system_status')}
-                value={stats?.running ? "ONLINE" : "STANDBY"}
-                subvalue={stats === null ? "Connecting..." : ""}
-                color={stats?.running ? "bg-emerald-500" : "bg-yellow-500"}
+                value={!online ? "OFFLINE" : status?.running ? "ONLINE" : "STANDBY"}
+                subvalue={!online ? "Connecting..." : ""}
+                color={!online ? "bg-red-500" : status?.running ? "bg-emerald-500" : "bg-yellow-500"}
                 delay={0}
             />
 
             <MetricCard
                 icon={Cpu}
                 label={t('performance')}
-                value={stats?.workers || 4}
+                value={status?.workers || "--"}
                 subvalue="THREADS"
                 color="bg-blue-500"
                 delay={1}
@@ -80,7 +50,16 @@ export function SystemMonitor() {
     );
 }
 
-function MetricCard({ icon: Icon, label, value, subvalue, color }: any) {
+interface MetricCardProps {
+    icon: LucideIcon;
+    label: string;
+    value: string | number;
+    subvalue?: string;
+    color: string;
+    delay?: number;
+}
+
+function MetricCard({ icon: Icon, label, value, subvalue, color }: MetricCardProps) {
     return (
         <div
             className="group relative overflow-hidden rounded-xl border border-white/10 bg-panel/60 p-4 transition-all hover:bg-panel/80 hover:border-primary/30"

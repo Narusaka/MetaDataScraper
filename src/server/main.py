@@ -2,52 +2,101 @@
 import os
 import logging
 import asyncio
-from typing import List, Optional
+from contextlib import asynccontextmanager
+from datetime import datetime
+from typing import List, Optional, Literal
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from pathlib import Path
 
 # Import our customized modules
 from src.server.logger_handler import log_broadcaster
 from src.server.task_events import task_event_store
 from src.server.job_manager import job_manager
-from src.server.settings_manager import SettingsManager
+from src.server.settings_manager import SettingsManager, SettingsValidationError
 
-# --- Logging Setup ---
-# Ensure logs directory exists
-log_dir = Path("logs")
-log_dir.mkdir(exist_ok=True)
-session_timestamp = logging.Formatter().converter(None) # just a placeholder
-from datetime import datetime
-timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-log_file = log_dir / f"web_session_{timestamp}.log"
+def _has_handler(root_logger: logging.Logger, marker: str) -> bool:
+    return any(getattr(handler, marker, False) for handler in root_logger.handlers)
 
-# Attach handlers to the root logger
-root_logger = logging.getLogger()
-root_logger.setLevel(logging.INFO)
 
-# 1. WebSocket Broadcaster
-root_logger.addHandler(log_broadcaster)
+def configure_logging() -> Path:
+    log_dir = Path("logs")
+    log_dir.mkdir(exist_ok=True)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    log_file = log_dir / f"web_session_{timestamp}.log"
 
-# 2. Local File Logger for the web session
-try:
-    file_handler = logging.FileHandler(log_file, encoding='utf-8')
-    file_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
-    root_logger.addHandler(file_handler)
-except OSError:
-    print(f"⚠️ Server Log File creation failed (Disk Full likely). Continuing without file logs.")
+    root_logger = logging.getLogger()
+    root_logger.setLevel(logging.INFO)
 
-# 3. Console Output
-console_handler = logging.StreamHandler()
-console_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
-root_logger.addHandler(console_handler)
+    if not _has_handler(root_logger, "_metadata_scraper_ws"):
+        log_broadcaster._metadata_scraper_ws = True
+        root_logger.addHandler(log_broadcaster)
 
-logging.info(f"📝 Logging session to {log_file}")
+    if not _has_handler(root_logger, "_metadata_scraper_file"):
+        try:
+            file_handler = logging.FileHandler(log_file, encoding="utf-8")
+            file_handler.setFormatter(logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s"))
+            file_handler._metadata_scraper_file = True
+            root_logger.addHandler(file_handler)
+        except OSError:
+            print("⚠️ Server Log File creation failed (Disk Full likely). Continuing without file logs.")
+
+    if not _has_handler(root_logger, "_metadata_scraper_console"):
+        console_handler = logging.StreamHandler()
+        console_handler.setFormatter(logging.Formatter("%(asctime)s - %(levelname)s - %(message)s"))
+        console_handler._metadata_scraper_console = True
+        root_logger.addHandler(console_handler)
+
+    logging.info(f"📝 Logging session to {log_file}")
+    return log_file
+
+
+configure_logging()
 
 settings_manager = SettingsManager()
 
-app = FastAPI(title="Media Metadata Scraper API")
+async def run_startup_maintenance():
+    loop = asyncio.get_running_loop()
+    log_broadcaster.set_loop(loop)
+    task_event_store.set_loop(loop)
+
+    try:
+        logging.info("🧹 Performing System Cleanup...")
+        from src.core.cache import CacheManager
+
+        cm = CacheManager()
+        cleared = cm.clear_expired(48)
+        logging.info(f"   - Cleared {cleared} expired cache files.")
+
+        log_path = Path("logs")
+        if log_path.exists():
+            import time
+
+            now = time.time()
+            cutoff = now - (7 * 86400)
+            deleted_logs = 0
+            for f in log_path.iterdir():
+                if f.is_file() and f.suffix == ".log" and f.stat().st_mtime < cutoff:
+                    try:
+                        f.unlink()
+                        deleted_logs += 1
+                    except OSError:
+                        logging.warning(f"Could not delete old log file: {f}")
+            logging.info(f"   - Deleted {deleted_logs} old log files.")
+        task_event_store.compact()
+        logging.info("   - Compacted task event ledger.")
+    except Exception as e:
+        logging.error(f"Cleanup failed: {e}")
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await run_startup_maintenance()
+    yield
+
+
+app = FastAPI(title="Media Metadata Scraper API", lifespan=lifespan)
 
 # Allow CORS for frontend dev
 app.add_middleware(
@@ -60,17 +109,17 @@ app.add_middleware(
 
 # --- Pydantic Models ---
 class TaskStartRequest(BaseModel):
-    input_dir: str
+    input_dir: str = Field(min_length=1)
     dry_run: bool = True
     inplace: bool = False
     copy_mode: bool = False
     output_dir: Optional[str] = None
     use_local_nfo: bool = False
     extra_images: bool = False
-    workers: int = 4
-    media_type: Optional[str] = None
-    tmdb_id: Optional[int] = None
-    search_mode: str = "smart" # smart, tmdb_only
+    workers: int = Field(default=4, ge=1, le=16)
+    media_type: Optional[Literal["movie", "tv"]] = None
+    tmdb_id: Optional[int] = Field(default=None, ge=0)
+    search_mode: Literal["smart", "tmdb_only", "tavily_only"] = "smart"
     enable_fallback: bool = True
     multi_mode: Optional[bool] = None  # None = Auto-detect
     fresh: bool = False # If True, overwrite existing metadata. If False, skip if exists.
@@ -84,41 +133,35 @@ class FileSystemNode(BaseModel):
     is_dir: bool
     children: Optional[List['FileSystemNode']] = None
 
-# --- Events ---
-@app.on_event("startup")
-async def startup_event():
-    # Pass the running loop to the logger so it can schedule broadcasts
-    loop = asyncio.get_running_loop()
-    log_broadcaster.set_loop(loop)
-    task_event_store.set_loop(loop)
-    
-    # --- System Cleanup ---
-    try:
-        logging.info("🧹 Performing System Cleanup...")
-        # Clean Cache
-        from src.core.cache import CacheManager
-        cm = CacheManager()
-        cleared = cm.clear_expired(48) # 48 hours
-        logging.info(f"   - Cleared {cleared} expired cache files.")
-        
-        # Clean Logs
-        log_path = Path("logs")
-        if log_path.exists():
-             import time
-             now = time.time()
-             cutoff = now - (7 * 86400) # 7 days
-             deleted_logs = 0
-             for f in log_path.iterdir():
-                 if f.is_file() and f.suffix == ".log" and f.stat().st_mtime < cutoff:
-                     try:
-                        f.unlink()
-                        deleted_logs += 1
-                     except: pass
-             logging.info(f"   - Deleted {deleted_logs} old log files.")
-    except Exception as e:
-        logging.error(f"Cleanup failed: {e}")
-
 # --- Endpoints ---
+
+def _task_config_from_request(req: TaskStartRequest, tmdb_id: Optional[int]) -> dict:
+    if req.copy_mode:
+        strategy = "copy"
+    elif req.dry_run:
+        strategy = "audit"
+    else:
+        strategy = "organize" if req.inplace else "metadata"
+
+    return {
+        "dry_run": req.dry_run,
+        "strategy": strategy,
+        "workers": req.workers,
+        "media_type": req.media_type,
+        "tmdb_id": tmdb_id,
+        "search_mode": req.search_mode,
+        "multi_mode": req.multi_mode,
+        "inplace": req.inplace,
+        "copy_mode": req.copy_mode,
+        "output_dir": req.output_dir,
+        "use_local_nfo": req.use_local_nfo,
+        "extra_images": req.extra_images,
+        "fresh": req.fresh,
+        "enable_fallback": req.enable_fallback,
+        "enable_organize": req.enable_organize,
+        "overwrite_images": req.overwrite_images,
+        "rename_parent_dir": req.rename_parent_dir,
+    }
 
 @app.get("/api/status")
 async def get_status():
@@ -135,70 +178,78 @@ def browse_filesystem(path: str = "."):
     Simple file browser to select directories.
     Defaults to current directory.
     """
+    p = Path(path).expanduser().resolve()
+    if not p.exists():
+        raise HTTPException(status_code=404, detail="Path not found")
+    if not p.is_dir():
+        raise HTTPException(status_code=400, detail="Path is not a directory")
+
     try:
-        p = Path(path).resolve()
-        if not p.exists():
-            raise HTTPException(status_code=404, detail="Path not found")
-        
-        # Parent nav
-        parent = p.parent
-        
-        items = []
-        # Add parent directory entry
-        if p != p.parent:
+        entries = list(os.scandir(p))
+    except PermissionError:
+        raise HTTPException(status_code=403, detail="Permission denied")
+    except OSError as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+    parent = p.parent
+    items = []
+    if p != p.parent:
+        items.append({
+            "name": "..",
+            "path": str(parent),
+            "is_dir": True,
+            "has_children": True
+        })
+
+    for entry in entries:
+        if entry.is_dir() and not entry.name.startswith('.'):
             items.append({
-                "name": "..",
-                "path": str(parent),
+                "name": entry.name,
+                "path": entry.path,
                 "is_dir": True,
                 "has_children": True
             })
 
-        for entry in os.scandir(p):
-            # Only show directories for now as we scan folders
-            if entry.is_dir() and not entry.name.startswith('.'):
-                 items.append({
-                    "name": entry.name,
-                    "path": entry.path,
-                    "is_dir": True,
-                    "has_children": True # Simplified
-                })
-        
-        # Sort by name
-        items.sort(key=lambda x: x["name"])
-        
-        return {
-            "current": str(p),
-            "items": items
-        }
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    items.sort(key=lambda x: x["name"])
+
+    return {
+        "current": str(p),
+        "items": items
+    }
 
 @app.get("/api/fs/check")
 async def check_path(path: str):
     logging.info(f"🔍 Path check request: {path}")
-    return {"exists": os.path.exists(path), "path": path}
+    checked_path = Path(path).expanduser()
+    return {
+        "exists": checked_path.exists(),
+        "is_dir": checked_path.is_dir(),
+        "path": str(checked_path.resolve()) if checked_path.exists() else str(checked_path),
+    }
 
 @app.post("/api/tasks/start")
 async def start_task(req: TaskStartRequest):
-    if job_manager.is_running:
-         raise HTTPException(status_code=400, detail="Task already running")
+    input_path = Path(req.input_dir).expanduser()
+    if not input_path.exists():
+        raise HTTPException(status_code=404, detail=f"Input path not found: {req.input_dir}")
+    if req.copy_mode and not req.output_dir:
+        raise HTTPException(status_code=400, detail="Output path is required for copy mode")
+    if req.copy_mode and Path(req.output_dir).expanduser() == input_path:
+        raise HTTPException(status_code=400, detail="Output path must be different from input path")
 
-    task = task_event_store.create_task(
-        req.input_dir,
-        {
-            "dry_run": req.dry_run,
-            "strategy": "copy" if req.copy_mode else "inplace",
-            "workers": req.workers,
-            "media_type": req.media_type,
-            "tmdb_id": req.tmdb_id,
-            "search_mode": req.search_mode,
-            "multi_mode": req.multi_mode,
-            "extra_images": req.extra_images,
-            "enable_organize": req.enable_organize,
-            "overwrite_images": req.overwrite_images,
-            "rename_parent_dir": req.rename_parent_dir,
-        },
-    )
+    tmdb_id = req.tmdb_id or None
+
+    if not job_manager.reserve_start():
+        raise HTTPException(status_code=400, detail="Task already running")
+
+    try:
+        task = task_event_store.create_task(
+            req.input_dir,
+            _task_config_from_request(req, tmdb_id),
+        )
+    except Exception:
+        job_manager.release_reservation()
+        raise
     
     # Fire and forget (task runs in background)
     asyncio.create_task(job_manager.start_batch_scan(
@@ -211,7 +262,7 @@ async def start_task(req: TaskStartRequest):
         use_local_nfo=req.use_local_nfo,
         extra_images=req.extra_images,
         media_type=req.media_type,
-        tmdb_id=req.tmdb_id,
+        tmdb_id=tmdb_id,
         search_mode=req.search_mode,
         enable_fallback=req.enable_fallback,
         multi_mode=req.multi_mode,
@@ -219,7 +270,8 @@ async def start_task(req: TaskStartRequest):
         enable_organize=req.enable_organize,
         overwrite_images=req.overwrite_images,
         rename_parent_dir=req.rename_parent_dir,
-        task_id=task["id"]
+        task_id=task["id"],
+        reserved=True
     ))
     
     return {"status": "started", "task_id": task["id"], "message": f"Scanning {req.input_dir}"}
@@ -235,6 +287,21 @@ async def get_task(task_id: str):
         raise HTTPException(status_code=404, detail="Task not found")
     return task
 
+def _read_task_plan_artifact(task_id: str, item_id: str, store=None):
+    store = store or task_event_store
+    try:
+        return store.read_plan_artifact(task_id, item_id)
+    except PermissionError as exc:
+        raise HTTPException(status_code=403, detail=str(exc))
+    except (KeyError, FileNotFoundError) as exc:
+        raise HTTPException(status_code=404, detail=str(exc))
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Failed to read plan artifact: {exc}")
+
+@app.get("/api/tasks/{task_id}/plan")
+async def get_task_plan(task_id: str, item_id: str):
+    return _read_task_plan_artifact(task_id, item_id)
+
 @app.get("/api/tasks/{task_id}/manifest")
 async def get_task_manifest(task_id: str):
     from src.core.operation_manifest import get_manifest
@@ -247,6 +314,12 @@ async def get_task_manifest(task_id: str):
 @app.post("/api/tasks/{task_id}/rollback")
 async def rollback_task(task_id: str):
     from src.core.operation_manifest import rollback_manifest
+
+    task = task_event_store.get_task(task_id)
+    if not task:
+        raise HTTPException(status_code=404, detail="Task not found")
+    if task.get("status") in {"created", "running"}:
+        raise HTTPException(status_code=409, detail="Task is still running")
 
     result = rollback_manifest(task_id)
     if result["status"] == "not_found":
@@ -336,34 +409,39 @@ async def get_settings():
 @app.post("/api/settings")
 async def save_settings(settings: dict):
     # Basic validation could go here
-    if settings_manager.save_settings(settings):
-        return {"status": "saved", "config": settings}
-    else:
-        raise HTTPException(status_code=500, detail="Failed to save settings")
+    try:
+        if settings_manager.save_settings(settings):
+            return {"status": "saved", "config": settings_manager.get_settings()}
+    except SettingsValidationError as exc:
+        raise HTTPException(status_code=400, detail=str(exc))
+    raise HTTPException(status_code=500, detail="Failed to save settings")
 
 # --- WebSocket ---
 @app.websocket("/ws/logs")
 async def websocket_logs(websocket: WebSocket):
     await websocket.accept()
     queue = await log_broadcaster.subscribe()
-    
+
     try:
         while True:
-            # Wait for log message
             message = await queue.get()
             await websocket.send_text(message)
-    except WebSocketDisconnect:
+    except (WebSocketDisconnect, asyncio.CancelledError):
+        pass
+    finally:
         log_broadcaster.unsubscribe(queue)
 
 @app.websocket("/ws/events")
 async def websocket_events(websocket: WebSocket):
     await websocket.accept()
     queue = await task_event_store.subscribe()
-    
+
     try:
         import json
         while True:
             event = await queue.get()
             await websocket.send_text(json.dumps(event, ensure_ascii=False))
-    except WebSocketDisconnect:
+    except (WebSocketDisconnect, asyncio.CancelledError):
+        pass
+    finally:
         task_event_store.unsubscribe(queue)

@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { LayoutDashboard, Settings, Activity, ChevronRight } from 'lucide-react';
+import { LayoutDashboard, Settings, Activity, ChevronRight, type LucideIcon } from 'lucide-react';
 import { cn } from '../lib/utils';
-import { useTranslation } from '../lib/language';
+import { useTranslation } from '../lib/languageContext';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface SidebarProps {
@@ -11,54 +11,63 @@ interface SidebarProps {
     onMobileClose?: () => void;
 }
 
+interface NavItemProps {
+    icon: LucideIcon;
+    label: string;
+    id: string;
+    activeTab: string;
+    collapsed: boolean;
+    onSelect: (tab: string) => void;
+}
+
+function NavItem({ icon: Icon, label, id, activeTab, collapsed, onSelect }: NavItemProps) {
+    const isActive = activeTab === id;
+
+    return (
+        <button
+            onClick={() => onSelect(id)}
+            className="group flex items-center w-full outline-none"
+        >
+            <div className="h-12 w-full flex items-center px-0">
+                <div className="w-[84px] shrink-0 flex items-center justify-center">
+                    <div className={cn(
+                        "w-10 h-10 rounded-xl flex items-center justify-center transition-[transform,colors] duration-300",
+                        isActive
+                            ? "scale-110 text-primary dark:text-ios-green"
+                            : "text-text-muted group-hover:text-text-main group-hover:scale-105"
+                    )}>
+                        <Icon
+                            size={20}
+                            strokeWidth={isActive ? 2.5 : 2}
+                        />
+                    </div>
+                </div>
+
+                <div className={cn(
+                    "flex-1 overflow-hidden whitespace-nowrap transition-opacity duration-300 flex items-center",
+                    collapsed ? "opacity-0 w-0 pointer-events-none" : "opacity-100"
+                )}>
+                    <span className={cn(
+                        "font-medium text-sm tracking-wide pl-2 transition-colors duration-300",
+                        isActive
+                            ? "text-primary dark:text-ios-green font-bold"
+                            : "text-text-muted group-hover:text-text-main"
+                    )}>
+                        {label}
+                    </span>
+                </div>
+            </div>
+        </button>
+    )
+}
+
 export function Sidebar({ activeTab, onTabChange, mobileOpen = false, onMobileClose }: SidebarProps) {
     const { t } = useTranslation();
     const [collapsed, setCollapsed] = useState(true);
 
-    const NavItem = ({ icon: Icon, label, id }: { icon: any, label: string, id: string }) => {
-        const isActive = activeTab === id;
-
-        return (
-            <button
-                onClick={() => {
-                    onTabChange(id);
-                    if (window.innerWidth < 768) onMobileClose?.();
-                }}
-                className="group flex items-center w-full outline-none"
-            >
-                <div className="h-12 w-full flex items-center px-0">
-                    {/* Fixed Width Icon Container for Stability (84px to match Header/Footer) */}
-                    <div className="w-[84px] shrink-0 flex items-center justify-center">
-                        <div className={cn(
-                            "w-10 h-10 rounded-xl flex items-center justify-center transition-[transform,colors] duration-300",
-                            isActive
-                                ? "scale-110 text-primary dark:text-ios-green"
-                                : "text-text-muted group-hover:text-text-main group-hover:scale-105"
-                        )}>
-                            <Icon
-                                size={20}
-                                strokeWidth={isActive ? 2.5 : 2}
-                            />
-                        </div>
-                    </div>
-
-                    {/* Text Label Container */}
-                    <div className={cn(
-                        "flex-1 overflow-hidden whitespace-nowrap transition-opacity duration-300 flex items-center",
-                        collapsed ? "opacity-0 w-0 pointer-events-none" : "opacity-100"
-                    )}>
-                        <span className={cn(
-                            "font-medium text-sm tracking-wide pl-2 transition-colors duration-300",
-                            isActive
-                                ? "text-primary dark:text-ios-green font-bold"
-                                : "text-text-muted group-hover:text-text-main"
-                        )}>
-                            {label}
-                        </span>
-                    </div>
-                </div>
-            </button>
-        )
+    const handleSelect = (tab: string) => {
+        onTabChange(tab);
+        if (window.innerWidth < 768) onMobileClose?.();
     };
 
     return (
@@ -126,12 +135,12 @@ export function Sidebar({ activeTab, onTabChange, mobileOpen = false, onMobileCl
 
                 {/* Nav Items */}
                 <div className="flex-1 py-2 flex flex-col gap-2 overflow-y-auto overflow-x-hidden relative z-10 scrollbar-hide items-center">
-                    <NavItem icon={LayoutDashboard} label={t('dashboard')} id="dashboard" />
-                    <NavItem icon={Activity} label={t('monitoring')} id="monitoring" />
+                    <NavItem icon={LayoutDashboard} label={t('dashboard')} id="dashboard" activeTab={activeTab} collapsed={collapsed} onSelect={handleSelect} />
+                    <NavItem icon={Activity} label={t('monitoring')} id="monitoring" activeTab={activeTab} collapsed={collapsed} onSelect={handleSelect} />
 
                     <div className="h-4" /> {/* Spacer instead of divider */}
 
-                    <NavItem icon={Settings} label={t('settings')} id="settings" />
+                    <NavItem icon={Settings} label={t('settings')} id="settings" activeTab={activeTab} collapsed={collapsed} onSelect={handleSelect} />
                 </div>
 
 

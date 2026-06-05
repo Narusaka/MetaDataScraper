@@ -6,7 +6,6 @@ import { LanguageProvider } from './lib/language.tsx'
 import './index.css'
 import App from './App.tsx'
 
-console.log("React App Mounting...");
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

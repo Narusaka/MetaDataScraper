@@ -1,16 +1,24 @@
 
-import { useState, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Folder, HardDrive, ChevronRight, Clock } from 'lucide-react';
 import { cn } from '../lib/utils';
-import { useTranslation } from '../lib/language';
+import { useTranslation } from '../lib/languageContext';
 import type { FileSystemItem, FileSystemResponse } from '../lib/types';
-import { apiUrl } from '../lib/api';
+import { apiJson } from '../lib/api';
 
 interface FolderPickerProps {
     onSelect: (path: string) => void;
     className?: string;
     initialPath?: string;
 }
+
+const getParentPath = (path: string) => {
+    if (!path || path === "/") return path;
+    const clean = path.endsWith('/') && path.length > 1 ? path.slice(0, -1) : path;
+    const lastSlash = clean.lastIndexOf('/');
+    if (lastSlash <= 0) return "/";
+    return clean.substring(0, lastSlash);
+};
 
 export function FolderPicker({ onSelect, className, initialPath }: FolderPickerProps) {
     const { t } = useTranslation();
@@ -20,30 +28,30 @@ export function FolderPicker({ onSelect, className, initialPath }: FolderPickerP
     const [inputValue, setInputValue] = useState(initialPath || "");
     const [recentPaths, setRecentPaths] = useState<string[]>([]);
 
-    useEffect(() => {
-        let history: string[] = [];
+    const fetchDir = useCallback(async (path: string) => {
+        if (!path) return;
+        setLoading(true);
+        setError(null);
         try {
-            history = JSON.parse(localStorage.getItem('recent_paths') || '[]');
-            setRecentPaths(history);
-        } catch (e) { }
+            const data = await apiJson<FileSystemResponse>(
+                `/api/filesystem?path=${encodeURIComponent(path)}`,
+                undefined,
+                `Failed to access directory: ${path}`,
+            );
 
-        if (initialPath) {
-            initLoad(initialPath);
-        } else if (history.length === 0) {
-            fetchDir(".");
+            setItems(data.items);
+            setInputValue(data.current);
+            onSelect(data.current);
+        } catch (error: unknown) {
+            console.error(error);
+            setError(error instanceof Error ? error.message : "Unknown error occurred");
+        } finally {
+            setLoading(false);
         }
-    }, []);
-
-    const getParentPath = (path: string) => {
-        if (!path || path === "/") return path;
-        const clean = path.endsWith('/') && path.length > 1 ? path.slice(0, -1) : path;
-        const lastSlash = clean.lastIndexOf('/');
-        if (lastSlash <= 0) return "/";
-        return clean.substring(0, lastSlash);
-    };
+    }, [onSelect]);
 
     // Initial load with recursive parent fallback
-    const initLoad = async (startPath: string) => {
+    const initLoad = useCallback(async (startPath: string) => {
         setLoading(true);
         setError(null);
         let current = startPath;
@@ -52,17 +60,18 @@ export function FolderPicker({ onSelect, className, initialPath }: FolderPickerP
 
         while (current && attempts < maxAttempts) {
             try {
-                const res = await fetch(apiUrl(`/api/filesystem?path=${encodeURIComponent(current)}`));
-                if (res.ok) {
-                    const data: FileSystemResponse = await res.json();
-                    setItems(data.items);
-                    setInputValue(data.current);
-                    onSelect(data.current);
-                    setLoading(false);
-                    return; // Success!
-                }
-            } catch (e) {
-                // Ignore network errors during fallback search, just try next
+                const data = await apiJson<FileSystemResponse>(
+                    `/api/filesystem?path=${encodeURIComponent(current)}`,
+                    undefined,
+                    `Failed to access directory: ${current}`,
+                );
+                setItems(data.items);
+                setInputValue(data.current);
+                onSelect(data.current);
+                setLoading(false);
+                return; // Success!
+            } catch (error) {
+                console.warn("Directory fallback check failed", error);
             }
 
             // Failed, try parent
@@ -77,27 +86,24 @@ export function FolderPicker({ onSelect, className, initialPath }: FolderPickerP
         // Do NOT clear input value, so user can correct it or keep the custom path
         setInputValue(startPath || "");
         setError("Failed to load path or any parent directories.");
-    };
+    }, [onSelect]);
 
-    const fetchDir = async (path: string) => {
-        if (!path) return;
-        setLoading(true);
-        setError(null);
+    useEffect(() => {
+        let history: string[] = [];
         try {
-            const res = await fetch(apiUrl(`/api/filesystem?path=${encodeURIComponent(path)}`));
-            if (!res.ok) throw new Error(`Failed to access directory: ${path}`);
-            const data: FileSystemResponse = await res.json();
-
-            setItems(data.items);
-            setInputValue(data.current);
-            onSelect(data.current);
-        } catch (e: any) {
-            console.error(e);
-            setError(e.message || "Unknown error occurred");
-        } finally {
-            setLoading(false);
+            const parsed = JSON.parse(localStorage.getItem('recent_paths') || '[]');
+            history = Array.isArray(parsed) ? parsed.filter((item): item is string => typeof item === 'string') : [];
+        } catch (error) {
+            console.warn("Could not load recent paths", error);
         }
-    };
+
+        setRecentPaths(history);
+        if (initialPath) {
+            initLoad(initialPath);
+        } else if (history.length === 0) {
+            fetchDir(".");
+        }
+    }, [fetchDir, initLoad, initialPath]);
 
     const handleNavigate = (path: string) => {
         fetchDir(path);

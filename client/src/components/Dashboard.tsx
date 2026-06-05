@@ -2,19 +2,21 @@ import { useState, useEffect, useRef } from 'react';
 import {
     Play, FolderInput, Copy,
     Search, FolderOpen, X, Settings2,
-    Database, Layers, Cpu, Square
+    Database, Layers, Cpu, Square,
+    type LucideIcon
 } from 'lucide-react';
 import { cn } from '../lib/utils';
-import { useTranslation } from '../lib/language';
+import { useTranslation } from '../lib/languageContext';
 import { FolderPicker } from './FolderPicker';
 import { TaskBoard } from './TaskBoard';
-import { apiUrl } from '../lib/api';
+import { apiJson } from '../lib/api';
+import type { FileSystemCheckResponse, TaskStartPayload } from '../lib/types';
 import { toast } from 'sonner';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface DashboardProps {
     isRunning: boolean;
-    onStart: (config: any) => void;
+    onStart: (config: TaskStartPayload) => void;
     onStop: () => void;
 }
 
@@ -48,12 +50,12 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
     const [overwriteImages, setOverwriteImages] = useState(() => localStorage.getItem('task_overwrite_images') === 'true');
     const [renameParentDir, setRenameParentDir] = useState(() => localStorage.getItem('task_rename_parent') === 'true');
     const [isScrolling, setIsScrolling] = useState(false);
-    const scrollTimer = useRef<any>(null);
+    const scrollTimer = useRef<number | null>(null);
 
     const handleScroll = () => {
         setIsScrolling(true);
-        if (scrollTimer.current) clearTimeout(scrollTimer.current);
-        scrollTimer.current = setTimeout(() => {
+        if (scrollTimer.current) window.clearTimeout(scrollTimer.current);
+        scrollTimer.current = window.setTimeout(() => {
             setIsScrolling(false);
         }, 2000);
     };
@@ -75,9 +77,28 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
     useEffect(() => localStorage.setItem('task_overwrite_images', overwriteImages.toString()), [overwriteImages]);
     useEffect(() => localStorage.setItem('task_rename_parent', renameParentDir.toString()), [renameParentDir]);
 
+    const normalizedInputPath = selectedPath.trim();
+    const normalizedOutputPath = outputPath.trim();
+    const effectiveWorkers = Math.min(16, Math.max(1, Number.isFinite(workers) ? workers : 1));
+    const effectiveEnableOrganize = strategy === 'audit' ? enableOrganize : true;
+
+    const validateStartConfig = () => {
+        if (!normalizedInputPath) return 'Target path is required';
+        if (strategy === 'copy' && !normalizedOutputPath) return 'Output path is required for copy mode';
+        if (strategy === 'copy' && normalizedOutputPath === normalizedInputPath) return 'Output path must be different from target path';
+        if (multiMode === 'single' && tmdbId && Number.isNaN(parseInt(tmdbId))) return 'TMDB ID must be numeric';
+        return null;
+    };
+
     const handleStart = async () => {
         if (isRunning) {
             onStop();
+            return false;
+        }
+
+        const validationError = validateStartConfig();
+        if (validationError) {
+            toast.error(validationError);
             return false;
         }
 
@@ -85,12 +106,12 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
 
         try {
             await onStart({
-                input_dir: selectedPath,
-                workers,
+                input_dir: normalizedInputPath,
+                workers: effectiveWorkers,
                 dry_run: strategy === 'audit',
                 inplace: strategy === 'organize',
                 copy_mode: strategy === 'copy',
-                output_dir: strategy === 'copy' ? outputPath : null,
+                output_dir: strategy === 'copy' ? normalizedOutputPath : null,
                 use_local_nfo: useLocalNfo,
                 extra_images: extraImages,
                 media_type: mediaType || null,
@@ -99,7 +120,7 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
                 enable_fallback: true,
                 multi_mode: multiMode === 'auto' ? null : (multiMode === 'batch'),
                 fresh: forceFresh,
-                enable_organize: enableOrganize,
+                enable_organize: effectiveEnableOrganize,
                 overwrite_images: overwriteImages,
                 rename_parent_dir: renameParentDir
             });
@@ -145,62 +166,58 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
 
                 {/* Primary Action Button */}
                 <motion.button
+                    data-testid="dashboard-run-button"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={async () => {
-                        console.log("RUN button clicked. isRunning:", isRunning, "selectedPath:", selectedPath);
                         if (isRunning) {
-                            console.log("Stopping task...");
                             onStop();
                             return;
                         }
 
-                        // Check if path exists via API before starting
-                        if (!selectedPath) {
-                            console.log("No path selected, ignoring click.");
+                        const validationError = validateStartConfig();
+                        if (validationError) {
+                            toast.error(validationError);
                             return;
                         }
 
                         try {
-                            console.log("Checking path existence...");
-                            const checkUrl = apiUrl(`/api/fs/check?path=${encodeURIComponent(selectedPath)}`);
-                            console.log("Check URL:", checkUrl);
-                            const checkRes = await fetch(checkUrl);
-                            if (checkRes.ok) {
-                                const checkData = await checkRes.json();
-                                console.log("Path check result:", checkData);
-                                if (!checkData.exists) {
-                                    toast.error(`${t('path_not_found' as any) || 'Path not found'}: ${selectedPath}`, {
-                                        position: 'top-center'
-                                    });
-                                    return;
-                                }
-                            } else {
-                                const errText = await checkRes.text();
-                                console.warn("Path check API returned non-OK status:", checkRes.status, errText);
-                                toast.error(`Server Error (${checkRes.status}): ${errText}`);
+                            const checkData = await apiJson<FileSystemCheckResponse>(
+                                `/api/fs/check?path=${encodeURIComponent(normalizedInputPath)}`,
+                                undefined,
+                                'Path check failed',
+                            );
+                            if (!checkData.exists) {
+                                toast.error(`${t('path_not_found') || 'Path not found'}: ${normalizedInputPath}`, {
+                                    position: 'top-center'
+                                });
+                                return;
+                            }
+                            if (!checkData.is_dir) {
+                                toast.error(`Path is not a directory: ${checkData.path || normalizedInputPath}`, {
+                                    position: 'top-center'
+                                });
                                 return;
                             }
                         } catch (e) {
                             console.error("Path check failed", e);
-                            toast.error(`Network Error: ${e}`);
+                            toast.error(e instanceof Error ? e.message : 'Path check failed');
                             return;
                         }
-                        console.log("Invoking handleStart()...");
                         await handleStart();
                     }}
-                    disabled={!selectedPath && !isRunning}
+                    disabled={!normalizedInputPath && !isRunning}
                     className={cn(
                         "relative flex items-center justify-center gap-3 px-8 py-2.5 rounded-xl font-bold text-sm tracking-wide uppercase transition-all overflow-hidden shadow-lg min-w-[140px]",
                         isRunning
                             ? "bg-red-500 text-white shadow-red-500/20 hover:bg-red-600"
-                            : !selectedPath
+                            : !normalizedInputPath
                                 ? "bg-bg-surface text-text-muted cursor-not-allowed shadow-none"
                                 : "bg-yellow-400 text-black hover:bg-yellow-300 shadow-yellow-400/20"
                     )}
                 >
                     {/* Button Glow for Active State */}
-                    {!isRunning && selectedPath && (
+                    {!isRunning && normalizedInputPath && (
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] animate-[shimmer_2s_infinite]" />
                     )}
 
@@ -250,7 +267,7 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
                                         { value: 'copy', label: t('mode_copy'), icon: Copy },
                                     ]}
                                     value={strategy}
-                                    onChange={(v: any) => setStrategy(v as Strategy)}
+                                    onChange={setStrategy}
                                 />
 
                                 <AnimatePresence>
@@ -304,12 +321,12 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
                                         <label className="text-[10px] uppercase font-bold text-text-muted tracking-wider ml-1">搜索模式 / Search Mode</label>
                                         <SegmentedControl
                                             options={[
-                                                { value: 'smart', label: t('smart' as any) || 'Smart' },
+                                                { value: 'smart', label: t('smart') || 'Smart' },
                                                 { value: 'tmdb_only', label: 'TMDB' },
                                                 { value: 'tavily_only', label: 'Tavily' },
                                             ]}
                                             value={searchMode}
-                                            onChange={(v: any) => setSearchMode(v as any)}
+                                            onChange={setSearchMode}
                                         />
                                     </div>
 
@@ -323,7 +340,7 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
                                                 { value: 'batch', label: t('mode_batch') },
                                             ]}
                                             value={multiMode}
-                                            onChange={(v: any) => setMultiMode(v as any)}
+                                            onChange={setMultiMode}
                                         />
                                     </div>
 
@@ -337,7 +354,7 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
                                                 min="1"
                                                 max="16"
                                                 value={workers}
-                                                onChange={(e) => setWorkers(parseInt(e.target.value) || 1)}
+                                                onChange={(e) => setWorkers(Math.min(16, Math.max(1, parseInt(e.target.value) || 1)))}
                                                 className="w-full bg-transparent border-none text-xs text-text-main outline-none font-mono"
                                             />
                                         </div>
@@ -377,7 +394,12 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
                                 <div className="bg-bg-surface rounded-xl p-3 space-y-1">
                                     <Switch label={t('opt_local_nfo')} checked={useLocalNfo} onChange={setUseLocalNfo} />
                                     <Switch label={t('opt_extra_images')} checked={extraImages} onChange={setExtraImages} />
-                                    <Switch label={t('opt_enable_organize')} checked={enableOrganize} onChange={setEnableOrganize} />
+                                    <Switch
+                                        label={strategy === 'audit' ? t('opt_enable_organize') : `${t('opt_enable_organize')} (${strategy})`}
+                                        checked={effectiveEnableOrganize}
+                                        onChange={setEnableOrganize}
+                                        disabled={strategy !== 'audit'}
+                                    />
                                     <Switch label={t('opt_overwrite_images')} checked={overwriteImages} onChange={setOverwriteImages} />
                                     <Switch label={t('opt_rename_parent')} checked={renameParentDir} onChange={setRenameParentDir} />
                                     <div className="h-px bg-border-light/10 my-1" />
@@ -390,7 +412,7 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
 
                 {/* Task Board */}
                 <div className="flex-1 rounded-3xl overflow-hidden relative glass-panel-pro border border-glass-border flex flex-col shadow-xl">
-                    <TaskBoard defaultConfig={{ strategy, outputPath, forceFresh, enableOrganize, overwriteImages, renameParentDir }} />
+                    <TaskBoard defaultConfig={{ strategy, outputPath: normalizedOutputPath, searchMode, forceFresh, extraImages, enableOrganize: effectiveEnableOrganize, overwriteImages, renameParentDir }} />
                 </div>
             </div>
 
@@ -437,7 +459,12 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
     );
 }
 
-function SectionHeader({ icon: Icon, title }: any) {
+interface SectionHeaderProps {
+    icon: LucideIcon;
+    title: string;
+}
+
+function SectionHeader({ icon: Icon, title }: SectionHeaderProps) {
     return (
         <div className="flex items-center gap-2 mb-2 text-text-muted">
             <Icon size={14} className="text-primary/80" />
@@ -447,10 +474,22 @@ function SectionHeader({ icon: Icon, title }: any) {
     )
 }
 
-function SegmentedControl({ options, value, onChange }: any) {
+interface SegmentOption<T extends string> {
+    value: T;
+    label: string;
+    icon?: LucideIcon;
+}
+
+interface SegmentedControlProps<T extends string> {
+    options: Array<SegmentOption<T>>;
+    value: T;
+    onChange: (value: T) => void;
+}
+
+function SegmentedControl<T extends string>({ options, value, onChange }: SegmentedControlProps<T>) {
     return (
         <div className="grid grid-cols-3 gap-1 p-1 bg-[var(--bg-toggle-wrapper)] rounded-lg border border-transparent dark:border-white/10 relative">
-            {options.map((opt: any) => {
+            {options.map((opt) => {
                 const isActive = value === opt.value;
                 return (
                     <button
@@ -480,14 +519,24 @@ function SegmentedControl({ options, value, onChange }: any) {
     )
 }
 
-function Switch({ checked, onChange, label, danger }: any) {
+interface SwitchProps {
+    checked: boolean;
+    onChange: (checked: boolean) => void;
+    label: string;
+    danger?: boolean;
+    disabled?: boolean;
+}
+
+function Switch({ checked, onChange, label, danger, disabled }: SwitchProps) {
     return (
-        <div className="flex items-center justify-between py-2.5 px-2">
+        <div className={cn("flex items-center justify-between py-2.5 px-2", disabled && "opacity-60")}>
             <span className="text-[11px] font-medium text-text-main/90">{label}</span>
             <button
-                onClick={() => onChange(!checked)}
+                onClick={() => !disabled && onChange(!checked)}
+                disabled={disabled}
                 className={cn(
                     "w-11 h-6 rounded-full transition-colors duration-300 relative focus:outline-none",
+                    disabled && "cursor-not-allowed",
                     checked
                         ? (danger ? "bg-red-500" : "bg-[var(--ios-green)]") // Use new iOS green variable
                         : "bg-stone-300 dark:bg-stone-700"

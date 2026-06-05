@@ -1,5 +1,6 @@
 import os
 import shutil
+import tempfile
 from typing import Optional
 
 
@@ -31,12 +32,30 @@ class FileSystemManager:
         return season_dir
 
     @staticmethod
+    def write_text_atomic(path: str, content: str, encoding: str = "utf-8") -> str:
+        """Write text through a temporary file and atomically replace the target."""
+        directory = os.path.dirname(path) or "."
+        os.makedirs(directory, exist_ok=True)
+        fd, tmp_path = tempfile.mkstemp(prefix=f".{os.path.basename(path)}.", suffix=".tmp", dir=directory)
+        try:
+            with os.fdopen(fd, "w", encoding=encoding) as f:
+                f.write(content)
+                f.flush()
+                os.fsync(f.fileno())
+            os.replace(tmp_path, path)
+            return path
+        except Exception:
+            try:
+                os.unlink(tmp_path)
+            except OSError:
+                pass
+            raise
+
+    @staticmethod
     def write_nfo_file(directory: str, filename: str, content: str) -> str:
         """Write NFO file to directory."""
         nfo_path = os.path.join(directory, filename)
-        with open(nfo_path, 'w', encoding='utf-8') as f:
-            f.write(content)
-        return nfo_path
+        return FileSystemManager.write_text_atomic(nfo_path, content)
 
     @staticmethod
     def copy_video_file(source: str, destination_dir: str, filename: str) -> Optional[str]:
@@ -74,9 +93,7 @@ class FileSystemManager:
         nfo_filename = f"{title} - S{season:02d}E{episode:02d} - {safe_episode_title}.nfo"
         nfo_path = os.path.join(season_dir, nfo_filename)
 
-        with open(nfo_path, 'w', encoding='utf-8') as f:
-            f.write(content)
-        return nfo_path
+        return FileSystemManager.write_text_atomic(nfo_path, content)
 
     @staticmethod
     def write_episode_poster(episode_dir: str, title: str, season: int, episode: int, episode_title: str, poster_path: str) -> Optional[str]:

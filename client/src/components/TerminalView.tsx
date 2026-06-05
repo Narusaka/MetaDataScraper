@@ -2,31 +2,41 @@
 import { useEffect, useRef, useState } from 'react';
 import { cn } from '../lib/utils';
 import { Terminal as TerminalIcon } from 'lucide-react';
-import { useTranslation } from '../lib/language';
+import { useTranslation } from '../lib/languageContext';
 import { wsUrl } from '../lib/api';
 
 interface TerminalViewProps {
     className?: string;
+    active?: boolean;
 }
 
-export function TerminalView({ className }: TerminalViewProps) {
+export function TerminalView({ className, active = true }: TerminalViewProps) {
     const { t } = useTranslation();
     const [logs, setLogs] = useState<string[]>([]);
     const bottomRef = useRef<HTMLDivElement>(null);
     const wsRef = useRef<WebSocket | null>(null);
 
     useEffect(() => {
-        let reconnectTimer: any;
+        if (!active) {
+            wsRef.current?.close();
+            wsRef.current = null;
+            return;
+        }
+
+        let closed = false;
+        let reconnectTimer: number | undefined;
 
         const connect = () => {
+            if (closed) return;
             const ws = new WebSocket(wsUrl('/ws/logs'));
             wsRef.current = ws;
 
             ws.onopen = () => {
+                if (closed) return;
                 setLogs(prev => [...prev, "--- Connected to Log Stream ---"]);
                 if (reconnectTimer) {
                     clearInterval(reconnectTimer);
-                    reconnectTimer = null;
+                    reconnectTimer = undefined;
                 }
             };
 
@@ -40,13 +50,15 @@ export function TerminalView({ className }: TerminalViewProps) {
             };
 
             ws.onclose = () => {
+                if (closed) return;
                 setLogs(prev => [...prev, "--- Connection Closed. Retrying... ---"]);
                 if (!reconnectTimer) {
-                    reconnectTimer = setInterval(connect, 3000);
+                    reconnectTimer = window.setInterval(connect, 3000);
                 }
             };
 
             ws.onerror = () => {
+                if (closed) return;
                 ws.close();
             };
         };
@@ -54,10 +66,11 @@ export function TerminalView({ className }: TerminalViewProps) {
         connect();
 
         return () => {
+            closed = true;
             if (wsRef.current) wsRef.current.close();
-            if (reconnectTimer) clearInterval(reconnectTimer);
+            if (reconnectTimer) window.clearInterval(reconnectTimer);
         };
-    }, []);
+    }, [active]);
 
     // Auto-scroll
     useEffect(() => {

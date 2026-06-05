@@ -10,6 +10,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed, CancelledError
 import threading
 
 from src.pipeline.pipeline import MediaPipeline
+from src.core.directory_lock import DirectoryLock, DirectoryLockError
 from src.core.filename_parser import FilenameParser
 from src.server.task_events import task_event_store
 from .scanner import MediaScanner
@@ -244,7 +245,8 @@ class BatchMediaScraper:
                  verbose=False,
                  quiet=True, # Batch mode quiet
                  inplace=self.inplace_rename,
-                 extra_images=self.extra_images
+                 extra_images=self.extra_images,
+                 manifest=self.organizer.manifest
              )
              # Inject pipeline into organizer for art download
              self.organizer.pipeline = self.pipeline
@@ -370,7 +372,7 @@ class BatchMediaScraper:
             return self._process_loose_files(task["files"], task["base_dir"], task.get("show_name"), item_id=item_id)
         return (False, "Unknown Task Type")
 
-    def _process_directory(self, dir_path: Path, tmdb_id: Optional[int], task_media_type: Optional[str] = None, is_group_folder: bool = False, item_id: Optional[str] = None) -> bool:
+    def _process_directory(self, dir_path: Path, tmdb_id: Optional[int], task_media_type: Optional[str] = None, is_group_folder: bool = False, item_id: Optional[str] = None, execution_lock_held: bool = False) -> bool:
         show_name = dir_path.name
         
         if self.dry_run:
@@ -444,7 +446,85 @@ class BatchMediaScraper:
             if self.fresh and has_existing_nfo:
                 logger.info(f"Using Fresh Mode: Overwriting/Refreshing metadata for {show_name}")
 
+        execution_lock = None
         try:
+            if not self.dry_run:
+                preflight_input = input_data.copy()
+                preflight_input["audit_only"] = False
+                preflight_input["plan_only"] = True
+                preflight_result = self.pipeline.run(preflight_input)
+                if preflight_result.get("status") != "plan_ready":
+                    error = preflight_result.get("error", "Preflight failed")
+                    self._emit(
+                        "item.failed",
+                        {"name": show_name, "path": str(dir_path), "error": error, "match": preflight_result.get("match")},
+                        item_id=item_id or str(dir_path),
+                    )
+                    return (False, f"任务失败: {error}")
+
+                candidate = preflight_result.get("candidate", {})
+                match = preflight_result.get("match", {})
+                poster_suffix = candidate.get("poster_path")
+                poster_url = f"https://image.tmdb.org/t/p/w200{poster_suffix}" if poster_suffix else ""
+                plan = self.organizer.build_plan(dir_path, preflight_result, configured_media_type=current_media_type, is_group_folder=is_group_folder)
+                self._emit(
+                    "candidate.selected",
+                    {
+                        "title": candidate.get("title") or candidate.get("name") or show_name,
+                        "tmdb_id": candidate.get("id"),
+                        "poster_path": poster_suffix,
+                        "poster_url": poster_url,
+                        "media_type": current_media_type,
+                        "match": match,
+                    },
+                    item_id=item_id or str(dir_path),
+                )
+                self._emit(
+                    "item.plan_ready",
+                    {"plan": plan},
+                    item_id=item_id or str(dir_path),
+                )
+                if self.organizer.has_blockers(plan):
+                    message = "Execution blocked by plan conflicts"
+                    logger.error(f"{message}: {show_name}")
+                    self._emit(
+                        "item.failed",
+                        {
+                            "name": show_name,
+                            "path": str(dir_path),
+                            "error": message,
+                            "plan_summary": plan.get("summary", {}),
+                        },
+                        item_id=item_id or str(dir_path),
+                    )
+                    return (False, "任务失败，执行计划存在冲突")
+                if not execution_lock_held:
+                    try:
+                        execution_lock = DirectoryLock(Path(plan.get("target_root") or dir_path), owner=self.task_id or item_id or show_name).acquire()
+                        self._emit(
+                            "item.lock_acquired",
+                            {"target_path": str(execution_lock.target_path), "lock_path": str(execution_lock.lock_path)},
+                            item_id=item_id or str(dir_path),
+                        )
+                    except DirectoryLockError as lock_error:
+                        message = str(lock_error)
+                        logger.error(message)
+                        self._emit(
+                            "item.failed",
+                            {
+                                "name": show_name,
+                                "path": str(dir_path),
+                                "error": message,
+                                "lock": {
+                                    "target_path": str(lock_error.target_path),
+                                    "lock_path": str(lock_error.lock_path),
+                                    "owner": lock_error.owner,
+                                },
+                            },
+                            item_id=item_id or str(dir_path),
+                        )
+                        return (False, "任务失败，目标目录正在被其他任务处理")
+
             result = self.pipeline.run(input_data)
             status = result.get("status")
             
@@ -462,11 +542,18 @@ class BatchMediaScraper:
                     },
                     item_id=item_id or str(dir_path),
                 )
+                plan = self.organizer.build_plan(dir_path, result, configured_media_type=current_media_type, is_group_folder=is_group_folder)
                 self.organizer.organize(dir_path, result, configured_media_type=current_media_type, is_group_folder=is_group_folder)
                 logger.info(f"✅ Batch Scraper finished task: {show_name}")
                 self._emit(
                     "item.completed",
-                    {"name": show_name, "path": str(dir_path), "result": "completed"},
+                    {
+                        "name": show_name,
+                        "path": str(dir_path),
+                        "result": "completed",
+                        "artwork": result.get("artwork"),
+                        "plan_summary": plan.get("summary", {}),
+                    },
                     item_id=item_id or str(dir_path),
                 )
                 return (True, "任务成功，媒体文件数量完整。")
@@ -504,7 +591,7 @@ class BatchMediaScraper:
                 error_detail = result.get('error', 'Unknown error').lower()
                 self._emit(
                     "item.failed",
-                    {"name": show_name, "path": str(dir_path), "error": result.get("error", "Unknown error")},
+                    {"name": show_name, "path": str(dir_path), "error": result.get("error", "Unknown error"), "match": result.get("match")},
                     item_id=item_id or str(dir_path),
                 )
                 if "no candidates" in error_detail or "not found" in error_detail:
@@ -530,6 +617,9 @@ class BatchMediaScraper:
             import traceback
             traceback.print_exc()
             return (False, f"{show_name} (System Error: {str(e)})")
+        finally:
+            if execution_lock:
+                execution_lock.release()
 
     def _process_loose_files(self, files: List[Path], base_dir: Path, show_name: Optional[str] = None, item_id: Optional[str] = None) -> bool:
         if not files: return True
@@ -626,7 +716,7 @@ class BatchMediaScraper:
                     logger.warning(f"Audit failed for {safe_name}: {result.get('error')}")
                     self._emit(
                         "item.failed",
-                        {"name": safe_name, "path": str(target_path), "error": result.get("error", "Unknown error")},
+                        {"name": safe_name, "path": str(target_path), "error": result.get("error", "Unknown error"), "match": result.get("match")},
                         item_id=item_id,
                     )
                     return (False, f"Audit failed: {result.get('error')}")
@@ -640,14 +730,84 @@ class BatchMediaScraper:
                 return (False, f"Audit Error: {e}")
         
         # Real Mode: Organize and process
-        if not target_path.exists():
-            target_path.mkdir(exist_ok=True)
-            self.organizer.manifest.record("create_dir", None, target_path)
-        
-        for f in files:
-            if f.parent != target_path:
-                dest = target_path / f.name
-                shutil.move(str(f), str(dest))
-                self.organizer.manifest.record("move_file", f, dest)
-        
-        return self._process_directory(target_path, None, is_group_folder=True, item_id=item_id)
+        audit_input = {
+            "media_type": media_type,
+            "media_type_forced": True,
+            "query": safe_name,
+            "year": FilenameParser.extract_year(show_name) or FilenameParser.extract_year(str(files[0])),
+            "output_dir": str(base_dir),
+            "source_path": str(target_path),
+            "verbose": False,
+            "quiet": True,
+            "aid_search": True,
+            "search_mode": self.search_mode,
+            "overwrite_images": self.overwrite_images,
+            "tmdb_only": self.search_mode == "tmdb_only",
+            "fallback_on_fail": self.enable_fallback,
+            "audit_only": True,
+        }
+        plan_input = audit_input.copy()
+        plan_input["audit_only"] = False
+        plan_input["plan_only"] = True
+        audit_result = self.pipeline.run(plan_input)
+        if audit_result.get("status") != "plan_ready":
+            error = audit_result.get("error", "Unknown error")
+            self._emit(
+                "item.failed",
+                {"name": safe_name, "path": str(target_path), "error": error, "match": audit_result.get("match")},
+                item_id=item_id,
+            )
+            return (False, f"Audit failed before execution: {error}")
+
+        plan = self.organizer.build_loose_file_plan(files, base_dir, show_name, audit_result, media_type)
+        self._emit(
+            "item.plan_ready",
+            {"plan": plan},
+            item_id=item_id,
+        )
+        if self.organizer.has_blockers(plan):
+            message = "Execution blocked by plan conflicts"
+            logger.error(f"{message}: {safe_name}")
+            self._emit(
+                "item.failed",
+                {"name": safe_name, "path": str(target_path), "error": message, "plan_summary": plan.get("summary", {})},
+                item_id=item_id,
+            )
+            return (False, "任务失败，执行计划存在冲突")
+
+        try:
+            with DirectoryLock(target_path, owner=self.task_id or item_id or safe_name) as lock:
+                self._emit(
+                    "item.lock_acquired",
+                    {"target_path": str(lock.target_path), "lock_path": str(lock.lock_path)},
+                    item_id=item_id,
+                )
+                if not target_path.exists():
+                    target_path.mkdir(exist_ok=True)
+                    self.organizer.manifest.record("create_dir", None, target_path)
+                
+                for f in files:
+                    if f.parent != target_path:
+                        dest = target_path / f.name
+                        shutil.move(str(f), str(dest))
+                        self.organizer.manifest.record("move_file", f, dest)
+                
+                return self._process_directory(target_path, None, is_group_folder=True, item_id=item_id, execution_lock_held=True)
+        except DirectoryLockError as lock_error:
+            message = str(lock_error)
+            logger.error(message)
+            self._emit(
+                "item.failed",
+                {
+                    "name": safe_name,
+                    "path": str(target_path),
+                    "error": message,
+                    "lock": {
+                        "target_path": str(lock_error.target_path),
+                        "lock_path": str(lock_error.lock_path),
+                        "owner": lock_error.owner,
+                    },
+                },
+                item_id=item_id,
+            )
+            return (False, "任务失败，目标目录正在被其他任务处理")

@@ -100,6 +100,12 @@ class TMDBAdapter:
         """Get images for movie or TV show."""
         return self._make_request(f"/{media_type}/{tmdb_id}/images")
 
+    def get_alternative_titles(self, media_type: str, tmdb_id: int) -> Dict[str, Any]:
+        """Get official alternative titles for movie or TV show."""
+        if media_type == "movie":
+            return self._make_request(f"/movie/{tmdb_id}/alternative_titles")
+        return self._make_request(f"/tv/{tmdb_id}/alternative_titles")
+
     def get_credits(self, media_type: str, tmdb_id: int) -> Dict[str, Any]:
         """Get credits for movie or TV show."""
         return self._make_request(f"/{media_type}/{tmdb_id}/credits")

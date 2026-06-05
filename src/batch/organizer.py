@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 from src.core.filename_parser import FilenameParser
 from src.core.operation_manifest import OperationManifest
+from src.core.filesystem import FileSystemManager
 
 logger = logging.getLogger(__name__)
 
@@ -24,6 +25,7 @@ class MediaOrganizer:
         """Build a dry, auditable plan using the same naming rules as organize()."""
         normalized = metadata_result.get("normalized", {})
         episodes_data = metadata_result.get("source_data", {}).get("translated_episodes", [])
+        nfo_data = metadata_result.get("nfo", {})
         detected_type = normalized.get("media_type") or configured_media_type
         meta_ep_map = {(e.get("season_number"), e.get("episode_number")): e for e in episodes_data}
         found_episodes = set()
@@ -81,6 +83,9 @@ class MediaOrganizer:
         if self.pipeline:
             image_limits = self.pipeline.config.get("output", {}).get("image_limit", {})
 
+        metadata_actions = self._planned_metadata_actions(target_root, normalized, detected_type, episodes_data, nfo_data)
+        actions.extend(metadata_actions)
+
         plan = {
             "media_type": detected_type,
             "title": normalized.get("title_zh") or normalized.get("title") or show_path.name,
@@ -102,6 +107,7 @@ class MediaOrganizer:
                 "risks": len(risks),
                 "media_files": len(scanned_files),
                 "missing_episodes": len(missing_eps),
+                "metadata_writes": len(metadata_actions),
             },
             "actions": actions[:200],
             "conflicts": conflicts[:100],
@@ -154,6 +160,7 @@ class MediaOrganizer:
                 "risks": len(risks),
                 "media_files": len(files),
                 "missing_episodes": grouped_plan.get("summary", {}).get("missing_episodes", 0),
+                "metadata_writes": grouped_plan.get("summary", {}).get("metadata_writes", 0),
             },
             "actions": (actions + grouped_plan.get("actions", []))[:200],
             "conflicts": (conflicts + grouped_plan.get("conflicts", []))[:100],
@@ -161,6 +168,62 @@ class MediaOrganizer:
             "missing_episodes": grouped_plan.get("missing_episodes", []),
             "artwork": grouped_plan.get("artwork", {}),
         }
+
+    def _planned_file_write_action(self, destination: Path, kind: str) -> dict:
+        exists = destination.exists()
+        return {
+            "type": "overwrite_file" if exists else "create_file",
+            "source": None,
+            "destination": str(destination),
+            "kind": kind,
+            "reversible": True,
+            "status": "ready",
+        }
+
+    def _planned_metadata_actions(self, target_root: Path, normalized: dict, detected_type: Optional[str], episodes_data: List[dict], nfo_data: dict) -> List[dict]:
+        actions: List[dict] = []
+        if not normalized:
+            return actions
+
+        title = normalized.get("title_zh") or normalized.get("title") or target_root.name
+        year = normalized.get("year", 0)
+        if detected_type == "movie":
+            actions.append(self._planned_file_write_action(target_root / f"{title} ({year}).nfo", "main_nfo"))
+        elif detected_type == "tv":
+            actions.append(self._planned_file_write_action(target_root / "tvshow.nfo", "main_nfo"))
+            season_nfos = nfo_data.get("season_nfos", {}) if isinstance(nfo_data, dict) else {}
+            episode_nfos = nfo_data.get("episode_nfos", {}) if isinstance(nfo_data, dict) else {}
+            seasons = sorted({episode.get("season_number") for episode in episodes_data if episode.get("season_number") and episode.get("season_number") != 0})
+            for season in seasons:
+                season_dir = target_root / f"Season {int(season):02d}"
+                if season_nfos and season in season_nfos:
+                    actions.append(self._planned_file_write_action(season_dir / "season.nfo", "season_nfo"))
+            for episode_data in episodes_data:
+                season = episode_data.get("season_number", 0)
+                episode = episode_data.get("episode_number", 0)
+                if not season or season == 0 or not episode:
+                    continue
+                if episode_nfos and (season, episode) not in episode_nfos:
+                    continue
+                ep_title = episode_data.get("name_zh") or episode_data.get("name", "")
+                safe_ep_title = "".join(c for c in ep_title if c not in '/\\:*?"<>|').strip()
+                base_name = f"{title} - S{int(season):02d}E{int(episode):02d} - {safe_ep_title}"
+                actions.append(self._planned_file_write_action(target_root / f"Season {int(season):02d}" / f"{base_name}.nfo", "episode_nfo"))
+
+        actions.append(self._planned_file_write_action(target_root / "artwork-manifest.json", "artwork_manifest"))
+        for filename, kind in [
+            ("poster.jpg", "poster"),
+            ("fanart.jpg", "fanart"),
+            ("banner.jpg", "banner"),
+            ("clearlogo.png", "logo"),
+            ("clearart.png", "clearart"),
+        ]:
+            actions.append(self._planned_file_write_action(target_root / filename, f"artwork:{kind}"))
+        return actions
+
+    def has_blockers(self, plan: dict) -> bool:
+        summary = plan.get("summary", {})
+        return (summary.get("blocked", 0) > 0) or (summary.get("conflicts", 0) > 0) or bool(plan.get("conflicts"))
 
     def organize(self, show_path: Path, metadata_result: dict, configured_media_type: Optional[str] = None, is_group_folder: bool = False):
         """Organize files, download full metadata, and report missing episodes."""
@@ -389,7 +452,7 @@ class MediaOrganizer:
                     s_nfo_dest = dest_dir / "season.nfo"
                     if not s_nfo_dest.exists():
                         try:
-                            s_nfo_dest.write_text(s_xml, encoding="utf-8")
+                            FileSystemManager.write_text_atomic(str(s_nfo_dest), s_xml)
                             self.manifest.record("create_file", None, s_nfo_dest)
                         except: pass
 
@@ -398,7 +461,7 @@ class MediaOrganizer:
                 nfo_dest = dest_dir / f"{base_name}.nfo"
                 if ep_xml and not nfo_dest.exists():
                      try:
-                        nfo_dest.write_text(ep_xml, encoding="utf-8")
+                        FileSystemManager.write_text_atomic(str(nfo_dest), ep_xml)
                         self.manifest.record("create_file", None, nfo_dest)
                      except Exception as e:
                         pass
@@ -410,9 +473,14 @@ class MediaOrganizer:
                     if self.overwrite_images or not thumb_dest.exists():
                          full_url = f"https://image.tmdb.org/t/p/original{still_path}"
                          existed = thumb_dest.exists()
+                         backup_path = self.manifest.backup_file(thumb_dest) if existed else None
                          try:
                             if self.pipeline.artwork.download_image(str(thumb_dest), full_url):
-                                self.manifest.record("overwrite_file" if existed else "create_file", None, thumb_dest)
+                                if not getattr(self.pipeline.artwork, "manifest", None):
+                                    extra = {}
+                                    if backup_path:
+                                        extra["backup_path"] = str(backup_path)
+                                    self.manifest.record("overwrite_file" if existed else "create_file", None, thumb_dest, extra=extra)
                          except: pass
 
         if missing_eps:

@@ -139,7 +139,10 @@ class DirectMapper:
             thumb=episode_thumb_filename,
             fanart=episode_fanart_filename,
             num="",  # Empty product number
-            website=""  # Empty website
+            website="",  # Empty website
+            season=season_number,
+            episode=episode_number,
+            tmdb_id=episode_data.get("id"),
         )
 
         # Only add set information for TV shows with multiple episodes/seasons
@@ -178,7 +181,8 @@ class DirectMapper:
             studio=show_data.get('studios', []),
             thumb="poster.jpg", # Path relative to season folder
             fanart="../fanart.jpg",
-            tmdb_id=season_data.get("id")
+            tmdb_id=season_data.get("id"),
+            season_number=season_number,
         )
 
     @staticmethod

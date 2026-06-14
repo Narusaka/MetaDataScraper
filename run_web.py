@@ -3,6 +3,13 @@ import uvicorn
 import os
 import sys
 
+# Load local runtime overrides before reading any WEB_* settings.
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
+
 # Ensure project root is in path
 project_root = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, project_root)
@@ -21,13 +28,6 @@ if __name__ == "__main__":
     print(f"   API Docs: http://{host}:{port}/docs")
     if host in {"0.0.0.0", "::"}:
         print(f"   Network:  http://{host}:{port} (Check your IP)")
-    
-    # Load .env
-    try:
-        from dotenv import load_dotenv
-        load_dotenv()
-    except ImportError:
-        pass
-        
+
     # Run uvicorn
     uvicorn.run("src.server.main:app", host=host, port=port, reload=reload_enabled)

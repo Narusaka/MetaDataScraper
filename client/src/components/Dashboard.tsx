@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import {
     Play, FolderInput, Copy,
     Search, FolderOpen, X, Settings2,
-    Database, Layers, Cpu, Square,
+    Database, Layers, Cpu, Square, FileText, Image, FolderCog,
     type LucideIcon
 } from 'lucide-react';
 import { cn } from '../lib/utils';
@@ -10,19 +10,25 @@ import { useTranslation } from '../lib/languageContext';
 import { FolderPicker } from './FolderPicker';
 import { TaskBoard } from './TaskBoard';
 import { apiJson } from '../lib/api';
+import {
+    validateStartSafetyConfig,
+    type StartSafetyConfig,
+} from '../lib/taskStartSafety';
 import type { FileSystemCheckResponse, TaskStartPayload } from '../lib/types';
 import { toast } from 'sonner';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface DashboardProps {
     isRunning: boolean;
-    onStart: (config: TaskStartPayload) => void;
+    onPlan: (config: TaskStartPayload) => void;
     onStop: () => void;
 }
 
 type Strategy = 'audit' | 'organize' | 'copy';
+type ConflictStrategy = 'error' | 'skip' | 'suffix' | 'overwrite';
+type OperationScope = 'full' | 'nfo_only' | 'artwork_only' | 'organize_only';
 
-export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
+export function Dashboard({ isRunning, onPlan, onStop }: DashboardProps) {
     const { t } = useTranslation();
 
     // --- State Management ---
@@ -46,9 +52,16 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
     });
     const [multiMode, setMultiMode] = useState<'auto' | 'single' | 'batch'>(() => (localStorage.getItem('task_multi_mode') as 'auto' | 'single' | 'batch') || 'auto');
     const [forceFresh, setForceFresh] = useState(false);
-    const [enableOrganize, setEnableOrganize] = useState(() => localStorage.getItem('task_enable_organize') === 'true');
     const [overwriteImages, setOverwriteImages] = useState(() => localStorage.getItem('task_overwrite_images') === 'true');
     const [renameParentDir, setRenameParentDir] = useState(() => localStorage.getItem('task_rename_parent') === 'true');
+    const [conflictStrategy, setConflictStrategy] = useState<ConflictStrategy>(() => {
+        const stored = localStorage.getItem('task_conflict_strategy');
+        return stored === 'skip' || stored === 'suffix' || stored === 'overwrite' ? stored : 'error';
+    });
+    const [operationScope, setOperationScope] = useState<OperationScope>(() => {
+        const stored = localStorage.getItem('task_operation_scope');
+        return stored === 'nfo_only' || stored === 'artwork_only' || stored === 'organize_only' ? stored : 'full';
+    });
     const [isScrolling, setIsScrolling] = useState(false);
     const scrollTimer = useRef<number | null>(null);
 
@@ -73,19 +86,38 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
     useEffect(() => localStorage.setItem('task_tmdb_id', tmdbId), [tmdbId]);
     useEffect(() => localStorage.setItem('task_search_mode', searchMode), [searchMode]);
     useEffect(() => localStorage.setItem('task_multi_mode', multiMode), [multiMode]);
-    useEffect(() => localStorage.setItem('task_enable_organize', enableOrganize.toString()), [enableOrganize]);
     useEffect(() => localStorage.setItem('task_overwrite_images', overwriteImages.toString()), [overwriteImages]);
     useEffect(() => localStorage.setItem('task_rename_parent', renameParentDir.toString()), [renameParentDir]);
+    useEffect(() => localStorage.setItem('task_conflict_strategy', conflictStrategy), [conflictStrategy]);
+    useEffect(() => localStorage.setItem('task_operation_scope', operationScope), [operationScope]);
 
     const normalizedInputPath = selectedPath.trim();
     const normalizedOutputPath = outputPath.trim();
     const effectiveWorkers = Math.min(16, Math.max(1, Number.isFinite(workers) ? workers : 1));
-    const effectiveEnableOrganize = strategy === 'audit' ? enableOrganize : true;
+    const scopeAllowsOrganize = operationScope === 'full' || operationScope === 'organize_only';
+    const scopeAllowsArtwork = operationScope === 'full' || operationScope === 'artwork_only';
+    const effectiveEnableOrganize = scopeAllowsOrganize && strategy !== 'audit';
+    const effectiveExtraImages = scopeAllowsArtwork && extraImages;
+    const effectiveOverwriteImages = scopeAllowsArtwork && overwriteImages;
+    const effectiveRenameParentDir = scopeAllowsOrganize && strategy !== 'audit' && renameParentDir;
+    const startSafetyConfig: StartSafetyConfig = {
+        strategy,
+        inputPath: normalizedInputPath,
+        outputPath: normalizedOutputPath,
+        extraImages: effectiveExtraImages,
+        overwriteImages: effectiveOverwriteImages,
+        renameParentDir: effectiveRenameParentDir,
+        forceFresh,
+        enableOrganize: effectiveEnableOrganize,
+        workers: effectiveWorkers,
+        searchMode,
+        conflictStrategy,
+        operationScope,
+    };
 
     const validateStartConfig = () => {
-        if (!normalizedInputPath) return 'Target path is required';
-        if (strategy === 'copy' && !normalizedOutputPath) return 'Output path is required for copy mode';
-        if (strategy === 'copy' && normalizedOutputPath === normalizedInputPath) return 'Output path must be different from target path';
+        const safetyError = validateStartSafetyConfig(startSafetyConfig);
+        if (safetyError) return safetyError;
         if (multiMode === 'single' && tmdbId && Number.isNaN(parseInt(tmdbId))) return 'TMDB ID must be numeric';
         return null;
     };
@@ -102,18 +134,18 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
             return false;
         }
 
-        const toastId = toast.loading('Starting task...');
+        const toastId = toast.loading('Generating locked plan...');
 
         try {
-            await onStart({
+            await onPlan({
                 input_dir: normalizedInputPath,
                 workers: effectiveWorkers,
-                dry_run: strategy === 'audit',
+                dry_run: true,
                 inplace: strategy === 'organize',
                 copy_mode: strategy === 'copy',
                 output_dir: strategy === 'copy' ? normalizedOutputPath : null,
                 use_local_nfo: useLocalNfo,
-                extra_images: extraImages,
+                extra_images: effectiveExtraImages,
                 media_type: mediaType || null,
                 tmdb_id: (multiMode === 'single' && tmdbId) ? parseInt(tmdbId) : null,
                 search_mode: searchMode,
@@ -121,10 +153,13 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
                 multi_mode: multiMode === 'auto' ? null : (multiMode === 'batch'),
                 fresh: forceFresh,
                 enable_organize: effectiveEnableOrganize,
-                overwrite_images: overwriteImages,
-                rename_parent_dir: renameParentDir
+                overwrite_images: effectiveOverwriteImages,
+                rename_parent_dir: effectiveRenameParentDir,
+                conflict_strategy: conflictStrategy,
+                operation_scope: operationScope,
+                intended_strategy: strategy,
             });
-            toast.success('Task started', { id: toastId });
+            toast.success('Planning started. Review the result before execution.', { id: toastId });
             return true;
         } catch (e) {
             toast.error(`Failed to start task: ${e instanceof Error ? e.message : String(e)}`, { id: toastId });
@@ -133,18 +168,18 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
     };
 
     return (
-        <div className="flex flex-col h-full overflow-hidden font-sans gap-4">
+        <div className="flex min-h-full flex-col gap-4 overflow-visible pb-1 font-sans md:h-full md:min-h-0 md:overflow-hidden">
             {/* Top Bar: Target Selection & Actions (Floating Island) */}
-            <div className="shrink-0 glass-panel-pro rounded-3xl border border-glass-border shadow-sm px-6 py-3 flex items-center justify-between gap-6 text-sm">
+            <div className="shrink-0 glass-panel-pro rounded-2xl md:rounded-3xl border border-glass-border shadow-sm px-4 md:px-6 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3 md:gap-6 text-sm">
                 {/* Target Selection Group */}
-                <div className="flex-1 flex items-center gap-4">
+                <div className="flex min-w-0 flex-1 items-center gap-3 md:gap-4">
                     {/* Fixed Label Outside */}
                     <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-muted whitespace-nowrap">
                         {t('target_path')}
                     </span>
 
                     {/* Target Input */}
-                    <div className="flex-1 relative group">
+                    <div className="min-w-0 flex-1 relative group">
                         <div className="flex items-center bg-[var(--bg-input-target)] rounded-2xl overflow-hidden transition-all focus-within:ring-2 focus-within:ring-primary/20 p-1">
                             <input
                                 type="text"
@@ -152,7 +187,7 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
                                 value={selectedPath}
                                 onChange={(e) => setSelectedPath(e.target.value)}
                                 placeholder="/path/to/media/source"
-                                className="flex-1 bg-transparent border-none text-sm text-text-main px-4 py-1.5 outline-none font-medium placeholder:text-text-muted/30"
+                                className="min-w-0 flex-1 bg-transparent border-none text-sm text-text-main px-3 md:px-4 py-1.5 outline-none font-medium placeholder:text-text-muted/30"
                             />
                             <button
                                 onClick={() => setShowPicker('input')}
@@ -180,7 +215,6 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
                             toast.error(validationError);
                             return;
                         }
-
                         try {
                             const checkData = await apiJson<FileSystemCheckResponse>(
                                 `/api/fs/check?path=${encodeURIComponent(normalizedInputPath)}`,
@@ -208,7 +242,7 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
                     }}
                     disabled={!normalizedInputPath && !isRunning}
                     className={cn(
-                        "relative flex items-center justify-center gap-3 px-8 py-2.5 rounded-xl font-bold text-sm tracking-wide uppercase transition-all overflow-hidden shadow-lg min-w-[140px]",
+                        "relative flex w-full sm:w-auto items-center justify-center gap-3 px-8 py-2.5 rounded-xl font-bold text-sm tracking-wide uppercase transition-all overflow-hidden shadow-lg sm:min-w-[140px]",
                         isRunning
                             ? "bg-red-500 text-white shadow-red-500/20 hover:bg-red-600"
                             : !normalizedInputPath
@@ -229,8 +263,8 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
                             </>
                         ) : (
                             <>
-                                <Play size={16} fill="currentColor" className="text-white" />
-                                <span className="text-white">RUN</span>
+                                <Play size={16} fill="currentColor" />
+                                <span>PLAN</span>
                             </>
                         )}
                     </div>
@@ -238,9 +272,9 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
             </div>
 
             {/* Main Content: Sidebar + TaskBoard */}
-            <div className="flex-1 flex gap-6 overflow-hidden min-h-0">
+            <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-visible md:flex-row md:gap-6 md:overflow-hidden">
                 {/* Configuration Sidebar - Already Floating Island */}
-                <div className="w-80 shrink-0 flex flex-col glass-panel-pro rounded-3xl border border-glass-border overflow-hidden shadow-xl">
+                <div className="flex w-full shrink-0 flex-col overflow-hidden rounded-2xl border border-glass-border glass-panel-pro shadow-xl md:w-80 md:rounded-3xl">
                     <div className="px-6 py-4 flex items-center justify-between shrink-0">
                         <div className="flex items-center gap-2 text-text-main font-bold">
                             <Settings2 size={16} className="text-primary" />
@@ -248,11 +282,11 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
                         </div>
                     </div>
 
-                    <div className="flex-1 overflow-hidden px-4 pb-4">
+                    <div className="flex-1 overflow-visible px-4 pb-4 md:overflow-hidden">
                         <div
                             onScroll={handleScroll}
                             className={cn(
-                                "bg-[var(--bg-inner-panel)] rounded-2xl p-4 h-full overflow-y-auto scrollbar-thin space-y-6",
+                                "bg-[var(--bg-inner-panel)] rounded-2xl p-4 h-auto overflow-visible scrollbar-thin space-y-6 md:h-full md:overflow-y-auto",
                                 isScrolling && "scrollbar-active"
                             )}
                         >
@@ -262,7 +296,7 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
                                 <SectionHeader icon={Layers} title={t('strategy')} />
                                 <SegmentedControl
                                     options={[
-                                        { value: 'audit', label: t('mode_audit'), icon: Search },
+                                        { value: 'audit', label: 'Metadata', icon: Search },
                                         { value: 'organize', label: t('mode_organize'), icon: FolderInput },
                                         { value: 'copy', label: t('mode_copy'), icon: Copy },
                                     ]}
@@ -392,16 +426,47 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
                             <div className="space-y-3">
                                 <SectionHeader icon={Cpu} title={t('parameters')} />
                                 <div className="bg-bg-surface rounded-xl p-3 space-y-1">
+                                    <div className="grid grid-cols-4 gap-1 pb-2">
+                                        {([
+                                            ['full', Layers, 'Full'],
+                                            ['nfo_only', FileText, 'NFO'],
+                                            ['artwork_only', Image, 'Art'],
+                                            ['organize_only', FolderCog, 'Files'],
+                                        ] as const).map(([value, Icon, label]) => (
+                                            <button
+                                                key={value}
+                                                type="button"
+                                                title={label}
+                                                onClick={() => setOperationScope(value)}
+                                                className={cn(
+                                                    "flex h-9 items-center justify-center gap-1 rounded-lg border text-[9px] font-bold uppercase transition-colors",
+                                                    operationScope === value
+                                                        ? "border-primary/40 bg-primary/10 text-primary"
+                                                        : "border-border-light text-text-muted hover:text-text-main"
+                                                )}
+                                            >
+                                                <Icon size={12} />
+                                                <span>{label}</span>
+                                            </button>
+                                        ))}
+                                    </div>
                                     <Switch label={t('opt_local_nfo')} checked={useLocalNfo} onChange={setUseLocalNfo} />
-                                    <Switch label={t('opt_extra_images')} checked={extraImages} onChange={setExtraImages} />
-                                    <Switch
-                                        label={strategy === 'audit' ? t('opt_enable_organize') : `${t('opt_enable_organize')} (${strategy})`}
-                                        checked={effectiveEnableOrganize}
-                                        onChange={setEnableOrganize}
-                                        disabled={strategy !== 'audit'}
-                                    />
-                                    <Switch label={t('opt_overwrite_images')} checked={overwriteImages} onChange={setOverwriteImages} />
-                                    <Switch label={t('opt_rename_parent')} checked={renameParentDir} onChange={setRenameParentDir} />
+                                    <Switch label={t('opt_extra_images')} checked={extraImages} onChange={setExtraImages} disabled={operationScope === 'nfo_only' || operationScope === 'organize_only'} />
+                                    <Switch label={t('opt_overwrite_images')} checked={overwriteImages} onChange={setOverwriteImages} disabled={operationScope === 'nfo_only' || operationScope === 'organize_only'} />
+                                    <Switch label={t('opt_rename_parent')} checked={renameParentDir} onChange={setRenameParentDir} disabled={!scopeAllowsOrganize || strategy === 'audit'} />
+                                    <div className="space-y-1.5 px-1 pt-2">
+                                        <label className="text-[10px] uppercase font-bold text-text-muted tracking-wider">目标冲突 / Conflicts</label>
+                                        <select
+                                            value={conflictStrategy}
+                                            onChange={(event) => setConflictStrategy(event.target.value as ConflictStrategy)}
+                                            className="h-9 w-full rounded-lg border border-border-light bg-bg-surface px-3 text-xs font-medium text-text-main outline-none focus:border-primary"
+                                        >
+                                            <option value="error">阻止并人工处理</option>
+                                            <option value="skip">跳过已有目标</option>
+                                            <option value="suffix">自动添加序号</option>
+                                            <option value="overwrite">覆盖并创建备份</option>
+                                        </select>
+                                    </div>
                                     <div className="h-px bg-border-light/10 my-1" />
                                     <Switch label={t('force_refresh_danger')} checked={forceFresh} onChange={setForceFresh} danger />
                                 </div>
@@ -411,8 +476,19 @@ export function Dashboard({ isRunning, onStart, onStop }: DashboardProps) {
                 </div>
 
                 {/* Task Board */}
-                <div className="flex-1 rounded-3xl overflow-hidden relative glass-panel-pro border border-glass-border flex flex-col shadow-xl">
-                    <TaskBoard defaultConfig={{ strategy, outputPath: normalizedOutputPath, searchMode, forceFresh, extraImages, enableOrganize: effectiveEnableOrganize, overwriteImages, renameParentDir }} />
+                <div className="relative flex min-h-[70vh] flex-1 flex-col overflow-hidden rounded-2xl border border-glass-border glass-panel-pro shadow-xl md:min-h-0 md:rounded-3xl">
+                    <TaskBoard defaultConfig={{
+                        strategy,
+                        outputPath: normalizedOutputPath,
+                        searchMode,
+                        forceFresh,
+                        extraImages: effectiveExtraImages,
+                        enableOrganize: effectiveEnableOrganize,
+                        overwriteImages: effectiveOverwriteImages,
+                        renameParentDir: effectiveRenameParentDir,
+                        conflictStrategy,
+                        operationScope,
+                    }} />
                 </div>
             </div>
 
@@ -497,13 +573,13 @@ function SegmentedControl<T extends string>({ options, value, onChange }: Segmen
                         onClick={() => onChange(opt.value)}
                         className={cn(
                             "relative z-10 flex flex-col items-center justify-center gap-1.5 py-2 rounded-md text-[10px] font-bold uppercase tracking-wider transition-all",
-                            isActive ? "text-[var(--text-on-active)]" : "text-text-muted hover:text-text-main"
+                            isActive ? "text-white" : "text-text-muted hover:text-text-main"
                         )}
                     >
                         {isActive && (
                             <motion.div
                                 layoutId={`segment-${options[0].value}`}
-                                className="absolute inset-0 shadow-sm border border-border-light dark:border-primary/50 rounded-md bg-[var(--bg-panel)] dark:bg-[var(--primary)]"
+                                className="absolute inset-0 rounded-md border border-[var(--primary)] bg-[var(--primary)] shadow-sm"
                                 initial={false}
                                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
                             />

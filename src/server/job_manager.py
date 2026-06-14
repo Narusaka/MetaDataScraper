@@ -20,6 +20,7 @@ class JobManager:
         self.pipeline = None 
         self.scraper = None
         self.stop_signal = threading.Event()
+        self.active_task_id: Optional[str] = None
         self.state_lock = threading.Lock()
 
     def reserve_start(self) -> bool:
@@ -29,27 +30,31 @@ class JobManager:
                 return False
             self.is_running = True
             self.stop_signal.clear()
+            self.active_task_id = None
             return True
 
     def release_reservation(self) -> None:
         with self.state_lock:
             self.is_running = False
             self.current_task = None
+            self.active_task_id = None
             self.stop_signal.clear()
 
     def _final_event_for_results(self, results: Optional[Dict[str, Any]]) -> tuple[str, Dict[str, Any]]:
         summary = results or {}
         total = int(summary.get("total") or 0)
         completed = int(summary.get("completed") or 0)
+        partial = int(summary.get("partial") or 0)
         failed = int(summary.get("failed") or 0)
+        quarantined = int(summary.get("quarantined") or 0)
 
         if summary.get("stopped"):
-            return "task.stopped", {"summary": summary}
+            return "task.cancelled", {"stage": "worker_loop", "summary": summary}
         if total <= 0:
             return "task.failed", {"error": "No media tasks found", "summary": summary}
-        if failed > 0 and completed <= 0:
+        if failed > 0 and completed <= 0 and partial <= 0:
             return "task.failed", {"error": "All media tasks failed", "summary": summary}
-        if failed > 0:
+        if failed > 0 or partial > 0 or quarantined > 0:
             return "task.partial", {"summary": summary}
         return "task.completed", {"summary": summary}
 
@@ -72,12 +77,17 @@ class JobManager:
                              enable_organize: bool = False,
                              overwrite_images: bool = False,
                              rename_parent_dir: bool = False,
+                             conflict_strategy: Optional[str] = None,
+                             operation_scope: str = "full",
+                             expected_plan_digest: Optional[str] = None,
+                             runtime_config: Optional[Dict[str, Any]] = None,
                              task_id: Optional[str] = None,
                              reserved: bool = False):
         
         if not reserved and not self.reserve_start():
             raise Exception("A task is already running")
         logger.info(f"JobManager: Starting batch scan for {input_dir}")
+        self.active_task_id = task_id
         task_event_store.emit(task_id, "task.started", {"input_dir": input_dir})
         
         loop = asyncio.get_running_loop()
@@ -86,7 +96,7 @@ class JobManager:
             await loop.run_in_executor(
                 self.executor, 
                 self._run_scraper_sync,
-                input_dir, config_path, workers, dry_run, inplace, copy, output_dir, use_local_nfo, extra_images, media_type, tmdb_id, search_mode, enable_fallback, multi_mode, fresh, enable_organize, overwrite_images, rename_parent_dir, task_id
+                input_dir, config_path, workers, dry_run, inplace, copy, output_dir, use_local_nfo, extra_images, media_type, tmdb_id, search_mode, enable_fallback, multi_mode, fresh, enable_organize, overwrite_images, rename_parent_dir, conflict_strategy, operation_scope, task_id, expected_plan_digest, runtime_config
             )
         except Exception as e:
             logger.error(f"JobManager Error: {e}")
@@ -95,7 +105,7 @@ class JobManager:
             self.release_reservation()
             logger.info("JobManager: Task finished")
 
-    def _run_scraper_sync(self, input_dir: str, config_path: str, workers: int, dry_run: bool, inplace: bool, copy: bool, output_dir: Optional[str], use_local_nfo: bool, extra_images: bool, media_type: Optional[str], tmdb_id: Optional[int], search_mode: str, enable_fallback: bool, multi_mode: Optional[bool], fresh: bool, enable_organize: bool, overwrite_images: bool, rename_parent_dir: bool, task_id: Optional[str]):
+    def _run_scraper_sync(self, input_dir: str, config_path: str, workers: int, dry_run: bool, inplace: bool, copy: bool, output_dir: Optional[str], use_local_nfo: bool, extra_images: bool, media_type: Optional[str], tmdb_id: Optional[int], search_mode: str, enable_fallback: bool, multi_mode: Optional[bool], fresh: bool, enable_organize: bool, overwrite_images: bool, rename_parent_dir: bool, conflict_strategy: Optional[str] = None, operation_scope: str = "full", task_id: Optional[str] = None, expected_plan_digest: Optional[str] = None, runtime_config: Optional[Dict[str, Any]] = None):
         """
         Synchronous wrapper to run BatchMediaScraper
         """
@@ -103,7 +113,7 @@ class JobManager:
             payload: Dict[str, Any] = {"stage": stage}
             if summary is not None:
                 payload["summary"] = summary
-            task_event_store.emit(task_id, "task.stopped", payload)
+            task_event_store.emit(task_id, "task.cancelled", payload)
 
         try:
             if self.stop_signal.is_set():
@@ -195,7 +205,11 @@ class JobManager:
                 enable_organize=enable_organize,
                 overwrite_images=overwrite_images,
                 rename_parent_dir=rename_parent_dir,
-                task_id=task_id
+                conflict_strategy=conflict_strategy,
+                operation_scope=operation_scope,
+                task_id=task_id,
+                expected_plan_digest=expected_plan_digest,
+                runtime_config=runtime_config,
             )
             self.scraper = scraper 
             
@@ -229,15 +243,21 @@ class JobManager:
             import traceback
             traceback.print_exc()
 
-    def stop_task(self):
+    def stop_task(self, task_id: Optional[str] = None) -> bool:
         """Signals the active scraper to stop."""
+        if task_id and self.active_task_id and task_id != self.active_task_id:
+            return False
         logger.warning("JobManager: Stop signal received.")
         self.stop_signal.set() # Set the flag immediately
+        active_task_id = self.active_task_id or task_id
+        if active_task_id:
+            task_event_store.emit(active_task_id, "task.cancel_requested", {"stage": "requested"})
         
         if self.scraper:
             logger.warning("JobManager: Stopping active scraper instance...")
             self.scraper.stop()
         else:
             logger.warning("JobManager: No active scraper instance yet (maybe initializing). Signal set.")
+        return True
 
 job_manager = JobManager()

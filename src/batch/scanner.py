@@ -5,6 +5,7 @@ from pathlib import Path
 from typing import List, Optional, Set
 from src.core.filename_parser import FilenameParser
 from src.core.nfo_parser import NfoParser
+from src.core.path_filters import is_hidden_path
 
 logger = logging.getLogger(__name__)
 
@@ -68,18 +69,36 @@ class MediaScanner:
         loose = self._find_loose_files(input_dir)
         if loose:
             groups = {}
+            quarantined = []
             for f in loose:
-                name = FilenameParser.extract_show_name(f.name)
-                if not name: continue
-                if name not in groups: groups[name] = []
-                groups[name].append(f)
+                parsed = FilenameParser.parse_media_filename(f.name)
+                name = parsed.get("title")
+                if not name or parsed.get("confidence") not in {"high", "medium"}:
+                    quarantined.append({
+                        "path": f,
+                        "parse": parsed,
+                        "reason": "Filename could not be parsed with sufficient confidence.",
+                    })
+                    continue
+                group_key = FilenameParser.clean_show_name_for_search(str(name)).casefold()
+                groups.setdefault(group_key, {"show_name": name, "files": [], "parses": []})
+                groups[group_key]["files"].append(f)
+                groups[group_key]["parses"].append(parsed)
             
-            for show_name, group_files in groups.items():
+            for group in groups.values():
                 tasks.append({
                     "type": "loose_files",
-                    "files": group_files,
-                    "show_name": show_name,
-                    "base_dir": input_dir
+                    "files": group["files"],
+                    "show_name": group["show_name"],
+                    "parses": group["parses"],
+                    "base_dir": input_dir,
+                })
+            for item in quarantined:
+                tasks.append({
+                    "type": "quarantined",
+                    "path": item["path"],
+                    "parse": item["parse"],
+                    "reason": item["reason"],
                 })
         return tasks
 
@@ -87,14 +106,18 @@ class MediaScanner:
         sub_exts = {'.ass', '.srt', '.ssa', '.vtt', '.sub'}
         return [
             f for f in dir_path.iterdir() 
-            if f.is_file() and (f.suffix.lower() in FilenameParser.VIDEO_EXTENSIONS or f.suffix.lower() in sub_exts)
+            if f.is_file()
+            and not is_hidden_path(f)
+            and (f.suffix.lower() in FilenameParser.VIDEO_EXTENSIONS or f.suffix.lower() in sub_exts)
         ]
 
     def has_processable_media(self, dir_path: Path) -> bool:
         media_exts = set(FilenameParser.VIDEO_EXTENSIONS) | {'.nfo'}
         try:
             return any(
-                item.is_file() and item.suffix.lower() in media_exts
+                item.is_file()
+                and not is_hidden_path(item)
+                and item.suffix.lower() in media_exts
                 for item in dir_path.rglob("*")
             )
         except OSError as e:

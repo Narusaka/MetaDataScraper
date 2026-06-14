@@ -16,17 +16,23 @@ type TranslationKey =
   | 'concurrency'
   | 'dashboard'
   | 'done'
+  | 'execution'
   | 'empty_state_help'
   | 'episodes_details'
   | 'error'
   | 'extended_search'
   | 'finished'
   | 'force_refresh_danger'
+  | 'history'
   | 'initializing'
   | 'items'
+  | 'library_scan'
+  | 'plan_review'
+  | 'planning'
   | 'live_logs'
   | 'loading'
   | 'media_settings'
+  | 'match_review'
   | 'metadata_match'
   | 'mission_configuration'
   | 'mission_control'
@@ -92,17 +98,23 @@ const en: TranslationTable = {
   concurrency: 'Concurrency',
   dashboard: 'Dashboard',
   done: 'Done',
+  execution: 'Execution',
   empty_state_help: 'Start a mission to see detected media and processing results here.',
   episodes_details: 'Episode Details',
   error: 'Error',
   extended_search: 'Extended Search',
   finished: 'Finished',
   force_refresh_danger: 'Force Refresh',
+  history: 'History',
   initializing: 'Initializing',
   items: 'items',
+  library_scan: 'Library Scan',
+  plan_review: 'Plan Review',
+  planning: 'Planning',
   live_logs: 'Live Logs',
   loading: 'Loading',
   media_settings: 'Media Settings',
+  match_review: 'Match Review',
   metadata_match: 'Metadata Match',
   mission_configuration: 'Mission Configuration',
   mission_control: 'Mission Control',
@@ -167,17 +179,23 @@ const zh: TranslationTable = {
   concurrency: '并发',
   dashboard: '仪表盘',
   done: '完成',
+  execution: '执行进度',
   empty_state_help: '启动任务后，识别到的媒体和处理结果会显示在这里。',
   episodes_details: '剧集详情',
   error: '错误',
   extended_search: '扩展搜索',
   finished: '已完成',
   force_refresh_danger: '强制刷新',
+  history: '历史与回滚',
   initializing: '初始化',
   items: '项',
+  library_scan: '媒体扫描',
+  plan_review: '计划审核',
+  planning: '计划配置',
   live_logs: '实时日志',
   loading: '加载中',
   media_settings: '媒体设置',
+  match_review: '匹配审核',
   metadata_match: '元数据匹配',
   mission_configuration: '任务配置',
   mission_control: '任务控制',

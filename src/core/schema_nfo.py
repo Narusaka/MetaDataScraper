@@ -76,6 +76,9 @@ class EpisodeNfo(BaseModel):
     num: Optional[str]  # Product number
     website: Optional[str]  # Official website
     lockedfields: Optional[str] = "Name"  # Lock the episode name field
+    season: int = 0
+    episode: int = 0
+    tmdb_id: Optional[int] = None
 
 
 class SeasonNfo(BaseModel):
@@ -92,3 +95,4 @@ class SeasonNfo(BaseModel):
     thumb: str
     fanart: str
     tmdb_id: Optional[int] = None
+    season_number: int = 0

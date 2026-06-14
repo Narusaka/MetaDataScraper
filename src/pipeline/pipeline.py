@@ -1,7 +1,7 @@
 import os
 import shutil
-import difflib
 import re
+from pathlib import Path
 from typing import Dict, Any, List, Optional, Tuple
 
 from ..adapters.tmdb import TMDBAdapter
@@ -14,13 +14,18 @@ from ..core.llm_mapper import DirectMapper
 from ..core.artwork import ArtworkDownloader
 from ..core.nfo_renderer import NfoRenderer
 from ..core.filesystem import FileSystemManager
+from ..core.filename_parser import FilenameParser
+from ..core.path_filters import is_hidden_path
+from ..core.cancellation import OperationCancelled, raise_if_cancelled
+from ..core.match_scorer import CandidateScorer
 from ..core.cache import CacheManager
 from ..core.logger import MetadataLogger
+from ..storage.match_memory import match_memory_store
 
 class MediaPipeline:
     """Linearly process media metadata without LangGraph overhead."""
 
-    def __init__(self, config: Dict[str, Any], skip_images: bool = False, preferred_language: str = "zh-CN", verbose: bool = False, quiet: bool = False, inplace: bool = False, extra_images: bool = False, manifest: Optional[Any] = None):
+    def __init__(self, config: Dict[str, Any], skip_images: bool = False, preferred_language: str = "zh-CN", verbose: bool = False, quiet: bool = False, inplace: bool = False, extra_images: bool = False, manifest: Optional[Any] = None, cancel_event=None):
         self.config = config
         self.skip_images = skip_images
         self.preferred_language = preferred_language
@@ -29,6 +34,9 @@ class MediaPipeline:
         self.verbose = verbose
         self.quiet = quiet
         self.manifest = manifest
+        self.match_memory = match_memory_store
+        self.candidate_scorer = CandidateScorer()
+        self.cancel_event = cancel_event
 
         # Initialize logger
         self.logger = MetadataLogger(
@@ -76,7 +84,10 @@ class MediaPipeline:
         self.translator = Translator(config["model"])
         self.tag_translator = TagTranslator(config["model"], config.get("proxy"))
         self.mapper = DirectMapper()
-        self.artwork = ArtworkDownloader(config["tmdb"]["api_key"], config.get("proxy"), manifest=manifest)
+        self.artwork = ArtworkDownloader(config["tmdb"]["api_key"], config.get("proxy"), manifest=manifest, cancel_event=cancel_event)
+
+    def _checkpoint(self, stage: str) -> None:
+        raise_if_cancelled(getattr(self, "cancel_event", None), stage)
 
     def _log(self, msg: str, verbose_only: bool = False):
         import logging
@@ -136,6 +147,36 @@ class MediaPipeline:
                 result.append(title)
         return result
 
+    def _matching_policy(self) -> Dict[str, Any]:
+        defaults = {
+            "minimum_title_similarity": 0.55,
+            "minimum_token_overlap": 0.75,
+            "high_confidence_title_similarity": 0.75,
+            "high_confidence_token_overlap": 0.85,
+            "localized_title_min_similarity": 0.25,
+            "strict_year": True,
+        }
+        configured = self.config.get("matching", {}) if isinstance(getattr(self, "config", None), dict) else {}
+        configured = configured if isinstance(configured, dict) else {}
+        policy = defaults.copy()
+        for key in (
+            "minimum_title_similarity",
+            "minimum_token_overlap",
+            "high_confidence_title_similarity",
+            "high_confidence_token_overlap",
+            "localized_title_min_similarity",
+        ):
+            try:
+                policy[key] = max(0.0, min(1.0, float(configured.get(key, defaults[key]))))
+            except (TypeError, ValueError):
+                policy[key] = defaults[key]
+        strict_year = configured.get("strict_year", defaults["strict_year"])
+        if isinstance(strict_year, str):
+            policy["strict_year"] = strict_year.strip().lower() not in {"false", "0", "no", "off"}
+        else:
+            policy["strict_year"] = bool(strict_year)
+        return policy
+
     def _candidate_title_values(self, candidate: Dict[str, Any]) -> List[Tuple[str, str]]:
         values: List[Tuple[str, str]] = []
         for field in ["name", "title", "original_name", "original_title"]:
@@ -153,12 +194,33 @@ class MediaPipeline:
         return self._candidate_best_title_match(clean_query, candidate)["score"]
 
     def _candidate_best_title_match(self, clean_query: str, candidate: Dict[str, Any]) -> Dict[str, Any]:
-        best = {"score": 0.0, "field": None, "title": None}
-        for field, title in self._candidate_title_values(candidate):
-            score = difflib.SequenceMatcher(None, clean_query, title.lower()).ratio()
-            if score > best["score"]:
-                best = {"score": score, "field": field, "title": title}
-        return best
+        evidence = self._score_candidate(clean_query, candidate)
+        return {
+            "score": evidence["title_similarity"],
+            "field": evidence.get("matched_field"),
+            "title": evidence.get("matched_title"),
+        }
+
+    def _score_candidate(
+        self,
+        query: str,
+        candidate: Dict[str, Any],
+        target_year: Optional[int] = None,
+        expected_type: Optional[str] = None,
+        type_forced: bool = False,
+        provider: str = "tmdb",
+    ) -> Dict[str, Any]:
+        scorer = getattr(self, "candidate_scorer", None) or CandidateScorer()
+        return scorer.score(
+            query=query,
+            titles=self._candidate_title_values(candidate),
+            candidate_year=self._candidate_year(candidate),
+            target_year=target_year,
+            candidate_type=candidate.get("_search_type") or candidate.get("media_type"),
+            expected_type=expected_type,
+            type_forced=type_forced,
+            provider=provider,
+        )
 
     def _enrich_candidate_aliases(self, candidate: Dict[str, Any], media_type: str) -> None:
         if candidate.get("_aliases_loaded"):
@@ -175,14 +237,17 @@ class MediaPipeline:
         candidate["_aliases"] = self._candidate_aliases(aliases_data)
 
     def _candidate_rejection_reason(self, candidate: Dict[str, Any], target_year: Optional[int] = None, selected_id: Optional[int] = None) -> str:
+        policy = self._matching_policy()
+        if candidate.get("_memory_rejected"):
+            return "user_rejected"
         if selected_id and candidate.get("id") == selected_id:
             return "selected"
         candidate_year = candidate.get("_match_year") or self._candidate_year(candidate)
-        if target_year and candidate_year and candidate_year != target_year:
+        if policy["strict_year"] and target_year and candidate_year and candidate_year != target_year:
             return "year_mismatch"
-        score = candidate.get("_match_score", 0) or 0
+        score = candidate.get("_title_similarity", candidate.get("_match_score", 0)) or 0
         overlap = candidate.get("_token_overlap", 0) or 0
-        if score < 0.55 and overlap < 0.75:
+        if score < policy["minimum_title_similarity"] and overlap < policy["minimum_token_overlap"]:
             return "low_similarity"
         return "not_best_match"
 
@@ -202,10 +267,13 @@ class MediaPipeline:
                 "media_type": item.get("_search_type") or item.get("media_type"),
                 "year": item.get("_match_year") or self._candidate_year(item),
                 "score": round(item.get("_match_score", 0), 4),
+                "title_similarity": round(item.get("_title_similarity", 0), 4),
                 "token_overlap": round(item.get("_token_overlap", 0), 4),
                 "matched_title": item.get("_matched_title"),
                 "matched_field": item.get("_matched_field"),
                 "decision": self._candidate_rejection_reason(item, target_year=target_year, selected_id=selected_id),
+                "evidence": item.get("_match_evidence"),
+                "rejection_memory_id": item.get("_rejection_memory_id"),
                 "alias_error": item.get("_aliases_error"),
             }
             for item in top_candidates
@@ -235,45 +303,81 @@ class MediaPipeline:
             candidate.setdefault("original_title", candidate.get("original_name"))
 
         self._enrich_candidate_aliases(candidate, media_type)
-        clean_query = self._clean_query_for_match(query)
-        best_title = self._candidate_best_title_match(clean_query, candidate)
-        score = best_title["score"]
-        overlap = self._token_overlap(clean_query, self._candidate_title_text(candidate))
+        evidence = self._score_candidate(
+            query,
+            candidate,
+            target_year=target_year,
+            expected_type=media_type,
+            type_forced=True,
+            provider="tavily",
+        )
+        score = evidence["title_similarity"]
+        composite_score = evidence["composite_score"]
+        overlap = evidence["token_overlap"]
         candidate_year = self._candidate_year(candidate)
+        clean_query = self._clean_query_for_match(query)
         query_has_cjk = self._has_cjk(clean_query)
         title_text = self._candidate_title_text(candidate)
         candidate_has_cjk = self._has_cjk(title_text)
-        year_conflicts = bool(target_year and candidate_year and candidate_year != target_year)
+        policy = self._matching_policy()
+        year_conflicts = policy["strict_year"] and "year_mismatch" in evidence["hard_blockers"]
 
-        accepts_title = score >= 0.55 or overlap >= 0.75
-        accepts_localized = not query_has_cjk and candidate_has_cjk and score >= 0.25
+        accepts_title = (
+            score >= policy["minimum_title_similarity"]
+            or overlap >= policy["minimum_token_overlap"]
+        )
+        accepts_localized = (
+            not query_has_cjk
+            and candidate_has_cjk
+            and score >= policy["localized_title_min_similarity"]
+        )
         accepted = not year_conflicts and (accepts_title or accepts_localized)
-        confidence = "high" if score >= 0.75 or overlap >= 0.85 else ("medium" if accepted else "none")
+        confidence = (
+            "high"
+            if (
+                score >= policy["high_confidence_title_similarity"]
+                or overlap >= policy["high_confidence_token_overlap"]
+            )
+            else ("medium" if accepted else "none")
+        )
 
-        candidate["_match_score"] = score
+        candidate["_match_score"] = composite_score
+        candidate["_title_similarity"] = score
         candidate["_match_year"] = candidate_year
-        candidate["_matched_title"] = best_title.get("title")
-        candidate["_matched_field"] = best_title.get("field")
+        candidate["_matched_title"] = evidence.get("matched_title")
+        candidate["_matched_field"] = evidence.get("matched_field")
         candidate["_token_overlap"] = overlap
+        candidate["_match_evidence"] = evidence
 
         return {
             "accepted": accepted,
             "reason": "external_verified" if accepted else ("year_mismatch" if year_conflicts else "external_low_confidence"),
             "confidence": confidence,
-            "score": score,
+            "score": composite_score,
+            "title_similarity": score,
             "token_overlap": overlap,
+            "evidence": evidence,
             "candidate": candidate,
             "candidate_year": candidate_year,
-            "matched_title": best_title.get("title"),
-            "matched_field": best_title.get("field"),
+            "matched_title": evidence.get("matched_title"),
+            "matched_field": evidence.get("matched_field"),
         }
+
+    @staticmethod
+    def _match_requires_review(match: Dict[str, Any], manual_override: bool = False) -> bool:
+        if manual_override:
+            return False
+        confidence = str((match or {}).get("confidence") or "none").lower()
+        return bool((match or {}).get("review_required")) or confidence in {"none", "low"}
 
     def run(self, input_data: Dict[str, Any]) -> Dict[str, Any]:
         """Execute the pipeline linearly."""
         try:
+            self._checkpoint("search")
             self._log(f"▶️ Pipeline Input: Type={input_data.get('media_type')}, Query={input_data.get('query')}", verbose_only=False)
             # 1. Input & Search
             search_result = self._step_search(input_data)
+            self._checkpoint("match")
             candidate = search_result.get("selected")
             match_explanation = search_result.get("match", {})
             
@@ -283,6 +387,22 @@ class MediaPipeline:
 
             tmdb_id = candidate["id"]
             media_type = candidate.get("media_type")
+            is_manual_override = input_data.get("tmdb_id") is not None
+            if self._match_requires_review(match_explanation, manual_override=is_manual_override):
+                match_explanation["review_required"] = True
+                match_explanation["review_reason"] = match_explanation.get("reason") or "low_confidence"
+                if not input_data.get("audit_only", False):
+                    self._log(
+                        f"⛔ Match requires confirmation before execution: TMDB ID {tmdb_id}",
+                        verbose_only=False,
+                    )
+                    return {
+                        "status": "failed",
+                        "error": "Match requires confirmation before execution",
+                        "error_code": "MATCH_REVIEW_REQUIRED",
+                        "candidate": candidate,
+                        "match": match_explanation,
+                    }
 
             # Ensure we have the title/year for logging/UI update (even for direct ID runs)
             # Fetch details if missing title OR if we need to validate year for a non-TMDB-search result
@@ -310,8 +430,6 @@ class MediaPipeline:
             candidate_year = int(candidate_date[:4]) if candidate_date and len(candidate_date) >= 4 else 0
             
             # Skip validation if manual ID provided
-            is_manual_override = input_data.get("tmdb_id") is not None
-            
             if target_year and candidate_year != 0 and not is_manual_override:
                  if candidate_year != target_year:
                      self._log(f"❌ STRICT MODE: Candidate Year {candidate_year} != Target {target_year}. Rejecting ID {tmdb_id}.", verbose_only=False)
@@ -389,18 +507,26 @@ class MediaPipeline:
                 }
 
             source_data = self._step_fetch(tmdb_id, media_type)
+            self._checkpoint("fetch")
             
             # 3. Normalize
             normalized = self._step_normalize(source_data, media_type, input_data)
+            self._checkpoint("normalize")
             
             # 4. Translate
             translated_result = self._step_translate(source_data, normalized, media_type, input_data)
+            self._checkpoint("translate")
             normalized = translated_result["translated"] # Updated normalized data
             translated_episodes = translated_result.get("translated_episodes")
             
             # Update source_data with episodes logic
             if translated_episodes:
                 source_data["translated_episodes"] = translated_episodes
+            if media_type == "tv":
+                source_data["present_episode_keys"] = [
+                    list(key)
+                    for key in sorted(self._discover_present_episode_keys(input_data.get("source_path")))
+                ]
 
             # 5. Enrich (OMDB)
             # (Optional) OMDB Enrichment logic can be added here if needed, skipped for now to keep it lean or add if requested.
@@ -408,6 +534,7 @@ class MediaPipeline:
             
             # 6. Artwork & NFO
             nfo_data = self._step_generate_nfo(normalized, media_type, source_data)
+            self._checkpoint("nfo.generate")
 
             if input_data.get("plan_only", False):
                 output_dir = input_data.get("output_dir") or "./output"
@@ -428,15 +555,28 @@ class MediaPipeline:
                     "artwork": {"status": "skipped", "reason": "plan_only"},
                 }
             
-            # 7. Write Output
-            output_result = self._step_write_output(normalized, nfo_data, source_data, input_data)
-            
-            # 8. Download Images (post-writing, or during)
-            artwork_result = (
-                {"status": "skipped", "reason": "skip_images"}
-                if self.skip_images
-                else self._step_download_images(normalized, output_result["media_dir"], input_data)
-            )
+            operation_scope = input_data.get("operation_scope", "full")
+            if operation_scope in {"full", "nfo_only"}:
+                output_result = self._step_write_output(normalized, nfo_data, source_data, input_data)
+                self._checkpoint("nfo.write")
+            elif operation_scope == "artwork_only":
+                output_result = self._step_prepare_output_directory(normalized, input_data)
+            else:
+                output_result = {
+                    "media_dir": input_data.get("source_path")
+                    or self._planned_media_directory(
+                        input_data.get("output_dir") or "./output",
+                        normalized.get("title"),
+                        normalized.get("year"),
+                        media_type,
+                    )
+                }
+
+            if operation_scope in {"full", "artwork_only"} and not self.skip_images:
+                artwork_result = self._step_download_images(normalized, output_result["media_dir"], input_data)
+            else:
+                artwork_result = {"status": "skipped", "reason": operation_scope if operation_scope != "full" else "skip_images"}
+            self._checkpoint("artwork.complete")
 
             poster_suffix = normalized.get('poster_path')
             poster_url = f"https://image.tmdb.org/t/p/w200{poster_suffix}" if poster_suffix else ""
@@ -451,17 +591,41 @@ class MediaPipeline:
                 "source_data": source_data,
                 "output": output_result,
                 "artwork": artwork_result,
+                "operation_scope": operation_scope,
             }
 
+        except OperationCancelled as exc:
+            self._log(f"⏹️ Pipeline cancelled during {exc.stage}", verbose_only=False)
+            return {"status": "cancelled", "stage": exc.stage, "error": str(exc)}
         except Exception as e:
             # Fallback Logic for Manual ID
             if input_data.get("tmdb_id") and input_data.get("fallback_on_fail", False):
-                 self._log(f"⚠️ Manual ID {input_data['tmdb_id']} failed: {e}. Retrying with auto-search...", verbose_only=False)
-                 # Remove manual ID and force retry
-                 retry_input = input_data.copy()
-                 del retry_input["tmdb_id"]
-                 # Recursive retry (one level)
-                 return self.run(retry_input)
+                query = str(input_data.get("query") or "").strip()
+                if query:
+                    self._log(
+                        f"⚠️ Manual ID {input_data['tmdb_id']} failed: {e}. Retrying with title search...",
+                        verbose_only=False,
+                    )
+                    retry_input = input_data.copy()
+                    del retry_input["tmdb_id"]
+                    return self.run(retry_input)
+                self._log(
+                    f"❌ TMDB ID {input_data['tmdb_id']} could not be fetched and no fallback title is available: {e}",
+                    verbose_only=False,
+                )
+                return {
+                    "status": "failed",
+                    "error": str(e),
+                    "error_code": "MANUAL_ID_FETCH_FAILED",
+                    "tmdb_id": input_data.get("tmdb_id"),
+                    "media_type": input_data.get("media_type"),
+                    "match": {
+                        "provider": "manual",
+                        "confidence": "manual",
+                        "reason": "provider_fetch_failed",
+                        "selected_id": input_data.get("tmdb_id"),
+                    },
+                }
 
             self._log(f"❌ Pipeline Error: {e}", verbose_only=False)
             import traceback
@@ -498,6 +662,37 @@ class MediaPipeline:
                     "candidates": [],
                 },
             }
+
+        memory_store = getattr(self, "match_memory", None)
+        if memory_store:
+            remembered = memory_store.lookup(
+                query,
+                year=target_year,
+                media_type=media_type if force_type else None,
+            )
+            if remembered:
+                remembered_type = remembered["media_type"]
+                self._log(
+                    f"🧠 Reusing confirmed match: '{query}' -> "
+                    f"TMDB {remembered['tmdb_id']} ({remembered_type})"
+                )
+                return {
+                    "selected": {
+                        "id": remembered["tmdb_id"],
+                        "media_type": remembered_type,
+                    },
+                    "match": {
+                        "provider": "user_memory",
+                        "confidence": "confirmed",
+                        "reason": "user_confirmed_match",
+                        "score": 1.0,
+                        "selected_id": remembered["tmdb_id"],
+                        "target_year": target_year,
+                        "memory_id": remembered["id"],
+                        "memory_use_count": remembered["use_count"],
+                        "candidates": [],
+                    },
+                }
             
         candidate = None
         match_explanation: Dict[str, Any] = {
@@ -533,6 +728,7 @@ class MediaPipeline:
                 
                 # Clean query for similarity check (remove year)
                 clean_query = self._clean_query_for_match(query)
+                policy = self._matching_policy()
                 
                 for i, c in enumerate(all_candidates):
                      date_str = c.get('first_air_date') or c.get('release_date') or ""
@@ -541,16 +737,37 @@ class MediaPipeline:
                      self._enrich_candidate_aliases(c, c.get("_search_type") or media_type)
                      
                      # Calculate similarity score
-                     best_title = self._candidate_best_title_match(clean_query, c)
-                     current_score = best_title["score"]
-                     token_overlap = self._token_overlap(clean_query, self._candidate_title_text(c))
+                     evidence = self._score_candidate(
+                         query,
+                         c,
+                         target_year=target_year,
+                         expected_type=media_type,
+                         type_forced=force_type,
+                         provider="tmdb",
+                     )
+                     current_score = evidence["composite_score"]
+                     title_similarity = evidence["title_similarity"]
+                     token_overlap = evidence["token_overlap"]
                      c["_match_score"] = current_score
+                     c["_title_similarity"] = title_similarity
                      c["_match_year"] = c_year
-                     c["_matched_title"] = best_title.get("title")
-                     c["_matched_field"] = best_title.get("field")
+                     c["_matched_title"] = evidence.get("matched_title")
+                     c["_matched_field"] = evidence.get("matched_field")
                      c["_token_overlap"] = token_overlap
+                     c["_match_evidence"] = evidence
+                     rejected_match = None
+                     if memory_store and c.get("id"):
+                         rejected_match = memory_store.is_rejected(
+                             query,
+                             c.get("id"),
+                             c.get("_search_type") or media_type,
+                             year=target_year,
+                         )
+                     c["_memory_rejected"] = bool(rejected_match)
+                     if rejected_match:
+                         c["_rejection_memory_id"] = rejected_match.get("id")
                      
-                     match_info = f" [Score: {current_score:.2f}]"
+                     match_info = f" [Score: {current_score:.2f}, Title: {title_similarity:.2f}]"
                      if target_year:
                          if c_year == target_year:
                              match_info += " [✅ YEAR MATCH]"
@@ -559,9 +776,16 @@ class MediaPipeline:
 
                      if self.verbose:
                          self._log(f"      {i+1}. [{c.get('id')}] {c_title} ({date_str}){match_info}")
+
+                     if rejected_match:
+                         self._log(
+                             f"      ⛔ Skipping user-rejected match [{c.get('id')}] "
+                             f"{c_title} ({c.get('_search_type')})"
+                         )
+                         continue
                      
                      # Selection Logic:
-                     if target_year:
+                     if target_year and policy["strict_year"]:
                          # 1. Prioritize YEAR matches first. 
                          # Among year matches, pick highest score.
                          if c_year == target_year:
@@ -580,7 +804,7 @@ class MediaPipeline:
                 # Be strict for Latin-to-Latin matches to avoid false positives like
                 # "Front Innocent" -> "Steven Avery: Innocent or Guilty?", but allow
                 # low text similarity when TMDB returns a localized CJK candidate.
-                threshold = 0.25
+                localized_threshold = policy["localized_title_min_similarity"]
                 if best_match:
                     title_for_filter = self._candidate_title_text(best_match)
                     query_has_cjk = self._has_cjk(clean_query)
@@ -593,19 +817,25 @@ class MediaPipeline:
                         and candidate_has_cjk
                         and len(all_candidates) <= 2
                     )
-                    accepts_latin_title = best_score >= 0.55 or latin_overlap >= 0.75
+                    best_title_similarity = float(best_match.get("_title_similarity") or 0)
+                    accepts_latin_title = (
+                        best_title_similarity >= policy["minimum_title_similarity"]
+                        or latin_overlap >= policy["minimum_token_overlap"]
+                    )
 
                     accepts_candidate = (
                         accepts_latin_title
                         if not candidate_has_cjk
-                        else (best_score >= threshold or accepts_localized_title)
+                        else (best_title_similarity >= localized_threshold or accepts_localized_title)
                     )
                     match_explanation = {
                         "provider": "tmdb",
                         "confidence": "none",
                         "reason": "low_confidence",
                         "score": round(best_score, 4),
+                        "title_similarity": round(best_title_similarity, 4),
                         "token_overlap": round(latin_overlap, 4),
+                        "evidence": best_match.get("_match_evidence"),
                         "target_year": target_year,
                         "candidates": self._summarize_candidates(
                             all_candidates,
@@ -620,8 +850,22 @@ class MediaPipeline:
                         if candidate.get("_matched_field") == "alias":
                             reason = "alias"
                         else:
-                            reason = "localized title" if accepts_localized_title and best_score < threshold else "similarity"
-                        confidence = "high" if best_score >= 0.75 or latin_overlap >= 0.85 else ("medium" if best_score >= 0.55 or latin_overlap >= 0.75 else "low")
+                            reason = "localized title" if accepts_localized_title and best_title_similarity < localized_threshold else "similarity"
+                        confidence = (
+                            "high"
+                            if (
+                                best_title_similarity >= policy["high_confidence_title_similarity"]
+                                or latin_overlap >= policy["high_confidence_token_overlap"]
+                            )
+                            else (
+                                "medium"
+                                if (
+                                    best_title_similarity >= policy["minimum_title_similarity"]
+                                    or latin_overlap >= policy["minimum_token_overlap"]
+                                )
+                                else "low"
+                            )
+                        )
                         match_explanation.update({
                             "confidence": confidence,
                             "reason": reason,
@@ -630,9 +874,22 @@ class MediaPipeline:
                             "matched_title": candidate.get("_matched_title"),
                             "matched_field": candidate.get("_matched_field"),
                         })
-                        self._log(f"   ✅ Selected Best Match: {candidate.get('name') or candidate.get('title')} (ID: {candidate.get('id')}, Score: {best_score:.2f}, Type: {candidate['media_type']}, Reason: {reason})")
+                        self._log(f"   ✅ Selected Best Match: {candidate.get('name') or candidate.get('title')} (ID: {candidate.get('id')}, Score: {best_score:.2f}, Title: {best_title_similarity:.2f}, Type: {candidate['media_type']}, Reason: {reason})")
                     else:
                         self._log(f"   ⚠️ Best match '{best_match.get('name') or best_match.get('title')}' rejected due to low confidence (score={best_score:.2f}, token_overlap={latin_overlap:.2f})")
+                elif all_candidates and all(item.get("_memory_rejected") for item in all_candidates):
+                    match_explanation = {
+                        "provider": "user_memory",
+                        "confidence": "none",
+                        "reason": "user_rejected",
+                        "score": 0.0,
+                        "token_overlap": 0.0,
+                        "target_year": target_year,
+                        "candidates": self._summarize_candidates(
+                            all_candidates,
+                            target_year=target_year,
+                        ),
+                    }
                 elif target_year:
                      self._log(f"   ⚠️ No candidates matched year {target_year}")
 
@@ -644,12 +901,21 @@ class MediaPipeline:
                 tavily_id = self.tavily_search.search_tmdb_id(query, m_type, year=target_year, verbose=self.verbose)
                 if tavily_id:
                     verification = self._verify_external_candidate(query, target_year, m_type, tavily_id)
+                    rejected_match = (
+                        memory_store.is_rejected(query, tavily_id, m_type, year=target_year)
+                        if memory_store else None
+                    )
+                    if rejected_match and verification.get("candidate"):
+                        verification["candidate"]["_memory_rejected"] = True
+                    accepted = bool(verification.get("accepted")) and not rejected_match
                     match_explanation = {
                         "provider": "tavily",
-                        "confidence": verification.get("confidence", "none"),
-                        "reason": verification.get("reason", "external_low_confidence"),
+                        "confidence": verification.get("confidence", "none") if not rejected_match else "none",
+                        "reason": verification.get("reason", "external_low_confidence") if not rejected_match else "user_rejected",
                         "score": round(verification.get("score", 0.0), 4),
+                        "title_similarity": round(verification.get("title_similarity", 0.0), 4),
                         "token_overlap": round(verification.get("token_overlap", 0.0), 4),
+                        "evidence": verification.get("evidence"),
                         "target_year": target_year,
                         "external_id": tavily_id,
                         "selected_title": (verification.get("candidate") or {}).get("name") or (verification.get("candidate") or {}).get("title"),
@@ -658,15 +924,18 @@ class MediaPipeline:
                         "candidates": self._summarize_candidates(
                             [verification.get("candidate", {})],
                             target_year=target_year,
-                            selected_id=tavily_id if verification.get("accepted") else None,
+                            selected_id=tavily_id if accepted else None,
                         ) if verification.get("candidate") else [],
                     }
-                    if verification.get("accepted"):
+                    if accepted:
                         candidate = verification.get("candidate") or {"id": tavily_id, "media_type": m_type}
                         candidate["media_type"] = m_type
                         match_explanation["selected_id"] = tavily_id
                         self._log(f"   ✅ Tavily Found Verified ID: {tavily_id} (Type: {m_type}, Score: {verification.get('score', 0.0):.2f})")
                         break
+                    if rejected_match:
+                        self._log(f"   ⛔ Tavily ID {tavily_id} skipped because the user rejected it previously")
+                        continue
                     self._log(f"   ⚠️ Tavily ID {tavily_id} rejected ({verification.get('reason')}, score={verification.get('score', 0.0):.2f})")
         
         return {"selected": candidate, "match": match_explanation}
@@ -674,6 +943,7 @@ class MediaPipeline:
     def _step_fetch(self, tmdb_id: int, media_type: str) -> Dict[str, Any]:
         """Step 2: Fetch metadata."""
         self._log("📥 Fetching metadata...", verbose_only=True)
+        issues = []
         if media_type == "movie":
             main_data = self.tmdb.get_movie_details(tmdb_id)
         else:
@@ -694,14 +964,24 @@ class MediaPipeline:
                         s_detail = self.tmdb.get_tv_season_details(tmdb_id, s_num)
                         seasons_data.append(s_detail)
                         episodes_data.extend(s_detail.get("episodes", []))
-                    except: pass
+                    except Exception as exc:
+                        issue = {
+                            "level": "warning",
+                            "code": "provider_season_fetch_failed",
+                            "stage": "metadata_fetch",
+                            "season": s_num,
+                            "message": f"Failed to fetch TMDB season {s_num}: {exc}",
+                        }
+                        issues.append(issue)
+                        self._log(f"⚠️ {issue['message']}", verbose_only=False)
         
         return {
             "main": main_data,
             "credits": credits_data,
             "keywords": keywords_data,
             "seasons": seasons_data,
-            "episodes": episodes_data
+            "episodes": episodes_data,
+            "issues": issues,
         }
 
     def _step_normalize(self, source_data: Dict, media_type: str, input_data: Dict) -> Dict:
@@ -772,46 +1052,101 @@ class MediaPipeline:
         """Step 6: Generate NFO struct."""
         episode_nfos = {}
         season_nfos = {}
+        issues = []
+        nfo_policy = self.config.get("output", {}).get("nfo_policy", {})
         
         if media_type == "movie":
             nfo_obj = self.mapper.map_to_movie_nfo(normalized)
-            xml = NfoRenderer.render_movie_nfo(nfo_obj, normalized.get("tmdb_id"))
+            xml = NfoRenderer.render_movie_nfo(nfo_obj, normalized.get("tmdb_id"), policy=nfo_policy)
         else:
             nfo_obj = self.mapper.map_to_tvshow_nfo(normalized)
-            xml = NfoRenderer.render_tvshow_nfo(nfo_obj, normalized.get("tmdb_id"))
+            xml = NfoRenderer.render_tvshow_nfo(nfo_obj, normalized.get("tmdb_id"), policy=nfo_policy)
             
             # Generate episode NFOs (in memory)
             episodes = source_data.get("translated_episodes", [])
+            present_episode_keys = {
+                tuple(item)
+                for item in source_data.get("present_episode_keys", [])
+                if isinstance(item, (list, tuple)) and len(item) == 2
+            }
             for ep in episodes:
                 s_num = ep.get("season_number", 0)
                 e_num = ep.get("episode_number", 0)
-                if s_num > 0:
+                if s_num > 0 and (not present_episode_keys or (s_num, e_num) in present_episode_keys):
                     try:
                         ep_nfo = self.mapper.map_to_episode_nfo(normalized, ep, normalized)
-                        ep_xml = NfoRenderer.render_episode_nfo(ep_nfo)
+                        ep_xml = NfoRenderer.render_episode_nfo(ep_nfo, policy=nfo_policy)
                         episode_nfos[(s_num, e_num)] = ep_xml
-                    except: pass
+                    except Exception as exc:
+                        issue = {
+                            "level": "error",
+                            "code": "episode_nfo_generation_failed",
+                            "stage": "nfo_generation",
+                            "season": s_num,
+                            "episode": e_num,
+                            "message": f"Failed to generate NFO for S{s_num:02d}E{e_num:02d}: {exc}",
+                        }
+                        issues.append(issue)
+                        self._log(f"❌ {issue['message']}", verbose_only=False)
             
             # Generate season NFOs
             seasons = source_data.get("seasons", [])
+            present_seasons = {season for season, _episode in present_episode_keys if season > 0}
             for s_data in seasons:
                 s_num = s_data.get("season_number", 0)
-                if s_num > 0:
-                     try:
-                         s_nfo = self.mapper.map_to_season_nfo(s_data, normalized)
-                         s_xml = NfoRenderer.render_season_nfo(s_nfo)
-                         season_nfos[s_num] = s_xml
-                     except: pass
+                if s_num > 0 and (not present_seasons or s_num in present_seasons):
+                    try:
+                        s_nfo = self.mapper.map_to_season_nfo(s_data, normalized)
+                        s_xml = NfoRenderer.render_season_nfo(s_nfo, policy=nfo_policy)
+                        season_nfos[s_num] = s_xml
+                    except Exception as exc:
+                        issue = {
+                            "level": "error",
+                            "code": "season_nfo_generation_failed",
+                            "stage": "nfo_generation",
+                            "season": s_num,
+                            "message": f"Failed to generate NFO for season {s_num}: {exc}",
+                        }
+                        issues.append(issue)
+                        self._log(f"❌ {issue['message']}", verbose_only=False)
             
-        return {"data": nfo_obj.model_dump(), "xml": xml, "episode_nfos": episode_nfos, "season_nfos": season_nfos}
+        return {
+            "data": nfo_obj.model_dump(),
+            "xml": xml,
+            "episode_nfos": episode_nfos,
+            "season_nfos": season_nfos,
+            "policy": NfoRenderer.normalize_policy(nfo_policy),
+            "issues": issues,
+        }
+
+    def _discover_present_episode_keys(self, source_path: Optional[str]) -> set:
+        if not source_path:
+            return set()
+        root = Path(source_path)
+        if not root.exists():
+            return set()
+        keys = set()
+        for file_path in root.rglob("*"):
+            if (
+                not file_path.is_file()
+                or is_hidden_path(file_path)
+                or file_path.suffix.lower() not in FilenameParser.VIDEO_EXTENSIONS
+            ):
+                continue
+            episode = FilenameParser.parse_episode_info(file_path.name)
+            if episode:
+                keys.add(tuple(episode))
+        return keys
 
     def _step_write_output(self, normalized: Dict, nfo_data: Dict, source_data: Dict, input_data: Dict) -> Dict:
         """Step 7: Write NFO and structure."""
         output_dir = input_data.get("output_dir") or "./output"
         media_type = normalized.get("media_type")
         title = normalized.get("title")
+        safe_media_title = FileSystemManager.sanitize_component(title)
         year = normalized.get("year")
         
+        self._checkpoint("output.directory")
         # Create Directory
         planned_media_dir = self._planned_media_directory(output_dir, title, year, media_type)
         media_dir_existed = os.path.exists(planned_media_dir)
@@ -819,16 +1154,26 @@ class MediaPipeline:
         self._record_created_dir(media_dir, media_dir_existed)
         
         # Write Main NFO
-        nfo_filename = f"{title} ({year}).nfo" if media_type == "movie" else "tvshow.nfo"
-        self._write_manifested_nfo(media_dir, nfo_filename, nfo_data["xml"], kind="main_nfo")
+        nfo_filename = f"{safe_media_title} ({year}).nfo" if media_type == "movie" else "tvshow.nfo"
+        event_item_id = input_data.get("source_path")
+        self._write_manifested_nfo(media_dir, nfo_filename, nfo_data["xml"], kind="main_nfo", item_id=event_item_id)
         
         # Handle Seasons/Episodes NFO
         if media_type == "tv":
             episodes = source_data.get("translated_episodes", [])
+            present_episode_keys = {
+                tuple(item)
+                for item in source_data.get("present_episode_keys", [])
+                if isinstance(item, (list, tuple)) and len(item) == 2
+            }
+            written_seasons = set()
             for ep in episodes:
+                self._checkpoint("output.episode_nfo")
                 s_num = ep.get("season_number", 0)
                 e_num = ep.get("episode_number", 0)
                 if s_num == 0: continue
+                if (s_num, e_num) not in present_episode_keys:
+                    continue
                 
                 
                 planned_s_dir = os.path.join(media_dir, f"Season {s_num:02d}")
@@ -839,12 +1184,14 @@ class MediaPipeline:
                 # Season NFO
                 # Write season.nfo into the season folder if we have it
                 s_xml = nfo_data.get("season_nfos", {}).get(s_num)
-                if s_xml:
-                    self._write_manifested_nfo(s_dir, "season.nfo", s_xml, kind="season_nfo")
+                if s_xml and s_num not in written_seasons:
+                    self._write_manifested_nfo(s_dir, "season.nfo", s_xml, kind="season_nfo", item_id=event_item_id)
+                    written_seasons.add(s_num)
 
                 # Episode NFO
-                ep_nfo_obj = self.mapper.map_to_episode_nfo(normalized, ep, normalized)
-                ep_xml = NfoRenderer.render_episode_nfo(ep_nfo_obj)
+                ep_xml = nfo_data.get("episode_nfos", {}).get((s_num, e_num))
+                if not ep_xml:
+                    continue
                 
                 # Filename logic usually handled by batch_scraper file renaming, 
                 # BUT here we just write .nfo sidecars if we knew the filename.
@@ -855,29 +1202,37 @@ class MediaPipeline:
                 # are tricky without the video file map. 
                 # *Correction*: The original graph wrote standardized NFOs like `Show - S01E01 - Title.nfo`.
                 
-                e_title = ep.get("name", "")
-                ep_dir, _ = FileSystemManager.create_episode_directory(s_dir, title, s_num, e_num, e_title)
-                # We will skip writing specific episode NFOs blindly here to avoid clutter, 
-                # or write them using standard naming if requested.
-                # For compatibility, let's skip episode NFO writing in Linear Pipeline for now 
-                # unless we are sure about the structure, OR write to standard name.
-                
-                base_name = f"{title} - S{s_num:02d}E{e_num:02d} - {e_title}".replace("/", "-") 
-                self._write_manifested_nfo(s_dir, f"{base_name}.nfo", ep_xml, kind="episode_nfo")
+                e_title = ep.get("name_zh") or ep.get("name", "")
+                safe_title = FileSystemManager.sanitize_component(e_title, fallback="Episode", replacement="-")
+                base_name = f"{safe_media_title} - S{s_num:02d}E{e_num:02d} - {safe_title}"
+                self._write_manifested_nfo(s_dir, f"{base_name}.nfo", ep_xml, kind="episode_nfo", item_id=event_item_id)
 
+        return {"media_dir": media_dir}
+
+    def _step_prepare_output_directory(self, normalized: Dict, input_data: Dict) -> Dict:
+        self._checkpoint("output.directory")
+        output_dir = input_data.get("output_dir") or "./output"
+        media_type = normalized.get("media_type")
+        title = normalized.get("title")
+        year = normalized.get("year")
+        planned_media_dir = self._planned_media_directory(output_dir, title, year, media_type)
+        existed_before = os.path.exists(planned_media_dir)
+        media_dir = FileSystemManager.create_media_directory(output_dir, title, year, media_type, inplace=self.inplace)
+        self._record_created_dir(media_dir, existed_before)
         return {"media_dir": media_dir}
 
     def _planned_media_directory(self, output_dir: str, title: str, year: int, media_type: str) -> str:
         if self.inplace:
             return output_dir
-        safe_title = re.sub(r'[\\/:"*?<>|]', '', title or "").strip()
+        safe_title = FileSystemManager.sanitize_component(title)
         return os.path.join(output_dir, "Movies" if media_type == "movie" else "TV", f"{safe_title} ({year})")
 
     def _record_created_dir(self, directory: str, existed_before: bool) -> None:
         if self.manifest and not existed_before:
             self.manifest.record("create_dir", None, directory, extra={"kind": "pipeline_output"})
 
-    def _write_manifested_nfo(self, directory: str, filename: str, content: str, kind: str) -> str:
+    def _write_manifested_nfo(self, directory: str, filename: str, content: str, kind: str, item_id: Optional[str] = None) -> str:
+        self._checkpoint(f"output.{kind}")
         path = os.path.join(directory, filename)
         existed_before = os.path.exists(path)
         backup_path = self.manifest.backup_file(path) if self.manifest and existed_before else None
@@ -892,6 +1247,21 @@ class MediaPipeline:
                 written_path,
                 extra=extra,
             )
+            task_id = getattr(self.manifest, "task_id", None)
+            if task_id and item_id:
+                from src.server.task_events import task_event_store
+
+                task_event_store.emit(
+                    task_id,
+                    "nfo.written",
+                    {
+                        "path": str(written_path),
+                        "kind": kind,
+                        "status": "written",
+                        "atomic": True,
+                    },
+                    item_id=item_id,
+                )
         return written_path
 
     def _summarize_artwork_downloads(self, downloaded_images: Dict[str, Any]) -> Dict[str, Any]:
@@ -928,6 +1298,7 @@ class MediaPipeline:
                 verbose=self.verbose, 
                 extra_images=input_data.get("extra_images", False),
                 image_limits=self.config.get("output", {}).get("image_limit", {}),
+                artwork_policy=self.config.get("output", {}).get("artwork_policy", {}),
                 overwrite=input_data.get("overwrite_images", False)
             )
         except Exception as exc:

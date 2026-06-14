@@ -5,18 +5,16 @@ import { cn } from '../lib/utils';
 import { useTranslation, languageOptions } from '../lib/languageContext';
 import { useTheme } from 'next-themes';
 import { toast } from 'sonner';
-import { apiJson } from '../lib/api';
 import { useSystemStatus } from '../lib/systemStatusContext';
+import type { ConnectivityStatus } from '../lib/types';
+import { testConnectivity } from '../lib/settingsApi';
+import { getConnectivityTone, isConnectivityUsable, type ConnectivityTone } from '../lib/connectivityStatus';
 
-interface ConnectivityServiceStatus {
-    status?: string;
-    message?: string;
-}
-
-interface ConnectivityStatus {
-    tmdb?: ConnectivityServiceStatus;
-    tavily?: ConnectivityServiceStatus;
-}
+const connectivityToneClass: Record<ConnectivityTone, { text: string; dot: string }> = {
+    success: { text: 'text-green-500', dot: 'bg-green-500' },
+    warning: { text: 'text-amber-500', dot: 'bg-amber-500' },
+    danger: { text: 'text-red-500', dot: 'bg-red-500' },
+};
 
 export function Header({ title }: { title: string }) {
     const { t, language, setLanguage } = useTranslation();
@@ -30,21 +28,25 @@ export function Header({ title }: { title: string }) {
         const toastId = toast.loading('Checking connectivity...');
 
         try {
-            const data = await apiJson<ConnectivityStatus>('/api/test_connectivity', undefined, 'Connectivity test failed');
+            const data: ConnectivityStatus = await testConnectivity();
 
             // Format result for toast
+            const tmdbTone = getConnectivityTone(data.tmdb);
+            const tavilyTone = getConnectivityTone(data.tavily);
             const tmdbOk = data.tmdb?.status === 'ok';
             const tavilyOk = data.tavily?.status === 'ok';
+            const tmdbUsable = isConnectivityUsable(data.tmdb);
+            const tavilyUsable = isConnectivityUsable(data.tavily);
 
             const msg = (
                 <div className="text-xs space-y-1">
                     <div className="font-bold mb-2 text-sm">System Connectivity</div>
-                    <div className={cn("flex items-center gap-2", tmdbOk ? "text-green-500" : "text-red-500")}>
-                        <div className={cn("w-2 h-2 rounded-full", tmdbOk ? "bg-green-500" : "bg-red-500")} />
+                    <div className={cn("flex items-center gap-2", connectivityToneClass[tmdbTone].text)}>
+                        <div className={cn("w-2 h-2 rounded-full", connectivityToneClass[tmdbTone].dot)} />
                         TMDB: {data.tmdb?.message || 'OK'}
                     </div>
-                    <div className={cn("flex items-center gap-2", tavilyOk ? "text-green-500" : "text-amber-500")}>
-                        <div className={cn("w-2 h-2 rounded-full", tavilyOk ? "bg-green-500" : "bg-amber-500")} />
+                    <div className={cn("flex items-center gap-2", connectivityToneClass[tavilyTone].text)}>
+                        <div className={cn("w-2 h-2 rounded-full", connectivityToneClass[tavilyTone].dot)} />
                         Tavily: {data.tavily?.message || 'OK'}
                     </div>
                 </div>
@@ -52,7 +54,7 @@ export function Header({ title }: { title: string }) {
 
             toast.dismiss(toastId);
             if (tmdbOk && tavilyOk) toast.success(msg, { duration: 3000 });
-            else if (tmdbOk) toast.warning(msg, { duration: 5000 }); // Partial success
+            else if (tmdbUsable && tavilyUsable) toast.warning(msg, { duration: 5000 });
             else toast.error(msg, { duration: 5000 });
 
         } catch (error) {

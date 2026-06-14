@@ -2,9 +2,18 @@
 import re
 from pathlib import Path
 from typing import Optional, List, Tuple
+from src.core.path_filters import is_hidden_path
 
 class NfoParser:
     """Helper class for parsing NFO files."""
+
+    @staticmethod
+    def _nfo_files(show_path: Path) -> List[Path]:
+        return [
+            path
+            for path in show_path.glob("*.nfo")
+            if path.is_file() and not is_hidden_path(path)
+        ]
 
     @staticmethod
     def extract_tmdb_id(nfo_content: str) -> Optional[int]:
@@ -59,7 +68,7 @@ class NfoParser:
 
         if strict_match and match_title:
             # Strict mode: Look for NFO files containing the title
-            for nfo_file in show_path.glob("*.nfo"):
+            for nfo_file in NfoParser._nfo_files(show_path):
                 try:
                     content = nfo_file.read_text(encoding='utf-8')
                     if match_title.lower() in content.lower():
@@ -78,7 +87,7 @@ class NfoParser:
                 return meta
 
         # Priority 2: Any other .nfo file
-        for nfo_file in show_path.glob("*.nfo"):
+        for nfo_file in NfoParser._nfo_files(show_path):
             if nfo_file.name != "tvshow.nfo":
                 meta = NfoParser.find_metadata_in_nfo_file(nfo_file)
                 if meta["tmdb_id"] or meta["media_type"]:
@@ -102,7 +111,7 @@ class NfoParser:
 
         if strict_match and match_title:
             # Strict mode: Look for NFO files containing the title
-            for nfo_file in show_path.glob("*.nfo"):
+            for nfo_file in NfoParser._nfo_files(show_path):
                 try:
                     content = nfo_file.read_text(encoding='utf-8')
                     if match_title.lower() in content.lower():
@@ -120,7 +129,7 @@ class NfoParser:
                 return tmdb_id
 
         # Priority 2: Any other .nfo file
-        for nfo_file in show_path.glob("*.nfo"):
+        for nfo_file in NfoParser._nfo_files(show_path):
             if nfo_file.name != "tvshow.nfo":
                 tmdb_id = NfoParser.find_tmdb_id_in_nfo_file(nfo_file)
                 if tmdb_id:
@@ -134,7 +143,7 @@ class NfoParser:
         show_path = Path(show_dir)
         results = []
 
-        for nfo_file in show_path.glob("*.nfo"):
+        for nfo_file in NfoParser._nfo_files(show_path):
             tmdb_id = NfoParser.find_tmdb_id_in_nfo_file(nfo_file)
             if tmdb_id:
                 results.append((tmdb_id, str(nfo_file)))

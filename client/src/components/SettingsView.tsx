@@ -1,70 +1,96 @@
 
 import { useEffect, useState } from 'react';
-import { Save, Loader2, Key, Database, Image as ImageIcon, Monitor, Cpu, CheckCircle2, XCircle } from 'lucide-react';
+import { Save, Loader2, Key, Database, Image as ImageIcon, Monitor, Cpu, CheckCircle2, XCircle, Brain, RefreshCw, Trash2, Ban, Undo2, History } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '../lib/utils';
 import { useTranslation } from '../lib/languageContext';
 import { useTheme } from 'next-themes';
-import { apiJson } from '../lib/api';
 import type { ReactNode } from 'react';
-
-// Loose typing for the config 
-interface Config {
-    tmdb?: { api_key: string };
-    omdb?: { api_key: string };
-    tavily?: { api_key: string };
-    model?: {
-        base_url: string;
-        api_key: string;
-        model: string;
-        temperature?: number;
-    };
-    output?: {
-        image_limit?: {
-            posters?: number;
-            backdrops?: number;
-            logos?: number;
-            stills?: number;
-            actors?: number;
-        }
-    }
-    [key: string]: unknown;
-}
+import type { AppConfig, ConnectivityStatus, RejectedMatch, SavedMatch, SettingsRevision } from '../lib/types';
+import { deleteRejectedMatch, deleteSavedMatch, fetchRejectedMatches, fetchSavedMatches, fetchSettings as fetchSettingsApi, fetchSettingsHistory, saveSettings, testConnectivity } from '../lib/settingsApi';
+import { getConnectivityTone, type ConnectivityTone } from '../lib/connectivityStatus';
 
 type ConfigValue = string | number | boolean | null;
-
-interface ConnectivityServiceStatus {
-    status?: string;
-    message?: string;
-}
-
-interface ConnectivityStatus {
-    tmdb?: ConnectivityServiceStatus;
-    tavily?: ConnectivityServiceStatus;
-    error?: string;
-}
-
-interface SettingsSaveResponse {
-    config?: Config;
-}
+const connectivityBadgeClass: Record<ConnectivityTone, string> = {
+    success: 'bg-green-500/10 border-green-500/30 text-green-400',
+    warning: 'bg-amber-500/10 border-amber-500/30 text-amber-400',
+    danger: 'bg-red-500/10 border-red-500/30 text-red-400',
+};
 
 export function SettingsView() {
     const { t, language, setLanguage } = useTranslation();
     const { theme, setTheme } = useTheme();
-    const [config, setConfig] = useState<Config | null>(null);
+    const [config, setConfig] = useState<AppConfig | null>(null);
     const [loading, setLoading] = useState(false);
     const [saving, setSaving] = useState(false);
     const [msg, setMsg] = useState<{ type: 'success' | 'error', text: string } | null>(null);
     const [workers, setWorkers] = useState(() => parseInt(localStorage.getItem('task_workers') || "4"));
+    const [savedMatches, setSavedMatches] = useState<SavedMatch[]>([]);
+    const [rejectedMatches, setRejectedMatches] = useState<RejectedMatch[]>([]);
+    const [matchesLoading, setMatchesLoading] = useState(false);
+    const [settingsHistory, setSettingsHistory] = useState<SettingsRevision[]>([]);
+    const [historyLoading, setHistoryLoading] = useState(false);
 
     useEffect(() => {
         fetchSettings();
+        void loadSavedMatches();
+        void loadSettingsHistory();
     }, []);
+
+    const loadSettingsHistory = async () => {
+        setHistoryLoading(true);
+        try {
+            const response = await fetchSettingsHistory();
+            setSettingsHistory(response.revisions || []);
+        } catch (error) {
+            setMsg({ type: 'error', text: error instanceof Error ? error.message : 'Unable to load settings history.' });
+        } finally {
+            setHistoryLoading(false);
+        }
+    };
+
+    const loadSavedMatches = async () => {
+        setMatchesLoading(true);
+        try {
+            const [savedResponse, rejectedResponse] = await Promise.all([
+                fetchSavedMatches(),
+                fetchRejectedMatches(),
+            ]);
+            setSavedMatches(savedResponse.matches || []);
+            setRejectedMatches(rejectedResponse.rejections || []);
+        } catch (error) {
+            setMsg({ type: 'error', text: error instanceof Error ? error.message : 'Unable to load saved matches.' });
+        } finally {
+            setMatchesLoading(false);
+        }
+    };
+
+    const removeRejectedMatch = async (match: RejectedMatch) => {
+        if (!window.confirm(`Allow TMDB ${match.tmdb_id} to be considered again for "${match.display_title}"?`)) return;
+        try {
+            await deleteRejectedMatch(match.id);
+            setRejectedMatches(current => current.filter(item => item.id !== match.id));
+            setMsg({ type: 'success', text: 'Candidate can be considered again.' });
+        } catch (error) {
+            setMsg({ type: 'error', text: error instanceof Error ? error.message : 'Unable to remove rejected match.' });
+        }
+    };
+
+    const removeSavedMatch = async (match: SavedMatch) => {
+        if (!window.confirm(`Forget the saved match for "${match.display_title}"?\nFuture scans will search again.`)) return;
+        try {
+            await deleteSavedMatch(match.id);
+            setSavedMatches(current => current.filter(item => item.id !== match.id));
+            setMsg({ type: 'success', text: 'Saved match removed.' });
+        } catch (error) {
+            setMsg({ type: 'error', text: error instanceof Error ? error.message : 'Unable to remove saved match.' });
+        }
+    };
 
     const fetchSettings = async () => {
         setLoading(true);
         try {
-            const data = await apiJson<Config>('/api/settings', undefined, 'Failed to load settings');
+            const data = await fetchSettingsApi();
             setConfig(data);
         } catch (e) {
             console.error("Failed to load settings", e);
@@ -81,17 +107,21 @@ export function SettingsView() {
         setMsg(null);
 
         try {
-            const data = await apiJson<SettingsSaveResponse>('/api/settings', {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(config)
-            }, 'Failed to save settings.');
+            const data = await saveSettings(config);
             if (data.config) setConfig(data.config);
+            await loadSettingsHistory();
             setMsg({ type: 'success', text: 'Settings saved successfully!' });
             setTimeout(() => setMsg(null), 3000);
         } catch (error) {
-            setMsg({ type: 'error', text: error instanceof Error ? error.message : 'Network error saving settings.' });
-            setTimeout(() => setMsg(null), 3000);
+            const message = error instanceof Error ? error.message : 'Network error saving settings.';
+            const isRevisionConflict = message.includes('Settings changed since this page was loaded');
+            setMsg({
+                type: 'error',
+                text: isRevisionConflict
+                    ? 'Settings changed in another window. Reload the current revision before editing again.'
+                    : message,
+            });
+            if (!isRevisionConflict) setTimeout(() => setMsg(null), 3000);
         } finally {
             setSaving(false);
         }
@@ -125,6 +155,56 @@ export function SettingsView() {
         }));
     };
 
+    const updateArtworkPolicy = (
+        key: 'preferred_languages' | 'min_poster_width' | 'min_backdrop_width' | 'min_logo_width',
+        value: string[] | number,
+    ) => {
+        setConfig(prev => ({
+            ...prev!,
+            output: {
+                ...prev?.output,
+                artwork_policy: {
+                    ...prev?.output?.artwork_policy,
+                    [key]: value,
+                },
+            },
+        }));
+    };
+
+    const updateConflictStrategy = (value: 'error' | 'skip' | 'suffix' | 'overwrite') => {
+        setConfig(prev => ({
+            ...prev!,
+            output: {
+                ...prev?.output,
+                conflict_strategy: value,
+            },
+        }));
+    };
+
+    const updateMatchingPolicy = (
+        key: 'minimum_title_similarity' | 'minimum_token_overlap' | 'high_confidence_title_similarity' | 'high_confidence_token_overlap' | 'localized_title_min_similarity' | 'strict_year',
+        value: number | boolean,
+    ) => {
+        setConfig(prev => ({
+            ...prev!,
+            matching: {
+                ...prev?.matching,
+                [key]: value,
+            },
+        }));
+    };
+
+    const updateTavilyKeyList = (value: string) => {
+        setConfig(prev => ({
+            ...prev!,
+            tavily: {
+                api_key: prev?.tavily?.api_key || '',
+                ...prev?.tavily,
+                api_keys: value.split('\n').map(key => key.trim()).filter(Boolean),
+            },
+        }));
+    };
+
     if (loading && !config) {
         return <div className="flex justify-center p-12"><Loader2 className="animate-spin" /></div>;
     }
@@ -133,7 +213,7 @@ export function SettingsView() {
     if (!config) return <div>Error loading config.</div>;
 
     return (
-        <div className="p-6 glass-panel-pro rounded-3xl w-full h-full flex flex-col gap-8 relative overflow-hidden">
+        <div className="p-4 md:p-6 glass-panel-pro rounded-3xl w-full h-full flex flex-col gap-6 relative !overflow-y-auto !overflow-x-hidden">
             {/* Toast Notification Layer */}
             <AnimatePresence>
                 {msg && (
@@ -159,14 +239,29 @@ export function SettingsView() {
                     </h3>
                     <p className="text-sm text-secondary">Manage system preferences and API connections.</p>
                 </div>
-                <button
-                    onClick={handleSave}
-                    disabled={saving}
-                    className="px-6 py-2 bg-primary hover:bg-primary/90 text-white rounded-lg font-medium flex items-center gap-2 transition-all disabled:opacity-50 shadow-lg shadow-primary/20"
-                >
-                    {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
-                    Save Changes
-                </button>
+                <div className="flex items-center gap-2">
+                    <button
+                        type="button"
+                        onClick={() => {
+                            setMsg(null);
+                            void fetchSettings();
+                            void loadSettingsHistory();
+                        }}
+                        disabled={loading || saving}
+                        title="Reload current settings"
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border-light text-text-muted transition-colors hover:text-primary disabled:opacity-50"
+                    >
+                        <RefreshCw size={16} className={cn(loading && 'animate-spin')} />
+                    </button>
+                    <button
+                        onClick={handleSave}
+                        disabled={saving}
+                        className="px-6 py-2 bg-primary hover:bg-primary/90 text-white rounded-lg font-medium flex items-center gap-2 transition-all disabled:opacity-50 shadow-lg shadow-primary/20"
+                    >
+                        {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
+                        Save Changes
+                    </button>
+                </div>
             </div>
 
 
@@ -230,11 +325,17 @@ export function SettingsView() {
                                 secret
                             />
                             <InputGroup
-                                label="Tavily API Key"
+                                label="Primary Tavily API Key"
                                 value={config.tavily?.api_key || ""}
                                 onChange={(v) => updateConfig('tavily', 'api_key', v)}
                                 type="password"
                                 secret
+                            />
+                            <TextAreaGroup
+                                label="Tavily Backup Keys"
+                                value={(config.tavily?.api_keys || []).join('\n')}
+                                onChange={updateTavilyKeyList}
+                                placeholder="One Tavily key per line"
                             />
                         </div>
                     </div>
@@ -300,8 +401,54 @@ export function SettingsView() {
                         </div>
                     </div>
 
+                    <div className="space-y-5">
+                        <SectionLabel icon={<Brain />} label="Matching Safety" />
+                        <label className="flex items-center justify-between gap-4 rounded-lg border border-border-light bg-black/5 px-4 py-3">
+                            <span>
+                                <span className="block text-xs font-semibold text-text-main">Strict year matching</span>
+                                <span className="mt-1 block text-[10px] text-text-muted">Reject a candidate when both years are known and differ.</span>
+                            </span>
+                            <input
+                                type="checkbox"
+                                checked={config.matching?.strict_year ?? true}
+                                onChange={event => updateMatchingPolicy('strict_year', event.target.checked)}
+                                className="h-4 w-4 accent-primary"
+                            />
+                        </label>
+                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                            <DecimalInputGroup
+                                label="Minimum title similarity"
+                                value={config.matching?.minimum_title_similarity ?? 0.55}
+                                onChange={value => updateMatchingPolicy('minimum_title_similarity', value)}
+                            />
+                            <DecimalInputGroup
+                                label="Minimum token overlap"
+                                value={config.matching?.minimum_token_overlap ?? 0.75}
+                                onChange={value => updateMatchingPolicy('minimum_token_overlap', value)}
+                            />
+                            <DecimalInputGroup
+                                label="High confidence title"
+                                value={config.matching?.high_confidence_title_similarity ?? 0.75}
+                                onChange={value => updateMatchingPolicy('high_confidence_title_similarity', value)}
+                            />
+                            <DecimalInputGroup
+                                label="High confidence tokens"
+                                value={config.matching?.high_confidence_token_overlap ?? 0.85}
+                                onChange={value => updateMatchingPolicy('high_confidence_token_overlap', value)}
+                            />
+                        </div>
+                        <DecimalInputGroup
+                            label="Cross-language minimum similarity"
+                            value={config.matching?.localized_title_min_similarity ?? 0.25}
+                            onChange={value => updateMatchingPolicy('localized_title_min_similarity', value)}
+                        />
+                        <p className="text-[10px] leading-relaxed text-secondary/70">
+                            A title may pass either the title or token threshold. Cross-language matches below the normal threshold remain visible but require Match Review before execution.
+                        </p>
+                    </div>
+
                     <div className="space-y-6">
-                        <SectionLabel icon={<ImageIcon />} label="Output Settings" />
+                        <SectionLabel icon={<ImageIcon />} label="Artwork Policy" />
 
                         <div className="grid grid-cols-2 gap-4">
                             <NumberInputGroup label="Poster Limit" value={config.output?.image_limit?.posters || 20} onChange={(v) => updateImageLimit('posters', v)} />
@@ -310,10 +457,223 @@ export function SettingsView() {
                             <NumberInputGroup label="Still Limit" value={config.output?.image_limit?.stills || 10} onChange={(v) => updateImageLimit('stills', v)} />
                             <NumberInputGroup label="Actor Limit" value={config.output?.image_limit?.actors || 10} onChange={(v) => updateImageLimit('actors', v)} />
                         </div>
+                        <InputGroup
+                            label="Preferred Languages"
+                            value={(config.output?.artwork_policy?.preferred_languages || ['zh', 'en', 'ja']).join(', ')}
+                            onChange={(value) => updateArtworkPolicy(
+                                'preferred_languages',
+                                value.split(',').map(item => item.trim()).filter(Boolean),
+                            )}
+                            placeholder="zh, en, ja"
+                        />
+                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                            <NumberInputGroup
+                                label="Min Poster Width"
+                                value={config.output?.artwork_policy?.min_poster_width ?? 500}
+                                onChange={(value) => updateArtworkPolicy('min_poster_width', value)}
+                            />
+                            <NumberInputGroup
+                                label="Min Backdrop Width"
+                                value={config.output?.artwork_policy?.min_backdrop_width ?? 1280}
+                                onChange={(value) => updateArtworkPolicy('min_backdrop_width', value)}
+                            />
+                            <NumberInputGroup
+                                label="Min Logo Width"
+                                value={config.output?.artwork_policy?.min_logo_width ?? 300}
+                                onChange={(value) => updateArtworkPolicy('min_logo_width', value)}
+                            />
+                        </div>
+                        <p className="text-[10px] leading-relaxed text-secondary/70">
+                            Main artwork is ranked by language, TMDB votes, resolution, and aspect ratio. If every image is below the minimum width, the best available image is used and recorded as a fallback.
+                        </p>
+                    </div>
+
+                    <div className="space-y-4">
+                        <SectionLabel icon={<Database />} label="File Conflict Policy" />
+                        <div className="space-y-1">
+                            <label className="text-xs text-secondary font-medium ml-1">Default resolution</label>
+                            <select
+                                value={config.output?.conflict_strategy || 'error'}
+                                onChange={(event) => updateConflictStrategy(event.target.value as 'error' | 'skip' | 'suffix' | 'overwrite')}
+                                className="w-full glass-panel-pro bg-black/10 px-4 py-2.5 rounded-lg border-border/30 focus:border-primary focus:ring-1 focus:ring-primary outline-none"
+                            >
+                                <option value="error">Block and require review</option>
+                                <option value="skip">Skip existing destination</option>
+                                <option value="suffix">Keep both with numeric suffix</option>
+                                <option value="overwrite">Overwrite files with rollback backup</option>
+                            </select>
+                        </div>
+                        <p className="text-[10px] leading-relaxed text-secondary/70">
+                            Overwrite applies only to files and records a backup in the operation manifest. Existing directories are never merged destructively.
+                        </p>
+                    </div>
+
+                    <div className="space-y-4">
+                        <SectionLabel icon={<Database />} label="NFO Compatibility" />
+                        <div className="grid grid-cols-3 gap-2">
+                            {(config.output?.nfo_policy?.targets || ['jellyfin', 'emby', 'kodi']).map(target => (
+                                <div key={target} className="rounded-lg border border-border-light bg-black/5 px-3 py-2 text-center text-[10px] font-bold uppercase text-text-main">
+                                    {target}
+                                </div>
+                            ))}
+                        </div>
+                        <p className="text-[10px] leading-relaxed text-secondary/70">
+                            Universal NFO output includes TMDB unique IDs and legacy tmdbid fields. Episode sidecars and season folders are written only when a corresponding local video exists.
+                        </p>
                     </div>
                 </div>
 
             </div>
+
+            <section className="border-t border-border-light pt-6">
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                    <div>
+                        <SectionLabel icon={<History />} label="Configuration History" />
+                        <p className="mt-2 text-xs text-secondary">
+                            Records changed field names and configuration fingerprints. Secret values are never copied into this history.
+                        </p>
+                    </div>
+                    <button
+                        type="button"
+                        onClick={() => void loadSettingsHistory()}
+                        disabled={historyLoading}
+                        title="Refresh configuration history"
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border-light text-text-muted hover:text-primary disabled:opacity-50"
+                    >
+                        <RefreshCw size={14} className={cn(historyLoading && 'animate-spin')} />
+                    </button>
+                </div>
+
+                {settingsHistory.length === 0 ? (
+                    <div className="mt-4 border-y border-border-light py-6 text-center text-xs text-text-muted">
+                        {historyLoading ? 'Loading configuration history...' : 'No configuration changes have been recorded yet.'}
+                    </div>
+                ) : (
+                    <div className="mt-4 divide-y divide-border-light border-y border-border-light">
+                        {settingsHistory.map(revision => (
+                            <div key={revision.revision} className="grid gap-3 py-3 md:grid-cols-[120px_minmax(0,1fr)_170px] md:items-center">
+                                <div>
+                                    <div className="text-xs font-bold text-text-main">Revision {revision.revision}</div>
+                                    <div className="mt-1 font-mono text-[9px] uppercase text-text-muted">{revision.actor}</div>
+                                </div>
+                                <div className="flex min-w-0 flex-wrap gap-1.5">
+                                    {revision.changed_paths.map(path => (
+                                        <span key={path} className="rounded border border-border-light bg-black/5 px-2 py-1 font-mono text-[9px] text-text-muted">
+                                            {path}
+                                        </span>
+                                    ))}
+                                </div>
+                                <div className="text-left md:text-right">
+                                    <div className="text-[10px] text-text-muted">{new Date(revision.changed_at).toLocaleString()}</div>
+                                    <div className="mt-1 truncate font-mono text-[9px] text-text-muted/70" title={revision.config_fingerprint}>
+                                        sha256:{revision.config_fingerprint.slice(0, 12)}
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </section>
+
+            <section className="border-t border-border-light pt-6">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                    <div>
+                        <SectionLabel icon={<Brain />} label="Confirmed Match Memory" />
+                        <p className="mt-2 text-xs text-secondary">
+                            Explicit choices from Match Review are reused on future scans. Ambiguous same-title releases are never selected without a year.
+                        </p>
+                    </div>
+                    <button
+                        type="button"
+                        onClick={() => void loadSavedMatches()}
+                        disabled={matchesLoading}
+                        title="Refresh saved matches"
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border-light text-text-muted hover:text-primary disabled:opacity-50"
+                    >
+                        <RefreshCw size={14} className={cn(matchesLoading && 'animate-spin')} />
+                    </button>
+                </div>
+
+                {savedMatches.length === 0 ? (
+                    <div className="mt-4 border-y border-border-light py-6 text-center text-xs text-text-muted">
+                        {matchesLoading ? 'Loading saved matches...' : 'No confirmed matches have been learned yet.'}
+                    </div>
+                ) : (
+                    <div className="mt-4 divide-y divide-border-light border-y border-border-light">
+                        {savedMatches.map(match => (
+                            <div key={match.id} className="grid gap-3 py-3 sm:grid-cols-[minmax(0,1fr)_auto_auto] sm:items-center">
+                                <div className="min-w-0">
+                                    <div className="truncate text-sm font-semibold text-text-main">{match.display_title}</div>
+                                    <div className="mt-1 truncate font-mono text-[9px] text-text-muted" title={match.source_item_id}>
+                                        {match.source_item_id || 'Confirmed in match review'}
+                                    </div>
+                                </div>
+                                <div className="flex flex-wrap items-center gap-2 font-mono text-[10px] text-text-muted">
+                                    <span>{match.media_type.toUpperCase()}</span>
+                                    {match.year > 0 && <span>{match.year}</span>}
+                                    <span className="text-primary">TMDB {match.tmdb_id}</span>
+                                    <span>{match.use_count} uses</span>
+                                </div>
+                                <button
+                                    type="button"
+                                    onClick={() => void removeSavedMatch(match)}
+                                    title={`Forget ${match.display_title}`}
+                                    className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-text-muted hover:bg-red-500/10 hover:text-red-500"
+                                >
+                                    <Trash2 size={14} />
+                                </button>
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </section>
+
+            <section className="border-t border-border-light pt-6">
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                    <div>
+                        <SectionLabel icon={<Ban />} label="Rejected Match Rules" />
+                        <p className="mt-2 text-xs text-secondary">
+                            Candidates explicitly rejected in Match Review are skipped during future automatic searches. Removing a rule only permits reconsideration; it does not force a match.
+                        </p>
+                    </div>
+                    <div className="font-mono text-[10px] text-text-muted">
+                        {rejectedMatches.length} active
+                    </div>
+                </div>
+
+                {rejectedMatches.length === 0 ? (
+                    <div className="mt-4 border-y border-border-light py-6 text-center text-xs text-text-muted">
+                        {matchesLoading ? 'Loading rejected matches...' : 'No candidates are currently blocked by user decisions.'}
+                    </div>
+                ) : (
+                    <div className="mt-4 divide-y divide-border-light border-y border-border-light">
+                        {rejectedMatches.map(match => (
+                            <div key={match.id} className="grid gap-3 py-3 sm:grid-cols-[minmax(0,1fr)_auto_auto] sm:items-center">
+                                <div className="min-w-0">
+                                    <div className="truncate text-sm font-semibold text-text-main">{match.display_title}</div>
+                                    <div className="mt-1 truncate font-mono text-[9px] text-text-muted" title={match.source_item_id}>
+                                        {match.source_item_id || 'Rejected in match review'}
+                                    </div>
+                                </div>
+                                <div className="flex flex-wrap items-center gap-2 font-mono text-[10px] text-text-muted">
+                                    <span>{match.media_type.toUpperCase()}</span>
+                                    {match.year > 0 && <span>{match.year}</span>}
+                                    <span className="text-red-500">TMDB {match.tmdb_id}</span>
+                                    <span>{match.hit_count} blocks</span>
+                                </div>
+                                <button
+                                    type="button"
+                                    onClick={() => void removeRejectedMatch(match)}
+                                    title={`Allow TMDB ${match.tmdb_id} again`}
+                                    className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-text-muted hover:bg-emerald-500/10 hover:text-emerald-500"
+                                >
+                                    <Undo2 size={14} />
+                                </button>
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </section>
         </div>
     );
 }
@@ -371,6 +731,53 @@ function NumberInputGroup({ label, value, onChange }: {
     );
 }
 
+function DecimalInputGroup({ label, value, onChange }: {
+    label: string,
+    value: number,
+    onChange: (val: number) => void,
+}) {
+    return (
+        <div>
+            <label className="text-xs text-secondary font-medium mb-1 block">{label}</label>
+            <input
+                type="number"
+                min={0}
+                max={1}
+                step={0.05}
+                value={value}
+                onChange={(event) => {
+                    const parsed = Number.parseFloat(event.target.value);
+                    onChange(Number.isFinite(parsed) ? Math.max(0, Math.min(1, parsed)) : 0);
+                }}
+                className="w-full glass-panel-pro bg-black/10 px-3 py-2 rounded-lg border-border/30 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all"
+            />
+        </div>
+    );
+}
+
+function TextAreaGroup({ label, value, onChange, placeholder }: {
+    label: string,
+    value: string,
+    onChange: (val: string) => void,
+    placeholder?: string,
+}) {
+    return (
+        <div className="space-y-1">
+            <label className="text-xs text-secondary font-medium ml-1">{label}</label>
+            <textarea
+                value={value}
+                onChange={(e) => onChange(e.target.value)}
+                placeholder={placeholder}
+                rows={3}
+                className="w-full glass-panel-pro bg-black/10 px-4 py-2.5 rounded-lg border-border/30 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder:text-muted/50 resize-y min-h-[84px] font-mono text-xs"
+            />
+            <p className="text-[10px] text-secondary/70 ml-1">
+                Backup keys are tried after the primary key during Tavily lookup and connectivity checks.
+            </p>
+        </div>
+    )
+}
+
 function ProxyTester() {
     const [status, setStatus] = useState<ConnectivityStatus | null>(null);
     const [loading, setLoading] = useState(false);
@@ -379,7 +786,7 @@ function ProxyTester() {
         setLoading(true);
         setStatus(null);
         try {
-            const data = await apiJson<ConnectivityStatus>('/api/test_connectivity', undefined, 'Connectivity test failed');
+            const data = await testConnectivity();
             setStatus(data);
         } catch (error) {
             setStatus({ error: error instanceof Error ? error.message : "Network error" });
@@ -399,15 +806,19 @@ function ProxyTester() {
                 Test Connectivity
             </button>
             {status && (
-                <div className="flex gap-2">
+                <div className="flex flex-wrap justify-end gap-2 max-w-[360px]">
                     {(['tmdb', 'tavily'] as const).map(service => (
                         <div key={service} className={cn(
-                            "px-2 py-0.5 rounded text-[8px] font-bold uppercase tracking-tighter border",
-                            status[service]?.status === 'ok'
-                                ? "bg-green-500/10 border-green-500/30 text-green-400"
-                                : "bg-red-500/10 border-red-500/30 text-red-400"
-                        )}>
+                            "px-2 py-1 rounded text-[8px] font-bold uppercase tracking-tighter border max-w-[170px]",
+                            connectivityBadgeClass[getConnectivityTone(status[service])]
+                        )} title={status[service]?.message || ''}>
                             {service}: {status[service]?.status || 'error'}
+                            {status[service]?.checked_keys ? ` · ${status[service]?.checked_keys} key` : ''}
+                            {status[service]?.message && (
+                                <span className="block truncate normal-case tracking-normal font-medium opacity-80">
+                                    {status[service]?.message}
+                                </span>
+                            )}
                         </div>
                     ))}
                     {status.error && <div className="text-[8px] text-red-400">{status.error}</div>}

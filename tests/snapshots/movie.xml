@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<movie>
+  <title>示例</title>
+  <originaltitle>Example Original</originaltitle>
+  <year>2026</year>
+  <premiered>2026-02-03</premiered>
+  <plot>剧情 &amp; 详情</plot>
+  <tagline>Tag</tagline>
+  <runtime>96</runtime>
+  <rating>8.5</rating>
+  <votes>123</votes>
+  <genre>剧情</genre>
+  <country>CN</country>
+  <studio>Studio A</studio>
+  <tmdbid>42</tmdbid>
+  <uniqueid type="tmdb" default="true">42</uniqueid>
+  <credits>Writer A</credits>
+  <director>Director A</director>
+  <actor>
+    <name>演员甲 / Actor A</name>
+    <role>Lead</role>
+    <type>Actor</type>
+    <thumb>Actor_A.jpg</thumb>
+  </actor>
+  <thumb>poster.jpg</thumb>
+  <fanart>fanart.jpg</fanart>
+  <tag>测试</tag>
+</movie>

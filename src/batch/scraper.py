@@ -1,9 +1,9 @@
 
 import os
-import shutil
 import logging
 import yaml
 import traceback
+import copy
 from pathlib import Path
 from typing import Optional, List
 from concurrent.futures import ThreadPoolExecutor, as_completed, CancelledError
@@ -12,9 +12,13 @@ import threading
 from src.pipeline.pipeline import MediaPipeline
 from src.core.directory_lock import DirectoryLock, DirectoryLockError
 from src.core.filename_parser import FilenameParser
+from src.core.cancellation import OperationCancelled, raise_if_cancelled
+from src.core.execution_verifier import ExecutionVerifier
+from src.core.plan_integrity import assert_plan_digest
+from src.core.path_filters import is_hidden_path
 from src.server.task_events import task_event_store
 from .scanner import MediaScanner
-from .organizer import MediaOrganizer
+from .organizer import MediaOrganizer, OrganizerExecutionError
 from .detector import MediaTypeDetector
 
 logger = logging.getLogger(__name__)
@@ -38,9 +42,13 @@ class BatchMediaScraper:
                  enable_organize: bool = False,
                  overwrite_images: bool = False,
                  rename_parent_dir: bool = False,
-                 task_id: Optional[str] = None):
+                 conflict_strategy: Optional[str] = None,
+                 operation_scope: str = "full",
+                 task_id: Optional[str] = None,
+                 expected_plan_digest: Optional[str] = None,
+                 runtime_config: Optional[dict] = None):
         
-        self.config = self._load_config(config_path)
+        self.config = copy.deepcopy(runtime_config) if runtime_config is not None else self._load_config(config_path)
         self.copy_files = copy_files
         self.inplace_rename = inplace_rename
         self.output_dir = output_dir
@@ -58,10 +66,19 @@ class BatchMediaScraper:
         self.enable_organize = enable_organize
         self.overwrite_images = overwrite_images
         self.rename_parent_dir = rename_parent_dir
+        configured_conflict_strategy = self.config.get("output", {}).get("conflict_strategy", "error")
+        self.conflict_strategy = conflict_strategy or configured_conflict_strategy
         self.task_id = task_id
+        self.operation_scope = operation_scope if operation_scope in {"full", "nfo_only", "artwork_only", "organize_only"} else "full"
+        self.expected_plan_digest = expected_plan_digest
+        if self.operation_scope in {"nfo_only", "artwork_only"}:
+            self.enable_organize = False
+            self.rename_parent_dir = False
         
         self.pipeline = None
         
+        self.stop_event = threading.Event()
+
         # Initialize Components
         self.scanner = MediaScanner(
             media_type=media_type, 
@@ -72,14 +89,25 @@ class BatchMediaScraper:
             dry_run=dry_run, 
             inplace_rename=inplace_rename, 
             copy_files=copy_files,
-            enable_organize=enable_organize,
+            enable_organize=self.enable_organize,
             overwrite_images=overwrite_images,
-            rename_parent_dir=rename_parent_dir,
-            task_id=task_id
+            rename_parent_dir=self.rename_parent_dir,
+            conflict_strategy=self.conflict_strategy,
+            task_id=task_id,
+            cancel_event=self.stop_event,
+            operation_scope=self.operation_scope,
         )
-        
-        self.stop_event = threading.Event()
         self.executor = None
+        self.verifier = ExecutionVerifier()
+
+    def _assert_confirmed_plan(self, plan: dict) -> None:
+        expected_digest = getattr(self, "expected_plan_digest", None)
+        if expected_digest:
+            assert_plan_digest(plan, expected_digest)
+
+    def _effective_operation_scope(self) -> str:
+        scope = getattr(self, "operation_scope", "full")
+        return scope if scope in {"full", "nfo_only", "artwork_only", "organize_only"} else "full"
 
     def _emit(self, event_type: str, payload: Optional[dict] = None, item_id: Optional[str] = None):
         return task_event_store.emit(self.task_id, event_type, payload or {}, item_id=item_id)
@@ -90,6 +118,8 @@ class BatchMediaScraper:
         if task["type"] == "loose_files":
             show_name = task.get("show_name") or "Loose Files"
             return str(task["base_dir"] / show_name)
+        if task["type"] == "quarantined":
+            return str(task["path"])
         return f"unknown:{id(task)}"
 
     def _describe_task(self, task: dict) -> dict:
@@ -113,6 +143,16 @@ class BatchMediaScraper:
                 "file_count": len(task.get("files", [])),
                 "video_count": sum(1 for item in task.get("files", []) if item.suffix.lower() in FilenameParser.VIDEO_EXTENSIONS),
             }
+        if task["type"] == "quarantined":
+            parsed = task.get("parse") or {}
+            return {
+                "name": task["path"].name,
+                "path": str(task["path"]),
+                "kind": "quarantined",
+                "reason": task.get("reason"),
+                "parse": parsed,
+                "parse_confidence": parsed.get("confidence"),
+            }
         return {"name": "Unknown", "kind": "unknown"}
 
     def _count_video_files(self, path: Path) -> int:
@@ -120,7 +160,9 @@ class BatchMediaScraper:
             return sum(
                 1
                 for item in path.rglob("*")
-                if item.is_file() and item.suffix.lower() in FilenameParser.VIDEO_EXTENSIONS
+                if item.is_file()
+                and not is_hidden_path(item)
+                and item.suffix.lower() in FilenameParser.VIDEO_EXTENSIONS
             )
         except OSError:
             return 0
@@ -145,7 +187,23 @@ class BatchMediaScraper:
                 "model": "gemini-3-flash",
                 "temperature": 0.1,
             },
-            "output": {"image_limit": {"posters": 20, "backdrops": 5, "logos": 5, "stills": 10, "actors": 10}},
+            "output": {
+                "conflict_strategy": "error",
+                "nfo_policy": {
+                    "profile": "universal",
+                    "targets": ["jellyfin", "emby", "kodi"],
+                    "include_uniqueid": True,
+                    "include_legacy_tmdbid": True,
+                    "episode_sidecars": "present_only",
+                },
+                "image_limit": {"posters": 20, "backdrops": 5, "logos": 5, "stills": 10, "actors": 10},
+                "artwork_policy": {
+                    "preferred_languages": ["zh", "en", "ja"],
+                    "min_poster_width": 500,
+                    "min_backdrop_width": 1280,
+                    "min_logo_width": 300,
+                },
+            },
         }
         if p.exists():
             with open(p, 'r') as f:
@@ -207,18 +265,12 @@ class BatchMediaScraper:
                     
                      if relevant_files:
                          logger.info(f"Found {len(relevant_files)} loose files for '{target_name}'. Auto-organizing now...")
-                         # Create dir
-                         root_existed = root_path.exists()
-                         root_path.mkdir(exist_ok=True)
-                         if not root_existed:
-                             self.organizer.manifest.record("create_dir", None, root_path)
-                         # Move files
-                         import shutil
+                         fallback_item_id = str(root_path)
+                         self.organizer._ensure_directory(root_path, fallback_item_id, "organize.loose_group")
                          for f in relevant_files:
                              if f.parent != root_path:
                                  dest = root_path / f.name
-                                 shutil.move(str(f), str(dest))
-                                 self.organizer.manifest.record("move_file", f, dest)
+                                 self.organizer._move_or_copy(f, dest, item_id=fallback_item_id)
                          logger.info(f"✅ Auto-organized files into {root_path}")
                      else:
                          logger.error(f"Input directory does not exist and no matching loose files found: {input_dir}")
@@ -246,7 +298,8 @@ class BatchMediaScraper:
                  quiet=True, # Batch mode quiet
                  inplace=self.inplace_rename,
                  extra_images=self.extra_images,
-                 manifest=self.organizer.manifest
+                 manifest=self.organizer.manifest,
+                 cancel_event=self.stop_event,
              )
              # Inject pipeline into organizer for art download
              self.organizer.pipeline = self.pipeline
@@ -284,6 +337,8 @@ class BatchMediaScraper:
             future_to_task = {self.executor.submit(self._process_task, task): task for task in tasks}
             
             completed_count = 0
+            partial_count = 0
+            quarantined_count = 0
             failed_tasks = []
             
             # Process results as they complete
@@ -310,6 +365,8 @@ class BatchMediaScraper:
                         task_name = task["path"].name
                     elif task["type"] == "loose_files":
                         task_name = task.get("show_name", "Loose Files")
+                    elif task["type"] == "quarantined":
+                        task_name = task["path"].name
                     
                     try:
                         result = future.result()
@@ -319,15 +376,34 @@ class BatchMediaScraper:
                         failure_reason = task_name # Default
                         
                         if isinstance(result, tuple):
-                            success = result[0]
+                            outcome = result[0]
+                            success = outcome is True
+                            is_partial = outcome == "partial"
                             failure_reason = result[1]
                         else:
                             success = result
+                            is_partial = False
                             
-                        if success: 
+                        if success and task["type"] == "quarantined":
+                            quarantined_count += 1
+                        elif success:
                             completed_count += 1
-                        else: 
+                        elif is_partial:
+                            partial_count += 1
+                        else:
                             failed_tasks.append(failure_reason)
+
+                        self._emit(
+                            "task.progress",
+                            {
+                                "processed": completed_count + partial_count + quarantined_count + len(failed_tasks),
+                                "total": len(tasks),
+                                "completed": completed_count,
+                                "partial": partial_count,
+                                "quarantined": quarantined_count,
+                                "failed": len(failed_tasks),
+                            },
+                        )
                             
                     except CancelledError:
                         logger.info(f"Task {task_name} was cancelled.")
@@ -335,7 +411,7 @@ class BatchMediaScraper:
                         logger.error(f"Task {task_name} raised exception: {e}")
                         failed_tasks.append(f"{task_name} (Worker Exception: {e})")
 
-            msg = f"Batch processing finished: {completed_count}/{len(tasks)} successful, {len(failed_tasks)} failed"
+            msg = f"Batch processing finished: {completed_count}/{len(tasks)} successful, {partial_count} partial, {quarantined_count} quarantined, {len(failed_tasks)} failed"
             if self.stop_event.is_set():
                  msg += " (STOPPED)"
             
@@ -345,7 +421,9 @@ class BatchMediaScraper:
 
             return {
                 "completed": completed_count,
+                "partial": partial_count,
                 "failed": len(failed_tasks),
+                "quarantined": quarantined_count,
                 "total": len(tasks),
                 "failed_names": failed_tasks,
                 "stopped": self.stop_event.is_set()
@@ -353,7 +431,7 @@ class BatchMediaScraper:
         except KeyboardInterrupt:
             logger.warning("\n🛑 Stopping workers... (Ctrl+C pressed)")
             self.stop()
-            return {"completed": 0, "failed": 0, "total": len(tasks), "failed_names": []}
+            return {"completed": 0, "failed": 0, "quarantined": 0, "total": len(tasks), "failed_names": []}
         finally:
             if self.executor:
                 self.executor.shutdown(wait=False)
@@ -370,6 +448,10 @@ class BatchMediaScraper:
             return self._process_directory(task["path"], task["tmdb_id"], task.get("media_type"), is_group_folder=task.get("is_group_folder", False), item_id=item_id)
         elif task["type"] == "loose_files":
             return self._process_loose_files(task["files"], task["base_dir"], task.get("show_name"), item_id=item_id)
+        elif task["type"] == "quarantined":
+            payload = self._describe_task(task)
+            self._emit("item.quarantined", payload, item_id=item_id)
+            return (True, f"{task['path'].name} quarantined")
         return (False, "Unknown Task Type")
 
     def _process_directory(self, dir_path: Path, tmdb_id: Optional[int], task_media_type: Optional[str] = None, is_group_folder: bool = False, item_id: Optional[str] = None, execution_lock_held: bool = False) -> bool:
@@ -418,14 +500,11 @@ class BatchMediaScraper:
             "search_mode": self.search_mode,
             "tmdb_only": self.search_mode == "tmdb_only",
             "fallback_on_fail": self.enable_fallback,
-            "audit_only": self.dry_run # Enable audit mode if dry_run is True
+            "audit_only": False,
+            "plan_only": self.dry_run,
+            "operation_scope": self._effective_operation_scope(),
         }
         
-        # Override for inplace/dry_run dynamic behavior if this was triggered during a running batch
-        # But here self.dry_run is set at init. 
-        # Crucial Fix: If dry_run is False, input_data["audit_only"] MUST be False
-        if not self.dry_run:
-            input_data["audit_only"] = False
         if tmdb_id:
             input_data["tmdb_id"] = tmdb_id
             input_data["media_type_forced"] = True
@@ -449,15 +528,34 @@ class BatchMediaScraper:
         execution_lock = None
         try:
             if not self.dry_run:
+                self._emit(
+                    "item.execution_phase",
+                    {"phase": "preflight", "name": show_name, "path": str(dir_path)},
+                    item_id=item_id or str(dir_path),
+                )
                 preflight_input = input_data.copy()
                 preflight_input["audit_only"] = False
                 preflight_input["plan_only"] = True
                 preflight_result = self.pipeline.run(preflight_input)
+                if preflight_result.get("status") == "cancelled":
+                    self._emit(
+                        "item.cancelled",
+                        {"name": show_name, "path": str(dir_path), "stage": preflight_result.get("stage")},
+                        item_id=item_id or str(dir_path),
+                    )
+                    return (False, f"{show_name} cancelled")
                 if preflight_result.get("status") != "plan_ready":
                     error = preflight_result.get("error", "Preflight failed")
                     self._emit(
                         "item.failed",
-                        {"name": show_name, "path": str(dir_path), "error": error, "match": preflight_result.get("match")},
+                        {
+                            "name": show_name,
+                            "path": str(dir_path),
+                            "error": error,
+                            "error_code": preflight_result.get("error_code"),
+                            "candidate": preflight_result.get("candidate"),
+                            "match": preflight_result.get("match"),
+                        },
                         item_id=item_id or str(dir_path),
                     )
                     return (False, f"任务失败: {error}")
@@ -467,6 +565,7 @@ class BatchMediaScraper:
                 poster_suffix = candidate.get("poster_path")
                 poster_url = f"https://image.tmdb.org/t/p/w200{poster_suffix}" if poster_suffix else ""
                 plan = self.organizer.build_plan(dir_path, preflight_result, configured_media_type=current_media_type, is_group_folder=is_group_folder)
+                self._assert_confirmed_plan(plan)
                 self._emit(
                     "candidate.selected",
                     {
@@ -525,9 +624,25 @@ class BatchMediaScraper:
                         )
                         return (False, "任务失败，目标目录正在被其他任务处理")
 
+                if self.inplace_rename and self.enable_organize and plan.get("target_root"):
+                    input_data["output_dir"] = plan["target_root"]
+
+                self._emit(
+                    "item.execution_phase",
+                    {"phase": "metadata", "name": show_name, "path": str(dir_path)},
+                    item_id=item_id or str(dir_path),
+                )
+
             result = self.pipeline.run(input_data)
             status = result.get("status")
             
+            if status == "cancelled":
+                self._emit(
+                    "item.cancelled",
+                    {"name": show_name, "path": str(dir_path), "stage": result.get("stage")},
+                    item_id=item_id or str(dir_path),
+                )
+                return (False, f"{show_name} cancelled")
             if status == "completed":
                 candidate = result.get("candidate", {})
                 match = result.get("match", {})
@@ -543,7 +658,64 @@ class BatchMediaScraper:
                     item_id=item_id or str(dir_path),
                 )
                 plan = self.organizer.build_plan(dir_path, result, configured_media_type=current_media_type, is_group_folder=is_group_folder)
-                self.organizer.organize(dir_path, result, configured_media_type=current_media_type, is_group_folder=is_group_folder)
+                self._emit(
+                    "item.execution_phase",
+                    {"phase": "organizing", "name": show_name, "path": str(dir_path)},
+                    item_id=item_id or str(dir_path),
+                )
+                self.organizer.organize(
+                    dir_path,
+                    result,
+                    configured_media_type=current_media_type,
+                    is_group_folder=is_group_folder,
+                    item_id=item_id or str(dir_path),
+                )
+                self._emit(
+                    "item.execution_phase",
+                    {"phase": "verifying", "name": show_name, "path": str(dir_path)},
+                    item_id=item_id or str(dir_path),
+                )
+                self._emit(
+                    "item.verification_started",
+                    {"name": show_name, "path": str(dir_path), "plan_summary": plan.get("summary", {})},
+                    item_id=item_id or str(dir_path),
+                )
+                verification = self.verifier.verify(plan, artwork=result.get("artwork"))
+                self._emit(
+                    "item.verification_completed",
+                    {"verification": verification},
+                    item_id=item_id or str(dir_path),
+                )
+                if verification["status"] == "failed":
+                    message = "Execution verification failed"
+                    self._emit(
+                        "item.failed",
+                        {
+                            "name": show_name,
+                            "path": str(dir_path),
+                            "error": message,
+                            "error_code": "EXECUTION_VERIFICATION_FAILED",
+                            "verification": verification,
+                            "artwork": result.get("artwork"),
+                            "plan_summary": plan.get("summary", {}),
+                        },
+                        item_id=item_id or str(dir_path),
+                    )
+                    return (False, f"{show_name}: {message}")
+                if verification["status"] == "partial":
+                    self._emit(
+                        "item.partial",
+                        {
+                            "name": show_name,
+                            "path": str(dir_path),
+                            "result": "Execution completed with verification warnings",
+                            "verification": verification,
+                            "artwork": result.get("artwork"),
+                            "plan_summary": plan.get("summary", {}),
+                        },
+                        item_id=item_id or str(dir_path),
+                    )
+                    return ("partial", f"{show_name}: verification warnings")
                 logger.info(f"✅ Batch Scraper finished task: {show_name}")
                 self._emit(
                     "item.completed",
@@ -552,18 +724,19 @@ class BatchMediaScraper:
                         "path": str(dir_path),
                         "result": "completed",
                         "artwork": result.get("artwork"),
+                        "verification": verification,
                         "plan_summary": plan.get("summary", {}),
                     },
                     item_id=item_id or str(dir_path),
                 )
                 return (True, "任务成功，媒体文件数量完整。")
-            elif status == "audit_completed":
+            elif status in {"audit_completed", "plan_ready"}:
                 candidate = result.get("candidate", {})
                 match = result.get("match", {})
                 poster_suffix = candidate.get("poster_path")
                 poster_url = f"https://image.tmdb.org/t/p/w200{poster_suffix}" if poster_suffix else ""
                 plan = self.organizer.build_plan(dir_path, result, configured_media_type=current_media_type, is_group_folder=is_group_folder)
-                logger.info(f"Audit completed for {show_name} [Poster={poster_url}]")
+                logger.info(f"Plan completed for {show_name} [Poster={poster_url}]")
                 self._emit(
                     "candidate.selected",
                     {
@@ -591,7 +764,14 @@ class BatchMediaScraper:
                 error_detail = result.get('error', 'Unknown error').lower()
                 self._emit(
                     "item.failed",
-                    {"name": show_name, "path": str(dir_path), "error": result.get("error", "Unknown error"), "match": result.get("match")},
+                    {
+                        "name": show_name,
+                        "path": str(dir_path),
+                        "error": result.get("error", "Unknown error"),
+                        "error_code": result.get("error_code"),
+                        "candidate": result.get("candidate"),
+                        "match": result.get("match"),
+                    },
                     item_id=item_id or str(dir_path),
                 )
                 if "no candidates" in error_detail or "not found" in error_detail:
@@ -607,6 +787,27 @@ class BatchMediaScraper:
                 logger.error(f"Metadata generation failed for {show_name}: {error_detail} {f'({error_code})' if error_code else ''}")
                 return (False, failure_reason)
 
+        except OperationCancelled as exc:
+            self._emit(
+                "item.cancelled",
+                {"name": show_name, "path": str(dir_path), "stage": exc.stage},
+                item_id=item_id or str(dir_path),
+            )
+            return (False, f"{show_name} cancelled")
+        except OrganizerExecutionError as exc:
+            logger.error("Organizer stopped for %s: %s", show_name, exc)
+            self._emit(
+                "item.failed",
+                {
+                    "name": show_name,
+                    "path": str(dir_path),
+                    "error": str(exc),
+                    "error_code": "ORGANIZER_OPERATION_FAILED",
+                    "operation": exc.as_dict(),
+                },
+                item_id=item_id or str(dir_path),
+            )
+            return (False, f"{show_name} (Organizer stopped: {exc})")
         except Exception as e:
             logger.error(f"Scraper Error for {show_name}: {e}")
             self._emit(
@@ -643,6 +844,22 @@ class BatchMediaScraper:
             is_tv = any(FilenameParser.parse_episode_info(str(f)) for f in files) or has_episode_marker
             media_type = "tv" if is_tv else "movie"
 
+        operation_scope = self._effective_operation_scope()
+        if not self.dry_run and operation_scope in {"nfo_only", "artwork_only"}:
+            message = "NFO-only and artwork-only tasks require media to already be inside a dedicated directory"
+            self._emit(
+                "item.failed",
+                {
+                    "name": safe_name,
+                    "path": str(target_path),
+                    "error": message,
+                    "error_code": "LOOSE_FILES_REQUIRE_ORGANIZE",
+                    "operation_scope": operation_scope,
+                },
+                item_id=item_id,
+            )
+            return (False, message)
+
         if self.dry_run:
             logger.info(f"[Dry Run] Group: {safe_name} ({len(files)} files) -> Type: {media_type}")
             self._emit(
@@ -658,7 +875,7 @@ class BatchMediaScraper:
                 item_id=item_id,
             )
             
-            # Prepare Pipeline Input for AUDIT
+            # A plan must fetch the same metadata that execution will use.
             input_data = {
                 "media_type": media_type,
                 "media_type_forced": True, 
@@ -673,22 +890,31 @@ class BatchMediaScraper:
                 "overwrite_images": self.overwrite_images,
                 "tmdb_only": self.search_mode == "tmdb_only",
                 "fallback_on_fail": self.enable_fallback,
-                "audit_only": True
+                "audit_only": False,
+                "plan_only": True,
+                "operation_scope": operation_scope,
             }
             
             try:
-                logger.info(f"[Audit Mode] Analyzing directory (Loose Group): {target_path}")
+                logger.info(f"[Plan Mode] Analyzing directory (Loose Group): {target_path}")
                 logger.info(f"Processing: {safe_name} (ID: None, Query: {safe_name}, Type: {media_type})")
                 result = self.pipeline.run(input_data)
                 
                 status = result.get("status")
-                if status == "audit_completed" or status == "completed":
+                if status == "cancelled":
+                    self._emit(
+                        "item.cancelled",
+                        {"name": safe_name, "path": str(target_path), "stage": result.get("stage")},
+                        item_id=item_id,
+                    )
+                    return (False, f"{safe_name} cancelled")
+                if status in {"audit_completed", "completed", "plan_ready"}:
                     candidate = result.get("candidate", {})
                     match = result.get("match", {})
                     poster_suffix = candidate.get("poster_path")
                     poster_url = f"https://image.tmdb.org/t/p/w200{poster_suffix}" if poster_suffix else ""
                     plan = self.organizer.build_loose_file_plan(files, base_dir, show_name, result, media_type)
-                    logger.info(f"Audit completed for {show_name} [Poster={poster_url}]")
+                    logger.info(f"Plan completed for {show_name} [Poster={poster_url}]")
                     self._emit(
                         "candidate.selected",
                         {
@@ -745,11 +971,19 @@ class BatchMediaScraper:
             "tmdb_only": self.search_mode == "tmdb_only",
             "fallback_on_fail": self.enable_fallback,
             "audit_only": True,
+            "operation_scope": operation_scope,
         }
         plan_input = audit_input.copy()
         plan_input["audit_only"] = False
         plan_input["plan_only"] = True
         audit_result = self.pipeline.run(plan_input)
+        if audit_result.get("status") == "cancelled":
+            self._emit(
+                "item.cancelled",
+                {"name": safe_name, "path": str(target_path), "stage": audit_result.get("stage")},
+                item_id=item_id,
+            )
+            return (False, f"{safe_name} cancelled")
         if audit_result.get("status") != "plan_ready":
             error = audit_result.get("error", "Unknown error")
             self._emit(
@@ -760,6 +994,7 @@ class BatchMediaScraper:
             return (False, f"Audit failed before execution: {error}")
 
         plan = self.organizer.build_loose_file_plan(files, base_dir, show_name, audit_result, media_type)
+        self._assert_confirmed_plan(plan)
         self._emit(
             "item.plan_ready",
             {"plan": plan},
@@ -782,17 +1017,23 @@ class BatchMediaScraper:
                     {"target_path": str(lock.target_path), "lock_path": str(lock.lock_path)},
                     item_id=item_id,
                 )
-                if not target_path.exists():
-                    target_path.mkdir(exist_ok=True)
-                    self.organizer.manifest.record("create_dir", None, target_path)
+                raise_if_cancelled(self.stop_event, "loose_files.create_directory")
+                self.organizer._ensure_directory(target_path, item_id, "loose_files.create_directory")
                 
                 for f in files:
+                    raise_if_cancelled(self.stop_event, "loose_files.move")
                     if f.parent != target_path:
                         dest = target_path / f.name
-                        shutil.move(str(f), str(dest))
-                        self.organizer.manifest.record("move_file", f, dest)
+                        self.organizer._move_or_copy(f, dest, item_id=item_id)
                 
                 return self._process_directory(target_path, None, is_group_folder=True, item_id=item_id, execution_lock_held=True)
+        except OperationCancelled as exc:
+            self._emit(
+                "item.cancelled",
+                {"name": safe_name, "path": str(target_path), "stage": exc.stage},
+                item_id=item_id,
+            )
+            return (False, f"{safe_name} cancelled")
         except DirectoryLockError as lock_error:
             message = str(lock_error)
             logger.error(message)
@@ -811,3 +1052,17 @@ class BatchMediaScraper:
                 item_id=item_id,
             )
             return (False, "任务失败，目标目录正在被其他任务处理")
+        except OrganizerExecutionError as exc:
+            logger.error("Organizer stopped for loose file group %s: %s", safe_name, exc)
+            self._emit(
+                "item.failed",
+                {
+                    "name": safe_name,
+                    "path": str(target_path),
+                    "error": str(exc),
+                    "error_code": "ORGANIZER_OPERATION_FAILED",
+                    "operation": exc.as_dict(),
+                },
+                item_id=item_id,
+            )
+            return (False, f"任务失败: {exc}")

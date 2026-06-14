@@ -1,17 +1,24 @@
 import os
+import re
 import shutil
 import tempfile
+from pathlib import Path
 from typing import Optional
 
 
 class FileSystemManager:
     @staticmethod
+    def sanitize_component(value: str, fallback: str = "Untitled", replacement: str = "") -> str:
+        cleaned = re.sub(r'[\x00-\x1f\\/:"*?<>|]', replacement, value or "")
+        cleaned = cleaned.strip().strip(".").strip()
+        if cleaned in {"", ".", ".."}:
+            cleaned = fallback
+        return cleaned[:180].rstrip().rstrip(".")
+
+    @staticmethod
     def create_media_directory(base_dir: str, title: str, year: int, media_type: str, inplace: bool = False) -> str:
         """Create directory structure for media item."""
-        # Sanitize title for directory name - only remove filesystem-illegal characters
-        import re
-        # Remove only characters that are illegal in filesystem: \ / : * ? " < > |
-        safe_title = re.sub(r'[\\/:"*?<>|]', '', title).strip()
+        safe_title = FileSystemManager.sanitize_component(title)
         dir_name = f"{safe_title} ({year})"
 
         if inplace:
@@ -54,8 +61,16 @@ class FileSystemManager:
     @staticmethod
     def write_nfo_file(directory: str, filename: str, content: str) -> str:
         """Write NFO file to directory."""
-        nfo_path = os.path.join(directory, filename)
-        return FileSystemManager.write_text_atomic(nfo_path, content)
+        directory_path = Path(directory).expanduser().resolve(strict=False)
+        filename_path = Path(filename)
+        if filename_path.is_absolute() or filename_path.name != filename:
+            raise ValueError("NFO filename must be a single safe path component")
+        nfo_path = (directory_path / filename).resolve(strict=False)
+        try:
+            nfo_path.relative_to(directory_path)
+        except ValueError as exc:
+            raise ValueError("NFO destination escapes its media directory") from exc
+        return FileSystemManager.write_text_atomic(str(nfo_path), content)
 
     @staticmethod
     def copy_video_file(source: str, destination_dir: str, filename: str) -> Optional[str]:
@@ -85,15 +100,10 @@ class FileSystemManager:
     @staticmethod
     def write_episode_nfo(season_dir: str, title: str, season: int, episode: int, episode_title: str, content: str) -> str:
         """Write episode NFO file."""
-        # Clean episode title: if contains '/', take part before '/', otherwise remove other invalid chars
-        if '/' in episode_title:
-            safe_episode_title = episode_title.split('/')[0].strip()
-        else:
-            safe_episode_title = "".join(c for c in episode_title if c not in '\\:*?"<>|').strip()
-        nfo_filename = f"{title} - S{season:02d}E{episode:02d} - {safe_episode_title}.nfo"
-        nfo_path = os.path.join(season_dir, nfo_filename)
-
-        return FileSystemManager.write_text_atomic(nfo_path, content)
+        safe_title = FileSystemManager.sanitize_component(title)
+        safe_episode_title = FileSystemManager.sanitize_component(episode_title, fallback="Episode", replacement="-")
+        nfo_filename = f"{safe_title} - S{season:02d}E{episode:02d} - {safe_episode_title}.nfo"
+        return FileSystemManager.write_nfo_file(season_dir, nfo_filename, content)
 
     @staticmethod
     def write_episode_poster(episode_dir: str, title: str, season: int, episode: int, episode_title: str, poster_path: str) -> Optional[str]:
@@ -101,12 +111,9 @@ class FileSystemManager:
         if not os.path.exists(poster_path):
             return None
 
-        # Clean episode title: if contains '/', take part before '/', otherwise remove other invalid chars
-        if '/' in episode_title:
-            safe_episode_title = episode_title.split('/')[0].strip()
-        else:
-            safe_episode_title = "".join(c for c in episode_title if c not in '\\:*?"<>|').strip()
-        poster_filename = f"{title} - S{season:02d}E{episode:02d} - {safe_episode_title}-thumb.jpg"
+        safe_title = FileSystemManager.sanitize_component(title)
+        safe_episode_title = FileSystemManager.sanitize_component(episode_title, fallback="Episode", replacement="-")
+        poster_filename = f"{safe_title} - S{season:02d}E{episode:02d} - {safe_episode_title}-thumb.jpg"
         dest_path = os.path.join(episode_dir, poster_filename)
 
         shutil.copy2(poster_path, dest_path)

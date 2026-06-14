@@ -7,15 +7,17 @@ from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional
 
 import requests
+from src.core.cancellation import raise_if_cancelled
 
 logger = logging.getLogger(__name__)
 
 
 class ArtworkDownloader:
-    def __init__(self, tmdb_api_key: str, proxy: Optional[Dict[str, str]] = None, manifest: Optional[Any] = None):
+    def __init__(self, tmdb_api_key: str, proxy: Optional[Dict[str, str]] = None, manifest: Optional[Any] = None, cancel_event=None):
         self.tmdb_api_key = tmdb_api_key
         self.proxy = proxy
         self.manifest = manifest
+        self.cancel_event = cancel_event
         self.session = requests.Session()
 
         from requests.adapters import HTTPAdapter
@@ -55,12 +57,77 @@ class ArtworkDownloader:
         except (TypeError, ValueError):
             return default
 
+    def _normalize_policy(self, policy: Optional[Dict[str, Any]]) -> Dict[str, Any]:
+        raw = policy or {}
+        languages = raw.get("preferred_languages", ["zh", "en", "ja"])
+        if isinstance(languages, str):
+            languages = [item.strip() for item in languages.split(",")]
+        normalized_languages = []
+        for language in languages if isinstance(languages, list) else []:
+            base = str(language or "").strip().lower().split("-")[0]
+            if base and base not in normalized_languages:
+                normalized_languages.append(base)
+        if not normalized_languages:
+            normalized_languages = ["zh", "en", "ja"]
+        return {
+            "preferred_languages": normalized_languages,
+            "min_poster_width": self._safe_limit(raw, "min_poster_width", 500),
+            "min_backdrop_width": self._safe_limit(raw, "min_backdrop_width", 1280),
+            "min_logo_width": self._safe_limit(raw, "min_logo_width", 300),
+        }
+
+    def _rank_images(
+        self,
+        images: List[Dict[str, Any]],
+        kind: str,
+        policy: Dict[str, Any],
+    ) -> List[Dict[str, Any]]:
+        languages = policy["preferred_languages"]
+        minimum_width = {
+            "poster": policy["min_poster_width"],
+            "backdrop": policy["min_backdrop_width"],
+            "logo": policy["min_logo_width"],
+        }.get(kind, 0)
+        target_ratio = {"poster": 2 / 3, "backdrop": 16 / 9}.get(kind)
+
+        valid = [dict(image) for image in images if isinstance(image, dict) and image.get("file_path")]
+        eligible = [image for image in valid if int(image.get("width") or 0) >= minimum_width]
+        candidates = eligible or valid
+
+        def score(image: Dict[str, Any]):
+            language = str(image.get("iso_639_1") or "").lower().split("-")[0]
+            if language in languages:
+                language_rank = languages.index(language)
+            elif not language:
+                language_rank = len(languages)
+            else:
+                language_rank = len(languages) + 1
+            width = int(image.get("width") or 0)
+            height = int(image.get("height") or 0)
+            ratio = float(image.get("aspect_ratio") or (width / height if height else 0))
+            ratio_distance = abs(ratio - target_ratio) if target_ratio and ratio else 99.0
+            return (
+                language_rank,
+                -float(image.get("vote_average") or 0),
+                -int(image.get("vote_count") or 0),
+                -(width * height),
+                ratio_distance,
+                str(image.get("file_path") or ""),
+            )
+
+        ranked = sorted(candidates, key=score)
+        for index, image in enumerate(ranked, start=1):
+            image["_selection_rank"] = index
+            image["_minimum_width_fallback"] = not bool(eligible) and bool(valid) and minimum_width > 0
+        return ranked
+
     def download_image(self, image_path: str, url: str, max_retries: int = 3, overwrite: bool = True) -> bool:
         """Download a single image, validate it, then atomically publish it."""
         if not overwrite and os.path.exists(image_path):
             return True
 
         for attempt in range(max_retries):
+            raise_if_cancelled(self.cancel_event, "artwork.download")
             try:
                 return self._download_image_once(image_path, url, verify=True)
             except requests.exceptions.SSLError:
@@ -80,6 +147,7 @@ class ArtworkDownloader:
         return False
 
     def _download_image_once(self, image_path: str, url: str, verify: bool = True) -> bool:
+        raise_if_cancelled(self.cancel_event, "artwork.request")
         existed = os.path.exists(image_path)
         response = self.session.get(url, timeout=30, stream=True, verify=verify)
         response.raise_for_status()
@@ -89,6 +157,7 @@ class ArtworkDownloader:
         try:
             with open(tmp_path, "wb") as f:
                 for chunk in response.iter_content(chunk_size=8192):
+                    raise_if_cancelled(self.cancel_event, "artwork.stream")
                     if chunk:
                         f.write(chunk)
 
@@ -146,6 +215,7 @@ class ArtworkDownloader:
     ) -> bool:
         downloaded_images[key] = []
         for image in images:
+            raise_if_cancelled(self.cancel_event, f"artwork.{key}")
             file_path = image.get("file_path")
             if not file_path:
                 continue
@@ -200,6 +270,10 @@ class ArtworkDownloader:
         for key in ("file_path", "iso_639_1", "width", "height", "aspect_ratio", "vote_average", "vote_count", "name"):
             if source_data.get(key) is not None:
                 record[key] = source_data.get(key)
+        if source_data.get("_selection_rank") is not None:
+            record["selection_rank"] = source_data["_selection_rank"]
+        if source_data.get("_minimum_width_fallback"):
+            record["minimum_width_fallback"] = True
         return record
 
     def _download_extra_group(
@@ -223,6 +297,7 @@ class ArtworkDownloader:
         candidates = images[1:] if skip_first else images
 
         for image in candidates[:limit]:
+            raise_if_cancelled(self.cancel_event, f"artwork.{kind}")
             file_path = image.get("file_path")
             if not file_path:
                 continue
@@ -235,12 +310,21 @@ class ArtworkDownloader:
                 assets.append(self._asset_record(kind, relative_path, self._image_url(file_path), image))
         return downloaded
 
-    def _write_artwork_manifest(self, output_dir: str, media_type: str, tmdb_id: int, assets: List[Dict[str, Any]], downloaded_images: Dict[str, List[str]]) -> None:
+    def _write_artwork_manifest(
+        self,
+        output_dir: str,
+        media_type: str,
+        tmdb_id: int,
+        assets: List[Dict[str, Any]],
+        downloaded_images: Dict[str, List[str]],
+        policy: Dict[str, Any],
+    ) -> None:
         payload = {
             "version": 1,
             "media_type": media_type,
             "tmdb_id": tmdb_id,
             "generated_at": self._utc_now(),
+            "selection_policy": policy,
             "summary": {
                 key: len(value)
                 for key, value in downloaded_images.items()
@@ -275,14 +359,21 @@ class ArtworkDownloader:
         verbose: bool = False,
         extra_images: bool = False,
         image_limits: Optional[Dict[str, Any]] = None,
+        artwork_policy: Optional[Dict[str, Any]] = None,
         overwrite: bool = False,
     ) -> Dict[str, List[str]]:
         """Download available artwork with Emby/Jellyfin-friendly names."""
         images_url = f"https://api.themoviedb.org/3/{media_type}/{tmdb_id}/images"
+        policy = self._normalize_policy(artwork_policy)
         request_kwargs = self._tmdb_request_kwargs()
+        request_kwargs["params"] = {
+            **request_kwargs.get("params", {}),
+            "include_image_language": ",".join(policy["preferred_languages"] + ["null"]),
+        }
 
         images_data = None
         for attempt in range(3):
+            raise_if_cancelled(self.cancel_event, "artwork.catalog")
             try:
                 response = self.session.get(images_url, timeout=30, **request_kwargs)
                 response.raise_for_status()
@@ -297,9 +388,9 @@ class ArtworkDownloader:
                     print(f"Retry {attempt + 1}/3 for images API")
                 time.sleep(1)
 
-        posters = images_data.get("posters", []) if images_data else []
-        backdrops = images_data.get("backdrops", []) if images_data else []
-        logos = images_data.get("logos", []) if images_data else []
+        posters = self._rank_images(images_data.get("posters", []) if images_data else [], "poster", policy)
+        backdrops = self._rank_images(images_data.get("backdrops", []) if images_data else [], "backdrop", policy)
+        logos = self._rank_images(images_data.get("logos", []) if images_data else [], "logo", policy)
 
         downloaded_images: Dict[str, List[str]] = {}
         assets: List[Dict[str, Any]] = []
@@ -363,7 +454,7 @@ class ArtworkDownloader:
             print(f"   图片下载完成: 共{total_downloaded}张")
 
         if assets:
-            self._write_artwork_manifest(output_dir, media_type, tmdb_id, assets, downloaded_images)
+            self._write_artwork_manifest(output_dir, media_type, tmdb_id, assets, downloaded_images, policy)
 
         return downloaded_images
 
@@ -390,6 +481,7 @@ class ArtworkDownloader:
         downloaded = []
         stills_dir = os.path.join(output_dir, "Extra", "stills")
         for episode in season_data.get("episodes", []):
+            raise_if_cancelled(self.cancel_event, "artwork.stills")
             if len(downloaded) >= limit:
                 break
             still_path = episode.get("still_path")
@@ -430,6 +522,7 @@ class ArtworkDownloader:
         downloaded = []
         actors_dir = os.path.join(output_dir, "Extra", "actors")
         for actor in credits_data.get("cast", []):
+            raise_if_cancelled(self.cancel_event, "artwork.actors")
             if len(downloaded) >= limit:
                 break
             profile_path = actor.get("profile_path")

@@ -1,6 +1,7 @@
 
 from pathlib import Path
 from src.core.filename_parser import FilenameParser
+from src.core.path_filters import is_hidden_path
 
 class MediaTypeDetector:
     @staticmethod
@@ -10,7 +11,7 @@ class MediaTypeDetector:
         episode_files = 0
         
         for f in path.rglob('*'):
-            if f.is_file() and f.suffix.lower() in FilenameParser.VIDEO_EXTENSIONS:
+            if f.is_file() and not is_hidden_path(f) and f.suffix.lower() in FilenameParser.VIDEO_EXTENSIONS:
                 video_files += 1
                 if FilenameParser.parse_episode_info(f.name):
                     episode_files += 1

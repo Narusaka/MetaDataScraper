@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { LayoutDashboard, Settings, Activity, ChevronRight, type LucideIcon } from 'lucide-react';
+import { ClipboardCheck, LayoutDashboard, Settings, Activity, ChevronRight, History, ScanSearch, ShieldAlert, Gauge, SlidersHorizontal, type LucideIcon } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useTranslation } from '../lib/languageContext';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -92,7 +92,7 @@ export function Sidebar({ activeTab, onTabChange, mobileOpen = false, onMobileCl
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 onMouseLeave={() => setCollapsed(true)}
                 className={cn(
-                    "fixed md:relative z-50 flex flex-col glass-panel-pro shadow-2xl overflow-hidden",
+                    "!fixed md:!relative z-50 flex flex-col glass-panel-pro shadow-2xl overflow-hidden",
                     // Floating logic
                     "h-[calc(100vh-2rem)] my-4 ml-4 rounded-3xl border border-glass-border",
                     mobileOpen ? "translate-x-0" : "-translate-x-[120%] md:translate-x-0"
@@ -136,6 +136,12 @@ export function Sidebar({ activeTab, onTabChange, mobileOpen = false, onMobileCl
                 {/* Nav Items */}
                 <div className="flex-1 py-2 flex flex-col gap-2 overflow-y-auto overflow-x-hidden relative z-10 scrollbar-hide items-center">
                     <NavItem icon={LayoutDashboard} label={t('dashboard')} id="dashboard" activeTab={activeTab} collapsed={collapsed} onSelect={handleSelect} />
+                    <NavItem icon={ScanSearch} label={t('library_scan')} id="library_scan" activeTab={activeTab} collapsed={collapsed} onSelect={handleSelect} />
+                    <NavItem icon={SlidersHorizontal} label={t('planning')} id="planning" activeTab={activeTab} collapsed={collapsed} onSelect={handleSelect} />
+                    <NavItem icon={ShieldAlert} label={t('match_review')} id="match_review" activeTab={activeTab} collapsed={collapsed} onSelect={handleSelect} />
+                    <NavItem icon={ClipboardCheck} label={t('plan_review')} id="plan_review" activeTab={activeTab} collapsed={collapsed} onSelect={handleSelect} />
+                    <NavItem icon={Gauge} label={t('execution')} id="execution" activeTab={activeTab} collapsed={collapsed} onSelect={handleSelect} />
+                    <NavItem icon={History} label={t('history')} id="history" activeTab={activeTab} collapsed={collapsed} onSelect={handleSelect} />
                     <NavItem icon={Activity} label={t('monitoring')} id="monitoring" activeTab={activeTab} collapsed={collapsed} onSelect={handleSelect} />
 
                     <div className="h-4" /> {/* Spacer instead of divider */}

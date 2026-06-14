@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<season>
+  <title>Season 1</title>
+  <seasonnumber>1</seasonnumber>
+  <year>2026</year>
+  <premiered>2026-02-03</premiered>
+  <plot>Season plot</plot>
+  <rating>8.0</rating>
+  <votes>123</votes>
+  <genre>剧情</genre>
+  <country>CN</country>
+  <studio>Studio A</studio>
+  <outline>Season plot</outline>
+  <tmdbid>421</tmdbid>
+  <uniqueid type="tmdb" default="true">421</uniqueid>
+  <thumb>poster.jpg</thumb>
+  <fanart>../fanart.jpg</fanart>
+</season>

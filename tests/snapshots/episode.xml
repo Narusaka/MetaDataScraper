@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<episodedetails>
+  <title>试播集</title>
+  <originaltitle>Pilot</originaltitle>
+  <sorttitle>试播集</sorttitle>
+  <season>1</season>
+  <episode>2</episode>
+  <year>2026</year>
+  <premiered>2026-02-04</premiered>
+  <aired>2026-02-04</aired>
+  <runtime>24</runtime>
+  <plot>单集剧情</plot>
+  <outline>单集剧情</outline>
+  <rating>7.8</rating>
+  <votes>9</votes>
+  <tmdbid>4201</tmdbid>
+  <uniqueid type="tmdb" default="true">4201</uniqueid>
+  <genre>剧情</genre>
+  <country>CN</country>
+  <studio>Studio A</studio>
+  <credits>Writer A</credits>
+  <director>Director A</director>
+  <actor>
+    <name>演员甲 / Actor A</name>
+    <role>Lead</role>
+    <type>Actor</type>
+    <thumb>../Actor_A.jpg</thumb>
+  </actor>
+  <tag>测试</tag>
+  <thumb>示例 - S01E02 - 试播集-thumb.jpg</thumb>
+  <fanart>示例 - S01E02 - 试播集-fanart.jpg</fanart>
+  <lockedfields>Name</lockedfields>
+</episodedetails>
